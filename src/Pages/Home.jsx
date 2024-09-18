@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
+import Hero from "../components/Home/Hero";
 
 const Home = () => {
-    return (
-        <div>
-            <h2>This is home</h2>
-            <h2 className="font-bold text-xl text-fuchsia-500 ">TailWind check</h2>
-        </div>
-    );
+  return (
+    <div>
+      <Hero />
+    </div>
+  );
 };
 
 export default Home;

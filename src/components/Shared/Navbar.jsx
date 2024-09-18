@@ -31,7 +31,7 @@ const Navbar = () => {
             <IoMdArrowForward size={15} />
           </button>
         </div>
-        {/* menu button */}
+        {/* menu */}
         <div className="flex md:hidden">
           <IoMenuSharp size={30} />
         </div>
