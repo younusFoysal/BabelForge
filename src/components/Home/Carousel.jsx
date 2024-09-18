@@ -11,8 +11,8 @@ import ButtonSmall from '../Shared/Buttons/ButtonSmall';
 // Carousel Items Object
 const carouselItems = [
   {
-    image: './home/carousel/tracking.png',
-    sub_img: './home/carousel/sub_word.png',
+    image: './Home/carousel/tracking.png',
+    sub_img: './Home/carousel/sub_word.png',
     title: 'HR',
     hover_title: 'Recommended product',
     hover_items: [
@@ -23,8 +23,8 @@ const carouselItems = [
     ],
   },
   {
-    image: './home/carousel/team.png',
-    sub_img: './home/carousel/sub_word.png',
+    image: './Home/carousel/team.png',
+    sub_img: './Home/carousel/sub_word.png',
     title: 'Marketing',
     hover_title: 'Recommended product',
     hover_items: [
@@ -35,8 +35,8 @@ const carouselItems = [
     ],
   },
   {
-    image: './home/carousel/crm.png',
-    sub_img: './home/carousel/sub_crm.png',
+    image: './Home/carousel/crm.png',
+    sub_img: './Home/carousel/sub_crm.png',
     title: 'Sales & CRM',
     hover_title: 'Recommended product',
     hover_items: [
@@ -47,8 +47,8 @@ const carouselItems = [
     ],
   },
   {
-    image: './home/carousel/it.png',
-    sub_img: './home/carousel/sub_service.png',
+    image: './Home/carousel/it.png',
+    sub_img: './Home/carousel/sub_service.png',
     title: 'IT & Support',
     hover_title: 'Recommended product',
     hover_items: [
@@ -59,8 +59,8 @@ const carouselItems = [
     ],
   },
   {
-    image: './home/carousel/overview.png',
-    sub_img: './home/carousel/sub_word.png',
+    image: './Home/carousel/overview.png',
+    sub_img: './Home/carousel/sub_word.png',
     title: 'Operations',
     hover_title: 'Recommended product',
     hover_items: [
@@ -71,8 +71,8 @@ const carouselItems = [
     ],
   },
   {
-    image: './home/carousel/sprint.png',
-    sub_img: './home/carousel/sub_dev.png',
+    image: './Home/carousel/sprint.png',
+    sub_img: './Home/carousel/sub_dev.png',
     title: 'Product & Dev',
     hover_title: 'Recommended product',
     hover_items: [
@@ -83,8 +83,8 @@ const carouselItems = [
     ],
   },
   {
-    image: './home/carousel/creative_card.png',
-    sub_img: './home/carousel/sub_word.png',
+    image: './Home/carousel/creative_card.png',
+    sub_img: './Home/carousel/sub_word.png',
     title: 'Creative & Design',
     hover_title: 'Recommended product',
     hover_items: [
