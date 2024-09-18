@@ -32,6 +32,10 @@ export default [
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
+        {
+          "extends": "next/core-web-vitals",
+          "rules": { "react/no-unescaped-entities": 0 }
+        }
       ],
     },
   },

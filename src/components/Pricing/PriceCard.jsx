@@ -9,7 +9,7 @@ import { FaCircleCheck } from "react-icons/fa6";
 
 const PriceCard = () => {
     return (
-        <section>
+        <section className="container mx-auto">
            
             {/* title */}
             <div className="my-6 text-center">
@@ -29,7 +29,7 @@ const PriceCard = () => {
 
                     <div className="container px-4 mx-auto">
 
-                        <div className="flex flex-wrap items-stretch h-[100vh] -mx-4">
+                        <div className="flex flex-wrap items-stretch lg:h-[100vh] -mx-4">
 
                             {/* card 1 */}
                             <div className="flex w-full mb-8  sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
