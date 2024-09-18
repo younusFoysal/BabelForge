@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
-        <footer className="p-2 md:p-10 text-gray-500 border-t">
+        <footer className="p-2 md:p-16 pt-10 text-gray-500 mt-16 bg-sky-50">
             {/* upper part */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-7 items-center justify-between border-b pb-12">
-                <div className="flex flex-col space-y-1 text-sm ">
-                    <img className="w-32 mx-auto md:mx-0" src="./Footer/logo.png" alt="babelforge" />
+                <div className="flex flex-col space-y-1 text-sm">
+                    <Link to="/"><img className="w-32 mx-auto md:mx-0" src="./Footer/logo.png" alt="babelforge" /></Link>
                     <p className="text-center md:text-start text-xs font-semibold">Where Teams Forge Success.</p>
                     <p className="text-center md:text-start pt-3 text-xs">BabelForge – Streamlining teamwork, task management, and collaboration for your team’s success.</p>
                 </div>

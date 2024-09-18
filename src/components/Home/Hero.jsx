@@ -1,9 +1,10 @@
 import React from "react";
 import { IoMdArrowForward } from "react-icons/io";
+import Button from "../Shared/Button";
 
 const Hero = () => {
   return (
-    <section className="container max-w-screen-2xl mx-auto px-4 bg-[#F0F3FF] rounded-t-3xl">
+    <section className="container max-w-screen-2xl mx-auto px-4 mb-16 bg-[#F0F3FF] rounded-3xl">
       <div
         className="h-screen flex justify-center items-center
       "
@@ -16,10 +17,7 @@ const Hero = () => {
             The platform that gives you the flexibility to run any aspect of by
             work.
           </p>
-          <button className="px-6 py-3 capitalize bg-primary text-white rounded-3xl text-sm flex gap-1 items-center">
-            <span>get started</span>
-            <IoMdArrowForward size={15} />
-          </button>
+          <Button text="get started" icon={<IoMdArrowForward size={20} />} />
         </div>
       </div>
     </section>
