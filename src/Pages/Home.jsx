@@ -4,6 +4,7 @@ const Home = () => {
     return (
         <div>
             <h2>This is home</h2>
+            <h2 className="font-bold text-xl text-fuchsia-500 ">TailWind check</h2>
         </div>
     );
 };
