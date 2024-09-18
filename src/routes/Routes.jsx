@@ -9,6 +9,8 @@ import SignUp from "../Pages/SignUp.jsx";
 import Statistics from "../Pages/Dashboard/Common/Statistics.jsx";
 import Profile from "../Pages/Dashboard/Common/Profile.jsx";
 import Contactus from "../Pages/Contactus.jsx";
+import Pricing from '../Pages/Pricing.jsx';
+
 
 
 
@@ -26,7 +28,11 @@ export const router = createBrowserRouter([
             {
                 path: '/contact-us',
                 element: <Contactus />
-            }
+            },
+            {
+                path: '/pricing',
+                element: <Pricing></Pricing>
+            },
 
         ],
     },
