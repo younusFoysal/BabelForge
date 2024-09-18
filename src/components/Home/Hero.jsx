@@ -1,5 +1,6 @@
 import React from "react";
 import { IoMdArrowForward } from "react-icons/io";
+import Button from "../Shared/Button";
 
 const Hero = () => {
   return (
@@ -16,10 +17,7 @@ const Hero = () => {
             The platform that gives you the flexibility to run any aspect of by
             work.
           </p>
-          <button className="px-6 py-3 capitalize bg-primary text-white rounded-3xl text-sm flex gap-1 items-center">
-            <span>get started</span>
-            <IoMdArrowForward size={15} />
-          </button>
+          <Button text="get started" icon={<IoMdArrowForward size={20} />} />
         </div>
       </div>
     </section>
