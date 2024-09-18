@@ -3,7 +3,7 @@ import { IoMdArrowForward } from 'react-icons/io';
 
 const CallToAction = () => {
     return (
-        <div className='bg-primary-dark flex flex-col md:flex-row items-center justify-between gap-10 p-12 leading-relaxed'>
+        <div className='bg-[#1f0f83] flex flex-col md:flex-row items-center justify-between gap-10 p-12 leading-relaxed'>
             <div className='w-full md:w-3/5'>
                 <h1 className='text-white text-3xl md:text-4xl lg:text-6xl font-extralight text-center md:text-start'>Deliver your best work with <span className='text-gray-300'>babelforge.com</span></h1>
                 <div className='w-full flex justify-center md:justify-start'>

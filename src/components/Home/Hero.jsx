@@ -4,7 +4,7 @@ import Button from "../Shared/Button";
 
 const Hero = () => {
   return (
-    <section className="container max-w-screen-2xl mx-auto px-4 bg-[#F0F3FF] rounded-t-3xl">
+    <section className="container max-w-screen-2xl mx-auto px-4 mb-16 bg-[#F0F3FF] rounded-3xl">
       <div
         className="h-screen flex justify-center items-center
       "
