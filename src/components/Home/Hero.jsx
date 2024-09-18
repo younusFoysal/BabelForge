@@ -13,7 +13,7 @@ const Hero = () => {
             Made for work, designed to love
           </h1>
           <p className="py-4">
-            The platform that gives you the flexibility to run any aspect of
+            The platform that gives you the flexibility to run any aspect of by
             work.
           </p>
           <button className="px-6 py-3 capitalize bg-primary text-white rounded-3xl text-sm flex gap-1 items-center">
