@@ -1,6 +1,7 @@
 import React from "react";
 import { IoMdArrowForward } from "react-icons/io";
 import { IoMenuSharp } from "react-icons/io5";
+import Button from "./Button";
 
 const Navbar = () => {
   return (
@@ -26,10 +27,7 @@ const Navbar = () => {
             <li>price</li>
             <li>Login</li>
           </ul>
-          <button className="px-6 py-3 capitalize bg-primary text-white rounded-3xl text-sm flex gap-1 items-center">
-            <span>get started</span>
-            <IoMdArrowForward size={15} />
-          </button>
+          <Button text="get started" icon={<IoMdArrowForward size={20} />} />
         </div>
         {/* menu */}
         <div className="flex md:hidden">
