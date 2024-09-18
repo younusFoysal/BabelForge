@@ -1,0 +1,41 @@
+├── api
+│   └── imageupload
+│       └── index.js
+├── App.jsx
+├── components
+│   ├── Dashboard
+│   │   └── Sidebar
+│   │       └── Sidebar.jsx
+│   ├── Home
+│   └── Shared
+│       ├── Footer.jsx
+│       └── Navbar.jsx
+├── firebase
+│   └── firebase.config.js
+├── GetFileStructure.cjs
+├── hooks
+│   ├── useAuth.js
+│   ├── useAxiosCommon.jsx
+│   ├── useAxiosSecure.jsx
+│   └── useRole.js
+├── index.css
+├── layouts
+│   ├── DashboardLayout.jsx
+│   └── Main.jsx
+├── main.jsx
+├── Pages
+│   ├── Contactus.jsx
+│   ├── Dashboard
+│   │   └── Common
+│   │       ├── Profile.jsx
+│   │       └── Statistics.jsx
+│   ├── ErrorPage.jsx
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   └── SignUp.jsx
+├── providers
+│   └── AuthProvider.jsx
+└── routes
+    ├── AdminRoute.jsx
+    ├── PrivateRoute.jsx
+    └── Routes.jsx
