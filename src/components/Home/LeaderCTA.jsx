@@ -4,7 +4,7 @@ import { FaArrowRightLong } from 'react-icons/fa6';
 const LeaderCTA = () => {
   return (
     <div className="px-4">
-      <div className="max-w-[1200px] bg-black rounded-2xl p-[40px] md:p-[75px] items-center mx-auto mb-[90px] grid grid-cols-1 md:grid-cols-2 gap-12 border duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300">
+      <div className="max-w-[1200px] bg-black rounded-2xl p-[40px] md:p-[75px] items-center mx-auto mb-[90px] grid grid-cols-1 md:grid-cols-2 gap-12 border duration-500 hover:scale-105 hover:shadow-2xl">
         <div className=" pr-0 md:pr-16">
           <img className="max-w-[200px] mb-6" src="./Home/gartner-confety_3.png" alt="" />
           <h1 className=" font-extralight text-[30px] md:text-[50px] text-white leading-[30px] md:leading-[55px]">
