@@ -101,8 +101,10 @@ const Carousel = () => {
   return (
     <section className="relative px-4 md:px-0">
       <Swiper
-        slidesPerView={5}
         spaceBetween={16}
+        slidesPerView={'auto'}
+        centeredSlides={true}
+        loop={true}
         breakpoints={{
           0: {
             slidesPerView: 1,
