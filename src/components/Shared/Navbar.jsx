@@ -11,14 +11,22 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-50">
+    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-5">
-        {/* logo */}
+
+
+          {/* logo */}
         <Link to="/">
-          <img src="./Home/logo.png" alt="babelforge" className="w-40 -mt-6" />
+          <div className="flex gap-1 justify-center items-center">
+            <img src="./Home/logo.png" alt="babelforge" className="w-full h-12"/>
+            <h3 className="text-3xl font-bold text-[#106ac5]">BabelForge</h3>
+          </div>
         </Link>
 
-        {/* Desktop Navigation */}
+
+
+
+      {/* Desktop Navigation */}
         <nav className="hidden md:flex">
           <ul className="flex space-x-6 items-center justify-center">
             <li>Product</li>
