@@ -56,7 +56,7 @@ const HeroDown = () => {
         <img
           src={imgeSrc}
           alt="hero"
-          className={`w-[100%] mx-auto ${Opacity && "opacity-60"}`}
+          className={`w-[100%] mx-auto rounded-lg ${Opacity && "opacity-60"}`}
         />
         <div className="flex flex-col w-fit p-6 gap-2 bg-gradient-to-b from-white/80 to-[#F0F3FF]/30 shadow-md rounded-2xl border border-[#DCDFEC] backdrop-blur-xl absolute -top-10 -right-10 z-50">
           <h1 className="text-center pb-4">what you like to manage</h1>

@@ -13,7 +13,7 @@ const Faq = () => {
     }, []);
 
     return (
-        <section className="bg-gray-100 mb-24 ">
+        <section className="bg-gray-100 mb-12 mt-12 ">
 
             <div className=" text-gray-800 ">
                 <div className=" flex flex-col lg:justify-center  p-4 lg:w-[70%] mx-auto md:p-8">

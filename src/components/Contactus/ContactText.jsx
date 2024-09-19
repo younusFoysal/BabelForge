@@ -2,10 +2,21 @@ import { AiOutlineStock } from "react-icons/ai";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { TiWorldOutline } from "react-icons/ti";
 import Sponser from "../Home/Sponser";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
 
 const ContactText = () => {
+
+    // Aos
+    useEffect(() => {
+        AOS.init({
+            duration: 1000
+        });
+    }, []);
+
   return (
-    <div className="mt-5 lg:mt-0">
+    <div className="mt-5 lg:mt-0" data-aos="slide-left">
       <h2 className="text-3xl font-semibold text-center mb-12">
         Align, collaborate, and gain visibility into your work in one connected
         space
