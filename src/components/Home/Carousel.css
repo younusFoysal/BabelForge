@@ -15,13 +15,13 @@
 }
 
 .swiper-button-next {
-  right: 80px !important;
+  right: 70px !important;
   z-index: 99 !important;
   display: block !important;
 }
 
 .swiper-button-prev {
-  left: 80px !important;
+  left: 60px !important;
   z-index: 999 !important;
   display: block !important;
 }
