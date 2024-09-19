@@ -50,7 +50,7 @@ const PriceCard = () => {
                             {/* card 1 */}
                             <div className="flex w-full mb-8  sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 " data-aos="fade-down">
 
-                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl">
+                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl hover:shadow-2xl duration-500">
 
 
                                     <div className="space-y-2">
@@ -65,7 +65,8 @@ const PriceCard = () => {
                                     <p className="mt-4 leading-relaxed text-gray-600 font-semibold">Free for your whole team</p>
 
 
-                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-primary hover:bg-primary-dark text-gray-50 mb-10 mt-16  ">Try for Free</button>
+                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-primary hover:bg-primary-dark text-gray-50 mb-10 mt-16  ">
+                                        Try for Free</button>
 
 
 
@@ -111,7 +112,7 @@ const PriceCard = () => {
                             {/* card 2 */}
                             <div className="flex w-full mb-8   sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0" data-aos="fade-up">
 
-                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl">
+                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl hover:shadow-2xl duration-500">
 
 
                                     <div className="space-y-2">
@@ -175,7 +176,7 @@ const PriceCard = () => {
                             {/* card 3 */}
                             <div className="flex w-full mb-8   sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0" data-aos="fade-down">
 
-                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl">
+                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl hover:shadow-2xl duration-500">
 
 
                                     <div className="space-y-2">

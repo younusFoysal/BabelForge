@@ -18,7 +18,7 @@ const Navbar = () => {
           {/* logo */}
         <Link to="/">
           <div className="flex gap-1 justify-center items-center">
-            <img src="./Home/logo.png" alt="babelforge" className="w-full h-12"/>
+            <img src="./Home/babellogo.png" alt="babelforge" className="w-full h-12"/>
             <h3 className="text-3xl font-bold text-[#106ac5]">BabelForge</h3>
           </div>
         </Link>

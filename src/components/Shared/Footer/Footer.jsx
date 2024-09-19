@@ -14,7 +14,7 @@ const Footer = () => {
                     {/* logo */}
                     <Link to="/">
                         <div className="flex gap-1 justify-center lg:justify-start items-center ">
-                            <img src="./Home/logo.png" alt="babelforge" className=" size-6 lg:size-14 "/>
+                            <img src="./Home/babellogo.png" alt="babelforge" className=" size-6 lg:size-14 "/>
                             <h3 className="text-3xl font-bold text-[#106ac5]">BabelForge</h3>
                         </div>
                     </Link>
