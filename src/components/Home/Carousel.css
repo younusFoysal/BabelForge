@@ -25,3 +25,8 @@
   z-index: 999 !important;
   display: block !important;
 }
+
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+  transform: scale(1.2);
+}
