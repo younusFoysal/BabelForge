@@ -4,8 +4,7 @@ import PriceCard from "../components/Pricing/PriceCard";
 
 const Pricing = () => {
     return (
-        <section>
-
+        <section className="lg:px-0 px-4">
             <PriceCard></PriceCard>
 
 

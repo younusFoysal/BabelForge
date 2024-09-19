@@ -12,7 +12,7 @@ const LeaderCTA = () => {
           </h1>
         </div>
         <div>
-          <h3 className="text-white font-light text-[22px]">
+          <h3 className="text-white font-light text-lg lg:text-[22px]">
             monday.com recognized as a Leader in the 2024 Magic Quadrant™ for{' '}
             <strong className=" font-bold">Adaptive Project Management and Reporting</strong>{' '}
           </h3>
