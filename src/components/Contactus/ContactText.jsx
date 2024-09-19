@@ -6,14 +6,14 @@ import Sponser from "../Home/Sponser";
 const ContactText = () => {
   return (
     <div className="mt-5 lg:mt-0">
-      <h2 className="text-3xl font-semibold text-center">
+      <h2 className="text-3xl font-semibold text-center mb-12">
         Align, collaborate, and gain visibility into your work in one connected
         space
       </h2>
       <div className="flex py-6 gap-5">
         <div className="flex flex-col items-center justify-center text-center border-r-2">
           <TiWorldOutline className="text-4xl" />
-          <p>
+          <p className="w-32">
             Across <span className="font-bold">200+</span> countries
           </p>
         </div>
@@ -27,7 +27,7 @@ const ContactText = () => {
       <div className="flex py-6 gap-5">
         <div className="flex flex-col items-center justify-center text-center border-r-2">
           <FaPeopleGroup className="text-4xl" />
-          <p>
+          <p className="w-32">
             <span className="font-bold">225k+</span> paying customers
           </p>
         </div>
@@ -40,7 +40,7 @@ const ContactText = () => {
       <div className="flex py-6 gap-5">
         <div className="flex flex-col items-center justify-center text-center border-r-2">
           <AiOutlineStock className="text-4xl" />
-          <p>
+          <p className="w-32">
             Serving <span className="font-bold">200+</span> industries
           </p>
         </div>

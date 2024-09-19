@@ -8,7 +8,7 @@ const ContactForm = () => {
           <h2 className="text-2xl mb-5">Contact With our team</h2>
           <form>
             {/* name parent */}
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div class="mb-5">
                 <label for="firstName" class="block mb-2 text-sm font-medium">
                   First Name*
@@ -33,7 +33,7 @@ const ContactForm = () => {
               </div>
             </div>
             {/* Mail and Job parent */}
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium">
                   Work Email*
@@ -68,7 +68,7 @@ const ContactForm = () => {
               />
             </div>
             {/* Company Name & size */}
-            <div className="grid grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div class="mb-5">
                 <label for="conpanyName" class="block mb-2 text-sm font-medium">
                   Company Name*
