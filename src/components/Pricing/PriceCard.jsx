@@ -1,6 +1,11 @@
 
 
 import { FaCircleCheck } from "react-icons/fa6";
+// aos package
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 
 
 
@@ -8,9 +13,20 @@ import { FaCircleCheck } from "react-icons/fa6";
 
 
 const PriceCard = () => {
+
+    // Aos
+    useEffect(() => {
+        AOS.init({
+            duration: 1000
+        });
+    }, []);
+
+
+
+
     return (
         <section className="container mx-auto">
-           
+
             {/* title */}
             <div className="my-6 text-center">
                 <h1 className="text-5xl ">
@@ -32,9 +48,9 @@ const PriceCard = () => {
                         <div className="flex flex-wrap items-stretch lg:h-[100vh] -mx-4">
 
                             {/* card 1 */}
-                            <div className="flex w-full mb-8  sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+                            <div className="flex w-full mb-8  sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 " data-aos="fade-down">
 
-                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl">
+                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl hover:shadow-2xl duration-500">
 
 
                                     <div className="space-y-2">
@@ -49,7 +65,8 @@ const PriceCard = () => {
                                     <p className="mt-4 leading-relaxed text-gray-600 font-semibold">Free for your whole team</p>
 
 
-                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-[#6161ff] text-gray-50 mb-10 mt-16 ">Try for Free</button>
+                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-primary hover:bg-primary-dark text-gray-50 mb-10 mt-16  ">
+                                        Try for Free</button>
 
 
 
@@ -93,9 +110,9 @@ const PriceCard = () => {
 
 
                             {/* card 2 */}
-                            <div className="flex w-full mb-8   sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+                            <div className="flex w-full mb-8   sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0" data-aos="fade-up">
 
-                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl">
+                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl hover:shadow-2xl duration-500">
 
 
                                     <div className="space-y-2">
@@ -115,7 +132,7 @@ const PriceCard = () => {
 
 
 
-                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-[#6161ff] text-gray-50 my-10 ">Try for Free</button>
+                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-primary hover:bg-primary-dark text-gray-50 my-10 ">Try for Free</button>
 
 
 
@@ -138,7 +155,7 @@ const PriceCard = () => {
 
                                         <li className="flex mb-2 space-x-2">
                                             <span className="text-green-600  text-lg"><FaCircleCheck></FaCircleCheck></span>
-                                            
+
 
                                             <span>Guest access</span>
                                         </li>
@@ -157,9 +174,9 @@ const PriceCard = () => {
                             </div>
 
                             {/* card 3 */}
-                            <div className="flex w-full mb-8   sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
+                            <div className="flex w-full mb-8   sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0" data-aos="fade-down">
 
-                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl">
+                                <div className="flex flex-grow flex-col p-6    sm:p-8  border-gray-400 border-[1px] rounded-3xl hover:shadow-2xl duration-500">
 
 
                                     <div className="space-y-2">
@@ -179,7 +196,7 @@ const PriceCard = () => {
 
 
 
-                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-[#6161ff] text-gray-50 my-10 ">Try for Free</button>
+                                    <button type="button" className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-primary hover:bg-primary-dark text-gray-50 my-10 ">Try for Free</button>
 
 
 
@@ -202,7 +219,7 @@ const PriceCard = () => {
 
                                         <li className="flex mb-2 space-x-2">
                                             <span className="text-green-600  text-lg"><FaCircleCheck></FaCircleCheck></span>
-                                          
+
 
                                             <span>Chart View</span>
                                         </li>
