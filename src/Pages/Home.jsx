@@ -11,8 +11,8 @@ const Home = () => {
       <Hero />
       <Carousel></Carousel>
       <Sponser></Sponser>
-        <LeaderCTA></LeaderCTA>
-        <CallToAction></CallToAction>
+      <LeaderCTA></LeaderCTA>
+      <CallToAction></CallToAction>
     </div>
   );
 };
