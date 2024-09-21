@@ -6,6 +6,9 @@ const HeroBox = ({ data, handleChanged }) => {
 
   const handleClick = () => {
     handleChanged(image);
+    if (selected) {
+      handleChanged("./Home/hero/HR.jpg");
+    }
     setselected(!selected);
   };
 
