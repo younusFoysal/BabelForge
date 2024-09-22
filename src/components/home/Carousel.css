@@ -1,0 +1,32 @@
+/* custom navigation home page slider */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  background: #000;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: 99 !important;
+  transition: all 0.4s;
+}
+
+.swiper-button-next {
+  right: 70px !important;
+  z-index: 99 !important;
+  display: block !important;
+}
+
+.swiper-button-prev {
+  left: 60px !important;
+  z-index: 999 !important;
+  display: block !important;
+}
+
+.swiper-button-next:hover::after,
+.swiper-button-prev:hover::after {
+  transform: scale(1.2);
+}
