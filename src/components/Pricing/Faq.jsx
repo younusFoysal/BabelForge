@@ -85,7 +85,7 @@ const Faq = () => {
                   plan type and by adding or removing users. However, past the
                   refund period, we offer no refunds for downgrades. To change
                   your plan, simply go into the Admin div and click on the
-                  Billing option. From there, click 'change plan' and choose
+                  Billing option. From there, click &apos;change plan&apos; and choose
                   your desired plan.
                 </p>
               </div>

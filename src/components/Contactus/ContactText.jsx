@@ -55,7 +55,7 @@ const ContactText = () => {
         </div>
 
         <p className="mt-4">
-          Boost productivity from day one by building your team's ideal workflow
+          Boost productivity from day one by building your team&apos;s ideal workflow
         </p>
       </div>
 

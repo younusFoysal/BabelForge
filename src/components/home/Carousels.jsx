@@ -36,7 +36,7 @@ const Carousels = () => {
                 <h4 className="text-[#c3c6d4] font-light text-[14px]">
                   Engagement survey
                 </h4>
-                <img className="max-h-[48px]" src={subimage1} alt="" />
+                <Image className="max-h-[48px]" src={subimage1} alt="" />
                 <ul className="text-[#c3c6d4] font-light text-[14px] py-6 space-y-2"></ul>
                 <ButtonSmall color="primary" text="Get Started"></ButtonSmall>
               </div>
