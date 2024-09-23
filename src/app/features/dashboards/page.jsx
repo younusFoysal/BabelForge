@@ -1,6 +1,6 @@
 import Header from "@/components/DashboardsPage/Header";
 
-const page = () => {
+const Dashboards = () => {
   return (
     <section>
       <Header />
@@ -8,4 +8,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Dashboards;

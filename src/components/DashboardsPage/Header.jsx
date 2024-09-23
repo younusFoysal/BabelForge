@@ -1,4 +1,6 @@
 import { ArrowRight, Check } from "lucide-react";
+import Image from "next/image";
+import dashboardHeader from "../../image/dashboards/dashboardsHeader.png";
 import Button from "../shared/Buttons";
 
 const Header = () => {
@@ -64,6 +66,17 @@ const Header = () => {
             </p>
           </div>
           <Button text="get started" icon={<ArrowRight size={20} />} />
+
+          <div className="lg:w-[1000px] mt-10">
+            <Image
+              className="w-full"
+              height={1500}
+              width={3000}
+              layout="responsive"
+              src={dashboardHeader}
+              alt="Dashboard Header"
+            />
+          </div>
         </div>
       </div>
     </section>
