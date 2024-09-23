@@ -5,13 +5,32 @@ import logo from "../../image/Home/babellogo.png";
 import { AlignJustify, ArrowRight, X } from "lucide-react";
 import Image from "next/image";
 import Button from "./Buttons";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const pathname = usePathname();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  // conditonial navbar
+  if (pathname.includes("login")) {
+    return (
+      <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+        <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3">
+          {/* logo */}
+          <Link href="/">
+            <div className="flex gap-1 justify-center items-center">
+              <Image src={logo} alt="babelforge" className="w-full h-12" />
+              <h3 className="text-3xl font-bold text-[#106ac5]">BabelForge</h3>
+            </div>
+          </Link>
+        </div>
+      </div>
+    );
+  }
+  if (pathname.includes("signup")) return null;
 
   return (
     <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
@@ -43,7 +62,9 @@ const Navbar = () => {
             <Link href="/pricing">
               <li className="hover:text-blue-500">Price</li>
             </Link>
-            <li>Login</li>
+            <Link href="/login">
+              <li>Login</li>
+            </Link>
           </ul>
           <Button text="Get Started" icon={<ArrowRight size={20} />} />
         </div>
@@ -69,7 +90,9 @@ const Navbar = () => {
             <Link href="/pricing">
               <li className="border-b border-gray-100 pb-3 px-6">Price</li>
             </Link>
-            <li className="border-b border-gray-100 pb-3 px-6">Login</li>
+            <Link href="/login">
+              <li className="border-b border-gray-100 pb-3 px-6">Login</li>
+            </Link>
             <li>
               <div className="w-full items-center justify-center flex">
                 <Button text="Get Started" icon={<ArrowRight size={20} />} />
