@@ -143,7 +143,7 @@ const Signup = () => {
             >
               <Image
                 src={Googleicon}
-                height={8}
+                height={20}
                 width={20}
                 alt="googleicon"
                 className="mr-2 h-5 w-5"

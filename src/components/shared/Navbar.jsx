@@ -6,6 +6,7 @@ import { AlignJustify, ArrowRight, X } from "lucide-react";
 import Image from "next/image";
 import Button from "./Buttons";
 import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +33,29 @@ const Navbar = () => {
   }
   if (pathname.includes("signup")) return null;
 
+  const NavbarItems = [
+    {
+      title: "Product",
+      href: "/product",
+    },
+    {
+      title: "Team",
+      href: "/team",
+    },
+    {
+      title: "Platform",
+      href: "/platform",
+    },
+    {
+      title: "Work",
+      href: "/work",
+    },
+    {
+      title: "Contact Us",
+      href: "/contact",
+    },
+  ];
+
   return (
     <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-5">
@@ -46,20 +70,30 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex">
           <ul className="flex space-x-6 items-center justify-center">
-            <li>Product</li>
-            <li>Team</li>
-            <li>Platform</li>
-            <li>Work</li>
-            <Link href="/contact">
-              <li className="hover:text-blue-500">Contact Us</li>
-            </Link>
+            {NavbarItems.map((nav) => (
+              <Link href={nav.href} key={nav.href}>
+                <li
+                  className={`hover:text-blue-500 ${
+                    pathname === nav.href ? "text-blue-500 font-semibold" : ""
+                  }`}
+                >
+                  {nav.title}
+                </li>
+              </Link>
+            ))}
           </ul>
         </nav>
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
           <ul className="flex items-start space-x-4">
-            <Link href="/pricing">
+            <Link
+              href="/pricing"
+              className={cn(
+                "",
+                pathname == "/pricing" && "text-blue-500 font-semibold"
+              )}
+            >
               <li className="hover:text-blue-500">Price</li>
             </Link>
             <Link href="/login">
@@ -81,17 +115,22 @@ const Navbar = () => {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <ul className="flex flex-col space-y-4  py-4">
-            <li className="border-b border-gray-100 pb-3 px-6">Product</li>
-            <li className="border-b border-gray-100 pb-3 px-6">Team</li>
-            <li className="border-b border-gray-100 pb-3 px-6">Platform</li>
-            <Link href="/contact">
-              <li className="border-b border-gray-100 pb-3 px-6">Contact Us</li>
-            </Link>
+            {NavbarItems.map((nav) => (
+              <Link href={nav.href}>
+                <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
+                  {nav.title}
+                </li>
+              </Link>
+            ))}
             <Link href="/pricing">
-              <li className="border-b border-gray-100 pb-3 px-6">Price</li>
+              <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
+                Price
+              </li>
             </Link>
             <Link href="/login">
-              <li className="border-b border-gray-100 pb-3 px-6">Login</li>
+              <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
+                Login
+              </li>
             </Link>
             <li>
               <div className="w-full items-center justify-center flex">
