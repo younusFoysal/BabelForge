@@ -2,6 +2,7 @@
 import React from 'react';
 import banner1 from "@/image/About/banner1.jpg"
 import Image from 'next/image';
+import CommonText from './CommonText';
 
 const AboutFirstBanner = () => {
     return (
@@ -13,7 +14,7 @@ const AboutFirstBanner = () => {
                     <p className='text-[#6c6cff]'>babelforge.com</p>
                     <p>come to be?</p>
                 </div>
-                <p className='w-full lg:w-2/5 leading-relaxed text-md md:text-xl'>Well for us, it happened somewhere in between collaborating and communicating, engaging, and scaling rapidly. All while being totally transparent and working the way we want.</p>
+                <CommonText text="Well for us, it happened somewhere in between collaborating and communicating, engaging, and scaling rapidly. All while being totally transparent and working the way we want."></CommonText>
             </div>
             {/* main banner part */}
 
