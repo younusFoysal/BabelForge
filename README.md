@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+<h1 align="center">BABEL FORGE </h1>
 
-First, run the development server:
+## Live Link: [Babel-Forge.vercel.app](https://babel-forge.vercel.app/)
+
+
+# Overview:
+
+**BabelForge** is a Team Collaboration Tool designed to optimize team communication, collaboration, and task management. By providing an integrated platform, it aims to simplify project workflows, ensure seamless interaction among team members, and offer visibility into project progress.
+
+# Main Features:
+
+01. Project Info Management
+02. Drag & Drop Task Management
+03. Task Boards (Kanban Style)
+04. Progress Tracking
+05. Issue Tracking and Reporting
+06. Labels for Different Projects
+07. Notification System
+08. Comments and File Attachments
+09. Search and Filters
+10. Task Dependencies
+11. Review System
+12. Export Reports
+
+# To Run Local
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone this project
+$ git clone https://github.com/younusFoysal/BabelForge.git
+
+# Access
+$ cd BabelForge
+
+# Install dependencies
+$ npm i
+
+# Run the project
+$ npm run dev
+
+# The server will initialize in the <http://localhost:5173>
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
