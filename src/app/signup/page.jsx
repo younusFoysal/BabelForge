@@ -60,8 +60,8 @@ const Signup = () => {
 
   return (
     <div className="flex">
-      <div className="flex justify-center items-center w-full md:w-[60%] h-screen">
-        <div className="w-[90%] md:w-[60%]">
+      <div className="flex justify-center items-center w-full lg:w-[60%] h-screen">
+        <div className="w-[90%] lg:w-[60%]">
           <h1
             className="text-3xl md:text-4xl font-bold text-center text-gray-700
           "
@@ -178,7 +178,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden lg:flex">
         <Image
           src={BabelImage}
           height={800}

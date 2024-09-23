@@ -36,19 +36,15 @@ const Navbar = () => {
   const NavbarItems = [
     {
       title: "Product",
-      href: "/product",
+      href: "/features/dashboards",
     },
     {
-      title: "Team",
-      href: "/team",
+      title: "Price",
+      href: "/pricing",
     },
     {
-      title: "Platform",
-      href: "/platform",
-    },
-    {
-      title: "Work",
-      href: "/work",
+      title: "About Us",
+      href: "/about-us",
     },
     {
       title: "Contact Us",
@@ -87,15 +83,6 @@ const Navbar = () => {
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
           <ul className="flex items-start space-x-4">
-            <Link
-              href="/pricing"
-              className={cn(
-                "",
-                pathname == "/pricing" && "text-blue-500 font-semibold"
-              )}
-            >
-              <li className="hover:text-blue-500">Price</li>
-            </Link>
             <Link href="/login">
               <li>Login</li>
             </Link>
@@ -122,11 +109,7 @@ const Navbar = () => {
                 </li>
               </Link>
             ))}
-            <Link href="/pricing">
-              <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
-                Price
-              </li>
-            </Link>
+
             <Link href="/login">
               <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
                 Login
