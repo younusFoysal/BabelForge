@@ -1,5 +1,8 @@
 import DashboardCard from "@/components/DashboardsPage/DashboardCard";
 import Header from "@/components/DashboardsPage/Header";
+import Sponser from "@/components/home/Sponser";
+import Button from "@/components/shared/Buttons";
+import { ArrowRight } from "lucide-react";
 import card1 from "../../../image/dashboards/card1.png";
 import card2 from "../../../image/dashboards/card2.png";
 import card3 from "../../../image/dashboards/card3.png";
@@ -9,6 +12,9 @@ const Dashboards = () => {
     <section>
       <Header />
       <div className="container mx-auto">
+        <h2 className="text-2xl md:text-3xl  text-center my-12">
+          Get all of your data control in one place
+        </h2>
         <DashboardCard
           row={"row"}
           subtitle={"High-level overview"}
@@ -37,6 +43,21 @@ const Dashboards = () => {
           image={card3}
         />
       </div>
+      {/* Make decision section */}
+      <div className="bg-[#eceff8] p-20 flex flex-col justify-center">
+        <div className="text-center space-y-5 container mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold">
+            Make decisions with confidence
+          </h1>
+          <p className="text-lg">
+            Ready to see how monday.com improves alignment across teams?
+          </p>
+          <div className="flex justify-center">
+            <Button text="get started" icon={<ArrowRight size={20} />} />
+          </div>
+        </div>
+      </div>
+      <Sponser />
     </section>
   );
 };
