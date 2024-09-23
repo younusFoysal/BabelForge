@@ -1,9 +1,12 @@
+import AboutFirstBanner from '@/components/AboutUs/AboutFirstBanner';
+import AboutSecondBanner from '@/components/AboutUs/AboutSecondBanner';
 import React from 'react';
 
 const AboutUsPage = () => {
     return (
         <div>
-            <p>About us page</p>
+            <AboutFirstBanner></AboutFirstBanner>
+            <AboutSecondBanner></AboutSecondBanner>
         </div>
     );
 };
