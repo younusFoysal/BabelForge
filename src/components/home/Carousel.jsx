@@ -27,7 +27,7 @@ const carouselItems = [
   },
 ];
 
-// Settings For Carouselß
+// Settings For Carousel
 const Carousel = () => {
   return (
     <section className="relative px-4 md:px-0">
