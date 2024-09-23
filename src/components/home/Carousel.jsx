@@ -1,14 +1,14 @@
-import { SwiperSlide, Swiper } from "swiper/react";
-import "./Carousel.css";
+import { SwiperSlide, Swiper } from 'swiper/react';
+import './Carousel.css';
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import Image from "next/image";
-import { Navigation } from "swiper/modules";
-import ButtonSmall from "@/components/shared/Buttons/ButtonSmall";
-import { Check } from "lucide-react";
-import image1 from "@/image/Home/carousel/creative_card.avif";
-import subimage1 from "@/image/Home/carousel/sub_service.avif";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import Image from 'next/image';
+import { Navigation } from 'swiper/modules';
+import ButtonSmall from '@/components/shared/Buttons/ButtonSmall';
+import { Check } from 'lucide-react';
+import image1 from '@/image/Home/carousel/creative_card.jpg';
+import subimage1 from '@/image/Home/carousel/sub_service.jpg';
 
 // Carousel Items Object
 
@@ -16,13 +16,13 @@ const carouselItems = [
   {
     image: image1,
     sub_img: subimage1,
-    title: "HR",
-    hover_title: "Recommended product",
+    title: 'HR',
+    hover_title: 'Recommended product',
     hover_items: [
-      { title: "Recruitment pipeline" },
-      { title: "Engagement survey" },
-      { title: "HR requests" },
-      { title: "Onboarding & offboarding" },
+      { title: 'Recruitment pipeline' },
+      { title: 'Engagement survey' },
+      { title: 'HR requests' },
+      { title: 'Onboarding & offboarding' },
     ],
   },
 ];
@@ -33,7 +33,7 @@ const Carousel = () => {
     <section className="relative px-4 md:px-0">
       <Swiper
         spaceBetween={16}
-        slidesPerView={"auto"}
+        slidesPerView={'auto'}
         centeredSlides={true}
         loop={true}
         breakpoints={{
@@ -57,7 +57,7 @@ const Carousel = () => {
         navigation={true}
         modules={[Navigation]}
       >
-        {carouselItems?.map((item) => (
+        {carouselItems?.map(item => (
           <SwiperSlide key={item.title}></SwiperSlide>
         ))}
       </Swiper>

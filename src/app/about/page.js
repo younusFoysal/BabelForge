@@ -25,8 +25,6 @@ const AboutPage = () => {
           </AccordionItem>
         </Accordion>
       </div>
-      {/* About Page Carousel */}
-      <AboutCarousel />
     </>
   );
 };
