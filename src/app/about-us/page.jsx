@@ -1,3 +1,4 @@
+import AboutCulture from '@/components/AboutUs/AboutCulture';
 import AboutFirstBanner from '@/components/AboutUs/AboutFirstBanner';
 import AboutSecondBanner from '@/components/AboutUs/AboutSecondBanner';
 import AboutStatistics from '@/components/AboutUs/AboutStatistics';
@@ -9,6 +10,7 @@ const AboutUsPage = () => {
             <AboutFirstBanner></AboutFirstBanner>
             <AboutSecondBanner></AboutSecondBanner>
             <AboutStatistics></AboutStatistics>
+            <AboutCulture></AboutCulture>
         </div>
     );
 };
