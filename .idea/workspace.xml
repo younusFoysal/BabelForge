@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="React To NextJS">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="updated">
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/QuoteApp.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/AddTask.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.7z" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/team" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/TaskBoard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/board/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/board/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
@@ -66,7 +79,7 @@
     &quot;Node.js.GetFileStructure.cjs.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;foysal&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/SCIC/EndGame/babelforge&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -79,6 +92,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge" />
     </key>
@@ -107,6 +121,10 @@
       <workItem from="1726814539150" duration="207000" />
       <workItem from="1726851647295" duration="27000" />
       <workItem from="1727034058713" duration="704000" />
+      <workItem from="1727196496127" duration="1070000" />
+      <workItem from="1727197626262" duration="4185000" />
+      <workItem from="1727202895928" duration="926000" />
+      <workItem from="1727207125868" duration="1078000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />

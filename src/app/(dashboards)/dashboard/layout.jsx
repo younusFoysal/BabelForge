@@ -55,6 +55,7 @@ const layout = ({ children }) => {
                         <div className="p-4">
                             <ul>
                                 <li><Link href={"/"} className="block py-2">Home</Link></li>
+                                <li><Link href={"/dashboard/Backlog"} className="block py-2">Backlog</Link></li>
                                 <li><Link href={"/dashboard/board"} className="block py-2">Boards</Link></li>
                             </ul>
                         </div>
@@ -67,6 +68,7 @@ const layout = ({ children }) => {
                 <h2 className="text-2xl font-bold">Dashboard</h2>
                 <ul>
                     <li><Link href={"/"} className="block py-2">Home</Link></li>
+                    <li><Link href={"/dashboard/Backlog"} className="block py-2">Backlog</Link></li>
                     <li><Link href={"/dashboard/board"} className="block py-2">Boards</Link></li>
                 </ul>
             </div>
