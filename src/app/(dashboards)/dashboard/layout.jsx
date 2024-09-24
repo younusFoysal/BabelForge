@@ -74,7 +74,7 @@ const layout = ({ children }) => {
             </div>
 
             {/*layout content  */}
-            <div className='lg:p-6 pt-20 flex justify-center items-center w-full'>
+            <div className='lg:p-6 pt-10 flex justify-center w-full'>
                 {children}
             </div>
 
