@@ -1,3 +1,4 @@
+"use client";
 import "./Footer.css";
 import Image from "next/image";
 import logo from "@/image/Home/babellogo.png";
@@ -5,8 +6,15 @@ import apple from "@/image/Footer/apple.png";
 import google from "@/image/Footer/google.png";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  // Hide footer on login and signup pages
+
+  if (pathname.includes("login") || pathname.includes("signup")) return null;
+
   return (
     <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50">
       {/* upper part */}
