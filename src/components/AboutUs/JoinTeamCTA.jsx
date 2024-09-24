@@ -12,7 +12,7 @@ const JoinTeamCTA = () => {
                     teams work across the globe</h2>
                 <Button
                     text="Join our team!"
-                    className={"mt-7"}
+                    className={"mt-8"}
                     icon={<ArrowRight size={20} />}
                 />
             </div>
