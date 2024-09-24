@@ -4,7 +4,7 @@ import LeaderCTA from '@/components/home/LeaderCTA';
 import Sponser from '@/components/home/Sponser';
 import CallToAction from '@/components/home/CallToAction';
 import Carousels from '@/components/home/Carousels';
-import Carousel from '@/components/home/Carousel';
+import CarouselHome from '@/components/home/CarouselHome';
 
 const Home = () => {
   return (
@@ -12,9 +12,9 @@ const Home = () => {
       <Hero />
       <Sponser />
       <LeaderCTA />
-      <Carousels />
+      {/* <Carousels /> */}
       <CallToAction />
-      <Carousel />
+      <CarouselHome />
     </div>
   );
 };

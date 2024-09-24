@@ -25,11 +25,11 @@ const AboutCarousel = () => {
   };
 
   return (
-    <section className="my-[90px]">
+    <section className="my-[90px] max-w-[900px] mx-auto overflow-hidden">
       <h1 className="text-center mb-8 text-4xl font-semibold">Our story</h1>
       <Carousel
         setApi={setApi}
-        className="w-full max-w-[1200px] mx-auto px-4 md:px-0 relative"
+        className="w-full  mx-auto px-4 md:px-0 "
         opts={{
           loop: true,
           align: 'center',
