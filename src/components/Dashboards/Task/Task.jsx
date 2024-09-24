@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -11,6 +11,7 @@ export default function Task({ task }) {
         transform: CSS.Transform.toString(transform),
         transition,
     };
+    console.log(task)
 
     return (
         <li
@@ -20,7 +21,7 @@ export default function Task({ task }) {
             {...listeners}
             className="bg-white p-4 rounded-lg shadow hover:bg-gray-50 cursor-pointer"
         >
-            {task.name}
+            {task.name} {task.author}
         </li>
     );
 }
