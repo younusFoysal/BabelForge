@@ -29,7 +29,7 @@ export default function TaskList() {
                         id: task._id,
                         name: task.tname,
                     })),
-                    inProgress: data.filter((task) => task.tproces === 'inprogress').map((task) => ({
+                    inProgress: data.filter((task) => task.tproces === 'inProgress').map((task) => ({
                         id: task._id,
                         name: task.tname,
                     })),
@@ -78,7 +78,9 @@ export default function TaskList() {
         setActiveTask(activeTask);
     };
 
-    const handleDragEnd = (event) => {
+    const handleDragEnd = async (event) => {
+
+
         const { active, over } = event;
         setActiveTask(null);
 
@@ -105,7 +107,23 @@ export default function TaskList() {
                     [activeContainer]: prevTasks[activeContainer].filter((task) => task.id !== active.id),
                     [overContainer]: [...prevTasks[overContainer], movedTask],
                 }));
+
+                await updateTaskStatus(movedTask.id, overContainer);
+
             }
+        }
+    };
+
+    // Function to update task status in the backend
+    const updateTaskStatus = async (taskId, newStatus) => {
+        console.log("Update", taskId, newStatus);
+
+        try {
+            await axios.patch(`http://localhost:5000/task/tasks/update/${taskId}`, {
+                tproces: newStatus,
+            });
+        } catch (error) {
+            console.error('Error updating task status:', error);
         }
     };
 
