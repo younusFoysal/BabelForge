@@ -7,8 +7,10 @@ import Image from "next/image";
 import Button from "./Buttons";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const session = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const toggleMenu = () => {
@@ -51,6 +53,8 @@ const Navbar = () => {
       href: "/contact",
     },
   ];
+
+  console.log(session);
 
   return (
     <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">

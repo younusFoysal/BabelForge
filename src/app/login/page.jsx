@@ -18,6 +18,10 @@ import {
 import { Input } from "@/components/ui/input";
 import Googleicon from "@/image/icon/google.png";
 import Link from "next/link";
+import axios from "axios";
+
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -31,16 +35,18 @@ const formSchema = z.object({
     })
     .max(20, {
       message: "Password must not be more than 20 characters long.",
-    })
-    .regex(/[A-Z]/, {
-      message: "Password must contain at least one uppercase letter.",
-    })
-    .regex(/[!@#$%^&*(),.?":{}|<>]/, {
-      message: "Password must contain at least one special character.",
     }),
+  // .regex(/[A-Z]/, {
+  //   message: "Password must contain at least one uppercase letter.",
+  // })
+  // .regex(/[!@#$%^&*(),.?":{}|<>]/, {
+  //   message: "Password must contain at least one special character.",
+  // }),
 });
 
 const Login = () => {
+  const router = useRouter();
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,8 +55,16 @@ const Login = () => {
     },
   });
 
-  const onSubmit = (value) => {
-    console.log(value);
+  const onSubmit = async (value) => {
+    const { email, password } = value;
+    const res = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
+    if (res.status === 200) {
+      router.push("/dashboard");
+    }
   };
 
   return (
