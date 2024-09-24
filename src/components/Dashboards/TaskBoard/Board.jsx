@@ -3,11 +3,16 @@
 import React from 'react';
 import data from './boardData';
 import Column from './Column';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 const Board = () => {
     // console.log(boardData);
+
+    const onDragEnd = () => {
+        // TODO
+    }
     return (
-        <div>
+        <DragDropContext onDragEnd={onDragEnd}>
             <div className='ml-5 flex space-x-3 border-2 border-red-500'>
                 {
                     data.columnOrder.map(columnId => {
@@ -19,7 +24,7 @@ const Board = () => {
                     })
                 }
             </div>
-        </div>
+        </DragDropContext>
     );
 };
 

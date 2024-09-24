@@ -1,17 +1,29 @@
 "use client"
 import React from 'react';
 import Task from './Task';
+import { Droppable } from 'react-beautiful-dnd';
 
 const Column = ({ column, tasks }) => {
-    console.log("okay");
+    // console.log("okay");
     return (
         <div className='border-2 p-2'>
             <h1 className='text-xl font-bold my-3 text-center'>{column.title}</h1>
-            <div className='space-y-3'>
+            <Droppable droppableId={column.id}>
                 {
-                    tasks.map(task => <Task key={task.id} task={task}></Task>)
+                    provided => (
+                        <div
+                            innerRef={provided.innerRef}
+                            {...provided.droppableProps}
+                            className='space-y-3'>
+                            {
+                                tasks.map((task, index) => (<Task key={task.id} task={task} index={index}></Task>))
+                            }
+                            {provided.placeholder}
+                        </div>
+                    )
                 }
-            </div>
+
+            </Droppable>
         </div>
     );
 };
