@@ -71,12 +71,11 @@ const Signup = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      if (data.upsertedCount) {
-        router.push("/login");
+      if (data.insertedId) {
+        router.push(`/login`);
       }
     } catch (e) {
       console.error(e);
-      // handle error
     }
   };
 

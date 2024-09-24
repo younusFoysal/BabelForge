@@ -6,12 +6,14 @@ import { AlignJustify, ArrowRight, X } from "lucide-react";
 import Image from "next/image";
 import Button from "./Buttons";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
 import { useSession } from "next-auth/react";
+import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 const Navbar = () => {
-  const session = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
+  const session = useSession();
+  const user = session?.data?.user;
   const pathname = usePathname();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -35,6 +37,10 @@ const Navbar = () => {
   }
   if (pathname.includes("signup")) return null;
 
+  if (pathname.includes("dashboard")) {
+    return <DashboardNavbar />;
+  }
+
   const NavbarItems = [
     {
       title: "Product",
@@ -54,11 +60,9 @@ const Navbar = () => {
     },
   ];
 
-  console.log(session);
-
   return (
     <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
-      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-5">
+      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
           <div className="flex gap-1 justify-center items-center">
@@ -86,12 +90,24 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
-          <ul className="flex items-start space-x-4">
-            <Link href="/login">
-              <li>Login</li>
-            </Link>
-          </ul>
-          <Button text="Get Started" icon={<ArrowRight size={20} />} />
+          {user ? (
+            <Avatar>
+              <AvatarImage
+                src="https://github.com/shadcn.png"
+                className="w-16 h-16 rounded-full object-cover"
+              />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          ) : (
+            <>
+              <ul className="flex items-start space-x-4">
+                <Link href="/login">
+                  <li>Login</li>
+                </Link>
+              </ul>
+              <Button text="Get Started" icon={<ArrowRight size={20} />} />
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Button */}

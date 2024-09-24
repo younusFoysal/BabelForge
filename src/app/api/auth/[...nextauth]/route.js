@@ -28,7 +28,6 @@ const handler = NextAuth({
         if (!isValid) {
           return null;
         }
-        console.log(data);
         return data;
       },
     }),
