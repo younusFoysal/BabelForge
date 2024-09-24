@@ -31,7 +31,7 @@ const AboutStatistics = () => {
                                 scrollState &&
                                 <CountUp
                                     start={0}
-                                    end={1200}
+                                    end={1900}
                                     duration={2.5}>
                                 </CountUp>
                             }+
@@ -44,7 +44,7 @@ const AboutStatistics = () => {
                                 scrollState &&
                                 <CountUp
                                     start={0}
-                                    end={1200}
+                                    end={150}
                                     duration={2.5}>
                                 </CountUp>
                             }+
@@ -58,7 +58,7 @@ const AboutStatistics = () => {
                                 scrollState &&
                                 <CountUp
                                     start={0}
-                                    end={1200}
+                                    end={225}
                                     duration={2.5}>
                                 </CountUp>
                             }k+
