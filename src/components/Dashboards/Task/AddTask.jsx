@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState } from 'react';
 
 export default function AddTask({ addTask }) {
@@ -6,8 +6,8 @@ export default function AddTask({ addTask }) {
 
     const handleAddTask = () => {
         if (newTask.trim()) {
-            addTask(newTask); // Pass the new task name to the parent
-            setNewTask(''); // Clear the input
+            addTask(newTask); // Call the passed function to handle the addition
+            setNewTask(''); // Clear input
         }
     };
 

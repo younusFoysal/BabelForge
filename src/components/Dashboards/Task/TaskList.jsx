@@ -1,25 +1,76 @@
-"use client";
+"use client"
 import { DndContext, closestCenter, useDroppable, DragOverlay } from '@dnd-kit/core';
 import { SortableContext, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import Task from './Task';
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { useState, useEffect } from 'react';
 import { arrayMove } from '@dnd-kit/sortable';
-import AddTask from './AddTask'; // Import AddTask component
+import AddTask from './AddTask';
+import axios from 'axios'; // Import axios for API requests
 
 export default function TaskList() {
     const [tasks, setTasks] = useState({
-        todo: [
-            { id: 'task-1', name: 'Task 1' },
-            { id: 'task-2', name: 'Task 2' },
-        ],
-        inProgress: [
-            { id: 'task-3', name: 'Task 3' },
-        ],
+        todo: [],
+        inProgress: [],
         done: [],
     });
 
-    const [activeTask, setActiveTask] = useState(null); // Holds the currently dragged item
+    const [activeTask, setActiveTask] = useState(null);
+
+    useEffect(() => {
+        // Fetch tasks from the API when the component mounts
+        const fetchTasks = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/task/tasks');
+                const data = response.data;
+
+                // Organize tasks into categories
+                const organizedTasks = {
+                    todo: data.filter((task) => task.tproces === 'todo').map((task) => ({
+                        id: task._id,
+                        name: task.tname,
+                    })),
+                    inProgress: data.filter((task) => task.tproces === 'inprogress').map((task) => ({
+                        id: task._id,
+                        name: task.tname,
+                    })),
+                    done: data.filter((task) => task.tproces === 'done').map((task) => ({
+                        id: task._id,
+                        name: task.tname,
+                    })),
+                };
+
+                setTasks(organizedTasks);
+            } catch (error) {
+                console.error("Error fetching tasks:", error);
+            }
+        };
+
+        fetchTasks();
+    }, [tasks]);
+
+    const addTask = async (taskName) => {
+        try {
+            // Create the task object to send to the API
+            const newTask = {
+                tname: taskName,
+                tproces: 'todo', // By default, new tasks are added to "Todo"
+                author: 'Foysal', // Example author; adjust based on your requirements
+            };
+
+            // Send POST request to the API to add the task
+            const response = await axios.post('http://localhost:5000/task/tasks/add', newTask);
+
+            if (response.status === 200) {
+                // On success, update the task list locally
+                setTasks((prevTasks) => ({
+                    ...prevTasks,
+                    todo: [...prevTasks.todo, { id: response.data._id, name: taskName }],
+                }));
+            }
+        } catch (error) {
+            console.error("Error adding task:", error);
+        }
+    };
 
     const handleDragStart = (event) => {
         const { active } = event;
@@ -29,15 +80,14 @@ export default function TaskList() {
 
     const handleDragEnd = (event) => {
         const { active, over } = event;
-        setActiveTask(null); // Reset active task after drop
+        setActiveTask(null);
 
-        if (!over) return; // If the task is dropped outside of a droppable area
+        if (!over) return;
 
         const activeContainer = getContainer(active.id);
-        const overContainer = getContainer(over.id) || over.id; // fallback to container id
+        const overContainer = getContainer(over.id) || over.id;
 
         if (activeContainer && overContainer) {
-            // Moving within the same container
             if (activeContainer === overContainer) {
                 const activeIndex = tasks[activeContainer].findIndex((task) => task.id === active.id);
                 const overIndex = tasks[overContainer].findIndex((task) => task.id === over.id);
@@ -47,7 +97,6 @@ export default function TaskList() {
                     [activeContainer]: arrayMove(prevTasks[activeContainer], activeIndex, overIndex),
                 }));
             } else {
-                // Moving between containers
                 const activeIndex = tasks[activeContainer].findIndex((task) => task.id === active.id);
                 const movedTask = tasks[activeContainer][activeIndex];
 
@@ -64,7 +113,7 @@ export default function TaskList() {
         if (tasks.todo.find((task) => task.id === taskId)) return 'todo';
         if (tasks.inProgress.find((task) => task.id === taskId)) return 'inProgress';
         if (tasks.done.find((task) => task.id === taskId)) return 'done';
-        return null; // In case the task is not found in any container
+        return null;
     };
 
     const getActiveTask = (taskId) => {
@@ -73,37 +122,21 @@ export default function TaskList() {
             tasks.done.find((task) => task.id === taskId);
     };
 
-    // Function to add a new task to the "Todo" list
-    const addTask = (taskName) => {
-        setTasks((prevTasks) => ({
-            ...prevTasks,
-            todo: [...prevTasks.todo, { id: uuidv4(), name: taskName }],
-        }));
-    };
-
     return (
         <div className="p-6">
-            {/* Use the AddTask component and pass addTask as a prop */}
             <AddTask addTask={addTask} />
 
-            {/* Single DndContext wrapping all three columns */}
             <DndContext
                 collisionDetection={closestCenter}
                 onDragStart={handleDragStart}
                 onDragEnd={handleDragEnd}
             >
                 <div className="flex gap-6 justify-between">
-                    {/* Todo Column */}
                     <DroppableColumn id="todo" tasks={tasks.todo} title="Todo" />
-
-                    {/* In Progress Column */}
                     <DroppableColumn id="inProgress" tasks={tasks.inProgress} title="In Progress" />
-
-                    {/* Done Column */}
                     <DroppableColumn id="done" tasks={tasks.done} title="Done" />
                 </div>
 
-                {/* DragOverlay for smoother drag */}
                 <DragOverlay>
                     {activeTask ? <Task task={activeTask} /> : null}
                 </DragOverlay>
@@ -114,7 +147,7 @@ export default function TaskList() {
 
 function DroppableColumn({ id, tasks, title }) {
     const { setNodeRef } = useDroppable({
-        id, // Unique id for each droppable area (todo, inProgress, done)
+        id,
     });
 
     return (
