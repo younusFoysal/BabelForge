@@ -1,6 +1,6 @@
 "use client";
 import { AlignJustify, ArrowRight, X } from "lucide-react";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -101,6 +101,12 @@ const Navbar = () => {
                 />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
+              <button
+                onClick={() => signOut()}
+                className="bg-red-500 px-3 py-2 rounded-md text-white"
+              >
+                logout
+              </button>
             </div>
           ) : (
             <>

@@ -15,29 +15,40 @@ const handler = NextAuth({
       credentials: {},
       async authorize(credentials) {
         const { email, password } = credentials;
-        //console.log(credentials)
         if (!email || !password) {
           return null;
         }
-        const { data } = await axios.get(
-          `http://localhost:5000/api/user/${email}`
-        );
-        if (!data) {
-          return null;
-        }
-        const isValid = bcrypt.compareSync(password, data.password);
 
-        if (!isValid) {
-          return null;
-        }
-        return data;
+        // try {
+        //   const { data } = await axios.get(
+        //     `http://localhost:5000/api/user/${email}`
+        //   );
+
+        //   if (!data) {
+        //     return null;
+        //   }
+
+        //   const isValid = bcrypt.compareSync(password, data.password);
+
+        //   if (!isValid) {
+        //     return null;
+        //   }
+
+        //   return data;
+        // } catch (error) {
+        //   console.error("Error in authorize:", error);
+        //   return null;
+        // }
+
+        return true;
       },
     }),
     GoogleProvider({
-      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {},
   pages: {
     signIn: "/login", // Custom login page
