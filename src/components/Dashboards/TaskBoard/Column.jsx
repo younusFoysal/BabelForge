@@ -12,7 +12,7 @@ const Column = ({ column, tasks }) => {
                 {
                     provided => (
                         <div
-                            innerRef={provided.innerRef}
+                            ref={provided.innerRef}
                             {...provided.droppableProps}
                             className='space-y-3'>
                             {

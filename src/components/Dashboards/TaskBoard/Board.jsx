@@ -13,6 +13,7 @@ const Board = () => {
     }
     return (
         <DragDropContext onDragEnd={onDragEnd}>
+            {/* <h1>Is it okay</h1> */}
             <div className='ml-5 flex space-x-3 border-2 border-red-500'>
                 {
                     data.columnOrder.map(columnId => {
