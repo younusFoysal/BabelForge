@@ -18,7 +18,7 @@ const handler = NextAuth({
           return null;
         }
         const { data } = await axios.get(
-          `https://babel-forge.vercel.app/api/user/${email}`
+          `https://babelforgeserver.vercel.app/api/user/${email}`
         );
         if (!data) {
           return null;
