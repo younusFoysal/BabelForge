@@ -1,17 +1,17 @@
-import axios from "axios";
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
-import GoogleProvider from "next-auth/providers/google";
+import axios from 'axios';
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import bcrypt from 'bcrypt';
+import GoogleProvider from 'next-auth/providers/google';
 
 const handler = NextAuth({
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {},
       async authorize(credentials) {
         const { email, password } = credentials;
@@ -51,7 +51,7 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {},
   pages: {
-    signIn: "/login", // Custom login page
+    signIn: '/login', // Custom login page
   },
 });
 

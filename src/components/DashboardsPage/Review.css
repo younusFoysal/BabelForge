@@ -1,0 +1,9 @@
+.review_dots .slick-dots li button:before {
+  font-size: 40px !important;
+  color: red;
+}
+
+.slick-dots li.slick-active button::before {
+  color: #6161ff;
+  font-size: 15px;
+}
