@@ -5,7 +5,8 @@ import Task from './Task';
 import { useState, useEffect } from 'react';
 import { arrayMove } from '@dnd-kit/sortable';
 import AddTask from './AddTask';
-import axios from 'axios'; // Import axios for API requests
+import axios from 'axios';
+import useAxiosCommon from "@/lib/axiosCommon"; // Import axios for API requests
 
 export default function TaskList() {
     const [tasks, setTasks] = useState({
@@ -15,6 +16,7 @@ export default function TaskList() {
     });
 
     const [activeTask, setActiveTask] = useState(null);
+    const axiosCommon = useAxiosCommon()
 
     useEffect(() => {
         // Fetch tasks from the API when the component mounts

@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddTask from "@/components/Dashboards/Task/AddTask";
+import BacklogPage from "@/components/Dashboards/Backlog/BacklogPage";
 
 const Page = () => {
 
@@ -43,16 +44,17 @@ const Page = () => {
 
     return (
         <div>
-            <div>
+            <div className="w-full">
 
                 {/* AddTask Component */}
                 <AddTask addTask={addTask}/>
 
-                <ul>
-                    {tasks.map((task) => (
-                        <li key={task._id}>{task.tname}</li>
-                    ))}
-                </ul>
+                {/*<ul>*/}
+                {/*    {tasks.map((task) => (*/}
+                {/*        <li key={task._id}>{task.tname}</li>*/}
+                {/*    ))}*/}
+                {/*</ul>*/}
+                <BacklogPage></BacklogPage>
             </div>
 
         </div>
