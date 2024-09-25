@@ -91,7 +91,7 @@ const Signup = () => {
           </h1>
           <p className="text-center py-4 text-gray-600">
             {" "}
-            Get started - it's free. No credit card needed.
+            Get started - it&apos;s free. No credit card needed.
           </p>
           <div className="p-5">
             <Form {...form}>

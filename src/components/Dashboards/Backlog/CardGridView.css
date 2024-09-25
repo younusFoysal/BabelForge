@@ -1,0 +1,26 @@
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 15px;
+    justify-content: center;
+
+}
+
+.card {
+    border: 4px solid #4f46e5; /* Indigo border */
+    padding: 16px;
+    background: white; /* Slightly transparent white background */
+    border-radius: 1rem; /* Rounded corners */
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Shadow */
+    text-align: center;
+    cursor: pointer;
+    width: 95%;
+}
+
+.card h1 {
+    color: #4f46e5; /* Indigo text color */
+}
+
+.card button {
+    transition: all 0.5s; /* Smooth transition */
+}

@@ -123,7 +123,7 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t border-gray-200">
           <ul className="flex flex-col space-y-4  py-4">
             {NavbarItems.map((nav) => (
-              <Link href={nav.href}>
+              <Link href={nav.href} key={nav.href}>
                 <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
                   {nav.title}
                 </li>
