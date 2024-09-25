@@ -1,14 +1,15 @@
 "use client";
+import { AlignJustify, ArrowRight, X } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
-import { AlignJustify, ArrowRight, X } from "lucide-react";
-import Image from "next/image";
-import Button from "./Buttons";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
+import { ModeToggle } from "../Theme/ModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import Button from "./Buttons";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -61,7 +62,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+    <div className="bg-white dark:bg-[#2E073F] sticky top-0 right-0 border-b-2 border-b-gray-50 dark:border-b-[#19181a] z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -90,14 +91,23 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
+          <ModeToggle />
           {user ? (
-            <Avatar>
-              <AvatarImage
-                src="https://github.com/shadcn.png"
-                className="w-16 h-16 rounded-full object-cover"
-              />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <div className="flex gap-2 items">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <button
+                onClick={() => signOut()}
+                className="bg-red-500 px-3 py-2 rounded-md text-white"
+              >
+                logout
+              </button>
+            </div>
           ) : (
             <>
               <ul className="flex items-start space-x-4">

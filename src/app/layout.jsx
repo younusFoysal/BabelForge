@@ -1,7 +1,8 @@
-import Navbar from "@/components/shared/Navbar";
-import "./globals.css";
 import Footer from "@/components/shared/Footer/Footer";
+import Navbar from "@/components/shared/Navbar";
+import { ThemeProvider } from "@/components/Theme/ThemeProvider";
 import AuthProvider from "@/services/AuthProvider";
+import "./globals.css";
 
 export const metadata = {
   title: "BabelForge",
@@ -9,16 +10,21 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-
-  
   return (
     <html lang="en">
       <body>
-        <AuthProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </AuthProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

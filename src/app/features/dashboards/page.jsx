@@ -18,6 +18,9 @@ const Dashboards = () => {
           row={'row'}
           subtitle={'High-level overview'}
           title={'Gain real-time insights'}
+          row={'flex-row'}
+          subtitle={'High-level overview'}
+          title={'Gain real-time insights'}
           description={
             'Easily analyze your data and simplify strategic decision-making with custom dashboards. Run reports, create summaries, track progress, and get a high-level overview of your entire organization.'
           }
@@ -25,6 +28,9 @@ const Dashboards = () => {
         />
         <DashboardCard
           row={'row-reverse'}
+          subtitle={'Dashboard customization'}
+          title={'View data your way'}
+          row={'flex-row-reverse'}
           subtitle={'Dashboard customization'}
           title={'View data your way'}
           description={
@@ -36,6 +42,9 @@ const Dashboards = () => {
           row={'row'}
           subtitle={'Resource management'}
           title={'Prioritize work smarter'}
+          row={'flex-row'}
+          subtitle={'Resource management'}
+          title={'Prioritize work smarter'}
           description={
             'Adapt to changes and prioritize workloads strategically to boost team productivity and facilitate more efficient workflows. Quickly identify what needs your attention and catch potential risks before they happen.'
           }
@@ -43,10 +52,12 @@ const Dashboards = () => {
         />
       </div>
       {/* Make decision section */}
-      <div className="bg-[#eceff8] p-20 flex flex-col justify-center">
+      <div className="bg-[#eceff8] dark:bg-[#AD49E1] p-20 flex flex-col justify-center">
         <div className="text-center space-y-5 container mx-auto">
           <h1 className="text-3xl md:text-4xl font-bold">Make decisions with confidence</h1>
           <p className="text-lg">Ready to see how monday.com improves alignment across teams?</p>
+          <h1 className="text-3xl md:text-4xl font-bold">Make decisions with confidence</h1>
+          <p className="text-lg">Ready to see how babelforge.com improves alignment across teams?</p>
           <div className="flex justify-center">
             <Button text="get started" icon={<ArrowRight size={20} />} />
           </div>
