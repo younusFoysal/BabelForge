@@ -18,7 +18,7 @@ const handler = NextAuth({
           return null;
         }
         const { data } = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/user/${email}`
+          `https://babel-forge.vercel.app/api/user/${email}`
         );
         if (!data) {
           return null;
