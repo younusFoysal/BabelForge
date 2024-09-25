@@ -30,7 +30,7 @@ const BacklogPage = () => {
         // Fetch tasks from the API when the component mounts
         const fetchTasks = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/task/tasks');
+                const response = await axios.get('https://babelforgeserver.vercel.app/task/tasks');
                 const tasks = response.data;
 
 

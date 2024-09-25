@@ -22,7 +22,7 @@ export default function TaskList() {
         // Fetch tasks from the API when the component mounts
         const fetchTasks = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/task/tasks');
+                const response = await axios.get('https://babelforgeserver.vercel.app/task/tasks');
                 const data = response.data;
 
                 // Organize tasks into categories
@@ -60,7 +60,7 @@ export default function TaskList() {
             };
 
             // Send POST request to the API to add the task
-            const response = await axios.post('http://localhost:5000/task/tasks/add', newTask);
+            const response = await axios.post('https://babelforgeserver.vercel.app/task/tasks/add', newTask);
 
             if (response.status === 200) {
                 // On success, update the task list locally
@@ -121,7 +121,7 @@ export default function TaskList() {
         console.log("Update", taskId, newStatus);
 
         try {
-            await axios.patch(`http://localhost:5000/task/tasks/update/${taskId}`, {
+            await axios.patch(`https://babelforgeserver.vercel.app/task/tasks/update/${taskId}`, {
                 tproces: newStatus,
             });
         } catch (error) {
