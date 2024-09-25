@@ -115,7 +115,7 @@ const Profile = () => {
                 </div>
 
                 {/* card right */}
-                <div className='w-full  mt-60 '>
+                <div className='w-full  lg:mt-60 mt-10 '>
 
                     <h3 className='text-start text-lg font-semibold uppercase'>works with</h3>
                     <div className='mt-5 flex justify-start items-center gap-6'>
