@@ -88,7 +88,7 @@ const Login = () => {
           </h1>
           <p className="text-center py-4 text-gray-600">
             {" "}
-            Get started - it's free. No credit card needed.
+            Get started - it&apos;s free. No credit card needed.
           </p>
           <div className="p-5">
             <Form {...form}>
@@ -155,7 +155,7 @@ const Login = () => {
             <div className="flex items-center justify-center mt-10">
               <p>
                 {" "}
-                Don't have an account yet?
+                Don&apos;t have an account yet?
                 <Link
                   className="text-blue-500 duration-300 transition-all hover:underline ml-1"
                   href="/signup"
@@ -167,7 +167,7 @@ const Login = () => {
             <div>
               <p className="text-center py-1">
                 {" "}
-                Can't log in?
+                Can&apos;t log in?
                 <Link
                   className="text-blue-500 duration-300 transition-all hover:underline ml-1"
                   href=""
