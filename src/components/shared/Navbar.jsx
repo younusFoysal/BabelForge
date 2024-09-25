@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
 import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
+import { ModeToggle } from "../Theme/ModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Button from "./Buttons";
 
@@ -90,6 +91,7 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
+          <ModeToggle />
           {user ? (
             <Avatar>
               <AvatarImage
