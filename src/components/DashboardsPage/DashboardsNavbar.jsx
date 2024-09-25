@@ -3,13 +3,14 @@ import Link from "next/link";
 import logo from "@/image/Home/babellogo.png";
 import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "../ui/button";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
@@ -72,7 +73,7 @@ const DashboardNavbar = () => {
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent>
-                <h1 className="p-6">profile nav</h1>
+                <Button onClick={() => signOut()}> logout</Button>
               </PopoverContent>
             </Popover>
           )}
