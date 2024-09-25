@@ -1,10 +1,13 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Button } from "../ui/button";
 import logo from "@/image/Home/babellogo.png";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -74,7 +77,7 @@ const DashboardNavbar = () => {
                 </Avatar>
               </PopoverTrigger>
               <PopoverContent>
-                <h1 className="p-6">profile nav</h1>
+                <Button onClick={() => signOut()}> logout</Button>
               </PopoverContent>
             </Popover>
           )}

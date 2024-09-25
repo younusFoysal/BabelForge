@@ -93,13 +93,15 @@ const Navbar = () => {
         <div className="md:flex items-center space-x-4 hidden">
           <ModeToggle />
           {user ? (
-            <Avatar>
-              <AvatarImage
-                src="https://github.com/shadcn.png"
-                className="w-16 h-16 rounded-full object-cover"
-              />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <div className="flex gap-2 items">
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  className="w-16 h-16 rounded-full object-cover"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+            </div>
           ) : (
             <>
               <ul className="flex items-start space-x-4">
