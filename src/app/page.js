@@ -3,7 +3,7 @@ import Hero from '@/components/home/Hero';
 import LeaderCTA from '@/components/home/LeaderCTA';
 import Sponser from '@/components/home/Sponser';
 import CallToAction from '@/components/home/CallToAction';
-import CarouselHome from '@/components/home/CarouselHome';
+import Carouselhome from '@/components/home/Carouselhome';
 
 const Home = () => {
   return (
@@ -13,7 +13,7 @@ const Home = () => {
       <LeaderCTA />
 
       <CallToAction />
-      <CarouselHome />
+      <Carouselhome />
     </div>
   );
 };
