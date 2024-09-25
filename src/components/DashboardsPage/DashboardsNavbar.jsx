@@ -10,6 +10,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ModeToggle } from "../Theme/ModeToggle";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
@@ -60,6 +61,7 @@ const DashboardNavbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 mr-4">
+          <ModeToggle />
           {user && (
             <Popover>
               <PopoverTrigger>
