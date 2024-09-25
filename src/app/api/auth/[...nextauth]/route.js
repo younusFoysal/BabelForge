@@ -18,7 +18,7 @@ const handler = NextAuth({
           return null;
         }
         const { data } = await axios.get(
-          `http://localhost:5000/api/user/${email}`
+          `${process.env.NEXT_PUBLIC_API_URL}/api/user/${email}`
         );
         if (!data) {
           return null;
