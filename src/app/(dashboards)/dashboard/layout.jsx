@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { IoIosArrowDropupCircle } from "react-icons/io";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
+import { IoMdHome } from "react-icons/io";
 
 import {
     Drawer,
@@ -11,6 +12,9 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import { Button } from '@/components/ui/button';
+import {CgList} from "react-icons/cg";
+import {IoHomeOutline} from "react-icons/io5";
+import { MdPostAdd} from "react-icons/md";
 
 
 
@@ -54,8 +58,12 @@ const layout = ({ children }) => {
                         {/* Sidebar content  */}
                         <div className="p-4">
                             <ul>
-                                <li><Link href={"/"} className="block py-2">Home</Link></li>
-                                <li><Link href={"/dashboard/board"} className="block py-2">Boards</Link></li>
+                                <li><Link href={"/"} className="py-2 flex items-center gap-2">
+                                    <IoHomeOutline/> Home</Link></li>
+                                <li><Link href={"/dashboard/Backlog"} className="py-2 flex items-center gap-2">
+                                    <MdPostAdd/> Backlog</Link></li>
+                                <li><Link href={"/dashboard/board"} className="py-2 flex items-center gap-2"><CgList/>Boards</Link>
+                                </li>
                             </ul>
                         </div>
                     </DrawerContent>
@@ -66,13 +74,14 @@ const layout = ({ children }) => {
             <div className="hidden lg:block lg:w-48 bg-base-300 text-black p-4 border-r-2">
                 <h2 className="text-2xl font-bold">Dashboard</h2>
                 <ul>
-                    <li><Link href={"/"} className="block py-2">Home</Link></li>
-                    <li><Link href={"/dashboard/board"} className="block py-2">Boards</Link></li>
+                <li><Link href={"/"} className="py-2 flex items-center gap-2"> <IoHomeOutline /> Home</Link></li>
+                    <li><Link href={"/dashboard/Backlog"} className="py-2 flex items-center gap-2"> <MdPostAdd /> Backlog</Link></li>
+                    <li><Link href={"/dashboard/board"} className="py-2 flex items-center gap-2"><CgList />Boards</Link></li>
                 </ul>
             </div>
 
             {/*layout content  */}
-            <div className='lg:p-6 pt-20 flex justify-center items-center w-full'>
+            <div className='lg:p-6 pt-10 flex justify-center w-full'>
                 {children}
             </div>
 
