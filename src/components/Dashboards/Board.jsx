@@ -1,5 +1,6 @@
 import React from 'react';
 import BoardCard from './BoardCard';
+import Team from '../Teams/Team';
 import TaskList from "@/components/Dashboards/Task/TaskList";
 
 const Board = () => {

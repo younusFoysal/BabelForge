@@ -1,7 +1,4 @@
 "use client";
-import Link from "next/link";
-import logo from "@/image/Home/babellogo.png";
-import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
@@ -11,6 +8,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "../ui/button";
+import logo from "@/image/Home/babellogo.png";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ModeToggle } from "../Theme/ModeToggle";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
@@ -32,7 +35,7 @@ const DashboardNavbar = () => {
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+    <div className="bg-white sticky top-0 right-0 border-b-2 dark:bg-[#2E073F] dark:border-b-[#2e2b30] border-b-gray-50 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3">
         {/* logo */}
         <Link href="/">
@@ -61,6 +64,7 @@ const DashboardNavbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 mr-4">
+          <ModeToggle />
           {user && (
             <Popover>
               <PopoverTrigger>

@@ -2,3 +2,9 @@ footer a:hover {
     color: #5151d5;
     text-decoration: underline;
 }
+
+.dark footer a:hover {
+    color: #ffdd57; 
+    text-decoration: underline;
+  }
+  

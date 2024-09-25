@@ -1,5 +1,4 @@
-import Image from "next/image";
-import bd from "@/image/Home/sponser/bd.png";
+import subimage1 from "@/image/Home/carousel/sub_service.avif";
 import canva from "@/image/Home/sponser/canva.png";
 import carrefour from "@/image/Home/sponser/carrefour.png";
 import coca_cola from "@/image/Home/sponser/coca_cola.png";
@@ -7,14 +6,14 @@ import glossier from "@/image/Home/sponser/glossier.png";
 import lionsgate from "@/image/Home/sponser/lionsgate.png";
 import oxy from "@/image/Home/sponser/oxy.png";
 import universal from "@/image/Home/sponser/universal.png";
-import subimage1 from "@/image/Home/carousel/sub_service.avif";
+import Image from "next/image";
 const Sponser = () => {
   return (
     <div className="py-[120px] px-4 text-center">
-      <p className="text-[#333] font-normal">
+      <p className="text-[#333] dark:text-white font-normal">
         Trusted by 225,000+ customers, from startups to enterprises{" "}
       </p>
-      <div className="flex flex-wrap mt-9 items-center justify-center gap-9">
+      <div className="flex flex-wrap mt-9 items-center justify-center gap-9 bg-white dark:bg-[#EBD3F8] p-3">
         <Image
           height={200}
           width={300}

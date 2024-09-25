@@ -15,6 +15,7 @@ const handler = NextAuth({
       credentials: {},
       async authorize(credentials) {
         const { email, password } = credentials;
+        //console.log(credentials)
         if (!email || !password) {
           return null;
         }
