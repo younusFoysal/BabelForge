@@ -1,14 +1,14 @@
 "use client";
+import { AlignJustify, ArrowRight, X } from "lucide-react";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
-import { AlignJustify, ArrowRight, X } from "lucide-react";
-import Image from "next/image";
-import Button from "./Buttons";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import Button from "./Buttons";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
