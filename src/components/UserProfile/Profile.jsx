@@ -1,11 +1,7 @@
 import React from 'react';
 import {
     Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
+   
 } from "@/components/ui/card";
 import { ImBriefcase } from "react-icons/im";
 import { FaNetworkWired } from "react-icons/fa";

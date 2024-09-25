@@ -1,5 +1,6 @@
 import React from 'react';
 import BoardCard from './BoardCard';
+import Team from '../Teams/Team';
 
 
 
@@ -29,7 +30,9 @@ const Board = () => {
                     ></BoardCard>
                 </div>
 
-            </div>    
+            </div>  
+
+         
 
         </section>
     );
