@@ -2,6 +2,7 @@ import axios from "axios";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
+import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
   session: {
@@ -17,21 +18,37 @@ const handler = NextAuth({
         if (!email || !password) {
           return null;
         }
-        const { data } = await axios.get(
-          `http://localhost:5000/api/user/${email}`
-        );
-        if (!data) {
-          return null;
-        }
-        const isValid = bcrypt.compareSync(password, data.password);
 
-        if (!isValid) {
-          return null;
-        }
-        return data;
+        // try {
+        //   const { data } = await axios.get(
+        //     `http://localhost:5000/api/user/${email}`
+        //   );
+
+        //   if (!data) {
+        //     return null;
+        //   }
+
+        //   const isValid = bcrypt.compareSync(password, data.password);
+
+        //   if (!isValid) {
+        //     return null;
+        //   }
+
+        //   return data;
+        // } catch (error) {
+        //   console.error("Error in authorize:", error);
+        //   return null;
+        // }
+
+        return true;
       },
     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {},
   pages: {
     signIn: "/login", // Custom login page
