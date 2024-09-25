@@ -18,7 +18,7 @@ const ContactForm = () => {
       data-aos="slide-right"
     >
       <div className="bg-blue-500 translate-x-3 -translate-y-3 rounded-xl -z-50">
-        <div className="bg-white translate-x-2 -translate-y-2 rounded-xl p-12 -z-50 shadow-md">
+        <div className="bg-white translate-x-2 -translate-y-2 dark:bg-[#2E073F] rounded-xl p-12 -z-50 shadow-md">
           <h2 className="text-2xl mb-5">Contact With our team</h2>
           <form>
             {/* name parent */}

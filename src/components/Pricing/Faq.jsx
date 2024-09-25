@@ -14,8 +14,8 @@ const Faq = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 mb-12 mt-12 ">
-      <div className=" text-gray-800 ">
+    <section className="bg-gray-100 mb-12 mt-12 dark:bg-[#2E073F] ">
+      <div className=" text-gray-800 dark:text-white">
         <div className=" flex flex-col lg:justify-center  p-4 lg:w-[70%] mx-auto md:p-8">
           <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">
             Frequently Asked Questions
@@ -85,8 +85,8 @@ const Faq = () => {
                   plan type and by adding or removing users. However, past the
                   refund period, we offer no refunds for downgrades. To change
                   your plan, simply go into the Admin div and click on the
-                  Billing option. From there, click &apos;change plan&apos; and choose
-                  your desired plan.
+                  Billing option. From there, click &apos;change plan&apos; and
+                  choose your desired plan.
                 </p>
               </div>
             </details>
