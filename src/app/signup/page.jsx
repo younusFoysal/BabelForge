@@ -53,20 +53,22 @@ const Signup = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      name: "",
       email: "",
       password: "",
     },
   });
 
   const onSubmit = async (value) => {
-    const { email, password, username } = value;
+    const { email, password, username, name } = value;
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/users/add",
+        `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,
         {
           email,
           password,
           username,
+          name,
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -102,13 +104,29 @@ const Signup = () => {
               >
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <Input
                           type="text"
                           placeholder="Enter your name"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder="Enter your username"
                           {...field}
                         />
                       </FormControl>

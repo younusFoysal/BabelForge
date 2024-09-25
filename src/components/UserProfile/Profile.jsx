@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import {
     Card,
@@ -13,10 +14,16 @@ import { FaUserGroup } from "react-icons/fa6";
 import { HiUserGroup } from "react-icons/hi";
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {useSession} from "next-auth/react";
 
 
 
 const Profile = () => {
+
+    const session = useSession();
+    const user = session?.data?.user;
+    console.log(user)
+
     return (
         <div >
 
