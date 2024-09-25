@@ -9,7 +9,7 @@ import oxy from '@/image/Home/sponser/oxy.png';
 import universal from '@/image/Home/sponser/universal.png';
 const Sponser = () => {
   return (
-    <div className="py-[120px] px-4 text-center">
+    <div className="py-[60px] px-4 text-center">
       <p className="text-[#333] font-normal">Trusted by 225,000+ customers, from startups to enterprises </p>
       <div className="flex flex-wrap mt-9 items-center justify-center gap-9">
         <Image height={200} width={300} className="max-w-[90px] max-h-[50px] hover:scale-110 duration-500" src={bd} alt="" />

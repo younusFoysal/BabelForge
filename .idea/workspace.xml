@@ -5,6 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="carusel added">
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutStatistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutStatistics.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
