@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const HeroBox = ({ data, handleChanged }) => {
   const [selected, setselected] = useState(false);
@@ -16,7 +16,7 @@ const HeroBox = ({ data, handleChanged }) => {
   return (
     <div
       onClick={handleClick}
-      className="rounded-lg bg-[#ffffff] p-3 py-5 border border-gray-200 flex flex-col items-center group relative"
+      className="rounded-lg bg-[#ffffff] dark:bg-[#af64d8] p-3 py-5 border border-gray-200 flex flex-col items-center group relative"
     >
       <input
         type="checkbox"
