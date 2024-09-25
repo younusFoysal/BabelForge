@@ -1,5 +1,7 @@
 import React from 'react';
 import BoardCard from './BoardCard';
+import Profile from '../UserProfile/Profile';
+
 
 const Board = () => {
     return (
@@ -28,6 +30,11 @@ const Board = () => {
                 </div>
 
             </div>
+
+            
+
+
+           
 
         </section>
     );
