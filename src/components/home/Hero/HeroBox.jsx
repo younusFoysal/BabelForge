@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const HeroBox = ({ data, handleChanged }) => {
   const [selected, setselected] = useState(false);
@@ -7,9 +7,11 @@ const HeroBox = ({ data, handleChanged }) => {
 
   const handleClick = () => {
     handleChanged(image);
-
     setselected(!selected);
   };
+
+  // This will log the updated state
+  useEffect(() => {}, [selected]);
 
   return (
     <div
@@ -19,11 +21,11 @@ const HeroBox = ({ data, handleChanged }) => {
       <input
         type="checkbox"
         className="border border-gray-200 absolute top-2 left-2 rounded-lg bor"
-        defaultChecked={selected}
+        checked={selected} // lowercase 'checked'
       />
       <div
         className={`group-hover:text-primary transition-all duration-300 pt-2 ${
-          selected && "text-primary"
+          selected ? "text-primary" : ""
         }`}
       >
         {icon}
