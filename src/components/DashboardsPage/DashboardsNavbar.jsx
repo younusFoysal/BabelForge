@@ -72,8 +72,20 @@ const DashboardNavbar = () => {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
-              <PopoverContent>
-                <Button onClick={() => signOut()}> logout</Button>
+              <PopoverContent className="flex-col gap-2 p-4 flex ">
+                <Link
+                  href="/dashboard/profile"
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md text-center"
+                >
+                  profile
+                </Link>
+                <button
+                  onClick={() => signOut()}
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md"
+                >
+                  {" "}
+                  logout
+                </button>
               </PopoverContent>
             </Popover>
           )}
