@@ -16,15 +16,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JSX File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="JSX File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tofayel-next" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,6 +80,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge" />
     </key>
@@ -107,6 +109,10 @@
       <workItem from="1726814539150" duration="207000" />
       <workItem from="1726851647295" duration="27000" />
       <workItem from="1727034058713" duration="704000" />
+      <workItem from="1727196496127" duration="1070000" />
+      <workItem from="1727197626262" duration="4185000" />
+      <workItem from="1727202895928" duration="926000" />
+      <workItem from="1727207125868" duration="1078000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -260,7 +266,47 @@
       <option name="project" value="LOCAL" />
       <updated>1727034154322</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="task add function added">
+      <option name="closed" value="true" />
+      <created>1727216567271</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727216567271</updated>
+    </task>
+    <task id="LOCAL-00021" summary="task update function added">
+      <option name="closed" value="true" />
+      <created>1727218407786</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727218407786</updated>
+    </task>
+    <task id="LOCAL-00022" summary="packager fix">
+      <option name="closed" value="true" />
+      <created>1727219148389</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1727219148389</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Add task Done">
+      <option name="closed" value="true" />
+      <created>1727224554136</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1727224554136</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Server api link added">
+      <option name="closed" value="true" />
+      <created>1727224812685</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727224812685</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +325,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="First Commit" />
     <MESSAGE value="File Structure Added" />
     <MESSAGE value="File Structure Done" />
     <MESSAGE value="tailwind check done" />
@@ -295,6 +340,16 @@
     <MESSAGE value="Fav Icon Added" />
     <MESSAGE value="Price card Updated" />
     <MESSAGE value="React To NextJS" />
-    <option name="LAST_COMMIT_MESSAGE" value="React To NextJS" />
+    <MESSAGE value="task DND page Done" />
+    <MESSAGE value="DND fix" />
+    <MESSAGE value="nav fix" />
+    <MESSAGE value="done" />
+    <MESSAGE value="side bar icon added" />
+    <MESSAGE value="task add function added" />
+    <MESSAGE value="task update function added" />
+    <MESSAGE value="packager fix" />
+    <MESSAGE value="Add task Done" />
+    <MESSAGE value="Server api link added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Server api link added" />
   </component>
 </project>

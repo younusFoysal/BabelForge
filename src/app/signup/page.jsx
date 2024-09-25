@@ -18,6 +18,8 @@ import {
 import { Input } from "@/components/ui/input";
 import Googleicon from "@/image/icon/google.png";
 import Link from "next/link";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   username: z.string().min(4, {
@@ -35,16 +37,17 @@ const formSchema = z.object({
     })
     .max(20, {
       message: "Password must not be more than 20 characters long.",
-    })
-    .regex(/[A-Z]/, {
-      message: "Password must contain at least one uppercase letter.",
-    })
-    .regex(/[!@#$%^&*(),.?":{}|<>]/, {
-      message: "Password must contain at least one special character.",
     }),
+  // .regex(/[A-Z]/, {
+  //   message: "Password must contain at least one uppercase letter.",
+  // })
+  // .regex(/[!@#$%^&*(),.?":{}|<>]/, {
+  //   message: "Password must contain at least one special character.",
+  // }),
 });
 
 const Signup = () => {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,8 +57,26 @@ const Signup = () => {
     },
   });
 
-  const onSubmit = (value) => {
-    console.log(value);
+  const onSubmit = async (value) => {
+    const { email, password, username } = value;
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5000/api/users/add",
+        {
+          email,
+          password,
+          username,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      if (data.insertedId) {
+        router.push(`/login`);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -70,7 +91,7 @@ const Signup = () => {
           </h1>
           <p className="text-center py-4 text-gray-600">
             {" "}
-            Get started - it's free. No credit card needed.
+            Get started - it&apos;s free. No credit card needed.
           </p>
           <div className="p-5">
             <Form {...form}>
