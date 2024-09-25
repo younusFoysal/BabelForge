@@ -40,7 +40,7 @@ const handler = NextAuth({
         //   return null;
         // }
 
-        return true;
+        return credentials;
       },
     }),
     GoogleProvider({

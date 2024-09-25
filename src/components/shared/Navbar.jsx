@@ -10,6 +10,7 @@ import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
 import { ModeToggle } from "../Theme/ModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Button from "./Buttons";
+import {Popover, PopoverContent, PopoverTrigger} from "@/components/ui/popover";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -93,21 +94,36 @@ const Navbar = () => {
         <div className="md:flex items-center space-x-4 hidden">
           <ModeToggle />
           {user ? (
-            <div className="flex gap-2 items">
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  className="w-16 h-16 rounded-full object-cover"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-              <button
-                onClick={() => signOut()}
-                className="bg-red-500 px-3 py-2 rounded-md text-white"
-              >
-                logout
-              </button>
-            </div>
+              <div className="md:flex items-center space-x-4 mr-4">
+                {user && (
+                    <Popover>
+                      <PopoverTrigger>
+                        <Avatar>
+                          <AvatarImage
+                              src="https://github.com/shadcn.png"
+                              className="w-16 h-16 rounded-full object-cover"
+                          />
+                          <AvatarFallback>CN</AvatarFallback>
+                        </Avatar>
+                      </PopoverTrigger>
+                      <PopoverContent className="flex-col gap-2 p-4 flex ">
+                        <Link
+                            href="/dashboard/profile"
+                            className="bg-gray-100 py-2 px-4 w-full rounded-md text-center"
+                        >
+                          profile
+                        </Link>
+                        <button
+                            onClick={() => signOut()}
+                            className="bg-gray-100 py-2 px-4 w-full rounded-md"
+                        >
+                          {" "}
+                          logout
+                        </button>
+                      </PopoverContent>
+                    </Popover>
+                )}
+              </div>
           ) : (
             <>
               <ul className="flex items-start space-x-4">
