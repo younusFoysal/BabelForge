@@ -35,7 +35,13 @@ const Profile = () => {
             <p className="flex justify-start items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
               <span className=" rounded-full p-1">
                 <Avatar className="w-40 h-40">
-                  <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
+                  <AvatarImage
+                    src={
+                      user?.image
+                        ? user?.image
+                        : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                    }
+                  />
                   <AvatarFallback>TA</AvatarFallback>
                 </Avatar>
               </span>

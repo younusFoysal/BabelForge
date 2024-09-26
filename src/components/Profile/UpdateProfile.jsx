@@ -25,6 +25,7 @@ export function UpdateProfile({ user }) {
     const organization = e.target.organization.value;
     const location = e.target.location.value;
     const email = e.target.email.value;
+    const image = e.target.image.value;
     const data = {
       username: userName,
       name: displayName,
@@ -32,6 +33,7 @@ export function UpdateProfile({ user }) {
       organization: organization,
       location: location,
       email: email,
+      image: image,
     };
 
     axios
@@ -92,6 +94,16 @@ export function UpdateProfile({ user }) {
                 disabled
                 id="email"
                 defaultValue={user?.email}
+                className="col-span-3"
+              />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="image" className="text-right">
+                Image URL
+              </Label>
+              <Input
+                id="image"
+                defaultValue={user?.image}
                 className="col-span-3"
               />
             </div>
