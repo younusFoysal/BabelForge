@@ -6,45 +6,68 @@ import { Label, Pie, PieChart } from 'recharts';
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
-
-const chartData = [
-  { task: 'completed', taskCount: 275, fill: 'var(--color-completed)' },
-  { task: 'pending', taskCount: 200, fill: 'var(--color-pending)' },
-  { task: 'InProgress', taskCount: 287, fill: 'var(--color-InProgress)' },
-  { task: 'Delayed', taskCount: 287, fill: 'var(--color-Delayed)' },
-  { task: 'canceled', taskCount: 287, fill: 'var(--color-canceled)' },
-];
-
-const chartConfig = {
-  taskCount: {
-    label: 'Task',
-  },
-  completed: {
-    label: 'Completed',
-    color: 'hsl(var(--chart-2))',
-  },
-  pending: {
-    label: 'Pending',
-    color: 'hsl(var(--chart-5))',
-  },
-  InProgress: {
-    label: 'In Progress',
-    color: 'hsl(var(--chart-3))',
-  },
-  Delayed: {
-    label: 'Delayed',
-    color: 'hsl(var(--chart-4))',
-  },
-  canceled: {
-    label: 'Canceled',
-    color: 'hsl(var(--chart-1))',
-  },
-};
+import { useState } from 'react';
+import { axiosCommon } from '@/lib/axiosCommon';
 
 export function PieCharts() {
-  const totalTask = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.taskCount, 0);
-  }, []);
+  const [task, setTask] = useState([]);
+  const [completed, setCompleted] = useState([]);
+  const [pendingTask, setPendingTask] = useState([]);
+  const [isProgress, setInProgress] = useState([]);
+
+  // Get all task
+  axiosCommon
+    .get('task/tasks')
+    .then(res => {
+      setTask(res.data);
+      // Set Progress Task
+      setInProgress(res.data.filter(task => task.tproces === 'inProgress'));
+      // Set Completed Task
+      setCompleted(res.data.filter(task => task.tproces === 'done'));
+      // Set Pendig Task
+      setPendingTask(res.data.filter(task => task.tproces === 'todo'));
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+  const chartData = [
+    { task: 'completed', taskCount: completed?.length, fill: 'var(--color-completed)' },
+    { task: 'pending', taskCount: pendingTask?.length, fill: 'var(--color-pending)' },
+    { task: 'InProgress', taskCount: isProgress?.length, fill: 'var(--color-InProgress)' },
+    { task: 'Delayed', taskCount: 2, fill: 'var(--color-Delayed)' },
+    { task: 'canceled', taskCount: 3, fill: 'var(--color-canceled)' },
+  ];
+
+  const chartConfig = {
+    taskCount: {
+      label: 'Task',
+    },
+    completed: {
+      label: 'Completed',
+      color: 'hsl(var(--chart-2))',
+    },
+    pending: {
+      label: 'Pending',
+      color: 'hsl(var(--chart-5))',
+    },
+    InProgress: {
+      label: 'In Progress',
+      color: 'hsl(var(--chart-3))',
+    },
+    Delayed: {
+      label: 'Delayed',
+      color: 'hsl(var(--chart-4))',
+    },
+    canceled: {
+      label: 'Canceled',
+      color: 'hsl(var(--chart-1))',
+    },
+  };
+
+  // const totalTask = React.useMemo(() => {
+  //   return chartData.reduce((acc, curr) => acc + curr.taskCount, 0);
+  // }, []);
 
   return (
     <Card className="flex rounded-xl py-5 flex-col">
@@ -63,7 +86,7 @@ export function PieCharts() {
                     return (
                       <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
                         <tspan x={viewBox.cx} y={viewBox.cy} className="fill-foreground text-3xl font-bold">
-                          {totalTask.toLocaleString()}
+                          {task.length.toLocaleString()}
                         </tspan>
                         <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-foreground">
                           Total Task
