@@ -16,12 +16,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Googleicon from "@/image/icon/google.png";
+
 import Link from "next/link";
 import axios from "axios";
 
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { SocialButton } from "@/components/SocialButton/SocialButton";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -45,6 +46,7 @@ const formSchema = z.object({
 });
 
 const Login = () => {
+  const session = useSession();
   const router = useRouter();
 
   const form = useForm({
@@ -66,6 +68,10 @@ const Login = () => {
       router.push("/dashboard");
     }
   };
+
+  if (session?.data?.user) {
+    return router.push("/dashboard");
+  }
 
   return (
     <div className="flex">
@@ -139,19 +145,8 @@ const Login = () => {
               <span className="mx-4 text-gray-500">Or</span>
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
-            <Button
-              type="submit"
-              className="w-full text-center rounded bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-200 text-[14px]"
-            >
-              <Image
-                src={Googleicon}
-                height={20}
-                width={20}
-                alt="googleicon"
-                className="mr-2 h-5 w-5"
-              />
-              Continue With Google
-            </Button>
+            {/* socail button */}
+            <SocialButton />
             <div className="flex items-center justify-center mt-10">
               <p>
                 {" "}

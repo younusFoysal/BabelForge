@@ -1,27 +1,35 @@
 "use client";
-import Link from "next/link";
-import logo from "@/image/Home/babellogo.png";
-import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import logo from "@/image/Home/babellogo.png";
+import axios from "axios";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
   const user = session?.data?.user;
+  const [users, setUsers] = useState([]);
+
+  axios
+    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${user?.email}`)
+    .then((data) => setUsers(data.data))
+    .catch((e) => console.log("error usersss", e));
 
   const NavbarItems = [
     {
       title: "Project",
-      href: "/dashboard/project",
+      href: "/dashboard/projects",
     },
     {
-      title: "team",
+      title: "Team",
       href: "/dashboard/team",
     },
     {
@@ -65,14 +73,30 @@ const DashboardNavbar = () => {
               <PopoverTrigger>
                 <Avatar>
                   <AvatarImage
-                    src="https://github.com/shadcn.png"
+                    src={
+                      users?.image
+                        ? users?.image
+                        : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                    }
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
-              <PopoverContent>
-                <h1 className="p-6">profile nav</h1>
+              <PopoverContent className="flex-col gap-2 p-4 flex ">
+                <Link
+                  href="/dashboard/profile"
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md text-center"
+                >
+                  User profile
+                </Link>
+                <button
+                  onClick={() => signOut()}
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md"
+                >
+                  {" "}
+                  logout
+                </button>
               </PopoverContent>
             </Popover>
           )}

@@ -1,16 +1,25 @@
 "use client";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import axios from "axios";
+import { AlignJustify, ArrowRight, X } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
-import { AlignJustify, ArrowRight, X } from "lucide-react";
-import Image from "next/image";
-import Button from "./Buttons";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
+import { ModeToggle } from "../Theme/ModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import Button from "./Buttons";
 
 const Navbar = () => {
+  const [users, setUsers] = useState([]);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const session = useSession();
   const user = session?.data?.user;
@@ -18,6 +27,11 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  axios
+    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${user?.email}`)
+    .then((data) => setUsers(data.data))
+    .catch((e) => console.log("error usersss", e));
 
   // conditonial navbar
   if (pathname.includes("login")) {
@@ -44,7 +58,7 @@ const Navbar = () => {
   const NavbarItems = [
     {
       title: "Product",
-      href: "/features/dashboards",
+      href: "/features",
     },
     {
       title: "Price",
@@ -61,7 +75,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+    <div className="bg-white dark:bg-[#2E073F] sticky top-0 right-0 border-b-2 border-b-gray-50 dark:border-b-[#19181a] z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -90,14 +104,42 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
+          <ModeToggle />
           {user ? (
-            <Avatar>
-              <AvatarImage
-                src="https://github.com/shadcn.png"
-                className="w-16 h-16 rounded-full object-cover"
-              />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <div className="md:flex items-center space-x-4 mr-4">
+              {user && (
+                <Popover>
+                  <PopoverTrigger>
+                    <Avatar>
+                      <AvatarImage
+                        src={
+                          users?.image
+                            ? users?.image
+                            : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                        }
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </PopoverTrigger>
+                  <PopoverContent className="flex-col gap-2 p-4 flex ">
+                    <Link
+                      href="/dashboard/profile"
+                      className="bg-gray-100 py-2 px-4 w-full rounded-md text-center"
+                    >
+                      profile
+                    </Link>
+                    <button
+                      onClick={() => signOut()}
+                      className="bg-gray-100 py-2 px-4 w-full rounded-md"
+                    >
+                      {" "}
+                      logout
+                    </button>
+                  </PopoverContent>
+                </Popover>
+              )}
+            </div>
           ) : (
             <>
               <ul className="flex items-start space-x-4">

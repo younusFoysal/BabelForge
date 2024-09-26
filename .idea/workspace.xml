@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="deploy login fix" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Profile fix">
+      <change afterPath="$PROJECT_DIR$/src/app/features/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/dashboards/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/dashboards/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="foysal" />
+        <entry key="$PROJECT_DIR$" value="saif-next" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,26 +66,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Node.js.GetFileStructure.cjs.executor": "Run",
-    "Node.js.GetFileStructure.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/WebStrom Projects/SCIC/EndGame/babelforge",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Node.js.GetFileStructure.cjs.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/SCIC/EndGame/babelforge&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge" />
@@ -111,6 +119,7 @@
       <workItem from="1727197626262" duration="4185000" />
       <workItem from="1727202895928" duration="926000" />
       <workItem from="1727207125868" duration="1078000" />
+      <workItem from="1727381122515" duration="1218000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -304,23 +313,79 @@
       <option name="project" value="LOCAL" />
       <updated>1727224812685</updated>
     </task>
-    <task id="LOCAL-00025" summary="deploy login fix">
+    <task id="LOCAL-00025" summary="turbo added">
       <option name="closed" value="true" />
-      <created>1727226710482</created>
+      <created>1727288348230</created>
       <option name="number" value="00025" />
       <option name="presentableId" value="LOCAL-00025" />
       <option name="project" value="LOCAL" />
-      <updated>1727226710482</updated>
+      <updated>1727288348230</updated>
     </task>
-    <task id="LOCAL-00026" summary="deploy login fix">
+    <task id="LOCAL-00026" summary="turbo added">
       <option name="closed" value="true" />
-      <created>1727226948624</created>
+      <created>1727290730066</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1727226948624</updated>
+      <updated>1727290730066</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="carusel added">
+      <option name="closed" value="true" />
+      <created>1727292340216</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1727292340216</updated>
+    </task>
+    <task id="LOCAL-00028" summary="carusel added">
+      <option name="closed" value="true" />
+      <created>1727292804794</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1727292804794</updated>
+    </task>
+    <task id="LOCAL-00029" summary="carusel fix">
+      <option name="closed" value="true" />
+      <created>1727293301761</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1727293301761</updated>
+    </task>
+    <task id="LOCAL-00030" summary="update">
+      <option name="closed" value="true" />
+      <created>1727373267335</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1727373267335</updated>
+    </task>
+    <task id="LOCAL-00031" summary="api link update">
+      <option name="closed" value="true" />
+      <created>1727376540211</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1727376540211</updated>
+    </task>
+    <task id="LOCAL-00032" summary="signup fix">
+      <option name="closed" value="true" />
+      <created>1727377792900</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1727377792900</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Profile fix">
+      <option name="closed" value="true" />
+      <created>1727381084146</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1727381084146</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,12 +404,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="File Structure Done" />
-    <MESSAGE value="tailwind check done" />
-    <MESSAGE value="Swiper added" />
-    <MESSAGE value="Image path fix" />
-    <MESSAGE value="All ok" />
-    <MESSAGE value="Link added" />
     <MESSAGE value="nav Responsive added" />
     <MESSAGE value="Nav Logo Added" />
     <MESSAGE value="Title &amp; Fav Icon added" />
@@ -363,7 +422,13 @@
     <MESSAGE value="packager fix" />
     <MESSAGE value="Add task Done" />
     <MESSAGE value="Server api link added" />
-    <MESSAGE value="deploy login fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="deploy login fix" />
+    <MESSAGE value="turbo added" />
+    <MESSAGE value="carusel added" />
+    <MESSAGE value="carusel fix" />
+    <MESSAGE value="update" />
+    <MESSAGE value="api link update" />
+    <MESSAGE value="signup fix" />
+    <MESSAGE value="Profile fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile fix" />
   </component>
 </project>
