@@ -3,6 +3,7 @@ import Navbar from "@/components/shared/Navbar";
 import { ThemeProvider } from "@/components/Theme/ThemeProvider";
 import AuthProvider from "@/services/AuthProvider";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "BabelForge",
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
             <Navbar />
             {children}
             <Footer />
+            <Toaster position="top-center" reverseOrder={false} />
           </AuthProvider>
         </ThemeProvider>
       </body>

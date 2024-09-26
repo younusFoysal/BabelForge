@@ -61,6 +61,7 @@ const Signup = () => {
 
   const onSubmit = async (value) => {
     const { email, password, username, name } = value;
+
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,

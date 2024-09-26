@@ -9,18 +9,23 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
+import toast from "react-hot-toast";
+import { DialogClose } from "@radix-ui/react-dialog";
 
-const TeamDialog = ({ id }) => {
+const TeamDialog = ({ id, refetch }) => {
   const axiosCommon = useAxiosCommon();
   const [teamMembers, setTeamMembers] = useState();
 
-  const handlesubmit = async () => {
+  const handlesubmit = async (e) => {
+    e.preventDefault();
     // Add team member to the project
-    const { data } = await axiosCommon.patch(`api/teams/${id}`, {
+    const { data } = await axiosCommon.patch(`team/teams/${id}`, {
       addMember: teamMembers,
     });
-
-    console.log(data);
+    if (data.modifiedCount > 0) {
+      refetch();
+      toast.success("add member successfully");
+    }
   };
 
   console.log(teamMembers, id);
@@ -28,7 +33,7 @@ const TeamDialog = ({ id }) => {
     <>
       <Dialog>
         <DialogTrigger className="flex-1 font-medium hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm ">
-          Add People
+          Add Member
         </DialogTrigger>
         <DialogContent>
           <DialogTitle>Add to Team member</DialogTitle>
@@ -36,13 +41,19 @@ const TeamDialog = ({ id }) => {
             Grow your team and work better together. Adding people to this team
             gives them access to all the team’s work. Learn more about teams.
           </p>
-          <input
-            onChange={(e) => setTeamMembers(e.target.value)}
-            type="text"
-            placeholder="add member"
-            className="w-full rounded-sm px-2 py-3"
-          />
-          <Button onClick={handlesubmit}>add</Button>
+          <form onSubmit={handlesubmit}>
+            <input
+              onChange={(e) => setTeamMembers(e.target.value)}
+              type="email"
+              placeholder="add member"
+              className="w-full rounded-sm px-2 py-3 border border-gray-50 focus:border-gray-200"
+              required
+            />
+
+            <Button type="submit" className="px-6 rounded-md py-2 mt-3">
+              Add
+            </Button>
+          </form>
         </DialogContent>
       </Dialog>
       ;

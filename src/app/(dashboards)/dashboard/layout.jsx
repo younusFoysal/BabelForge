@@ -24,9 +24,9 @@ const layout = ({ children }) => {
   const session = useSession();
   const router = useRouter();
 
-  // if (!session?.data?.user) {
-  //   return router.push("/");
-  // }
+  if (!session?.data?.user) {
+    return router.push("/");
+  }
 
   return (
     <div className="flex min-h-screen bg-white dark:bg-[#070F2B] dark:text-white">
