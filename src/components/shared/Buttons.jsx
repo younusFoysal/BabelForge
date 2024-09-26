@@ -1,12 +1,22 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
+import {useSession} from "next-auth/react";
+import toast from "react-hot-toast";
 
 const Button = ({ text, className, icon }) => {
   const router = useRouter();
+  const session = useSession();
 
   const handleClick = () => {
+
+
+    if (!session?.data?.user){
+      return toast.error("Login First")
+    }
+
     router.push("/dashboard");
+
   };
   return (
     <button

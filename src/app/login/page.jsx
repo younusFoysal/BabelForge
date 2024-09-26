@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
-import React from "react";
+import React, {useState} from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -48,6 +48,7 @@ const formSchema = z.object({
 const Login = () => {
   const session = useSession();
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -58,6 +59,7 @@ const Login = () => {
   });
 
   const onSubmit = async (value) => {
+    setLoading(true)
     const { email, password } = value;
     const res = await signIn("credentials", {
       email,
@@ -65,6 +67,7 @@ const Login = () => {
       redirect: false,
     });
     if (res.status === 200) {
+      setLoading(false)
       router.push("/dashboard");
     }
   };
@@ -135,7 +138,7 @@ const Login = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {!loading ? "Continue" : "Loading"}
                 </Button>
               </form>
             </Form>
