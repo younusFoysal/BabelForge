@@ -8,13 +8,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Button } from "../ui/button";
 
-const TeamDialog = () => {
+const TeamDialog = ({ id }) => {
   const axiosCommon = useAxiosCommon();
   const [teamMembers, setTeamMembers] = useState();
 
-  const handlesubmit = () => {};
+  const handlesubmit = async () => {
+    // Add team member to the project
+    const { data } = await axiosCommon.patch(`api/teams/${id}`, {
+      addMember: teamMembers,
+    });
 
+    console.log(data);
+  };
+
+  console.log(teamMembers, id);
   return (
     <>
       <Dialog>
@@ -33,6 +42,7 @@ const TeamDialog = () => {
             placeholder="add member"
             className="w-full rounded-sm px-2 py-3"
           />
+          <Button onClick={handlesubmit}>add</Button>
         </DialogContent>
       </Dialog>
       ;

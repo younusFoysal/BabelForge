@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Card } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import { BsThreeDots } from "react-icons/bs";
 import { HiExclamationCircle } from "react-icons/hi";
 import { FaCheckSquare } from "react-icons/fa";
@@ -13,11 +13,12 @@ import { Button } from "@/components/ui/button";
 import TeamDialog from "./TeamDialog";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
+import MemberBox from "./MemberBox";
 
 const Team = () => {
   const axiosCommon = useAxiosCommon();
   const {
-    data: team = {},
+    data: team = [],
     isLoading,
     isError,
   } = useQuery({
@@ -29,8 +30,13 @@ const Team = () => {
       return data;
     },
   });
-  const { members } = team[0];
-  console.log(members);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const { members, _id } = team[0];
+
   return (
     <div>
       <div className="py-20 flex lg:flex-row flex-col justify-between items-start gap-10 lg:p-0 p-4">
@@ -45,7 +51,7 @@ const Team = () => {
             </p>
 
             <div className="flex justify-between item-center gap-2 text-center ">
-              <TeamDialog />
+              <TeamDialog id={_id} />
 
               <span className="hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm w-10 cursor-pointer">
                 <BsThreeDots className="flex flex-col justify-center item-center text-2xl"></BsThreeDots>
@@ -70,18 +76,8 @@ const Team = () => {
               {/* member 1 */}
               <div className="flex  items-center gap-4  ">
                 <div className="flex  hover:bg-gray-200 w-full p-1 rounded-md group flex-col gap-3">
-                  {members.map((member, index) => (
-                    <div className="flex items-center gap-2" key={index}>
-                      <p className="rounded-full p-1">
-                        <Avatar className="w-8 h-8">
-                          <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                        </Avatar>
-                      </p>
-                      {member}
-                      <p className="ml-10 group-hover:inline lg:hidden cursor-pointer">
-                        <BsThreeDots className="text-xl" />
-                      </p>
-                    </div>
+                  {members?.map((member, index) => (
+                    <MemberBox member={member} key={index} />
                   ))}
                 </div>
               </div>
