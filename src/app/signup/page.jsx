@@ -65,6 +65,7 @@ const Signup = () => {
 
   const onSubmit = async (value) => {
     const { email, password, username, name } = value;
+
     console.log("Value: ",value)
     try {
       const { data } = await axios.post(
