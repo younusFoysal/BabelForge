@@ -11,9 +11,12 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
+import { Toaster } from "../ui/toaster";
 
 export function UpdateProfile({ user }) {
+  const { toast } = useToast();
   const handleUpdate = (e) => {
     e.preventDefault();
     const userName = e.target.username.value;
@@ -39,6 +42,7 @@ export function UpdateProfile({ user }) {
       .then((data) => {
         if (data.data.modifiedCount > 0 || data.data.upsertedCount > 0) {
           console.log("Test file", data.data);
+          toast({ title: "Update", description: "Successfully Updated" });
         }
       })
       .catch((e) => console.log(e.message));
@@ -82,10 +86,10 @@ export function UpdateProfile({ user }) {
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="email" className="text-right">
-                email
+                Email
               </Label>
               <Input
-                disable
+                disabled
                 id="email"
                 defaultValue={user?.email}
                 className="col-span-3"
@@ -131,6 +135,7 @@ export function UpdateProfile({ user }) {
           </DialogFooter>
         </form>
       </DialogContent>
+      <Toaster />
     </Dialog>
   );
 }
