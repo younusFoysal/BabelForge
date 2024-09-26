@@ -58,7 +58,7 @@ const Navbar = () => {
   const NavbarItems = [
     {
       title: "Product",
-      href: "/features/dashboards",
+      href: "/features",
     },
     {
       title: "Price",

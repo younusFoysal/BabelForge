@@ -18,9 +18,6 @@ const Dashboards = () => {
           row={'row'}
           subtitle={'High-level overview'}
           title={'Gain real-time insights'}
-          row={'flex-row'}
-          subtitle={'High-level overview'}
-          title={'Gain real-time insights'}
           description={
             'Easily analyze your data and simplify strategic decision-making with custom dashboards. Run reports, create summaries, track progress, and get a high-level overview of your entire organization.'
           }
@@ -30,9 +27,6 @@ const Dashboards = () => {
           row={'row-reverse'}
           subtitle={'Dashboard customization'}
           title={'View data your way'}
-          row={'flex-row-reverse'}
-          subtitle={'Dashboard customization'}
-          title={'View data your way'}
           description={
             'Build the reporting tools you need for your business with customizable no-code dashboards. Add widgets such as charts and timeline to help further visualize your data and stay up-to-date on progress and results.'
           }
@@ -40,9 +34,6 @@ const Dashboards = () => {
         />
         <DashboardCard
           row={'row'}
-          subtitle={'Resource management'}
-          title={'Prioritize work smarter'}
-          row={'flex-row'}
           subtitle={'Resource management'}
           title={'Prioritize work smarter'}
           description={

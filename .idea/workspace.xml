@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="signup fix">
-      <change afterPath="$PROJECT_DIR$/src/components/LoadingSpinner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Profile fix">
+      <change afterPath="$PROJECT_DIR$/src/app/features/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/signup/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signup/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/dashboards/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/dashboards/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +119,7 @@
       <workItem from="1727197626262" duration="4185000" />
       <workItem from="1727202895928" duration="926000" />
       <workItem from="1727207125868" duration="1078000" />
+      <workItem from="1727381122515" duration="1218000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -376,7 +377,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727377792900</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Profile fix">
+      <option name="closed" value="true" />
+      <created>1727381084146</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1727381084146</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +404,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Link added" />
     <MESSAGE value="nav Responsive added" />
     <MESSAGE value="Nav Logo Added" />
     <MESSAGE value="Title &amp; Fav Icon added" />
@@ -420,6 +428,7 @@
     <MESSAGE value="update" />
     <MESSAGE value="api link update" />
     <MESSAGE value="signup fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="signup fix" />
+    <MESSAGE value="Profile fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile fix" />
   </component>
 </project>
