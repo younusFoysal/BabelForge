@@ -1,10 +1,10 @@
-"use client";
+"use client"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import React from "react";
 import { FaNetworkWired } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { GoOrganization, GoPlus } from "react-icons/go";
@@ -15,7 +15,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { UpdateProfile } from "../Profile/UpdateProfile";
 
 const Profile = () => {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = React.useState([]);
   const session = useSession();
   const users = session?.data?.user;
 
