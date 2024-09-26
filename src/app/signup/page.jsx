@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
-import React from "react";
+import React, {useState} from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,6 +21,8 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
+import toast from "react-hot-toast";
+import {SiSpinrilla} from "react-icons/si";
 
 const formSchema = z.object({
   username: z.string().min(4, {
@@ -52,6 +54,9 @@ const formSchema = z.object({
 });
 
 const Signup = () => {
+
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -64,6 +69,7 @@ const Signup = () => {
   });
 
   const onSubmit = async (value) => {
+    setLoading(true)
     const { email, password, username, name } = value;
 
     console.log("Value: ",value)
@@ -81,6 +87,8 @@ const Signup = () => {
         }
       );
       if (data.insertedId) {
+        setLoading(false)
+        toast.success("Sign up successfully.");
         router.push(`/login`);
       }
     } catch (e) {
@@ -173,7 +181,8 @@ const Signup = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {!loading ? "Continue" : <> <SiSpinrilla className="animate-spin mr-2" /> Loading </>
+                  }
                 </Button>
               </form>
             </Form>
