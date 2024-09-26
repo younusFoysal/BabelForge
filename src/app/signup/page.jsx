@@ -27,6 +27,10 @@ const formSchema = z.object({
     message: "Username must be at least 4 characters.",
   }),
 
+  name: z.string().min(4, {
+    message: "Username must be at least 4 characters.",
+  }),
+
   email: z.string().email({
     message: "Invalid email address.",
   }),
@@ -61,6 +65,7 @@ const Signup = () => {
 
   const onSubmit = async (value) => {
     const { email, password, username, name } = value;
+    console.log("Value: ",value)
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,
