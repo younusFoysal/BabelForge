@@ -20,7 +20,7 @@ const Profile = () => {
   const users = session?.data?.user;
 
   axios
-    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/tarek@gmail.com`)
+    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${users?.email}`)
     .then((data) => setUser(data.data))
     .catch((e) => console.log("error usersss", e));
 
@@ -58,7 +58,7 @@ const Profile = () => {
                   <ImBriefcase className="text-lg"></ImBriefcase>
                 </span>
                 <p className="hover:bg-gray-200 w-full p-2 rounded-md">
-                  Your department
+                  {user?.department ? user?.department : <p>No Department</p>}
                 </p>
               </div>
               {/* 2*/}
@@ -67,7 +67,7 @@ const Profile = () => {
                   <FaNetworkWired className="text-lg"></FaNetworkWired>
                 </span>
                 <p className="hover:bg-gray-200 w-full p-2 rounded-md">
-                  Your department
+                  Your Network
                 </p>
               </div>
               {/* 3 */}
@@ -76,7 +76,11 @@ const Profile = () => {
                   <GoOrganization className="text-lg"></GoOrganization>
                 </span>
                 <p className="hover:bg-gray-200 w-full p-2 rounded-md">
-                  Your organization
+                  {user?.organization ? (
+                    user?.organization
+                  ) : (
+                    <p>No Organization</p>
+                  )}
                 </p>
               </div>
               {/* 4*/}
@@ -86,7 +90,7 @@ const Profile = () => {
                 </span>
 
                 <p className="hover:bg-gray-200 w-full p-2 rounded-md">
-                  Your location
+                  {user?.location ? user?.location : <p>No location</p>}
                 </p>
               </div>
             </div>
