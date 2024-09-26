@@ -1,5 +1,6 @@
 import Faq from "@/components/Pricing/Faq";
 import PriceCard from "@/components/Pricing/PriceCard";
+import ProjectPage from "@/components/Projects/ProjectPage";
 
 const Pricing = () => {
   return (
@@ -8,6 +9,7 @@ const Pricing = () => {
       <div className="lg:pt-10">
         <Faq />
       </div>
+
     </section>
   );
 };
