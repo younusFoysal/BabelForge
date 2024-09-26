@@ -69,6 +69,10 @@ const Login = () => {
     }
   };
 
+  if (session?.data?.user) {
+    return router.push("/dashboard");
+  }
+
   return (
     <div className="flex">
       <div className="hidden lg:flex">
