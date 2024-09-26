@@ -1,16 +1,15 @@
 "use client";
-import Link from "next/link";
-import logo from "@/image/Home/babellogo.png";
-import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { signOut, useSession } from "next-auth/react";
-import { usePathname } from "next/navigation";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Button } from "../ui/button";
+import logo from "@/image/Home/babellogo.png";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
