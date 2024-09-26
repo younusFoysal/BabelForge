@@ -12,6 +12,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { ImBriefcase } from "react-icons/im";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
+import { UpdateProfile } from "../Profile/UpdateProfile";
 
 const Profile = () => {
   const [user, setUser] = useState([]);
@@ -41,8 +42,8 @@ const Profile = () => {
             </p>
           </div>
           <p className="text-2xl mb-6">{user?.username}</p>
-          <div className="text-center bg-gray-200 p-2 mb-2 rounded-md">
-            <h3 className="font-medium">Manage Your Account</h3>
+          <div className="p-2 mb-2 rounded-md">
+            <UpdateProfile user={user} />
           </div>
 
           {/* card content */}
