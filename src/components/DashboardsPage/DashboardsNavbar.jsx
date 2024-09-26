@@ -1,16 +1,16 @@
 "use client";
+import Link from "next/link";
+import logo from "@/image/Home/babellogo.png";
+import Image from "next/image";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { signOut, useSession } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import logo from "@/image/Home/babellogo.png";
-import { useSession } from "next-auth/react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ModeToggle } from "../Theme/ModeToggle";
+import { Button } from "../ui/button";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
@@ -32,7 +32,7 @@ const DashboardNavbar = () => {
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 dark:bg-[#2E073F] dark:border-b-[#2e2b30] border-b-gray-50 z-[999]">
+    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3">
         {/* logo */}
         <Link href="/">
@@ -61,7 +61,6 @@ const DashboardNavbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 mr-4">
-          <ModeToggle />
           {user && (
             <Popover>
               <PopoverTrigger>
@@ -73,8 +72,20 @@ const DashboardNavbar = () => {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
-              <PopoverContent>
-                <h1 className="p-6">profile nav</h1>
+              <PopoverContent className="flex-col gap-2 p-4 flex ">
+                <Link
+                  href="/dashboard/profile"
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md text-center"
+                >
+                  User profile
+                </Link>
+                <button
+                  onClick={() => signOut()}
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md"
+                >
+                  {" "}
+                  logout
+                </button>
               </PopoverContent>
             </Popover>
           )}

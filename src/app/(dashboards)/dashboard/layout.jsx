@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   IoIosArrowDropdownCircle,
@@ -15,8 +17,17 @@ import {
 import { CgList } from "react-icons/cg";
 import { IoHomeOutline } from "react-icons/io5";
 import { MdPostAdd } from "react-icons/md";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const layout = ({ children }) => {
+  const session = useSession();
+  const router = useRouter();
+
+  if (!session?.data?.user) {
+    return router.push("/");
+  }
+
   return (
     <div className="flex min-h-screen bg-white dark:bg-[#070F2B] dark:text-white">
       {/* sidebar drawer small device */}
