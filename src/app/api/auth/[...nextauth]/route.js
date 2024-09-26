@@ -21,7 +21,7 @@ const handler = NextAuth({
 
         // try {
         //   const { data } = await axios.get(
-        //     `http://localhost:5000/api/user/${email}`
+        //     `https://babelforgeserver.vercel.app/api/user/${email}`
         //   );
 
         //   if (!data) {

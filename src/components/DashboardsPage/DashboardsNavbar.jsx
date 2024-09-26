@@ -18,7 +18,7 @@ const DashboardNavbar = () => {
   const NavbarItems = [
     {
       title: "Project",
-      href: "/dashboard/project",
+      href: "/dashboard/projects",
     },
     {
       title: "team",
