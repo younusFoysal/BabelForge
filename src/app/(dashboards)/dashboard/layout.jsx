@@ -21,7 +21,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const layout = ({ children }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
   if (!session?.data?.user) {
