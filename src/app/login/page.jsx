@@ -23,6 +23,7 @@ import axios from "axios";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
+import {SiSpinrilla} from "react-icons/si";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -138,7 +139,8 @@ const Login = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  {!loading ? "Continue" : "Loading"}
+                  {!loading ? "Continue" : <> <SiSpinrilla className="animate-spin mr-2" /> Loading </>
+                  }
                 </Button>
               </form>
             </Form>

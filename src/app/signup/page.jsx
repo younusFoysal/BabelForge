@@ -22,6 +22,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
 import toast from "react-hot-toast";
+import {SiSpinrilla} from "react-icons/si";
 
 const formSchema = z.object({
   username: z.string().min(4, {
@@ -180,7 +181,8 @@ const Signup = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  {!loading ? "Continue" : "Loading"}
+                  {!loading ? "Continue" : <> <SiSpinrilla className="animate-spin mr-2" /> Loading </>
+                  }
                 </Button>
               </form>
             </Form>
