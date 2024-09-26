@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -20,12 +21,14 @@ export function UpdateProfile({ user }) {
     const department = e.target.department.value;
     const organization = e.target.organization.value;
     const location = e.target.location.value;
+    const email = e.target.email.value;
     const data = {
       username: userName,
       name: displayName,
       department: department,
       organization: organization,
       location: location,
+      email: email,
     };
 
     axios
@@ -77,6 +80,17 @@ export function UpdateProfile({ user }) {
                 className="col-span-3"
               />
             </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <Label htmlFor="email" className="text-right">
+                email
+              </Label>
+              <Input
+                disable
+                id="email"
+                defaultValue={user?.email}
+                className="col-span-3"
+              />
+            </div>
             {/* department */}
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="department" className="text-right">
@@ -110,7 +124,10 @@ export function UpdateProfile({ user }) {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            <DialogClose>
+              {" "}
+              <Button type="submit">Save changes</Button>
+            </DialogClose>
           </DialogFooter>
         </form>
       </DialogContent>
