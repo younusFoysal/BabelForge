@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="carusel added">
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutStatistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutStatistics.jsx" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="carusel fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -339,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727292804794</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="carusel fix">
+      <option name="closed" value="true" />
+      <created>1727293301761</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1727293301761</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,7 +365,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="tailwind check done" />
     <MESSAGE value="Swiper added" />
     <MESSAGE value="Image path fix" />
     <MESSAGE value="All ok" />
@@ -383,6 +389,7 @@
     <MESSAGE value="Server api link added" />
     <MESSAGE value="turbo added" />
     <MESSAGE value="carusel added" />
-    <option name="LAST_COMMIT_MESSAGE" value="carusel added" />
+    <MESSAGE value="carusel fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="carusel fix" />
   </component>
 </project>
