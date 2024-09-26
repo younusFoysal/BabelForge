@@ -1,6 +1,7 @@
 'use client';
 import DetailsCard from '@/components/Dashboards/MainPage/DetailsCard';
 import { PieCharts } from '@/components/Dashboards/MainPage/PieCharts';
+import TeamInfo from '@/components/Dashboards/MainPage/TeamInfo';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MdOutlinePending, MdOutlinePendingActions, MdTask } from 'react-icons/md';
 import { RiTeamLine } from 'react-icons/ri';
@@ -33,8 +34,9 @@ const page = () => {
       </section>
 
       {/* Charts Section */}
-      <section>
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <PieCharts />
+        <TeamInfo />
       </section>
     </div>
   );
