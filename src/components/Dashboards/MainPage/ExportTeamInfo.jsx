@@ -10,51 +10,67 @@ import { ExcelColumn, default as ExcelFile, ExcelSheet } from 'react-data-export
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { IoPrintOutline } from 'react-icons/io5';
+import { useState } from 'react';
+import { axiosCommon } from '@/lib/axiosCommon';
 
-const dataSet1 = [
-  {
-    name: 'Morsidul',
-    amount: 30000,
-    sex: 'M',
-    is_married: true,
-  },
-  {
-    name: 'Nahid',
-    amount: 355000,
-    sex: 'M',
-    is_married: false,
-  },
-  {
-    name: 'Faisal',
-    amount: 450000,
-    sex: 'M',
-    is_married: true,
-  },
-  {
-    name: 'Tofayel',
-    amount: 450500,
-    sex: 'M',
-    is_married: true,
-  },
-  {
-    name: 'Tarek',
-    amount: 550500,
-    sex: 'M',
-    is_married: true,
-  },
-  {
-    name: 'Saif',
-    amount: 450500,
-    sex: 'M',
-    is_married: false,
-  },
-];
+// const dataSet1 = [
+//   {
+//     name: 'Morsidul',
+//     amount: 30000,
+//     sex: 'M',
+//     is_married: true,
+//   },
+//   {
+//     name: 'Nahid',
+//     amount: 355000,
+//     sex: 'M',
+//     is_married: false,
+//   },
+//   {
+//     name: 'Faisal',
+//     amount: 450000,
+//     sex: 'M',
+//     is_married: true,
+//   },
+//   {
+//     name: 'Tofayel',
+//     amount: 450500,
+//     sex: 'M',
+//     is_married: true,
+//   },
+//   {
+//     name: 'Tarek',
+//     amount: 550500,
+//     sex: 'M',
+//     is_married: true,
+//   },
+//   {
+//     name: 'Saif',
+//     amount: 450500,
+//     sex: 'M',
+//     is_married: false,
+//   },
+// ];
 
 export function ExportTeamInfo({ className }) {
+  const [users, setUsers] = useState();
+
+  // Get all user
+  axiosCommon
+    .get('api/users')
+    .then(res => {
+      setUsers(res.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
   const [date, setDate] = React.useState({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   });
+
+  console.log(users);
 
   return (
     <div className="flex items-center gap-3">
@@ -102,11 +118,12 @@ export function ExportTeamInfo({ className }) {
           </TooltipProvider>
         }
       >
-        <ExcelSheet data={dataSet1} name="Employees">
+        <ExcelSheet data={users} name="Employees">
           <ExcelColumn label="Name" value="name" />
-          <ExcelColumn label="Taka Poisa" value="amount" />
-          <ExcelColumn label="Gender" value="sex" />
-          <ExcelColumn label="Marital Status" value={col => (col.is_married ? 'Married' : 'Single')} />
+          <ExcelColumn label="Email" value="email" />
+          <ExcelColumn label="Location" value="location" />
+          <ExcelColumn label="Department" value="department" />
+          <ExcelColumn label="Organization" value="organization" />
         </ExcelSheet>
       </ExcelFile>
       {/* Print Button */}
