@@ -20,7 +20,7 @@ const Profile = () => {
   const users = session?.data?.user;
 
   axios
-    .get(`http://localhost:5000/api/user/tarek@gmail.com`)
+    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/tarek@gmail.com`)
     .then((data) => setUser(data.data))
     .catch((e) => console.log("error usersss", e));
 
