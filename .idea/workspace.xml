@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="api link update">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="signup fix">
+      <change afterPath="$PROJECT_DIR$/src/components/LoadingSpinner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/signup/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signup/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/avatar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +85,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge" />
@@ -363,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727376540211</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="signup fix">
+      <option name="closed" value="true" />
+      <created>1727377792900</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1727377792900</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +395,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="All ok" />
     <MESSAGE value="Link added" />
     <MESSAGE value="nav Responsive added" />
     <MESSAGE value="Nav Logo Added" />
@@ -407,6 +419,7 @@
     <MESSAGE value="carusel fix" />
     <MESSAGE value="update" />
     <MESSAGE value="api link update" />
-    <option name="LAST_COMMIT_MESSAGE" value="api link update" />
+    <MESSAGE value="signup fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="signup fix" />
   </component>
 </project>

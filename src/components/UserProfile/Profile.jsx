@@ -42,12 +42,19 @@ const Profile = () => {
                         : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
                     }
                   />
-                  <AvatarFallback>TA</AvatarFallback>
+                  <AvatarFallback>Bable</AvatarFallback>
                 </Avatar>
               </span>
             </p>
           </div>
-          <p className="text-2xl mb-6">{user?.username}</p>
+
+          <div>
+            <p className="text-2xl mb-2">Name: {user?.name}</p>
+            <p className="text-lg mb-6 font-light">Username: {user?.username}</p>
+
+          </div>
+
+
           <div className="p-2 mb-2 rounded-md">
             <UpdateProfile user={user} />
           </div>
@@ -205,7 +212,7 @@ const Profile = () => {
                       <AvatarFallback>TA</AvatarFallback>
                     </Avatar>
                   </span>
-                  Tofayel Ahmed
+                  Morshidul Rahman
                 </p>
               </div>
               {/* member 1 */}
@@ -213,11 +220,11 @@ const Profile = () => {
                 <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
                   <span className=" rounded-full p-1">
                     <Avatar className="w-8 h-8">
-                      <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
+                      <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
                       <AvatarFallback>TA</AvatarFallback>
                     </Avatar>
                   </span>
-                  Tofayel Ahmed
+                  Foysal
                 </p>
               </div>
               {/* member 1 */}
@@ -225,11 +232,11 @@ const Profile = () => {
                 <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
                   <span className=" rounded-full p-1">
                     <Avatar className="w-8 h-8">
-                      <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
+                      <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
                       <AvatarFallback>TA</AvatarFallback>
                     </Avatar>
                   </span>
-                  Tofayel Ahmed
+                  Tarek
                 </p>
               </div>
             </div>
