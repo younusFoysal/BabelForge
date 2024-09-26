@@ -4,6 +4,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import axios from "axios";
 import { AlignJustify, ArrowRight, X } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -17,6 +18,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import Button from "./Buttons";
 
 const Navbar = () => {
+  const [users, setUsers] = useState([]);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const session = useSession();
   const user = session?.data?.user;
@@ -24,6 +27,11 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  axios
+    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${user?.email}`)
+    .then((data) => setUsers(data.data))
+    .catch((e) => console.log("error usersss", e));
 
   // conditonial navbar
   if (pathname.includes("login")) {
@@ -104,7 +112,11 @@ const Navbar = () => {
                   <PopoverTrigger>
                     <Avatar>
                       <AvatarImage
-                        src="https://github.com/shadcn.png"
+                        src={
+                          users?.image
+                            ? users?.image
+                            : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                        }
                         className="w-16 h-16 rounded-full object-cover"
                       />
                       <AvatarFallback>CN</AvatarFallback>
