@@ -49,9 +49,7 @@ const Page = () => {
                 <div className="bg-[#eceff8] dark:bg-[#AD49E1] p-20 flex flex-col justify-center">
                     <div className="text-center space-y-5 container mx-auto">
                         <h1 className="text-3xl md:text-4xl font-bold">Make decisions with confidence</h1>
-                        <p className="text-lg">Ready to see how monday.com improves alignment across teams?</p>
-                        <h1 className="text-3xl md:text-4xl font-bold">Make decisions with confidence</h1>
-                        <p className="text-lg">Ready to see how babelforge.com improves alignment across teams?</p>
+                        <p className="text-lg">Ready to see how bableforge.com improves alignment across teams?</p>
                         <div className="flex justify-center">
                             <Button text="get started" icon={<ArrowRight size={20}/>}/>
                         </div>

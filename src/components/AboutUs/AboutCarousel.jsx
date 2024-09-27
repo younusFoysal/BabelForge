@@ -92,7 +92,7 @@ const AboutCarousel = () => {
           <MdOutlineEventAvailable className="text-[55px] mx-auto block mb-4" />
           <p className="text-[#6161ff] mb-5 font-semibold text-3xl">Community Events</p>
           <p className="text-xl mb-4">
-            We have launched a new series of events for our community , including live sessions with monday.com product managers. These
+            We have launched a new series of events for our community , including live sessions with bableforge.com product managers. These
             sessions are an opportunity for our community to connect directly with the team behind the features that they are using every
             day.
           </p>
@@ -102,8 +102,8 @@ const AboutCarousel = () => {
           <HiOutlineLightBulb className="text-[50px] mx-auto block mb-4" />
           <p className="text-[#6161ff] mb-5 font-semibold text-3xl"> We are onto something...</p>
           <p className="text-xl mb-4">
-            The monday.com co-founders discovered deep, shared pain points across teams around the world and built a prototype for what is
-            known today as monday.com.
+            The bableforge.com co-founders discovered deep, shared pain points across teams around the world and built a prototype for what is
+            known today as bableforge.com.
           </p>
           <p className="font-semibold text-[18px]"> April 2024</p>
         </div>
@@ -111,7 +111,7 @@ const AboutCarousel = () => {
           <RiCustomerService2Fill className="text-[50px] mx-auto block mb-4" />
           <p className="text-[#6161ff] mb-5 font-semibold text-3xl"> Our first customers!</p>
           <p className="text-xl mb-4">
-            After two years, monday.com officially launched from a tiny “office” (but really a vacated apartment) in Tel Aviv and hosted its{' '}
+            After two years, bableforge.com officially launched from a tiny “office” (but really a vacated apartment) in Tel Aviv and hosted its{' '}
             <a className="text-[#6161ff]" href="#">
               first board meeting
             </a>{' '}

@@ -10,7 +10,7 @@ const AboutSecondBanner = () => {
       {/* top */}
       <div className="flex flex-col lg:flex-row justify-between items-center gap-0 lg:gap-10 mx-2 lg:px-10 ">
         {/* left-text*/}
-        <CommonText text="As we integrated and automated, built workflows, created templates, and expanded our community beyond our wildest expectations, we continued to grow. It is through this journey that the monday.com Work OS was born."></CommonText>
+        <CommonText text="As we integrated and automated, built workflows, created templates, and expanded our community beyond our wildest expectations, we continued to grow. It is through this journey that the bableforge.com Work OS was born."></CommonText>
         {/* right-images */}
         <div className="w-full lg:w-3/5 flex justify-center gap-5 mt-12">
           <figure className="w-1/3 h-[350px]">

@@ -54,7 +54,7 @@ const AboutStatistics = () => {
               k+
             </h3>
             <p className="text-sm md:text-lg">
-              customers use monday.com to manage their work
+              customers use bableforge.com to manage their work
             </p>
           </div>
         </div>

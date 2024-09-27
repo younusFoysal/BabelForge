@@ -28,7 +28,7 @@ const ContactText = () => {
         </div>
 
         <p className="mt-4">
-          Meet with a product consultant to see how monday.com can fit your
+          Meet with a product consultant to see how bableforge.com can fit your
           exact business needs
         </p>
       </div>
