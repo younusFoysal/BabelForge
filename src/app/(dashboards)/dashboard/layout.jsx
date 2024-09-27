@@ -87,6 +87,15 @@ const layout = ({ children }) => {
                     Boards
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href={"/dashboard/team"}
+                    className="py-2 flex items-center gap-2 dark:bg-white"
+                  >
+                    <CgList />
+                    Team
+                  </Link>
+                </li>
               </ul>
             </div>
           </DrawerContent>

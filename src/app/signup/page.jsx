@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -49,6 +49,7 @@ const formSchema = z.object({
 
 const Signup = () => {
   const router = useRouter();
+  const [loading, setloading] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,7 +62,7 @@ const Signup = () => {
 
   const onSubmit = async (value) => {
     const { email, password, username, name } = value;
-
+    setloading(true);
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,
@@ -76,6 +77,7 @@ const Signup = () => {
         }
       );
       if (data.insertedId) {
+        setloading(false);
         router.push(`/login`);
       }
     } catch (e) {
@@ -168,7 +170,7 @@ const Signup = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {loading ? "loading....." : "Continue"}
                 </Button>
               </form>
             </Form>

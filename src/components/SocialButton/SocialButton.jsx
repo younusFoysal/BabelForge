@@ -8,13 +8,12 @@ export const SocialButton = () => {
   const session = useSession();
   const router = useRouter();
 
-  const handlesocail = (provider) => {
-    const resp = signIn(provider, { redirect: false });
+  const handlesocail = async (provider) => {
+    const resp = await signIn(provider, {
+      redirect: true,
+      callbackUrl: "/dashboard",
+    });
   };
-
-  if (session.status == "authenticated") {
-    router.push("/dashboard");
-  }
 
   return (
     <button
