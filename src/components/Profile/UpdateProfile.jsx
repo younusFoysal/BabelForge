@@ -53,7 +53,10 @@ export function UpdateProfile({ user }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-full">
+        <Button
+          variant="outline"
+          className="w-full dark:bg-gray-800 dark:border-gray-800"
+        >
           Edit Profile
         </Button>
       </DialogTrigger>

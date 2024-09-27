@@ -99,12 +99,12 @@ const Signup = () => {
       <div className="flex justify-center items-center w-full lg:w-[60%] h-screen">
         <div className="w-[90%] lg:w-[60%]">
           <h1
-            className="text-3xl md:text-4xl font-bold text-center text-gray-700
+            className="text-3xl md:text-4xl font-bold text-center text-gray-700 dark:text-white
           "
           >
             Welcome to BabelForge
           </h1>
-          <p className="text-center py-4 text-gray-600">
+          <p className="text-center py-4 text-gray-600 dark:text-white">
             {" "}
             Get started - it&apos;s free. No credit card needed.
           </p>
@@ -122,6 +122,7 @@ const Signup = () => {
                       <FormControl>
                         <Input
                           type="text"
+                          className="bg-transparent border-gray-800"
                           placeholder="Enter your name"
                           {...field}
                         />
@@ -137,6 +138,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="text"
                           placeholder="Enter your username"
                           {...field}
@@ -153,6 +155,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="email"
                           placeholder="Enter your mail"
                           {...field}
@@ -169,6 +172,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="password"
                           placeholder="Enter your password"
                           {...field}
@@ -193,7 +197,7 @@ const Signup = () => {
             {/* from down */}
             <div className="flex items-center my-4 mt-5">
               <div className="flex-grow border-t border-gray-300"></div>
-              <span className="mx-4 text-gray-500">Or</span>
+              <span className="mx-4 text-gray-500 dark:text-white">Or</span>
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
             {/* social button */}

@@ -16,7 +16,7 @@ const Footer = () => {
   if (pathname.includes("login") || pathname.includes("signup")) return null;
 
   return (
-    <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50 dark:text-gray-200 dark:bg-gray-900">
+    <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50 dark:text-gray-200 dark:bg-gray-900 dark:border-t-gray-800 dark:border-t-[1px]">
       {/* upper part */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-7 items-center justify-between border-b pb-12">
         <div className="flex flex-col space-y-1 text-sm">

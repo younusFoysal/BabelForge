@@ -48,16 +48,16 @@ const Team = () => {
               <span className="text-3xl font-semibold">Team:</span>
               <h3 className="text-3xl font-semibold">Babel</h3>
             </div>
-            <div className="flex justify-between item-center gap-2 text-center ">
+            <div className="flex justify-between item-center gap-2 text-center dark:bg-gray-800">
               <TeamDialog id={_id} refetch={refetch} />
-              <span className="hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm w-10 cursor-pointer">
-                <BsThreeDots className="flex flex-col justify-center item-center text-2xl"></BsThreeDots>
+              <span className="p-2 mb-2 rounded-sm w-10 cursor-pointer mt-1">
+                <BsThreeDots className="flex flex-col justify-center item-center text-2xl mr-4"></BsThreeDots>
               </span>
             </div>
           </div>
 
           {/* card content */}
-          <Card className="p-6">
+          <Card className="p-6 dark:bg-gray-800 dark:border-gray-800">
             <div className="space-y-2 border-b border-gray-200 pb-3">
               <p className="flex justify-between items-center">
                 <span className="text-xl font-semibold">Members</span>
@@ -93,7 +93,7 @@ const Team = () => {
             Team Description
           </h3>
 
-          <Card className="mt-4 space-y-2 p-4">
+          <Card className="mt-4 space-y-2 p-4 dark:bg-gray-800 dark:border-gray-800">
             <div className="p-2 mb-2 rounded-md space-y-2">
               <div className="flex justify-start items-center gap-3">
                 <div>
