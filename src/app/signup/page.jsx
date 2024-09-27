@@ -21,10 +21,16 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
+import toast from "react-hot-toast";
+import { SiSpinrilla } from "react-icons/si";
 
 const formSchema = z.object({
   username: z.string().min(4, {
     message: "Username must be at least 4 characters.",
+  }),
+
+  name: z.string().min(4, {
+    message: "name must be at least 4 characters.",
   }),
 
   email: z.string().email({
@@ -48,6 +54,8 @@ const formSchema = z.object({
 });
 
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
+
   const router = useRouter();
   const [loading, setloading] = useState(false);
   const form = useForm({
@@ -61,8 +69,10 @@ const Signup = () => {
   });
 
   const onSubmit = async (value) => {
+    setLoading(true);
     const { email, password, username, name } = value;
-    setloading(true);
+
+    console.log("Value: ", value);
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,
@@ -77,7 +87,8 @@ const Signup = () => {
         }
       );
       if (data.insertedId) {
-        setloading(false);
+        setLoading(false);
+        toast.success("Sign up successfully.");
         router.push(`/login`);
       }
     } catch (e) {
@@ -170,7 +181,14 @@ const Signup = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  {loading ? "loading....." : "Continue"}
+                  {!loading ? (
+                    "Continue"
+                  ) : (
+                    <>
+                      {" "}
+                      <SiSpinrilla className="animate-spin mr-2" /> Loading{" "}
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>

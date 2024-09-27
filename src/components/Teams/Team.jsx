@@ -36,7 +36,7 @@ const Team = () => {
 
   return (
     <div>
-      <div className="h-40 w-full bg-blue-500 flex items-center justify-center">
+      <div className="h-40 w-full bg-blue-500 flex rounded-md items-center justify-center">
         <div className="text-3xl font-semibold text-white">Team Info</div>
       </div>
       <div className="py-20 flex lg:flex-row flex-col justify-between items-start gap-10 lg:p-0 p-4">

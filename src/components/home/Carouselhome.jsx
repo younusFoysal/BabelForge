@@ -133,7 +133,7 @@ function SamplePrevArrow(props) {
 }
 
 // Settings For Carousel
-const Carouselhome = () => {
+const CarouselHome = () => {
   const settings = {
     dots: false,
     centerMode: true,
@@ -220,4 +220,4 @@ const Carouselhome = () => {
   );
 };
 
-export default Carouselhome;
+export default CarouselHome;

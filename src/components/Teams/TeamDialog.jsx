@@ -56,7 +56,7 @@ const TeamDialog = ({ id, refetch }) => {
           </form>
         </DialogContent>
       </Dialog>
-      ;
+
     </>
   );
 };
