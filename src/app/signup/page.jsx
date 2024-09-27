@@ -54,8 +54,6 @@ const formSchema = z.object({
 });
 
 const Signup = () => {
-  const [loading, setLoading] = useState(false);
-
   const router = useRouter();
   const [loading, setloading] = useState(false);
   const form = useForm({
