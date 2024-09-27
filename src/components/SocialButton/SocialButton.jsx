@@ -19,7 +19,7 @@ export const SocialButton = () => {
     <button
       onClick={() => handlesocail("google")}
       type="submit"
-      className="w-full text-center rounded bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-200 text-[14px] py-2"
+      className="w-full text-center rounded bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-200 text-[14px] py-2 dark:text-white dark:hover:bg-black"
     >
       Continue With Google
     </button>

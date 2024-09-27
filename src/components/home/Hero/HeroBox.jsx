@@ -16,7 +16,7 @@ const HeroBox = ({ data, handleChanged }) => {
   return (
     <div
       onClick={handleClick}
-      className="rounded-lg bg-[#ffffff] dark:bg-[#af64d8] p-3 py-5 border border-gray-200 flex flex-col items-center group relative"
+      className="rounded-lg bg-[#ffffff] dark:bg-gray-800 p-3 py-5 border border-gray-200 flex flex-col items-center group relative dark:border-gray-700"
     >
       <input
         type="checkbox"
@@ -24,13 +24,13 @@ const HeroBox = ({ data, handleChanged }) => {
         checked={selected} // lowercase 'checked'
       />
       <div
-        className={`group-hover:text-primary transition-all duration-300 pt-2 ${
+        className={`group-hover:text-primary transition-all duration-300 pt-2 dark:text-white ${
           selected ? "text-primary" : ""
         }`}
       >
         {icon}
       </div>
-      <p className="text-xs mt-2 capitalize">{title}</p>
+      <p className="text-xs mt-2 capitalize dark:text-white">{title}</p>
     </div>
   );
 };

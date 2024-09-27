@@ -39,7 +39,7 @@ const DashboardNavbar = () => {
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999] dark:bg-primary">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3">
         {/* logo */}
         <Link href="/">

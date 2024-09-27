@@ -4,8 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
 import GoogleProvider from "next-auth/providers/google";
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 const handler = NextAuth({
   session: {
     strategy: "jwt",
@@ -17,39 +15,32 @@ const handler = NextAuth({
       credentials: {},
       async authorize(credentials) {
         const { email, password } = credentials;
-
-        // Check if email and password are provided
         if (!email || !password) {
-          return null; // Return null if credentials are missing
+          return null;
         }
-
-        // Add a 2-second delay before proceeding with authentication
-        await delay(2000);
 
         // try {
         //   const { data } = await axios.get(
-        //       `https://babelforgeserver.vercel.app/api/user/${email}`
+        //     `http://localhost:5000/api/user/${email}`
         //   );
-        //
+
         //   if (!data) {
-        //     return null; // User not found
+        //     return null;
         //   }
-        //
-        //   // Validate password
+
         //   const isValid = bcrypt.compareSync(password, data.password);
-        //
+
         //   if (!isValid) {
-        //     return null; // Invalid password
+        //     return null;
         //   }
-        //
-        //   return data; // Return user data on successful login
+
+        //   return data;
         // } catch (error) {
         //   console.error("Error in authorize:", error);
-        // return null
+        //   return null;
         // }
 
-          return credentials; // Handle error by returning null
-
+        return credentials;
       },
     }),
     GoogleProvider({
