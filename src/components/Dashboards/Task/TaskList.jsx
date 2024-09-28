@@ -60,7 +60,7 @@ export default function TaskList() {
       return data;
     },
   });
-  console.log(tasks);
+  //console.log(tasks);
 
 
   const addTask = async (taskName) => {
@@ -144,7 +144,7 @@ export default function TaskList() {
 
   // Function to update task status in the backend
   const updateTaskStatus = async (taskId, newStatus) => {
-    console.log("Update", taskId, newStatus);
+    //console.log("Update", taskId, newStatus);
 
     try {
       await axios.patch(

@@ -43,11 +43,11 @@ export function UpdateProfile({ user }) {
       )
       .then((data) => {
         if (data.data.modifiedCount > 0 || data.data.upsertedCount > 0) {
-          console.log("Test file", data.data);
+          //console.log("Test file", data.data);
           toast({ title: "Update", description: "Successfully Updated" });
         }
       })
-      .catch((e) => console.log(e.message));
+      .catch((e) => //console.log(e.message));
   };
 
   return (

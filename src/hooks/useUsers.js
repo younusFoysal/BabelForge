@@ -13,7 +13,7 @@ const UseUsers = () => {
             return data;
         },
     });
-    console.log(users);
+    //console.log(users);
 
 
     return [users, isLoading, refetch, isError ]

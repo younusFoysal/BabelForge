@@ -20,19 +20,19 @@ const DetailsCard = () => {
 
   // // Get all Teams
   const [teams] = useTeams();
-  console.log("Teams",teams);
+  //console.log("Teams",teams);
 
 
   // // Get all task
   const task = useTasks();
-  console.log("Tasks",task);
+  //console.log("Tasks",task);
 
 
 
   useEffect(() => {
     setPendingTask(task[0]?.filter((task) => task.tproces === "todo"));
   }, []);
-  console.log(pendingTask);
+  //console.log(pendingTask);
 
   if (isLoading) return <div>Loading...</div>;
 

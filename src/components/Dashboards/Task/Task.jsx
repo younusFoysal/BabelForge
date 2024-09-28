@@ -12,7 +12,7 @@ export default function Task({ task }) {
     transform: CSS.Transform.toString(transform),
     transition,
   };
-  console.log(task);
+  //console.log(task);
 
   return (
     <li

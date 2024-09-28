@@ -72,7 +72,7 @@ const Signup = () => {
   const onSubmit = async (value) => {
     setLoading(true);
     const { email, password, username, name } = value;
-    console.log(value)
+    ////console.log(value)
     try {
       const { data } = await axioncommon.post(
         `/api/users/add`,
@@ -86,7 +86,7 @@ const Signup = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log(data);
+      //console.log(data);
       if (data.insertedId) {
         setLoading(false);
         toast.success("Sign up successfully.");

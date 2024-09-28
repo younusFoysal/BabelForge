@@ -28,7 +28,7 @@ const TeamDialog = ({ id, refetch }) => {
     }
   };
 
-  console.log(teamMembers, id);
+  //console.log(teamMembers, id);
   return (
     <>
       <Dialog>

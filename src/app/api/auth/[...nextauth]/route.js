@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
+
+
   session: {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -21,7 +23,7 @@ const handler = NextAuth({
 
         try {
           const { data } = await axios.get(
-            `http://localhost:5000/api/user/${email}`
+            `${process.env.NEXT_PUBLIC_API_URL}/api/user/${email}`
           );
 
           if (!data) {

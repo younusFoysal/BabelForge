@@ -31,7 +31,7 @@ const Profile = () => {
       return data;
     },
   });
-  console.log(user);
+  //console.log(user);
 
 
   if (isLoading) return <div>Loading...</div>;

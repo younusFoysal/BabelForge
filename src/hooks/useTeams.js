@@ -13,7 +13,7 @@ const UseTeams = () => {
             return data;
         },
     });
-    console.log(teams);
+    //console.log(teams);
 
 
     return [teams, isLoading, refetch, isError ]
