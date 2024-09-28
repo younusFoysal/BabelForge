@@ -3,23 +3,18 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { axiosCommon } from '@/lib/axiosCommon';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import {useQuery} from "@tanstack/react-query";
+import useUsers from "@/hooks/useUsers";
 
 const TeamInfo = () => {
-  const [users, setUsers] = useState();
 
-  // Get all user
-  axiosCommon
-    .get('api/users')
-    .then(res => {
-      setUsers(res.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    const [users, isLoading] = useUsers();
+
+    if (isLoading) return <div>Loading...</div>;
 
   return (
-    <Card className="py-3 rounded-xl mb-5 px-4 md:mb-0">
+    <Card className="py-3 rounded-xl mb-5 px-4 md:mb-0 dark:bg-gray-800 dark:border-gray-800">
       <CardHeader className="flex mb-2 flex-row justify-between items-center">
         <CardTitle>Team Members</CardTitle>
         <p className="font-semibold">Total Task</p>

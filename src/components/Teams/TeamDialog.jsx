@@ -28,11 +28,11 @@ const TeamDialog = ({ id, refetch }) => {
     }
   };
 
-  console.log(teamMembers, id);
+  //console.log(teamMembers, id);
   return (
     <>
       <Dialog>
-        <DialogTrigger className="flex-1 font-medium hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm ">
+        <DialogTrigger className="flex-1 font-medium hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm dark:bg-gray-800">
           Add Member
         </DialogTrigger>
         <DialogContent>
@@ -56,7 +56,6 @@ const TeamDialog = ({ id, refetch }) => {
           </form>
         </DialogContent>
       </Dialog>
-
     </>
   );
 };

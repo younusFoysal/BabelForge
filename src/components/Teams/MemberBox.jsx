@@ -30,7 +30,7 @@ const MemberBox = ({ member, refetch, id }) => {
   };
 
   return (
-    <div className="flex w-full justify-between rounded-md border px-4 py-2 items-center">
+    <div className="flex w-full justify-between rounded-md border px-4 py-2 items-center dark:bg-gray-900 dark:border-gray-800">
       <div className="text-sm font-medium leading-none flex items-center gap-2  ">
         <Avatar className="mt-2">
           <AvatarImage

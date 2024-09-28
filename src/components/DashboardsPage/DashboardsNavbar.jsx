@@ -16,12 +16,9 @@ const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
   const user = session?.data?.user;
-  const [users, setUsers] = useState([]);
+  //const [users, setUsers] = useState([]);
 
-  axios
-    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${user?.email}`)
-    .then((data) => setUsers(data.data))
-    .catch((e) => console.log("error usersss", e));
+
 
   const NavbarItems = [
     {
@@ -39,8 +36,8 @@ const DashboardNavbar = () => {
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
-      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3">
+    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999] dark:bg-gray-900 dark:border-b-gray-800 ">
+      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3  ">
         {/* logo */}
         <Link href="/">
           <div className="flex gap-1 justify-center items-center">
@@ -74,8 +71,8 @@ const DashboardNavbar = () => {
                 <Avatar>
                   <AvatarImage
                     src={
-                      users?.image
-                        ? users?.image
+                      user?.image
+                        ? user?.image
                         : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
                     }
                     className="w-16 h-16 rounded-full object-cover"
@@ -83,16 +80,16 @@ const DashboardNavbar = () => {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
-              <PopoverContent className="flex-col gap-2 p-4 flex ">
+              <PopoverContent className="flex-col gap-2 p-4 flex dark:bg-gray-800 dark:border-gray-700 w-[200px] mr-4 mt-4">
                 <Link
                   href="/dashboard/profile"
-                  className="bg-gray-100 py-2 px-4 w-full rounded-md text-center"
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md text-center dark:text-white dark:bg-gray-900"
                 >
-                  User profile
+                  profile
                 </Link>
                 <button
                   onClick={() => signOut()}
-                  className="bg-gray-100 py-2 px-4 w-full rounded-md"
+                  className="bg-gray-100 py-2 px-4 w-full rounded-md dark:text-white dark:bg-gray-900"
                 >
                   {" "}
                   logout

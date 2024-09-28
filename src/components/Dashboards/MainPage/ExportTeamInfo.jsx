@@ -1,95 +1,70 @@
-'use client';
-import * as React from 'react';
-import { CalendarIcon } from '@radix-ui/react-icons';
-import { addDays, format } from 'date-fns';
-import { CiExport } from 'react-icons/ci';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
-import { ExcelColumn, default as ExcelFile, ExcelSheet } from 'react-data-export';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { IoPrintOutline } from 'react-icons/io5';
-import { useState } from 'react';
-import { axiosCommon } from '@/lib/axiosCommon';
+"use client";
+import * as React from "react";
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { addDays, format } from "date-fns";
+import { CiExport } from "react-icons/ci";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  ExcelColumn,
+  default as ExcelFile,
+  ExcelSheet,
+} from "react-data-export";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { IoPrintOutline } from "react-icons/io5";
+import { useState } from "react";
+import { axiosCommon } from "@/lib/axiosCommon";
+import {useQuery} from "@tanstack/react-query";
+import useUsers from "@/hooks/useUsers";
 
-// const dataSet1 = [
-//   {
-//     name: 'Morsidul',
-//     amount: 30000,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Nahid',
-//     amount: 355000,
-//     sex: 'M',
-//     is_married: false,
-//   },
-//   {
-//     name: 'Faisal',
-//     amount: 450000,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Tofayel',
-//     amount: 450500,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Tarek',
-//     amount: 550500,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Saif',
-//     amount: 450500,
-//     sex: 'M',
-//     is_married: false,
-//   },
-// ];
 
 export function ExportTeamInfo({ className }) {
-  const [users, setUsers] = useState();
 
-  // Get all user
-  axiosCommon
-    .get('api/users')
-    .then(res => {
-      setUsers(res.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+
+  const [users, isLoading] = useUsers();
+
+
 
   const [date, setDate] = React.useState({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   });
 
-  console.log(users);
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="flex items-center gap-3">
-      <div className={cn('grid gap-2', className)}>
+      <div className={cn("grid gap-2", className)}>
         <Popover>
           <PopoverTrigger asChild>
             <Button
               id="date"
-              variant={'outline'}
-              className={cn('w-[300px] justify-start text-left font-normal', !date && 'text-muted-foreground')}
+              variant={"outline"}
+              className={cn(
+                "w-[300px] justify-start text-left font-normal",
+                !date && "text-muted-foreground"
+              )}
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {date?.from ? (
                 date.to ? (
                   <>
-                    {format(date.from, 'LLL dd, y')} - {format(date.to, 'LLL dd, y')}
+                    {format(date.from, "LLL dd, y")} -{" "}
+                    {format(date.to, "LLL dd, y")}
                   </>
                 ) : (
-                  format(date.from, 'LLL dd, y')
+                  format(date.from, "LLL dd, y")
                 )
               ) : (
                 <span>Pick a date</span>
@@ -97,7 +72,14 @@ export function ExportTeamInfo({ className }) {
             </Button>
           </PopoverTrigger>
           <PopoverContent className="w-auto p-0" align="start">
-            <Calendar initialFocus mode="range" defaultMonth={date?.from} selected={date} onSelect={setDate} numberOfMonths={2} />
+            <Calendar
+              initialFocus
+              mode="range"
+              defaultMonth={date?.from}
+              selected={date}
+              onSelect={setDate}
+              numberOfMonths={2}
+            />
           </PopoverContent>
         </Popover>
       </div>
