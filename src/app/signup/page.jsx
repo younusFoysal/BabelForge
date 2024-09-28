@@ -23,6 +23,8 @@ import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
 import toast from "react-hot-toast";
 import { SiSpinrilla } from "react-icons/si";
+import useAxiosCommon from "@/lib/axiosCommon";
+
 
 const formSchema = z.object({
   username: z.string().min(4, {
@@ -65,14 +67,15 @@ const Signup = () => {
       password: "",
     },
   });
+  const axioncommon = useAxiosCommon()
 
   const onSubmit = async (value) => {
     setLoading(true);
     const { email, password, username, name } = value;
-
+    console.log(value)
     try {
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,
+      const { data } = await axioncommon.post(
+        `/api/users/add`,
         {
           email,
           password,
@@ -83,6 +86,7 @@ const Signup = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
+      console.log(data);
       if (data.insertedId) {
         setLoading(false);
         toast.success("Sign up successfully.");

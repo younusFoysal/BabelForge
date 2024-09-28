@@ -25,63 +25,23 @@ import {
 import { IoPrintOutline } from "react-icons/io5";
 import { useState } from "react";
 import { axiosCommon } from "@/lib/axiosCommon";
+import {useQuery} from "@tanstack/react-query";
+import useUsers from "@/hooks/useUsers";
 
-// const dataSet1 = [
-//   {
-//     name: 'Morsidul',
-//     amount: 30000,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Nahid',
-//     amount: 355000,
-//     sex: 'M',
-//     is_married: false,
-//   },
-//   {
-//     name: 'Faisal',
-//     amount: 450000,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Tofayel',
-//     amount: 450500,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Tarek',
-//     amount: 550500,
-//     sex: 'M',
-//     is_married: true,
-//   },
-//   {
-//     name: 'Saif',
-//     amount: 450500,
-//     sex: 'M',
-//     is_married: false,
-//   },
-// ];
 
 export function ExportTeamInfo({ className }) {
-  const [users, setUsers] = useState();
 
-  // Get all user
-  axiosCommon
-    .get("api/users")
-    .then((res) => {
-      setUsers(res.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+
+  const [users, isLoading] = useUsers();
+
+
 
   const [date, setDate] = React.useState({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   });
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="flex items-center gap-3">

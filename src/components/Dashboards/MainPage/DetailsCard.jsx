@@ -1,46 +1,41 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { RiTeamLine } from "react-icons/ri";
 import { MdOutlinePendingActions, MdTask } from "react-icons/md";
 import { TbUsersGroup } from "react-icons/tb";
 import { axiosCommon } from "@/lib/axiosCommon";
+import useUsers from "@/hooks/useUsers";
+import useTasks from "@/hooks/useTasks";
+import useTeams from "@/hooks/useTeams";
 
 const DetailsCard = () => {
-  const [users, setUsers] = useState([]);
-  const [team, setTeam] = useState([]);
-  const [task, setTask] = useState([]);
+
+
   const [pendingTask, setPendingTask] = useState([]);
 
-  // Get all user
-  axiosCommon
-    .get("api/users")
-    .then((res) => {
-      setUsers(res.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-  // Get all Team
-  axiosCommon
-    .get("team/teams")
-    .then((res) => {
-      setTeam(res.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
 
-  // Get all task
-  axiosCommon
-    .get("task/tasks")
-    .then((res) => {
-      setTask(res.data);
-      // Set Pending Task
-      setPendingTask(res.data.filter((task) => task.tproces === "todo"));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  // Get all user
+  const [users, isLoading] = useUsers();
+
+
+  // // Get all Teams
+  const [teams] = useTeams();
+  console.log("Teams",teams);
+
+
+  // // Get all task
+  const task = useTasks();
+  console.log("Tasks",task);
+
+
+
+  useEffect(() => {
+    setPendingTask(task[0]?.filter((task) => task.tproces === "todo"));
+  }, []);
+  console.log(pendingTask);
+
+  if (isLoading) return <div>Loading...</div>;
+
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 mb-8 lg:grid-cols-4 gap-5">
@@ -60,11 +55,11 @@ const DetailsCard = () => {
       {/* Total Team Card */}
       <Card className="hover:shadow-lg duration-300 dark:bg-gray-800 dark:border-gray-800">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Total Teams</CardTitle>
+          <CardTitle className="text-sm font-medium">Total teams</CardTitle>
           <RiTeamLine />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl mb-2 font-bold">{team?.length}</div>
+          <div className="text-2xl mb-2 font-bold">{teams?.length}</div>
           <p className="text-xs text-muted-foreground">
             Displays the total number of tasks created .
           </p>
@@ -77,7 +72,7 @@ const DetailsCard = () => {
           <MdTask />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl mb-2 font-bold">{task?.length}</div>
+          <div className="text-2xl mb-2 font-bold">{task[0]?.length}</div>
           <p className="text-xs text-muted-foreground">
             Displays the total number of tasks created .
           </p>

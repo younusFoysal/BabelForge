@@ -27,10 +27,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  axios
-    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${user?.email}`)
-    .then((data) => setUsers(data.data))
-    .catch((e) => console.log("error usersss", e));
+
 
   // conditonial navbar
   if (pathname.includes("login")) {
@@ -112,8 +109,8 @@ const Navbar = () => {
                     <Avatar>
                       <AvatarImage
                         src={
-                          users?.image
-                            ? users?.image
+                          user?.image
+                            ? user?.image
                             : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
                         }
                         className="w-16 h-16 rounded-full object-cover"

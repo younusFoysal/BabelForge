@@ -10,11 +10,12 @@ import {
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import Task from "./Task";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { arrayMove } from "@dnd-kit/sortable";
 import AddTask from "./AddTask";
 import axios from "axios";
-import useAxiosCommon from "@/lib/axiosCommon"; // Import axios for API requests
+import useAxiosCommon from "@/lib/axiosCommon";
+import {useQuery} from "@tanstack/react-query"; // Import axios for API requests
 
 export default function TaskList() {
   const [tasks, setTasks] = useState({
@@ -26,45 +27,41 @@ export default function TaskList() {
   const [activeTask, setActiveTask] = useState(null);
   const axiosCommon = useAxiosCommon();
 
-  useEffect(() => {
-    // Fetch tasks from the API when the component mounts
-    const fetchTasks = async () => {
-      try {
-        const response = await axios.get(
-          "https://babelforgeserver.vercel.app/task/tasks"
-        );
-        const data = response.data;
 
-        // Organize tasks into categories
-        const organizedTasks = {
-          todo: data
+  const { data: taskdata = [], isLoading, refetch } = useQuery({
+    queryKey: ['alltasks'],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`/task/tasks`);
+
+      // Organize tasks into categories
+      const organizedTasks = {
+        todo: taskdata
             .filter((task) => task.tproces === "todo")
             .map((task) => ({
               id: task._id,
               name: task.tname,
             })),
-          inProgress: data
+        inProgress: data
             .filter((task) => task.tproces === "inProgress")
             .map((task) => ({
               id: task._id,
               name: task.tname,
             })),
-          done: data
+        done: data
             .filter((task) => task.tproces === "done")
             .map((task) => ({
               id: task._id,
               name: task.tname,
             })),
-        };
+      };
 
-        setTasks(organizedTasks);
-      } catch (error) {
-        console.error("Error fetching tasks:", error);
-      }
-    };
 
-    fetchTasks();
-  }, [tasks]);
+      setTasks(organizedTasks)
+      return data;
+    },
+  });
+  console.log(tasks);
+
 
   const addTask = async (taskName) => {
     try {
@@ -82,6 +79,7 @@ export default function TaskList() {
       );
 
       if (response.status === 200) {
+        refetch();
         // On success, update the task list locally
         setTasks((prevTasks) => ({
           ...prevTasks,
@@ -175,6 +173,8 @@ export default function TaskList() {
       tasks.done.find((task) => task.id === taskId)
     );
   };
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="p-6">

@@ -17,30 +17,32 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { axiosCommon } from "@/lib/axiosCommon";
+import {useQuery} from "@tanstack/react-query";
+import useTasks from "@/hooks/useTasks";
 
 export function PieCharts() {
-  const [task, setTask] = useState([]);
+
   const [completed, setCompleted] = useState([]);
   const [pendingTask, setPendingTask] = useState([]);
   const [isProgress, setInProgress] = useState([]);
 
-  // Get all task
-  axiosCommon
-    .get("task/tasks")
-    .then((res) => {
-      setTask(res.data);
-      // Set Progress Task
-      setInProgress(res.data.filter((task) => task.tproces === "inProgress"));
-      // Set Completed Task
-      setCompleted(res.data.filter((task) => task.tproces === "done"));
-      // Set Pendig Task
-      setPendingTask(res.data.filter((task) => task.tproces === "todo"));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+
+  const [tasks, isLoading] = useTasks();
+
+  useEffect(() => {
+    // Set Progress Task
+    setInProgress(tasks.filter((task) => task.tproces === "inProgress"));
+    // Set Completed Task
+    setCompleted(tasks.filter((task) => task.tproces === "done"));
+    // Set Pendig Task
+    setPendingTask(tasks.filter((task) => task.tproces === "todo"));
+  }, []);
+
+
+
+
 
   const chartData = [
     {
@@ -92,6 +94,8 @@ export function PieCharts() {
   //   return chartData.reduce((acc, curr) => acc + curr.taskCount, 0);
   // }, []);
 
+  if (isLoading) return <div>Loading...</div>;
+
   return (
     <Card className="flex rounded-xl py-5 flex-col dark:bg-gray-800 dark:border-gray-800">
       <CardHeader className="items-center pb-0">
@@ -130,7 +134,7 @@ export function PieCharts() {
                           y={viewBox.cy}
                           className="fill-foreground text-3xl font-bold"
                         >
-                          {task.length.toLocaleString()}
+                          {tasks?.length.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}

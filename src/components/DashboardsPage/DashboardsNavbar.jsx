@@ -16,12 +16,9 @@ const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
   const user = session?.data?.user;
-  const [users, setUsers] = useState([]);
+  //const [users, setUsers] = useState([]);
 
-  axios
-    .get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/${user?.email}`)
-    .then((data) => setUsers(data.data))
-    .catch((e) => console.log("error usersss", e));
+
 
   const NavbarItems = [
     {
@@ -74,8 +71,8 @@ const DashboardNavbar = () => {
                 <Avatar>
                   <AvatarImage
                     src={
-                      users?.image
-                        ? users?.image
+                      user?.image
+                        ? user?.image
                         : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
                     }
                     className="w-16 h-16 rounded-full object-cover"
