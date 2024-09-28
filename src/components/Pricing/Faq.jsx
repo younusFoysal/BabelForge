@@ -14,7 +14,7 @@ const Faq = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 mb-12 mt-12 dark:bg-[#2E073F] ">
+    <section className="bg-gray-100 mb-12 mt-12 dark:bg-gray-800">
       <div className=" text-gray-800 dark:text-white">
         <div className=" flex flex-col lg:justify-center  p-4 lg:w-[70%] mx-auto md:p-8">
           <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">

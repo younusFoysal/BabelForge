@@ -4,7 +4,7 @@ import HeroDown from "./Hero/HeroDown";
 
 const Hero = () => {
   return (
-    <section className="container max-w-screen-2xl mx-auto px-4 mb-16 bg-[#F0F3FF] dark:bg-[#7A1CAC] rounded-3xl">
+    <section className="container max-w-screen-2xl mx-auto px-4 mb-16 bg-[#F0F3FF] dark:bg-gray-900 rounded-3xl">
       <div className="flex items-center flex-col">
         <div className="w-[90%] md:w-[50%] flex flex-col justify-center items-center text-center pt-14">
           <h1 className="text-4xl md:text-5xl md:leading-[65px] leading-[50px]">

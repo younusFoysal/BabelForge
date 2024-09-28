@@ -32,7 +32,7 @@ const LinkBox = ({ id, refetch, link }) => {
   };
 
   return (
-    <div className="flex w-full  items-start justify-between rounded-md border px-4 py-2 mb-3">
+    <div className="flex w-full  items-start justify-between rounded-md border px-4 py-2 mb-3 dark:bg-gray-800 dark:border-gray-800">
       <div className="text-sm font-medium leading-none flex items-center gap-3">
         <span className="mt-1">
           {" "}

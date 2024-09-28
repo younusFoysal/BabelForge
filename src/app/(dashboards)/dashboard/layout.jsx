@@ -31,104 +31,104 @@ const layout = ({ children }) => {
   }
 
   return (
-      <div className="flex min-h-screen bg-white dark:bg-[#070F2B] dark:text-white">
-        {/* sidebar drawer small device */}
-        <div className="lg:hidden p-0">
-          <Drawer>
-            <DrawerTrigger asChild>
-              <div className="fixed bg-primary bg-opacity-20  text-white rounded-full ml-1 ">
-                <Button variant="ghost">
+    <div className="flex min-h-screen bg-white dark:bg-gray-900 dark:text-white">
+      {/* sidebar drawer small device */}
+      <div className="lg:hidden p-0">
+        <Drawer>
+          <DrawerTrigger asChild>
+            <div className="fixed bg-primary bg-opacity-20  text-white rounded-full ml-1 ">
+              <Button variant="ghost">
                 <span className="flex justify-start  items-center gap-2 text-white">
                   open sidebar
                   <IoIosArrowDropupCircle className="text-3xl text-white"></IoIosArrowDropupCircle>
                 </span>
-                </Button>
-              </div>
-            </DrawerTrigger>
+              </Button>
+            </div>
+          </DrawerTrigger>
 
-            <DrawerContent>
-              <DrawerClose>
-                <Button className="bg-primary rounded-full" variant="ghost">
+          <DrawerContent>
+            <DrawerClose>
+              <Button className="bg-primary rounded-full" variant="ghost">
                 <span className="flex justify-start  items-center gap-2 text-white ">
                   Close
                   <IoIosArrowDropdownCircle className="text-3xl text-white"></IoIosArrowDropdownCircle>
                 </span>
-                </Button>
-              </DrawerClose>
-              <div className="flex justify-start items-center">
-                <DrawerHeader>
-                  <h2 className="text-2xl text-primary font-bold">Dashboard</h2>
-                </DrawerHeader>
-              </div>
+              </Button>
+            </DrawerClose>
+            <div className="flex justify-start items-center">
+              <DrawerHeader>
+                <h2 className="text-2xl text-primary font-bold">Dashboard</h2>
+              </DrawerHeader>
+            </div>
 
-              {/* Sidebar content  */}
-              <div className="p-4">
-                <ul>
-                  <li>
-                    <Link
-                        href={"/"}
-                        className="py-2 flex items-center dark:bg-white gap-2"
-                    >
-                      <IoHomeOutline /> Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                        href={"/dashboard/Backlog"}
-                        className="py-2 flex items-center gap-2 dark:bg-white"
-                    >
-                      <MdPostAdd /> Backlog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                        href={"/dashboard/board"}
-                        className="py-2 flex items-center gap-2 dark:bg-white"
-                    >
-                      <CgList />
-                      Boards
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </DrawerContent>
-          </Drawer>
-        </div>
-
-        {/* Sidebar drawer large device*/}
-        <div className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2">
-          <h2 className="text-2xl font-bold">Dashboard</h2>
-          <ul>
-            <li>
-              <Link href={"/"} className="py-2 flex items-center gap-2">
-                {" "}
-                <IoHomeOutline /> Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                  href={"/dashboard/Backlog"}
-                  className="py-2 flex items-center gap-2"
-              >
-                {" "}
-                <MdPostAdd /> Backlog
-              </Link>
-            </li>
-            <li>
-              <Link
-                  href={"/dashboard/board"}
-                  className="py-2 flex items-center gap-2"
-              >
-                <CgList />
-                Boards
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        {/*layout content  */}
-        <div className="lg:p-6 pt-10 flex justify-center w-full">{children}</div>
+            {/* Sidebar content  */}
+            <div className="p-4">
+              <ul>
+                <li>
+                  <Link
+                    href={"/"}
+                    className="py-2 flex items-center dark:bg-white gap-2"
+                  >
+                    <IoHomeOutline /> Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={"/dashboard/Backlog"}
+                    className="py-2 flex items-center gap-2 dark:bg-white"
+                  >
+                    <MdPostAdd /> Backlog
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={"/dashboard/board"}
+                    className="py-2 flex items-center gap-2 dark:bg-white"
+                  >
+                    <CgList />
+                    Boards
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </DrawerContent>
+        </Drawer>
       </div>
+
+      {/* Sidebar drawer large device*/}
+      <div className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
+        <h2 className="text-2xl font-bold">Dashboard</h2>
+        <ul>
+          <li>
+            <Link href={"/"} className="py-2 flex items-center gap-2">
+              {" "}
+              <IoHomeOutline /> Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"/dashboard/Backlog"}
+              className="py-2 flex items-center gap-2"
+            >
+              {" "}
+              <MdPostAdd /> Backlog
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"/dashboard/board"}
+              className="py-2 flex items-center gap-2"
+            >
+              <CgList />
+              Boards
+            </Link>
+          </li>
+        </ul>
+      </div>
+
+      {/*layout content  */}
+      <div className="lg:p-6 pt-10 flex justify-center w-full">{children}</div>
+    </div>
   );
 };
 

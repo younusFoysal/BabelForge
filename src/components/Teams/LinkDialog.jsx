@@ -30,10 +30,10 @@ const LinkDialog = ({ id, refetch, index }) => {
 
   return (
     <Dialog>
-      <DialogTrigger className="flex-1 font-medium bg-gray-50  p-2 mb-2 rounded-sm  w-full">
+      <DialogTrigger className="flex-1 font-medium bg-gray-50  p-3 mb-2 rounded-sm  w-full dark:bg-gray-800">
         <h3 className="flex justify-between items-center font-semibold">
           Links
-          <span className="bg-gray-50 p-1 hover:bg-gray-100 cursor-pointer">
+          <span className="bg-gray-50 p-1 hover:bg-gray-100 cursor-pointer dark:bg-gray-800 dark:hover:bg-gray-800">
             <FaPlus></FaPlus>
           </span>
         </h3>

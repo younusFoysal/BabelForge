@@ -19,7 +19,7 @@ const TeamInfo = () => {
     });
 
   return (
-    <Card className="py-3 rounded-xl mb-5 px-4 md:mb-0">
+    <Card className="py-3 rounded-xl mb-5 px-4 md:mb-0 dark:bg-gray-800 dark:border-gray-800">
       <CardHeader className="flex mb-2 flex-row justify-between items-center">
         <CardTitle>Team Members</CardTitle>
         <p className="font-semibold">Total Task</p>

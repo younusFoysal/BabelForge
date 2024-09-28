@@ -8,19 +8,18 @@ export const SocialButton = () => {
   const session = useSession();
   const router = useRouter();
 
-  const handlesocail = (provider) => {
-    const resp = signIn(provider, { redirect: false });
+  const handlesocail = async (provider) => {
+    const resp = await signIn(provider, {
+      redirect: true,
+      callbackUrl: "/dashboard",
+    });
   };
-
-  if (session.status == "authenticated") {
-    router.push("/dashboard");
-  }
 
   return (
     <button
       onClick={() => handlesocail("google")}
       type="submit"
-      className="w-full text-center rounded bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-200 text-[14px] py-2"
+      className="w-full text-center rounded bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-200 text-[14px] py-2 dark:text-white dark:hover:bg-gray-800 duration-300 transition-all"
     >
       Continue With Google
     </button>

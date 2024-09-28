@@ -1,55 +1,44 @@
-import axios from 'axios';
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcrypt';
-import GoogleProvider from 'next-auth/providers/google';
-
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+import axios from "axios";
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcrypt";
+import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: "Credentials",
       credentials: {},
       async authorize(credentials) {
         const { email, password } = credentials;
-
-        // Check if email and password are provided
         if (!email || !password) {
-          return null; // Return null if credentials are missing
+          return null;
         }
 
-        // Add a 2-second delay before proceeding with authentication
-        await delay(2000);
+        try {
+          const { data } = await axios.get(
+            `http://localhost:5000/api/user/${email}`
+          );
 
-        // try {
-        //   const { data } = await axios.get(
-        //       `https://babelforgeserver.vercel.app/api/user/${email}`
-        //   );
-        //
-        //   if (!data) {
-        //     return null; // User not found
-        //   }
-        //
-        //   // Validate password
-        //   const isValid = bcrypt.compareSync(password, data.password);
-        //
-        //   if (!isValid) {
-        //     return null; // Invalid password
-        //   }
-        //
-        //   return data; // Return user data on successful login
-        // } catch (error) {
-        //   console.error("Error in authorize:", error);
-        // return null
-        // }
+          if (!data) {
+            return null;
+          }
 
-          return credentials; // Handle error by returning null
+          const isValid = bcrypt.compareSync(password, data.password);
 
+          if (!isValid) {
+            return null;
+          }
+
+          return data;
+        } catch (error) {
+          console.error("Error in authorize:", error);
+          return null;
+        }
       },
     }),
     GoogleProvider({
@@ -60,7 +49,7 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {},
   pages: {
-    signIn: '/login', // Custom login page
+    signIn: "/login", // Custom login page
   },
 });
 

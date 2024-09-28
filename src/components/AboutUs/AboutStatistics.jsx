@@ -8,7 +8,7 @@ const AboutStatistics = () => {
   const [scrollState, setScrollState] = useState(false);
 
   return (
-    <div className="w-[90%] mx-auto bg-[#6161ff] dark:bg-[#AD49E1] text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
+    <div className="w-[90%] mx-auto bg-[#6161ff] dark:bg-gray-900 dark:border-gray-800 dark:border text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
       <h1 className="text-4xl md:text-7xl font-bold text-center">
         babelforge.com by the numbers
       </h1>

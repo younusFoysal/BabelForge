@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import axios from "axios";
@@ -32,7 +32,7 @@ const Profile = () => {
         <div className="lg:w-[45%] w-full ">
           {/* card header user info */}
           <div className="flex  gap-4  ">
-            <p className="flex justify-start items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
+            <p className="flex justify-start items-center gap-2 w-full p-1">
               <span className=" rounded-full p-1">
                 <Avatar className="w-40 h-40">
                   <AvatarImage
@@ -50,17 +50,17 @@ const Profile = () => {
 
           <div>
             <p className="text-2xl mb-2">Name: {user?.name}</p>
-            <p className="text-lg mb-6 font-light">Username: {user?.username}</p>
-
+            <p className="text-lg mb-6 font-light">
+              Username: {user?.username}
+            </p>
           </div>
-
 
           <div className="p-2 mb-2 rounded-md">
             <UpdateProfile user={user} />
           </div>
 
           {/* card content */}
-          <Card className="p-6">
+          <Card className="p-6 dark:bg-gray-800 dark:border-gray-800">
             {/* about */}
             <h3 className="text-start text-xl uppercase">About</h3>
 
@@ -70,7 +70,7 @@ const Profile = () => {
                 <span>
                   <ImBriefcase className="text-lg"></ImBriefcase>
                 </span>
-                <p className="hover:bg-gray-200 w-full p-2 rounded-md">
+                <p className="hover:bg-gray-200 w-full p-2 rounded-md   dark:hover:bg-gray-900 ">
                   {user?.department ? user?.department : <p>No Department</p>}
                 </p>
               </div>
@@ -79,7 +79,7 @@ const Profile = () => {
                 <span>
                   <FaNetworkWired className="text-lg"></FaNetworkWired>
                 </span>
-                <p className="hover:bg-gray-200 w-full p-2 rounded-md">
+                <p className="hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">
                   Your Network
                 </p>
               </div>
@@ -88,7 +88,7 @@ const Profile = () => {
                 <span>
                   <GoOrganization className="text-lg"></GoOrganization>
                 </span>
-                <p className="hover:bg-gray-200 w-full p-2 rounded-md">
+                <p className="hover:bg-gray-200 w-full p-2 rounded-md    dark:hover:bg-gray-900 ">
                   {user?.organization ? (
                     user?.organization
                   ) : (
@@ -102,7 +102,7 @@ const Profile = () => {
                   <IoLocationSharp className="text-xl"></IoLocationSharp>
                 </span>
 
-                <p className="hover:bg-gray-200 w-full p-2 rounded-md">
+                <p className="hover:bg-gray-200 w-full p-2 rounded-md    dark:hover:bg-gray-900 ">
                   {user?.location ? user?.location : <p>No location</p>}
                 </p>
               </div>
@@ -115,7 +115,7 @@ const Profile = () => {
                 <MdOutlineEmail className="text-xl"></MdOutlineEmail>
               </span>
 
-              <p className="hover:bg-gray-200 w-full p-2 rounded-md">
+              <p className="hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">
                 {user?.email}
               </p>
             </div>
@@ -123,15 +123,15 @@ const Profile = () => {
             {/* teams */}
             <h3 className="text-start text-xl uppercase my-6">Teams</h3>
             <div className="flex  items-center gap-4">
-              <p className="flex  items-center gap-4 hover:bg-gray-200 w-full p-2 rounded-md">
-                <span className="bg-gray-200 rounded-full p-1">
+              <p className="flex  items-center gap-4 hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">
+                <span className="bg-gray-200 rounded-full p-1 dark:bg-gray-700">
                   <GoPlus className="text-xl "></GoPlus>
                 </span>
                 Create A Team
               </p>
             </div>
 
-            <div className="flex justify-start items-center gap-4 mb-6 ml-1 mt-2 p-1 rounded-md hover:bg-gray-200">
+            <div className="flex justify-start items-center gap-4 mb-6 ml-1 mt-2 p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-900 ">
               <div className="flex  items-center gap-1 ">
                 <span className="bg-violet-500 rounded-full p-1">
                   <FaUserGroup className="text-2xl text-white "></FaUserGroup>
@@ -156,9 +156,9 @@ const Profile = () => {
           <h3 className="text-start text-lg font-semibold uppercase">
             works with
           </h3>
-          <div className="mt-5 flex justify-start items-center gap-6">
+          <div className="mt-5 flex justify-start items-center gap-6 ">
             <div className="flex  items-center gap-1 ">
-              <p className="flex px-4 py-2 hover:bg-blue-400 items-center gap-3 bg-blue-300 w-full  rounded-full">
+              <p className="flex px-4 py-2 hover:bg-blue-400 items-center gap-3 bg-blue-300 w-full  rounded-full dark:bg-gray-800">
                 <span className="bg-violet-500 rounded-full p-1">
                   <FaUserGroup className="text-xl text-white "></FaUserGroup>
                 </span>
@@ -166,8 +166,8 @@ const Profile = () => {
               </p>
             </div>
             <div className="flex  items-center gap-1 ">
-              <p className="flex px-4 py-2 hover:bg-gray-300 items-center gap-3 bg-gray-200 w-full  rounded-full">
-                <span className="bg-gray-500 rounded-full p-1">
+              <p className="flex px-4 py-2 hover:bg-gray-300 items-center gap-3 bg-gray-200 w-full  rounded-full dark:bg-gray-800">
+                <span className="bg-gray-500 rounded-full p-1 ">
                   <HiUserGroup className="text-xl text-white "></HiUserGroup>
                 </span>
                 Collaboration
@@ -175,9 +175,9 @@ const Profile = () => {
             </div>
           </div>
 
-          <Card className="mt-4 space-y-2  p-6 ">
+          <Card className="mt-4 space-y-2  p-6 dark:bg-gray-800 dark:border-gray-800">
             <div className="flex justify-center items-center gap-4">
-              <div className="flex px-4 py-1   items-center gap-3 hover:bg-gray-300 w-full  rounded-full">
+              <div className="flex px-4 py-1   items-center gap-3 hover:bg-gray-300 w-full  rounded-full dark:hover:bg-gray-900">
                 <p className="bg-violet-500 rounded-full p-1">
                   <FaUserGroup className="text-xl text-white  "></FaUserGroup>
                 </p>
@@ -193,7 +193,7 @@ const Profile = () => {
             <div className="grid grid-cols-2 gap-5 ">
               {/* member 1 */}
               <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
+                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
                   <span className=" rounded-full p-1">
                     <Avatar className="w-8 h-8">
                       <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
@@ -205,7 +205,7 @@ const Profile = () => {
               </div>
               {/* member 1 */}
               <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
+                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
                   <span className=" rounded-full p-1">
                     <Avatar className="w-8 h-8">
                       <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
@@ -217,7 +217,7 @@ const Profile = () => {
               </div>
               {/* member 1 */}
               <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
+                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
                   <span className=" rounded-full p-1">
                     <Avatar className="w-8 h-8">
                       <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
@@ -229,7 +229,7 @@ const Profile = () => {
               </div>
               {/* member 1 */}
               <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md">
+                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
                   <span className=" rounded-full p-1">
                     <Avatar className="w-8 h-8">
                       <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
