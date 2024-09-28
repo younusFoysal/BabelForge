@@ -19,28 +19,26 @@ const handler = NextAuth({
           return null;
         }
 
-        // try {
-        //   const { data } = await axios.get(
-        //     `http://localhost:5000/api/user/${email}`
-        //   );
+        try {
+          const { data } = await axios.get(
+            `http://localhost:5000/api/user/${email}`
+          );
 
-        //   if (!data) {
-        //     return null;
-        //   }
+          if (!data) {
+            return null;
+          }
 
-        //   const isValid = bcrypt.compareSync(password, data.password);
+          const isValid = bcrypt.compareSync(password, data.password);
 
-        //   if (!isValid) {
-        //     return null;
-        //   }
+          if (!isValid) {
+            return null;
+          }
 
-        //   return data;
-        // } catch (error) {
-        //   console.error("Error in authorize:", error);
-        //   return null;
-        // }
-
-        return credentials;
+          return data;
+        } catch (error) {
+          console.error("Error in authorize:", error);
+          return null;
+        }
       },
     }),
     GoogleProvider({

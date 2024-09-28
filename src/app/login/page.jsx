@@ -23,6 +23,7 @@ import axios from "axios";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
+import { SiSpinrilla } from "react-icons/si";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -48,7 +49,7 @@ const formSchema = z.object({
 const Login = () => {
   const session = useSession();
   const router = useRouter();
-
+  const [loading, setLoading] = React.useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,6 +59,7 @@ const Login = () => {
   });
 
   const onSubmit = async (value) => {
+    setLoading(true);
     const { email, password } = value;
     const res = await signIn("credentials", {
       email,
@@ -66,6 +68,7 @@ const Login = () => {
     });
     if (res.status === 200) {
       router.push("/dashboard");
+      setLoading(false);
     }
   };
 
@@ -133,7 +136,14 @@ const Login = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {!loading ? (
+                    "Continue"
+                  ) : (
+                    <>
+                      {" "}
+                      <SiSpinrilla className="animate-spin mr-2" /> Loading{" "}
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>

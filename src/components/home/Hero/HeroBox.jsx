@@ -20,6 +20,7 @@ const HeroBox = ({ data, handleChanged }) => {
     >
       <input
         type="checkbox"
+        readOnly={true}
         className="border border-gray-200 absolute top-2 left-2 rounded-lg bor"
         checked={selected} // lowercase 'checked'
       />

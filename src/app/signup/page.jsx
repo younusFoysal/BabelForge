@@ -55,7 +55,7 @@ const formSchema = z.object({
 
 const Signup = () => {
   const router = useRouter();
-  const [loading, setloading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -70,7 +70,6 @@ const Signup = () => {
     setLoading(true);
     const { email, password, username, name } = value;
 
-    console.log("Value: ", value);
     try {
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,
