@@ -1,11 +1,10 @@
 "use client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-import { useSession } from 'next-auth/react';
+import useAxiosCommon from "@/lib/axiosCommon";
+import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import React from "react";
 import { FaNetworkWired } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { GoOrganization, GoPlus } from "react-icons/go";
@@ -13,29 +12,27 @@ import { HiUserGroup } from "react-icons/hi";
 import { ImBriefcase } from "react-icons/im";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
-import { UpdateProfile } from "../Profile/UpdateProfile";
-import useAxiosCommon from "@/lib/axiosCommon";
-
 
 const Profile = () => {
-
-  const axiosCommon = useAxiosCommon()
+  const axiosCommon = useAxiosCommon();
 
   const { data: session } = useSession();
   const email = session?.user?.email;
 
-  const { data: user = [], isLoading, refetch } = useQuery({
-    queryKey: ['user-profile'],
+  const {
+    data: user = [],
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["user-profile"],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/api/user/${email}`);
       return data;
     },
   });
-  //console.log(user);
-
+  console.log(user);
 
   if (isLoading) return <div>Loading...</div>;
-
 
   return (
     <div>
@@ -66,10 +63,6 @@ const Profile = () => {
             <p className="text-lg mb-6 font-light">
               Username: {user?.username}
             </p>
-          </div>
-
-          <div className="p-2 mb-2 rounded-md">
-            <UpdateProfile user={user} />
           </div>
 
           {/* card content */}
