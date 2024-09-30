@@ -26,8 +26,8 @@ const DashboardNavbar = () => {
       href: "/dashboard/projects",
     },
     {
-      title: "Team",
-      href: "/dashboard/team",
+      title: "Teams",
+      href: "/dashboard/teams",
     },
     {
       title: "Dashboard",

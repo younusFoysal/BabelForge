@@ -17,7 +17,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { SocialButton } from '@/components/SocialButton/SocialButton';
 import { SiSpinrilla } from 'react-icons/si';
-import { FaEye, FaEyeSlash } from 'react-icons/fa6';
+import toast from 'react-hot-toast';
 
 const formSchema = z.object({
   email: z.string().email({
@@ -62,6 +62,7 @@ const Login = () => {
       redirect: false,
     });
     if (res.status === 200) {
+      toast.success('Login successfull');
       router.push('/dashboard');
       setLoading(false);
     }

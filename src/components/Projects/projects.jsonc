@@ -1,0 +1,30 @@
+
+
+
+[
+  // Project API
+  {
+    "pname" : "BabelForge",
+    "pdes" : "this is project description",
+    "pimg" : "https://babelforge/img/logo.png",
+    "pcategory" : "Team Management Software",
+    "pmanager" : "nazjmul@gmail.com",
+    "psdate" : "20/09/2024",
+    "pedate" : "30/11/2024",
+    "purl" : "https://babelforge.vercel.app",
+    "pteams" : ["team_ID1", "team_ID2"]
+  },
+
+
+  // Team API
+  {
+    "tname" : "Babel",
+    "projects" : ["project_ID1", "project_ID2"],
+    "tleader" : "younusfaysal@gmail.com",
+    "tpic" : "https://example.com/alpha_team_cover.jpg",
+    "tdes" : "this is team description",
+    "tmembers" : ["member1@gmail.com", "member2@gmail.com", "member3@gmail.com"],
+    "tlinks" : ["link1", "link2"]
+  }
+
+]
