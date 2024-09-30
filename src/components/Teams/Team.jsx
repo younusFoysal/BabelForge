@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import {
     Card,
@@ -13,6 +15,7 @@ import { Button } from "@/components/ui/button";
 
 
 const Team = () => {
+
     return (
         <div>
 
@@ -28,7 +31,7 @@ const Team = () => {
                         <p className='hover:bg-gray-300 p-1'>Good teams have good people, great teams have a description. Add yours here.</p>
 
                         <div className='flex justify-between item-center gap-2 text-center '>
-                            <h3 className='flex-1 font-medium hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm '>Manage Your Account</h3>
+                            <button className='flex-1 font-medium hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm '>Add Member</button>
                             <span className='hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm w-10 cursor-pointer'><BsThreeDots className='flex flex-col justify-center item-center text-2xl' ></BsThreeDots></span>
                         </div>
 
