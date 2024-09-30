@@ -40,18 +40,27 @@ export default function TaskList() {
             .map((task) => ({
               id: task._id,
               name: task.tname,
+              process: "todo",
+              author: task.author,
+              assignTo: task.tassignTo
             })),
         inProgress: data
             .filter((task) => task.tproces === "inProgress")
             .map((task) => ({
               id: task._id,
               name: task.tname,
+              process: "inProgress",
+              author: task.author,
+              assignTo: task.tassignTo
             })),
         done: data
             .filter((task) => task.tproces === "done")
             .map((task) => ({
               id: task._id,
               name: task.tname,
+              process: "done",
+              author: task.author,
+              assignTo: task.tassignTo
             })),
       };
 
@@ -60,36 +69,10 @@ export default function TaskList() {
       return data;
     },
   });
-  //console.log(tasks);
+  console.log(tasks);
 
 
-  const addTask = async (taskName) => {
-    try {
-      // Create the task object to send to the API
-      const newTask = {
-        tname: taskName,
-        tproces: "todo", // By default, new tasks are added to "Todo"
-        author: "Foysal", // Example author; adjust based on your requirements
-      };
 
-      // Send POST request to the API to add the task
-      const response = await axios.post(
-        "https://babelforgeserver.vercel.app/task/tasks/add",
-        newTask
-      );
-
-      if (response.status === 200) {
-        refetch();
-        // On success, update the task list locally
-        setTasks((prevTasks) => ({
-          ...prevTasks,
-          todo: [...prevTasks.todo, { id: response.data._id, name: taskName }],
-        }));
-      }
-    } catch (error) {
-      console.error("Error adding task:", error);
-    }
-  };
 
   const handleDragStart = (event) => {
     const { active } = event;
@@ -178,7 +161,7 @@ export default function TaskList() {
 
   return (
     <div className="p-6">
-      <AddTask addTask={addTask} />
+
 
       <DndContext
         collisionDetection={closestCenter}
@@ -186,13 +169,14 @@ export default function TaskList() {
         onDragEnd={handleDragEnd}
       >
         <div className="flex gap-6 justify-between">
-          <DroppableColumn id="todo" tasks={tasks.todo} title="Todo" />
+          <DroppableColumn id="todo" tasks={tasks.todo} title="Todo" key={tasks._id} />
           <DroppableColumn
             id="inProgress"
             tasks={tasks.inProgress}
             title="In Progress"
+            key={tasks._id}
           />
-          <DroppableColumn id="done" tasks={tasks.done} title="Done" />
+          <DroppableColumn id="done" tasks={tasks.done} title="Done" key={tasks._id}/>
         </div>
 
         <DragOverlay>
@@ -211,13 +195,13 @@ function DroppableColumn({ id, tasks, title }) {
   return (
     <div
       ref={setNodeRef}
-      className="bg-gray-100 p-4 rounded-lg w-1/3 shadow min-h-[200px] dark:bg-gray-800"
+      className="bg-gray-50 p-4 rounded-md w-full shadow min-h-[200px] dark:bg-gray-800"
     >
       <h2 className="text-xl font-semibold text-center mb-4">{title}</h2>
       <SortableContext items={tasks} strategy={verticalListSortingStrategy}>
         <ul className="space-y-2 min-h-[100px]">
           {tasks.length > 0 ? (
-            tasks.map((task) => <Task key={task.id} task={task} />)
+            tasks.map((task) => <Task key={task._id} task={task} />)
           ) : (
             <div className="text-center text-gray-500">No tasks</div>
           )}

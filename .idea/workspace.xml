@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Nav change">
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/[id]/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Projects/projects.jsonc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Teams/AllTeams.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/team/page.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/Team.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/Team.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useTeams.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useTeams.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/BacklogPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Backlog/BacklogPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/tasks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/tasks.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -410,7 +407,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="nav Responsive added" />
     <MESSAGE value="Nav Logo Added" />
     <MESSAGE value="Title &amp; Fav Icon added" />
     <MESSAGE value="AOS Added" />
@@ -435,6 +431,7 @@
     <MESSAGE value="api link update" />
     <MESSAGE value="signup fix" />
     <MESSAGE value="Profile fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile fix" />
+    <MESSAGE value="dynamic team pages added" />
+    <option name="LAST_COMMIT_MESSAGE" value="dynamic team pages added" />
   </component>
 </project>

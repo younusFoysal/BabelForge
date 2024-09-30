@@ -1,52 +1,109 @@
 "use client";
 import React from "react";
+import useTasks from "@/hooks/useTasks";
 
-const TableView = ({ tasks }) => {
+const TableView = () => {
   let num = 1;
+  const tasks = useTasks()
+  console.log(tasks[0])
 
   return (
-    <div className="overflow-x-auto w-[150vh]">
-      <table className="w-full table-auto ">
-        <thead>
-          <tr className="bg-gray-100 dark:bg-gray-700">
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 dark:text-white font-bold uppercase">
-              No
+      <div>
+
+        <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
+          <thead className="bg-gray-50">
+          <tr>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Num
             </th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 dark:text-white font-bold uppercase">
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Task
             </th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 dark:text-white font-bold uppercase">
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Assigned to
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Status
             </th>
-            <th className="w-1/4 py-4 px-6 text-left text-gray-600 dark:text-white font-bold uppercase">
-              Action
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Start
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              team
+            </th>
+            <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              Actions
             </th>
           </tr>
-        </thead>
-        <tbody className="bg-white dark:bg-gray-800">
-          {tasks?.map((task) => (
-            <tr key={task._id}>
-              <td className="py-4 px-6 border-b border-gray-200">{num++}</td>
-              <td className="py-4 px-6 border-b border-gray-200">
-                {task.tname}
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+
+          {
+            tasks[0]?.map((task) => <tr key={task._id}>
+
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {num++}
+                  </td>
+
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center">
+
+                      <div className="">
+                        <div className="text-sm font-medium text-gray-900">
+                          {task?.tname}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {task?.tdes}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{task?.tassignTo}</div>
+                    <div className="text-sm text-gray-500">{task?.author}</div>
+                  </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+
+                {
+                  task?.tproces === "todo" ? <span
+                          className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-black">
+                    TO DO
+                </span>
+                      :
+                      task?.tproces === "inProgress" ? <span
+                              className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-500">
+                    IN PROGRESS
+                </span>
+                          :
+                          <span
+                              className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                    DONE
+                </span>
+                }
+
+
               </td>
-              <td className="py-4 px-6 border-b border-gray-200 truncate">
-                {task.tproces}
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
+                {task?.tdate}
               </td>
-              <td className="py-4 px-6 border-b border-gray-200">
-                <button
-                  // onClick={() => handleFire(task.email, task.isFired)}
-                  disabled={task.isFired}
-                  className="btn btn-sm bg-red-500 text-white py-1 px-2 rounded text-xs hover:shadow hover:scale-105 duration-500 disabled:text-black disabled:font-bold"
-                >
-                  {task.isDeleted ? "Deleted" : "Delete"}
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
+                    {task?.teamId}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
+                    <a href="#"
+                       className="bg-blue-500 px-2 py-1 rounded text-white duration-500 hover:bg-blue-800 hover:shadow-xl">Edit</a>
+                    <a href="#"
+                       className="ml-2 bg-red-500 px-2 py-1 rounded text-white duration-500 hover:bg-red-800 hover:shadow-xl">Delete</a>
+                  </td>
+                </tr>
+            )
+          }
+
+
+          </tbody>
+        </table>
+
+      </div>
   );
 };
 
