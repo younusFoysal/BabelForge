@@ -17,7 +17,6 @@ const DetailsCard = () => {
   // // Get all Teams
 
   const [teams] = useTeams();
-  console.log('from dashboard', teams);
 
   // // Get all task
   const task = useTasks();

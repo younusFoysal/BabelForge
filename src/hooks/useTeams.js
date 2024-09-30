@@ -4,8 +4,6 @@ import { useQuery } from '@tanstack/react-query';
 const UseTeams = email => {
   const axiosCommon = useAxiosCommon();
 
-  console.log('useTeam hook called');
-
   const {
     data: teams = [],
     isLoading,
@@ -16,11 +14,12 @@ const UseTeams = email => {
     queryFn: async () => {
       if (email) {
         const { data } = await axiosCommon.get(`/team/teams/my-teams/${email}`);
-        console.log('email ache');
+        console.log('email there');
         return data;
       } else {
         const { data } = await axiosCommon.get(`/team/teams`);
-        console.log('email nai', data);
+        console.log('email not there');
+
         return data;
       }
     },
