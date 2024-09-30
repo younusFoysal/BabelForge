@@ -1,10 +1,10 @@
 import React from 'react';
-import Team from "@/components/Teams/Team";
+import ProjectPage from "@/components/Projects/ProjectPage";
 
 const Page = () => {
     return (
         <div>
-            <Team></Team>
+            <ProjectPage></ProjectPage>
 
         </div>
     );

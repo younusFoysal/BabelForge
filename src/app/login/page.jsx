@@ -23,6 +23,8 @@ import axios from "axios";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
+import { SiSpinrilla } from "react-icons/si";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -48,7 +50,7 @@ const formSchema = z.object({
 const Login = () => {
   const session = useSession();
   const router = useRouter();
-
+  const [loading, setLoading] = React.useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,6 +60,7 @@ const Login = () => {
   });
 
   const onSubmit = async (value) => {
+    setLoading(true);
     const { email, password } = value;
     const res = await signIn("credentials", {
       email,
@@ -65,7 +68,9 @@ const Login = () => {
       redirect: false,
     });
     if (res.status === 200) {
+      toast.success("Login successfull");
       router.push("/dashboard");
+      setLoading(false);
     }
   };
 
@@ -80,15 +85,15 @@ const Login = () => {
           className="h-screen object-cover"
         />
       </div>
-      <div className="flex justify-center items-center w-full lg:w-[60%] h-screen">
+      <div className="flex justify-center items-center w-full lg:w-[60%] h-screen dark:text-white">
         <div className="w-[90%] lg:w-[60%]">
           <h1
-            className="text-3xl md:text-4xl font-bold text-center text-gray-700
+            className="text-3xl md:text-4xl font-bold text-center text-gray-700 dark:text-white
           "
           >
             Welcome to BabelForge
           </h1>
-          <p className="text-center py-4 text-gray-600">
+          <p className="text-center py-4 text-gray-600 dark:text-gray-100">
             {" "}
             Get started - it&apos;s free. No credit card needed.
           </p>
@@ -105,6 +110,7 @@ const Login = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="email"
                           placeholder="Enter your mail"
                           {...field}
@@ -121,6 +127,7 @@ const Login = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="password"
                           placeholder="Enter your password"
                           {...field}
@@ -131,7 +138,14 @@ const Login = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {!loading ? (
+                    "Continue"
+                  ) : (
+                    <>
+                      {" "}
+                      <SiSpinrilla className="animate-spin mr-2" /> Loading{" "}
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>

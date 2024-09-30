@@ -12,7 +12,7 @@ const Page = () => {
         // Fetch tasks from the API when the component mounts
         const fetchTasks = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/task/tasks');
+                const response = await axios.get('https://babelforgeserver.vercel.app/task/tasks');
                 setTasks(response.data); // Store the tasks from the backend
             } catch (error) {
                 console.error("Error fetching tasks:", error);
@@ -30,7 +30,7 @@ const Page = () => {
                 author: 'Foysal',
             };
 
-            const response = await axios.post('http://localhost:5000/task/tasks/add', newTask);
+            const response = await axios.post('https://babelforgeserver.vercel.app/task/tasks/add', newTask);
 
             if (response.status === 200) {
                 setTasks((prevTasks) => [...prevTasks, response.data]); // Add the new task to the list

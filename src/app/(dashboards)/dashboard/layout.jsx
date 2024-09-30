@@ -21,7 +21,9 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 const layout = ({ children }) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
   if (!session?.data?.user) {
@@ -29,7 +31,7 @@ const layout = ({ children }) => {
   }
 
   return (
-    <div className="flex min-h-screen bg-white dark:bg-[#070F2B] dark:text-white">
+    <div className="flex min-h-screen bg-white dark:bg-gray-900 dark:text-white">
       {/* sidebar drawer small device */}
       <div className="lg:hidden p-0">
         <Drawer>
@@ -94,7 +96,7 @@ const layout = ({ children }) => {
       </div>
 
       {/* Sidebar drawer large device*/}
-      <div className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2">
+      <div className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
         <h2 className="text-2xl font-bold">Dashboard</h2>
         <ul>
           <li>

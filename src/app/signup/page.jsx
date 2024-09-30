@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -21,10 +21,18 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { SocialButton } from "@/components/SocialButton/SocialButton";
+import toast from "react-hot-toast";
+import { SiSpinrilla } from "react-icons/si";
+import useAxiosCommon from "@/lib/axiosCommon";
+
 
 const formSchema = z.object({
   username: z.string().min(4, {
     message: "Username must be at least 4 characters.",
+  }),
+
+  name: z.string().min(4, {
+    message: "name must be at least 4 characters.",
   }),
 
   email: z.string().email({
@@ -49,6 +57,7 @@ const formSchema = z.object({
 
 const Signup = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -58,12 +67,15 @@ const Signup = () => {
       password: "",
     },
   });
+  const axioncommon = useAxiosCommon()
 
   const onSubmit = async (value) => {
+    setLoading(true);
     const { email, password, username, name } = value;
+    ////console.log(value)
     try {
-      const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/users/add`,
+      const { data } = await axioncommon.post(
+        `/api/users/add`,
         {
           email,
           password,
@@ -74,7 +86,10 @@ const Signup = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
+      //console.log(data);
       if (data.insertedId) {
+        setLoading(false);
+        toast.success("Sign up successfully.");
         router.push(`/login`);
       }
     } catch (e) {
@@ -87,12 +102,12 @@ const Signup = () => {
       <div className="flex justify-center items-center w-full lg:w-[60%] h-screen">
         <div className="w-[90%] lg:w-[60%]">
           <h1
-            className="text-3xl md:text-4xl font-bold text-center text-gray-700
+            className="text-3xl md:text-4xl font-bold text-center text-gray-700 dark:text-white
           "
           >
             Welcome to BabelForge
           </h1>
-          <p className="text-center py-4 text-gray-600">
+          <p className="text-center py-4 text-gray-600 dark:text-white">
             {" "}
             Get started - it&apos;s free. No credit card needed.
           </p>
@@ -110,6 +125,7 @@ const Signup = () => {
                       <FormControl>
                         <Input
                           type="text"
+                          className="bg-transparent border-gray-800"
                           placeholder="Enter your name"
                           {...field}
                         />
@@ -125,6 +141,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="text"
                           placeholder="Enter your username"
                           {...field}
@@ -141,6 +158,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="email"
                           placeholder="Enter your mail"
                           {...field}
@@ -157,6 +175,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="password"
                           placeholder="Enter your password"
                           {...field}
@@ -167,14 +186,21 @@ const Signup = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {!loading ? (
+                    "Continue"
+                  ) : (
+                    <>
+                      {" "}
+                      <SiSpinrilla className="animate-spin mr-2" /> Loading{" "}
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>
             {/* from down */}
             <div className="flex items-center my-4 mt-5">
               <div className="flex-grow border-t border-gray-300"></div>
-              <span className="mx-4 text-gray-500">Or</span>
+              <span className="mx-4 text-gray-500 dark:text-white">Or</span>
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
             {/* social button */}
