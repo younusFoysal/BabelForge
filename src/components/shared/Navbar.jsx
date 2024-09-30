@@ -23,6 +23,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const session = useSession();
   const user = session?.data?.user;
+
   const pathname = usePathname();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);

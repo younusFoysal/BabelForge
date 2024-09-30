@@ -26,6 +26,8 @@ const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
+  //console.log("user",session?.data?.user);
+
   if (!session?.data?.user) {
     return router.push("/");
   }

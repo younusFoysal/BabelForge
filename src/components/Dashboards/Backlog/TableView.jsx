@@ -4,12 +4,19 @@ import Modal from "react-modal";
 import "./modal.css";
 import { IoCloseCircle } from "react-icons/io5";
 import Swal from "sweetalert2";
+import {useSession} from "next-auth/react";
+import {useQuery} from "@tanstack/react-query";
+import useAxiosCommon from "@/lib/axiosCommon";
 
 const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [formData, setFormData] = useState({}); // For storing task data to edit
+  const session = useSession();
+  const useremail = session?.data?.user?.email
+  const axiosCommon = useAxiosCommon();
+
 
   let num = 1;
 
@@ -52,6 +59,23 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
       console.error(err);
     }
   };
+
+  // team/teams/my-teams/useremail
+  // http://localhost:5000/team/teams/my-teams/foysaal@mail.com
+
+  // Fetch tasks data
+  const { data: uteams = [], isLoading, refetch } = useQuery({
+    queryKey: ['uteams'],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`/team/teams/my-teams/${useremail}`);
+      return data;
+    },
+  });
+
+  console.log("uteams:",uteams)
+
+
+
 
   return (
       <div>
@@ -102,7 +126,11 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                   {task?.tproces.toUpperCase()}
                 </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{task?.tdate}</td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
+                  {task?.tdate}
+                  <br/>
+                  <span className="text-sm text-gray-500">{task?.ttime} </span>
+                </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{task?.teamId}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <button
@@ -170,6 +198,21 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                       placeholder="Assign To"
                       className="p-2 border rounded-lg w-full mb-4"
                   />
+
+                  <select
+                      name="teamId"
+                      value={formData.teamId}
+                      onChange={handleInputChange}
+                      className="p-2 border rounded-lg w-full mb-4"
+                  >
+                    <option value="">Select Team</option>
+
+                    {uteams?.map((team) => (
+                        <option key={team._id} value={team.tname}>{team.tname}</option>
+                    ))}
+
+                  </select>
+
                   <select
                       name="tproces"
                       value={formData.tproces}
