@@ -5,6 +5,7 @@ import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { Toaster } from "react-hot-toast";
 import { FaNetworkWired } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { GoOrganization, GoPlus } from "react-icons/go";
@@ -12,6 +13,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { ImBriefcase } from "react-icons/im";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
+import { UpdateProfile } from "../Profile/UpdateProfile";
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
@@ -57,7 +59,9 @@ const Profile = () => {
               </span>
             </p>
           </div>
-
+          <div className="p-2 mb-2 rounded-md">
+            <UpdateProfile user={user} refetch={refetch} />
+          </div>
           <div>
             <p className="text-2xl mb-2">Name: {user?.name}</p>
             <p className="text-lg mb-6 font-light">
@@ -249,6 +253,7 @@ const Profile = () => {
           </Card>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };
