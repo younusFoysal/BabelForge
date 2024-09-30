@@ -14,11 +14,11 @@ import {
   DrawerHeader,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { CgList } from "react-icons/cg";
 import { IoHomeOutline } from "react-icons/io5";
 import { MdPostAdd } from "react-icons/md";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -40,11 +40,11 @@ const layout = ({ children }) => {
       <div className="lg:hidden p-0">
         <Drawer>
           <DrawerTrigger asChild>
-            <div className="fixed bg-primary bg-opacity-20  text-white rounded-full ml-1 ">
+            <div className="fixed bg-primary bg-opacity-20 dark:text-black text-white rounded-full ml-1 ">
               <Button variant="ghost">
-                <span className="flex justify-start  items-center gap-2 text-white">
+                <span className="flex justify-start  items-center dark:text-black gap-2 text-white">
                   open sidebar
-                  <IoIosArrowDropupCircle className="text-3xl text-white"></IoIosArrowDropupCircle>
+                  <IoIosArrowDropupCircle className="text-3xl dark:text-black text-white"></IoIosArrowDropupCircle>
                 </span>
               </Button>
             </div>
@@ -52,10 +52,10 @@ const layout = ({ children }) => {
 
           <DrawerContent>
             <DrawerClose>
-              <Button className="bg-primary rounded-full" variant="ghost">
-                <span className="flex justify-start  items-center gap-2 text-white ">
+              <Button className="bg-primary rounded-full " variant="ghost">
+                <span className="flex justify-start  items-center gap-2 dark:text-black text-white ">
                   Close
-                  <IoIosArrowDropdownCircle className="text-3xl text-white"></IoIosArrowDropdownCircle>
+                  <IoIosArrowDropdownCircle className="text-3xl dark:text-black  text-white"></IoIosArrowDropdownCircle>
                 </span>
               </Button>
             </DrawerClose>
@@ -69,17 +69,14 @@ const layout = ({ children }) => {
             <div className="p-4">
               <ul>
                 <li>
-                  <Link
-                    href={"/"}
-                    className="py-2 flex items-center dark:bg-white gap-2"
-                  >
+                  <Link href={"/"} className="py-2 flex items-center  gap-2">
                     <IoHomeOutline /> Home
                   </Link>
                 </li>
                 <li>
                   <Link
                     href={"/dashboard/Backlog"}
-                    className="py-2 flex items-center gap-2 dark:bg-white"
+                    className="py-2 flex items-center gap-2 "
                   >
                     <MdPostAdd /> Backlog
                   </Link>
@@ -87,7 +84,7 @@ const layout = ({ children }) => {
                 <li>
                   <Link
                     href={"/dashboard/board"}
-                    className="py-2 flex items-center gap-2 dark:bg-white"
+                    className="py-2 flex items-center gap-2 "
                   >
                     <CgList />
                     Boards
