@@ -249,13 +249,17 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                 <div className="modal-header flex justify-between text-xl mb-4">
                   <h5 className="modal-title">{selectedTask.tname}</h5>
                   <button type="button" className="close" onClick={closeModal}>
-                    <IoCloseCircle className="text-2xl text-purple-600"/>
+                    <IoCloseCircle className="text-2xl text-blue-700"/>
                   </button>
                 </div>
                 <div className="modal-body">
-                  <p>Description: {selectedTask.tdes}</p>
-                  <p>Assigned To: {selectedTask.tassignTo}</p>
-                  <p>Process: {selectedTask.tproces}</p>
+                  <p><span className="font-bold">Description:</span> {selectedTask.tdes}</p>
+                  <p><span className="font-bold">Assigned To:</span>  {selectedTask.tassignTo}</p>
+                  <p><span className="font-bold">Process:</span>
+
+                    {selectedTask?.tproces === "todo" ? "📝 TODO" : selectedTask?.tproces === "done" ? "✅ DONE" : "⏰ IN PROGRESS"}
+
+                  </p>
                   {/* Display other task details */}
                 </div>
               </div>
