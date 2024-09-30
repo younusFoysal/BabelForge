@@ -30,6 +30,10 @@ const layout = ({ children }) => {
     return router.push("/");
   }
 
+  
+
+
+
   return (
     <div className="flex min-h-screen bg-white dark:bg-gray-900 dark:text-white">
       {/* sidebar drawer small device */}
@@ -97,10 +101,10 @@ const layout = ({ children }) => {
 
       {/* Sidebar drawer large device*/}
       <div className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
-        <h2 className="text-2xl font-bold">Dashboard</h2>
+        {/*<h2 className="text-2xl font-bold">Dashboard</h2>*/}
         <ul>
           <li>
-            <Link href={"/"} className="py-2 flex items-center gap-2">
+            <Link href={"/"} className="py-2 ml-4 flex items-center gap-2">
               {" "}
               <IoHomeOutline /> Home
             </Link>
@@ -108,7 +112,7 @@ const layout = ({ children }) => {
           <li>
             <Link
               href={"/dashboard/Backlog"}
-              className="py-2 flex items-center gap-2"
+              className="py-2 ml-4 flex items-center gap-2"
             >
               {" "}
               <MdPostAdd /> Backlog
@@ -117,7 +121,7 @@ const layout = ({ children }) => {
           <li>
             <Link
               href={"/dashboard/board"}
-              className="py-2 flex items-center gap-2"
+              className="py-2 ml-4 flex items-center gap-2"
             >
               <CgList />
               Boards

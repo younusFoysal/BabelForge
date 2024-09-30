@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="boards updated">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="loading toast added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -391,7 +393,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727714676083</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="loading toast added">
+      <option name="closed" value="true" />
+      <created>1727716070773</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1727716070773</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +420,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Title &amp; Fav Icon added" />
     <MESSAGE value="AOS Added" />
     <MESSAGE value="Readme added" />
     <MESSAGE value="Fav Icon Added" />
@@ -435,6 +444,7 @@
     <MESSAGE value="Profile fix" />
     <MESSAGE value="dynamic team pages added" />
     <MESSAGE value="boards updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="boards updated" />
+    <MESSAGE value="loading toast added" />
+    <option name="LAST_COMMIT_MESSAGE" value="loading toast added" />
   </component>
 </project>
