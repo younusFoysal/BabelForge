@@ -1,3 +1,4 @@
+import AllTeams from '@/components/Teams/AllTeams';
 import React from 'react';
 import { IoSearch } from 'react-icons/io5';
 
@@ -9,9 +10,9 @@ const Page = async () => {
         <button className="hover:bg-[#2D64DC] bg-[#3575ff] text-[15px] text-white px-3 py-2 rounded-sm">Create team</button>
       </div>
       {/* Search Teams and Projects */}
-      <div className="relative mt-9">
+      <div className="relative mt-8">
         <input
-          className="placeholder:text-[25px]  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-7 w-full border-b-2 hover:border-[#3575ff] focus:outline-none"
+          className="placeholder:text-[25px]  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-7 w-full border-b-2 focus:border-[#3575ff] hover:border-[#3575ff] focus:outline-0 focus:outline-none"
           placeholder="Search for teams and projects"
           type="text"
           name="search"
@@ -19,6 +20,7 @@ const Page = async () => {
         />
         <IoSearch className="absolute text-[22px] text-[#777] top-1/2 left-0 -translate-y-1/2" />
       </div>
+      <AllTeams />
     </section>
   );
 };
