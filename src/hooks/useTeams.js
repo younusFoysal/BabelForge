@@ -9,7 +9,7 @@ const UseTeams = () => {
     const { data: teams = [], isLoading, refetch, isError } = useQuery({
         queryKey: ['teamsalldata'],
         queryFn: async () => {
-            const { data } = await axiosCommon.get(`team/teams`);
+            const { data } = await axiosCommon.get(`/team/teams`);
             return data;
         },
     });

@@ -1,10 +1,16 @@
 import React from 'react';
 import Team from "@/components/Teams/Team";
 
-const Page = () => {
+
+const Page = ({params}) => {
+
+    const id = params.id;
+    console.log(id);
+
     return (
         <div>
-            <Team></Team>
+            <h2>ID : {id}</h2>
+            <Team id={id}></Team>
 
         </div>
     );

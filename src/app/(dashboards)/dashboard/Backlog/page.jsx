@@ -3,24 +3,13 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import AddTask from "@/components/Dashboards/Task/AddTask";
 import BacklogPage from "@/components/Dashboards/Backlog/BacklogPage";
+import useTasks from "@/hooks/useTasks";
 
 const Page = () => {
 
-    const [tasks, setTasks] = useState([]);
 
-    useEffect(() => {
-        // Fetch tasks from the API when the component mounts
-        const fetchTasks = async () => {
-            try {
-                const response = await axios.get('https://babelforgeserver.vercel.app/task/tasks');
-                setTasks(response.data); // Store the tasks from the backend
-            } catch (error) {
-                console.error("Error fetching tasks:", error);
-            }
-        };
 
-        fetchTasks();
-    }, []);
+
 
     const addTask = async (taskName) => {
         try {
