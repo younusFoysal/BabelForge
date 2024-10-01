@@ -149,7 +149,7 @@ const Chat = () => {
 
 
             <div id="messageSection">
-                <div className="h-screen w-[150vh] rounded shadow-lg flex flex-col">
+                <div className="h-screen w-[150vh] rounded shadow-lg flex mx-auto flex-col">
                     <div
                         ref={messagesContainerRef}
                         className="bg-gray-200 rounded flex-1 overflow-y-auto"
