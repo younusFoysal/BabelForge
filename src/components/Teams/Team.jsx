@@ -100,7 +100,6 @@ const Team = () => {
                 </div>
 
 
-
                 {/* card right */}
                 <div className='w-full  pt-10 '>
 
@@ -202,7 +201,6 @@ const Team = () => {
                 </div>
 
             </div>
-
 
         </div>
 
