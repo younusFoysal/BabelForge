@@ -30,7 +30,7 @@ const DashboardNavbar = () => {
       href: "/dashboard/teams",
     },
     {
-      title: "Chat",
+      title: "Group Chat",
       href: "/dashboard/chat",
     },
     {

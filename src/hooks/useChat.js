@@ -36,9 +36,21 @@ const useChat = () => {
         }
     };
 
+    const deleteAllMessages = async () => {
+        try {
+            await fetch(`${SOCKET_SERVER_URL}/chat/messages`, { // Adjust URL as necessary
+                method: 'DELETE',
+            });
+            setMessages([]); // Clear the messages state
+        } catch (error) {
+            console.error('Failed to delete messages:', error);
+        }
+    };
+
     return {
         messages,
         sendMessage,
+        deleteAllMessages
     };
 };
 
