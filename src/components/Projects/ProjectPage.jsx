@@ -52,12 +52,12 @@ import { useEffect, useState } from "react";
 const ProjectPage = () => {
 
     const session = useSession();
-    const user = session?.data?.user;
+    const userEmail = session?.data?.user?.email;
 
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('');
 
-    const [projects] = useProjects(user.email, search, category);
+    const [projects] = useProjects(userEmail, search, category);
 
     if (!projects.length) {
         if (!search.length) {
