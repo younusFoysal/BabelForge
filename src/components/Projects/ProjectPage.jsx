@@ -59,6 +59,18 @@ const ProjectPage = () => {
 
     const [projects] = useProjects(user.email, search, category);
 
+    if (!projects.length) {
+        if (!search.length) {
+            if (!category.length) {
+                return (
+                    <section className='flex flex-col justify-center items-center gap-5 text-center'>
+                        <h3 className='text-2xl  font-medium'>You have no projects yet. Start by creating your first project!</h3>
+                        <div ><Button className='bg-primary text-white' variant="outline">Create Project</Button></div>
+                    </section>
+                )
+            }
+        }
+    }
 
     const projectCategories = ["Software Engineering", "Education", "Non Profit Organization", "Project Management"]
 

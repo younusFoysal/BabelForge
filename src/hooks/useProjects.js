@@ -1,8 +1,10 @@
+"use client"
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 
 const useProjects = (email, search, category) => {
-    console.log("from hook", email, search, category);
+
+    // console.log("from hook", email, search, category);
 
     const axiosCommon = useAxiosCommon();
 
@@ -19,7 +21,8 @@ const useProjects = (email, search, category) => {
                 return data;
             }
 
-        }
+        },
+        enabled: !!email,
     })
 
     return [projects, refetch, isLoading, isError]
