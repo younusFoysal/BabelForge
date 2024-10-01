@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="image added" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="group message page fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects/ProjectPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/ProjectPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useProjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useProjects.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -287,7 +291,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727776464287</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="group message page fix">
+      <option name="closed" value="true" />
+      <created>1727784877839</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1727784877839</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,6 +336,7 @@
     <MESSAGE value="React To NextJS" />
     <MESSAGE value="chat added" />
     <MESSAGE value="image added" />
-    <option name="LAST_COMMIT_MESSAGE" value="image added" />
+    <MESSAGE value="group message page fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="group message page fix" />
   </component>
 </project>

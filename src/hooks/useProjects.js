@@ -2,7 +2,7 @@ import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 
 const useProjects = (email) => {
-    // console.log(email);
+    console.log(email);
 
     const axiosCommon = useAxiosCommon();
 
