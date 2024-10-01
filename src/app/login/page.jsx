@@ -18,6 +18,7 @@ import { useRouter } from 'next/navigation';
 import { SocialButton } from '@/components/SocialButton/SocialButton';
 import { SiSpinrilla } from 'react-icons/si';
 import toast from 'react-hot-toast';
+import { FaEye, FaEyeSlash } from 'react-icons/fa6';
 
 const formSchema = z.object({
   email: z.string().email({
