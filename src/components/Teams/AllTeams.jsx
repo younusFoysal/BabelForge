@@ -14,7 +14,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
   const [users, isLoading] = UseUsers();
   const [searchText, setSearchText] = useState(searchQuery);
   const [category, setCategory] = useState([]);
-  const [selectCategory, setSelectCategory] = useState();
+  const [selectCategory, setSelectCategory] = useState('All');
   const router = useRouter();
 
   useEffect(() => {
@@ -35,26 +35,25 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
     }
   }, [myTeams2]);
 
-  // Search Team and sort via category
   useEffect(() => {
-    const filteredItems = myTeams?.filter(item => {
+    // Filter by search text
+    let filteredItems = myTeams2?.filter(item => {
       return item?.tname?.toLowerCase().includes(searchText?.toLowerCase());
-      // item?.projects?.toLowerCase().includes(searchText?.toLowerCase())
     });
-    setMyTeams(filteredItems);
-    if (!filteredItems || filteredItems?.length < 1) {
-      console.log('length 0');
-      setMyTeams(teams);
+
+    // If search doesn't return any results or no searchText provided, use the original team list
+    if (!filteredItems || searchText === '') {
+      filteredItems = myTeams2;
     }
 
-    // selected category
-    if (selectCategory) {
-      const filteredItemsByCategory = myTeams2?.filter(item => {
-        return item?.tcategory === selectCategory;
-      });
-      setMyTeams(filteredItemsByCategory);
+    // Apply category filter, if a specific category is selected
+    if (selectCategory !== 'All') {
+      filteredItems = filteredItems.filter(item => item?.tcategory === selectCategory);
     }
-  }, [searchText, selectCategory]);
+
+    // Update state with the filtered list
+    setMyTeams(filteredItems);
+  }, [searchText, selectCategory, myTeams2]);
 
   if (loadingTeams) return <div>Loading...</div>;
 
@@ -68,14 +67,15 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
             onValueChange={value => {
               setSelectCategory(value);
             }}
+            defaultValue="All"
           >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="All" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectLabel>All</SelectLabel>
-                {category.map(item => {
+                <SelectItem value="All">All</SelectItem>
+                {category?.map(item => {
                   return <SelectItem value={`${item}`}>{item}</SelectItem>;
                 })}
               </SelectGroup>
@@ -118,11 +118,12 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                             alt=""
                             width={40}
                             height={40}
-                            src={`${users &&
+                            src={`${
+                              users &&
                               users?.find(user => {
                                 return user.email == temember;
                               }).image
-                              }`}
+                            }`}
                           />
                         </HoverCardTrigger>
                         <HoverCardContent className="gap-4 h-[130px]  w-[300px]">
@@ -132,11 +133,12 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                               alt=""
                               width={50}
                               height={50}
-                              src={`${users &&
+                              src={`${
+                                users &&
                                 users?.find(user => {
                                   return user.email == temember;
                                 }).image
-                                }`}
+                              }`}
                             />
                             <p className="">
                               {' '}
