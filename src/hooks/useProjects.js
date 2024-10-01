@@ -1,28 +1,31 @@
+"use client"
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 
-const useProjects = (email) => {
-    console.log(email);
+const useProjects = (email, search, category) => {
+
+    // console.log("from hook", email, search, category);
 
     const axiosCommon = useAxiosCommon();
 
     const { data: projects = [], isLoading, isError, refetch } = useQuery({
 
-        queryKey: ['all-projects', email],
+        queryKey: ['allProjects', email, search, category],
         queryFn: async () => {
-            if (email) {
-                const { data } = await axiosCommon.get(`/project/projects/my-projects/${email}`);
+            if (search || category) {
+                const { data } = await axiosCommon.get(`/project/projects?name=${search}&category=${category}&email=${email}`);
                 return data;
             }
             else {
-                const { data } = await axiosCommon.get('/project/projects');
+                const { data } = await axiosCommon.get(`/project/projects/my-projects/${email}`);
                 return data;
             }
 
-        }
+        },
+        enabled: !!email,
     })
 
-    return [projects, isLoading, isError, refetch]
+    return [projects, refetch, isLoading, isError]
 };
 
 export default useProjects;
