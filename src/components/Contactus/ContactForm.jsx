@@ -1,10 +1,93 @@
-"use client";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import Link from "next/link";
-import { useEffect } from "react";
+'use client';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Checkbox } from '../ui/checkbox';
+import { useMutation } from '@tanstack/react-query';
+import useAxiosCommon from '@/lib/axiosCommon';
+import toast from "react-hot-toast";
 
 const ContactForm = () => {
+
+  const [currentDate, setCurrentDate] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
+
+
+  const axiosCommon = useAxiosCommon();
+
+
+  // useeffects
+  useEffect(() => {
+    const now = new Date();
+
+    // Convert to GMT+6
+    const gmt6Offset = 6 * 60 * 60 * 1000;
+    const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+    // Format date as YYYY-MM-DD
+    const year = gmt6Date.getUTCFullYear();
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // Format time as HH:MM AM/PM
+    let hours = gmt6Date.getUTCHours();
+    const minutes = String(gmt6Date.getUTCMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedTime = `${formattedHours}:${minutes} ${ampm}`;
+
+    // Set the formatted date and time
+    setCurrentDate(formattedDate);
+    setCurrentTime(formattedTime);
+  }, []);
+
+
+
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+
+  // create post req using tanStack
+  const mutation = useMutation({
+    mutationFn: async (data) => {
+      const res = await axiosCommon.post('/message/messages/add', data);
+      // console.log(res.data);
+      return res.data;
+
+    },
+    onSuccess: () => {
+      // console.log('successfully');
+      toast.success(' Message send Successfully!');
+      reset();
+    }
+    ,
+    onError: (error) => {
+      // console.log(error.message);
+      toast.error(error.message);
+    },
+  });
+
+
+  const onSubmit = (data) => {
+    data.mdate = currentDate;
+    data.mtime = currentTime;
+    // console.log(data);
+    mutation.mutate(data);
+
+  };
+
+
+
   // Aos
   useEffect(() => {
     AOS.init({
@@ -20,50 +103,54 @@ const ContactForm = () => {
       <div className="bg-blue-500 translate-x-3 -translate-y-3 rounded-xl -z-50">
         <div className="bg-white translate-x-2 -translate-y-2 dark:bg-gray-800 rounded-xl p-12 -z-50 shadow-md">
           <h2 className="text-2xl mb-5">Contact With our team</h2>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             {/* name parent */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div class="mb-5">
                 <label for="firstName" class="block mb-2 text-sm font-medium">
-                  First Name*
+                  First Name <span className="text-red-600">*</span>
                 </label>
                 <input
+                  {...register('firstName', { required: true })}
                   type="text"
                   id="firstName"
                   class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
-                  required
                 />
+                {errors.firstName?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">First name is required</p>}
               </div>
               <div class="mb-5">
                 <label for="lastName" class="block mb-2 text-sm font-medium">
-                  Last Name*
+                  Last Name <span className="text-red-600">*</span>
                 </label>
                 <input
+                  {...register('lastName', { required: true })}
                   type="text"
                   id="lastName"
                   class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
-                  required
                 />
+                {errors.lastName?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Last name is required</p>}
               </div>
             </div>
             {/* Mail and Job parent */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium">
-                  Work Email*
+                  Work Email <span className="text-red-600">*</span>
                 </label>
                 <input
+                  {...register('email', { required: true })}
                   type="email"
                   id="email"
                   class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
-                  required
                 />
+                {errors.email?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Email is required</p>}
               </div>
               <div class="mb-5">
                 <label for="jobTitle" class="block mb-2 text-sm font-medium">
                   Job Title
                 </label>
                 <input
+                  {...register('jobTitle')}
                   type="text"
                   id="jobTitle"
                   class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
@@ -73,34 +160,37 @@ const ContactForm = () => {
             {/* Phone */}
             <div class="mb-5">
               <label for="phone" class="block mb-2 text-sm font-medium">
-                Phone number*
+                Phone number <span className="text-red-600">*</span>
               </label>
               <input
-                type="text"
+                {...register('phone', { required: true, valueAsNumber: true })}
                 id="phone"
                 class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
               />
+              {errors.phone?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Phone number is required</p>}
             </div>
             {/* Company Name & size */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <div class="mb-5">
-                <label for="conpanyName" class="block mb-2 text-sm font-medium">
-                  Company Name*
+                <label for="companyName" class="block mb-2 text-sm font-medium">
+                  Company Name <span className="text-red-600">*</span>
                 </label>
                 <input
+                  {...register('companyName', { required: true })}
                   type="text"
-                  id="conpanyName"
+                  id="companyName"
                   class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
-                  required
                 />
+                {errors.phone?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Company name is required</p>}
               </div>
               <div class="mb-5">
                 <label for="companySize" class="block mb-2 text-sm font-medium">
-                  Company Size*
+                  Company Size <span className="text-red-600">*</span>
                 </label>
                 <select
-                  id="range"
-                  name="range"
+                  {...register('companySize', { required: true })}
+                  id="companySize"
+                  name="companySize"
                   class="block w-full p-2.5 border rounded-md dark:bg-transparent dark:text-white dark:border-gray-700 "
                 >
                   <option value="" disabled selected>
@@ -113,38 +203,55 @@ const ContactForm = () => {
                   <option value="251-1500">251-1500</option>
                   <option value="1500+">1500+</option>
                 </select>
+                {errors.companySize?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Please select an option</p>}
               </div>
             </div>
             {/* Manage */}
             <div class="mb-5">
-              <label for="manage" class="block mb-2 text-sm font-medium">
-                What would you like to manage with babelforge.com?*
+              <label for="manageMessage" class="block mb-2 text-sm font-medium">
+                What would you like to manage with babelforge.com? <span className="text-red-600">*</span>
               </label>
               <textarea
+                {...register('manageMessage', { required: true })}
                 type="text"
-                id="manage"
+                id="manageMessage"
                 class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
               />
+              {errors.manageMessage?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Please fill up this field</p>}
             </div>
+
             {/* Help */}
             <div class="mb-5">
-              <label for="manage" class="block mb-2 text-sm font-medium">
-                How can our team help you?
+              <label for="helpMessage" class="block mb-2 text-sm font-medium">
+                How can our team help you? <span className="text-red-600">*</span>
               </label>
               <textarea
+                {...register('helpMessage', { required: true })}
                 type="text"
-                id="manage"
+                id="helpMessage"
                 class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 placeholder="Tell us more about your tearn and what work you'd like to
 manage with babelforge.com"
               />
+              {errors.helpMessage?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Please fill up this field</p>}
             </div>
-            <p className="w-60 mx-auto  text-xs">
-              By clicking submit, I acknowledge babelforge.com{" "}
-              <Link href="" className="text-blue-500">
-                Privacy Policy
-              </Link>
-            </p>
+            <div className=" py-3 mx-auto max-w-96 text-xs flex space-x-2">
+              <Checkbox className="border" id="terms1" />
+              <div className="grid gap-1.5 leading-none">
+                <label
+                  htmlFor="terms1"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  Accept terms and conditions
+                </label>
+                <p className="text-[13px] leading-[19px] text-muted-foreground">
+                  By clicking submit, I acknowledge babelforge.com{' '}
+                  <Link href="" className="text-blue-500">
+                    Privacy Policy
+                  </Link>
+                </p>
+              </div>
+            </div>
             <div className="flex justify-center mt-5">
               <button
                 className="text-white bg-primary py-2 hover:scale-105 hover:shadow-xl hover:shadow-violet-200 duration-500 dark:hover:shadow-gray-700 dark:text-black px-6 rounded-md dark:font-semibold"
