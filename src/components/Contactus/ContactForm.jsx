@@ -2,18 +2,91 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Checkbox } from '../ui/checkbox';
+import { useMutation } from '@tanstack/react-query';
+import useAxiosCommon from '@/lib/axiosCommon';
+import toast from "react-hot-toast";
 
 const ContactForm = () => {
+
+  const [currentDate, setCurrentDate] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
+
+
+  const axiosCommon = useAxiosCommon();
+
+
+  // useeffects
+  useEffect(() => {
+    const now = new Date();
+
+    // Convert to GMT+6
+    const gmt6Offset = 6 * 60 * 60 * 1000;
+    const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+    // Format date as YYYY-MM-DD
+    const year = gmt6Date.getUTCFullYear();
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // Format time as HH:MM AM/PM
+    let hours = gmt6Date.getUTCHours();
+    const minutes = String(gmt6Date.getUTCMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12;
+    const formattedHours = String(hours).padStart(2, '0');
+    const formattedTime = `${formattedHours}:${minutes} ${ampm}`;
+
+    // Set the formatted date and time
+    setCurrentDate(formattedDate);
+    setCurrentTime(formattedTime);
+  }, []);
+
+
+
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = data => console.log(data);
+
+  // create post req using tanStack
+  const mutation = useMutation({
+    mutationFn: async (data) => {
+      const res = await axiosCommon.post('/message/messages/add', data);
+      // console.log(res.data);
+      return res.data;
+
+    },
+    onSuccess: () => {
+      // console.log('successfully');
+      toast.success(' Message send Successfully!');
+      reset();
+    }
+    ,
+    onError: (error) => {
+      // console.log(error.message);
+      toast.error(error.message);
+    },
+  });
+
+
+  const onSubmit = (data) => {
+    data.mdate = currentDate;
+    data.mtime = currentTime;
+    // console.log(data);
+    mutation.mutate(data);
+
+  };
+
+
 
   // Aos
   useEffect(() => {
