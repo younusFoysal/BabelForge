@@ -10,6 +10,7 @@ const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -163,7 +164,7 @@ manage with babelforge.com"
               {errors.helpMessage?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Please fill up this field</p>}
             </div>
             <div className=" py-3 mx-auto max-w-96 text-xs flex space-x-2">
-              <Checkbox className="border" id="terms1" />
+              <Checkbox className="border" id="terms1" required />
               <div className="grid gap-1.5 leading-none">
                 <label
                   htmlFor="terms1"
