@@ -29,7 +29,7 @@ export default function Task({ task }) {
         }
       </span>
 
-      <Link href={""}> {task.name}</Link>
+      <Link href={`/dashboard/tasks/${task.id}`} target={"_blank"}> {task.name}</Link>
 
 
       <br/>
