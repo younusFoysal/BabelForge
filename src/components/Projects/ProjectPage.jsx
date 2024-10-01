@@ -51,8 +51,9 @@ import {
 
 const ProjectPage = () => {
     const session = useSession();
-    const user = session?.data?.user;
-    const projects = useProjects(user.email);
+    const userEmail = session?.data?.user?.email;
+    const projects = useProjects(userEmail);
+    console.log(projects, userEmail);
 
     return (
         <section>
@@ -119,7 +120,7 @@ const ProjectPage = () => {
                     <TableBody>
                         {/* 1st row */}
                         {
-                            projects[0].map(project => <TableRow key={project._id} className='border-y-2 border-gray-300'>
+                            projects[0]?.map(project => <TableRow key={project._id} className='border-y-2 border-gray-300'>
                                 <TableCell className="font-medium flex items-center gap-3">
 
                                     <span><FaRegStar className='text-xl'></FaRegStar></span>
@@ -138,7 +139,7 @@ const ProjectPage = () => {
                                 <TableCell>{project.pcategory}</TableCell>
                                 <TableCell>{project.pmanager}</TableCell>
                                 <TableCell>{project.purl}</TableCell>
-                                <TableCell>{user.email === project.pmanager &&
+                                <TableCell>{userEmail === project.pmanager &&
 
                                     <DropdownMenu>
                                         <DropdownMenuTrigger><Ellipsis></Ellipsis></DropdownMenuTrigger>
