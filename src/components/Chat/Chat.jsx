@@ -4,6 +4,7 @@ import useChat from "@/hooks/useChat";
 import {useSession} from "next-auth/react";
 import Image from "next/image";
 import usericon from "@/image/icon/user.png";
+import userbw from "@/image/icon/userbw.png";
 
 
 const Chat = () => {
@@ -117,7 +118,7 @@ const Chat = () => {
 
                             <div>
                                 <div className="flex items-center mb-2">
-                                    <Image className="w-8 h-8 rounded-full mr-2" src={usericon}
+                                    <Image className="w-8 h-8 rounded-full mr-2" src={userbw}
                                            width={50}
                                            height={50}
                                          alt="User Avatar"/>
