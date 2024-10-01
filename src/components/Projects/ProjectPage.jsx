@@ -53,23 +53,20 @@ const ProjectPage = () => {
 
     const session = useSession();
     const userEmail = session?.data?.user?.email;
+    console.log(userEmail);
 
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('');
 
     const [projects] = useProjects(userEmail, search, category);
 
-    if (!projects.length) {
-        if (!search.length) {
-            if (!category.length) {
-                return (
-                    <section className='flex flex-col justify-center items-center gap-5 text-center'>
-                        <h3 className='text-2xl  font-medium'>You have no projects yet. Start by creating your first project!</h3>
-                        <div ><Button className='bg-primary text-white' variant="outline">Create Project</Button></div>
-                    </section>
-                )
-            }
-        }
+    if (!projects.length && !search.length && !category.length) {
+        return (
+            <section className='flex flex-col justify-center items-center gap-5 text-center'>
+                <h3 className='text-2xl  font-medium'>You have no projects yet. Start by creating your first project!</h3>
+                <div ><Button className='bg-primary text-white' variant="outline">Create Project</Button></div>
+            </section>
+        )
     }
 
     const projectCategories = ["Software Engineering", "Education", "Non Profit Organization", "Project Management"]
@@ -177,7 +174,7 @@ const ProjectPage = () => {
                                     <TableCell>{project.pcategory}</TableCell>
                                     <TableCell>{project.pmanager}</TableCell>
                                     <TableCell>{project.purl}</TableCell>
-                                    <TableCell>{user.email === project.pmanager &&
+                                    <TableCell>{userEmail === project.pmanager &&
 
                                         <DropdownMenu>
                                             <DropdownMenuTrigger><Ellipsis></Ellipsis></DropdownMenuTrigger>
