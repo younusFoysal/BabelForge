@@ -4,24 +4,96 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { FaTelegramPlane } from 'react-icons/fa';
+import { Card } from '../ui/card';
+import { useRouter } from 'next/navigation';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-const AllTeams = ({ teams, isLoading: loadingTeams }) => {
+const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
   const [myTeams, setMyTeams] = useState();
+  const [myTeams2, setMyTeams2] = useState();
   const [users, isLoading] = UseUsers();
+  const [searchText, setSearchText] = useState(searchQuery);
+  const [category, setCategory] = useState([]);
+  const [selectCategory, setSelectCategory] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     setMyTeams(teams);
+    setMyTeams2(teams);
   }, [teams]);
+
+  useEffect(() => {
+    setSearchText(searchQuery);
+  }, [searchQuery]);
+
+  // Store Categories and remove duplicate
+  useEffect(() => {
+    if (myTeams2 && myTeams2.length > 0) {
+      const categories = myTeams2.map(item => item.tcategory);
+      const uniqueCategories = [...new Set(categories)];
+      setCategory(uniqueCategories);
+    }
+  }, [myTeams2]);
+
+  // Search Team and sort via category
+  useEffect(() => {
+    const filteredItems = myTeams?.filter(item => {
+      return item?.tname?.toLowerCase().includes(searchText?.toLowerCase());
+      // item?.projects?.toLowerCase().includes(searchText?.toLowerCase())
+    });
+    setMyTeams(filteredItems);
+    if (!filteredItems || filteredItems?.length < 1) {
+      console.log('length 0');
+      setMyTeams(teams);
+    }
+
+    // selected category
+    if (selectCategory) {
+      const filteredItemsByCategory = myTeams2?.filter(item => {
+        return item?.tcategory === selectCategory;
+      });
+      setMyTeams(filteredItemsByCategory);
+    }
+  }, [searchText, selectCategory]);
 
   if (loadingTeams) return <div>Loading...</div>;
 
   return (
-    <div className="mt-9">
+    <div className="mt-12">
+      {/* Team category */}
+      <div className="flex justify-end mb-8">
+        <div className="flex items-center gap-4">
+          <p>Category : </p>
+          <Select
+            onValueChange={value => {
+              setSelectCategory(value);
+            }}
+          >
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="All" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectLabel>All</SelectLabel>
+                {category.map(item => {
+                  return <SelectItem value={`${item}`}>{item}</SelectItem>;
+                })}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {myTeams &&
           myTeams?.map(({ tname, tpic, tdes, _id, tleader, tmembers }) => (
-            <div key={_id} className="border rounded-lg">
-              <div className="w-full rounded-t-lg h-[130px] bg-red-500"></div>
+            <Card
+              onClick={() => {
+                router.push(`/dashboard/teams/${_id}`);
+              }}
+              key={_id}
+              className="border hover:shadow-lg cursor-pointer duration-300 rounded-lg"
+            >
+              <Image className={`w-full rounded-t-lg h-[120px] object-cover`} alt="" width={80} height={80} src={`${tpic}`} />
               <div className="p-5">
                 <h3 className="text-center text-[20px] mb-2">{tname}</h3>
                 <p className="text-[14px] text-center capitalize">
@@ -90,7 +162,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams }) => {
                   )}
                 </div>
               </div>
-            </div>
+            </Card>
           ))}
       </div>
     </div>
