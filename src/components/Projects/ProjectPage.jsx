@@ -1,5 +1,4 @@
 "use client"
-import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -47,12 +46,38 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useEffect, useState } from "react";
 
 
 const ProjectPage = () => {
+
     const session = useSession();
     const user = session?.data?.user;
-    const projects = useProjects(user.email);
+
+    const [search, setSearch] = useState('');
+    const [category, setCategory] = useState('');
+
+    const [projects] = useProjects(user.email, search, category);
+
+
+    const projectCategories = ["Software Engineering", "Education", "Non Profit Organization", "Project Management"]
+
+    const handleSearchByClick = () => {
+        const inputData = document.getElementById('inputField').value;
+        setSearch(inputData);
+    };
+
+    const handleSearchByEnter = (e) => {
+        if (e.key === 'Enter') {
+            const inputData = document.getElementById('inputField').value;
+            setSearch(inputData);
+        }
+    }
+
+    const handleFilter = (value) => {
+        setCategory(value);
+
+    }
 
     return (
         <section>
@@ -69,24 +94,25 @@ const ProjectPage = () => {
                 {/* search box */}
                 <div className='lg:w-[30%] w-full' >
                     <div className='flex justify-center items-center'>
-                        <Input className='py-4 border-gray-500 border-[1px]' placeholder='Search Projects' />
-                        <span className='translate-x-[-180%]'><IoIosSearch ></IoIosSearch></span>
+                        <Input onKeyDown={handleSearchByEnter} id="inputField" className='py-4 border-gray-500 border-[1px]' placeholder='Project Name' />
+                        <span className='translate-x-[-180%]'><IoIosSearch onClick={handleSearchByClick} className="cursor-pointer"></IoIosSearch></span>
                     </div>
                 </div>
 
 
                 {/* dropdown */}
                 <div className='w-[100%]'>
-                    <Select >
+                    <Select onValueChange={(value) => {
+                        handleFilter(value);
+                    }}>
                         <SelectTrigger className="lg:w-[30%] w-full py-4 border-gray-500 border-[1px] rounded-sm ">
-                            <SelectValue placeholder="Filter By Product" />
+                            <SelectValue placeholder="Filter By Category" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent >
                             <SelectGroup>
-                                <SelectItem value="apple">Business project</SelectItem>
-                                <SelectItem value="banana">Software Project</SelectItem>
-                                <SelectItem value="blueberry">Service Management</SelectItem>
-                                <SelectItem value="grapes">product Discovery</SelectItem>
+                                {
+                                    projectCategories.map((category, index) => <SelectItem key={index} value={category}>{category}</SelectItem>)
+                                }
                             </SelectGroup>
                         </SelectContent>
                     </Select>
@@ -104,13 +130,13 @@ const ProjectPage = () => {
                             <TableHead className="w-[20%] font-semibold text-black flex  items-center gap-3">
                                 <span><FaStar ></FaStar></span>
                                 Name
-                                <span><FaArrowDown  ></FaArrowDown > </span>
+                                {/* <span><FaArrowDown  ></FaArrowDown > </span> */}
                             </TableHead>
                             <TableHead className="font-semibold text-black">Key
 
                             </TableHead>
                             <TableHead className="font-semibold text-black w-[20%]">Type</TableHead>
-                            <TableHead className="font-semibold text-black w-[20%]">Lead</TableHead>
+                            <TableHead className="font-semibold text-black w-[20%]">Manager</TableHead>
                             <TableHead className="font-semibold text-black">Project URL</TableHead>
                             <TableHead className="font-semibold text-black">More Action</TableHead>
                         </TableRow>
@@ -119,35 +145,37 @@ const ProjectPage = () => {
                     <TableBody>
                         {/* 1st row */}
                         {
-                            projects[0].map(project => <TableRow key={project._id} className='border-y-2 border-gray-300'>
-                                <TableCell className="font-medium flex items-center gap-3">
+                            projects.map(project =>
+                                <TableRow key={project._id} className='border-y-2 border-gray-300'>
+                                    <TableCell className="font-medium flex items-center gap-3">
 
-                                    <span><FaRegStar className='text-xl'></FaRegStar></span>
-                                    <div className="flex items-center gap-2 font-normal text-primary">
-                                        <p className="rounded-full p-1">
-                                            <Avatar className="w-8 h-8">
-                                                <AvatarImage src={project.pimg} />
-                                                <AvatarFallback>TA</AvatarFallback>
-                                            </Avatar>
-                                        </p>
-                                        {project.pname}
-                                    </div>
+                                        <span><FaRegStar className='text-xl'></FaRegStar></span>
+                                        <div className="flex items-center gap-2 font-normal text-primary">
+                                            <p className="rounded-full p-1">
+                                                <Avatar className="w-8 h-8">
+                                                    <AvatarImage src={project.pimg} />
+                                                    <AvatarFallback>TA</AvatarFallback>
+                                                </Avatar>
+                                            </p>
+                                            {project.pname}
+                                        </div>
 
-                                </TableCell>
-                                <TableCell className="uppercase">{project.pname}</TableCell>
-                                <TableCell>{project.pcategory}</TableCell>
-                                <TableCell>{project.pmanager}</TableCell>
-                                <TableCell>{project.purl}</TableCell>
-                                <TableCell>{user.email === project.pmanager &&
+                                    </TableCell>
+                                    <TableCell className="uppercase">{project.pname}</TableCell>
+                                    <TableCell>{project.pcategory}</TableCell>
+                                    <TableCell>{project.pmanager}</TableCell>
+                                    <TableCell>{project.purl}</TableCell>
+                                    <TableCell>{user.email === project.pmanager &&
 
-                                    <DropdownMenu>
-                                        <DropdownMenuTrigger><Ellipsis></Ellipsis></DropdownMenuTrigger>
-                                        <DropdownMenuContent>
-                                            <DropdownMenuItem>Update Project</DropdownMenuItem>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                }</TableCell>
-                            </TableRow>)
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger><Ellipsis></Ellipsis></DropdownMenuTrigger>
+                                            <DropdownMenuContent>
+                                                <DropdownMenuItem>Update Project</DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    }</TableCell>
+                                </TableRow>
+                            )
                         }
 
                     </TableBody>
@@ -175,7 +203,7 @@ const ProjectPage = () => {
                 </Pagination>
 
             </div>
-        </section>
+        </section >
     );
 };
 
