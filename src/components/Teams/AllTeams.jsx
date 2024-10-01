@@ -111,19 +111,18 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                 <div className="flex mr-3 cursor-pointer  mt-5 items-center justify-center">
                   {tmembers?.slice(0, 3).map((temember, index) => {
                     return (
-                      <HoverCard>
+                      <HoverCard key={index}>
                         <HoverCardTrigger className="w-9 -mr-3 border-[#fff] border-[4px] h-9 rounded-full">
                           <Image
                             className={`w-full h-full object-cover rounded-full`}
                             alt=""
                             width={40}
                             height={40}
-                            src={`${
-                              users &&
+                            src={`${users &&
                               users?.find(user => {
                                 return user.email == temember;
                               }).image
-                            }`}
+                              }`}
                           />
                         </HoverCardTrigger>
                         <HoverCardContent className="gap-4 h-[130px]  w-[300px]">
@@ -133,12 +132,11 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                               alt=""
                               width={50}
                               height={50}
-                              src={`${
-                                users &&
+                              src={`${users &&
                                 users?.find(user => {
                                   return user.email == temember;
                                 }).image
-                              }`}
+                                }`}
                             />
                             <p className="">
                               {' '}

@@ -30,6 +30,10 @@ const DashboardNavbar = () => {
       href: "/dashboard/teams",
     },
     {
+      title: "Group Chat",
+      href: "/dashboard/chat",
+    },
+    {
       title: "Dashboard",
       href: "/dashboard",
     },
@@ -52,9 +56,8 @@ const DashboardNavbar = () => {
             {NavbarItems.map((nav) => (
               <Link href={nav.href} key={nav.href}>
                 <li
-                  className={`hover:text-blue-500 ${
-                    pathname === nav.href ? "text-blue-500 font-semibold" : ""
-                  }`}
+                  className={`hover:text-blue-500 ${pathname === nav.href ? "text-blue-500 font-semibold" : ""
+                    }`}
                 >
                   {nav.title}
                 </li>
