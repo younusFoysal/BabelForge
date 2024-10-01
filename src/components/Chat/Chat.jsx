@@ -6,6 +6,12 @@ import Image from "next/image";
 import usericon from "@/image/icon/user.png";
 import userbw from "@/image/icon/userbw.png";
 import { FiSend } from "react-icons/fi";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 const Chat = () => {
     const [currentDate, setCurrentDate] = useState('');
@@ -159,9 +165,32 @@ const Chat = () => {
                                 <div key={index}>
                                     {msg.username === uname ? (
                                         <div className="flex items-center justify-end my-2">
-                                            <div className="bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm">
-                                                {msg.messages}
+                                            <div>
+
+
+                                                <TooltipProvider>
+                                                    <Tooltip>
+                                                        <TooltipTrigger asChild>
+
+                                                            <div
+                                                                className="bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm">
+                                                                {msg.messages}
+                                                            </div>
+
+                                                        </TooltipTrigger>
+                                                        <TooltipContent>
+
+                                                            <div className="text-sm text-gray-600 text-right mr-4">
+                                                                {msg.ctime} {msg.cdate}
+                                                            </div>
+
+                                                        </TooltipContent>
+                                                    </Tooltip>
+                                                </TooltipProvider>
+
+
                                             </div>
+
                                             <Image
                                                 className="w-8 h-8 rounded-full"
                                                 src={usericon}
@@ -182,9 +211,25 @@ const Chat = () => {
                                                 />
                                                 <div className="font-medium">{msg.username}</div>
                                             </div>
-                                            <div className="bg-white rounded-lg p-2 shadow mb-2 max-w-sm">
-                                                {msg.messages}
-                                            </div>
+
+                                            <TooltipProvider>
+                                                <Tooltip>
+                                                    <TooltipTrigger asChild>
+
+                                                        <div className="bg-white rounded-lg p-2 shadow max-w-sm">
+                                                            {msg.messages}
+                                                        </div>
+
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <div className="text-sm text-gray-600 text-left ">
+                                                            {msg.cdate} {msg.ctime}
+                                                        </div>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
+
+
                                         </div>
                                     )}
                                 </div>
