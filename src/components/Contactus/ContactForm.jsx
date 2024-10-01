@@ -66,7 +66,7 @@ const ContactForm = () => {
 
     },
     onSuccess: () => {
-      // console.log('successfully');
+      console.log('successfully added');
       toast.success(' Message send Successfully!');
       reset();
     }
@@ -81,7 +81,7 @@ const ContactForm = () => {
   const onSubmit = (data) => {
     data.mdate = currentDate;
     data.mtime = currentTime;
-    // console.log(data);
+    console.log(data);
     mutation.mutate(data);
 
   };
