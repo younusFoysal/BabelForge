@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -33,24 +34,34 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
+import { useSession } from 'next-auth/react';
+import axios from 'axios';
+import useProjects from '@/hooks/useProjects';
+import { Ellipsis } from 'lucide-react';
 
-
-
-
-
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 
 const ProjectPage = () => {
+    const session = useSession();
+    const user = session?.data?.user;
+    const projects = useProjects(user.email);
+
     return (
-        <section className='container mx-auto'>
+        <section>
 
             {/* page heading */}
             <div className='flex justify-between items-center'>
                 <h3 className='text-2xl  font-medium'>Projects</h3>
-                <Button className='bg-primary text-white' variant="outline">Create Project</Button>
+                <div ><Button className='bg-primary text-white' variant="outline">Create Project</Button></div>
             </div>
-
-
 
             {/* Input box content */}
             <div className='my-8 w-full flex justify-start items-center gap-6'>
@@ -83,9 +94,6 @@ const ProjectPage = () => {
 
             </div>
 
-
-
-
             {/* Table content */}
             <div className='mt-8'>
 
@@ -110,88 +118,45 @@ const ProjectPage = () => {
 
                     <TableBody>
                         {/* 1st row */}
-                        <TableRow className='border-y-2 border-gray-300'>
-                            <TableCell className="font-medium flex items-center gap-3">
+                        {
+                            projects[0].map(project => <TableRow key={project._id} className='border-y-2 border-gray-300'>
+                                <TableCell className="font-medium flex items-center gap-3">
 
-                                <span><FaRegStar className='text-xl'></FaRegStar></span>
-                                <div className="flex items-center gap-2 font-normal text-primary">
-                                    <p className="rounded-full p-1">
-                                        <Avatar className="w-8 h-8">
-                                            <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                                            <AvatarFallback>TA</AvatarFallback>
-                                        </Avatar>
-                                    </p>
-                                   Babel Forge
-                                </div>
+                                    <span><FaRegStar className='text-xl'></FaRegStar></span>
+                                    <div className="flex items-center gap-2 font-normal text-primary">
+                                        <p className="rounded-full p-1">
+                                            <Avatar className="w-8 h-8">
+                                                <AvatarImage src={project.pimg} />
+                                                <AvatarFallback>TA</AvatarFallback>
+                                            </Avatar>
+                                        </p>
+                                        {project.pname}
+                                    </div>
 
-                            </TableCell>
-                            <TableCell>BABELFORGE</TableCell>
-                            <TableCell>Team-managed software</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                        </TableRow>
-                        {/*  row 2 */}
-                        <TableRow className='border-y-2 border-gray-300'>
-                            <TableCell className="font-medium flex items-center gap-3">
+                                </TableCell>
+                                <TableCell className="uppercase">{project.pname}</TableCell>
+                                <TableCell>{project.pcategory}</TableCell>
+                                <TableCell>{project.pmanager}</TableCell>
+                                <TableCell>{project.purl}</TableCell>
+                                <TableCell>{user.email === project.pmanager &&
 
-                                <span><FaRegStar className='text-xl'></FaRegStar></span>
-                                <div className="flex items-center gap-2 font-normal text-primary">
-                                    <p className="rounded-full p-1">
-                                        <Avatar className="w-8 h-8">
-                                            <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                                            <AvatarFallback>TA</AvatarFallback>
-                                        </Avatar>
-                                    </p>
-                                   Babel Forge
-                                </div>
-
-                            </TableCell>
-                            <TableCell>BABELFORGE</TableCell>
-                            <TableCell>Team-managed software</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                        </TableRow>
-                        {/*  row 3*/}
-                        <TableRow className='border-y-2 border-gray-300'>
-                            <TableCell className="font-medium flex items-center gap-3">
-
-                                <span><FaRegStar className='text-xl'></FaRegStar></span>
-                                <div className="flex items-center gap-2 font-normal text-primary">
-                                    <p className="rounded-full p-1">
-                                        <Avatar className="w-8 h-8">
-                                            <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                                            <AvatarFallback>TA</AvatarFallback>
-                                        </Avatar>
-                                    </p>
-                                   Babel Forge
-                                </div>
-
-                            </TableCell>
-                            <TableCell>BABELFORGE</TableCell>
-                            <TableCell>Team-managed software</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                        </TableRow>
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger><Ellipsis></Ellipsis></DropdownMenuTrigger>
+                                        <DropdownMenuContent>
+                                            <DropdownMenuItem>Update Project</DropdownMenuItem>
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                }</TableCell>
+                            </TableRow>)
+                        }
 
                     </TableBody>
-
-
-
-
-
                 </Table>
 
             </div>
 
-
-
-
             {/* pagination */}
             <div className='mt-6'>
-
                 <Pagination className='flex justify-start '>
                     <PaginationContent>
                         <PaginationItem>
@@ -209,11 +174,7 @@ const ProjectPage = () => {
                     </PaginationContent>
                 </Pagination>
 
-
             </div>
-
-
-
         </section>
     );
 };
