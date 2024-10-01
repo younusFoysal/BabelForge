@@ -127,7 +127,7 @@ const layout = ({ children }) => {
       </div>
 
       {/*layout content  */}
-      <div className="lg:p-6 pt-10 flex justify-center w-full">{children}</div>
+      <div className="lg:p-6 pt-10 w-full">{children}</div>
     </div>
   );
 };
