@@ -132,7 +132,7 @@ const Chat = () => {
 
                             <div className="flex items-center justify-end">
                                 <div className="bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm">
-                                    Sure, I can help with that.
+                                    Sure, I can help with that...
                                 </div>
                                 <Image className="w-8 h-8 rounded-full" src={usericon}
                                        width={50}
