@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -20,10 +20,19 @@ import Googleicon from "@/image/icon/google.png";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { SocialButton } from "@/components/SocialButton/SocialButton";
+import toast from "react-hot-toast";
+import { SiSpinrilla } from "react-icons/si";
+import useAxiosCommon from "@/lib/axiosCommon";
+
 
 const formSchema = z.object({
   username: z.string().min(4, {
     message: "Username must be at least 4 characters.",
+  }),
+
+  name: z.string().min(4, {
+    message: "name must be at least 4 characters.",
   }),
 
   email: z.string().email({
@@ -48,30 +57,39 @@ const formSchema = z.object({
 
 const Signup = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
+      name: "",
       email: "",
       password: "",
     },
   });
+  const axioncommon = useAxiosCommon()
 
   const onSubmit = async (value) => {
-    const { email, password, username } = value;
+    setLoading(true);
+    const { email, password, username, name } = value;
+    ////console.log(value)
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/api/users/add",
+      const { data } = await axioncommon.post(
+        `/api/users/add`,
         {
           email,
           password,
           username,
+          name,
         },
         {
           headers: { "Content-Type": "application/json" },
         }
       );
+      //console.log(data);
       if (data.insertedId) {
+        setLoading(false);
+        toast.success("Sign up successfully.");
         router.push(`/login`);
       }
     } catch (e) {
@@ -84,14 +102,14 @@ const Signup = () => {
       <div className="flex justify-center items-center w-full lg:w-[60%] h-screen">
         <div className="w-[90%] lg:w-[60%]">
           <h1
-            className="text-3xl md:text-4xl font-bold text-center text-gray-700
+            className="text-3xl md:text-4xl font-bold text-center text-gray-700 dark:text-white
           "
           >
             Welcome to BabelForge
           </h1>
-          <p className="text-center py-4 text-gray-600">
+          <p className="text-center py-4 text-gray-600 dark:text-white">
             {" "}
-            Get started - it's free. No credit card needed.
+            Get started - it&apos;s free. No credit card needed.
           </p>
           <div className="p-5">
             <Form {...form}>
@@ -101,13 +119,31 @@ const Signup = () => {
               >
                 <FormField
                   control={form.control}
-                  name="username"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
                         <Input
                           type="text"
+                          className="bg-transparent border-gray-800"
                           placeholder="Enter your name"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="username"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <Input
+                          className="bg-transparent border-gray-800"
+                          type="text"
+                          placeholder="Enter your username"
                           {...field}
                         />
                       </FormControl>
@@ -122,6 +158,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="email"
                           placeholder="Enter your mail"
                           {...field}
@@ -138,6 +175,7 @@ const Signup = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="password"
                           placeholder="Enter your password"
                           {...field}
@@ -148,29 +186,26 @@ const Signup = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {!loading ? (
+                    "Continue"
+                  ) : (
+                    <>
+                      {" "}
+                      <SiSpinrilla className="animate-spin mr-2" /> Loading{" "}
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>
             {/* from down */}
             <div className="flex items-center my-4 mt-5">
               <div className="flex-grow border-t border-gray-300"></div>
-              <span className="mx-4 text-gray-500">Or</span>
+              <span className="mx-4 text-gray-500 dark:text-white">Or</span>
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
-            <Button
-              type="submit"
-              className="w-full text-center rounded bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-200 text-[14px]"
-            >
-              <Image
-                src={Googleicon}
-                height={20}
-                width={20}
-                alt="googleicon"
-                className="mr-2 h-5 w-5"
-              />
-              Continue With Google
-            </Button>
+            {/* social button */}
+            <SocialButton />
+
             <div className="text-center py-5">
               <p>By proceeding, you agree to the</p>
               <p>

@@ -16,12 +16,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import Googleicon from "@/image/icon/google.png";
+
 import Link from "next/link";
 import axios from "axios";
 
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { SocialButton } from "@/components/SocialButton/SocialButton";
+import { SiSpinrilla } from "react-icons/si";
+import toast from "react-hot-toast";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -45,8 +48,9 @@ const formSchema = z.object({
 });
 
 const Login = () => {
+  const session = useSession();
   const router = useRouter();
-
+  const [loading, setLoading] = React.useState(false);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,6 +60,7 @@ const Login = () => {
   });
 
   const onSubmit = async (value) => {
+    setLoading(true);
     const { email, password } = value;
     const res = await signIn("credentials", {
       email,
@@ -63,7 +68,9 @@ const Login = () => {
       redirect: false,
     });
     if (res.status === 200) {
+      toast.success("Login successfull");
       router.push("/dashboard");
+      setLoading(false);
     }
   };
 
@@ -78,17 +85,17 @@ const Login = () => {
           className="h-screen object-cover"
         />
       </div>
-      <div className="flex justify-center items-center w-full lg:w-[60%] h-screen">
+      <div className="flex justify-center items-center w-full lg:w-[60%] h-screen dark:text-white">
         <div className="w-[90%] lg:w-[60%]">
           <h1
-            className="text-3xl md:text-4xl font-bold text-center text-gray-700
+            className="text-3xl md:text-4xl font-bold text-center text-gray-700 dark:text-white
           "
           >
             Welcome to BabelForge
           </h1>
-          <p className="text-center py-4 text-gray-600">
+          <p className="text-center py-4 text-gray-600 dark:text-gray-100">
             {" "}
-            Get started - it's free. No credit card needed.
+            Get started - it&apos;s free. No credit card needed.
           </p>
           <div className="p-5">
             <Form {...form}>
@@ -103,6 +110,7 @@ const Login = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="email"
                           placeholder="Enter your mail"
                           {...field}
@@ -119,6 +127,7 @@ const Login = () => {
                     <FormItem>
                       <FormControl>
                         <Input
+                          className="bg-transparent border-gray-800"
                           type="password"
                           placeholder="Enter your password"
                           {...field}
@@ -129,7 +138,14 @@ const Login = () => {
                   )}
                 />
                 <Button type="submit" className="w-full text-center rounded">
-                  Continue
+                  {!loading ? (
+                    "Continue"
+                  ) : (
+                    <>
+                      {" "}
+                      <SiSpinrilla className="animate-spin mr-2" /> Loading{" "}
+                    </>
+                  )}
                 </Button>
               </form>
             </Form>
@@ -139,23 +155,12 @@ const Login = () => {
               <span className="mx-4 text-gray-500">Or</span>
               <div className="flex-grow border-t border-gray-300"></div>
             </div>
-            <Button
-              type="submit"
-              className="w-full text-center rounded bg-transparent border border-gray-300 text-gray-700 hover:bg-gray-200 text-[14px]"
-            >
-              <Image
-                src={Googleicon}
-                height={20}
-                width={20}
-                alt="googleicon"
-                className="mr-2 h-5 w-5"
-              />
-              Continue With Google
-            </Button>
+            {/* socail button */}
+            <SocialButton />
             <div className="flex items-center justify-center mt-10">
               <p>
                 {" "}
-                Don't have an account yet?
+                Don&apos;t have an account yet?
                 <Link
                   className="text-blue-500 duration-300 transition-all hover:underline ml-1"
                   href="/signup"
@@ -167,7 +172,7 @@ const Login = () => {
             <div>
               <p className="text-center py-1">
                 {" "}
-                Can't log in?
+                Can&apos;t log in?
                 <Link
                   className="text-blue-500 duration-300 transition-all hover:underline ml-1"
                   href=""

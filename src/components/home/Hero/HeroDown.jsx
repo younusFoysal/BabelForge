@@ -1,6 +1,10 @@
 "use client";
 
-import Button from "../../shared/Buttons";
+import HR from "@/image//Home/hero/HR.jpg";
+import desing from "@/image//Home/hero/IT.jpg";
+import Operations from "@/image//Home/hero/Operations.jpg";
+import Product from "@/image//Home/hero/Product.jpg";
+import marketing from "@/image/Home/hero/CRM.jpg";
 import {
   ArrowRight,
   ClipboardList,
@@ -9,14 +13,10 @@ import {
   PackageOpen,
   Stethoscope,
 } from "lucide-react";
-import HeroBox from "./HeroBox";
 import Image from "next/image";
 import { useState } from "react";
-import desing from "@/image//Home/hero/IT.jpg";
-import marketing from "@/image/Home/hero/CRM.jpg";
-import Operations from "@/image//Home/hero/Operations.jpg";
-import Product from "@/image//Home/hero/Product.jpg";
-import HR from "@/image//Home/hero/HR.jpg";
+import Button from "../../shared/Buttons";
+import HeroBox from "./HeroBox";
 
 const data = [
   {
@@ -68,7 +68,7 @@ const HeroDown = () => {
           alt="hero"
           className={`w-[100%] mx-auto rounded-lg ${Opacity && "opacity-60"}`}
         />
-        <div className="flex flex-col w-fit p-6 gap-2 bg-gradient-to-b from-white/80 to-[#F0F3FF]/30 shadow-md rounded-2xl border border-[#DCDFEC] backdrop-blur-xl absolute -top-10 -right-10 z-50">
+        <div className="flex flex-col w-fit p-6 gap-2 bg-gradient-to-b from-white/80 dark:bg-gray-800 to-[#0000]/30 shadow-md rounded-2xl border border-[#DCDFEC] backdrop-blur-xl absolute -top-10 -right-10 z-50 dark:text-black dark:border-gray-800">
           <h1 className="text-center pb-4">what you like to manage</h1>
           <div className="grid grid-cols-3 gap-3 ">
             {data.map((item, index) => (

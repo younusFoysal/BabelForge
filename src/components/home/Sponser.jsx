@@ -7,11 +7,10 @@ import glossier from "@/image/Home/sponser/glossier.png";
 import lionsgate from "@/image/Home/sponser/lionsgate.png";
 import oxy from "@/image/Home/sponser/oxy.png";
 import universal from "@/image/Home/sponser/universal.png";
-import subimage1 from "@/image/Home/carousel/sub_service.avif";
 const Sponser = () => {
   return (
-    <div className="py-[120px] px-4 text-center">
-      <p className="text-[#333] font-normal">
+    <div className="py-[60px] px-4 text-center">
+      <p className="text-[#333] font-normal dark:text-white">
         Trusted by 225,000+ customers, from startups to enterprises{" "}
       </p>
       <div className="flex flex-wrap mt-9 items-center justify-center gap-9">
@@ -19,7 +18,7 @@ const Sponser = () => {
           height={200}
           width={300}
           className="max-w-[90px] max-h-[50px] hover:scale-110 duration-500"
-          src={subimage1}
+          src={bd}
           alt=""
         />
         <Image

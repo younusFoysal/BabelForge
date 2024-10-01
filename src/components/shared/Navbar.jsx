@@ -1,28 +1,39 @@
 "use client";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import axios from "axios";
+import { AlignJustify, ArrowRight, X } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
-import { AlignJustify, ArrowRight, X } from "lucide-react";
-import Image from "next/image";
-import Button from "./Buttons";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
+import { ModeToggle } from "../Theme/ModeToggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import Button from "./Buttons";
 
 const Navbar = () => {
+  const [users, setUsers] = useState([]);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const session = useSession();
   const user = session?.data?.user;
+
   const pathname = usePathname();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+
   // conditonial navbar
   if (pathname.includes("login")) {
     return (
-      <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+      <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999] dark:bg-gray-900  dark:border-gray-800">
         <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3">
           {/* logo */}
           <Link href="/">
@@ -44,7 +55,7 @@ const Navbar = () => {
   const NavbarItems = [
     {
       title: "Product",
-      href: "/features/dashboards",
+      href: "/features",
     },
     {
       title: "Price",
@@ -61,7 +72,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+    <div className="bg-white dark:bg-gray-900  dark:border-gray-800 sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -90,14 +101,42 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
+          <ModeToggle />
           {user ? (
-            <Avatar>
-              <AvatarImage
-                src="https://github.com/shadcn.png"
-                className="w-16 h-16 rounded-full object-cover"
-              />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <div className="md:flex items-center space-x-4 mr-4">
+              {user && (
+                <Popover>
+                  <PopoverTrigger>
+                    <Avatar>
+                      <AvatarImage
+                        src={
+                          user?.image
+                            ? user?.image
+                            : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                        }
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </PopoverTrigger>
+                  <PopoverContent className="flex-col gap-2 p-4 flex dark:bg-gray-800 dark:border-gray-700 w-[200px] mr-4 mt-4">
+                    <Link
+                      href="/dashboard/profile"
+                      className="bg-gray-100 py-2 px-4 w-full rounded-md text-center dark:text-white dark:bg-gray-900"
+                    >
+                      profile
+                    </Link>
+                    <button
+                      onClick={() => signOut()}
+                      className="bg-gray-100 py-2 px-4 w-full rounded-md dark:text-white dark:bg-gray-900"
+                    >
+                      {" "}
+                      logout
+                    </button>
+                  </PopoverContent>
+                </Popover>
+              )}
+            </div>
           ) : (
             <>
               <ul className="flex items-start space-x-4">
@@ -123,7 +162,7 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t border-gray-200">
           <ul className="flex flex-col space-y-4  py-4">
             {NavbarItems.map((nav) => (
-              <Link href={nav.href}>
+              <Link href={nav.href} key={nav.href}>
                 <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
                   {nav.title}
                 </li>

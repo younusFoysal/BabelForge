@@ -5,7 +5,7 @@ import Button from "../shared/Buttons";
 
 const Header = () => {
   return (
-    <section className="  bg-[#F0F3FF]">
+    <section className="  bg-[#F0F3FF] dark:bg-gray-800 mt-5 container mx-auto rounded-xl ">
       <div className="flex items-center flex-col container mx-auto">
         <div className="w-[90%] md:w-[40%] flex flex-col justify-center items-center text-center pt-14">
           <h6 className="text-blue-500">Dashboards</h6>

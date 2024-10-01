@@ -14,11 +14,11 @@ const ContactForm = () => {
 
   return (
     <div
-      className="bg-blue-300 rounded-xl hover:shadow-2xl hover:shadow-blue-200 duration-500"
+      className="bg-blue-300 rounded-xl hover:shadow-2xl hover:shadow-blue-200 duration-500 dark:hover:shadow-gray-700"
       data-aos="slide-right"
     >
       <div className="bg-blue-500 translate-x-3 -translate-y-3 rounded-xl -z-50">
-        <div className="bg-white translate-x-2 -translate-y-2 rounded-xl p-12 -z-50 shadow-md">
+        <div className="bg-white translate-x-2 -translate-y-2 dark:bg-gray-800 rounded-xl p-12 -z-50 shadow-md">
           <h2 className="text-2xl mb-5">Contact With our team</h2>
           <form>
             {/* name parent */}
@@ -30,7 +30,7 @@ const ContactForm = () => {
                 <input
                   type="text"
                   id="firstName"
-                  class="block w-full p-2.5 border rounded-md text-sm"
+                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                   required
                 />
               </div>
@@ -41,7 +41,7 @@ const ContactForm = () => {
                 <input
                   type="text"
                   id="lastName"
-                  class="block w-full p-2.5 border rounded-md text-sm"
+                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                   required
                 />
               </div>
@@ -55,7 +55,7 @@ const ContactForm = () => {
                 <input
                   type="email"
                   id="email"
-                  class="block w-full p-2.5 border rounded-md text-sm"
+                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                   required
                 />
               </div>
@@ -66,7 +66,7 @@ const ContactForm = () => {
                 <input
                   type="text"
                   id="jobTitle"
-                  class="block w-full p-2.5 border rounded-md text-sm"
+                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 />
               </div>
             </div>
@@ -78,7 +78,7 @@ const ContactForm = () => {
               <input
                 type="text"
                 id="phone"
-                class="block w-full p-2.5 border rounded-md text-sm"
+                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
               />
             </div>
             {/* Company Name & size */}
@@ -90,7 +90,7 @@ const ContactForm = () => {
                 <input
                   type="text"
                   id="conpanyName"
-                  class="block w-full p-2.5 border rounded-md text-sm"
+                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                   required
                 />
               </div>
@@ -101,7 +101,7 @@ const ContactForm = () => {
                 <select
                   id="range"
                   name="range"
-                  class="block w-full p-2.5 border rounded-md"
+                  class="block w-full p-2.5 border rounded-md dark:bg-transparent dark:text-white dark:border-gray-700 "
                 >
                   <option value="" disabled selected>
                     Please select
@@ -123,7 +123,7 @@ const ContactForm = () => {
               <textarea
                 type="text"
                 id="manage"
-                class="block w-full p-2.5 border rounded-md text-sm"
+                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
               />
             </div>
             {/* Help */}
@@ -134,7 +134,7 @@ const ContactForm = () => {
               <textarea
                 type="text"
                 id="manage"
-                class="block w-full p-2.5 border rounded-md text-sm"
+                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 placeholder="Tell us more about your tearn and what work you'd like to
 manage with babelforge.com"
               />
@@ -147,7 +147,7 @@ manage with babelforge.com"
             </p>
             <div className="flex justify-center mt-5">
               <button
-                className="text-white bg-primary rounded-full px-4 py-2 hover:scale-105 hover:shadow-xl hover:shadow-violet-200 duration-500"
+                className="text-white bg-primary py-2 hover:scale-105 hover:shadow-xl hover:shadow-violet-200 duration-500 dark:hover:shadow-gray-700 dark:text-black px-6 rounded-md dark:font-semibold"
                 type="submit"
               >
                 Submit

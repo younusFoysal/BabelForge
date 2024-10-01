@@ -1,12 +1,12 @@
 "use client";
-import "./Footer.css";
-import Image from "next/image";
-import logo from "@/image/Home/babellogo.png";
 import apple from "@/image/Footer/apple.png";
 import google from "@/image/Footer/google.png";
+import logo from "@/image/Home/babellogo.png";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import "./Footer.css";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -16,7 +16,7 @@ const Footer = () => {
   if (pathname.includes("login") || pathname.includes("signup")) return null;
 
   return (
-    <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50">
+    <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50 dark:text-gray-200 dark:bg-gray-900 dark:border-t-gray-800 dark:border-t-[1px]">
       {/* upper part */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-7 items-center justify-between border-b pb-12">
         <div className="flex flex-col space-y-1 text-sm">
@@ -28,7 +28,9 @@ const Footer = () => {
                 alt="babelforge"
                 className=" size-6 lg:size-14 "
               />
-              <h3 className="text-3xl font-bold text-[#106ac5]">BabelForge</h3>
+              <h3 className="text-3xl font-bold text-[#106ac5] dark:text-">
+                BabelForge
+              </h3>
             </div>
           </Link>
 
