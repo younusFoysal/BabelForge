@@ -8,25 +8,8 @@ import useUsers from '@/hooks/useUsers';
 import useTasks from '@/hooks/useTasks';
 import useTeams from '@/hooks/useTeams';
 
-const DetailsCard = () => {
-  const [pendingTask, setPendingTask] = useState([]);
-
-  // Get all user
-  const [users, isLoading] = useUsers();
-
-  // // Get all Teams
-
-  const [teams] = useTeams();
-
-  // // Get all task
-  const task = useTasks();
-  //console.log("Tasks",task);
-
-  useEffect(() => {
-    setPendingTask(task[0]?.filter(task => task.tproces === 'todo'));
-  }, []);
-  //console.log(pendingTask);
-
+const DetailsCard = ({ stats, isLoading }) => {
+  const [stat, setStat] = useState(stats);
   if (isLoading) return <div>Loading...</div>;
 
   return (
@@ -38,7 +21,7 @@ const DetailsCard = () => {
           <TbUsersGroup />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl mb-2 font-bold">{users?.length}</div>
+          <div className="text-2xl mb-2 font-bold">{stat?.totalTeamMembers}</div>
           <p className="text-xs text-muted-foreground">Shows the total number of registered members in your team</p>
         </CardContent>
       </Card>
@@ -49,7 +32,7 @@ const DetailsCard = () => {
           <RiTeamLine />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl mb-2 font-bold">{teams?.length}</div>
+          <div className="text-2xl mb-2 font-bold">{stat?.totalTeams}</div>
           <p className="text-xs text-muted-foreground">Displays the total number of tasks created .</p>
         </CardContent>
       </Card>
@@ -60,7 +43,7 @@ const DetailsCard = () => {
           <MdTask />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl mb-2 font-bold">{task[0]?.length}</div>
+          <div className="text-2xl mb-2 font-bold">{stat?.totalTasks}</div>
           <p className="text-xs text-muted-foreground">Displays the total number of tasks created .</p>
         </CardContent>
       </Card>
@@ -71,7 +54,7 @@ const DetailsCard = () => {
           <MdOutlinePendingActions />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl mb-2 font-bold">{pendingTask?.length}</div>
+          <div className="text-2xl mb-2 font-bold">{stat?.pendingTasks}</div>
           <p className="text-xs text-muted-foreground">Displays the total number of pending tasks.</p>
         </CardContent>
       </Card>
