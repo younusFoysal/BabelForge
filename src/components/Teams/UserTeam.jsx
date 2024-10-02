@@ -28,7 +28,7 @@ const UserTeam = () => {
           onChange={() => handleSeach()}
           ref={myRef}
           className="placeholder:text-[25px]  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-7 w-full border-b-2 focus:border-[#3575ff] hover:border-[#3575ff] focus:outline-0 focus:outline-none"
-          placeholder="Search for teams and projects"
+          placeholder="Search for teams and category"
           type="text"
           name="search"
           id=""

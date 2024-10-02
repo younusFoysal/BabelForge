@@ -38,7 +38,9 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
   useEffect(() => {
     // Filter by search text
     let filteredItems = myTeams2?.filter(item => {
-      return item?.tname?.toLowerCase().includes(searchText?.toLowerCase());
+      return (
+        item?.tname?.toLowerCase().includes(searchText?.toLowerCase()) || item?.tcategory?.toLowerCase().includes(searchText?.toLowerCase())
+      );
     });
 
     // If search doesn't return any results or no searchText provided, use the original team list
@@ -61,6 +63,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
     <div className="mt-12">
       {/* Team category */}
       <div className="flex justify-end mb-8">
+        {/* Sort Dropdown */}
         <div className="flex items-center gap-4">
           <p>Category : </p>
           <Select
@@ -76,7 +79,11 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
               <SelectGroup>
                 <SelectItem value="All">All</SelectItem>
                 {category?.map(item => {
-                  return <SelectItem value={`${item}`}>{item}</SelectItem>;
+                  return (
+                    <SelectItem key={item} value={`${item}`}>
+                      {item}
+                    </SelectItem>
+                  );
                 })}
               </SelectGroup>
             </SelectContent>
@@ -85,20 +92,20 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {myTeams &&
-          myTeams?.map(({ tname, tpic, tdes, _id, tleader, tmembers }) => (
+          myTeams?.map(({ tname, tpic, tdes, _id, tcategory, tleader, tmembers }) => (
             <Card
               onClick={() => {
                 router.push(`/dashboard/teams/${_id}`);
               }}
               key={_id}
-              className="border hover:shadow-lg cursor-pointer duration-300 rounded-lg"
+              className="border hover:shadow-lg cursor-pointer duration-300 rounded-2xl"
             >
-              <Image className={`w-full rounded-t-lg h-[120px] object-cover`} alt="" width={80} height={80} src={`${tpic}`} />
+              <Image className={`w-[95px] mx-auto h-[95px] mt-6 rounded-full object-cover`} alt="" width={80} height={80} src={`${tpic}`} />
               <div className="p-5">
-                <h3 className="text-center text-[20px] mb-2">{tname}</h3>
-                <p className="text-[14px] text-center capitalize">
-                  Leader :
-                  <span className="font-semibold">
+                <h3 className="text-center text-[18px]">{tname}</h3>
+                {/* Leader Name */}
+                <p className="text-[14px] my-1 text-[#666] font-light text-center capitalize">
+                  <span className="">
                     {' '}
                     {(users &&
                       users?.find(user => {
@@ -107,8 +114,10 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                       'Not found'}
                   </span>
                 </p>
+                {/* Team category */}
+                <p className="text-[14px] font-semibold mb-3 text-center capitalize">{tcategory}</p>
                 {/* Team Member Photo */}
-                <div className="flex mr-3 cursor-pointer  mt-5 items-center justify-center">
+                <div className="flex mr-3 bg-[#f0f0f072] py-2 rounded-3xl cursor-pointer items-center justify-center">
                   {tmembers?.slice(0, 3).map((temember, index) => {
                     return (
                       <HoverCard key={index}>
@@ -172,3 +181,86 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
 };
 
 export default AllTeams;
+
+// <Card
+// onClick={() => {
+//   router.push(`/dashboard/teams/${_id}`);
+// }}
+// key={_id}
+// className="border hover:shadow-lg cursor-pointer duration-300 rounded-lg"
+// >
+// <Image className={`w-full rounded-t-lg h-[120px] object-cover`} alt="" width={80} height={80} src={`${tpic}`} />
+// <div className="p-5">
+//   <h3 className="text-center text-[20px] mb-2">{tname}</h3>
+//   {/* Leader Name */}
+//   <p className="text-[14px] text-center capitalize">
+//     Leader :
+//     <span className="font-semibold">
+//       {' '}
+//       {(users &&
+//         users?.find(user => {
+//           return user.email == tleader;
+//         }).name) ||
+//         'Not found'}
+//     </span>
+//   </p>
+//   {/* Team category */}
+//   <p className="text-[14px] font-semibold mb-3 mt-4 text-center capitalize">{tcategory}</p>
+//   {/* Team Member Photo */}
+//   <div className="flex mr-3 cursor-pointer  mt-5 items-center justify-center">
+//     {tmembers?.slice(0, 3).map((temember, index) => {
+//       return (
+//         <HoverCard key={index}>
+//           <HoverCardTrigger className="w-9 -mr-3 border-[#fff] border-[4px] h-9 rounded-full">
+//             <Image
+//               className={`w-full h-full object-cover rounded-full`}
+//               alt=""
+//               width={40}
+//               height={40}
+//               src={`${
+//                 users &&
+//                 users?.find(user => {
+//                   return user.email == temember;
+//                 }).image
+//               }`}
+//             />
+//           </HoverCardTrigger>
+//           <HoverCardContent className="gap-4 h-[130px]  w-[300px]">
+//             <div className="flex items-center gap-4">
+//               <Image
+//                 className={`w-16 h-16 border-[#2f69fd] border-4 object-cover rounded-full`}
+//                 alt=""
+//                 width={50}
+//                 height={50}
+//                 src={`${
+//                   users &&
+//                   users?.find(user => {
+//                     return user.email == temember;
+//                   }).image
+//                 }`}
+//               />
+//               <p className="">
+//                 {' '}
+//                 {(users &&
+//                   users?.find(user => {
+//                     return user.email == temember;
+//                   }).name) ||
+//                   'Unknown'}
+//               </p>
+//             </div>
+//             <button className="bg-[#2f69fd] px-3 py-1 rounded-sm text-[13px] ml-auto flex items-center gap-3 justify-end text-white">
+//               <span>Send Message</span>
+//               <FaTelegramPlane />
+//             </button>
+//           </HoverCardContent>
+//         </HoverCard>
+//       );
+//     })}
+//     {tmembers?.length > 3 && (
+//       <div className="flex text-[12px] bg-[#ddddde] border-[#fff] border-[4px] w-9 h-9 rounded-full items-center justify-center text-[#333]">
+//         +{tmembers?.length - 3}
+//       </div>
+//     )}
+//   </div>
+// </div>
+// </Card>
