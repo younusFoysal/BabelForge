@@ -83,7 +83,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
             <div className="p-5">
               <h3 className="text-center text-[18px]">{tname}</h3>
               <p className="text-[14px] my-1 text-[#666] font-light text-center capitalize">
-                {users?.find(user => user.email === tleader)?.name || 'Not found'}
+                Leader: {users?.find(user => user.email === tleader)?.name || 'Unknown'}
               </p>
               <p className="text-[14px] font-semibold mb-3 text-center capitalize">{tcategory}</p>
 

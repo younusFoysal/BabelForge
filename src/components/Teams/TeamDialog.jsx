@@ -24,7 +24,7 @@ const TeamDialog = ({ id, refetch }) => {
     });
     if (data.modifiedCount > 0) {
       refetch();
-      toast.success("add member successfully");
+      toast.success("Member added successfully!");
     }
   };
 
