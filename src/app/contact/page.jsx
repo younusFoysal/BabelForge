@@ -1,5 +1,6 @@
 import ContactForm from "@/components/Contactus/ContactForm";
 import ContactText from "@/components/Contactus/ContactText";
+import TestCom from "@/components/Contactus/TestCom";
 
 const Contactus = () => {
   return (
@@ -15,6 +16,9 @@ const Contactus = () => {
           <ContactText />
         </div>
       </div>
+
+      <TestCom></TestCom>
+
     </section>
   );
 };
