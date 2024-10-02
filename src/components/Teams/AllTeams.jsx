@@ -57,7 +57,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
     setMyTeams(filteredItems);
   }, [searchText, selectCategory, myTeams2]);
 
-  if (loadingTeams) return <div>Loading...</div>;
+  if (loadingTeams || isLoading) return <div>Loading...</div>;
 
   return (
     <div className="mt-12">
@@ -107,11 +107,9 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                 <p className="text-[14px] my-1 text-[#666] font-light text-center capitalize">
                   <span className="">
                     {' '}
-                    {(users &&
-                      users?.find(user => {
-                        return user.email == tleader;
-                      }).name) ||
-                      'Not found'}
+                    {Array.isArray(users) && users.length > 0
+                      ? users.find(user => user.email === tleader)?.name || 'Not found'
+                      : 'No users available'}
                   </span>
                 </p>
                 {/* Team category */}
@@ -128,10 +126,11 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                             width={40}
                             height={40}
                             src={`${
-                              users &&
-                              users?.find(user => {
-                                return user.email == temember;
-                              }).image
+                              (users.length > 0 &&
+                                users?.find(user => {
+                                  return user.email == temember;
+                                })?.image) ||
+                              'https://media.istockphoto.com/id/1346944001/photo/close-up-of-co-workers-stacking-their-hands-together.jpg?s=612x612&w=0&k=20&c=lidJcFUSR3rkMt4B0yoNwH55lz3sth9o2280keqBXGE='
                             }`}
                           />
                         </HoverCardTrigger>
@@ -143,18 +142,18 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                               width={50}
                               height={50}
                               src={`${
-                                users &&
+                                users.length > 0 &&
                                 users?.find(user => {
                                   return user.email == temember;
-                                }).image
+                                })?.image
                               }`}
                             />
                             <p className="">
                               {' '}
-                              {(users &&
+                              {(users.length > 0 &&
                                 users?.find(user => {
                                   return user.email == temember;
-                                }).name) ||
+                                })?.name) ||
                                 'Unknown'}
                             </p>
                           </div>
