@@ -1,65 +1,190 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
 
 
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+
+.boxes {
+  --size: 32px;
+  --duration: 800ms;
+  height: calc(var(--size) * 2);
+  width: calc(var(--size) * 3);
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  margin-top: calc(var(--size) * 1.5 * -1);
+  transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+
+.boxes .box {
+  width: var(--size);
+  height: var(--size);
+  top: 0;
+  left: 0;
+  position: absolute;
+  transform-style: preserve-3d;
+}
+
+.boxes .box:nth-child(1) {
+  transform: translate(100%, 0);
+  -webkit-animation: box1 var(--duration) linear infinite;
+  animation: box1 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(2) {
+  transform: translate(0, 100%);
+  -webkit-animation: box2 var(--duration) linear infinite;
+  animation: box2 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(3) {
+  transform: translate(100%, 100%);
+  -webkit-animation: box3 var(--duration) linear infinite;
+  animation: box3 var(--duration) linear infinite;
+}
+
+.boxes .box:nth-child(4) {
+  transform: translate(200%, 0);
+  -webkit-animation: box4 var(--duration) linear infinite;
+  animation: box4 var(--duration) linear infinite;
+}
+
+.boxes .box > div {
+  --background: #5C8DF6;
+  --top: auto;
+  --right: auto;
+  --bottom: auto;
+  --left: auto;
+  --translateZ: calc(var(--size) / 2);
+  --rotateY: 0deg;
+  --rotateX: 0deg;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--background);
+  top: var(--top);
+  right: var(--right);
+  bottom: var(--bottom);
+  left: var(--left);
+  transform: rotateY(var(--rotateY)) rotateX(var(--rotateX)) translateZ(var(--translateZ));
+}
+
+.boxes .box > div:nth-child(1) {
+  --top: 0;
+  --left: 0;
+}
+
+.boxes .box > div:nth-child(2) {
+  --background: #145af2;
+  --right: 0;
+  --rotateY: 90deg;
+}
+
+.boxes .box > div:nth-child(3) {
+  --background: #447cf5;
+  --rotateX: -90deg;
+}
+
+.boxes .box > div:nth-child(4) {
+  --background: #DBE3F4;
+  --top: 0;
+  --left: 0;
+  --translateZ: calc(var(--size) * 3 * -1);
+}
+
+@-webkit-keyframes box1 {
+  0%, 50% {
+    transform: translate(100%, 0);
   }
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+  100% {
+    transform: translate(200%, 0);
   }
 }
 
- 
+@keyframes box1 {
+  0%, 50% {
+    transform: translate(100%, 0);
+  }
+
+  100% {
+    transform: translate(200%, 0);
+  }
+}
+
+@-webkit-keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes box2 {
+  0% {
+    transform: translate(0, 100%);
+  }
+
+  50% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@-webkit-keyframes box3 {
+  0%, 50% {
+    transform: translate(100%, 100%);
+  }
+
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@keyframes box3 {
+  0%, 50% {
+    transform: translate(100%, 100%);
+  }
+
+  100% {
+    transform: translate(0, 100%);
+  }
+}
+
+@-webkit-keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+
+  50% {
+    transform: translate(200%, 100%);
+  }
+
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
+
+@keyframes box4 {
+  0% {
+    transform: translate(200%, 0);
+  }
+
+  50% {
+    transform: translate(200%, 100%);
+  }
+
+  100% {
+    transform: translate(100%, 100%);
+  }
+}
