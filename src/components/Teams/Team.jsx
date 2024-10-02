@@ -11,7 +11,10 @@ import MemberBox from "./MemberBox";
 import LinkDialog from "./LinkDialog";
 import LinkBox from "./LinkBox";
 
-const Team = () => {
+const Team = ({id}) => {
+
+  console.log(id)
+
   const axiosCommon = useAxiosCommon();
   const {
     data: team = [],
@@ -22,17 +25,19 @@ const Team = () => {
     queryKey: ["team"],
     queryFn: async () => {
       const { data } = await axiosCommon(
-        `team/teams/my-teams/morshidul4@gmail.com`
+        `/team/teams/one-team/${id}`
       );
       return data;
     },
   });
 
+  console.log("Team Single:",team);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
-  const { members, _id, links } = team[0];
+  const { members, _id, links } = team;
 
   return (
     <div>

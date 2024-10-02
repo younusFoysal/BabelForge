@@ -1,62 +1,121 @@
 "use client";
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+import toast from "react-hot-toast";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import useAxiosCommon from "@/lib/axiosCommon";
 import AddTask from "@/components/Dashboards/Task/AddTask";
 import BacklogPage from "@/components/Dashboards/Backlog/BacklogPage";
+import TableView from "@/components/Dashboards/Backlog/TableView";
+import Swal from "sweetalert2";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const Page = () => {
+    const axiosCommon = useAxiosCommon();
+    const [loading, setLoading] = useState(false);
 
-    const [tasks, setTasks] = useState([]);
+    // Post task data
+    const { mutateAsync: addTaskMutation } = useMutation({
+        mutationFn: async (taskData) => {
+            const { data } = await axiosCommon.post(`/task/tasks/add`, taskData);
+            return data;
+        },
+        onSuccess: () => {
+            toast.success('Task Added Successfully!');
+            refetch(); // Refetch task data
+            setLoading(false);
+        },
+        onError: (err) => {
+            toast.error(err.message);
+            setLoading(false);
+        },
+    });
 
-    useEffect(() => {
-        // Fetch tasks from the API when the component mounts
-        const fetchTasks = async () => {
-            try {
-                const response = await axios.get('https://babelforgeserver.vercel.app/task/tasks');
-                setTasks(response.data); // Store the tasks from the backend
-            } catch (error) {
-                console.error("Error fetching tasks:", error);
-            }
-        };
-
-        fetchTasks();
-    }, []);
-
-    const addTask = async (taskName) => {
+    // Form handler for adding task
+    const handleAddTask = async (newTask) => {
+        setLoading(true);
         try {
-            const newTask = {
-                tname: taskName,
-                tproces: 'todo',
-                author: 'Foysal',
-            };
-
-            const response = await axios.post('https://babelforgeserver.vercel.app/task/tasks/add', newTask);
-
-            if (response.status === 200) {
-                setTasks((prevTasks) => [...prevTasks, response.data]); // Add the new task to the list
-            }
-        } catch (error) {
-            console.error("Error adding task:", error);
+            await addTaskMutation(newTask);
+        } catch (err) {
+            toast.error(err.message);
+            setLoading(false);
         }
     };
 
+    // Fetch tasks data
+    const { data: tasks = [], isLoading, refetch } = useQuery({
+        queryKey: ['my-works'],
+        queryFn: async () => {
+            const { data } = await axiosCommon.get(`/task/tasks`);
+            return data;
+        },
+    });
 
+    // Delete task
+    const { mutateAsync: deleteTaskMutation, isLoading: isDeleting } = useMutation({
+        mutationFn: async ({ id }) => {
+            const { data } = await axiosCommon.delete(`/task/tasks/delete/${id}`);
+            return data;
+        },
+        onSuccess: () => {
+            refetch();
+            toast.success('Task deleted successfully.');
+        },
+        onError: () => {
+            toast.error('Failed to delete the task.');
+        },
+    });
+
+    const handleDelete = async (id) => {
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+        });
+
+        if (result.isConfirmed) {
+            try {
+                await deleteTaskMutation({ id });
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    };
+
+    // Update task mutation
+    const { mutateAsync: updateTaskMutation } = useMutation({
+        mutationFn: async (task) => {
+            const taskWithoutID = { ...task };
+            delete taskWithoutID._id; // Remove the _id field before patching
+            const { data } = await axiosCommon.patch(`/task/tasks/update/${task._id}`, taskWithoutID);
+            return data;
+        },
+        onSuccess: () => {
+            toast.success('Task updated successfully!');
+            refetch(); // Refetch task data after update
+        },
+        onError: (err) => {
+            toast.error(err.message);
+        },
+    });
+
+    // Form handler for updating a task
+    const handleEditTask = async (updatedTask) => {
+        try {
+            await updateTaskMutation(updatedTask);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    if (isLoading) return <LoadingSpinner/>;
 
     return (
         <div>
-            <div className="w-full">
-
-                {/* AddTask Component */}
-                <AddTask addTask={addTask}/>
-
-                {/*<ul>*/}
-                {/*    {tasks.map((task) => (*/}
-                {/*        <li key={task._id}>{task.tname}</li>*/}
-                {/*    ))}*/}
-                {/*</ul>*/}
-                <BacklogPage></BacklogPage>
-            </div>
-
+            <AddTask handleAddTask={handleAddTask} />
+            <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
         </div>
     );
 };
