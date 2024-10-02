@@ -69,7 +69,7 @@ const ProjectPage = () => {
         )
     }
 
-    const projectCategories = ["Software Engineering", "Education", "Non Profit Organization", "Project Management"]
+    const projectCategories = ["All", "Software Engineering", "Education", "Non Profit Organization", "Project Management"]
 
     const handleSearchByClick = () => {
         const inputData = document.getElementById('inputField').value;
