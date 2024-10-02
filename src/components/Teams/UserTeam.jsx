@@ -8,8 +8,6 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogOverlay,
   DialogPortal,
@@ -58,11 +56,11 @@ const UserTeam = () => {
     },
     onSuccess: () => {
       setOpen(false);
-      toast.success('Message send Successfully!');
+      toast.success('Team created successfully!');
       reset();
     },
     onError: error => {
-      toast.error(`Message couldn't send`);
+      toast.error(`Couldn't create team ! Try again`);
     },
   });
 
