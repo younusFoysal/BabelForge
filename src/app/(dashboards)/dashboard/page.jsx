@@ -1,9 +1,6 @@
 "use client";
-import DetailsCard from "@/components/Dashboards/MainPage/DetailsCard";
-import { ExportTeamInfo } from "@/components/Dashboards/MainPage/ExportTeamInfo";
-import { PieCharts } from "@/components/Dashboards/MainPage/PieCharts";
-import TeamInfo from "@/components/Dashboards/MainPage/TeamInfo";
-import { axiosCommon } from "@/lib/axiosCommon";
+
+import MainPageWrap from "@/components/Dashboards/MainPage/MainPageWrap";
 
 const page = () => {
   return (
@@ -12,12 +9,18 @@ const page = () => {
         <h1 className="font-bold text-3xl  text-[#333] dark:text-white">
           Dashboard
         </h1>
+        <ExportTeamInfo />
       </div>
       {/* Details Card Section Start here */}
-      <section></section>
+      <section>
+        <DetailsCard />
+      </section>
 
       {/* Charts Section */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-6"></section>
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <PieCharts />
+        <TeamInfo />
+      </section>
     </div>
   );
 };
