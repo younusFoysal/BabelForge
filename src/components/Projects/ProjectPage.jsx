@@ -65,9 +65,9 @@ const ProjectPage = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
 
-  const [projects] = useProjects(userEmail, search, category);
+  const [projects, isLoading] = useProjects(userEmail, search, category);
 
-  if (!projects.length && !search.length && !category.length) {
+  if (!projects?.length && !search?.length && !category?.length) {
     return (
       <section className="flex flex-col justify-center items-center gap-5 text-center">
         <h3 className="text-2xl  font-medium">
@@ -195,7 +195,7 @@ const ProjectPage = () => {
 
           <TableBody>
             {/* 1st row */}
-            {projects.map((project) => (
+            {projects?.map((project) => (
               <TableRow
                 key={project._id}
                 className="border-y-2 border-gray-300"
@@ -214,7 +214,11 @@ const ProjectPage = () => {
                     {project.pname}
                   </div>
                 </TableCell>
-                <TableCell className="uppercase">{project.pname}</TableCell>
+                <TableCell className="uppercase">
+                  <Link href={`/dashboard/projects/${project._id}`}>
+                    {project.pname}
+                  </Link>
+                </TableCell>
                 <TableCell>{project.pcategory}</TableCell>
                 <TableCell>{project.pmanager}</TableCell>
                 <TableCell>{project.purl}</TableCell>

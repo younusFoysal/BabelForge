@@ -30,9 +30,9 @@ const layout = ({ children }) => {
 
   //console.log("user",session?.data?.user);
 
-  if (!session?.data?.user) {
-    return router.push("/");
-  }
+  // if (!session?.data?.user) {
+  //   return router.push("/");
+  // }
 
   
 

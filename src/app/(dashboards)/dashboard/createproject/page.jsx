@@ -1,3 +1,4 @@
+import CreateProjectpage from "@/components/Projects/CreateProjectpage";
 import React from "react";
 
 const CreatePoject = () => {
@@ -5,7 +6,7 @@ const CreatePoject = () => {
 
   return (
     <div>
-      <h2>Create New Project</h2>
+      <CreateProjectpage />
     </div>
   );
 };
