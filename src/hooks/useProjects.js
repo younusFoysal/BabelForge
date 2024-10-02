@@ -17,7 +17,7 @@ const useProjects = (email, search, category) => {
                 return data;
             }
             else {
-                const { data } = await axiosCommon.get(`/project/projects/my-projects/${email}`);
+                const { data } = await axiosCommon.get(`/project/projects/my-projects?name=${search}&email=${email}`);
                 return data;
             }
 

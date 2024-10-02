@@ -53,7 +53,7 @@ const ProjectPage = () => {
 
     const session = useSession();
     const userEmail = session?.data?.user?.email;
-    console.log(userEmail);
+    // console.log(userEmail);
 
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('');
