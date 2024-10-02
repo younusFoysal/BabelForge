@@ -6,7 +6,7 @@ import Sponser from "@/components/home/Sponser";
 import CallToAction from "@/components/home/CallToAction";
 
 import AboutStatistics from "@/components/AboutUs/AboutStatistics";
-import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner";
+import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 
 const Home = () => {
 

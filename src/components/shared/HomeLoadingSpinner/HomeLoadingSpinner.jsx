@@ -1,4 +1,4 @@
-
+import "./HomeLoadingSpinner.css"
 
 const HomeLoadingSpinner = () => {
     return (

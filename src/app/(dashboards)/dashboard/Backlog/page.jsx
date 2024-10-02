@@ -7,6 +7,7 @@ import AddTask from "@/components/Dashboards/Task/AddTask";
 import BacklogPage from "@/components/Dashboards/Backlog/BacklogPage";
 import TableView from "@/components/Dashboards/Backlog/TableView";
 import Swal from "sweetalert2";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const Page = () => {
     const axiosCommon = useAxiosCommon();
@@ -109,7 +110,7 @@ const Page = () => {
         }
     };
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <LoadingSpinner/>;
 
     return (
         <div>
