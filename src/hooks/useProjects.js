@@ -12,12 +12,12 @@ const useProjects = (email, search, category) => {
 
         queryKey: ['allProjects', email, search, category],
         queryFn: async () => {
-            if (search || category) {
+            if ((search || category) && category !== "All") {
                 const { data } = await axiosCommon.get(`/project/projects?name=${search}&category=${category}&email=${email}`);
                 return data;
             }
             else {
-                const { data } = await axiosCommon.get(`/project/projects/my-projects/${email}`);
+                const { data } = await axiosCommon.get(`/project/projects/my-projects?name=${search}&email=${email}`);
                 return data;
             }
 

@@ -53,7 +53,7 @@ const ProjectPage = () => {
 
     const session = useSession();
     const userEmail = session?.data?.user?.email;
-    console.log(userEmail);
+    // console.log(userEmail);
 
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('');
@@ -69,7 +69,7 @@ const ProjectPage = () => {
         )
     }
 
-    const projectCategories = ["Software Engineering", "Education", "Non Profit Organization", "Project Management"]
+    const projectCategories = ["All", "Software Engineering", "Education", "Non Profit Organization", "Project Management"]
 
     const handleSearchByClick = () => {
         const inputData = document.getElementById('inputField').value;
