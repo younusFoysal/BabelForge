@@ -16,7 +16,7 @@ const useChat = () => {
         });
 
 
-        socketIo.on("chat message", (message) => {
+        socketIo.on("chat Message", (message) => {
             setMessages((prevMessages) => [...prevMessages, message]);
         });
 
