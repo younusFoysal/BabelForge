@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const SOCKET_SERVER_URL = "http://localhost:5000"; // Update with your server URL
+const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_API_URL;
 
 const useChat = () => {
     const [messages, setMessages] = useState([]); // Store chat messages
