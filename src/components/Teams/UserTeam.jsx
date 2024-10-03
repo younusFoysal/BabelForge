@@ -26,6 +26,7 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import useProjects from '@/hooks/useProjects';
 
 const UserTeam = () => {
   const myRef = useRef('');
@@ -33,9 +34,12 @@ const UserTeam = () => {
   const user = session?.data?.user;
   const [teams, isLoading] = UseTeams(user?.email);
   const [searchQuery, setSearchQuery] = useState('');
-  const [emails, setEmails] = useState([user.email]);
+  const [emails, setEmails] = useState([user?.email]);
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = useState(false);
+
+  const [projects] = useProjects(user?.email, '', '');
+  console.log(projects);
   const {
     register,
     handleSubmit,
