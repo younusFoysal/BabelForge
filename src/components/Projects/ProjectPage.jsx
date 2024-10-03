@@ -56,6 +56,7 @@ import {
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const ProjectPage = () => {
   const session = useSession();
@@ -64,7 +65,7 @@ const ProjectPage = () => {
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
-
+  const router = useRouter();
   const [projects, isLoading] = useProjects(userEmail, search, category);
 
   if (!projects?.length && !search?.length && !category?.length) {
@@ -193,12 +194,12 @@ const ProjectPage = () => {
             </TableRow>
           </TableHeader>
 
-          <TableBody>
+          <TableBody className="w-full">
             {/* 1st row */}
             {projects?.map((project) => (
               <TableRow
                 key={project._id}
-                className="border-y-2 border-gray-300"
+                className="border-y-2 border-gray-300 w-full"
               >
                 <TableCell className="font-medium flex items-center gap-3">
                   <span>
@@ -211,13 +212,15 @@ const ProjectPage = () => {
                         <AvatarFallback>TA</AvatarFallback>
                       </Avatar>
                     </p>
-                    {project.pname}
                   </div>
                 </TableCell>
-                <TableCell className="uppercase">
-                  <Link href={`/dashboard/projects/${project._id}`}>
-                    {project.pname}
-                  </Link>
+                <TableCell
+                  className="uppercase cursor-pointer"
+                  onClick={() =>
+                    router.push(`/dashboard/project/${project._id}`)
+                  }
+                >
+                  {project.pname}
                 </TableCell>
                 <TableCell>{project.pcategory}</TableCell>
                 <TableCell>{project.pmanager}</TableCell>
@@ -229,7 +232,11 @@ const ProjectPage = () => {
                         <Ellipsis></Ellipsis>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent>
-                        <DropdownMenuItem>Update Project</DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <Link href={`/dashboard/projects/${project._id}`}>
+                            Update Project
+                          </Link>
+                        </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
                   )}
