@@ -3,7 +3,7 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 
 const useProjects = (email, search, category) => {
-  console.log('from hook', email);
+  //   console.log('from hook', email);
 
   const axiosCommon = useAxiosCommon();
 

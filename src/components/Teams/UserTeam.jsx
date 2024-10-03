@@ -2,7 +2,7 @@
 import AllTeams from '@/components/Teams/AllTeams';
 import UseTeams from '@/hooks/useTeams';
 import { useSession } from 'next-auth/react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
 import {
   Dialog,
@@ -27,6 +27,8 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import useProjects from '@/hooks/useProjects';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
 const UserTeam = () => {
   const myRef = useRef('');
@@ -37,9 +39,9 @@ const UserTeam = () => {
   const [emails, setEmails] = useState([user?.email]);
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = useState(false);
-
+  const [selectProjects, setSelectProjects] = useState('All');
   const [projects] = useProjects(user?.email, '', '');
-  console.log(projects);
+
   const {
     register,
     handleSubmit,
@@ -136,6 +138,31 @@ const UserTeam = () => {
                         />
                         {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Category required</p>}
                         {errors.tcategory?.type === 'minLength' && <p className="text-red-600 text-[11px] mt-1">Category too short !</p>}
+                      </div>
+
+                      <div className="mb-1">
+                        <Label htmlFor="pcategory" className="text-left mb-2 block font-semibold">
+                          Project Category <span className="text-red-600">*</span>
+                        </Label>
+                        <Select onValueChange={value => setSelectProjects(value)} value={selectProjects}>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectGroup>
+                              {projects?.length > 0 &&
+                                projects?.map(
+                                  category =>
+                                    category && (
+                                      <SelectItem value={category._id} key={category._id}>
+                                        {category.pname}
+                                      </SelectItem>
+                                    )
+                                )}
+                            </SelectGroup>
+                          </SelectContent>
+                        </Select>
+                        {errors.pcategory?.type === 'required' && <p className="text-red-600 mt-1">Category required</p>}
                       </div>
                       <div className="">
                         <Label htmlFor="tdes" className="text-left text-[11px] mb-[6px] block font-semibold">
