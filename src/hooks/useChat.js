@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const SOCKET_SERVER_URL = process.env.NEXT_PUBLIC_API_URL;
+const SOCKET_SERVER_URL = "https://babelforgeserver.vercel.app";
 
 const useChat = () => {
     const [messages, setMessages] = useState([]); // Store chat messages

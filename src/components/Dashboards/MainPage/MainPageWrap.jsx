@@ -13,12 +13,16 @@ const MainPageWrap = () => {
   const user = session?.data?.user;
 
   const { isLoading, data: stats } = useQuery({
-    queryKey: [user],
+    queryKey: ["dashuser", user],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/dashboard/stat/${user.email}`);
       return data;
     },
   });
+  console.log(stats);
+
+  if (isLoading) return <div>Loading...</div>;
+    console.log("If", stats);
 
   return (
     <div className="w-full px-4 mt-9 md:mt-2">
