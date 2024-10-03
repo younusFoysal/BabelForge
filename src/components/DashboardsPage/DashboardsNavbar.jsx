@@ -10,12 +10,13 @@ import axios from "axios";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import { useState } from "react";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
   const user = session?.data?.user;
+  const router = useRouter();
   //const [users, setUsers] = useState([]);
 
 
@@ -94,7 +95,7 @@ const DashboardNavbar = () => {
                 <button
                     onClick={async () => {
                       await signOut();
-                      router.push("/login");
+                      //router.push("/login");
                     }}
                     className="bg-gray-100 py-2 px-4 w-full rounded-md dark:text-white dark:bg-gray-900"
                 >
