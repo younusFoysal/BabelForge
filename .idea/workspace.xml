@@ -4,8 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="group message page fix">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Nav change">
+      <change afterPath="$PROJECT_DIR$/src/hooks/useTasks.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useUsers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/signup/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/signup/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/DetailsCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/DetailsCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/PieCharts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/PieCharts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/TeamInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/TeamInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,15 +28,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="prepod" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,7 +80,7 @@
     &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/SCIC/EndGame/babelforge&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/Next Projects/pciu-cgpa-calculator&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -78,6 +92,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge" />
@@ -111,7 +126,9 @@
       <workItem from="1727197626262" duration="4185000" />
       <workItem from="1727202895928" duration="926000" />
       <workItem from="1727207125868" duration="1078000" />
-      <workItem from="1727779267696" duration="4460000" />
+      <workItem from="1727381122515" duration="1218000" />
+      <workItem from="1727462132676" duration="3939000" />
+      <workItem from="1727505346900" duration="6479000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -265,39 +282,119 @@
       <option name="project" value="LOCAL" />
       <updated>1727034154322</updated>
     </task>
-    <task id="LOCAL-00020" summary="chat added">
+    <task id="LOCAL-00020" summary="task add function added">
       <option name="closed" value="true" />
-      <created>1727776327545</created>
+      <created>1727216567271</created>
       <option name="number" value="00020" />
       <option name="presentableId" value="LOCAL-00020" />
       <option name="project" value="LOCAL" />
-      <updated>1727776327545</updated>
+      <updated>1727216567271</updated>
     </task>
-    <task id="LOCAL-00021" summary="image added">
+    <task id="LOCAL-00021" summary="task update function added">
       <option name="closed" value="true" />
-      <created>1727776448179</created>
+      <created>1727218407786</created>
       <option name="number" value="00021" />
       <option name="presentableId" value="LOCAL-00021" />
       <option name="project" value="LOCAL" />
-      <updated>1727776448179</updated>
+      <updated>1727218407786</updated>
     </task>
-    <task id="LOCAL-00022" summary="image added">
+    <task id="LOCAL-00022" summary="packager fix">
       <option name="closed" value="true" />
-      <created>1727776464287</created>
+      <created>1727219148389</created>
       <option name="number" value="00022" />
       <option name="presentableId" value="LOCAL-00022" />
       <option name="project" value="LOCAL" />
-      <updated>1727776464287</updated>
+      <updated>1727219148389</updated>
     </task>
-    <task id="LOCAL-00023" summary="group message page fix">
+    <task id="LOCAL-00023" summary="Add task Done">
       <option name="closed" value="true" />
-      <created>1727784877839</created>
+      <created>1727224554136</created>
       <option name="number" value="00023" />
       <option name="presentableId" value="LOCAL-00023" />
       <option name="project" value="LOCAL" />
-      <updated>1727784877839</updated>
+      <updated>1727224554136</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Server api link added">
+      <option name="closed" value="true" />
+      <created>1727224812685</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727224812685</updated>
+    </task>
+    <task id="LOCAL-00025" summary="turbo added">
+      <option name="closed" value="true" />
+      <created>1727288348230</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1727288348230</updated>
+    </task>
+    <task id="LOCAL-00026" summary="turbo added">
+      <option name="closed" value="true" />
+      <created>1727290730066</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1727290730066</updated>
+    </task>
+    <task id="LOCAL-00027" summary="carusel added">
+      <option name="closed" value="true" />
+      <created>1727292340216</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1727292340216</updated>
+    </task>
+    <task id="LOCAL-00028" summary="carusel added">
+      <option name="closed" value="true" />
+      <created>1727292804794</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1727292804794</updated>
+    </task>
+    <task id="LOCAL-00029" summary="carusel fix">
+      <option name="closed" value="true" />
+      <created>1727293301761</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1727293301761</updated>
+    </task>
+    <task id="LOCAL-00030" summary="update">
+      <option name="closed" value="true" />
+      <created>1727373267335</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1727373267335</updated>
+    </task>
+    <task id="LOCAL-00031" summary="api link update">
+      <option name="closed" value="true" />
+      <created>1727376540211</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1727376540211</updated>
+    </task>
+    <task id="LOCAL-00032" summary="signup fix">
+      <option name="closed" value="true" />
+      <created>1727377792900</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1727377792900</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Profile fix">
+      <option name="closed" value="true" />
+      <created>1727381084146</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1727381084146</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,14 +413,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="First Commit" />
-    <MESSAGE value="File Structure Added" />
-    <MESSAGE value="File Structure Done" />
-    <MESSAGE value="tailwind check done" />
-    <MESSAGE value="Swiper added" />
-    <MESSAGE value="Image path fix" />
-    <MESSAGE value="All ok" />
-    <MESSAGE value="Link added" />
     <MESSAGE value="nav Responsive added" />
     <MESSAGE value="Nav Logo Added" />
     <MESSAGE value="Title &amp; Fav Icon added" />
@@ -332,9 +421,23 @@
     <MESSAGE value="Fav Icon Added" />
     <MESSAGE value="Price card Updated" />
     <MESSAGE value="React To NextJS" />
-    <MESSAGE value="chat added" />
-    <MESSAGE value="image added" />
-    <MESSAGE value="group message page fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="group message page fix" />
+    <MESSAGE value="task DND page Done" />
+    <MESSAGE value="DND fix" />
+    <MESSAGE value="nav fix" />
+    <MESSAGE value="done" />
+    <MESSAGE value="side bar icon added" />
+    <MESSAGE value="task add function added" />
+    <MESSAGE value="task update function added" />
+    <MESSAGE value="packager fix" />
+    <MESSAGE value="Add task Done" />
+    <MESSAGE value="Server api link added" />
+    <MESSAGE value="turbo added" />
+    <MESSAGE value="carusel added" />
+    <MESSAGE value="carusel fix" />
+    <MESSAGE value="update" />
+    <MESSAGE value="api link update" />
+    <MESSAGE value="signup fix" />
+    <MESSAGE value="Profile fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Profile fix" />
   </component>
 </project>

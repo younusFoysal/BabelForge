@@ -17,7 +17,6 @@ const Contactus = () => {
         </div>
       </div>
 
-      <TestCom></TestCom>
 
     </section>
   );
