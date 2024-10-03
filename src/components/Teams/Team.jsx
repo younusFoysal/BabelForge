@@ -51,7 +51,7 @@ const Team = ({id}) => {
           <div className="space-y-5 py-10">
             <div className="flex items-center gap-2">
               <span className="text-3xl font-semibold">Team:</span>
-              <h3 className="text-3xl font-semibold">Babel</h3>
+              <h3 className="text-3xl font-semibold">{ team?.tname }</h3>
             </div>
             <div className="flex justify-between item-center gap-2 text-center dark:bg-gray-800">
               <TeamDialog id={_id} refetch={refetch} />
@@ -104,13 +104,7 @@ const Team = ({id}) => {
                 <div>
                   <p className="space-x-3">
                     <span>
-                      The BabelForge team consists of skilled developers
-                      specializing in frontend technologies like React and
-                      Next.js. Focused on delivering seamless user experiences,
-                      they combine creativity and technical expertise to build
-                      scalable, secure web applications. Their collaborative
-                      approach ensures high-quality solutions tailored to meet
-                      modern business needs.
+                      {team?.tdes}
                     </span>
                   </p>
                 </div>

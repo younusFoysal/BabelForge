@@ -66,7 +66,7 @@ const ProjectPage = () => {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const router = useRouter();
-  const [projects, isLoading] = useProjects(userEmail, search, category);
+  const [projects, isLoading, refetch] = useProjects(userEmail, search, category);
 
   if (!projects?.length && !search?.length && !category?.length) {
     return (

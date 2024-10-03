@@ -32,7 +32,7 @@ const UserTeam = () => {
   const myRef = useRef('');
   const session = useSession();
   const user = session?.data?.user;
-  const [teams, isLoading] = UseTeams(user?.email);
+  const [teams, isLoading, refetch] = UseTeams(user?.email);
   const [searchQuery, setSearchQuery] = useState('');
   const [emails, setEmails] = useState([user?.email]);
   const axiosCommon = useAxiosCommon();
@@ -62,6 +62,7 @@ const UserTeam = () => {
       setOpen(false);
       toast.success('Team created successfully!');
       reset();
+      refetch();
     },
     onError: error => {
       toast.error(`Couldn't create team ! Try again`);
@@ -71,7 +72,7 @@ const UserTeam = () => {
   // Submit Team from
   const onSubmit = data => {
     data.tmembers = emails;
-    data.tleader = user.email;
+    data.tleader = user?.email;
     mutation.mutate(data);
   };
 

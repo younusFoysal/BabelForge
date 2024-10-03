@@ -83,20 +83,24 @@ const DashboardNavbar = () => {
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
               </PopoverTrigger>
-              <PopoverContent className="flex-col gap-2 p-4 flex dark:bg-gray-800 dark:border-gray-700 w-[200px] mr-4 mt-4">
+              <PopoverContent
+                  className="flex-col gap-2 p-4 flex dark:bg-gray-800 dark:border-gray-700 w-[200px] mr-4 mt-4">
                 <Link
-                  href="/dashboard/profile"
-                  className="bg-gray-100 py-2 px-4 w-full rounded-md text-center dark:text-white dark:bg-gray-900"
+                    href="/dashboard/profile"
+                    className="bg-gray-100 py-2 px-4 w-full rounded-md text-center dark:text-white dark:bg-gray-900"
                 >
                   profile
                 </Link>
                 <button
-                  onClick={() => signOut()}
-                  className="bg-gray-100 py-2 px-4 w-full rounded-md dark:text-white dark:bg-gray-900"
+                    onClick={async () => {
+                      await signOut();
+                      router.push("/login");
+                    }}
+                    className="bg-gray-100 py-2 px-4 w-full rounded-md dark:text-white dark:bg-gray-900"
                 >
-                  {" "}
-                  logout
+                  Logout
                 </button>
+
               </PopoverContent>
             </Popover>
           )}
