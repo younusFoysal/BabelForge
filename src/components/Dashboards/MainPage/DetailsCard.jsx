@@ -1,12 +1,14 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import React, { useEffect, useState } from 'react';
-import { RiTeamLine } from 'react-icons/ri';
-import { MdOutlinePendingActions, MdTask } from 'react-icons/md';
-import { TbUsersGroup } from 'react-icons/tb';
-import { axiosCommon } from '@/lib/axiosCommon';
-import useUsers from '@/hooks/useUsers';
-import useTasks from '@/hooks/useTasks';
-import useTeams from '@/hooks/useTeams';
+"use client";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React, { useState } from "react";
+import { RiTeamLine } from "react-icons/ri";
+import { MdOutlinePendingActions, MdTask } from "react-icons/md";
+import { TbUsersGroup } from "react-icons/tb";
+import { axiosCommon } from "@/lib/axiosCommon";
+import useUsers from "@/hooks/useUsers";
+import useTasks from "@/hooks/useTasks";
+import useTeams from "@/hooks/useTeams";
 
 const DetailsCard = ({ stats, isLoading }) => {
   const [stat, setStat] = useState(stats);
@@ -21,8 +23,12 @@ const DetailsCard = ({ stats, isLoading }) => {
           <TbUsersGroup />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl mb-2 font-bold">{stat?.totalTeamMembers}</div>
-          <p className="text-xs text-muted-foreground">Shows the total number of registered members in your team</p>
+          <div className="text-2xl mb-2 font-bold">
+            {stat?.totalTeamMembers}
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Shows the total number of registered members in your team
+          </p>
         </CardContent>
       </Card>
       {/* Total Team Card */}
@@ -33,7 +39,9 @@ const DetailsCard = ({ stats, isLoading }) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl mb-2 font-bold">{stat?.totalTeams}</div>
-          <p className="text-xs text-muted-foreground">Displays the total number of tasks created .</p>
+          <p className="text-xs text-muted-foreground">
+            Displays the total number of tasks created .
+          </p>
         </CardContent>
       </Card>
       {/* Total Task Card */}
@@ -44,7 +52,9 @@ const DetailsCard = ({ stats, isLoading }) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl mb-2 font-bold">{stat?.totalTasks}</div>
-          <p className="text-xs text-muted-foreground">Displays the total number of tasks created .</p>
+          <p className="text-xs text-muted-foreground">
+            Displays the total number of tasks created .
+          </p>
         </CardContent>
       </Card>
       {/* Pending Task Card */}
@@ -55,7 +65,9 @@ const DetailsCard = ({ stats, isLoading }) => {
         </CardHeader>
         <CardContent>
           <div className="text-2xl mb-2 font-bold">{stat?.pendingTasks}</div>
-          <p className="text-xs text-muted-foreground">Displays the total number of pending tasks.</p>
+          <p className="text-xs text-muted-foreground">
+            Displays the total number of pending tasks.
+          </p>
         </CardContent>
       </Card>
     </div>
