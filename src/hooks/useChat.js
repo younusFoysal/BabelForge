@@ -9,7 +9,9 @@ const useChat = () => {
 
     useEffect(() => {
         // Connect to the socket server
-        const socketIo = io(SOCKET_SERVER_URL);
+        const socketIo = io(SOCKET_SERVER_URL, {
+            withCredentials: true,
+        });
 
         // Listen for previous messages
         socketIo.on("previousMessages", (prevMessages) => {
