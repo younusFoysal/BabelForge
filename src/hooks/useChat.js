@@ -11,6 +11,7 @@ const useChat = () => {
         // Connect to the socket server
         const socketIo = io(SOCKET_SERVER_URL, {
             withCredentials: true,
+            transports: ['websocket'],
         });
 
         // Listen for previous messages
