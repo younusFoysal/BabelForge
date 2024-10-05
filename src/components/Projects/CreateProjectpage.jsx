@@ -76,6 +76,8 @@ const CreateProjectpage = () => {
     mutation.mutate(data);
   };
 
+
+
   return (
     <div className="flex justify-between items-center flex-col">
       <h2 className="text-4xl text-[#333] mb-4">Create projects</h2>

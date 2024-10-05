@@ -27,6 +27,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import useProjects from '@/hooks/useProjects';
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const UserTeam = () => {
   const myRef = useRef('');
@@ -73,6 +74,8 @@ const UserTeam = () => {
     data.tleader = user?.email;
     mutation.mutate(data);
   };
+
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <section className="w-full mt-3 px-4 max-w-5xl mx-auto">

@@ -96,6 +96,8 @@ const Chat = () => {
     };
 
 
+
+
     return (
         <div className="mb-24">
             <div className="w-full mx-auto text-center mb-8 mt-0 sm:mt-3 max-w-full sm:max-w-[920px]">

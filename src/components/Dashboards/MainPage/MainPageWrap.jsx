@@ -6,6 +6,7 @@ import TeamInfo from './TeamInfo';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const MainPageWrap = () => {
   const axiosCommon = useAxiosCommon();
@@ -21,8 +22,7 @@ const MainPageWrap = () => {
   });
   console.log(stats);
 
-  if (isLoading) return <div>Loading...</div>;
-    console.log("If", stats);
+    if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <div className="w-full px-4 mt-9 md:mt-2">

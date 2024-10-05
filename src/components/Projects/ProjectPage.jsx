@@ -57,6 +57,7 @@ import {
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const ProjectPage = () => {
   const session = useSession();
@@ -67,6 +68,8 @@ const ProjectPage = () => {
   const [category, setCategory] = useState("");
   const router = useRouter();
   const [projects, isLoading, refetch] = useProjects(userEmail, search, category);
+
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   if (!projects?.length && !search?.length && !category?.length) {
     return (
