@@ -60,7 +60,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                {categories.map(item => (
+                {categories?.map(item => (
                   <SelectItem key={item} value={item}>
                     {item}
                   </SelectItem>
