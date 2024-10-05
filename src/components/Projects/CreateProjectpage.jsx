@@ -67,7 +67,7 @@ const CreateProjectpage = () => {
       return res.data;
     },
     onSuccess: () => {
-      toast.success("Project sent Successfully!");
+      toast.success("Project Created Successfully!");
       reset();
       setEmails([useremail]); // Reset emails to include the user's email only
       router.push("/dashboard/projects");
