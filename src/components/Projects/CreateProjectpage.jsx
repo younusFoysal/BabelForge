@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import { useSession } from "next-auth/react";
-import React, { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "../ui/button";
-import { Textarea } from "../ui/textarea";
-import { TagsInput } from "react-tag-input-component";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useForm } from "react-hook-form";
-import { useMutation } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import { useSession } from 'next-auth/react';
+import React, { useEffect, useState } from 'react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '../ui/button';
+import { Textarea } from '../ui/textarea';
+import { TagsInput } from 'react-tag-input-component';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useForm } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 import {
   Select,
@@ -49,6 +49,7 @@ const CreateProjectpage = () => {
 
   useEffect(() => {
     const now = new Date();
+
     const gmt6Offset = 6 * 60 * 60 * 1000;
     const gmt6Date = new Date(now.getTime() + gmt6Offset);
 
@@ -101,16 +102,16 @@ const CreateProjectpage = () => {
                   Project Name <span className="text-red-600">*</span>
                 </Label>
                 <Input
-                    {...register("pname", { required: true, minLength: 4 })}
+                    {...register('pname', { required: true, minLength: 4 })}
                     placeholder="e.g. HR Team, Design Team"
-                    id="pname"
-                />
-                {errors.pname?.type === "required" && (
-                    <p className="text-red-600 mt-1">Project name required</p>
-                )}
-                {errors.pname?.type === "minLength" && (
+                    id="pname"/>
+
+                {errors.pname?.type === 'required' &&
+                    <p className="text-red-600 mt-1">Project name required</p>}
+
+                {errors.pname?.type === 'minLength' &&
                     <p className="text-red-600 mt-1">Name is too short!</p>
-                )}
+                }
               </div>
 
               <div className="mb-1">
@@ -122,7 +123,7 @@ const CreateProjectpage = () => {
                 </Label>
                 <Input
                     type="text"
-                    {...register("purl", { required: true })}
+                    {...register('purl', { required: true })}
                     placeholder="Please enter your project URL"
                     id="purl"
                 />
@@ -140,7 +141,7 @@ const CreateProjectpage = () => {
                 </Label>
                 <Input
                     type="text"
-                    {...register("pimg", { required: true })}
+                    {...register('pimg', { required: true })}
                     placeholder="Please enter your project image URL"
                     id="pimg"
                 />
