@@ -131,7 +131,9 @@ const UserTeam = () => {
                           className="col-span-3"
                         />
                         {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Category required</p>}
-                        {errors.tcategory?.type === 'minLength' && <p className="text-red-600 text-[11px] mt-1">Category too short !</p>}
+                        {errors.tcategory?.type === 'minLength' && (
+                          <p className="text-red-600 text-[11px] mt-1">Category too short !</p>
+                        )}{' '}
                       </div>
                       <div className="">
                         <Label htmlFor="tdes" className="text-left text-[11px] mb-[6px] block font-semibold">
