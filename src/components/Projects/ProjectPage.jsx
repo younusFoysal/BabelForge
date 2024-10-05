@@ -59,6 +59,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
+
 const ProjectPage = () => {
   const session = useSession();
   const userEmail = session?.data?.user?.email;
@@ -69,7 +70,8 @@ const ProjectPage = () => {
   const router = useRouter();
   const [projects, isLoading, refetch] = useProjects(userEmail, search, category);
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+
+  console.log(isLoading)
 
   if (!projects?.length && !search?.length && !category?.length) {
     return (
@@ -87,6 +89,9 @@ const ProjectPage = () => {
       </section>
     );
   }
+
+
+
 
   const projectCategories = [
     "All",
