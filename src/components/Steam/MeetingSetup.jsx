@@ -1,3 +1,4 @@
+"use client"
 import {
   useCall,
   useCallStateHooks,
@@ -18,6 +19,7 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
 
   if (!calls) throw new Error("use call is must be component");
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (mictoggleon) {
       calls?.camera.disable();
