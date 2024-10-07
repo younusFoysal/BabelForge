@@ -73,7 +73,7 @@ const CreateProjectpage = () => {
       router.push("/dashboard/projects");
     },
     onError: () => {
-      toast.error(`Something went wrong!`);
+      toast.error(`Something went Wrong!`);
     },
   });
 
