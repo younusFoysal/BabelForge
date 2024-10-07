@@ -29,7 +29,6 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
-
   // conditonial navbar
   if (pathname.includes("login")) {
     return (
@@ -51,6 +50,9 @@ const Navbar = () => {
   if (pathname.includes("dashboard")) {
     return <DashboardNavbar />;
   }
+  if (pathname.includes("stream")) {
+    return null;
+  }
 
   const NavbarItems = [
     {
@@ -68,6 +70,10 @@ const Navbar = () => {
     {
       title: "Contact Us",
       href: "/contact",
+    },
+    {
+      title: "Video",
+      href: "/stream",
     },
   ];
 
