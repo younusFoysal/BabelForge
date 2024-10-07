@@ -82,7 +82,7 @@ const Chat = () => {
 
     // Handle delete all messages
     const handleDeleteAllMessages = async () => {
-        if (confirm("Are you sure you want to delete all messages?")) {
+        if (confirm("Are you sure you want to delete all Messages?")) {
             await deleteAllMessages();
             // Optionally clear the local messages state if needed
         }
@@ -94,6 +94,8 @@ const Chat = () => {
             section.scrollIntoView({ behavior: "smooth" });
         }
     };
+
+
 
 
     return (

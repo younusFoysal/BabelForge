@@ -26,16 +26,19 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
+import useProjects from '@/hooks/useProjects';
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const UserTeam = () => {
   const myRef = useRef('');
   const session = useSession();
   const user = session?.data?.user;
-  const [teams, isLoading] = UseTeams(user?.email);
+  const [teams, isLoading, refetch] = UseTeams(user?.email);
   const [searchQuery, setSearchQuery] = useState('');
-  const [emails, setEmails] = useState([user.email]);
+  const [emails, setEmails] = useState([user?.email]);
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = useState(false);
+  const [projects] = useProjects(user?.email, '', '');
   const {
     register,
     handleSubmit,
@@ -58,6 +61,7 @@ const UserTeam = () => {
       setOpen(false);
       toast.success('Team created successfully!');
       reset();
+      refetch();
     },
     onError: error => {
       toast.error(`Couldn't create team ! Try again`);
@@ -67,9 +71,11 @@ const UserTeam = () => {
   // Submit Team from
   const onSubmit = data => {
     data.tmembers = emails;
-    data.tleader = user.email;
+    data.tleader = user?.email;
     mutation.mutate(data);
   };
+
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
@@ -79,9 +85,9 @@ const UserTeam = () => {
           <DialogTrigger asChild>
             <Button variant="outline">Create Team</Button>
           </DialogTrigger>
-          <DialogPortal>
+          <>
             <DialogOverlay className="DialogOverlay">
-              <DialogContent className="max-w-[450px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]">
+              <DialogContent aria-describedby={'Dialouge'} className="max-w-[450px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]">
                 <DialogHeader>
                   <DialogTitle className="text-[20px]">Create a team</DialogTitle>
                 </DialogHeader>
@@ -130,7 +136,32 @@ const UserTeam = () => {
                           className="col-span-3"
                         />
                         {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Category required</p>}
-                        {errors.tcategory?.type === 'minLength' && <p className="text-red-600 text-[11px] mt-1">Category too short !</p>}
+                        {errors.tcategory?.type === 'minLength' && (
+                          <p className="text-red-600 text-[11px] mt-1">Category too short !</p>
+                        )}{' '}
+                      </div>
+                      {/* Select Project */}
+                      <div>
+                        <Label htmlFor="tproject" className="text-left text-[11px] mb-[6px] block font-semibold">
+                          Select Project
+                        </Label>
+                        <select
+                          {...register('tproject', { required: true })}
+                          className="w-full py-[11px] text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
+                          name="tproject"
+                          id="tproject"
+                        >
+                          {projects &&
+                            projects?.map(project => {
+                              return (
+                                <option className=" " key={project._id} value={project._id}>
+                                  <span className=" capitalize"> {project.pname}</span>
+                                </option>
+                              );
+                            })}
+                          <option value=""></option>
+                        </select>
+                        {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Project required</p>}
                       </div>
                       <div className="">
                         <Label htmlFor="tdes" className="text-left text-[11px] mb-[6px] block font-semibold">
@@ -173,7 +204,7 @@ const UserTeam = () => {
                 </div>
               </DialogContent>
             </DialogOverlay>
-          </DialogPortal>
+          </>
         </Dialog>
       </div>
       {/* Search Teams and Projects */}

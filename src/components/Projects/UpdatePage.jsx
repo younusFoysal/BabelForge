@@ -20,6 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import {router} from "next/client";
+import {useRouter} from "next/navigation";
 
 const projectCategories = [
   "All",
@@ -33,6 +35,7 @@ const UpdateProjectPage = ({ id }) => {
   const [currentDate, setCurrentDate] = useState("");
   const session = useSession();
   const user = session?.data?.user;
+  const router = useRouter();
   const [emails, setEmails] = useState([]);
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState(""); // Use state to store selected category
@@ -81,6 +84,7 @@ const UpdateProjectPage = ({ id }) => {
     },
     onSuccess: () => {
       toast.success("Project update Successfully!");
+      router.push("/dashboard/projects")
     },
     onError: () => {
       toast.error(`Something went wrong`);

@@ -6,6 +6,7 @@ import TeamInfo from './TeamInfo';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const MainPageWrap = () => {
   const axiosCommon = useAxiosCommon();
@@ -13,12 +14,15 @@ const MainPageWrap = () => {
   const user = session?.data?.user;
 
   const { isLoading, data: stats } = useQuery({
-    queryKey: [user],
+    queryKey: ["dashuser", user],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/dashboard/stat/${user.email}`);
       return data;
     },
   });
+  console.log(stats);
+
+    if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <div className="w-full px-4 mt-9 md:mt-2">
