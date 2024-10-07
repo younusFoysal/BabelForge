@@ -7,7 +7,6 @@ const Page = ({ params }) => {
 
   return (
     <div>
-      <h2>ID : {id}</h2>
       <Team id={id}></Team>
     </div>
   );

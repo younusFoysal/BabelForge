@@ -6,6 +6,12 @@ import Image from "next/image";
 import usericon from "@/image/icon/user.png";
 import userbw from "@/image/icon/userbw.png";
 import { FiSend } from "react-icons/fi";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 const Chat = () => {
     const [currentDate, setCurrentDate] = useState('');
@@ -76,7 +82,7 @@ const Chat = () => {
 
     // Handle delete all messages
     const handleDeleteAllMessages = async () => {
-        if (confirm("Are you sure you want to delete all messages?")) {
+        if (confirm("Are you sure you want to delete all Messages?")) {
             await deleteAllMessages();
             // Optionally clear the local messages state if needed
         }
@@ -90,18 +96,19 @@ const Chat = () => {
     };
 
 
-    return (
-        <div>
 
-            <div className="w-full mx-auto text-center mb-8 -mt-0 -sm:mt-3 max-w-[920px]">
-                <h1 className="semibold text-[2rem] leading-9 sm:text-4xl sm:leading-auto mb-4 block">
+
+    return (
+        <div className="mb-24">
+            <div className="w-full mx-auto text-center mb-8 mt-0 sm:mt-3 max-w-full sm:max-w-[920px]">
+                <h1 className="font-semibold text-[1.5rem] leading-8 sm:text-4xl sm:leading-tight mb-4 block">
                     Stay Connected
                 </h1>
-                <h2 className="semibold text-[1.5rem] leading-8 sm:text-2.5xl sm:leading-auto mb-4 block">
+                <h2 className="font-semibold text-[1.25rem] leading-7 sm:text-2xl sm:leading-tight mb-4 block">
                     Discuss About The Tasks With Your Team Members.
                 </h2>
 
-                <div className="w-screen sm:w-auto max-w-[920px] ml-[-28px] sm:ml-0">
+                <div className="w-full sm:w-auto max-w-full sm:max-w-[920px] mx-0 sm:ml-0">
                     <button
                         type="button"
                         onClick={messageSection}
@@ -126,7 +133,7 @@ const Chat = () => {
 
                     <button
                         type="button"
-                        className="inline-flex items-center shadow-sm text-sm rounded-lg text-white active:ring-2 hover:ring-2 ring-slate-100 ring-offset-2 mx-1 text-[1rem] sm:text-[1.3rem] font-light px-3 sm:px-5 py-2.5 bg-[#5965f3] hover:bg-[#3e4be0] sm:ml-4 mt-2"
+                        className="inline-flex items-center shadow-sm text-sm rounded-lg text-white active:ring-2 hover:ring-2 ring-slate-100 ring-offset-2 mx-1 text-[1rem] sm:text-[1.3rem] font-light px-3 sm:px-5 py-2.5 bg-[#5965f3] hover:bg-[#3e4be0] mt-2 sm:ml-4"
                     >
                         Join Discord
                         <svg
@@ -147,21 +154,35 @@ const Chat = () => {
                 </div>
             </div>
 
-
-            <div id="messageSection">
-                <div className="h-screen w-[150vh] rounded shadow-lg flex mx-auto flex-col">
+            <div id="messageSection" className="w-full sm:w-[80vw] lg:w-[60vw] mx-auto">
+                <div className="h-[70vh] sm:h-[80vh] w-full rounded shadow-lg flex mx-auto flex-col">
                     <div
                         ref={messagesContainerRef}
-                        className="bg-gray-200 rounded flex-1 overflow-y-auto"
+                        className="bg-gray-200 rounded p-1 flex-1 overflow-y-auto"
                     >
                         <div className="px-4 py-2">
                             {messages?.map((msg, index) => (
                                 <div key={index}>
                                     {msg.username === uname ? (
                                         <div className="flex items-center justify-end my-2">
-                                            <div className="bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm">
-                                                {msg.messages}
+                                            <div>
+                                                <TooltipProvider>
+                                                    <Tooltip>
+                                                        <TooltipTrigger asChild>
+                                                            <div
+                                                                className="bg-blue-500 text-white rounded-lg p-2 shadow mr-2 max-w-sm">
+                                                                {msg.messages}
+                                                            </div>
+                                                        </TooltipTrigger>
+                                                        <TooltipContent>
+                                                            <div className="text-sm text-gray-600 text-right mr-4">
+                                                                {msg.ctime} {msg.cdate}
+                                                            </div>
+                                                        </TooltipContent>
+                                                    </Tooltip>
+                                                </TooltipProvider>
                                             </div>
+
                                             <Image
                                                 className="w-8 h-8 rounded-full"
                                                 src={usericon}
@@ -182,9 +203,21 @@ const Chat = () => {
                                                 />
                                                 <div className="font-medium">{msg.username}</div>
                                             </div>
-                                            <div className="bg-white rounded-lg p-2 shadow mb-2 max-w-sm">
-                                                {msg.messages}
-                                            </div>
+
+                                            <TooltipProvider>
+                                                <Tooltip>
+                                                    <TooltipTrigger asChild>
+                                                        <div className="bg-white rounded-lg p-2 shadow max-w-sm">
+                                                            {msg.messages}
+                                                        </div>
+                                                    </TooltipTrigger>
+                                                    <TooltipContent>
+                                                        <div className="text-sm text-gray-600 text-left ">
+                                                            {msg.cdate} {msg.ctime}
+                                                        </div>
+                                                    </TooltipContent>
+                                                </Tooltip>
+                                            </TooltipProvider>
                                         </div>
                                     )}
                                 </div>
@@ -210,20 +243,21 @@ const Chat = () => {
                             </button>
                         </div>
 
-                        {
-                            uemail === "admin@admin.com" ? <button
+                        {uemail === "admin@admin.com" ? (
+                            <button
                                 onClick={handleDeleteAllMessages}
                                 className="mt-2 flex justify-center items-center bg-red-500 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-full"
                             >
                                 Delete All Messages
-                            </button> : ""
-                        }
-
-
+                            </button>
+                        ) : (
+                            ""
+                        )}
                     </div>
                 </div>
             </div>
         </div>
+
     );
 };
 

@@ -7,7 +7,6 @@ const Reviews = () => {
         <section>
 
 
-
             {/* card */}
             <div className="flex justify-center ">
 

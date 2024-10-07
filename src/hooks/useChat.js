@@ -1,47 +1,46 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const SOCKET_SERVER_URL = "http://localhost:5000"; // Update with your server URL
+const SOCKET_SERVER_URL = "http://localhost:5000";
 
 const useChat = () => {
-    const [messages, setMessages] = useState([]); // Store chat messages
+    const [messages, setMessages] = useState([]);
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        // Connect to the socket server
         const socketIo = io(SOCKET_SERVER_URL);
 
-        // Listen for previous messages
+
         socketIo.on("previousMessages", (prevMessages) => {
-            setMessages(prevMessages); // Load previous messages when connecting
+            setMessages(prevMessages);
         });
 
-        // Listen for new chat messages from the server
+
         socketIo.on("chat message", (message) => {
             setMessages((prevMessages) => [...prevMessages, message]);
         });
 
         setSocket(socketIo);
 
-        // Clean up on component unmount
+
         return () => {
             socketIo.disconnect();
         };
     }, []);
 
-    // Function to send a new chat message
+
     const sendMessage = (message) => {
         if (socket) {
-            socket.emit("chat message", message); // Send message to server
+            socket.emit("chat message", message);
         }
     };
 
     const deleteAllMessages = async () => {
         try {
-            await fetch(`${SOCKET_SERVER_URL}/chat/messages`, { // Adjust URL as necessary
+            await fetch(`${SOCKET_SERVER_URL}/chat/messages`, {
                 method: 'DELETE',
             });
-            setMessages([]); // Clear the messages state
+            setMessages([]);
         } catch (error) {
             console.error('Failed to delete messages:', error);
         }

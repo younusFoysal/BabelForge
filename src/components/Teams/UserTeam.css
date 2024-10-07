@@ -1,0 +1,41 @@
+#radix-:r3k {
+  z-index: 999;
+}
+
+.rti--input {
+  width: 100%;
+  padding-left: 6px;
+  font-size: 14px !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.rti--tag {
+  font-size: 14px !important;
+  padding-left: 10px !important;
+  border-radius: 50px !important;
+}
+
+.rti--tag button {
+  padding-right: 7px !important;
+}
+
+.rti--input::placeholder {
+  font-size: 14px;
+  font-weight: light;
+  opacity: 1;
+  color: #777;
+}
+
+.DialogOverlay {
+  background: rgba(0 0 0 / 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  z-index: 999;
+}
