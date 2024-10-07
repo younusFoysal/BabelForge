@@ -14,6 +14,7 @@ import { ImBriefcase } from "react-icons/im";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { UpdateProfile } from "../Profile/UpdateProfile";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
@@ -34,7 +35,7 @@ const Profile = () => {
   });
   console.log(user);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <div>

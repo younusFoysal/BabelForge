@@ -54,7 +54,7 @@ const Navbar = () => {
 
   const NavbarItems = [
     {
-      title: "Product",
+      title: "Features",
       href: "/features",
     },
     {

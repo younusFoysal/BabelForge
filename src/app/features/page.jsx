@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 import Header from "@/components/DashboardsPage/Header";
 import DashboardCard from "@/components/DashboardsPage/DashboardCard";
 import card1 from "@/image/dashboards/card1.png";
 import card2 from "@/image/dashboards/card2.png";
 import card3 from "@/image/dashboards/card3.png";
 import Button from "@/components/shared/Buttons";
-import { ArrowRight } from "lucide-react";
+import {ArrowRight} from "lucide-react";
 import Sponser from "@/components/home/Sponser";
 import Review from "@/components/DashboardsPage/Review";
 

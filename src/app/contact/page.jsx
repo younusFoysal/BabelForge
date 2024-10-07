@@ -1,6 +1,7 @@
 import ContactForm from "@/components/Contactus/ContactForm";
 import ContactText from "@/components/Contactus/ContactText";
 
+
 const Contactus = () => {
   return (
     <section className="container mx-auto mt-10">
@@ -15,6 +16,8 @@ const Contactus = () => {
           <ContactText />
         </div>
       </div>
+
+
     </section>
   );
 };
