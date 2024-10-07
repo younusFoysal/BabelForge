@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import MemberBox from "./MemberBox";
 import LinkDialog from "./LinkDialog";
 import LinkBox from "./LinkBox";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const Team = ({id}) => {
 
@@ -33,9 +34,7 @@ const Team = ({id}) => {
 
   console.log("Team Single:",team);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   const { members, _id, links } = team;
 

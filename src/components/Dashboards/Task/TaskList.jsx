@@ -15,7 +15,8 @@ import { arrayMove } from "@dnd-kit/sortable";
 import AddTask from "./AddTask";
 import axios from "axios";
 import useAxiosCommon from "@/lib/axiosCommon";
-import {useQuery} from "@tanstack/react-query"; // Import axios for API requests
+import {useQuery} from "@tanstack/react-query";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner"; // Import axios for API requests
 
 export default function TaskList() {
   const [tasks, setTasks] = useState({
@@ -157,7 +158,7 @@ export default function TaskList() {
     );
   };
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <div className="p-6">

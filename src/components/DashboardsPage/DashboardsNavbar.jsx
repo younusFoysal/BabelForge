@@ -38,6 +38,10 @@ const DashboardNavbar = () => {
       title: "Dashboard",
       href: "/dashboard",
     },
+    {
+      title: "Canvas",
+      href: "/dashboard/canvas",
+    }
   ];
 
   return (
