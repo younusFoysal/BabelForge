@@ -17,7 +17,7 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
 
   if (callHasEnded) return toast.error("Call has ended");
 
-  if (!calls) throw new Error("use call is must be component");
+  if (!calls) throw new Error("use call is must be Component");
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
