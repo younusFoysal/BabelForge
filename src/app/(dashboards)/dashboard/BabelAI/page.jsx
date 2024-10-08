@@ -3,7 +3,7 @@ import AIHelper from "@/components/AIHelper/AIHelper";
 
 const Page = () => {
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+        <div>
 
             <AIHelper></AIHelper>
             
