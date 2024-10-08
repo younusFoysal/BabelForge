@@ -1,3 +1,4 @@
+import Review from "@/components/AdminDashboard/Review";
 import Faq from "@/components/Pricing/Faq";
 import PriceCard from "@/components/Pricing/PriceCard";
 
