@@ -42,6 +42,15 @@ const DashboardNavbar = () => {
       title: "Canvas",
       href: "/dashboard/canvas",
     }
+    ,
+    {
+      title: "Review",
+      href: "/dashboard/review",
+    },
+    {
+      title: "Babel AI",
+      href: "/dashboard/BabelAI",
+    }
   ];
 
   return (
