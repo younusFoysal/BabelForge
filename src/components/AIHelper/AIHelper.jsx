@@ -25,7 +25,7 @@ const AIHelper = () => {
         setError('');
 
         try {
-            const res = await fetch('http://babelforgeserver.vercel.app/ai/ai/prompt', {
+            const res = await fetch('https://babelforgeserver.vercel.app/ai/ai/prompt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt }),
