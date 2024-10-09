@@ -7,7 +7,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { ChartConfig, ChartContainer, ChartStyle, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-export const description = 'An interactive pie chart';
+export const description = 'An interactive piee chart';
 
 const PaymentPieChart = ({ trans, isLoading }) => {
   const standardTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Standard'), [trans])?.reduce(
