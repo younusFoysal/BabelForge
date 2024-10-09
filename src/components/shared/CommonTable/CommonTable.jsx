@@ -71,7 +71,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                 <TableHeader className="text-black font-bold">
                     <TableRow>
                         {
-                            theads.map((thead, index) => (thead === "Fav" ? <TableHead key={index}><FaStar className="text-black text-lg"></FaStar></TableHead> : <TableHead key={index} className="font-semibold text-black text-center">{thead}</TableHead>))
+                            theads?.map((thead, index) => (thead === "Fav" ? <TableHead key={index}><FaStar className="text-black text-lg"></FaStar></TableHead> : <TableHead key={index} className="font-semibold text-black text-center">{thead}</TableHead>))
                         }
                     </TableRow>
                 </TableHeader>
@@ -79,7 +79,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                 <TableBody className="w-full">
 
                     {/* table row */}
-                    {tdata.map((data, idx) => (
+                    {tdata?.map((data, idx) => (
                         <TableRow
                             key={data._id}
                             className="border-y-2 border-gray-300 w-full"
@@ -133,7 +133,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                             {/* view admin inbox */}
 
                             {
-                                path === '/dashboard/inbox' && <>
+                                path === '/dashboard/admin/inbox' && <>
 
                                     <TableCell>{idx + 1}</TableCell>
                                     <TableCell>{data.firstName + " " + data.lastName}</TableCell>

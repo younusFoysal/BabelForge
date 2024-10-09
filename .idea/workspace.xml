@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="chat fix">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/inbox/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/reviews/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/CommonTable/CommonTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/CommonTable/CommonTable.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
