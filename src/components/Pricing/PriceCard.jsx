@@ -33,7 +33,6 @@ const PriceCard = () => {
         <section className="py-20  ">
           <div className="container px-4 mx-auto">
             <div className="flex flex-wrap items-stretch lg:h-[100vh] -mx-4">
-              {/* card 1 */}
               <PricingSingleCard />
               <PricingSingleCard />
               <PricingSingleCard />
