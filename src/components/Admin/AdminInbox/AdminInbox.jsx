@@ -5,10 +5,11 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-import { MdOutlineMessage } from "react-icons/md";
+import {MdMarkEmailRead, MdOutlineMessage} from "react-icons/md";
 
 import { TbStar } from "react-icons/tb";
 import Swal from "sweetalert2";
+import {IoTrashOutline} from "react-icons/io5";
 
 const AdminInbox = () => {
 
@@ -79,7 +80,7 @@ const AdminInbox = () => {
     return (
         <div>
             {/* container */}
-             <div className="flex flex-col md:flex-row h-screen bg-gray-100">
+             <div className="flex flex-col md:flex-row h-screen">
        
             <div className="flex-1 p-6 overflow-auto">
                 <h1 className="text-2xl font-bold mb-4">All Message Inbox</h1>
@@ -119,7 +120,7 @@ const AdminInbox = () => {
                                         >
                                             <td className="px-4 py-2 flex items-center">
                                                 <span className='text-xl mr-3'><TbStar /></span>
-                                                <MdOutlineMessage className="h-6 w-6 text-blue-500 mr-2" />
+                                                <MdMarkEmailRead  className="h-6 w-6 text-blue-600 mr-2" />
                                                 <span className="mr-1">{message.firstName} </span>
                                                 {message.lastName}
                                             </td>
@@ -135,7 +136,7 @@ const AdminInbox = () => {
                                                     }}
                                                     className="p-2 rounded-full text-xl hover:bg-gray-300 transition duration-200"
                                                 >
-                                                    <FaRegTrashAlt />
+                                                    <IoTrashOutline  />
                                                 </button>
                                             </td>
                                         </tr>
