@@ -18,9 +18,11 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { CgList } from "react-icons/cg";
 import { IoHomeOutline } from "react-icons/io5";
-import {MdOutlineGroups, MdPostAdd} from "react-icons/md";
-import {GoProjectSymlink} from "react-icons/go";
-import {HiOutlineChatAlt2} from "react-icons/hi";
+import { MdOutlineGroups, MdPostAdd } from "react-icons/md";
+import { GoProjectSymlink } from "react-icons/go";
+import { HiOutlineChatAlt2 } from "react-icons/hi";
+import { FiInbox } from "react-icons/fi";
+
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -34,7 +36,7 @@ const layout = ({ children }) => {
   //   return router.push("/");
   // }
 
-  
+
 
   return (
     <div className="flex min-h-screen bg-white dark:bg-gray-900 dark:text-white">
@@ -77,7 +79,7 @@ const layout = ({ children }) => {
               <ul>
                 <li>
                   <Link href={"/"} className="py-2 flex items-center  gap-2">
-                    <IoHomeOutline/> Home
+                    <IoHomeOutline /> Home
                   </Link>
                 </li>
 
@@ -104,18 +106,18 @@ const layout = ({ children }) => {
 
                 <li>
                   <Link
-                      href={"/dashboard/Backlog"}
-                      className="py-2 flex items-center gap-2 "
+                    href={"/dashboard/Backlog"}
+                    className="py-2 flex items-center gap-2 "
                   >
-                    <MdPostAdd/> Backlog
+                    <MdPostAdd /> Backlog
                   </Link>
                 </li>
                 <li>
                   <Link
-                      href={"/dashboard/board"}
-                      className="py-2 flex items-center gap-2 "
+                    href={"/dashboard/board"}
+                    className="py-2 flex items-center gap-2 "
                   >
-                    <CgList/>
+                    <CgList />
                     Boards
                   </Link>
                 </li>
@@ -127,33 +129,42 @@ const layout = ({ children }) => {
 
       {/* Sidebar drawer large device*/}
       <div
-          className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
+        className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
         {/*<h2 className="text-2xl font-bold">Dashboard</h2>*/}
         <ul>
           <li>
             <Link href={"/"} className="py-2 ml-4 flex items-center gap-2">
               {" "}
-              <IoHomeOutline/> Home
+              <IoHomeOutline /> Home
             </Link>
           </li>
 
 
           <li>
             <Link
-                href={"/dashboard/Backlog"}
-                className="py-2 ml-4 flex items-center gap-2"
+              href={"/dashboard/Backlog"}
+              className="py-2 ml-4 flex items-center gap-2"
             >
               {" "}
-              <MdPostAdd/> Backlogs
+              <MdPostAdd /> Backlogs
             </Link>
           </li>
           <li>
             <Link
-                href={"/dashboard/board"}
-                className="py-2 ml-4 flex items-center gap-2"
+              href={"/dashboard/board"}
+              className="py-2 ml-4 flex items-center gap-2"
             >
-              <CgList/>
+              <CgList />
               Boards
+            </Link>
+          </li>
+          <li>
+            <Link
+              href={"/dashboard/inbox"}
+              className="py-2 ml-4 flex items-center gap-2"
+            >
+              <FiInbox />
+              Inbox
             </Link>
           </li>
         </ul>
