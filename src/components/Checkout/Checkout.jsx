@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const Checkout = () => {
   return (
@@ -40,9 +41,11 @@ const Checkout = () => {
                   placeholder="1234-5678-XXXX-XXXX"
                   className="block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 pr-10 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
                 />
-                <img
+                <Image
                   src="/images/uQUFIfCYVYcLK0qVJF5Yw.png"
                   alt=""
+                  height={600}
+                  width={600}
                   className="absolute bottom-3 right-3 max-h-4"
                 />
               </div>
@@ -122,9 +125,11 @@ const Checkout = () => {
         <div className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-4 lg:py-24">
           <h2 className="sr-only">Order summary</h2>
           <div>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1581318694548-0fb6e47fe59b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
               alt=""
+              height={600}
+              width={600}
               className="absolute inset-0 h-full w-full object-cover"
             />
             <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-teal-800 to-teal-400 opacity-95" />
@@ -133,9 +138,11 @@ const Checkout = () => {
             <ul className="space-y-5">
               <li className="flex justify-between">
                 <div className="inline-flex">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fGhhaXIlMjBkcnllcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
                     alt=""
+                    height={600}
+                    width={600}
                     className="max-h-16"
                   />
                   <div className="ml-3">
@@ -151,9 +158,11 @@ const Checkout = () => {
               </li>
               <li className="flex justify-between">
                 <div className="inline-flex">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1621607512214-68297480165e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjV8fGhhaXIlMjBkcnllcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
                     alt=""
+                    height={600}
+                    width={600}
                     className="max-h-16"
                   />
                   <div className="ml-3">

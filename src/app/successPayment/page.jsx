@@ -9,7 +9,9 @@ import toast from "react-hot-toast";
 import Image from "next/image";
 
 const page = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const axiosComon = useAxiosCommon();
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const searchParams = useSearchParams();
   const paymentIntent = searchParams.get("payment_intent");
   const redirectStatus = searchParams.get("redirect_status");
@@ -19,6 +21,7 @@ const page = () => {
   const first_name = searchParams.get("first_name");
   const amount = searchParams.get("amount");
   const category = searchParams.get("category");
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession();
   const user = session?.data?.user;
 

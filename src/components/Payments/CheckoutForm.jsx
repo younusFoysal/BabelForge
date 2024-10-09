@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import { UserContext } from "@/providers/ContextProvider";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 
 const CheckoutForm = ({ id, amount }) => {
   const stripe = useStripe();
@@ -78,7 +79,7 @@ const CheckoutForm = ({ id, amount }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/success-payment?first_name=${first_name}&last_name=${last_name}&address=${address}&city=${city}&amount=${price}&category=${category}`,
+        return_url: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/successPayment?first_name=${first_name}&last_name=${last_name}&address=${address}&city=${city}&amount=${price}&category=${category}`,
       },
     });
 
@@ -180,12 +181,14 @@ const CheckoutForm = ({ id, amount }) => {
         <div className="relative col-span-full flex flex-col py-6 pl-8 pr-4 sm:py-12 lg:col-span-4 lg:py-24">
           <h2 className="sr-only">Order summary</h2>
           <div>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1581318694548-0fb6e47fe59b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
               alt=""
+              height={600}
+              width={600}
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-teal-800 to-teal-400 opacity-95" />
+            <div className="absolute inset-0 h-full w-full bg-gradient-to-t from-blue-600 to-blue-400 opacity-95" />
           </div>
 
           <div className="relative mt-20 text-white ">

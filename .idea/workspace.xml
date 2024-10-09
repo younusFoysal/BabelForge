@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Admin Dash Added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/success-payment/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/success-payment/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentPieChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentPieChart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Checkout/Checkout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Checkout/Checkout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Payments/CheckoutForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Payments/CheckoutForm.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +70,7 @@
     "Node.js.GetFileStructure.cjs.executor": "Run",
     "Node.js.GetFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "prepod",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "D:/WebStrom Projects/SCIC/EndGame/babelforge",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -467,7 +470,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728479314085</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Admin Dash Added">
+      <option name="closed" value="true" />
+      <created>1728508191801</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1728508191801</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -486,7 +497,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="DND fix" />
     <MESSAGE value="nav fix" />
     <MESSAGE value="done" />
     <MESSAGE value="side bar icon added" />
@@ -510,6 +520,7 @@
     <MESSAGE value="admin dashboard page start" />
     <MESSAGE value="admin dashboard page card" />
     <MESSAGE value="Admin Transactions page" />
+    <MESSAGE value="Chart fix" />
     <MESSAGE value="Admin Dash Added" />
     <option name="LAST_COMMIT_MESSAGE" value="Admin Dash Added" />
   </component>

@@ -40,7 +40,7 @@ const PaymentPieChart = ({ trans, isLoading }) => {
   const id = 'pie-interactive';
   const [activePakage, setactivePakage] = React.useState(Initalpakage[0]);
 
-  const activeIndex = React.useMemo(() => Initalpakage.findIndex(item => item === activePakage), []);
+  const activeIndex = React.useMemo(() => Initalpakage.findIndex(item => item === activePakage), [Initalpakage, activePakage]);
   const activeTrans = React.useMemo(() => trans?.filter(item => item.pakage === activePakage), [trans, activePakage]);
   // const pakages = React.useMemo(() => trans?.map(item => item.pakage), []);
 
