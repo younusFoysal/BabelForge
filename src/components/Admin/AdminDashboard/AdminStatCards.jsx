@@ -1,7 +1,26 @@
 import React from 'react';
 import {LuEye} from "react-icons/lu";
+import useAxiosCommon from "@/lib/axiosCommon";
+import {useSession} from "next-auth/react";
+import {useQuery} from "@tanstack/react-query";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const AdminStatCards = () => {
+
+    const axiosCommon = useAxiosCommon();
+
+    const { isLoading, data: stats } = useQuery({
+        queryKey: ["dashadmin"],
+        queryFn: async () => {
+            const { data } = await axiosCommon.get(`admin/dashboard`);
+            return data;
+        },
+    });
+    console.log(stats);
+
+    if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+
+
     return (
         <div>
             <div className="mb-6 grid grid-cols-1 gap-4 text-white sm:grid-cols-2 xl:grid-cols-4">
@@ -10,11 +29,11 @@ const AdminStatCards = () => {
                         <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Projects</div>
                     </div>
                     <div className="mt-5 flex items-center">
-                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3"> 170</div>
+                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3"> {stats?.plen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
                         <LuEye className="mr-2 shrink-0"/>
-                        Last Week 70
+                        Last Week  {stats?.lwplen}
                     </div>
                 </div>
 
@@ -24,11 +43,11 @@ const AdminStatCards = () => {
                         <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Teams</div>
                     </div>
                     <div className="mt-5 flex items-center">
-                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3"> 220</div>
+                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3">  {stats?.tmlen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
                         <LuEye className="mr-2 shrink-0"/>
-                        Last Week 90
+                        Last Week  {stats?.lwtmlen}
                     </div>
                 </div>
 
@@ -38,11 +57,11 @@ const AdminStatCards = () => {
                         <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Tasks</div>
                     </div>
                     <div className="mt-5 flex items-center">
-                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3"> 1556</div>
+                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3">  {stats?.tslen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
                         <LuEye className="mr-2 shrink-0"/>
-                        Last Week 180
+                        Last Week  {stats?.lwtslen}
                     </div>
                 </div>
 
@@ -52,11 +71,11 @@ const AdminStatCards = () => {
                         <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Users</div>
                     </div>
                     <div className="mt-5 flex items-center">
-                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3"> 90</div>
+                        <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3">  {stats?.ulen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
                         <LuEye className="mr-2 shrink-0"/>
-                        Last Week 25
+                        Last Week  {stats?.lwulen}
                     </div>
                 </div>
             </div>
