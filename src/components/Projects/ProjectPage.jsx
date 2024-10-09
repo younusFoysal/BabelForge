@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+
 import {
   Select,
   SelectContent,
@@ -10,7 +11,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import { IoIosSearch } from "react-icons/io";
+
 import {
   Table,
   TableBody,
@@ -20,10 +23,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+
 import { FaStar } from "react-icons/fa6";
 import { FaArrowDown } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import {
   Pagination,
   PaginationContent,
@@ -33,6 +39,7 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import useProjects from "@/hooks/useProjects";
@@ -58,6 +65,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import CommonTable from "../shared/CommonTable/CommonTable";
 
 
 const ProjectPage = () => {
@@ -67,11 +75,10 @@ const ProjectPage = () => {
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
-  const router = useRouter();
-  const [projects, isLoading, refetch] = useProjects(userEmail, search, category);
+  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(userEmail, search, category);
 
-
-  console.log(isLoading)
+  // console.log(projects);
+  // console.log(isLoading);
 
   if (!projects?.length && !search?.length && !category?.length) {
     return (
@@ -100,6 +107,8 @@ const ProjectPage = () => {
     "Non Profit Organization",
     "Project Management",
   ];
+
+  const theads = ["Fav", "Image", "Name", "Type", "Manager", "Project URL", "Start Date", "End Date", "More Action"];
 
   const handleSearchByClick = () => {
     const inputData = document.getElementById("inputField").value;
@@ -174,86 +183,9 @@ const ProjectPage = () => {
         </div>
       </div>
 
-      {/* Table content */}
-      <div className="mt-8">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[20%] font-semibold text-black flex  items-center gap-3">
-                <span>
-                  <FaStar></FaStar>
-                </span>
-                Name
-                {/* <span><FaArrowDown  ></FaArrowDown > </span> */}
-              </TableHead>
-              <TableHead className="font-semibold text-black">Key</TableHead>
-              <TableHead className="font-semibold text-black w-[20%]">
-                Type
-              </TableHead>
-              <TableHead className="font-semibold text-black w-[20%]">
-                Manager
-              </TableHead>
-              <TableHead className="font-semibold text-black">
-                Project URL
-              </TableHead>
-              <TableHead className="font-semibold text-black">
-                More Action
-              </TableHead>
-            </TableRow>
-          </TableHeader>
 
-          <TableBody className="w-full">
-            {/* 1st row */}
-            {projects?.map((project) => (
-              <TableRow
-                key={project._id}
-                className="border-y-2 border-gray-300 w-full"
-              >
-                <TableCell className="font-medium flex items-center gap-3">
-                  <span>
-                    <FaRegStar className="text-xl"></FaRegStar>
-                  </span>
-                  <div className="flex items-center gap-2 font-normal text-primary">
-                    <p className="rounded-full p-1">
-                      <Avatar className="w-8 h-8">
-                        <AvatarImage src={project.pimg} />
-                        <AvatarFallback>TA</AvatarFallback>
-                      </Avatar>
-                    </p>
-                  </div>
-                </TableCell>
-                <TableCell
-                  className="uppercase cursor-pointer"
-                  onClick={() =>
-                    router.push(`/dashboard/project/${project._id}`)
-                  }
-                >
-                  {project.pname}
-                </TableCell>
-                <TableCell>{project.pcategory}</TableCell>
-                <TableCell>{project.pmanager}</TableCell>
-                <TableCell>{project.purl}</TableCell>
-                <TableCell>
-                  {userEmail === project.pmanager && (
-                    <DropdownMenu>
-                      <DropdownMenuTrigger>
-                        <Ellipsis></Ellipsis>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent>
-                        <DropdownMenuItem>
-                          <Link href={`/dashboard/projects/${project._id}`}>
-                            Update Project
-                          </Link>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </div>
+      {/* Table content */}
+      <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>
 
       {/* pagination */}
       <div className="mt-6">

@@ -38,7 +38,7 @@ const UserTeam = () => {
   const [emails, setEmails] = useState([user?.email]);
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = useState(false);
-  const [projects] = useProjects(user?.email, '', '');
+  const { data: projects = [] } = useProjects(user?.email, '', '');
   const {
     register,
     handleSubmit,

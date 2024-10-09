@@ -1,71 +1,51 @@
-import { BadgeCheck } from "lucide-react";
-import React from "react";
+import Link from "next/link";
 
-const PricingSingleCard = () => {
+const PricingSingleCard = ({ pricing }) => {
+  const {
+    buttonText,
+    features,
+    featuresTitle,
+    priceDetails,
+    price,
+    title,
+    _id,
+  } = pricing;
+
   return (
     <div
-      className="flex w-full mb-8  sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0 dark:text-white"
+      className="relative overflow-hidden flex flex-col gap-3 p-4 w-full max-h-[650px] space-y-4 rounded-lg bg-[#503baa] border-2 border-[#7a308f] text-white"
       data-aos="fade-down"
     >
-      <div className="flex flex-grow flex-col p-6 sm:p-8  border-gray-800 border-[1px] rounded-3xl hover:shadow-2xl duration-500">
-        <div className="space-y-2">
-          <h4 className="text-2xl font-bold">Basic</h4>
-          <p className="pt-4 ">
-            <span className="text-6xl font-extralight">
-              $<span className="font-bold">0</span>
-              <span className="text-sm font-normal pl-1">/Free Forever</span>
-            </span>
-          </p>
-        </div>
+      {/* Circle decoration */}
+      <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-gradient-to-b  from-[#762ab4] to-[#c75fe4] shadow-[0_1px_5px_3px_#c75fe4,_0_0_30px_5px_#c75fe4]"></div>
 
-        <p className="mt-4 leading-relaxed text-gray-600 font-semibold dark:text-white">
-          Free for your whole team
-        </p>
+      <h4 className="text-4xl font-semibold ">{title}</h4>
 
+      <p className="text-5xl font-semibold">
+        ${price}{" "}
+        <span className="text-sm text-[#b884c7] font-medium">
+          {priceDetails}
+        </span>
+      </p>
+
+      <Link href={`/checkout/${_id}`}>
         <button
           type="button"
-          className="inline-block px-5 py-3 font-semibold tracking-wider text-center rounded-full bg-primary hover:bg-primary-dark text-gray-50 mb-10 mt-16 dark:text-black"
+          className="mt-auto relative px-2 py-2 w-full bg-[#9c50b1] text-xs font-semibold rounded-lg shadow-[0_0_2px_1px_#7a308f] transition-all duration-300 ease-in-out hover:shadow-sky-600"
         >
-          Try for Free
+          <span className="relative z-10">{buttonText}</span>
         </button>
+      </Link>
 
-        <p>For individuals looking to keep track of their work</p>
+      <p className="text-sm text-[#b884c7] font-medium">{featuresTitle}</p>
 
-        <span className="border-b-2 pt-6 "></span>
-
-        <h4 className="text-xl font-semibold my-4">Free includes:</h4>
-
-        <ul className="flex-1 mb-6 mt-4 text-gray-600 space-y-6 dark:text-white">
-          <li className="flex mb-2 space-x-2">
-            <span className="text-green-600  text-lg">
-              <BadgeCheck size={20} className="mt-[2px]" />
-            </span>
-
-            <span>Up to 3 boards</span>
+      <ul className="flex flex-col gap-3 text-xs md:text-base font-medium flex-grow">
+        {features?.map((feature, idx) => (
+          <li key={idx} className="flex items-center">
+            <span className="text-[#c75fe4] font-black mr-1">✓</span> {feature}
           </li>
-
-          <li className="flex mb-2 space-x-2">
-            <span className="text-green-600  text-lg">
-              <BadgeCheck size={20} className="mt-[2px]" />
-            </span>
-
-            <span>Unlimited docs</span>
-          </li>
-
-          <li className="flex mb-2 space-x-2">
-            <span className="text-green-600  text-lg">
-              <BadgeCheck size={20} className="mt-[2px]" />
-            </span>
-            <span>200+ templates</span>
-          </li>
-          <li className="flex mb-2 space-x-2">
-            <span className="text-green-600  text-lg">
-              <BadgeCheck size={20} className="mt-[2px]" />
-            </span>
-            <span>8 column types</span>
-          </li>
-        </ul>
-      </div>
+        ))}
+      </ul>
     </div>
   );
 };
