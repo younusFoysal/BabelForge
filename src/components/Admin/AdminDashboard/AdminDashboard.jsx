@@ -19,7 +19,7 @@ const AdminDashboard = () => {
 
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-5">
         {/*<PaymentGraph trans={trans} isLoading={isLoading} />*/}
-          <PayGraph/>
+          <PayGraph trans={trans} isLoading={isLoading}/>
         <PaymentPieChart trans={trans} isLoading={isLoading} />
       </div>
       <Transactions />
