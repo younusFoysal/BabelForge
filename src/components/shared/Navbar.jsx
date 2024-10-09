@@ -46,6 +46,7 @@ const Navbar = () => {
     );
   }
   if (pathname.includes("signup")) return null;
+  if (pathname.includes("/success-payment")) return null;
 
   if (pathname.includes("dashboard")) {
     return <DashboardNavbar />;
