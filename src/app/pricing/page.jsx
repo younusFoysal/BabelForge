@@ -1,4 +1,4 @@
-import Review from "@/components/AdminDashboard/Review";
+import Review from "@/components/Admin/AdminReview/Review";
 import Faq from "@/components/Pricing/Faq";
 import PriceCard from "@/components/Pricing/PriceCard";
 

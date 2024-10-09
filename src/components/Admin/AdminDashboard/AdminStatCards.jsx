@@ -1,11 +1,9 @@
 import React from 'react';
 import {LuEye} from "react-icons/lu";
 
-const AdminDashboard = () => {
+const AdminStatCards = () => {
     return (
         <div>
-
-
             <div className="mb-6 grid grid-cols-1 gap-4 text-white sm:grid-cols-2 xl:grid-cols-4">
                 <div className="panel bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-md p-4">
                     <div className="flex justify-between">
@@ -15,7 +13,7 @@ const AdminDashboard = () => {
                         <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3"> 170</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
-                        <LuEye  className="mr-2 shrink-0"/>
+                        <LuEye className="mr-2 shrink-0"/>
                         Last Week 70
                     </div>
                 </div>
@@ -62,13 +60,8 @@ const AdminDashboard = () => {
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
     );
 };
 
-export default AdminDashboard;
+export default AdminStatCards;

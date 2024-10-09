@@ -11,10 +11,11 @@ import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import {IoTrashOutline} from "react-icons/io5";
 
 
 
-const Review = () => {
+const AdminReview = () => {
 
     const axiosCommon = useAxiosCommon();
 
@@ -81,6 +82,8 @@ const Review = () => {
                 <Table>
                     <TableHeader>
                         <TableRow>
+                            <TableHead className="font-semibold text-black text-base">No</TableHead>
+
 
                             <TableHead className="font-semibold text-black text-base">Name</TableHead>
 
@@ -90,7 +93,7 @@ const Review = () => {
 
                             <TableHead className="font-semibold text-black text-base">Review Rating</TableHead>
 
-                            <TableHead className="font-semibold text-black text-base"></TableHead>
+                            <TableHead className="font-semibold text-black text-base"> Action </TableHead>
 
 
                         </TableRow>
@@ -98,10 +101,12 @@ const Review = () => {
 
                     <TableBody>
                         {
-                            allReviews.map((review, index) =>
+                            allReviews?.map((review, index) =>
                                 <TableRow key={review._id}>
 
-                                    <TableCell >{review.name}</TableCell>
+                                    <TableCell>{index + 1}</TableCell>
+
+                                    <TableCell className="p-2.5" >{review.name}</TableCell>
 
                                     <TableCell>{review.message}</TableCell>
 
@@ -117,8 +122,8 @@ const Review = () => {
 
                                     <TableCell >
                                         <button onClick={() => handleDelete(review._id)}
-                                            className="bg-red-400 hover:bg-red-600  p-2 rounded-md">
-                                            <span className="text-xl text-base-200"><FaRegTrashAlt></FaRegTrashAlt></span>
+                                            className="border hover:bg-red-600 hover:text-white  p-2 rounded-md">
+                                            <span className="text-xl "><IoTrashOutline  /></span>
                                         </button>
                                     </TableCell>
 
@@ -138,4 +143,4 @@ const Review = () => {
     );
 };
 
-export default Review;
+export default AdminReview;
