@@ -49,7 +49,7 @@ const PaymentPieChart = ({ trans, isLoading }) => {
   const activeTrans = React.useMemo(() => trans?.filter(item => item.pakage === activePakage), [trans, activePakage]);
 
   return (
-    <div>
+    <div className="md:col-span-3 col-span-1">
       <Card data-chart={id} className="flex h-full flex-col">
         <ChartStyle id={id} config={chartConfig} />
         <CardHeader className="flex-row items-start space-y-0 pb-0">
