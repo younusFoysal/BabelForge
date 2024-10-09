@@ -7,12 +7,7 @@ const useProjects = (email, search, category) => {
 
   const axiosCommon = useAxiosCommon();
 
-  const {
-    data: projects = [],
-    isLoading,
-    isError,
-    refetch,
-  } = useQuery({
+  const queryResult = useQuery({
     queryKey: ['allProjects', email, search, category],
     queryFn: async () => {
       if ((search || category) && category !== 'All') {
@@ -26,7 +21,7 @@ const useProjects = (email, search, category) => {
     enabled: !!email,
   });
 
-  return [projects, refetch, isLoading, isError];
+  return queryResult;
 };
 
 export default useProjects;

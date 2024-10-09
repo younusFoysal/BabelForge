@@ -15,7 +15,6 @@ const UseUsers = () => {
     });
     //console.log(users);
 
-
     return [users, isLoading, refetch, isError ]
 };
 

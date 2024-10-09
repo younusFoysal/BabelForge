@@ -18,13 +18,16 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { CgList } from "react-icons/cg";
 import { IoHomeOutline } from "react-icons/io5";
-import {MdOutlineGroups, MdPostAdd} from "react-icons/md";
-import {GoProjectSymlink} from "react-icons/go";
-import {HiOutlineChatAlt2} from "react-icons/hi";
+import { MdOutlineGroups, MdPostAdd } from "react-icons/md";
+import { GoProjectSymlink } from "react-icons/go";
+import { HiOutlineChatAlt2 } from "react-icons/hi";
+import { FiInbox } from "react-icons/fi";
+
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const session = useSession();
+  const uemail = session?.data?.user?.email;
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
@@ -33,8 +36,6 @@ const layout = ({ children }) => {
   // if (!session?.data?.user) {
   //   return router.push("/");
   // }
-
-  
 
 
 
@@ -79,7 +80,7 @@ const layout = ({ children }) => {
               <ul>
                 <li>
                   <Link href={"/"} className="py-2 flex items-center  gap-2">
-                    <IoHomeOutline/> Home
+                    <IoHomeOutline /> Home
                   </Link>
                 </li>
 
@@ -106,60 +107,119 @@ const layout = ({ children }) => {
 
                 <li>
                   <Link
-                      href={"/dashboard/Backlog"}
-                      className="py-2 flex items-center gap-2 "
+                    href={"/dashboard/Backlog"}
+                    className="py-2 flex items-center gap-2 "
                   >
-                    <MdPostAdd/> Backlog
+                    <MdPostAdd /> Backlog
                   </Link>
                 </li>
                 <li>
                   <Link
-                      href={"/dashboard/board"}
-                      className="py-2 flex items-center gap-2 "
+                    href={"/dashboard/board"}
+                    className="py-2 flex items-center gap-2 "
                   >
-                    <CgList/>
+                    <CgList />
                     Boards
                   </Link>
                 </li>
               </ul>
             </div>
+
+
+
+
           </DrawerContent>
         </Drawer>
       </div>
 
       {/* Sidebar drawer large device*/}
-      <div
-          className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
-        {/*<h2 className="text-2xl font-bold">Dashboard</h2>*/}
-        <ul>
-          <li>
-            <Link href={"/"} className="py-2 ml-4 flex items-center gap-2">
-              {" "}
-              <IoHomeOutline/> Home
-            </Link>
-          </li>
+
+      {uemail === "admin@admin.com" ? (
+          <div className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
+            {/*<h2 className="text-2xl font-bold">Dashboard</h2>*/}
+            <ul>
+              <li>
+                <Link href={"/"} className="py-2 ml-4 flex items-center gap-2">
+                  {" "}
+                  <IoHomeOutline/> Home
+                </Link>
+              </li>
 
 
-          <li>
-            <Link
-                href={"/dashboard/Backlog"}
-                className="py-2 ml-4 flex items-center gap-2"
-            >
-              {" "}
-              <MdPostAdd/> Backlogs
-            </Link>
-          </li>
-          <li>
-            <Link
-                href={"/dashboard/board"}
-                className="py-2 ml-4 flex items-center gap-2"
-            >
-              <CgList/>
-              Boards
-            </Link>
-          </li>
-        </ul>
-      </div>
+              <li>
+                <Link
+                    href={"/dashboard/Backlog"}
+                    className="py-2 ml-4 flex items-center gap-2"
+                >
+                  {" "}
+                  <MdPostAdd/> Transactions
+                </Link>
+              </li>
+              <li>
+                <Link
+                    href={"/dashboard/board"}
+                    className="py-2 ml-4 flex items-center gap-2"
+                >
+                  <CgList/>
+                  Packages
+                </Link>
+              </li>
+              <li>
+                <Link
+                    href={"/dashboard/admin/inbox"}
+                    className="py-2 ml-4 flex items-center gap-2"
+                >
+                  <FiInbox/>
+                  Inbox
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                    href={"/dashboard/inbox"}
+                    className="py-2 ml-4 flex items-center gap-2"
+                >
+                  <FiInbox/>
+                  reviews
+                </Link>
+              </li>
+            </ul>
+          </div>
+      ) : (
+          <div
+              className="hidden lg:block lg:w-48 bg-base-300 text-black dark:text-white p-4 border-r-2 dark:border-r-gray-800">
+            {/*<h2 className="text-2xl font-bold">Dashboard</h2>*/}
+            <ul>
+              <li>
+                <Link href={"/"} className="py-2 ml-4 flex items-center gap-2">
+                  {" "}
+                  <IoHomeOutline/> Home
+                </Link>
+              </li>
+
+
+              <li>
+                <Link
+                    href={"/dashboard/Backlog"}
+                    className="py-2 ml-4 flex items-center gap-2"
+                >
+                  {" "}
+                  <MdPostAdd/> Backlogs
+                </Link>
+              </li>
+              <li>
+                <Link
+                    href={"/dashboard/board"}
+                    className="py-2 ml-4 flex items-center gap-2"
+                >
+                  <CgList/>
+                  Boards
+                </Link>
+              </li>
+            </ul>
+          </div>
+      )}
+
 
       {/*layout content  */}
       <div className="lg:p-6 pt-10 w-full">{children}</div>
