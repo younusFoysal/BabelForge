@@ -1,7 +1,7 @@
 "use client";
 import MainPageWrap from "@/components/Dashboards/MainPage/MainPageWrap";
 import {useSession} from "next-auth/react";
-import AdminDashboard from "@/components/Admin/AdminDashboard";
+import AdminDashboard from "@/components/Admin/AdminDashboard/AdminDashboard";
 
 const page = () => {
 

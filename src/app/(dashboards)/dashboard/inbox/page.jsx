@@ -1,4 +1,4 @@
-import AdminInbox from "@/components/AdminInbox/AdminInbox";
+import AdminInbox from "@/components/Admin/AdminInbox/AdminInbox";
 
 const AdminInboxPage = () => {
     return (

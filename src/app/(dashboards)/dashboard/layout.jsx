@@ -17,11 +17,15 @@ import {
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { CgList } from "react-icons/cg";
-import { IoHomeOutline } from "react-icons/io5";
-import { MdOutlineGroups, MdPostAdd } from "react-icons/md";
+import {IoHomeOutline, IoMailUnread, IoMailUnreadOutline} from "react-icons/io5";
+import {MdDashboard, MdOutlineGroups, MdPostAdd} from "react-icons/md";
 import { GoProjectSymlink } from "react-icons/go";
 import { HiOutlineChatAlt2 } from "react-icons/hi";
 import { FiInbox } from "react-icons/fi";
+import {FaListUl, FaRegStar} from "react-icons/fa";
+import {BiSolidOffer} from "react-icons/bi";
+import {RxDashboard} from "react-icons/rx";
+import {FaStar} from "react-icons/fa6";
 
 
 const layout = ({ children }) => {
@@ -139,28 +143,28 @@ const layout = ({ children }) => {
             {/*<h2 className="text-2xl font-bold">Dashboard</h2>*/}
             <ul>
               <li>
-                <Link href={"/"} className="py-2 ml-4 flex items-center gap-2">
+                <Link href={"/dashboard"} className="py-2 ml-4 flex items-center gap-2">
                   {" "}
-                  <IoHomeOutline/> Home
+                  <MdDashboard  /> Dashboard
                 </Link>
               </li>
 
 
               <li>
                 <Link
-                    href={"/dashboard/Backlog"}
+                    href={"/dashboard/admin/transactions"}
                     className="py-2 ml-4 flex items-center gap-2"
                 >
                   {" "}
-                  <MdPostAdd/> Transactions
+                  <FaListUl /> Transactions
                 </Link>
               </li>
               <li>
                 <Link
-                    href={"/dashboard/board"}
+                    href={"/dashboard/admin/packages"}
                     className="py-2 ml-4 flex items-center gap-2"
                 >
-                  <CgList/>
+                  <BiSolidOffer />
                   Packages
                 </Link>
               </li>
@@ -169,18 +173,18 @@ const layout = ({ children }) => {
                     href={"/dashboard/admin/inbox"}
                     className="py-2 ml-4 flex items-center gap-2"
                 >
-                  <FiInbox/>
+                  <IoMailUnread  />
                   Inbox
                 </Link>
               </li>
 
               <li>
                 <Link
-                    href={"/dashboard/inbox"}
+                    href={"/dashboard/admin/reviews"}
                     className="py-2 ml-4 flex items-center gap-2"
                 >
-                  <FiInbox/>
-                  reviews
+                  <FaStar  />
+                  Reviews
                 </Link>
               </li>
             </ul>

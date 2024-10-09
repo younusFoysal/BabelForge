@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "67061ce1d05905f649843072",
+    "title": "Basic",
+    "price": 0,
+    "priceDetails": "per month",
+    "featuresTitle": "Best suited for freelancers who works with a team.",
+    "projects" : "5",
+    "team" : "10",
+    "task" : "500",
+    "groupchat": true,
+    "canvas" : true,
+    "BabelAi" : false,
+    "meeting" : false
+  },
+  {
+    "_id": "67061ce1d05905f649843072",
+    "title": "Standard",
+    "price": 10,
+    "priceDetails": "per month",
+    "featuresTitle": "Best suited for freelancers who works with a team.",
+    "projects" : "15",
+    "team" : "25",
+    "task" : "1000",
+    "groupchat": true,
+    "canvas" : true,
+    "BabelAi" : true,
+    "meeting" : false
+  },
+  {
+    "_id": "67061ce1d05905f649843072",
+    "title": "Premium",
+    "price": 30,
+    "priceDetails": "per month",
+    "featuresTitle": "Best suited for freelancers who works with a team.",
+    "projects" : "30",
+    "team" : "50",
+    "task" : "10000",
+    "groupchat": true,
+    "canvas" : true,
+    "BabelAi" : true,
+    "meeting" : true
+  }
+]

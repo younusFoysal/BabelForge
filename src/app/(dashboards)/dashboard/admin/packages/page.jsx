@@ -1,12 +1,12 @@
 import React from 'react';
-import AdminInbox from "@/components/Admin/AdminInbox/AdminInbox";
-
-
+import AdminPackages from "@/components/Admin/AdminPackages/AdminPackages";
 
 const Page = () => {
     return (
         <div>
-            <AdminInbox/>  
+
+            <AdminPackages/>
+
         </div>
     );
 };
