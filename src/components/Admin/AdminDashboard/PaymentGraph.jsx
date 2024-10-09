@@ -11,21 +11,38 @@ export const description = 'An area chart with a legend';
 
 const PaymentGraph = ({ trans, isLoading }) => {
   const chartData = [
-    { month: 'January', Standard: 186, Premium: 80 },
-    { month: 'February', Standard: 305, Premium: 200 },
-    { month: 'March', Standard: 237, Premium: 120 },
-    { month: 'April', Standard: 73, Premium: 190 },
-    { month: 'May', Standard: 209, Premium: 130 },
-    { month: 'June', Standard: 214, Premium: 140 },
+    { month: 'January', Standard: 0, Premium: 0 },
+    { month: 'February', Standard: 0, Premium: 0 },
+    { month: 'March', Standard: 0, Premium: 0 },
+    { month: 'April', Standard: 0, Premium: 0 },
+    { month: 'May', Standard: 0, Premium: 0 },
+    { month: 'June', Standard: 120, Premium: 50 },
+    { month: 'July', Standard: 0, Premium: 0 },
+    { month: 'Augst', Standard: 0, Premium: 0 },
+    { month: 'Sep', Standard: 0, Premium: 0 },
+    { month: 'Oct', Standard: 0, Premium: 0 },
+    { month: 'Nov', Standard: 0, Premium: 0 },
+    { month: 'Dec', Standard: 0, Premium: 0 },
   ];
 
+  for (let month = 0; month < 12; month++) {
+    trans?.forEach(item => {
+      if (Number(item?.date?.slice(5, 7)) == month) {
+        const tempStandard = trans?.filter(transItem => transItem.pakage === 'Standard' && Number(transItem?.date?.slice(5, 7)) == month);
+        chartData[month - 1].Standard = tempStandard.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
+        const tempPremium = trans.filter(transItem => transItem.pakage === 'Premium' && Number(transItem?.date?.slice(5, 7)) == month);
+        chartData[month - 1].Premium = tempPremium.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
+      }
+    });
+  }
+
   const chartConfig = {
-    Standard: {
-      label: 'Standard',
-      color: 'hsl(var(--chart-1))',
-    },
     Premium: {
       label: 'Premium',
+      color: 'hsl(var(--chart-1))',
+    },
+    Standard: {
+      label: 'Standard',
       color: 'hsl(var(--chart-2))',
     },
   };
@@ -54,18 +71,19 @@ const PaymentGraph = ({ trans, isLoading }) => {
                 dataKey="Premium"
                 type="natural"
                 fill="var(--color-Premium)"
+                stackId="a"
                 fillOpacity={0.4}
                 stroke="var(--color-Premium)"
-                stackId="a"
               />
               <Area
                 dataKey="Standard"
+                stackId="a"
                 type="natural"
                 fill="var(--color-Standard)"
                 fillOpacity={0.4}
                 stroke="var(--color-Standard)"
-                stackId="a"
               />
+
               <ChartLegend content={<ChartLegendContent />} />
             </AreaChart>
           </ChartContainer>
@@ -86,3 +104,29 @@ const PaymentGraph = ({ trans, isLoading }) => {
 };
 
 export default PaymentGraph;
+
+// const chartData = [
+//   { month: 'January', Standard: 0, Premium: 0 },
+//   { month: 'February', Standard: 0, Premium: 0 },
+//   { month: 'March', Standard: 0, Premium: 0 },
+//   { month: 'April', Standard: 0, Premium: 0 },
+//   { month: 'May', Standard: 0, Premium: 0 },
+//   { month: 'June', Standard: 120, Premium: 50 },
+//   { month: 'July', Standard: 0, Premium: 0 },
+//   { month: 'Augst', Standard: 0, Premium: 0 },
+//   { month: 'Sep', Standard: 0, Premium: 0 },
+//   { month: 'Oct', Standard: 0, Premium: 0 },
+//   { month: 'Nov', Standard: 0, Premium: 0 },
+//   { month: 'Dec', Standard: 0, Premium: 0 },
+// ];
+
+// for (let month = 0; month < 12; month++) {
+//   trans?.forEach(item => {
+//     if (Number(item?.date?.slice(5, 7)) == month) {
+//       const tempStandard = trans?.filter(transItem => transItem.pakage === 'Standard' && Number(transItem?.date?.slice(5, 7)) == month);
+//       chartData[month - 1].Standard = tempStandard.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
+//       const tempPremium = trans.filter(transItem => transItem.pakage === 'Premium' && Number(transItem?.date?.slice(5, 7)) == month);
+//       chartData[month - 1].Premium = tempPremium.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
+//     }
+//   });
+// }

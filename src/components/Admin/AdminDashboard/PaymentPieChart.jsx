@@ -22,29 +22,31 @@ const PaymentPieChart = ({ trans, isLoading }) => {
   const transData = [
     { pakage: 'Standard', amount: standardTotal, fill: 'var(--color-Standard)' },
     { pakage: 'Premium', amount: premiumTotal, fill: 'var(--color-Premium)' },
+    { pakage: 'Basic', amount: 100, fill: 'var(--color-Basic)' },
   ];
 
-  const Initalpakage = ['Standard', 'Premium'];
+  const Initalpakage = ['Standard', 'Premium', 'Basic'];
 
   const chartConfig = {
     Standard: {
       label: 'Standard',
-      color: 'hsl(var(--chart-1))',
+      color: '#06b6d4',
     },
     Premium: {
       label: 'Premium',
-      color: 'hsl(var(--chart-2))',
+      color: '#8b5cf6',
+    },
+    Basic: {
+      label: 'Basic',
+      color: '#3b82f6',
     },
   };
 
   const id = 'pie-interactive';
   const [activePakage, setactivePakage] = React.useState(Initalpakage[0]);
 
-  const activeIndex = React.useMemo(() => Initalpakage.findIndex(item => item === activePakage), []);
+  const activeIndex = React.useMemo(() => Initalpakage.findIndex(item => item === activePakage), [activePakage, Initalpakage]);
   const activeTrans = React.useMemo(() => trans?.filter(item => item.pakage === activePakage), [trans, activePakage]);
-  // const pakages = React.useMemo(() => trans?.map(item => item.pakage), []);
-
-  console.log(transData);
 
   return (
     <div>
