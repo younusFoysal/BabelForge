@@ -71,7 +71,7 @@ const CreateProjectpage = () => {
     data.pedate = currentDate;
     data.psdate = currentDate;
     data.pmname = user.name;
-    data.favourite = false;
+    data.favorite = false;
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
