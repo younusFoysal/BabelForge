@@ -38,8 +38,6 @@ const layout = ({ children }) => {
 
 
 
-
-
   return (
     <div className="flex min-h-screen bg-white dark:bg-gray-900 dark:text-white">
       {/* sidebar drawer small device */}
