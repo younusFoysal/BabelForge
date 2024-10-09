@@ -20,8 +20,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {router} from "next/client";
-import {useRouter} from "next/navigation";
+import { router } from "next/client";
+import { useRouter } from "next/navigation";
 
 const projectCategories = [
   "All",
