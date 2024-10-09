@@ -16,6 +16,11 @@ const AdminPackages = () => {
 
     // console.log(packages);
 
+
+    const handleUpdate = (data) => {
+        console.log(data);
+    }
+
     // SVGs
     const trueSVG = <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
         xmlns="http://www.w3.org/2000/svg">
@@ -68,6 +73,7 @@ const AdminPackages = () => {
 
 
                                             <button
+                                                onClick={() => handleUpdate(pack)}
                                                 class="overflow-hidden w-full p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group"
                                             >
                                                 Update
