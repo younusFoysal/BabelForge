@@ -35,7 +35,7 @@ const Review = () => {
 
 
 
-  // get request 
+  // get All reviews 
   const { data: allReviews } = useQuery({
     queryKey: ['reviews'],
     queryFn: async () => {

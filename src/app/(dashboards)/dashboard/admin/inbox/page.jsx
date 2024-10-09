@@ -1,11 +1,12 @@
+import React from 'react';
 import AdminInbox from "@/components/Admin/AdminInbox/AdminInbox";
 
-const AdminInboxPage = () => {
+const Page = () => {
     return (
         <div>
-            <AdminInbox></AdminInbox>
+            <AdminInbox/>
         </div>
     );
 };
 
-export default AdminInboxPage;
+export default Page;

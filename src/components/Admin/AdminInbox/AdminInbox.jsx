@@ -1,7 +1,7 @@
 "use client"
 
 import useAxiosCommon from "@/lib/axiosCommon";
-import CommonTable from "../shared/CommonTable/CommonTable";
+import CommonTable from "../../shared/CommonTable/CommonTable";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
