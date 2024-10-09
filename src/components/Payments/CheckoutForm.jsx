@@ -169,7 +169,7 @@ const CheckoutForm = ({ id, amount }) => {
                 <div className="mt-5">
                   <PaymentBox
                     clientSecret={clientSecret}
-                    amount={amount}
+                    amount={price}
                     isLoading={isLoading}
                     message={message}
                   />
