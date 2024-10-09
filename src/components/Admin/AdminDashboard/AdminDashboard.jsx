@@ -1,5 +1,5 @@
 import React from 'react';
-import {LuEye} from "react-icons/lu";
+import { LuEye } from "react-icons/lu";
 import AdminStatCards from "@/components/Admin/AdminDashboard/AdminStatCards";
 import PaymentGraph from "@/components/Admin/AdminDashboard/PaymentGraph";
 import PaymentPieChart from "@/components/Admin/AdminDashboard/PaymentPieChart";
@@ -10,21 +10,21 @@ const AdminDashboard = () => {
         <div>
 
 
-            <AdminStatCards/>
+            <AdminStatCards />
 
 
             <div className="flex gap-3 justify-evenly w-full ">
                 <div
-                className="w-full">
-                    <PaymentGraph/>
+                    className="w-full">
+                    <PaymentGraph />
                 </div>
                 <div className=" w-1/3">
-                    <PaymentPieChart/>
+                    <PaymentPieChart />
                 </div>
             </div>
 
 
-            <Transactions/>
+            <Transactions />
 
 
 
