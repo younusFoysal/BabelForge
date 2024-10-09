@@ -9,52 +9,42 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 export const description = 'An interactive pie chart';
 
-const desktopData = [
-  { month: 'january', desktop: 186, fill: 'var(--color-january)' },
-  { month: 'february', desktop: 305, fill: 'var(--color-february)' },
-  { month: 'march', desktop: 237, fill: 'var(--color-march)' },
-  { month: 'april', desktop: 173, fill: 'var(--color-april)' },
-  { month: 'may', desktop: 209, fill: 'var(--color-may)' },
-];
+const PaymentPieChart = ({ trans, isLoading }) => {
+  const standardTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Standard'), [trans])?.reduce(
+    (sum, item) => sum + item.amount,
+    0
+  );
+  const premiumTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Premium'), [trans])?.reduce(
+    (sum, item) => sum + Number(item.amount),
+    0
+  );
 
-const chartConfig = {
-  visitors: {
-    label: 'Visitors',
-  },
-  desktop: {
-    label: 'Desktop',
-  },
-  mobile: {
-    label: 'Mobile',
-  },
-  january: {
-    label: 'January',
-    color: 'hsl(var(--chart-1))',
-  },
-  february: {
-    label: 'February',
-    color: 'hsl(var(--chart-2))',
-  },
-  march: {
-    label: 'March',
-    color: 'hsl(var(--chart-3))',
-  },
-  april: {
-    label: 'April',
-    color: 'hsl(var(--chart-4))',
-  },
-  may: {
-    label: 'May',
-    color: 'hsl(var(--chart-5))',
-  },
-};
+  const transData = [
+    { pakage: 'Standard', amount: standardTotal, fill: 'var(--color-Standard)' },
+    { pakage: 'Premium', amount: premiumTotal, fill: 'var(--color-Premium)' },
+  ];
 
-const PaymentPieChart = () => {
+  const Initalpakage = ['Standard', 'Premium'];
+
+  const chartConfig = {
+    Standard: {
+      label: 'Standard',
+      color: 'hsl(var(--chart-1))',
+    },
+    Premium: {
+      label: 'Premium',
+      color: 'hsl(var(--chart-2))',
+    },
+  };
+
   const id = 'pie-interactive';
-  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].month);
+  const [activePakage, setactivePakage] = React.useState(Initalpakage[0]);
 
-  const activeIndex = React.useMemo(() => desktopData.findIndex(item => item.month === activeMonth), [activeMonth]);
-  const months = React.useMemo(() => desktopData.map(item => item.month), []);
+  const activeIndex = React.useMemo(() => Initalpakage.findIndex(item => item === activePakage), []);
+  const activeTrans = React.useMemo(() => trans?.filter(item => item.pakage === activePakage), [trans, activePakage]);
+  // const pakages = React.useMemo(() => trans?.map(item => item.pakage), []);
+
+  console.log(transData);
 
   return (
     <div>
@@ -62,17 +52,16 @@ const PaymentPieChart = () => {
         <ChartStyle id={id} config={chartConfig} />
         <CardHeader className="flex-row items-start space-y-0 pb-0">
           <div className="grid gap-1">
-            <CardTitle>Pie Chart - Interactive</CardTitle>
+            <CardTitle>Revenue Per Pakage</CardTitle>
             <CardDescription>January - June 2024</CardDescription>
           </div>
-          <Select value={activeMonth} onValueChange={setActiveMonth}>
+          <Select value={activePakage} onValueChange={setactivePakage}>
             <SelectTrigger className="ml-auto h-7 w-[130px] rounded-lg pl-2.5" aria-label="Select a value">
               <SelectValue placeholder="Select month" />
             </SelectTrigger>
             <SelectContent align="end" className="rounded-xl">
-              {months.map(key => {
+              {Initalpakage?.map(key => {
                 const config = chartConfig[key];
-
                 if (!config) {
                   return null;
                 }
@@ -99,9 +88,9 @@ const PaymentPieChart = () => {
             <PieChart>
               <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
               <Pie
-                data={desktopData}
-                dataKey="desktop"
-                nameKey="month"
+                data={transData}
+                dataKey="amount"
+                nameKey="pakage"
                 innerRadius={60}
                 strokeWidth={5}
                 activeIndex={activeIndex}
@@ -118,10 +107,10 @@ const PaymentPieChart = () => {
                       return (
                         <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
                           <tspan x={viewBox.cx} y={viewBox.cy} className="fill-foreground text-3xl font-bold">
-                            {desktopData[activeIndex].desktop.toLocaleString()}
+                            {activeTrans?.reduce((sum, item) => sum + Number(item.amount), 0)}
                           </tspan>
                           <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-foreground">
-                            Visitors
+                            USD
                           </tspan>
                         </text>
                       );

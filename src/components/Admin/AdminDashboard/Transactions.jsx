@@ -1,20 +1,10 @@
 'use client';
 import React from 'react';
-import useAxiosCommon from '@/lib/axiosCommon';
-import { useSession } from 'next-auth/react';
-import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import useTrans from '@/hooks/useTrans';
 
 const Transactions = () => {
-  const axiosCommon = useAxiosCommon();
-
-  const { isLoading, data: trans } = useQuery({
-    queryKey: ['transactions'],
-    queryFn: async () => {
-      const { data } = await axiosCommon.get(`pay/payments`);
-      return data;
-    },
-  });
+  const [trans, isLoading] = useTrans();
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -40,51 +30,56 @@ const Transactions = () => {
           </thead>
 
           <tbody class="bg-white lg:border-gray-300">
-            {trans.map((item, index) => (
-              <tr class="" key={item._id}>
-                {/* small */}
-                <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
-                  {item.date.slice(0, 10)}
+            {trans &&
+              trans?.map((item, index) => (
+                <tr class="" key={item._id}>
+                  {/* small */}
+                  <td class="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
+                    {item?.date?.slice(0, 10)}
 
-                  <div class="mt-1 flex flex-col text-xs font-medium lg:hidden">
-                    <div class="flex items-center">{item.transactionId}</div>
-                    <div class="">{item.email}</div>
-                    <div class="flex items-center">{item.tname}</div>
-                    <div class="flex items-center">{item.paymentMethod}</div>
-                    {/*    <div class="flex items-center">
+                    <div class="mt-1 flex flex-col text-xs font-medium lg:hidden">
+                      <div class="flex items-center">{item.transactionId}</div>
+                      <div class="">{item.email}</div>
+                      <div class="flex items-center">{item.tname}</div>
+                      <div class="flex items-center">{item.paymentMethod}</div>
+                      {/*    <div class="flex items-center">
                                             {item.amount}
                                             </div>
                                             <div class="flex items-center ">
                                             {item.currency}
                                             </div> */}
-                  </div>
-                </td>
+                    </div>
+                  </td>
 
-                <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">{item.transactionId}</td>
+                  <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">
+                    {item.transactionId}
+                  </td>
 
-                <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">{item.email}</td>
+                  <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">{item.email}</td>
 
-                <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">{item.tname}</td>
-                <td class="whitespace-no-wrap hidden py-4 text-left text-sm text-gray-600 sm:px-3 lg:table-cell lg:text-left">
-                  {item.paymentMethod}
-                </td>
-                <td class="whitespace-no-wrap  py-4 text-right text-sm sm:px-3 lg:text-left lg:font-normal font-medium">{item.amount}</td>
-                <td class="whitespace-no-wrap  py-4 text-right text-sm sm:px-3 lg:text-left lg:font-normal font-medium">{item.currency}</td>
-                <td
-                  className={`whitespace-no-wrap  py-4 text-right text-sm sm:px-3 lg:text-left ${
-                    item.status === 'failed'
-                      ? 'text-yellow-600 font-semibold'
-                      : item.status === 'pending'
-                      ? 'text-yellow-600 font-semibold'
-                      : item.status === 'Completed'
-                      ? 'text-green-600 font-semibold'
-                      : 'text-gray-600'
-                  }`}
-                >
-                  <span className=" capitalize"> {item.status}</span>
-                </td>
-              </tr>
-            ))}
+                  <td class="whitespace-no-wrap hidden py-4 text-sm font-normal text-gray-600 sm:px-3 lg:table-cell">{item.tname}</td>
+                  <td class="whitespace-no-wrap hidden py-4 text-left text-sm text-gray-600 sm:px-3 lg:table-cell lg:text-left">
+                    {item.paymentMethod}
+                  </td>
+                  <td class="whitespace-no-wrap  py-4 text-right text-sm sm:px-3 lg:text-left lg:font-normal font-medium">{item.amount}</td>
+                  <td class="whitespace-no-wrap  py-4 text-right text-sm sm:px-3 lg:text-left lg:font-normal font-medium">
+                    {item.currency}
+                  </td>
+                  <td
+                    className={`whitespace-no-wrap  py-4 text-right text-sm sm:px-3 lg:text-left ${
+                      item.status === 'failed'
+                        ? 'text-yellow-600 font-semibold'
+                        : item.status === 'pending'
+                        ? 'text-yellow-600 font-semibold'
+                        : item.status === 'Completed'
+                        ? 'text-green-600 font-semibold'
+                        : 'text-gray-600'
+                    }`}
+                  >
+                    <span className=" capitalize"> {item.status}</span>
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </table>
       </div>

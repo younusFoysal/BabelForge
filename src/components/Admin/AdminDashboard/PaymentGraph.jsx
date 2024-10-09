@@ -9,27 +9,27 @@ import React from 'react';
 
 export const description = 'An area chart with a legend';
 
-const chartData = [
-  { month: 'January', desktop: 186, mobile: 80 },
-  { month: 'February', desktop: 305, mobile: 200 },
-  { month: 'March', desktop: 237, mobile: 120 },
-  { month: 'April', desktop: 73, mobile: 190 },
-  { month: 'May', desktop: 209, mobile: 130 },
-  { month: 'June', desktop: 214, mobile: 140 },
-];
+const PaymentGraph = ({ trans, isLoading }) => {
+  const chartData = [
+    { month: 'January', Standard: 186, Premium: 80 },
+    { month: 'February', Standard: 305, Premium: 200 },
+    { month: 'March', Standard: 237, Premium: 120 },
+    { month: 'April', Standard: 73, Premium: 190 },
+    { month: 'May', Standard: 209, Premium: 130 },
+    { month: 'June', Standard: 214, Premium: 140 },
+  ];
 
-const chartConfig = {
-  desktop: {
-    label: 'Desktop',
-    color: 'hsl(var(--chart-1))',
-  },
-  mobile: {
-    label: 'Mobile',
-    color: 'hsl(var(--chart-2))',
-  },
-};
+  const chartConfig = {
+    Standard: {
+      label: 'Standard',
+      color: 'hsl(var(--chart-1))',
+    },
+    Premium: {
+      label: 'Premium',
+      color: 'hsl(var(--chart-2))',
+    },
+  };
 
-const PaymentGraph = () => {
   return (
     <div>
       <Card>
@@ -50,13 +50,20 @@ const PaymentGraph = () => {
               <CartesianGrid vertical={false} />
               <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} tickFormatter={value => value.slice(0, 3)} />
               <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
-              <Area dataKey="mobile" type="natural" fill="var(--color-mobile)" fillOpacity={0.4} stroke="var(--color-mobile)" stackId="a" />
               <Area
-                dataKey="desktop"
+                dataKey="Premium"
                 type="natural"
-                fill="var(--color-desktop)"
+                fill="var(--color-Premium)"
                 fillOpacity={0.4}
-                stroke="var(--color-desktop)"
+                stroke="var(--color-Premium)"
+                stackId="a"
+              />
+              <Area
+                dataKey="Standard"
+                type="natural"
+                fill="var(--color-Standard)"
+                fillOpacity={0.4}
+                stroke="var(--color-Standard)"
                 stackId="a"
               />
               <ChartLegend content={<ChartLegendContent />} />
