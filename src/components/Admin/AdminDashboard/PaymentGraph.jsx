@@ -52,11 +52,11 @@ const PaymentGraph = () => {
     return (
         <div>
 
-            <Card>
+            <Card className="drop-shadow-xl">
             <CardHeader>
-            <CardTitle>Area Chart - Legend</CardTitle>
+            <CardTitle>Revenue</CardTitle>
             <CardDescription>
-            Showing total visitors for the last 6 months
+            Showing total payments for the last 6 months
             </CardDescription>
             </CardHeader>
             <CardContent>
