@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="button fix" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="button fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PayGraph.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PayGraph.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/Transactions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/Transactions.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -496,7 +501,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728513879820</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="button fix">
+      <option name="closed" value="true" />
+      <created>1728514015901</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1728514015901</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
