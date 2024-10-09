@@ -11,7 +11,7 @@ export const description = 'An interactive pie chart';
 
 const PaymentPieChart = ({ trans, isLoading }) => {
   const standardTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Standard'), [trans])?.reduce(
-    (sum, item) => sum + item.amount,
+    (sum, item) => sum + Number(item.amount),
     0
   );
   const premiumTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Premium'), [trans])?.reduce(
