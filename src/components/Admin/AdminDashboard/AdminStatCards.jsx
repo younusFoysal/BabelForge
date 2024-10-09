@@ -1,8 +1,9 @@
+"use client"
 import React from 'react';
-import {LuEye} from "react-icons/lu";
+import { LuEye } from "react-icons/lu";
 import useAxiosCommon from "@/lib/axiosCommon";
-import {useSession} from "next-auth/react";
-import {useQuery} from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const AdminStatCards = () => {
@@ -32,7 +33,7 @@ const AdminStatCards = () => {
                         <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3"> {stats?.plen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
-                        <LuEye className="mr-2 shrink-0"/>
+                        <LuEye className="mr-2 shrink-0" />
                         Last Week  {stats?.lwplen}
                     </div>
                 </div>
@@ -46,7 +47,7 @@ const AdminStatCards = () => {
                         <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3">  {stats?.tmlen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
-                        <LuEye className="mr-2 shrink-0"/>
+                        <LuEye className="mr-2 shrink-0" />
                         Last Week  {stats?.lwtmlen}
                     </div>
                 </div>
@@ -60,7 +61,7 @@ const AdminStatCards = () => {
                         <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3">  {stats?.tslen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
-                        <LuEye className="mr-2 shrink-0"/>
+                        <LuEye className="mr-2 shrink-0" />
                         Last Week  {stats?.lwtslen}
                     </div>
                 </div>
@@ -74,7 +75,7 @@ const AdminStatCards = () => {
                         <div className="text-3xl font-bold ltr:mr-3 rtl:ml-3">  {stats?.ulen}</div>
                     </div>
                     <div className="mt-5 flex items-center font-semibold">
-                        <LuEye className="mr-2 shrink-0"/>
+                        <LuEye className="mr-2 shrink-0" />
                         Last Week  {stats?.lwulen}
                     </div>
                 </div>
