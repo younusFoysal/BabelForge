@@ -24,7 +24,7 @@ const CheckoutForm = ({ id, amount }) => {
     isError,
     refetch,
   } = useQuery({
-    queryKey: ["singlePrice"],
+    queryKey: ["singleprice"],
     queryFn: async () => {
       const data = await axiosCommon.get(`/price/pricing-single/${id}`);
       return data;
