@@ -3,7 +3,6 @@
 // aos package
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { Check, BadgeCheck } from "lucide-react";
 import { useEffect } from "react";
 import PricingSingleCard from "./PricingSingleCard";
 
@@ -14,6 +13,50 @@ const PriceCard = () => {
       duration: 1000,
     });
   }, []);
+
+  const services = [
+    {
+      title: "Basic",
+      price: 0,
+      priceDetails: "/ month",
+      featuresTitle: "Everything on Basic:",
+      features: [
+        "Project Management",
+        "1 Task Board",
+        "Comments & Attachments (Limited)",
+        "In-App Notifications",
+      ],
+      buttonText: "Get started",
+    },
+    {
+      title: "Standard",
+      price: 50,
+      priceDetails: "/ month",
+      featuresTitle: "Everything on Standard:",
+      features: [
+        "Unlimited Task Boards",
+        "Progress Tracking",
+        "Issue Reporting",
+        "Real-Time Collaboration",
+        "Email Notifications",
+      ],
+      buttonText: "Get standard now",
+    },
+    {
+      title: "Premium",
+      price: 150,
+      priceDetails: "/ month",
+      featuresTitle: "Everything on Premium:",
+      features: [
+        "Advanced Tracking & Reports",
+        "Task Dependencies",
+        "Custom Permissions",
+        "Team Analytics",
+        "Priority Support",
+      ],
+      buttonText: "Get premium now",
+    },
+  ];
 
   return (
     <section className="container mx-auto">
@@ -32,11 +75,11 @@ const PriceCard = () => {
       <div>
         <section className="py-20  ">
           <div className="container px-4 mx-auto">
-            <div className="flex flex-wrap items-stretch lg:h-[100vh] -mx-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch lg:h-[100vh] -mx-4">
               {/* card 1 */}
-              <PricingSingleCard />
-              <PricingSingleCard />
-              <PricingSingleCard />
+              {services.map((service, idx) => (
+                <PricingSingleCard key={idx} service={service} />
+              ))}
             </div>
           </div>
         </section>
