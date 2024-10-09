@@ -29,10 +29,28 @@ const AdminPackages = () => {
                                         Best suited for freelancers who works
                                         individually.
                                     </p>
-                                    <a href="javascript:void(0)"
-                                       className="block w-full rounded-md bg-primary p-3 text-center font-medium text-white transition hover:bg-opacity-90">
-                                        Update
-                                    </a>
+
+
+                                        <button
+                                            class="overflow-hidden w-full p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group"
+                                        >
+                                            Purchase Now
+                                            <span
+                                                class="absolute w-full h-32 -top-20 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-500 duration-1000 origin-left"
+                                            ></span>
+                                            <span
+                                                class="absolute w-full h-32 -top-20 -left-2 bg-blue-400 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-700 duration-700 origin-left"
+                                            ></span>
+                                            <span
+                                                class="absolute w-full h-32 -top-20 -left-2 bg-blue-600 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-1000 duration-500 origin-left"
+                                            ></span>
+                                            <span
+                                                class=" w-full group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-1 z-10"
+                                            >Checkout</span
+                                            >
+                                        </button>
+
+
                                 </div>
                             </th>
                             <th className="w-1/4 min-w-[200px] px-5">
@@ -48,10 +66,24 @@ const AdminPackages = () => {
                                     <p className="mb-6 font-medium">
                                         Best suited for agencies and small business.
                                     </p>
-                                    <a href="javascript:void(0)"
-                                       className="block w-full rounded-md bg-[#13C296] p-3 text-center font-medium text-white transition hover:bg-opacity-90">
-                                        Update
-                                    </a>
+                                    <button
+                                        class="overflow-hidden w-full p-2 h-12 bg-blue-600 text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group"
+                                    >
+                                        Purchase Now
+                                        <span
+                                            class="absolute w-full h-32 -top-20 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-500 duration-1000 origin-left"
+                                        ></span>
+                                        <span
+                                            class="absolute w-full h-32 -top-20 -left-2 bg-blue-400 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-700 duration-700 origin-left"
+                                        ></span>
+                                        <span
+                                            class="absolute w-full h-32 -top-20 -left-2 bg-blue-600 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-1000 duration-500 origin-left"
+                                        ></span>
+                                        <span
+                                            class=" w-full group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-1 z-10"
+                                        >Checkout</span
+                                        >
+                                    </button>
                                 </div>
                             </th>
                             <th className="w-1/4 min-w-[200px] px-5">
@@ -67,10 +99,24 @@ const AdminPackages = () => {
                                     <p className="mb-6 font-medium">
                                         Best suited for agencies and large business.
                                     </p>
-                                    <a href="javascript:void(0)"
-                                       className="block w-full rounded-md bg-primary p-3 text-center font-medium text-white transition hover:bg-opacity-90">
-                                        Update
-                                    </a>
+                                    <button
+                                        class="overflow-hidden w-full p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group"
+                                    >
+                                        Purchase Now
+                                        <span
+                                            class="absolute w-full h-32 -top-20 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-500 duration-1000 origin-left"
+                                        ></span>
+                                        <span
+                                            class="absolute w-full h-32 -top-20 -left-2 bg-blue-400 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-700 duration-700 origin-left"
+                                        ></span>
+                                        <span
+                                            class="absolute w-full h-32 -top-20 -left-2 bg-blue-600 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-1000 duration-500 origin-left"
+                                        ></span>
+                                        <span
+                                            class=" w-full group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-1 z-10"
+                                        >Checkout</span
+                                        >
+                                    </button>
                                 </div>
                             </th>
                         </tr>
