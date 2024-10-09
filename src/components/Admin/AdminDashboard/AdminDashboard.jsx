@@ -19,7 +19,7 @@ const AdminDashboard = () => {
         <PayGraph trans={trans} isLoading={isLoading} />
         <PaymentPieChart trans={trans} isLoading={isLoading} />
       </div>
-      <Transactions />
+      <Transactions transAmout={6} />
     </div>
   );
 };
