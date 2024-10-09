@@ -1,7 +1,7 @@
 'use client';
 
 import { TrendingUp } from 'lucide-react';
-import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts';
+import { Area, AreaChart, CartesianGrid, XAxis } from 'recharts';
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartConfig, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
@@ -76,18 +76,18 @@ const PaymentGraph = ({ trans, isLoading }) => {
                     dataKey="Premium"
                     type="natural"
                     fill="var(--color-Premium)"
-                    fillOpacity={0.4}
+                    stackId="a"fillOpacity={0.4}
                     stroke="var(--color-Premium)"
-                    stackId="a"
+
                 />
                 <Area
                     dataKey="Standard"
-                    type="natural"
+                    stackId="a"type="natural"
                     fill="var(--color-Standard)"
                     fillOpacity={0.4}
                     stroke="var(--color-Standard)"
-                    stackId="a"
-                />
+                    />
+
                 <ChartLegend content={<ChartLegendContent />} />
               </AreaChart>
             </ChartContainer>
