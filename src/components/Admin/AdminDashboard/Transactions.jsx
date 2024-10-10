@@ -2,6 +2,9 @@
 import React from 'react';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import useTrans from '@/hooks/useTrans';
+import masterCard from '@/image/icon/mastercard.jpg';
+import visa from '@/image/icon/visa.png';
+import Image from 'next/image';
 
 const Transactions = ({ transAmout }) => {
   const [trans, isLoading] = useTrans();
@@ -33,7 +36,7 @@ const Transactions = ({ transAmout }) => {
 
           <tbody className="bg-white lg:border-gray-300">
             {sortedTrans &&
-              sortedTrans?.slice(0, transAmout)?.map(item => (
+              sortedTrans?.slice(0, transAmout)?.map((item, id) => (
                 <tr className="" key={item._id}>
                   <td className="whitespace-no-wrap py-4 text-left text-sm text-gray-600 sm:px-3 lg:text-left">
                     {new Date(item?.date).toLocaleString()}
@@ -52,7 +55,11 @@ const Transactions = ({ transAmout }) => {
                     {item.first_name} {item.last_name}
                   </td>
                   <td className="whitespace-no-wrap hidden py-4 text-left text-sm text-gray-600 sm:px-3 lg:table-cell lg:text-left">
-                    {item.paymentMethod}
+                    {item.paymentMethod === 'card' && id % 2 === 0 ? (
+                      <Image className="w-[28px] rounded" alt="Visa" src={visa} height={60} width={60} />
+                    ) : (
+                      <Image className="w-[28px] rounded" alt="MasterCard" src={masterCard} height={60} width={60} />
+                    )}
                   </td>
                   <td className="whitespace-no-wrap py-4 text-right text-sm sm:px-3 lg:text-left lg:font-normal font-medium">
                     ${item.amount}
