@@ -4,6 +4,7 @@ import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import React from "react";
+import UpdatePricing from "./UpdatePricing/UpdatePricing";
 
 const AdminPackages = ({ priceingsec }) => {
   const router = useRouter();
@@ -18,11 +19,11 @@ const AdminPackages = ({ priceingsec }) => {
 
   // console.log(packages);
 
-  const handleUpdate = (id) => {
-    if (priceingsec) {
-      router.push(`/checkout/${id}`);
-    }
-  };
+  // const handleUpdate = (id) => {
+  //   if (priceingsec) {
+  //     router.push(`/checkout/${id}`);
+  //   }
+  // };
 
   // SVGs
   const trueSVG = (
@@ -88,18 +89,9 @@ const AdminPackages = ({ priceingsec }) => {
                         {pack.featuresTitle}
                       </p>
 
-                      <button
-                        onClick={() => handleUpdate(pack._id)}
-                        class="overflow-hidden w-full p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group"
-                      >
-                        {priceingsec ? "Purchase Now" : "Update"}
-                        <span class="absolute w-full h-32 -top-20 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
-                        <span class="absolute w-full h-32 -top-20 -left-2 bg-blue-400 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
-                        <span class="absolute w-full h-32 -top-20 -left-2 bg-blue-600 rotate-12 transform scale-x-0 group-hover:scale-x-110 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
-                        <span class=" w-full group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-1 z-10">
-                          {priceingsec ? "Checkout" : "Update"}
-                        </span>
-                      </button>
+                      {/* TODO: UPDATE COMPONENT */}
+                      <UpdatePricing pack={pack} refetch={refetch} />
+                      
                     </div>
                   </th>
                 ))}
