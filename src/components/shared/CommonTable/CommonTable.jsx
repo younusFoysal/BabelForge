@@ -123,6 +123,9 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                                                     <DropdownMenuItem >
                                                         <p onClick={() => router.push(`/dashboard/projects/${data._id}`)}>Update Project</p>
                                                     </DropdownMenuItem>
+                                                    <DropdownMenuItem >
+                                                        <p>End Project</p>
+                                                    </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
                                         )}
