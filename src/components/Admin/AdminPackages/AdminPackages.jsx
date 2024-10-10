@@ -19,11 +19,14 @@ const AdminPackages = ({ priceingsec }) => {
 
   // console.log(packages);
 
-  // const handleUpdate = (id) => {
-  //   if (priceingsec) {
-  //     router.push(`/checkout/${id}`);
-  //   }
-  // };
+  const handlePay = (id) => {
+    if (priceingsec) {
+      router.push(`/checkout/${id}`);
+    }
+
+
+
+  };
 
   // SVGs
   const trueSVG = (
@@ -90,7 +93,7 @@ const AdminPackages = ({ priceingsec }) => {
                       </p>
 
                       {/* TODO: UPDATE COMPONENT */}
-                      <UpdatePricing pack={pack} refetch={refetch} />
+                      <UpdatePricing pack={pack} priceingsec={priceingsec} handlePay={handlePay} refetch={refetch} />
                       
                     </div>
                   </th>
