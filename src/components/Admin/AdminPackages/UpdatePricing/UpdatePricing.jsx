@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { Toaster, toast } from '@/components/ui/toaster'; // Import toast
 import { useToast } from '@/hooks/use-toast';
 import { axiosCommon } from '@/lib/axiosCommon';
@@ -20,7 +21,9 @@ import { useState } from 'react'; // Import useState
 const UpdatePricing = ({ pack, refetch, handlePay, priceingsec }) => {
   const { toast } = useToast();
   const updatePricingCard = useMutation({
+
     mutationFn: async updateData => {
+      console.log(updateData);
       const data = axiosCommon.patch(`/price/update-pricing/${pack?._id}`, updateData);
       console.log('Test update', (await data).data);
 
@@ -51,6 +54,7 @@ const UpdatePricing = ({ pack, refetch, handlePay, priceingsec }) => {
     // Create updated data object
     const updatedPack = {
       title: e.target.titles.value,
+      featuresTitle: e.target.description.value,
       price: parseInt(e.target.price.value),
       priceDetails: e.target.priceDetails.value,
       projects: parseInt(e.target.projects.value),
@@ -96,6 +100,12 @@ const UpdatePricing = ({ pack, refetch, handlePay, priceingsec }) => {
                 <div className="col-span-2">
                   <Label htmlFor="title">Title</Label>
                   <Input name="titles" id="title" defaultValue={pack?.title} className="w-full" />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="col-span-2">
+                  <Label htmlFor="description">Description</Label>
+                  <Textarea name="description" id="description" defaultValue={pack?.featuresTitle} className="w-full" />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
