@@ -30,7 +30,7 @@ export default function TaskList() {
 
 
   const { data: taskdata = [], isLoading, refetch } = useQuery({
-    queryKey: ['alltasks'],
+    queryKey: ['alltaskss'],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/task/tasks`);
 

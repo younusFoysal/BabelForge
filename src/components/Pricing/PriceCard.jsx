@@ -5,8 +5,11 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import PricingSingleCard from "./PricingSingleCard";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosCommon from "@/lib/axiosCommon";
 
 const PriceCard = () => {
+  const axiosCommon = useAxiosCommon();
   // Aos
   useEffect(() => {
     AOS.init({
@@ -58,6 +61,23 @@ const PriceCard = () => {
     },
   ];
 
+  const {
+    data: pricingData = [],
+    isLoading,
+    isError,
+    refetch,
+  } = useQuery({
+    queryKey: ["pricing"],
+    queryFn: async () => {
+      const data = await axiosCommon.get("/price/pricing ");
+      return data;
+    },
+  });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <section className="container mx-auto">
       {/* title */}
@@ -77,8 +97,8 @@ const PriceCard = () => {
           <div className="container px-4 mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 items-stretch lg:h-[100vh] -mx-4">
               {/* card 1 */}
-              {services.map((service, idx) => (
-                <PricingSingleCard key={idx} service={service} />
+              {pricingData.data.map((price) => (
+                <PricingSingleCard key={price._id} pricing={price} />
               ))}
             </div>
           </div>

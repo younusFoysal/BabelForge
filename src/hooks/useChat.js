@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
-const SOCKET_SERVER_URL = "http://localhost:5000";
+const SOCKET_SERVER_URL = "https://babelforgeserver.vercel.app";
 
 const useChat = () => {
     const [messages, setMessages] = useState([]);
@@ -16,7 +16,7 @@ const useChat = () => {
         });
 
 
-        socketIo.on("chat message", (message) => {
+        socketIo.on("chat Message", (message) => {
             setMessages((prevMessages) => [...prevMessages, message]);
         });
 

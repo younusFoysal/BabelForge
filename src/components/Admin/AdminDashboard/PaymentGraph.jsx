@@ -1,124 +1,111 @@
-"use client"
+'use client';
 
-import { TrendingUp } from "lucide-react"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { TrendingUp } from 'lucide-react';
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from 'recharts';
 
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-import {
-    ChartConfig,
-    ChartContainer,
-    ChartLegend,
-    ChartLegendContent,
-    ChartTooltip,
-    ChartTooltipContent,
-} from "@/components/ui/chart"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { ChartConfig, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import React from 'react';
+import dayjs from 'dayjs'; // Install dayjs for date manipulation
 
+export const description = 'An area chart showing payments over time';
 
-export const description = "An area chart with a legend"
+// Helper function to process data
+const processTransactionData = trans => {
+  const groupedByDate = trans.reduce((acc, item) => {
+    const date = dayjs(item.date).format('YYYY-MM-DD'); // Group by exact date
+    const amount = Number(item.amount);
 
-const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
-]
+    if (!acc[date]) {
+      acc[date] = { date, Standard: 0, Premium: 0 };
+    }
+    if (item.pakage === 'Standard') {
+      acc[date].Standard += amount;
+    } else if (item.pakage === 'Premium') {
+      acc[date].Premium += amount;
+    }
+    return acc;
+  }, {});
 
+  return Object.values(groupedByDate);
+};
 
-const chartConfig = {
+const PaymentGraph = ({ trans, isLoading }) => {
+  // Process transactions to aggregate amounts by date
+  const chartData = React.useMemo(() => processTransactionData(trans), [trans]);
 
-    desktop: {
-        label: "Desktop",
-        color: "hsl(var(--chart-1))",
+  const chartConfig = {
+    Standard: {
+      label: 'Standard',
+      color: 'hsl(var(--chart-1))',
     },
-    mobile: {
-        label: "Mobile",
-        color: "hsl(var(--chart-2))",
+    Premium: {
+      label: 'Premium',
+      color: 'hsl(var(--chart-2))',
     },
-}
+  };
 
+  return (
+    <div className="">
+      <Card>
+        <CardHeader>
+          <CardTitle>Revenue Over Time</CardTitle>
+          <CardDescription>Payments for the selected period</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <ChartContainer config={chartConfig}>
+            <AreaChart
+              accessibilityLayer
+              data={chartData}
+              margin={{
+                left: 12,
+                right: 12,
+              }}
+            >
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="date"
+                tickLine={false}
+                axisLine={false}
+                tickMargin={8}
+                tickFormatter={value => dayjs(value).format('MMM DD')} // Format date to 'Month Day'
+              />
+              <YAxis />
+              <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
+              <Area
+                dataKey="Premium"
+                type="natural"
+                fill="var(--color-Premium)"
+                stackId="a"
+                fillOpacity={0.4}
+                stroke="var(--color-Premium)"
+              />
+              <Area
+                dataKey="Standard"
+                stackId="a"
+                type="natural"
+                fill="var(--color-Standard)"
+                fillOpacity={0.4}
+                stroke="var(--color-Standard)"
+              />
 
-
-const PaymentGraph = () => {
-    return (
-        <div>
-
-            <Card className="drop-shadow-xl">
-                <CardHeader>
-                    <CardTitle>Revenue</CardTitle>
-                    <CardDescription>
-                        Showing total payments for the last 6 months
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <ChartContainer config={chartConfig}>
-                        <AreaChart
-                            accessibilityLayer
-                            data={chartData}
-                            margin={{
-                                left: 12,
-                                right: 12,
-                            }}
-                        >
-                            <CartesianGrid vertical={false} />
-                            <XAxis
-                                dataKey="month"
-                                tickLine={false}
-                                axisLine={false}
-                                tickMargin={8}
-                                tickFormatter={(value) => value.slice(0, 3)}
-                            />
-                            <ChartTooltip
-                                cursor={false}
-                                content={<ChartTooltipContent indicator="line" />}
-                            />
-                            <Area
-                                dataKey="mobile"
-                                type="natural"
-                                fill="var(--color-mobile)"
-                                fillOpacity={0.4}
-                                stroke="var(--color-mobile)"
-                                stackId="a"
-                            />
-                            <Area
-                                dataKey="desktop"
-                                type="natural"
-                                fill="var(--color-desktop)"
-                                fillOpacity={0.4}
-                                stroke="var(--color-desktop)"
-                                stackId="a"
-                            />
-                            <ChartLegend content={<ChartLegendContent />} />
-                        </AreaChart>
-                    </ChartContainer>
-                </CardContent>
-                <CardFooter>
-                    <div className="flex w-full items-start gap-2 text-sm">
-                        <div className="grid gap-2">
-                            <div className="flex items-center gap-2 font-medium leading-none">
-                                Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
-                            </div>
-                            <div className="flex items-center gap-2 leading-none text-muted-foreground">
-                                January - June 2024
-                            </div>
-                        </div>
-                    </div>
-                </CardFooter>
-            </Card>
-
-
-
-        </div>
-    );
+              <ChartLegend content={<ChartLegendContent />} />
+            </AreaChart>
+          </ChartContainer>
+        </CardContent>
+        <CardFooter>
+          <div className="flex w-full items-start gap-2 text-sm">
+            <div className="grid gap-2">
+              <div className="flex items-center gap-2 font-medium leading-none">
+                Trending up by 5.2% this month <TrendingUp className="h-4 w-4" />
+              </div>
+              <div className="flex items-center gap-2 leading-none text-muted-foreground">January - June 2024</div>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+    </div>
+  );
 };
 
 export default PaymentGraph;

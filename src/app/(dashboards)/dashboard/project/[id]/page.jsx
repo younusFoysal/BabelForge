@@ -6,10 +6,13 @@ import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import React from "react";
+import {useParams} from "next/navigation";
 
-const ProjectDetails = (props) => {
+const ProjectDetails = () => {
   const axiosCommon = useAxiosCommon();
-  const id = props.params.id;
+  const params = useParams();
+  const { id } = params;
+
 
   const {
     data: project = [],

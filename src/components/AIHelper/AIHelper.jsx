@@ -6,6 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import logo from "@/image/Home/babellogo.png";
 import userbw from "@/image/icon/userbw.png";
+import useAxiosCommon from "@/lib/axiosCommon";
 
 const AIHelper = () => {
     const [prompt, setPrompt] = useState('');
@@ -15,6 +16,7 @@ const AIHelper = () => {
         { sender: "Babel AI", message: "Hi, how can I help you today?" }
     ]);
 
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!prompt.trim()) return; // Avoid empty prompts
@@ -23,7 +25,7 @@ const AIHelper = () => {
         setError('');
 
         try {
-            const res = await fetch('http://localhost:5000/ai/ai/prompt', {
+            const res = await fetch('https://babelforgeserver.vercel.app/ai/ai/prompt', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ prompt }),
