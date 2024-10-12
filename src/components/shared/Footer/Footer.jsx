@@ -8,9 +8,19 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import './Footer.css';
 import { IoAccessibility } from 'react-icons/io5';
+import { useState } from 'react';
 
 const Footer = () => {
   const pathname = usePathname();
+  const [accessLoading, setAcessLoading] = useState(false);
+
+  const handleAcessBtn = () => {
+    loadAccessibilityWidget();
+    setAcessLoading(true);
+    setTimeout(() => {
+      setAcessLoading(false);
+    }, 3500);
+  };
 
   //  Web accesibilty widget
   const loadAccessibilityWidget = () => {
@@ -115,10 +125,26 @@ const Footer = () => {
             </a>
           </div>
 
-          <button title="Accessibility" className=" text-[#878787]" id="triggerId" onClick={loadAccessibilityWidget}>
-            <span className="text-[22px] hover:border-transparent hover:bg-[#e5e5e5] hover:text-[#8c8c8c]  rounded-full border-[#74767D] p-3 border-[1px] flex items-center justify-center">
+          <button
+            title="Accessibility"
+            className={`relative w-12 h-12 flex items-center justify-center transition-all duration-300 ease-in-out ${
+              accessLoading ? 'cursor-wait' : 'cursor-pointer'
+            }`}
+            id="triggerId"
+            onClick={handleAcessBtn}
+          >
+            <span className="text-[22px] relative z-10">
               <IoAccessibility />
             </span>
+
+            <span
+              className={`absolute inset-0 rounded-full border-dashed border-[2px] transition-all duration-500 
+          ${
+            accessLoading
+              ? 'border-[#74767D] acess-btn '
+              : 'border-[#74767D] hover:bg-[#e5e5e5] hover:text-[#8c8c8c] hover:border-transparent'
+          }`}
+            ></span>
           </button>
         </div>
       </div>
