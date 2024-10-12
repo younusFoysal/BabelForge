@@ -1,23 +1,38 @@
-"use client";
-import apple from "@/image/Footer/apple.png";
-import google from "@/image/Footer/google.png";
-import logo from "@/image/Home/babellogo.png";
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import "./Footer.css";
+'use client';
+import apple from '@/image/Footer/apple.png';
+import google from '@/image/Footer/google.png';
+import logo from '@/image/Home/babellogo.png';
+import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import './Footer.css';
+import { IoAccessibility } from 'react-icons/io5';
 
 const Footer = () => {
   const pathname = usePathname();
 
-  // Hide footer on login and signup pages
+  //  Web accesibilty widget
+  const loadAccessibilityWidget = () => {
+    (function (d) {
+      var s = d.createElement('script');
+      /* Uncomment and set desired attributes */
+      s.setAttribute('data-position', 100); // Set custom position
+      s.setAttribute('data-size', 'small'); // Set custom size
+      s.setAttribute('data-color', '#3770EC'); // Set custom color
+      s.setAttribute('data-trigger', 'triggerId'); // Custom trigger ID
+      s.setAttribute('data-account', 'sz3Lj3xaQ0'); // Your UserWay account
+      s.setAttribute('src', 'https://cdn.userway.org/widget.js'); // Widget source
+      (d.body || d.head).appendChild(s); // Append the script to the document
+    })(document);
+  };
 
-  if (pathname.includes("login") || pathname.includes("signup")) return null;
-  if (pathname.includes("stream")) {
+  // Hide footer on login and signup pages
+  if (pathname.includes('login') || pathname.includes('signup')) return null;
+  if (pathname.includes('stream')) {
     return null;
   }
-  if (pathname.includes("/successPayment")) return null;
+  if (pathname.includes('/successPayment')) return null;
   return (
     <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50 dark:text-gray-200 dark:bg-gray-900 dark:border-t-gray-800 dark:border-t-[1px]">
       {/* upper part */}
@@ -26,23 +41,14 @@ const Footer = () => {
           {/* logo */}
           <Link href="/">
             <div className="flex gap-1 justify-center lg:justify-start items-center ">
-              <Image
-                src={logo}
-                alt="babelforge"
-                className=" size-6 lg:size-14 "
-              />
-              <h3 className="text-3xl font-bold text-[#106ac5] dark:text-">
-                BabelForge
-              </h3>
+              <Image src={logo} alt="babelforge" className=" size-6 lg:size-14 " />
+              <h3 className="text-3xl font-bold text-[#106ac5] dark:text-">BabelForge</h3>
             </div>
           </Link>
 
-          <p className="text-center md:text-start text-xs font-semibold">
-            Where Teams Forge Success.
-          </p>
+          <p className="text-center md:text-start text-xs font-semibold">Where Teams Forge Success.</p>
           <p className="text-center md:text-start pt-3 text-xs">
-            BabelForge – Streamlining teamwork, task management, and
-            collaboration for your team’s success.
+            BabelForge – Streamlining teamwork, task management, and collaboration for your team’s success.
           </p>
         </div>
         <div className="flex flex-col  space-y-3 text-sm h-full text-center md:text-start">
@@ -97,28 +103,23 @@ const Footer = () => {
             <a href=""> Privacy policy |</a>
             <a href=""> Status</a>
           </div>
-          <p className="text-sm font-light">
-            All Rights Reserved © babelforge.com
-          </p>
+          <p className="text-sm font-light">All Rights Reserved © babelforge.com</p>
         </div>
-        <div className="space-y-2">
-          <p className="text-center">Download Our App</p>
+        <div className="flex gap-4 items-center">
           <div className="w-64 flex gap-2">
             <a href="">
-              <Image
-                src={google}
-                alt="google play stoe"
-                className="w-full h-full"
-              />
+              <Image src={google} alt="google play stoe" className="w-full h-full" />
             </a>
             <a href="">
-              <Image
-                src={apple}
-                alt="Ios App store"
-                className="w-full h-full"
-              />
+              <Image src={apple} alt="Ios App store" className="w-full h-full" />
             </a>
           </div>
+
+          <button title="Accessibility" className=" text-[#878787]" id="triggerId" onClick={loadAccessibilityWidget}>
+            <span className="text-[22px] hover:border-transparent hover:bg-[#e5e5e5] hover:text-[#8c8c8c]  rounded-full border-[#74767D] p-3 border-[1px] flex items-center justify-center">
+              <IoAccessibility />
+            </span>
+          </button>
         </div>
       </div>
     </footer>
