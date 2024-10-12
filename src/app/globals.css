@@ -156,14 +156,3 @@
     stroke-dashoffset: 1165;
   }
 }
-
-/* Hide accessibility logo */
-
-.uwaw-footer {
-  display: none !important;
-  background-color: red;
-}
-
-.uwaw-body {
-  display: none !important;
-}
