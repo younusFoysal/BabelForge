@@ -111,7 +111,7 @@ const Footer = () => {
               <Image src={google} alt="google play stoe" className="w-full h-full" />
             </a>
             <a href="">
-              <Image src={apple} alt="Ios App store" className="w-full h-full" />
+              <Image src={apple} alt="ios App store" className="w-full h-full" />
             </a>
           </div>
 
