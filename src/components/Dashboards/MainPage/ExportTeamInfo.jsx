@@ -10,10 +10,9 @@ import { ExcelColumn, default as ExcelFile, ExcelSheet } from 'react-data-export
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { IoPrintOutline } from 'react-icons/io5';
-import useUsers from '@/hooks/useUsers';
 
 export function ExportTeamInfo({ className, stats, isLoading }) {
-  const [users] = useUsers();
+  const [exportInfo, setExportInfo] = React.useState([stats]);
 
   const [date, setDate] = React.useState({
     from: new Date(2022, 0, 20),
@@ -68,12 +67,14 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
           </TooltipProvider>
         }
       >
-        <ExcelSheet data={users} name="Employees">
-          <ExcelColumn label="Name" value="name" />
-          <ExcelColumn label="Email" value="email" />
-          <ExcelColumn label="Location" value="location" />
-          <ExcelColumn label="Department" value="department" />
-          <ExcelColumn label="Organization" value="organization" />
+        <ExcelSheet data={!isLoading && exportInfo} name="Overview">
+          <ExcelColumn label="Total Team Members" value="totalTeamMembers" />
+          <ExcelColumn label="Total Teams" value="totalTeams" />
+          <ExcelColumn label="Pending Task" value="pendingTasks" />
+          <ExcelColumn label="Todo Task" value="TodoTasks" />
+          <ExcelColumn label="Progress Task" value="InprogressTask" />
+          <ExcelColumn label="Completed Task" value="DoneTask" />
+          <ExcelColumn label="Total Task" value="totalTasks" />
         </ExcelSheet>
       </ExcelFile>
       {/* Print Button */}
