@@ -38,11 +38,11 @@ const Footer = () => {
   };
 
   // Hide footer on login and signup pages
-  if (pathname.includes('login') || pathname.includes('signup')) return null;
-  if (pathname.includes('stream')) {
+  if (pathname?.includes('login') || pathname?.includes('signup')) return null;
+  if (pathname?.includes('stream')) {
     return null;
   }
-  if (pathname.includes('/successPayment')) return null;
+  if (pathname?.includes('/successPayment')) return null;
   return (
     <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50 dark:text-gray-200 dark:bg-gray-900 dark:border-t-gray-800 dark:border-t-[1px]">
       {/* upper part */}

@@ -12,8 +12,6 @@ const AwesomeHome = () => {
 
 
 
-            <span className="fixed blur-[200px] lg:size-[600px] size-[400px] rounded-full top-[10%] md:start-[10%] -start-[20%] bg-indigo-600/20"></span>
-            <span className="fixed blur-[200px] lg:size-[600px] size-[400px] rounded-full bottom-[10%] md:end-[10%] -end-[20%] bg-red-600/20"></span>
 
             
             <section className="relative table lg:py-40 md:py-36 pt-36 pb-24 overflow-hidden bg-white dark:bg-slate-900 h-screen w-full">
@@ -36,7 +34,7 @@ const AwesomeHome = () => {
                                 <div
                                     className="absolute lg:-top-0 -top-10 -right-40 w-[36rem] h-[36rem] bg-gradient-to-tl to-indigo-600/30 from-red-600/30 dark:to-indigo-600/50 dark:from-red-600/50 blur-[200px] rounded-full z-0"></div>
 
-                                <div className="absolute top-4 -right-80 w-[700px] h-[550px]">
+                                <div className="absolute top-4 -right-80 w-[800px] h-[550px]">
                                     <Image
                                         width={800}
                                         height={800}
