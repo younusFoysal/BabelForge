@@ -7,6 +7,7 @@ import CallToAction from '@/components/home/CallToAction';
 
 import AboutStatistics from '@/components/AboutUs/AboutStatistics';
 import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
+import AwesomeHome from "@/components/home/AwesomeHome";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -23,12 +24,14 @@ const Home = () => {
         <HomeLoadingSpinner></HomeLoadingSpinner>
       ) : (
         <div className="">
-          <Hero />
+          {/*<Hero />*/}
+          <AwesomeHome/>
           <Sponser />
+
           <AboutStatistics></AboutStatistics>
           <LeaderCTA />
 
-          <CallToAction />
+          {/*<CallToAction />*/}
         </div>
       )}
       {/* <div className="fixed bottom-0 left-0">
