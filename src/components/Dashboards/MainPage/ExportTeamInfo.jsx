@@ -70,7 +70,7 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
         <ExcelSheet data={!isLoading && exportInfo} name="Overview">
           <ExcelColumn label="Total Team Members" value="totalTeamMembers" />
           <ExcelColumn label="Total Teams" value="totalTeams" />
-          <ExcelColumn label="Pending Task" value="pendingTasks" />
+          <ExcelColumn label="Pending Task " value="pendingTasks" />
           <ExcelColumn label="Todo Task" value="TodoTasks" />
           <ExcelColumn label="Progress Task" value="InprogressTask" />
           <ExcelColumn label="Completed Task" value="DoneTask" />
