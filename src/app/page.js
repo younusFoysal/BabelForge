@@ -4,9 +4,10 @@ import Hero from "@/components/home/Hero";
 import LeaderCTA from "@/components/home/LeaderCTA";
 import Sponser from "@/components/home/Sponser";
 import CallToAction from "@/components/home/CallToAction";
-import { ClerkLoading, ClerkLoaded } from "@clerk/nextjs";
+
 import AboutStatistics from "@/components/AboutUs/AboutStatistics";
 import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
+import AwesomeHome from "@/components/home/AwesomeHome";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -24,11 +25,14 @@ const Home = () => {
       </ClerkLoading>
       <ClerkLoaded>
         <div className="">
-          <Hero />
+          {/*<Hero />*/}
+          <AwesomeHome />
           <Sponser />
+
           <AboutStatistics></AboutStatistics>
           <LeaderCTA />
-          <CallToAction />
+
+          {/*<CallToAction />*/}
         </div>
       </ClerkLoaded>
 

@@ -62,7 +62,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-900  dark:border-gray-800 sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999]">
+    <div className="bg-white/30 backdrop-blur-lg dark:bg-gray-900/30 border-b border-white/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -123,6 +123,55 @@ const Navbar = () => {
             </>
           )}
         </div>
+        {/* Desktop Right Menu */}
+        <div className="md:flex items-center space-x-4 hidden">
+          <ModeToggle />
+          {user ? (
+            <div className="md:flex items-center space-x-4 mr-4">
+              {user && (
+                <Popover>
+                  <PopoverTrigger>
+                    <Avatar>
+                      <AvatarImage
+                        src={
+                          user?.image
+                            ? user?.image
+                            : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                        }
+                        className="w-16 h-16 rounded-full object-cover"
+                      />
+                      <AvatarFallback>CN</AvatarFallback>
+                    </Avatar>
+                  </PopoverTrigger>
+                  <PopoverContent className="flex-col gap-2 p-4 flex dark:bg-gray-800 dark:border-gray-700 w-[200px] mr-4 mt-4">
+                    <Link
+                      href="/dashboard/profile"
+                      className="bg-gray-100 py-2 px-4 w-full rounded-md text-center dark:text-white dark:bg-gray-900"
+                    >
+                      profile
+                    </Link>
+                    <button
+                      onClick={() => signOut()}
+                      className="bg-gray-100 py-2 px-4 w-full rounded-md dark:text-white dark:bg-gray-900"
+                    >
+                      {" "}
+                      logout
+                    </button>
+                  </PopoverContent>
+                </Popover>
+              )}
+            </div>
+          ) : (
+            <>
+              <ul className="flex items-start space-x-4">
+                <Link href="/login">
+                  <li>Login</li>
+                </Link>
+              </ul>
+              <Button text="Get Started" icon={<ArrowRight size={20} />} />
+            </>
+          )}
+        </div>
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden">
@@ -134,8 +183,8 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
-          <ul className="flex flex-col space-y-4  py-4">
+        <div className="md:hidden bg-white/30 backdrop-blur-lg border-t border-gray-200">
+          <ul className="flex flex-col space-y-4 py-4">
             {NavbarItems.map((nav) => (
               <Link href={nav.href} key={nav.href}>
                 <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">

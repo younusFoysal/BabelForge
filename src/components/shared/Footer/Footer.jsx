@@ -8,9 +8,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import "./Footer.css";
 import { IoAccessibility } from "react-icons/io5";
+import { useState } from "react";
 
 const Footer = () => {
   const pathname = usePathname();
+  const [accessLoading, setAcessLoading] = useState(false);
+
+  const handleAcessBtn = () => {
+    loadAccessibilityWidget();
+    setAcessLoading(true);
+    setTimeout(() => {
+      setAcessLoading(false);
+    }, 3500);
+  };
 
   //  Web accesibilty widget
   const loadAccessibilityWidget = () => {
@@ -28,13 +38,11 @@ const Footer = () => {
   };
 
   // Hide footer on login and signup pages
-  if (pathname?.includes("sign-in") || pathname?.includes("sign-up"))
-    return null;
+  if (pathname?.includes("login") || pathname?.includes("signup")) return null;
   if (pathname?.includes("stream")) {
     return null;
   }
   if (pathname?.includes("/successPayment")) return null;
-
   return (
     <footer className="p-2 md:p-16 pt-10 text-gray-500 bg-sky-50 dark:text-gray-200 dark:bg-gray-900 dark:border-t-gray-800 dark:border-t-[1px]">
       {/* upper part */}
@@ -138,13 +146,24 @@ const Footer = () => {
 
           <button
             title="Accessibility"
-            className=" text-[#878787]"
+            className={`relative w-12 h-12 flex items-center justify-center transition-all duration-300 ease-in-out ${
+              accessLoading ? "cursor-wait" : "cursor-pointer"
+            }`}
             id="triggerId"
-            onClick={loadAccessibilityWidget}
+            onClick={handleAcessBtn}
           >
-            <span className="text-[22px] hover:border-transparent hover:bg-[#e5e5e5] hover:text-[#8c8c8c]  rounded-full border-[#74767D] p-3 border-[1px] flex items-center justify-center">
+            <span className="text-[22px] relative z-10">
               <IoAccessibility />
             </span>
+
+            <span
+              className={`absolute inset-0 rounded-full border-dashed border-[2px] transition-all duration-500 
+          ${
+            accessLoading
+              ? "border-[#74767D] acess-btn "
+              : "border-[#74767D] hover:bg-[#e5e5e5] hover:text-[#8c8c8c] hover:border-transparent"
+          }`}
+            ></span>
           </button>
         </div>
       </div>
