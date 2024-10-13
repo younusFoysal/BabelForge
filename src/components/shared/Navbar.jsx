@@ -124,54 +124,6 @@ const Navbar = () => {
           )}
         </div>
         {/* Desktop Right Menu */}
-        <div className="md:flex items-center space-x-4 hidden">
-          <ModeToggle />
-          {user ? (
-            <div className="md:flex items-center space-x-4 mr-4">
-              {user && (
-                <Popover>
-                  <PopoverTrigger>
-                    <Avatar>
-                      <AvatarImage
-                        src={
-                          user?.image
-                            ? user?.image
-                            : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
-                        }
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
-                      <AvatarFallback>CN</AvatarFallback>
-                    </Avatar>
-                  </PopoverTrigger>
-                  <PopoverContent className="flex-col gap-2 p-4 flex dark:bg-gray-800 dark:border-gray-700 w-[200px] mr-4 mt-4">
-                    <Link
-                      href="/dashboard/profile"
-                      className="bg-gray-100 py-2 px-4 w-full rounded-md text-center dark:text-white dark:bg-gray-900"
-                    >
-                      profile
-                    </Link>
-                    <button
-                      onClick={() => signOut()}
-                      className="bg-gray-100 py-2 px-4 w-full rounded-md dark:text-white dark:bg-gray-900"
-                    >
-                      {" "}
-                      logout
-                    </button>
-                  </PopoverContent>
-                </Popover>
-              )}
-            </div>
-          ) : (
-            <>
-              <ul className="flex items-start space-x-4">
-                <Link href="/login">
-                  <li>Login</li>
-                </Link>
-              </ul>
-              <Button text="Get Started" icon={<ArrowRight size={20} />} />
-            </>
-          )}
-        </div>
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden">
