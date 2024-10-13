@@ -1,0 +1,361 @@
+project/
+├── chat.md
+├── components.json
+├── getFileStructure.js
+├── jest.config.js
+├── jsconfig.json
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public/
+│   └── Images/
+│   │   ├── light-dash.png
+│   │   └── overlay.png
+├── README.md
+├── src/
+│   ├── actions/
+│   │   └── steam.actions.js
+│   ├── app/
+│   │   ├── (dashboards)/
+│   │   │   └── dashboard/
+│   │   │   │   ├── admin/
+│   │   │   │   │   ├── inbox/
+│   │   │   │   │   │   └── page.jsx
+│   │   │   │   │   ├── packages/
+│   │   │   │   │   │   └── page.jsx
+│   │   │   │   │   ├── page.jsx
+│   │   │   │   │   ├── reviews/
+│   │   │   │   │   │   └── page.jsx
+│   │   │   │   │   └── transactions/
+│   │   │   │   │   │   └── page.jsx
+│   │   │   │   ├── BabelAI/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── Backlog/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── board/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── canvas/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── chat/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── createproject/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── inbox/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── layout.jsx
+│   │   │   │   ├── page.jsx
+│   │   │   │   ├── profile/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   ├── project/
+│   │   │   │   │   ├── page.jsx
+│   │   │   │   │   └── [id]/
+│   │   │   │   │   │   └── page.jsx
+│   │   │   │   ├── projects/
+│   │   │   │   │   ├── page.jsx
+│   │   │   │   │   └── [id]/
+│   │   │   │   │   │   └── page.jsx
+│   │   │   │   ├── review/
+│   │   │   │   │   └── page.jsx
+│   │   │   │   └── teams/
+│   │   │   │   │   ├── page.jsx
+│   │   │   │   │   └── [id]/
+│   │   │   │   │   │   └── page.jsx
+│   │   ├── (stream)/
+│   │   │   └── stream/
+│   │   │   │   ├── layout.jsx
+│   │   │   │   ├── meeting/
+│   │   │   │   │   └── [id]/
+│   │   │   │   │   │   └── page.jsx
+│   │   │   │   └── page.js
+│   │   ├── about/
+│   │   │   └── page.js
+│   │   ├── about-us/
+│   │   │   └── page.jsx
+│   │   ├── api/
+│   │   │   ├── auth/
+│   │   │   │   └── [...nextauth]/
+│   │   │   │   │   └── route.js
+│   │   │   └── create-payment-intent/
+│   │   │   │   └── route.js
+│   │   ├── checkout/
+│   │   │   └── [id]/
+│   │   │   │   └── page.jsx
+│   │   ├── contact/
+│   │   │   └── page.jsx
+│   │   ├── favicon.ico
+│   │   ├── features/
+│   │   │   └── page.jsx
+│   │   ├── globals.css
+│   │   ├── layout.jsx
+│   │   ├── login/
+│   │   │   └── page.jsx
+│   │   ├── page.js
+│   │   ├── pricing/
+│   │   │   └── page.jsx
+│   │   ├── signup/
+│   │   │   └── page.jsx
+│   │   └── successPayment/
+│   │   │   └── page.jsx
+│   ├── components/
+│   │   ├── AboutUs/
+│   │   │   ├── AboutCarousel.css
+│   │   │   ├── AboutCarousel.jsx
+│   │   │   ├── AboutCulture.jsx
+│   │   │   ├── AboutCultureCard.jsx
+│   │   │   ├── AboutFirstBanner.jsx
+│   │   │   ├── AboutSecondBanner.jsx
+│   │   │   ├── AboutStatistics.jsx
+│   │   │   ├── CommonText.jsx
+│   │   │   └── JoinTeamCTA.jsx
+│   │   ├── Admin/
+│   │   │   ├── AdminDashboard/
+│   │   │   │   ├── AdminDashboard.jsx
+│   │   │   │   ├── AdminStatCards.jsx
+│   │   │   │   ├── PayGraph.jsx
+│   │   │   │   ├── PaymentGraph.jsx
+│   │   │   │   ├── PaymentPieChart.jsx
+│   │   │   │   ├── RecentMeetings.jsx
+│   │   │   │   └── Transactions.jsx
+│   │   │   ├── AdminInbox/
+│   │   │   │   └── AdminInbox.jsx
+│   │   │   ├── AdminPackages/
+│   │   │   │   ├── AdminPackages.jsx
+│   │   │   │   ├── packages.json
+│   │   │   │   └── UpdatePricing/
+│   │   │   │   │   └── UpdatePricing.jsx
+│   │   │   └── AdminReview/
+│   │   │   │   └── Review.jsx
+│   │   ├── AIHelper/
+│   │   │   └── AIHelper.jsx
+│   │   ├── Canvas/
+│   │   │   └── CanvasComponent.jsx
+│   │   ├── Chat/
+│   │   │   └── Chat.jsx
+│   │   ├── Checkout/
+│   │   │   └── Checkout.jsx
+│   │   ├── Contactus/
+│   │   │   ├── ContactForm.jsx
+│   │   │   └── ContactText.jsx
+│   │   ├── crisp.js
+│   │   ├── Dashboards/
+│   │   │   ├── Backlog/
+│   │   │   │   ├── BacklogPage.jsx
+│   │   │   │   ├── CardGridView.css
+│   │   │   │   ├── CardGridView.jsx
+│   │   │   │   ├── modal.css
+│   │   │   │   └── TableView.jsx
+│   │   │   ├── Board.jsx
+│   │   │   ├── BoardCard.jsx
+│   │   │   ├── MainPage/
+│   │   │   │   ├── DetailsCard.jsx
+│   │   │   │   ├── ExportTeamInfo.jsx
+│   │   │   │   ├── MainPageWrap.jsx
+│   │   │   │   ├── PieCharts.jsx
+│   │   │   │   └── TeamInfo.jsx
+│   │   │   ├── Task/
+│   │   │   │   ├── AddTask.jsx
+│   │   │   │   ├── Task.7z
+│   │   │   │   ├── Task.jsx
+│   │   │   │   ├── TaskBUG.7z
+│   │   │   │   ├── TaskList.jsx
+│   │   │   │   └── tasks.json
+│   │   │   └── TaskBoard/
+│   │   │   │   ├── Board.jsx
+│   │   │   │   ├── boardData.js
+│   │   │   │   ├── Column.jsx
+│   │   │   │   └── Task.jsx
+│   │   ├── DashboardsPage/
+│   │   │   ├── DashboardCard.jsx
+│   │   │   ├── DashboardsNavbar.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── Review.css
+│   │   │   └── Review.jsx
+│   │   ├── home/
+│   │   │   ├── AwesomeHome.jsx
+│   │   │   ├── CallToAction.jsx
+│   │   │   ├── Hero/
+│   │   │   │   ├── HeroBox.jsx
+│   │   │   │   └── HeroDown.jsx
+│   │   │   ├── Hero.jsx
+│   │   │   ├── HeroNew/
+│   │   │   │   └── HeroLeft.jsx
+│   │   │   ├── LeaderCTA.jsx
+│   │   │   └── Sponser.jsx
+│   │   ├── Payments/
+│   │   │   ├── CheckoutForm.jsx
+│   │   │   ├── Payment.jsx
+│   │   │   └── PaymentBox.jsx
+│   │   ├── Pricing/
+│   │   │   ├── Faq.jsx
+│   │   │   ├── PriceCard.jsx
+│   │   │   └── PricingSingleCard.jsx
+│   │   ├── Profile/
+│   │   │   └── UpdateProfile.jsx
+│   │   ├── Projects/
+│   │   │   ├── CreateProjectpage.jsx
+│   │   │   ├── ProjectPage.jsx
+│   │   │   ├── projects.jsonc
+│   │   │   └── UpdatePage.jsx
+│   │   ├── Reviews/
+│   │   │   └── Reviews.jsx
+│   │   ├── shared/
+│   │   │   ├── Buttons/
+│   │   │   │   └── ButtonSmall.jsx
+│   │   │   ├── Buttons.jsx
+│   │   │   ├── CommonTable/
+│   │   │   │   └── CommonTable.jsx
+│   │   │   ├── Footer/
+│   │   │   │   ├── Footer.css
+│   │   │   │   └── Footer.jsx
+│   │   │   ├── HomeLoadingSpinner/
+│   │   │   │   ├── HomeLoadingSpinner.css
+│   │   │   │   └── HomeLoadingSpinner.jsx
+│   │   │   ├── LoadingSpinner/
+│   │   │   │   ├── LoadingSpinner.jsx
+│   │   │   │   └── loadingSpinnerStyle.css
+│   │   │   └── Navbar.jsx
+│   │   ├── SocialButton/
+│   │   │   └── SocialButton.jsx
+│   │   ├── Steam/
+│   │   │   ├── EndCallButton.jsx
+│   │   │   ├── MeetingRoom.jsx
+│   │   │   ├── MeetingSetup.jsx
+│   │   │   ├── MeetingTypeList.jsx
+│   │   │   └── Navbar.jsx
+│   │   ├── Teams/
+│   │   │   ├── AllTeams.jsx
+│   │   │   ├── LinkBox.jsx
+│   │   │   ├── LinkDialog.jsx
+│   │   │   ├── MemberBox.jsx
+│   │   │   ├── Team.jsx
+│   │   │   ├── TeamDialog.jsx
+│   │   │   ├── UserTeam.css
+│   │   │   └── UserTeam.jsx
+│   │   ├── Theme/
+│   │   │   ├── ModeToggle.jsx
+│   │   │   └── ThemeProvider.jsx
+│   │   ├── ui/
+│   │   │   ├── accordion.jsx
+│   │   │   ├── avatar.jsx
+│   │   │   ├── button.jsx
+│   │   │   ├── calendar.jsx
+│   │   │   ├── card.jsx
+│   │   │   ├── carousel.jsx
+│   │   │   ├── chart.jsx
+│   │   │   ├── checkbox.jsx
+│   │   │   ├── command.jsx
+│   │   │   ├── dialog.jsx
+│   │   │   ├── drawer.jsx
+│   │   │   ├── dropdown-menu.jsx
+│   │   │   ├── form.jsx
+│   │   │   ├── hover-card.jsx
+│   │   │   ├── input.jsx
+│   │   │   ├── label.jsx
+│   │   │   ├── pagination.jsx
+│   │   │   ├── popover.jsx
+│   │   │   ├── select.jsx
+│   │   │   ├── table.jsx
+│   │   │   ├── textarea.jsx
+│   │   │   ├── toast.jsx
+│   │   │   ├── toaster.jsx
+│   │   │   └── tooltip.jsx
+│   │   └── UserProfile/
+│   │   │   └── Profile.jsx
+│   ├── hooks/
+│   │   ├── use-toast.js
+│   │   ├── useChat.js
+│   │   ├── useGetcall.js
+│   │   ├── usePerson.js
+│   │   ├── useProjects.js
+│   │   ├── useTasks.js
+│   │   ├── useTeams.js
+│   │   ├── useTrans.js
+│   │   └── useUsers.js
+│   ├── image/
+│   │   ├── About/
+│   │   │   ├── banner1.jpg
+│   │   │   ├── banner2.jpg
+│   │   │   ├── banner3.jpg
+│   │   │   ├── banner4.jpg
+│   │   │   ├── heart.png
+│   │   │   ├── inclusive.png
+│   │   │   ├── pendulum.png
+│   │   │   ├── product.png
+│   │   │   ├── shape.png
+│   │   │   ├── speed.png
+│   │   │   └── trust.png
+│   │   ├── AwesomeHom/
+│   │   │   └── overlay.png
+│   │   ├── dashboards/
+│   │   │   ├── card1.png
+│   │   │   ├── card2.png
+│   │   │   ├── card3.png
+│   │   │   └── dashboardsHeader.png
+│   │   ├── Emoji/
+│   │   │   ├── confused.png
+│   │   │   ├── fire.png
+│   │   │   ├── perfect.png
+│   │   │   ├── sad.png
+│   │   │   └── thumbs.png
+│   │   ├── Footer/
+│   │   │   ├── apple.png
+│   │   │   ├── google.png
+│   │   │   └── logo.png
+│   │   ├── Home/
+│   │   │   ├── babellogo.png
+│   │   │   ├── call.png
+│   │   │   ├── carousel/
+│   │   │   │   ├── creative_card.jpg
+│   │   │   │   ├── crm.jpg
+│   │   │   │   ├── it.jpg
+│   │   │   │   ├── overview.jpg
+│   │   │   │   ├── sprint.jpg
+│   │   │   │   ├── sub_crm.png
+│   │   │   │   ├── sub_dev.png
+│   │   │   │   ├── sub_service.png
+│   │   │   │   ├── sub_word.png
+│   │   │   │   ├── team.jpg
+│   │   │   │   └── tracking.jpg
+│   │   │   ├── gartner.png
+│   │   │   ├── hero/
+│   │   │   │   ├── CRM.jpg
+│   │   │   │   ├── HR.jpg
+│   │   │   │   ├── IT.jpg
+│   │   │   │   ├── Operations.jpg
+│   │   │   │   └── Product.jpg
+│   │   │   └── sponser/
+│   │   │   │   ├── bd.png
+│   │   │   │   ├── canva.png
+│   │   │   │   ├── carrefour.png
+│   │   │   │   ├── coca_cola.png
+│   │   │   │   ├── glossier.png
+│   │   │   │   ├── holicat.png
+│   │   │   │   ├── lionsgate.png
+│   │   │   │   ├── oxy.png
+│   │   │   │   └── universal.png
+│   │   ├── icon/
+│   │   │   ├── google.png
+│   │   │   ├── mastercard.jpg
+│   │   │   ├── user.png
+│   │   │   ├── userbw.png
+│   │   │   └── visa.png
+│   │   ├── login/
+│   │   │   └── babel.avif
+│   │   ├── payment/
+│   │   │   └── payDone.png
+│   │   └── Team/
+│   │   │   └── create_team.png
+│   ├── lib/
+│   │   ├── axiosCommon.jsx
+│   │   └── utils.js
+│   ├── middleware.js
+│   ├── providers/
+│   │   ├── ContextProvider.jsx
+│   │   └── StreamProvider.jsx
+│   ├── registry/
+│   │   └── new-york/
+│   │   │   └── ui/
+│   └── services/
+│   │   └── AuthProvider.jsx
+└── tailwind.config.js
