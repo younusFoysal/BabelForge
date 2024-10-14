@@ -24,12 +24,12 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={nunito.className}>
+      <body
+        className={`${nunito.className} before:fixed before:-z-10 before:blur-[200px] before:lg:size-[600px] before:size-[400px] before:rounded-full before:top-[10%] before:md:start-[10%] before:-start-[20%] before:bg-indigo-600/20 after:fixed after:-z-10 after:blur-[200px] after:lg:size-[600px] after:size-[400px] after:rounded-full after:bottom-[10%] after:md:end-[10%] after:-end-[20%] after:bg-red-600/20 `}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <PaymentProvider>
             <AuthProvider>
-              <span className="fixed -z-10 blur-[200px] lg:size-[600px] size-[400px] rounded-full top-[10%] md:start-[10%] -start-[20%] bg-indigo-600/20"></span>
-              <span className="fixed -z-10 blur-[200px] lg:size-[600px] size-[400px] rounded-full bottom-[10%] md:end-[10%] -end-[20%] bg-red-600/20"></span>
               <CrispWithNoSSR />
               <Navbar />
               {children}
