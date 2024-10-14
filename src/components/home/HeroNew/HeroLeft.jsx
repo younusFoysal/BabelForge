@@ -40,7 +40,7 @@ const HeroLeft = () => {
               {/*<button*/}
               {/*    onClick={handleClick}*/}
               {/*    className="rounded-xl bg-blue-700 px-10 py-3 font-medium text-white transition-all duration-200 hover:bg-blue-600">*/}
-              {/*  Get Start*/}
+              {/*  Get Start now*/}
               {/*</button>*/}
 
             <GetStart/>
