@@ -19,7 +19,7 @@ const Button = ({ text, className, icon }) => {
 
 
     setLoading(true);
-    const loadingToast = toast.loading("Dashboard loading...");
+    const loadingToast = toast.loading("Dashboard loading...", {duration: 4000});
 
     try {
       await router.push("/dashboard");
