@@ -9,6 +9,8 @@ import AboutStatistics from '@/components/AboutUs/AboutStatistics';
 import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
 import AwesomeHome from '@/components/home/AwesomeHome';
 import CarouselHome from '@/components/home/CarouselHome';
+import PricingCards from "@/components/home/PricingCards";
+
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -31,7 +33,10 @@ const Home = () => {
           <Sponser />
           <CarouselHome />
 
+
           <AboutStatistics></AboutStatistics>
+          <PricingCards/>
+
           <LeaderCTA />
 
           {/*<CallToAction />*/}
