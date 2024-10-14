@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Trans Table update">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Reviews &amp; Home Test Successfully">
+      <change afterPath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/UpdatePricing/UpdatePricing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/UpdatePricing/UpdatePricing.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/HomeLoadingSpinner/HomeLoadingSpinner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/HomeLoadingSpinner/HomeLoadingSpinner.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
         <option value="JSX File" />
       </list>
     </option>
@@ -27,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="prepod-test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -68,13 +68,16 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Node.js.GetFileStructure.cjs.executor": "Run",
     "Node.js.GetFileStructure.js.executor": "Run",
+    "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "prepod",
-    "last_opened_file_path": "D:/WebStrom Projects/SCIC/EndGame/babelforge",
+    "last_opened_file_path": "D:/WebStrom Projects/SCIC/EndGame/babelforge/src/components/home",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
@@ -82,6 +85,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\home" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminDashboard" />
@@ -124,6 +130,10 @@
       <workItem from="1728159889961" duration="313000" />
       <workItem from="1728315956080" duration="1734000" />
       <workItem from="1728497214945" duration="3134000" />
+      <workItem from="1728588396315" duration="614000" />
+      <workItem from="1728741754275" duration="350000" />
+      <workItem from="1728753805344" duration="12695000" />
+      <workItem from="1728893601702" duration="834000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <option name="closed" value="true" />
@@ -509,13 +519,13 @@
       <option name="project" value="LOCAL" />
       <updated>1728514015901</updated>
     </task>
-    <task id="LOCAL-00049" summary="Trans Table update">
+    <task id="LOCAL-00049" summary="Awesome Design Implemented">
       <option name="closed" value="true" />
-      <created>1728517356032</created>
+      <created>1728774213294</created>
       <option name="number" value="00049" />
       <option name="presentableId" value="LOCAL-00049" />
       <option name="project" value="LOCAL" />
-      <updated>1728517356032</updated>
+      <updated>1728774213294</updated>
     </task>
     <option name="localTasksCounter" value="50" />
     <servers />
@@ -560,7 +570,7 @@
     <MESSAGE value="Admin Dash Added" />
     <MESSAGE value="version" />
     <MESSAGE value="button fix" />
-    <MESSAGE value="Trans Table update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trans Table update" />
+    <MESSAGE value="Awesome Design Implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Awesome Design Implemented" />
   </component>
 </project>
