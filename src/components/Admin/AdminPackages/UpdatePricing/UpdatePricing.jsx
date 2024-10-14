@@ -11,11 +11,10 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Toaster, toast } from "@/components/ui/toaster"; // Import toast
+import { Toaster, toast } from "@/components/ui/toaster"; 
 import { useToast } from "@/hooks/use-toast";
 import { axiosCommon } from "@/lib/axiosCommon";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react"; // Import useState
 
 const UpdatePricing = ({ pack, refetch }) => {
 
@@ -66,7 +65,9 @@ const UpdatePricing = ({ pack, refetch }) => {
       meeting: e.target.meeting.checked,
     };
 
-    updatePricingCard.mutate(updatedPack)
+    // updatePricingCard.mutate(updatedPack)
+    console.log('testsssssssss', updatedPack);
+    
 
   
   };
