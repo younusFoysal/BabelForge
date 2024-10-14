@@ -70,7 +70,7 @@ const Review = () => {
                   }
                 </blockquote>
                 <p className="text-white font-light text-[14px] my-5">
-                  {review.name} | {review.reviewDate.slice(0, 10)}
+                  {review.name} | {review?.reviewDate?.slice(0, 10)}
                 </p>
                 <div className="text-[28px] flex items-center gap-2 text-yellow-500 ">
                   <span className="text-xl font-bold">  <Rating
