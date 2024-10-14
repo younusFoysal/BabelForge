@@ -182,7 +182,7 @@ const CarouselHome = () => {
     ],
   };
   return (
-    <div className=" relative w-screen mx-auto pt-8">
+    <div className=" relative w-screen mx-auto mb-[120px] mt-[20px] pt-8">
       <h2 className="text-center mb-10 text-[24px] text-[#333] font-semibold dark:text-white">What would you like to manage?</h2>
       <Slider {...settings}>
         {carouselItems?.map(item => (
@@ -214,8 +214,8 @@ const CarouselHome = () => {
         ))}
       </Slider>
       {/* Carousel White Overlay */}
-      <div className="hidden md:block absolute z-20 left-0 top-0 h-full w-[200px] bg-gradient-to-l from-[#ffffff00] to-[#fff] dark:from-[#00000045] dark:to-[#000000]"></div>
-      <div className="hidden md:block absolute z-20 right-0 top-0 h-full w-[200px] bg-gradient-to-r from-[#ffffff00] to-[#fff]"></div>
+      <div className="hidden md:block absolute z-20 left-0 top-0 h-full w-[200px] bg-gradient-to-l from-[#ffffff00] to-[#fff] dark:from-[#00000005] dark:to-[#1C1B21]"></div>
+      <div className="hidden md:block absolute z-20 right-0 top-0 h-full w-[200px] dark:from-[#00000005] dark:to-[#1C1B21] bg-gradient-to-r from-[#ffffff00] to-[#fff]"></div>
     </div>
   );
 };

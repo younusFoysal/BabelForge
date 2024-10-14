@@ -7,8 +7,8 @@ import CallToAction from '@/components/home/CallToAction';
 
 import AboutStatistics from '@/components/AboutUs/AboutStatistics';
 import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
-import AwesomeHome from "@/components/home/AwesomeHome";
-import CarouselHome from "@/components/home/CarouselHome";
+import AwesomeHome from '@/components/home/AwesomeHome';
+import CarouselHome from '@/components/home/CarouselHome';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -26,10 +26,10 @@ const Home = () => {
       ) : (
         <div className="">
           {/*<Hero />*/}
-          <AwesomeHome/>
+          <AwesomeHome />
 
           <Sponser />
-          <CarouselHome/>
+          <CarouselHome />
 
           <AboutStatistics></AboutStatistics>
           <LeaderCTA />

@@ -4,7 +4,7 @@ import HeroLeft from '@/components/home/HeroNew/HeroLeft';
 
 const AwesomeHome = () => {
   return (
-    <div>
+    <div className="mb-14">
       <section className="relative pb-0 pt-20 h-screen flex items-center  lg:py-36 overflow-hidden bg-white dark:bg-slate-900  w-full">
         <div className={`absolute inset-0 bg-[url('/images/overlay.png')] bg-repeat opacity-10 dark:opacity-60 `}></div>
 
