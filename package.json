@@ -11,7 +11,7 @@
     "test:watch": "jest --watch",
     "test-team": "npx jest Team.test.jsx",
     "test-dashboard": "npx jest Dashboard.test.jsx",
-    "test-project": "npx jest CanvasComponent.test.jsx"
+    "test-project": "npx jest ProjectPage.test.jsx"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
