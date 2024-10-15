@@ -48,7 +48,7 @@ const LinkDialog = ({ id, refetch, index }) => {
         />
         <DialogClose className="flex justify-start">
           <Button onClick={handlesubmit} className="px-6 rounded-md py-2">
-            Add
+            add
           </Button>
         </DialogClose>
       </DialogContent>

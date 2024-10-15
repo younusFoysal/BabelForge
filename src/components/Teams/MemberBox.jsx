@@ -50,8 +50,12 @@ const MemberBox = ({ member, refetch, id }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" className="w-[100px] mt-1">
           <DropdownMenuGroup>
-            <DropdownMenuItem className="capitalize" onClick={handlesubmit}>
-              leave team
+            <DropdownMenuItem
+              className="capitalize"
+              onClick={handlesubmit}
+              data-testid="buttonleave"
+            >
+              <button data-testid="leave">leave team</button>
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
