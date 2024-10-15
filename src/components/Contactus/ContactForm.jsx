@@ -125,15 +125,15 @@ const ContactForm = () => {
           <form ref={form} onSubmit={handleSubmit(onSubmit)}>
             {/* name parent */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-              <div class="mb-5">
-                <label for="firstName" class="block mb-2 text-sm font-medium">
+              <div className="mb-5">
+                <label htmlFor="firstName" className="block mb-2 text-sm font-medium">
                   First Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   {...register("firstName", { required: true })}
                   type="text"
                   id="firstName"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 />
                 {errors.firstName?.type === "required" && (
                   <p className="text-red-600 text-[12px] mt-1">
@@ -141,15 +141,15 @@ const ContactForm = () => {
                   </p>
                 )}
               </div>
-              <div class="mb-5">
-                <label for="lastName" class="block mb-2 text-sm font-medium">
+              <div className="mb-5">
+                <label htmlFor="lastName" className="block mb-2 text-sm font-medium">
                   Last Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   {...register("lastName", { required: true })}
                   type="text"
                   id="lastName"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 />
                 {errors.lastName?.type === "required" && (
                   <p className="text-red-600 text-[12px] mt-1">
@@ -160,15 +160,15 @@ const ContactForm = () => {
             </div>
             {/* Mail and Job parent */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-              <div class="mb-5">
-                <label for="email" class="block mb-2 text-sm font-medium">
+              <div className="mb-5">
+                <label htmlFor="email" className="block mb-2 text-sm font-medium">
                   Work Email <span className="text-red-600">*</span>
                 </label>
                 <input
                   {...register("email", { required: true })}
                   type="email"
                   id="email"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 />
                 {errors.email?.type === "required" && (
                   <p className="text-red-600 text-[12px] mt-1">
@@ -176,27 +176,27 @@ const ContactForm = () => {
                   </p>
                 )}
               </div>
-              <div class="mb-5">
-                <label for="jobTitle" class="block mb-2 text-sm font-medium">
+              <div className="mb-5">
+                <label htmlFor="jobTitle" className="block mb-2 text-sm font-medium">
                   Job Title
                 </label>
                 <input
                   {...register("jobTitle")}
                   type="text"
                   id="jobTitle"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 />
               </div>
             </div>
             {/* Phone */}
-            <div class="mb-5">
-              <label for="phone" class="block mb-2 text-sm font-medium">
+            <div className="mb-5">
+              <label htmlFor="phone" className="block mb-2 text-sm font-medium">
                 Phone number <span className="text-red-600">*</span>
               </label>
               <input
                 {...register("phone", { required: true, valueAsNumber: true })}
                 id="phone"
-                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
               />
               {errors.phone?.type === "required" && (
                 <p className="text-red-600 text-[12px] mt-1">
@@ -206,15 +206,15 @@ const ContactForm = () => {
             </div>
             {/* Company Name & size */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-              <div class="mb-5">
-                <label for="companyName" class="block mb-2 text-sm font-medium">
+              <div className="mb-5">
+                <label htmlFor="companyName" className="block mb-2 text-sm font-medium">
                   Company Name <span className="text-red-600">*</span>
                 </label>
                 <input
                   {...register("companyName", { required: true })}
                   type="text"
                   id="companyName"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 />
                 {errors.phone?.type === "required" && (
                   <p className="text-red-600 text-[12px] mt-1">
@@ -222,17 +222,17 @@ const ContactForm = () => {
                   </p>
                 )}
               </div>
-              <div class="mb-5">
-                <label for="companySize" class="block mb-2 text-sm font-medium">
+              <div className="mb-5">
+                <label htmlFor="companySize" className="block mb-2 text-sm font-medium">
                   Company Size <span className="text-red-600">*</span>
                 </label>
                 <select
                   {...register("companySize", { required: true })}
                   id="companySize"
                   name="companySize"
-                  class="block w-full p-2.5 border rounded-md dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  className="block w-full p-2.5 border rounded-md dark:bg-transparent dark:text-white dark:border-gray-700 "
                 >
-                  <option value="" disabled selected>
+                  <option defaultValue="" disabled selected>
                     Please select
                   </option>
                   <option value="1-19">1-19</option>
@@ -250,8 +250,8 @@ const ContactForm = () => {
               </div>
             </div>
             {/* Manage */}
-            <div class="mb-5">
-              <label for="manageMessage" class="block mb-2 text-sm font-medium">
+            <div className="mb-5">
+              <label htmlFor="manageMessage" className="block mb-2 text-sm font-medium">
                 What would you like to manage with babelforge.com?{" "}
                 <span className="text-red-600">*</span>
               </label>
@@ -259,7 +259,7 @@ const ContactForm = () => {
                 {...register("manageMessage", { required: true })}
                 type="text"
                 id="manageMessage"
-                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
               />
               {errors.manageMessage?.type === "required" && (
                 <p className="text-red-600 text-[12px] mt-1">
@@ -269,8 +269,8 @@ const ContactForm = () => {
             </div>
 
             {/* Help */}
-            <div class="mb-5">
-              <label for="helpMessage" class="block mb-2 text-sm font-medium">
+            <div className="mb-5">
+              <label htmlFor="helpMessage" className="block mb-2 text-sm font-medium">
                 How can our team help you?{" "}
                 <span className="text-red-600">*</span>
               </label>
@@ -278,7 +278,7 @@ const ContactForm = () => {
                 {...register("helpMessage", { required: true })}
                 type="text"
                 id="helpMessage"
-                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                className="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
                 placeholder="Tell us more about your tearn and what work you'd like to
 manage with babelforge.com"
               />

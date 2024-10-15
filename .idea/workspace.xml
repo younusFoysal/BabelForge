@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="canvas tested">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/LinkDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/LinkDialog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/CommonTable/CommonTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/CommonTable/CommonTable.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="new fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -129,14 +125,6 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
-    </task>
-    <task id="LOCAL-00005" summary="File Structure Done">
-      <option name="closed" value="true" />
-      <created>1726639017381</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639017381</updated>
     </task>
     <task id="LOCAL-00006" summary="tailwind check done">
       <option name="closed" value="true" />
@@ -522,7 +510,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728985726882</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="new fix">
+      <option name="closed" value="true" />
+      <created>1728988038983</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1728988038983</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +537,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="packager fix" />
     <MESSAGE value="Add task Done" />
     <MESSAGE value="Server api link added" />
     <MESSAGE value="turbo added" />
@@ -566,6 +561,7 @@
     <MESSAGE value="Awesome Design Implemented" />
     <MESSAGE value="home button added" />
     <MESSAGE value="canvas tested" />
-    <option name="LAST_COMMIT_MESSAGE" value="canvas tested" />
+    <MESSAGE value="new fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="new fix" />
   </component>
 </project>
