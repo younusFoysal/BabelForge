@@ -86,8 +86,8 @@ describe('ProjectPage Component', () => {
 
     // Wait for the projects to be rendered
     //await waitFor(() => {
-      //expect(screen.getByText('Project 1')).toBeInTheDocument();
-      //expect(screen.getByText('Project 2')).toBeInTheDocument();
+    //expect(screen.getByText('Project 1')).toBeInTheDocument();
+    //expect(screen.getByText('Project 2')).toBeInTheDocument();
     //});
   });
 });
