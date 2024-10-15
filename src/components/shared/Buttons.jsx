@@ -11,7 +11,23 @@ const Button = ({ text, className, icon }) => {
     if (!userId) {
       return toast.error("Login First");
     }
+<<<<<<< HEAD
     router.push("/dashboard");
+=======
+
+
+    setLoading(true);
+    const loadingToast = toast.loading("Dashboard loading...", {duration: 4000});
+
+    try {
+      await router.push("/dashboard");
+      toast.dismiss(loadingToast);
+    } catch (error) {
+      toast.error("Failed to redirect");
+    } finally {
+      setLoading(false);
+    }
+>>>>>>> ad0b448e07d05f3bec52351fb764ba95a30a815c
   };
 
   return (

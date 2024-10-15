@@ -1,14 +1,13 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Hero from "@/components/home/Hero";
 import LeaderCTA from "@/components/home/LeaderCTA";
 import Sponser from "@/components/home/Sponser";
-import CallToAction from "@/components/home/CallToAction";
-
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import AboutStatistics from "@/components/AboutUs/AboutStatistics";
 import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 import AwesomeHome from "@/components/home/AwesomeHome";
-import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import CarouselHome from "@/components/home/CarouselHome";
+import PricingCards from "@/components/home/PricingCards";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -26,11 +25,14 @@ const Home = () => {
       </ClerkLoading>
       <ClerkLoaded>
         <div className="">
-          {/*<Hero />*/}
           <AwesomeHome />
+
           <Sponser />
+          <CarouselHome />
 
           <AboutStatistics></AboutStatistics>
+          <PricingCards />
+
           <LeaderCTA />
 
           {/*<CallToAction />*/}

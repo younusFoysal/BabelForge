@@ -1,12 +1,11 @@
-import ContactForm from "@/components/Contactus/ContactForm";
-import ContactText from "@/components/Contactus/ContactText";
-
+import ContactForm from '@/components/Contactus/ContactForm';
+import ContactText from '@/components/Contactus/ContactText';
 
 const Contactus = () => {
   return (
     <section className="container mx-auto mt-10">
       {/* Parent div */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 lg:gap-20 p-3 ">
+      <div className="grid overflow-hidden grid-cols-1 mb-10 lg:grid-cols-2 gap-0 lg:gap-20 p-3 ">
         {/* child 1 */}
         <div>
           <ContactForm />
@@ -16,8 +15,6 @@ const Contactus = () => {
           <ContactText />
         </div>
       </div>
-
-
     </section>
   );
 };
