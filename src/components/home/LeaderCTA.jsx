@@ -5,7 +5,7 @@ import aiImage from "@/image/Home/call.png";
 const LeaderCTA = () => {
   return (
     <div className="px-4">
-      <div className="max-w-[1200px] bg-black dark:bg-gray-800 rounded-2xl p-[40px] md:p-[75px] items-center mx-auto mb-[90px] grid grid-cols-1 md:grid-cols-2 gap-12 border duration-500 hover:scale-105 hover:shadow-2xl dark:border-gray-800">
+      <div className="bg-white/50 border-[#D7D6FD8C] dark:bg-white/5 backdrop-blur-lg dark:border-white/15 border-[1px] max-w-[1200px] bg-black dark:bg-gray-800 rounded-2xl p-[40px] md:p-[75px] items-center mx-auto mb-[90px] grid grid-cols-1 md:grid-cols-2 gap-12 border duration-500 hover:scale-105 hover:shadow-2xl dark:border-gray-800">
         <div className=" pr-0 md:pr-16">
           <Image
             className="max-w-[200px] mb-6"
