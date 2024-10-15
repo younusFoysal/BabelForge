@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test-team": "npx jest Team.test.jsx",
+    "test-dashboard": "npx jest Dashboard.test.jsx",
+    "test-project": "npx jest ProjectPage.test.jsx"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
@@ -39,6 +42,7 @@
     "@stripe/react-stripe-js": "^2.8.1",
     "@stripe/stripe-js": "^4.7.0",
     "@tanstack/react-query": "^5.56.2",
+    "@testing-library/user-event": "^14.5.2",
     "aos": "^2.3.4",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",

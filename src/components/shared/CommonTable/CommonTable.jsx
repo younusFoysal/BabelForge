@@ -41,7 +41,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
     // console.log("path: ", path);
 
     const handleFavorite = (data) => {
-        console.log(data);
+        //console.log(data);
         axiosCommon.patch(`project/projects/update/${data._id}`, { favorite: !data.favorite })
             .then(res => {
                 // console.log(res);

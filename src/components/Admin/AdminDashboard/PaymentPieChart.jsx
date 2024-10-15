@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 export const description = 'An interactive piee chart';
 
 const PaymentPieChart = ({ trans, isLoading }) => {
+  console.log(trans)
   const standardTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Standard'), [trans])?.reduce(
     (sum, item) => sum + Number(item.amount),
     0
@@ -22,7 +23,7 @@ const PaymentPieChart = ({ trans, isLoading }) => {
   const transData = [
     { pakage: 'Standard', amount: standardTotal, fill: 'var(--color-Standard)' },
     { pakage: 'Premium', amount: premiumTotal, fill: 'var(--color-Premium)' },
-    { pakage: 'Basic', amount: 100, fill: 'var(--color-Basic)' },
+    { pakage: 'Basic', amount: 0, fill: 'var(--color-Basic)' },
   ];
 
   const Initalpakage = ['Standard', 'Premium', 'Basic'];

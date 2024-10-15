@@ -55,7 +55,7 @@ const AdminPackages = ({ priceingsec }) => {
     <div>
       <div className="relative z-10 overflow-hidden rounded-sm border border-stroke bg-white p-11 shadow-default dark:border-strokedark dark:bg-boxdark">
         <div className="w-full overflow-x-auto">
-          <table className="table-auto">
+          <table className="table-auto w-full">
             {/* upper package overview */}
             <thead>
               <tr>
