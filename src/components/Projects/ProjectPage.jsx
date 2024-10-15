@@ -61,7 +61,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
@@ -71,14 +71,14 @@ import CommonTable from "../shared/CommonTable/CommonTable";
 const ProjectPage = () => {
   const session = useSession();
   const userEmail = session?.data?.user?.email;
-  // console.log(userEmail);
+
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
   const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(userEmail, search, category);
 
-  // console.log(projects);
-  // console.log(isLoading);
+
+  if (isLoading) return <div>Loading...</div>;
 
   if (!projects?.length && !search?.length && !category?.length) {
     return (
@@ -146,7 +146,6 @@ const ProjectPage = () => {
         <div className="lg:w-[30%] w-full">
           <div className="flex justify-center items-center">
             <Input
-              onKeyDown={handleSearchByEnter}
               id="inputField"
               className="py-4 border-gray-500 border-[1px]"
               placeholder="Project Name"
@@ -158,6 +157,11 @@ const ProjectPage = () => {
               ></IoIosSearch>
             </span>
           </div>
+          <button
+          onClick={handleSearchByClick}
+          >
+            search
+          </button>
         </div>
 
         {/* dropdown */}

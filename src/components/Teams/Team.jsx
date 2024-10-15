@@ -14,7 +14,7 @@ import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const Team = ({id}) => {
 
-  console.log(id)
+  //console.log(id)
 
   const axiosCommon = useAxiosCommon();
   const {
@@ -32,7 +32,9 @@ const Team = ({id}) => {
     },
   });
 
-  console.log("Team Single:",team);
+  if (isError) return <div>Failed to load team data.</div>;
+
+  //console.log("Team Single:",team);
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
