@@ -11,7 +11,7 @@ const HeroBox = ({ data, handleChanged }) => {
   };
 
   // This will log the updated state
-  useEffect(() => {}, [selected]);
+  useEffect(() => { }, [selected]);
 
   return (
     <div
@@ -25,9 +25,8 @@ const HeroBox = ({ data, handleChanged }) => {
         checked={selected} // lowercase 'checked'
       />
       <div
-        className={`group-hover:text-primary transition-all duration-300 pt-2 dark:text-white ${
-          selected ? "text-primary" : ""
-        }`}
+        className={`group-hover:text-primary transition-all duration-300 pt-2 dark:text-white ${selected ? "text-primary" : ""
+          }`}
       >
         {icon}
       </div>
