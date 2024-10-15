@@ -2,13 +2,12 @@
 import { useState } from 'react';
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
-import './AboutStatics.css';
 
 const AboutStatistics = () => {
   const [scrollState, setScrollState] = useState(false);
   // bg-[#ffffff1e]backdrop-blur-[300px]
   return (
-    <div className="w-[90%] relative h-auto mx-auto dark:border-[#ffffff1a]  border-[#7777772f]  border-[1px] text-[#333] dark:text-white px-2 md:px-5 py-10 my-10 mb-20 rounded-xl">
+    <div className="w-[90%] bg-[#ffffff12] relative h-auto mx-auto dark:border-[#ffffff1a]  border-[#7777772f]  border-[1px] text-[#333] dark:text-white px-2 md:px-5 py-10 my-10 mb-20 rounded-xl">
       <div className="animated-border-box-glow"></div>
       <div className="animated-border-boxs ">
         <h1 className="text-4xl md:text-7xl mb-12 font-bold text-center">babelforge.com by the numbers</h1>
