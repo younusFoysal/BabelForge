@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Team test added">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="home button added">
+      <change afterPath="$PROJECT_DIR$/src/components/Canvas/CanvasComponent.test.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Projects/ProjectPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/ProjectPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Projects/ProjectPage.test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/ProjectPage.test.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +129,22 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
+    </task>
+    <task id="LOCAL-00003" summary="File Structure Added">
+      <option name="closed" value="true" />
+      <created>1726637469315</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726637469315</updated>
+    </task>
+    <task id="LOCAL-00004" summary="File Structure Added">
+      <option name="closed" value="true" />
+      <created>1726638543764</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726638543764</updated>
     </task>
     <task id="LOCAL-00005" summary="File Structure Done">
       <option name="closed" value="true" />
@@ -507,23 +522,7 @@
       <option name="project" value="LOCAL" />
       <updated>1728905970582</updated>
     </task>
-    <task id="LOCAL-00052" summary="Few test added">
-      <option name="closed" value="true" />
-      <created>1728969177279</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1728969177280</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Team test added">
-      <option name="closed" value="true" />
-      <created>1728974426984</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1728974426984</updated>
-    </task>
-    <option name="localTasksCounter" value="54" />
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,6 +541,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="task update function added" />
+    <MESSAGE value="packager fix" />
     <MESSAGE value="Add task Done" />
     <MESSAGE value="Server api link added" />
     <MESSAGE value="turbo added" />
@@ -565,8 +566,6 @@
     <MESSAGE value="button fix" />
     <MESSAGE value="Awesome Design Implemented" />
     <MESSAGE value="home button added" />
-    <MESSAGE value="Few test added" />
-    <MESSAGE value="Team test added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Team test added" />
+    <option name="LAST_COMMIT_MESSAGE" value="home button added" />
   </component>
 </project>

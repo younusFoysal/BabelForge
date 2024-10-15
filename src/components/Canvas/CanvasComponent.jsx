@@ -32,8 +32,9 @@ const CanvasComponent = () => {
 
                 {/* Pen Size */}
                 <div className="flex items-center space-x-2">
-                    <label className="text-sm">Pen Size</label>
+                    <label htmlFor="penSize" className="text-sm">Pen Size</label>
                     <input
+                        id="penSize"  // Added id
                         type="range"
                         min="1"
                         max="20"
@@ -47,8 +48,9 @@ const CanvasComponent = () => {
 
                 {/* Eraser Size */}
                 <div className="flex items-center space-x-2">
-                    <label className="text-sm">Eraser Size</label>
+                    <label htmlFor="eraserSize" className="text-sm">Eraser Size</label>
                     <input
+                        id="eraserSize"  // Added id
                         type="range"
                         min="5"
                         max="30"
