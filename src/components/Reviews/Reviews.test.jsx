@@ -75,7 +75,7 @@ describe('Reviews Component', () => {
 
     test('displays success toast on successful mutation', () => {
         // Simulate a successful mutation
-        mutateMock.mockImplementation((review, ) => {
+        mutateMock.mockImplementation((review,) => {
 
         });
 
@@ -92,7 +92,7 @@ describe('Reviews Component', () => {
 
     test('displays error toast on failed mutation', () => {
         // Simulate a failed mutation
-        mutateMock.mockImplementation((review, ) => {
+        mutateMock.mockImplementation((review,) => {
             console.log("Simulating error...");
         });
 
