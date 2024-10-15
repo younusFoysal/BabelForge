@@ -156,45 +156,4 @@ describe('UpdatePage Component', () => {
         // await waitFor(() => expect(toast.success).toHaveBeenCalledWith("Project update Successfully!"));
         // expect(mockRouter.push).toHaveBeenCalledWith("/dashboard/projects");
     });
-
-    // test('shows error toast on mutation error', async () => {
-    //     useQuery.mockReturnValue({
-    //         data: {
-    //             data: {
-    //                 pname: 'Existing Project Name',
-    //                 purl: 'http://existing-url.com',
-    //                 pimg: 'http://existing-image-url.com',
-    //                 pdes: 'Existing project description',
-    //                 pcategory: 'Software Engineering',
-    //             },
-    //         },
-    //         isLoading: false,
-    //         isError: false,
-    //     });
-
-    //     const mockMutate = jest.fn(() => {
-    //         throw new Error('Mutation error');
-    //     });
-
-    //     useMutation.mockReturnValue({
-    //         mutate: mockMutate,
-    //     });
-
-    //     render(<UpdatePage id="1" />);
-
-    //     // Fill in the form fields with valid data
-    //     // fireEvent.change(screen.getByLabelText(/project name/i), { target: { value: 'Updated Project Name' } });
-    //     fireEvent.change(screen.getByLabelText(/project url/i), { target: { value: 'http://updated-url.com' } });
-    //     fireEvent.change(screen.getByLabelText(/project image url/i), { target: { value: 'http://updated-image-url.com' } });
-    //     // fireEvent.change(screen.getByLabelText(/project description/i), { target: { value: 'Updated project description' } });
-
-    //     // Select a category
-    //     // fireEvent.click(screen.getByText(/software engineering/i));
-
-    //     // Submit the form
-    //     fireEvent.click(screen.getByRole('button', { name: /update/i }));
-
-    //     // Check for error toast
-    //     await waitFor(() => expect(toast.error).toHaveBeenCalledWith("Something went wrong"));
-    // });
 });
