@@ -45,6 +45,6 @@ describe("LinkDialog component", () => {
     expect(screen.getByText(/add to link/i)).toBeInTheDocument();
 
     const inputField = screen.getByPlaceholderText(/add your link/i);
-    fireEvent.change(inputField, { target: { value: "https://example.com" } });
+    await fireEvent.change(inputField, { target: { value: "https://example.com" } });
   });
 });
