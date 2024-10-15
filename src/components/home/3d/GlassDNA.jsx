@@ -6,9 +6,23 @@ import * as THREE from 'three';
 
 // First model: Right to Left
 function ModelRightToLeft({ scrollPosition, mousePosition }) {
-    const { scene, animations } = useGLTF('/pearl_electron.glb'); // First 3D object
+    const { scene, animations } = useGLTF('/babellogo.glb'); // First 3D object
     const mixer = useRef();
     const modelRef = useRef();
+
+    // Apply color and opacity to the meshes in the model
+    useEffect(() => {
+        if (scene) {
+            scene.traverse((child) => {
+                if (child.isMesh) {
+                    // Set the color and opacity for the material
+                    child.material.color = new THREE.Color(0x106AC5); // Green color
+                    child.material.transparent = true;
+                    child.material.opacity = 0.5; // Adjust opacity (0 is fully transparent, 1 is fully opaque)
+                }
+            });
+        }
+    }, [scene]);
 
     // Create animation mixer and clips
     useEffect(() => {
@@ -30,8 +44,8 @@ function ModelRightToLeft({ scrollPosition, mousePosition }) {
             modelRef.current.position.set(-positionValue, -positionValue, 0);
 
             // Scale the object based on scroll, starting smaller
-            const baseScale = 0.2;
-            const scaleValue = baseScale + scrollPosition * 2;
+            const baseScale = 0.002;
+            const scaleValue = baseScale + scrollPosition * 0.11;
             modelRef.current.scale.set(scaleValue, scaleValue, scaleValue);
 
             // Rotate the object based on mouse position
@@ -49,7 +63,21 @@ function ModelLeftToRight({ scrollPosition, mousePosition }) {
     const { scene, animations } = useGLTF('/specify_logo_animation.glb'); // Second 3D object
     const mixer = useRef();
     const modelRef = useRef();
-    const offset = 4; // Set a higher offset for Y-axis positioning
+    const offset = 4.5; // Set a higher offset for Y-axis positioning
+
+    // Apply color and opacity to the meshes in the model
+    useEffect(() => {
+        if (scene) {
+            scene.traverse((child) => {
+                if (child.isMesh) {
+                    // Set the color and opacity for the material
+                    child.material.color = new THREE.Color(0xff0000); // Red color
+                    child.material.transparent = true;
+                    child.material.opacity = 0.3; // Adjust opacity (0 is fully transparent, 1 is fully opaque)
+                }
+            });
+        }
+    }, [scene]);
 
     // Create animation mixer and clips
     useEffect(() => {
@@ -72,7 +100,7 @@ function ModelLeftToRight({ scrollPosition, mousePosition }) {
 
             // Scale the object based on scroll, starting smaller
             const baseScale = 0.2;
-            const scaleValue = baseScale + scrollPosition * 2;
+            const scaleValue = baseScale + scrollPosition * 0.5;
             modelRef.current.scale.set(scaleValue, scaleValue, scaleValue);
 
             // Rotate the object based on mouse position

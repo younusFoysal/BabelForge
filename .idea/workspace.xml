@@ -4,11 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="home button added">
-      <change afterPath="$PROJECT_DIR$/src/components/home/PricingCards.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/PricingCards.module.css" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="profile test added">
+      <change afterPath="$PROJECT_DIR$/public/90s_vaporwave_neon_grid_animated.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/a_windy_day.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/abstract_rainbow_translucent_pendant.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/backup_looking_glass_display_concept_1.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/drone_show_transitions_for_dynamic_objects.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/hologram.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/logo.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/planck_flux.glb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/quantum_cube.glb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Sponser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Sponser.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="prepod-test" />
+        <entry key="$PROJECT_DIR$" value="prepod" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,7 +78,7 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "prepod",
+    "git-widget-placeholder": "foysal",
     "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -130,6 +138,7 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
+      <workItem from="1729022639539" duration="3801000" />
     </task>
     <task id="LOCAL-00003" summary="File Structure Added">
       <option name="closed" value="true" />
