@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test-team": "npx jest Team.test.jsx"
+    "test-team": "npx jest Team.test.jsx",
+    "test-dashboard": "npx jest Dashboard.test.jsx",
+    "test-allTeam": "npx jest LinkDialog.test.jsx"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
