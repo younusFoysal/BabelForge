@@ -75,7 +75,7 @@ describe('Reviews Component', () => {
 
     test('displays success toast on successful mutation', () => {
         // Simulate a successful mutation
-        mutateMock.mockImplementation((review, ) => {
+        mutateMock.mockImplementation((review,) => {
 
         });
 

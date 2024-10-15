@@ -1,15 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Hero from '@/components/home/Hero';
 import LeaderCTA from '@/components/home/LeaderCTA';
 import Sponser from '@/components/home/Sponser';
-import CallToAction from '@/components/home/CallToAction';
-
 import AboutStatistics from '@/components/AboutUs/AboutStatistics';
 import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
 import AwesomeHome from '@/components/home/AwesomeHome';
-import CarouselHome from '@/components/home/CarouselHome';
-import PricingCards from "@/components/home/PricingCards";
+
 
 
 const Home = () => {
@@ -31,11 +27,11 @@ const Home = () => {
           <AwesomeHome />
 
           <Sponser />
-          <CarouselHome />
+          {/*<CarouselHome />*/}
 
 
           <AboutStatistics></AboutStatistics>
-          <PricingCards/>
+          {/*<PricingCards/>*/}
 
           <LeaderCTA />
 

@@ -11,7 +11,14 @@
     "test:watch": "jest --watch",
     "test-team": "npx jest Team.test.jsx",
     "test-dashboard": "npx jest Dashboard.test.jsx",
-    "test-project": "npx jest Profile.test.jsx"
+    "test-project": "npx jest ProjectPage.test.jsx",
+    "test-teaminfo": "npx jest TeamInfo.test.jsx",
+    "test-tasklist": "npx jest TaskList.test.jsx",
+    "test-footer": "npx jest Footer.test.jsx",
+    "test-contact": "npx jest ContactForm.test.jsx",
+    "test-createproject": "npx jest CreateProjectpage.test.jsx",
+    "test-updateproject": "npx jest UpdatePage.test.jsx",
+    "test-dashnav": "npx jest DashboardNavbar.test.jsx"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
@@ -57,6 +64,7 @@
     "lucide-react": "^0.445.0",
     "next": "^14.2.13",
     "next-auth": "^4.24.7",
+    "next-router-mock": "^0.9.13",
     "next-themes": "^0.3.0",
     "react": "^18",
     "react-apexcharts": "^1.4.1",
