@@ -12,8 +12,9 @@
     "test-team": "npx jest Team.test.jsx",
     "test-dashboard": "npx jest Dashboard.test.jsx",
     "test-project": "npx jest ProjectPage.test.jsx",
-    "test-pupdate": "npx jest UpdatePage.test.jsx",
-    "test-footer": "npx jest UpdatePage.test.jsx"
+   
+    "test-footer": "npx jest Footer.test.jsx",
+    "test-contact": "npx jest ContactForm.test.jsx"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
