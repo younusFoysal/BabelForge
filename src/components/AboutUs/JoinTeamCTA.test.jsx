@@ -6,6 +6,7 @@ import JoinTeamCTA from '@/components/AboutUs/JoinTeamCTA';
 
 // Mock the Button component if needed
 jest.mock('../shared/Buttons', () => {
+    // eslint-disable-next-line react/display-name
     return ({ text, className, icon }) => (
         <button className={className}>{icon}{text}</button>
     );
@@ -14,6 +15,7 @@ jest.mock('../shared/Buttons', () => {
 
 // Mock the Next.js Image component
 jest.mock('next/image', () => {
+    // eslint-disable-next-line react/display-name, @next/next/no-img-element
     return ({ src, alt }) => <img src={src} alt={alt} />;
 });
 
