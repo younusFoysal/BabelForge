@@ -38,13 +38,14 @@ const LinkDialog = ({ id, refetch, index }) => {
           </span>
         </h3>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent aria-describedby="dialog-description">
+        <p id="dialog-description">This is the description for the dialog.</p>
         <DialogTitle className="text-center">Add to Link</DialogTitle>
         <input
-          onChange={(e) => setlinks(e.target.value)}
-          type="text"
-          placeholder="add your link"
-          className="w-full rounded-sm px-2 py-3"
+            onChange={(e) => setlinks(e.target.value)}
+            type="text"
+            placeholder="add your link"
+            className="w-full rounded-sm px-2 py-3"
         />
         <DialogClose className="flex justify-start">
           <Button onClick={handlesubmit} className="px-6 rounded-md py-2">

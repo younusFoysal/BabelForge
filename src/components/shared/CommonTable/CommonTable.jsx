@@ -28,7 +28,7 @@ import toast from "react-hot-toast";
 
 
 
-const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
+const CommonTable = ({ key, theads, tdata, projectRefetch, inboxRefetch }) => {
 
     const session = useSession();
     const userEmail = session?.data?.user?.email;
@@ -78,16 +78,11 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                 </TableHeader>
 
                 <TableBody className="w-full">
-
-                    {/* table row */}
                     {tdata?.map((data, idx) => (
                         <TableRow
-                            key={data._id}
+                            key={idx}
                             className="border-y-2 border-gray-300 w-full"
                         >
-
-
-                            {/*view all project table */}
                             {
                                 path === '/dashboard/projects' && <>
 
