@@ -20,7 +20,7 @@
     "test-updateproject": "npx jest UpdatePage.test.jsx",
     "test-dashnav": "npx jest DashboardNavbar.test.jsx",
     "test-buttons": "npx jest Buttons.test.jsx",
-    "test-sponser": "npx jest Sponser.test.jsx"
+    "test-hero": "npx jest HeroDown.test.jsx"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.1",
