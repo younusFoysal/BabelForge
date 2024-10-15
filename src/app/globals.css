@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -67,6 +69,9 @@
   height: 10px;
   background: dodgerblue;
   transform-origin: 0%;
+
+  color: rgba(215, 214, 253, 0.55);
+
 }
 
 .pl,
@@ -156,3 +161,30 @@
     stroke-dashoffset: 1165;
   }
 }
+
+.float-animation {
+  transform: translatey(0px);
+  animation: float 6s ease-in-out infinite;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+/* Body BG Blur */
+
+/* body::after {
+  position: fixed;
+} */

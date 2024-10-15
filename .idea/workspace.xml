@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Awesome Design Implemented">
-      <change afterPath="$PROJECT_DIR$/filestructure.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/getFileStructure.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jest.setup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Reviews/Reviews.test.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/Home.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/Home.test.jsx" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="home button added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Reviews/Reviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/Reviews.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pricing/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pricing/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentPieChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentPieChart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/Reviews.test.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/Reviews.test.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/LinkDialog.test.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/Team.test.jsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="JSX File" />
       </list>
     </option>
@@ -34,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="prepod" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -137,22 +137,6 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
-    </task>
-    <task id="LOCAL-00001" summary="First Commit">
-      <option name="closed" value="true" />
-      <created>1726591239569</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1726591239569</updated>
-    </task>
-    <task id="LOCAL-00002" summary="File Structure Added">
-      <option name="closed" value="true" />
-      <created>1726637285307</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1726637285307</updated>
     </task>
     <task id="LOCAL-00003" summary="File Structure Added">
       <option name="closed" value="true" />
@@ -530,7 +514,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728774213294</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="home button added">
+      <option name="closed" value="true" />
+      <created>1728905904328</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1728905904328</updated>
+    </task>
+    <task id="LOCAL-00051" summary="home button added">
+      <option name="closed" value="true" />
+      <created>1728905970582</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1728905970582</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -549,7 +549,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="task add function added" />
     <MESSAGE value="task update function added" />
     <MESSAGE value="packager fix" />
     <MESSAGE value="Add task Done" />
@@ -574,6 +573,7 @@
     <MESSAGE value="version" />
     <MESSAGE value="button fix" />
     <MESSAGE value="Awesome Design Implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="Awesome Design Implemented" />
+    <MESSAGE value="home button added" />
+    <option name="LAST_COMMIT_MESSAGE" value="home button added" />
   </component>
 </project>

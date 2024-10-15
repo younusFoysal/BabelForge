@@ -117,7 +117,7 @@ describe("AllTeams Component", () => {
 
     // Use userEvent to simulate a hover over the member image
     const memberImage = screen.getAllByRole("img", { name: /member/i })[0];
-    userEvent.hover(memberImage);
+    await userEvent.hover(memberImage);
 
     // Wait for the HoverCard to display member details
     await waitFor(() => {
