@@ -8,6 +8,7 @@ import CallToAction from "@/components/home/CallToAction";
 import AboutStatistics from "@/components/AboutUs/AboutStatistics";
 import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 import AwesomeHome from "@/components/home/AwesomeHome";
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -36,8 +37,12 @@ const Home = () => {
         </div>
       </ClerkLoaded>
 
-      {/* <div className="fixed bottom-0 left-0">
-        <script src="https://cdn.userway.org/widget.js" data-account="sz3Lj3xaQ0" async></script>
+      {/* <div className="absolute bottom-0 left-0">
+        <script
+          src="https://cdn.userway.org/widget.js"
+          data-account="sz3Lj3xaQ0"
+          async
+        ></script>
       </div> */}
     </div>
   );

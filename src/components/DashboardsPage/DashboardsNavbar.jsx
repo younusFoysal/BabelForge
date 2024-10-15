@@ -7,11 +7,10 @@ import { SignedIn, UserButton } from "@clerk/nextjs";
 
 const DashboardNavbar = () => {
   const Auth = useAuth();
-  console.log(Auth);
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999] dark:bg-gray-900 dark:border-b-gray-800 ">
-      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3  ">
+    <div className="bg-white/30 backdrop-blur-lg dark:bg-[#0F172A]/60 border-b border-white/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
+      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
           <div className="flex gap-1 justify-center items-center">

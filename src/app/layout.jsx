@@ -14,6 +14,7 @@ export const metadata = {
 };
 
 import { Poppins } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
 
 // If loading a variable font, you don't need to specify the font weight
 const poppins = Poppins({
@@ -25,27 +26,35 @@ export default function RootLayout({ children }) {
   const CrispWithNoSSR = dynamic(() => import("../components/crisp"));
 
   return (
-    <html lang="en">
-      <body className={poppins.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <PaymentProvider>
-            <AuthProvider>
-              <span className="fixed blur-[200px] lg:size-[600px] size-[400px] rounded-full top-[10%] md:start-[10%] -start-[20%] bg-indigo-600/20"></span>
-              <span className="fixed blur-[200px] lg:size-[600px] size-[400px] rounded-full bottom-[10%] md:end-[10%] -end-[20%] bg-red-600/20"></span>
-              <CrispWithNoSSR />
-              <Navbar />
-              {children}
-              <Footer />
-              <Toaster position="top-center" reverseOrder={false} />
-            </AuthProvider>
-          </PaymentProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          unsafe_disableDevelopmentModeWarnings: true,
+        },
+      }}
+    >
+      <html lang="en">
+        <body className={poppins.className}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <PaymentProvider>
+              <AuthProvider>
+                <span className="fixed blur-[200px] lg:size-[600px] size-[400px] rounded-full top-[10%] md:start-[10%] -start-[20%] bg-indigo-600/20"></span>
+                <span className="fixed blur-[200px] lg:size-[600px] size-[400px] rounded-full bottom-[10%] md:end-[10%] -end-[20%] bg-red-600/20"></span>
+                <CrispWithNoSSR />
+                <Navbar />
+                {children}
+                <Footer />
+                <Toaster position="top-center" reverseOrder={false} />
+              </AuthProvider>
+            </PaymentProvider>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

@@ -62,7 +62,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white/30 backdrop-blur-lg dark:bg-gray-900/30 border-b border-white/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
+    <div className="bg-white/30 backdrop-blur-lg dark:bg-[#0F172A]/60 border-b border-white/50 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -99,11 +99,7 @@ const Navbar = () => {
                   <UserButton>
                     <UserButton.MenuItems>
                       <UserButton.Action label="signOut" />
-                      <UserButton.Link
-                        label="Dashboard"
-                        labelIcon={<LayoutDashboard size={16} />}
-                        href="/dashboard"
-                      />
+                      <UserButton.Link label="Dashboard" href="/dashboard" />
                       <UserButton.Action label="manageAccount" />
                     </UserButton.MenuItems>
                   </UserButton>
