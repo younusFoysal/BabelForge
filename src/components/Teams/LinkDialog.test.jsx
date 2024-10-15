@@ -21,7 +21,7 @@ describe("LinkDialog component", () => {
     jest.clearAllMocks();
   });
 
-  it("renders the LinkDialog component and opens the dialog on click", () => {
+  it("renders the LinkDialog component and opens the dialog on click", async () => {
     render(<LinkDialog id={id} refetch={mockRefetch} index={0} />);
 
     // Check if the dialog trigger is rendered
@@ -29,7 +29,7 @@ describe("LinkDialog component", () => {
     expect(trigger).toBeInTheDocument();
 
     // Click on the trigger to open the dialog
-    fireEvent.click(trigger);
+    await fireEvent.click(trigger);
 
     // Wait for the dialog content to be rendered
     const dialogTitle = screen.getByText(/add to link/i);
@@ -40,7 +40,7 @@ describe("LinkDialog component", () => {
     render(<LinkDialog id={id} refetch={mockRefetch} index={0} />);
 
     const trigger = screen.getByText(/links/i);
-    fireEvent.click(trigger);
+    await fireEvent.click(trigger);
 
     expect(screen.getByText(/add to link/i)).toBeInTheDocument();
 
