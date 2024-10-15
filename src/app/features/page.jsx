@@ -16,7 +16,7 @@ const Page = () => {
         <Header />
         <div className="container mx-auto">
           <h2 className="text-2xl md:text-3xl  text-center my-12">
-            Get all of your data control in one place
+            Get All of your data control in one place
           </h2>
           <DashboardCard
             row={"row"}
