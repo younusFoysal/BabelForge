@@ -47,13 +47,13 @@ const Page = () => {
           />
         </div>
         {/* Make decision section */}
-        <div className="bg-[#eceff8] dark:bg-gray-800 p-20 flex flex-col justify-center">
+        <div className="bg-white/30 border-[#D7D6FD8C] dark:bg-white/5 backdrop-blur-lg dark:border-white/15 border-[1px] p-20 flex flex-col justify-center">
           <div className="text-center space-y-5 container mx-auto">
             <h1 className="text-3xl md:text-4xl font-bold">
               Make decisions with confidence
             </h1>
             <p className="text-lg">
-              Ready to see how monday.com improves alignment across teams?
+              Ready to see how BabelForge.com improves alignment across teams?
             </p>
             <div className="flex justify-center">
               <Button text="get started" icon={<ArrowRight size={20} />} />
