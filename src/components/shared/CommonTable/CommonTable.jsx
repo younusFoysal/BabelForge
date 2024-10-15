@@ -33,7 +33,7 @@ const CommonTable = ({ key, theads, tdata, projectRefetch, inboxRefetch }) => {
     const session = useSession();
     const userEmail = session?.data?.user?.email;
 
-    //console.log(tdata);
+    // console.log(tdata);
 
     const router = useRouter();
     const path = usePathname();
