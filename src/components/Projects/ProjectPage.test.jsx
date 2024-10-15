@@ -36,12 +36,6 @@ describe('ProjectPage Component', () => {
     expect(screen.getByText(/loading/i)).toBeInTheDocument(); // Adjust to match your loading state text
   });
 
-  // Simulate a click event on the button using fireEvent
-  fireEvent.click(createProjectButton);
-
-
-  // foysal vai
-  
   test('displays no projects message', () => {
     useSession.mockReturnValue({ data: { user: { email: 'user@test.com' } } });
     useProjects.mockReturnValue({
@@ -97,68 +91,3 @@ describe('ProjectPage Component', () => {
     //});
   });
 });
-
-
-
-// describe("ProjectPage Category Select", () => {
-//   const queryClient = new QueryClient();
-
-//   it("should allow the user to select a category and update the state", () => {
-//     // Render the component
-//     render(
-//       <SessionProvider session={null}>
-//         <QueryClientProvider client={queryClient}>
-//           <ProjectPage />
-//         </QueryClientProvider>
-//       </SessionProvider>
-//     );
-
-//     // Find the select trigger (button) by role
-//     // const selectTrigger = screen.getByRole("button", { name: /Filter By Category/i });
-
-//     // Simulate clicking the dropdown to open it
-//     fireEvent.click(selectTrigger);
-
-//     // Find all category options and select "Software Engineering"
-//     const categoryOptions = screen.getAllByRole("option");
-
-//     // Find and click the "Software Engineering" option
-//     const softwareEngineeringOption = categoryOptions.find(option =>
-//       option.textContent === "Software Engineering"
-//     );
-//     fireEvent.click(softwareEngineeringOption);
-
-//     // Assert that the selected category now appears in the dropdown trigger
-//     expect(selectTrigger).toHaveTextContent("Software Engineering");
-//   });
-// });
-
-
-
-// describe("ProjectPage Input Field", () => {
-//   const queryClient = new QueryClient();
-
-//   it("should update the search state when typing in the input field", async () => {
-//     // Render the component
-//     render(
-//       <SessionProvider session={null}>
-//         <QueryClientProvider client={queryClient}>
-//           <ProjectPage />
-//         </QueryClientProvider>
-//       </SessionProvider>
-//     );
-
-//     // Find the input field by placeholder (use findBy for async rendering)
-//     const inputField = await screen.findByPlaceholderText("Project Name");
-
-//     // Assert that the input field is in the document
-//     expect(inputField).toBeInTheDocument();
-
-//     // Simulate user typing into the input field
-//     fireEvent.change(inputField, { target: { value: "Test Project" } });
-
-//     // Assert the input value is updated correctly
-//     expect(inputField.value).toBe("Test Project");
-//   });
-// });
-
