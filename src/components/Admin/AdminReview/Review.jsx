@@ -110,7 +110,7 @@ const AdminReview = () => {
 
                                     <TableCell>{review.message}</TableCell>
 
-                                    <TableCell>{review.reviewDate.slice(0, 10)}</TableCell>
+                                    <TableCell>{review?.reviewDate?.slice(0, 10)}</TableCell>
 
                                     <TableCell >{review?.reviewRating || "not given"}</TableCell>
 
