@@ -10,6 +10,8 @@ import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadi
 import AwesomeHome from '@/components/home/AwesomeHome';
 import CarouselHome from '@/components/home/CarouselHome';
 import PricingCards from "@/components/home/PricingCards";
+import GlassHome from "@/components/home/3d/GlassHome";
+import GlassDNA from "@/components/home/3d/GlassDNA";
 
 
 const Home = () => {
@@ -33,9 +35,13 @@ const Home = () => {
           <Sponser />
           <CarouselHome />
 
+          {/*<GlassHome/>*/}
+          <GlassDNA/>
+          {/*glass_display pearl_electron */}
+
 
           <AboutStatistics></AboutStatistics>
-          <PricingCards/>
+          {/*<PricingCards/>*/}
 
           <LeaderCTA />
 

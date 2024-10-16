@@ -1,6 +1,5 @@
 'use client';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import axios from 'axios';
 import { AlignJustify, ArrowRight, X } from 'lucide-react';
 import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
@@ -9,13 +8,11 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import logo from '../../image/Home/babellogo.png';
 import DashboardNavbar from '../DashboardsPage/DashboardsNavbar';
-import { ModeToggle } from '../Theme/ModeToggle';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import Button from './Buttons';
+import usericon from '@/image/icon/user.png';
 
 const Navbar = () => {
-  const [users, setUsers] = useState([]);
-
   const [menuOpen, setMenuOpen] = useState(false);
   const session = useSession();
   const user = session?.data?.user;
@@ -75,7 +72,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white/30 backdrop-blur-lg dark:bg-gray-900/30 border-b border-white/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
+    <div className="bg-white/30 backdrop-blur-lg dark:bg-transparent border-b border-white/20 dark:border-gray-800/50 fixed w-full top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -98,17 +95,13 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
-          <ModeToggle />
           {user ? (
             <div className="md:flex items-center space-x-4 mr-4">
               {user && (
                 <Popover>
                   <PopoverTrigger>
                     <Avatar>
-                      <AvatarImage
-                        src={user?.image ? user?.image : 'https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png'}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
+                      <AvatarImage src={user?.image ? user?.image : usericon} className="w-16 h-16 rounded-full object-cover" />
                       <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                   </PopoverTrigger>

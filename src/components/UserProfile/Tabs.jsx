@@ -26,14 +26,14 @@ export function TabsTransaction({teams, transactions}) {
         <TabsTrigger value="transactions">Transaction</TabsTrigger>
       </TabsList>
       <TabsContent value="teams">
-        <Card>
+        <Card className="dark:bg-gray-800 border-none">
           <CardHeader>
             <CardTitle>Your Teams</CardTitle>
             <CardDescription>
                 You have total {teams?.length} teams
             </CardDescription>
           </CardHeader>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 dark:bg-gray-800">
             {
                 teams.map(team=><div key={team} className="flex  items-center gap-4  ">
                     <p className="flex p-5  items-center gap-2 hover:bg-gray-200 w-full rounded-md dark:hover:bg-gray-900">
@@ -53,7 +53,7 @@ export function TabsTransaction({teams, transactions}) {
         </Card>
       </TabsContent>
       <TabsContent value="transactions">
-        <Card>
+        <Card className='dark:bg-gray-800'>
           <CardHeader>
             <CardTitle>Recent Transactions</CardTitle>
             <CardDescription>

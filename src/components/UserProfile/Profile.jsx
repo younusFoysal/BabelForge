@@ -159,29 +159,7 @@ const Profile = () => {
             </div>
 
             {/* teams */}
-            <h3 className="text-start text-xl uppercase my-6">Teams</h3>
-            <div className="flex  items-center gap-4">
-              <p className="flex  items-center gap-4 hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">
-                <span className="bg-gray-200 rounded-full p-1 dark:bg-gray-700">
-                  <GoPlus className="text-xl "></GoPlus>
-                </span>
-                Create A Team
-              </p>
-            </div>
-
-            <div className="flex justify-start items-center gap-4 mb-6 ml-1 mt-2 p-1 rounded-md hover:bg-gray-200 dark:hover:bg-gray-900 ">
-              <div className="flex  items-center gap-1 ">
-                <span className="bg-violet-500 rounded-full p-1">
-                  <FaUserGroup className="text-2xl text-white "></FaUserGroup>
-                </span>
-              </div>
-
-              <div>
-                <span className="gap-0">Babel</span> <br />
-                <span className="text-sm gap-0">7 members</span>
-              </div>
-            </div>
-
+            
             <Link className="mt-12  text-xs hover:underline" href={""}>
               {" "}
               View privacy policy
@@ -192,94 +170,7 @@ const Profile = () => {
         {/* card right */}
         <div className="w-full  lg:mt-60 mt-10 ">
           <TabsTransaction teams={teams} transactions={transactions} />
-          <h3 className="text-start text-lg font-semibold uppercase">
-            works with
-          </h3>
-          <div className="mt-5 flex justify-start items-center gap-6 ">
-            <div className="flex  items-center gap-1 ">
-              <p className="flex px-4 py-2 hover:bg-blue-400 items-center gap-3 bg-blue-300 w-full  rounded-full dark:bg-gray-800">
-                <span className="bg-violet-500 rounded-full p-1">
-                  <FaUserGroup className="text-xl text-white "></FaUserGroup>
-                </span>
-                Babel
-              </p>
-            </div>
-            <div className="flex  items-center gap-1 ">
-              <p className="flex px-4 py-2 hover:bg-gray-300 items-center gap-3 bg-gray-200 w-full  rounded-full dark:bg-gray-800">
-                <span className="bg-gray-500 rounded-full p-1 ">
-                  <HiUserGroup className="text-xl text-white "></HiUserGroup>
-                </span>
-                Collaboration
-              </p>
-            </div>
-          </div>
-
-          <Card className="mt-4 space-y-2  p-6 dark:bg-gray-800 dark:border-gray-800">
-            <div className="flex justify-center items-center gap-4">
-              <div className="flex px-4 py-1   items-center gap-3 hover:bg-gray-300 w-full  rounded-full dark:hover:bg-gray-900">
-                <p className="bg-violet-500 rounded-full p-1">
-                  <FaUserGroup className="text-xl text-white  "></FaUserGroup>
-                </p>
-
-                <p>
-                  Babel <span className="text-sm ml-1">7 members</span> <br />{" "}
-                  <span className="text-xs">Team</span>{" "}
-                </p>
-              </div>
-            </div>
-
-            {/* team member container  */}
-            <div className="grid grid-cols-2 gap-5 ">
-              {/* member 1 */}
-              <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
-                  <span className=" rounded-full p-1">
-                    <Avatar className="w-8 h-8">
-                      <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                      <AvatarFallback>TA</AvatarFallback>
-                    </Avatar>
-                  </span>
-                  Tofayel Ahmed
-                </p>
-              </div>
-              {/* member 1 */}
-              <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
-                  <span className=" rounded-full p-1">
-                    <Avatar className="w-8 h-8">
-                      <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
-                      <AvatarFallback>TA</AvatarFallback>
-                    </Avatar>
-                  </span>
-                  Morshidul Rahman
-                </p>
-              </div>
-              {/* member 1 */}
-              <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
-                  <span className=" rounded-full p-1">
-                    <Avatar className="w-8 h-8">
-                      <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
-                      <AvatarFallback>TA</AvatarFallback>
-                    </Avatar>
-                  </span>
-                  Foysal
-                </p>
-              </div>
-              {/* member 1 */}
-              <div className="flex  items-center gap-4  ">
-                <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
-                  <span className=" rounded-full p-1">
-                    <Avatar className="w-8 h-8">
-                      <AvatarImage src="https://i.ibb.co.com/2sv1JNc/member3.png" />
-                      <AvatarFallback>TA</AvatarFallback>
-                    </Avatar>
-                  </span>
-                  Tarek
-                </p>
-              </div>
-            </div>
-          </Card>
+         
         </div>
       </div>
       <Toaster />

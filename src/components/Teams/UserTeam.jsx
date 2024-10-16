@@ -27,7 +27,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import useProjects from '@/hooks/useProjects';
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 
 const UserTeam = () => {
   const myRef = useRef('');
@@ -80,14 +80,19 @@ const UserTeam = () => {
   return (
     <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl text-[#333]">Teams and projects</h2>
+        <h2 className="text-2xl dark:text-white text-[#333]">Teams and projects</h2>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button variant="outline">Create Team</Button>
+            <button className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md hover:scale-110 duration-500  hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md">
+              Create Team
+            </button>
           </DialogTrigger>
           <>
             <DialogOverlay className="DialogOverlay">
-              <DialogContent aria-describedby={'Dialouge'} className="max-w-[450px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]">
+              <DialogContent
+                aria-describedby={'Dialouge'}
+                className="max-w-[450px] dark:border-[#fff5] dark:bg-[#ffffff25] dark:backdrop-blur-[20px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]"
+              >
                 <DialogHeader>
                   <DialogTitle className="text-[20px]">Create a team</DialogTitle>
                 </DialogHeader>
@@ -143,14 +148,17 @@ const UserTeam = () => {
                       {/* Select Project */}
                       <div>
                         <Label htmlFor="tproject" className="text-left text-[11px] mb-[6px] block font-semibold">
-                          Select Project
+                          Select Project <span className="text-red-600">*</span>
                         </Label>
                         <select
                           {...register('tproject', { required: true })}
-                          className="w-full py-[11px] text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
+                          className="w-full py-[11px] dark:text-white dark:border-transparent dark:bg-black text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
                           name="tproject"
                           id="tproject"
                         >
+                          <option disabled selected>
+                            Select Project
+                          </option>
                           {projects &&
                             projects?.map(project => {
                               return (
@@ -193,11 +201,16 @@ const UserTeam = () => {
                       </div>
                       <div className="flex items-center gap-3 justify-end">
                         <DialogClose asChild>
-                          <Button className="ml-auto hover:bg-[#dadada] bg-[#e6e6e6] text-black">Cancel</Button>
+                          <button className="ml-auto bg-[#4444445c] dark:hover:shadow-bgColor/30 hover:bg-[#4444447f] text-white text-md  duration-500  hover:shadow-lg  font-medium px-4 py-2 rounded-md">
+                            Cancel
+                          </button>
                         </DialogClose>
-                        <Button className="" type="submit">
+                        <button
+                          className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md  duration-500  hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
+                          type="submit"
+                        >
                           Create
-                        </Button>
+                        </button>
                       </div>
                     </form>
                   </div>
@@ -212,13 +225,13 @@ const UserTeam = () => {
         <input
           onChange={() => handleSeach()}
           ref={myRef}
-          className="placeholder:text-[25px]  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-7 w-full border-b-2 focus:border-[#3575ff] hover:border-[#3575ff] focus:outline-0 focus:outline-none"
+          className="placeholder:text-[25px] dark:text-white dark:bg-transparent  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-8 w-full border-b-2 focus:border-[#3575ff] hover:border-[#3575ff] focus:outline-0 focus:outline-none"
           placeholder="Search for teams and category"
           type="text"
           name="search"
           id=""
         />
-        <IoSearch className="absolute text-[22px] text-[#777] top-1/2 left-0 -translate-y-1/2" />
+        <IoSearch className="absolute text-[28px] text-[#777] top-1/2 left-0 -translate-y-1/2" />
       </div>
       <AllTeams searchQuery={searchQuery} teams={teams} isLoading={isLoading} />
     </section>

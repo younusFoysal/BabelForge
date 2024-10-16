@@ -56,8 +56,8 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <button className="bg-black flex items-center gap-2 text-white text-[12px] font-light px-4 py-[9px] rounded-md">
-                  <CiExport className="text-[14px]" /> Export
+                <button className="bg-bgColor hover:bg-bgHoverColor flex items-center gap-2 text-white text-md hover:scale-110 duration-500 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md">
+                  <CiExport className="font-bold text-lg" /> Export
                 </button>
               </TooltipTrigger>
               <TooltipContent>
@@ -80,9 +80,9 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
       {/* Print Button */}
       <button
         onClick={window.print}
-        className="bg-black hidden items-center sm:flex gap-2 text-white text-[12px] font-light px-4 py-[9px] rounded-md"
+        className="bg-bgColor hover:bg-bgHoverColor flex items-center gap-2 text-white text-md hover:scale-110 duration-500 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
       >
-        <IoPrintOutline className="text-[14px]" /> Print
+        <IoPrintOutline className="font-bold text-lg" /> Print
       </button>
     </div>
   );
