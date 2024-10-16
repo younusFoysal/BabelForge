@@ -1,22 +1,50 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Hero from '@/components/home/Hero';
 import LeaderCTA from '@/components/home/LeaderCTA';
 import Sponser from '@/components/home/Sponser';
 import CallToAction from '@/components/home/CallToAction';
-import Carouselhome from '@/components/home/Carouselhome';
-import AboutStatistics from "@/components/AboutUs/AboutStatistics";
+
+import AboutStatistics from '@/components/AboutUs/AboutStatistics';
+import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
+import AwesomeHome from '@/components/home/AwesomeHome';
+import CarouselHome from '@/components/home/CarouselHome';
+import PricingCards from "@/components/home/PricingCards";
+
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   return (
-    <div className="">
-      <Hero />
-        <Carouselhome />
-      <Sponser />
-        <AboutStatistics></AboutStatistics>
-      <LeaderCTA />
+    <div>
+      {loading ? (
+        <HomeLoadingSpinner></HomeLoadingSpinner>
+      ) : (
+        <div className="">
+          {/*<Hero />*/}
+          <AwesomeHome />
 
-      <CallToAction />
+          <Sponser />
+          <CarouselHome />
 
+
+          <AboutStatistics></AboutStatistics>
+          <PricingCards/>
+
+          <LeaderCTA />
+
+          {/*<CallToAction />*/}
+        </div>
+      )}
+      {/* <div className="fixed bottom-0 left-0">
+        <script src="https://cdn.userway.org/widget.js" data-account="sz3Lj3xaQ0" async></script>
+      </div> */}
     </div>
   );
 };

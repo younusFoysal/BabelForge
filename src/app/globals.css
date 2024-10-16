@@ -1,9 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
-
-
 
 @layer base {
   :root {
@@ -35,25 +32,25 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
@@ -62,4 +59,121 @@
   }
 }
 
- 
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: dodgerblue;
+  transform-origin: 0%;
+}
+
+.pl,
+.pl__worm {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+.pl {
+  animation-name: bump;
+  animation-timing-function: linear;
+  width: 8em;
+  height: 8em;
+}
+.pl__ring {
+  --hue: 223;
+  stroke: hsla(var(--hue), 10%, 10%, 0.1);
+  transition: stroke 0.3s;
+}
+.pl__worm {
+  animation-name: worm;
+  animation-timing-function: cubic-bezier(0.42, 0.17, 0.75, 0.83);
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hue: 223;
+    --bg: hsl(var(--hue), 10%, 10%);
+    --fg: hsl(var(--hue), 10%, 90%);
+  }
+  .pl__ring {
+    --hue: 223;
+    stroke: hsla(var(--hue), 10%, 90%, 0.1);
+  }
+}
+
+/* Animations */
+@keyframes bump {
+  from,
+  42%,
+  46%,
+  51%,
+  55%,
+  59%,
+  63%,
+  67%,
+  71%,
+  74%,
+  78%,
+  81%,
+  85%,
+  88%,
+  92%,
+  to {
+    transform: translate(0, 0);
+  }
+  44% {
+    transform: translate(1.33%, 6.75%);
+  }
+  53% {
+    transform: translate(-16.67%, -0.54%);
+  }
+  61% {
+    transform: translate(3.66%, -2.46%);
+  }
+  69% {
+    transform: translate(-0.59%, 15.27%);
+  }
+  76% {
+    transform: translate(-1.92%, -4.68%);
+  }
+  83% {
+    transform: translate(9.38%, 0.96%);
+  }
+  90% {
+    transform: translate(-4.55%, 1.98%);
+  }
+}
+@keyframes worm {
+  from {
+    stroke-dashoffset: 10;
+  }
+  25% {
+    stroke-dashoffset: 295;
+  }
+  to {
+    stroke-dashoffset: 1165;
+  }
+}
+
+.float-animation {
+  transform: translatey(0px);
+  animation: float 6s ease-in-out infinite;
+  img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}

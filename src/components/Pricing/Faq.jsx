@@ -14,7 +14,7 @@ const Faq = () => {
   }, []);
 
   return (
-    <section className="bg-gray-100 mb-12 mt-12 dark:bg-[#2E073F] ">
+    <section className="bg-gray-100 mb-12 mt-12 dark:bg-gray-800">
       <div className=" text-gray-800 dark:text-white">
         <div className=" flex flex-col lg:justify-center  p-4 lg:w-[70%] mx-auto md:p-8">
           <h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">
@@ -95,14 +95,14 @@ const Faq = () => {
               data-aos="zoom-in-down"
             >
               <summary className="py-6 px-4 lg:text-2xl text-lg outline-none cursor-pointer focus:underline">
-                How secure is monday.com?
+                How secure is bableforge.com?
               </summary>
               <div className="px-6 text-lg opacity-80 pb-4 space-y-2">
                 <p>
                   The security of our customer’s data is our top priority. We
                   use advanced security measures to preserve the integrity and
                   privacy of your data, and adhere to strict data protection
-                  laws. monday.com is built with internationally recognized
+                  laws. bableforge.com is built with internationally recognized
                   security standards and protocols in place, such as ISO/IEC
                   27001 and ISO/IEC 27018, and we undergo annual security audits
                   and assessments.

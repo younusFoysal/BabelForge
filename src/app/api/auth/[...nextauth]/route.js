@@ -1,17 +1,19 @@
-import axios from 'axios';
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import bcrypt from 'bcrypt';
-import GoogleProvider from 'next-auth/providers/google';
+import axios from "axios";
+import NextAuth from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+import bcrypt from "bcrypt";
+import GoogleProvider from "next-auth/providers/google";
 
 const handler = NextAuth({
+
+
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: "Credentials",
       credentials: {},
       async authorize(credentials) {
         const { email, password } = credentials;
@@ -19,28 +21,26 @@ const handler = NextAuth({
           return null;
         }
 
-        // try {
-        //   const { data } = await axios.get(
-        //     `http://localhost:5000/api/user/${email}`
-        //   );
+        try {
+          const { data } = await axios.get(
+            `${process.env.NEXT_PUBLIC_API_URL}/api/user/${email}`
+          );
 
-        //   if (!data) {
-        //     return null;
-        //   }
+          if (!data) {
+            return null;
+          }
 
-        //   const isValid = bcrypt.compareSync(password, data.password);
+          const isValid = bcrypt.compareSync(password, data.password);
 
-        //   if (!isValid) {
-        //     return null;
-        //   }
+          if (!isValid) {
+            return null;
+          }
 
-        //   return data;
-        // } catch (error) {
-        //   console.error("Error in authorize:", error);
-        //   return null;
-        // }
-
-        return credentials;
+          return data;
+        } catch (error) {
+          console.error("Error in authorize:", error);
+          return null;
+        }
       },
     }),
     GoogleProvider({
@@ -51,7 +51,7 @@ const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {},
   pages: {
-    signIn: '/login', // Custom login page
+    signIn: "/login", // Custom login page
   },
 });
 

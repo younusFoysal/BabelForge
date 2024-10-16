@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="carusel fix">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="home button added">
+      <change afterPath="$PROJECT_DIR$/src/components/home/PricingCards.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/PricingCards.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="tofayel-next" />
+        <entry key="$PROJECT_DIR$" value="prepod-test" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,28 +63,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Node.js.GetFileStructure.cjs.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/SCIC/EndGame/babelforge&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Node.js.GetFileStructure.cjs.executor": "Run",
+    "Node.js.GetFileStructure.js.executor": "Run",
+    "Node.js.getFileStructure.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "prepod",
+    "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminDashboard" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -113,22 +121,15 @@
       <workItem from="1727197626262" duration="4185000" />
       <workItem from="1727202895928" duration="926000" />
       <workItem from="1727207125868" duration="1078000" />
-    </task>
-    <task id="LOCAL-00001" summary="First Commit">
-      <option name="closed" value="true" />
-      <created>1726591239569</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1726591239569</updated>
-    </task>
-    <task id="LOCAL-00002" summary="File Structure Added">
-      <option name="closed" value="true" />
-      <created>1726637285307</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1726637285307</updated>
+      <workItem from="1727381122515" duration="1218000" />
+      <workItem from="1727462132676" duration="3939000" />
+      <workItem from="1727505346900" duration="6479000" />
+      <workItem from="1728159889961" duration="313000" />
+      <workItem from="1728315956080" duration="1734000" />
+      <workItem from="1728497214945" duration="3134000" />
+      <workItem from="1728588396315" duration="614000" />
+      <workItem from="1728741754275" duration="350000" />
+      <workItem from="1728753805344" duration="12695000" />
     </task>
     <task id="LOCAL-00003" summary="File Structure Added">
       <option name="closed" value="true" />
@@ -346,7 +347,183 @@
       <option name="project" value="LOCAL" />
       <updated>1727293301761</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="update">
+      <option name="closed" value="true" />
+      <created>1727373267335</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1727373267335</updated>
+    </task>
+    <task id="LOCAL-00031" summary="api link update">
+      <option name="closed" value="true" />
+      <created>1727376540211</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1727376540211</updated>
+    </task>
+    <task id="LOCAL-00032" summary="signup fix">
+      <option name="closed" value="true" />
+      <created>1727377792900</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1727377792900</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Profile fix">
+      <option name="closed" value="true" />
+      <created>1727381084146</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1727381084146</updated>
+    </task>
+    <task id="LOCAL-00034" summary="few fix">
+      <option name="closed" value="true" />
+      <created>1727978052124</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1727978052124</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Deploy">
+      <option name="closed" value="true" />
+      <created>1727982090443</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1727982090443</updated>
+    </task>
+    <task id="LOCAL-00036" summary="loading added">
+      <option name="closed" value="true" />
+      <created>1728159747262</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1728159747262</updated>
+    </task>
+    <task id="LOCAL-00037" summary="canvas added">
+      <option name="closed" value="true" />
+      <created>1728283726466</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1728283726466</updated>
+    </task>
+    <task id="LOCAL-00038" summary="chat fix">
+      <option name="closed" value="true" />
+      <created>1728315984683</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1728315984683</updated>
+    </task>
+    <task id="LOCAL-00039" summary="admin dashboard page start">
+      <option name="closed" value="true" />
+      <created>1728456671734</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1728456671734</updated>
+    </task>
+    <task id="LOCAL-00040" summary="admin dashboard page card">
+      <option name="closed" value="true" />
+      <created>1728459422155</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1728459422155</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Admin Transactions page">
+      <option name="closed" value="true" />
+      <created>1728472954431</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1728472954431</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Admin Transactions page">
+      <option name="closed" value="true" />
+      <created>1728476861026</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1728476861026</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Admin Dash Added">
+      <option name="closed" value="true" />
+      <created>1728479314085</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1728479314085</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Admin Dash Added">
+      <option name="closed" value="true" />
+      <created>1728508191801</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1728508191801</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Admin Dash Added">
+      <option name="closed" value="true" />
+      <created>1728509629688</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1728509629688</updated>
+    </task>
+    <task id="LOCAL-00046" summary="version">
+      <option name="closed" value="true" />
+      <created>1728510590516</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1728510590516</updated>
+    </task>
+    <task id="LOCAL-00047" summary="button fix">
+      <option name="closed" value="true" />
+      <created>1728513879820</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1728513879820</updated>
+    </task>
+    <task id="LOCAL-00048" summary="button fix">
+      <option name="closed" value="true" />
+      <created>1728514015901</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1728514015901</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Awesome Design Implemented">
+      <option name="closed" value="true" />
+      <created>1728774213294</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1728774213294</updated>
+    </task>
+    <task id="LOCAL-00050" summary="home button added">
+      <option name="closed" value="true" />
+      <created>1728905904328</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1728905904328</updated>
+    </task>
+    <task id="LOCAL-00051" summary="home button added">
+      <option name="closed" value="true" />
+      <created>1728905970582</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1728905970582</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -365,24 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Swiper added" />
-    <MESSAGE value="Image path fix" />
-    <MESSAGE value="All ok" />
-    <MESSAGE value="Link added" />
-    <MESSAGE value="nav Responsive added" />
-    <MESSAGE value="Nav Logo Added" />
-    <MESSAGE value="Title &amp; Fav Icon added" />
-    <MESSAGE value="AOS Added" />
-    <MESSAGE value="Readme added" />
-    <MESSAGE value="Fav Icon Added" />
-    <MESSAGE value="Price card Updated" />
-    <MESSAGE value="React To NextJS" />
-    <MESSAGE value="task DND page Done" />
-    <MESSAGE value="DND fix" />
-    <MESSAGE value="nav fix" />
-    <MESSAGE value="done" />
-    <MESSAGE value="side bar icon added" />
-    <MESSAGE value="task add function added" />
     <MESSAGE value="task update function added" />
     <MESSAGE value="packager fix" />
     <MESSAGE value="Add task Done" />
@@ -390,6 +549,24 @@
     <MESSAGE value="turbo added" />
     <MESSAGE value="carusel added" />
     <MESSAGE value="carusel fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="carusel fix" />
+    <MESSAGE value="update" />
+    <MESSAGE value="api link update" />
+    <MESSAGE value="signup fix" />
+    <MESSAGE value="Profile fix" />
+    <MESSAGE value="few fix" />
+    <MESSAGE value="Deploy" />
+    <MESSAGE value="loading added" />
+    <MESSAGE value="canvas added" />
+    <MESSAGE value="chat fix" />
+    <MESSAGE value="admin dashboard page start" />
+    <MESSAGE value="admin dashboard page card" />
+    <MESSAGE value="Admin Transactions page" />
+    <MESSAGE value="Chart fix" />
+    <MESSAGE value="Admin Dash Added" />
+    <MESSAGE value="version" />
+    <MESSAGE value="button fix" />
+    <MESSAGE value="Awesome Design Implemented" />
+    <MESSAGE value="home button added" />
+    <option name="LAST_COMMIT_MESSAGE" value="home button added" />
   </component>
 </project>
