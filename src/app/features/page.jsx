@@ -21,6 +21,7 @@ const Page = () => {
           <DashboardCard
             subtitle={'High-level overview'}
             title={'Gain real-time insights'}
+            row={'flex-row'}
             description={
               'Easily analyze your data and simplify strategic decision-making with custom dashboards. Run reports, create summaries, track progress, and get a high-level overview of your entire organization.'
             }
@@ -37,6 +38,7 @@ const Page = () => {
           />
           <DashboardCard
             subtitle={'Resource management'}
+            row={'flex-row'}
             title={'Prioritize work smarter'}
             description={
               'Adapt to changes and prioritize workloads strategically to boost team productivity and facilitate more efficient workflows. Quickly identify what needs your attention and catch potential risks before they happen.'

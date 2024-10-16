@@ -1,21 +1,17 @@
 "use client";
 
-import { AlignJustify, ArrowRight, LayoutDashboard, X } from "lucide-react";
+import { AlignJustify, ArrowRight, X } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
 import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
-import { ModeToggle } from "../Theme/ModeToggle";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  useAuth,
-  UserButton,
-} from "@clerk/nextjs";
+
 import Button from "./Buttons";
+
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -62,7 +58,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white/30 backdrop-blur-lg dark:bg-gray-900/30 border-b border-white/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
+    <div className="bg-white/30 backdrop-blur-lg dark:bg-transparent border-b border-white/20 dark:border-gray-800/50 fixed w-full top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -91,20 +87,21 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
-          <ModeToggle />
-          {auth ? (
+          {user ? (
             <div className="md:flex items-center space-x-4 mr-4">
-              <SignedIn>
-                <div className="flex items-center gap-4">
-                  <UserButton>
-                    <UserButton.MenuItems>
-                      <UserButton.Action label="signOut" />
-                      <UserButton.Link label="Dashboard" href="/dashboard" />
-                      <UserButton.Action label="manageAccount" />
-                    </UserButton.MenuItems>
-                  </UserButton>
-                </div>
-              </SignedIn>
+              {auth && (
+                <SignedIn>
+                  <div className="flex items-center gap-4">
+                    <UserButton>
+                      <UserButton.MenuItems>
+                        <UserButton.Action label="signOut" />
+                        <UserButton.Link label="Dashboard" href="/dashboard" />
+                        <UserButton.Action label="manageAccount" />
+                      </UserButton.MenuItems>
+                    </UserButton>
+                  </div>
+                </SignedIn>
+              )}
             </div>
           ) : (
             <>
