@@ -15,6 +15,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { UpdateProfile } from "../Profile/UpdateProfile";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import { TabsTransaction } from "./Tabs";
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
@@ -33,7 +34,26 @@ const Profile = () => {
       return data;
     },
   });
-  console.log(user);
+
+  const {
+    data: teams = []
+  } = useQuery({
+    queryKey: ["teams"],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`/team/teams/my-teams/${email}`);
+      return data;
+    },
+  });
+
+  const {
+    data: transactions = []
+  } = useQuery({
+    queryKey: ["transactions"],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`/pay/payments/${email}`);
+      return data;
+    },
+  });
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -164,6 +184,7 @@ const Profile = () => {
 
         {/* card right */}
         <div className="w-full  lg:mt-60 mt-10 ">
+          <TabsTransaction teams={teams} transactions={transactions} />
           <h3 className="text-start text-lg font-semibold uppercase">
             works with
           </h3>
