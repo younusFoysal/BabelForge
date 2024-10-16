@@ -11,7 +11,13 @@ import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
 
 import Button from "./Buttons";
 
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  useAuth,
+  UserButton,
+} from "@clerk/nextjs";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -87,21 +93,19 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
-          {user ? (
+          {auth ? (
             <div className="md:flex items-center space-x-4 mr-4">
-              {auth && (
-                <SignedIn>
-                  <div className="flex items-center gap-4">
-                    <UserButton>
-                      <UserButton.MenuItems>
-                        <UserButton.Action label="signOut" />
-                        <UserButton.Link label="Dashboard" href="/dashboard" />
-                        <UserButton.Action label="manageAccount" />
-                      </UserButton.MenuItems>
-                    </UserButton>
-                  </div>
-                </SignedIn>
-              )}
+              <SignedIn>
+                <div className="flex items-center gap-4">
+                  <UserButton>
+                    <UserButton.MenuItems>
+                      <UserButton.Action label="signOut" />
+                      <UserButton.Link label="Dashboard" href="/dashboard" />
+                      <UserButton.Action label="manageAccount" />
+                    </UserButton.MenuItems>
+                  </UserButton>
+                </div>
+              </SignedIn>
             </div>
           ) : (
             <>
