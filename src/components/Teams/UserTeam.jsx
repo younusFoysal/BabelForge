@@ -27,7 +27,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import useProjects from '@/hooks/useProjects';
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 
 const UserTeam = () => {
   const myRef = useRef('');
@@ -80,7 +80,7 @@ const UserTeam = () => {
   return (
     <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl text-[#333]">Teams and projects</h2>
+        <h2 className="text-2xl dark:text-white text-[#333]">Teams and projects</h2>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button variant="outline">Create Team</Button>

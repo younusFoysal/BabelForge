@@ -1,5 +1,7 @@
 .slick-active > div > div {
   opacity: 100% !important;
+  background-color: #ffffff12;
+  border: 1px solid #ffffff25;
 }
 
 .carousel_div {
