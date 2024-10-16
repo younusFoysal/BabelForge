@@ -9,6 +9,10 @@ const NoteItem = ({ note }) => {
     const [selectedNote, setSelectedNote] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [formData, setFormData] = useState({}); // For storing Note data to edit
+
+
 
     // Open modal for viewing Note details
     const handleView = (Note) => {
@@ -21,6 +25,38 @@ const NoteItem = ({ note }) => {
         setIsModalOpen(false);
         setSelectedNote(null);
     };
+
+
+    // Open modal for editing Note
+    const handleEdit = (Note) => {
+        setFormData(Note); // Pre-fill form data with the selected Note
+        setIsEditModalOpen(true);
+    };
+
+    // Close edit modal
+    const closeEditModal = () => {
+        setIsEditModalOpen(false);
+        setFormData({});
+    };
+
+    // Handle input changes in the edit modal
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    // Handle form submit to update Note
+    const handleSubmitEdit = async () => {
+        try {
+            await handleEditNote(formData);
+            closeEditModal();
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+
+
 
 
     return (

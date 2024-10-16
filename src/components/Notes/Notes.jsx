@@ -38,8 +38,6 @@ const Notes = () => {
 
     const [notes, setNotes] = useState(dummynotes)
 
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [formData, setFormData] = useState({}); // For storing Note data to edit
     const [createNote, setCreateNote] = useState(false);
 
 
@@ -72,33 +70,7 @@ const Notes = () => {
 
 
 
-    // Open modal for editing Note
-    const handleEdit = (Note) => {
-        setFormData(Note); // Pre-fill form data with the selected Note
-        setIsEditModalOpen(true);
-    };
 
-    // Close edit modal
-    const closeEditModal = () => {
-        setIsEditModalOpen(false);
-        setFormData({});
-    };
-
-    // Handle input changes in the edit modal
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
-
-    // Handle form submit to update Note
-    const handleSubmitEdit = async () => {
-        try {
-            await handleEditNote(formData);
-            closeEditModal();
-        } catch (err) {
-            console.error(err);
-        }
-    };
 
     return (
         <div>
