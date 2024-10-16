@@ -6,9 +6,10 @@ import toast from "react-hot-toast";
 
 const Button = ({ text, className, icon }) => {
   const { userId } = useAuth();
+  const auth = !!userId;
   const router = useRouter();
   const handleClick = async () => {
-    if (!userId) {
+    if (!auth) {
       return toast.error("Login First");
     }
     router.push("/dashboard");
