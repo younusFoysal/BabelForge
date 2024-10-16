@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Swal from "sweetalert2";
 import useAxiosCommon from "@/lib/axiosCommon";
+import toast from "react-hot-toast";
 
 const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
 
@@ -25,18 +26,9 @@ const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
         const res = await axiosCommon.patch(`/team/teams/${team._id}`, updateTeam)
         console.log(res.data);
 
-        if (res.data.modifiedCount > 0) {
-            // show success popup
-
-            Swal.fire({
-                title: 'Success!',
-                text: `team info update  successfully`,
-                icon: 'success',
-                confirmButtonText: 'Cool'
-            })
-
+        if (res.data) {
+            toast.success("Update team successfully");
             refetch();
-
         }
         
 
