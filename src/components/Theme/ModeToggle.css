@@ -1,0 +1,152 @@
+/* Shrink container dimensions */
+.toggle-cont {
+  --primary: #54a8fc;
+  --light: #d9d9d9;
+  --dark: #121212;
+  --gray: #414344;
+  position: relative;
+  z-index: 10;
+  width: fit-content;
+  height: 100%;
+  border-radius: 9999px;
+}
+
+.toggle-cont .toggle-input {
+  display: none;
+}
+
+/* Label and icon styling */
+.toggle-cont .toggle-label {
+  --gap: 3px;
+  --width: 20px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  padding: 0.25rem;
+  width: calc((var(--width) + var(--gap)) * 2);
+  height: 100%;
+  background-color: var(--dark);
+  border: 1px solid #777777;
+  border-bottom: 0;
+  border-radius: 9999px;
+  box-sizing: content-box;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Background effects */
+.toggle-label::before {
+  content: '';
+  position: absolute;
+  z-index: -10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 0.4rem);
+  height: calc(100% + 0.4rem);
+  background-color: var(--gray);
+  border: 1px solid #777777;
+  border-bottom: 0;
+  border-radius: 9999px;
+  transition: all 0.3s ease-in-out;
+}
+
+.toggle-label::after {
+  content: '';
+  position: absolute;
+  z-index: -10;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 50% -100%, rgb(58, 155, 252) 0%, rgba(12, 12, 12, 1) 80%);
+  border-radius: 9999px;
+}
+
+/* Icon container */
+.toggle-cont .toggle-label .cont-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--width);
+  height: 20px;
+  background-image: radial-gradient(circle at 50% 0%, #666666 0%, var(--gray) 100%);
+  border: 1px solid #aaaaaa;
+  border-bottom: 0;
+  border-radius: 9999px;
+  box-shadow: inset 0 -0.15rem 0.15rem var(--primary), inset 0 0 0.5rem 0.75rem var(--second);
+  transition: transform 0.3s ease-in-out;
+}
+
+.cont-icon {
+  overflow: clip;
+  position: relative;
+}
+
+/* Sparkle effect */
+.cont-icon .sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--width) * 0.5px);
+  aspect-ratio: 1;
+  background-color: var(--light);
+  border-radius: 50%;
+  transform-origin: 50% 50%;
+  rotate: calc(1deg * var(--deg));
+  transform: translate(-50%, -50%);
+  animation: sparkle calc(100s / var(--duration)) linear calc(0s / var(--duration)) infinite;
+}
+
+/* Keyframes for animation */
+@keyframes sparkle {
+  to {
+    width: calc(var(--width) * 0.25px);
+    transform: translate(1500%, -50%);
+  }
+}
+
+.cont-icon .icon {
+  width: 0.8rem;
+  fill: var(--light);
+}
+
+/* Change styles when the toggle is active */
+.toggle-cont:has(.toggle-input:checked) {
+  --checked: true;
+}
+
+@container style(--checked: true) {
+  .toggle-cont .toggle-label {
+    background-color: #41434400;
+    border: 1px solid #3d6970;
+    border-bottom: 0;
+  }
+
+  .toggle-cont .toggle-label::before {
+    box-shadow: 0 1rem 2.5rem -2rem #0080ff;
+  }
+
+  .toggle-cont .toggle-label .cont-icon {
+    overflow: visible;
+    background-image: radial-gradient(circle at 50% 0%, #045ab1 0%, var(--primary) 100%);
+    border: 1px solid var(--primary);
+    border-bottom: 0;
+    transform: translateX(calc((var(--gap) * 2) + 100%)) rotate(-225deg);
+  }
+
+  .toggle-cont .toggle-label .cont-icon .sparkle {
+    z-index: -10;
+    width: calc(var(--width) * 1px);
+    background-color: #acacac;
+    animation: sparkle calc(100s / var(--duration)) linear calc(10s / var(--duration)) infinite;
+  }
+
+  @keyframes sparkle {
+    to {
+      width: calc(var(--width) * 0.75px);
+      transform: translate(3000%, -50%);
+    }
+  }
+}

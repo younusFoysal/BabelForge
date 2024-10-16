@@ -12,6 +12,7 @@ import DashboardNavbar from '../DashboardsPage/DashboardsNavbar';
 import { ModeToggle } from '../Theme/ModeToggle';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import Button from './Buttons';
+import usericon from '@/image/icon/user.png';
 
 const Navbar = () => {
   const [users, setUsers] = useState([]);
@@ -105,10 +106,7 @@ const Navbar = () => {
                 <Popover>
                   <PopoverTrigger>
                     <Avatar>
-                      <AvatarImage
-                        src={user?.image ? user?.image : 'https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png'}
-                        className="w-16 h-16 rounded-full object-cover"
-                      />
+                      <AvatarImage src={user?.image ? user?.image : usericon} className="w-16 h-16 rounded-full object-cover" />
                       <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                   </PopoverTrigger>
