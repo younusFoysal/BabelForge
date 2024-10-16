@@ -16,6 +16,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs"
 import { AvatarImage } from "@radix-ui/react-avatar"
+import Image from 'next/image'
 import { Avatar, AvatarFallback } from "@stream-io/video-react-sdk"
 
 export function TabsTransaction({teams, transactions}) {
@@ -28,22 +29,24 @@ export function TabsTransaction({teams, transactions}) {
       <TabsContent value="teams">
         <Card>
           <CardHeader>
-            <CardTitle>Total: {teams?.length} Teams</CardTitle>
+            <CardTitle>Your Teams</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you're done.
+                You have total {teams?.length} teams
             </CardDescription>
           </CardHeader>
-          <div>
+          <div className="grid grid-cols-2">
             {
                 teams.map(team=><div key={team} className="flex  items-center gap-4  ">
-                    <p className="flex  items-center gap-2 hover:bg-gray-200 w-full p-1 rounded-md dark:hover:bg-gray-900">
+                    <p className="flex p-5  items-center gap-2 hover:bg-gray-200 w-full rounded-md dark:hover:bg-gray-900">
                       <span className=" rounded-full p-1">
-                        <Avatar className="w-8 h-8">
-                          <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                          <AvatarFallback>TA</AvatarFallback>
-                        </Avatar>
+                        <div className="w-10 h-10 rounded-full">
+                            <Image className="h-10 w-10 object-cover rounded-full" src={team?.tpic} alt="" width={50} height={50} />
+                        </div>
                       </span>
-                      Tofayel Ahmed
+                   <span className="flex flex-col">
+                   <span className="font-bold text-xl"> {team?.tname}</span>
+                   <small>{team.tcategory}</small>
+                   </span>
                     </p>
                   </div>)
             }
