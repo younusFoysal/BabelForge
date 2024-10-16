@@ -28,7 +28,7 @@ const MainPageWrap = () => {
     <div className="w-full px-4 mt-9 md:mt-2">
       <div className="flex gap-9 md:gap-3 mb-10 flex-wrap justify-center md:justify-between items-center">
         <h1 className="font-bold text-3xl  text-[#333] dark:text-white">Dashboard</h1>
-        <ExportTeamInfo stats={stats} isLoading={isLoading} />
+        <ExportTeamInfo stats={stats} isLoading={isLoading}  />
       </div>
       {/* Details Card Section Start here */}
       <section>
