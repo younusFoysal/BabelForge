@@ -15,9 +15,7 @@ import { useUser } from "@clerk/nextjs";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
-  const { isLoaded, isSignedIn, user } = useUser();
 
-  console.log(user);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
