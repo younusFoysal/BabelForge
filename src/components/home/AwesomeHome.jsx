@@ -1,13 +1,25 @@
 import React from "react";
 import Image from "next/image";
 import HeroLeft from "@/components/home/HeroNew/HeroLeft";
+import homepic from "@/image/Home/light-dash.png"
+import overlay from "@/image/Home/overlay.png"
+
+
 
 const AwesomeHome = () => {
+
+
+  const bgStyle = {
+    backgroundImage: `url('/images/overlay.png')`,
+    backgroundRepeat: 'repeat',
+    opacity: 0.1,
+  };
+
   return (
     <div className="mb-14">
       <section className="relative pb-0  min-h-screen flex items-center pt-32 lg:pt-52  lg:py-36 overflow-hidden bg-white dark:bg-slate-900  w-full">
-        <div
-          className={`absolute inset-0 bg-[url('/images/overlay.png')] bg-repeat opacity-10 dark:opacity-60 `}
+        <div style={bgStyle}
+          className={`absolute inset-0 dark:opacity-60 `}
         ></div>
 
         <div className="container mx-auto relative z-1">
@@ -24,7 +36,7 @@ const AwesomeHome = () => {
                 <Image
                   width={800}
                   height={800}
-                  src="/images/light-dash.png"
+                  src={homepic}
                   className="h-full scale-90  lg:scale-[1.45] object-contain z-10"
                   alt="Dashboard Demo Image"
                 />
