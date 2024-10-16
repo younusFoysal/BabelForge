@@ -55,14 +55,14 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
         <div className="flex items-center gap-4">
           <p>Category :</p>
           <Select onValueChange={setSelectedCategory} defaultValue="All">
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] dark:bg-[#ffffff2a]">
               <SelectValue placeholder="All" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="dark:bg-[#ffffff2a] backdrop-blur-[30px] dark:border-[#ffffff5b]">
               <SelectGroup>
                 {categories?.map(item => (
                   <SelectItem key={item} value={item}>
-                    {item}
+                    <span className="capitalize">{item}</span>
                   </SelectItem>
                 ))}
               </SelectGroup>
@@ -77,12 +77,18 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
           <Card
             onClick={() => router.push(`/dashboard/teams/${_id}`)}
             key={_id}
-            className="border hover:shadow-lg cursor-pointer duration-300 rounded-2xl"
+            className="border hover:dark:bg-[#ffffff34] dark:border-[#ffffff28] dark:bg-[#ffffff14] hover:shadow-lg cursor-pointer duration-300 rounded-2xl"
           >
-            <Image className="w-[95px] mx-auto h-[95px] mt-6 rounded-full object-cover" alt={tname} width={80} height={80} src={tpic} />
+            <Image
+              className="w-[95px] mx-auto h-[95px] mt-6 rounded-full object-cover"
+              alt={tname}
+              width={80}
+              height={80}
+              src={tpic ? tpic : usericon}
+            />
             <div className="p-5">
-              <h3 className="text-center text-[18px]">{tname}</h3>
-              <p className="text-[14px] my-1 text-[#666] font-light text-center capitalize">
+              <h3 className="text-center text-[18px] capitalize">{tname}</h3>
+              <p className="text-[14px] dark:text-white my-1 text-[#666] font-light text-center capitalize">
                 Leader: {users?.find(user => user.email === tleader)?.name || 'Unknown'}
               </p>
               <p className="text-[14px] font-semibold mb-3 text-center capitalize">{tcategory}</p>
@@ -102,7 +108,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                           src={memberDetails?.image || usericon}
                         />
                       </HoverCardTrigger>
-                      <HoverCardContent className="gap-4 h-[130px] w-[300px]">
+                      <HoverCardContent className="gap-4 backdrop-blur-[30px] bg-[#ffffff30] h-[130px] w-[300px]">
                         <div className="flex items-center gap-4">
                           <Image
                             className="w-16 h-16 border-[#2f69fd] border-4 object-cover rounded-full"
