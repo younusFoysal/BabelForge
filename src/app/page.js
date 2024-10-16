@@ -9,9 +9,13 @@ import AwesomeHome from "@/components/home/AwesomeHome";
 import CarouselHome from "@/components/home/CarouselHome";
 import PricingCards from "@/components/home/PricingCards";
 
+import { useUser } from "@clerk/nextjs";
+
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  const { isLoaded, isSignedIn, user } = useUser();
 
+  console.log(user);
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
