@@ -12,7 +12,7 @@ import LinkDialog from "./LinkDialog";
 import LinkBox from "./LinkBox";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
-const Team = ({id}) => {
+const Team = ({ id }) => {
 
   console.log(id)
 
@@ -32,7 +32,7 @@ const Team = ({id}) => {
     },
   });
 
-  console.log("Team Single:",team);
+  console.log("Team Single:", team);
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -50,7 +50,7 @@ const Team = ({id}) => {
           <div className="space-y-5 py-10">
             <div className="flex items-center gap-2">
               <span className="text-3xl font-semibold">Team:</span>
-              <h3 className="text-3xl font-semibold">{ team?.tname }</h3>
+              <h3 className="text-3xl font-semibold">{team?.tname}</h3>
             </div>
             <div className="flex justify-between item-center gap-2 text-center dark:bg-gray-800">
               <TeamDialog id={_id} refetch={refetch} />
