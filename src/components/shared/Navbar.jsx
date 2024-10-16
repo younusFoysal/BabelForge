@@ -99,7 +99,6 @@ const Navbar = () => {
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
-          <ModeToggle />
           {user ? (
             <div className="md:flex items-center space-x-4 mr-4">
               {user && (
