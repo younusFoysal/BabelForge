@@ -118,7 +118,7 @@ const Notes = () => {
             </div>
 
             {/*Create Modal*/}
-            {createNote && (
+            {createNote === true ? (
                 <Modal
                     isOpen={createNote}
                     onRequestClose={handleCloseCreateNote}
@@ -170,7 +170,7 @@ const Notes = () => {
                         </div>
                     </div>
                 </Modal>
-            )}
+            ) : "" }
 
 
 
