@@ -9,6 +9,10 @@ import "./modal.css";
 import {useSession} from "next-auth/react";
 import useAxiosCommon from "@/lib/axiosCommon";
 import {IoCloseCircle} from "react-icons/io5";
+import Image from "next/image";
+import {IoMdLink} from "react-icons/io";
+import {useMutation} from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 
 const dummynotes = [
@@ -37,6 +41,9 @@ const Notes = () => {
 
 
     const [notes, setNotes] = useState(dummynotes)
+    const axiosCommon = useAxiosCommon();
+    const [loading, setLoading] = useState(false);
+
 
     const [createNote, setCreateNote] = useState(false);
 
@@ -67,6 +74,35 @@ const Notes = () => {
     const handleCloseCreateNote = () => {
         setCreateNote(false);
     }
+
+
+    // Post Note data
+    const { mutateAsync: addTaskMutation } = useMutation({
+        mutationFn: async (NoteData) => {
+            const { data } = await axiosCommon.post(`/note/notes`, NoteData);
+            return data;
+        },
+        onSuccess: () => {
+            toast.success('Note Created Successfully!');
+            refetch(); // Refetch task data
+            setLoading(false);
+        },
+        onError: (err) => {
+            toast.error(err.message);
+            setLoading(false);
+        },
+    });
+
+    // Form handler for adding task
+    const handleAddNote = async (newTask) => {
+        setLoading(true);
+        try {
+            await addTaskMutation(newTask);
+        } catch (err) {
+            toast.error(err.message);
+            setLoading(false);
+        }
+    };
 
 
 
@@ -105,17 +141,18 @@ const Notes = () => {
 
 
             <div
-                className="notes_container grid lg:grid-cols-4 md:grid-cols-3 md:mt-4 sm:grid-cols-2 xs:grid-col-1 flex-1 overflow-auto w-full gap-4 sm:mt-3 p-2 grid-cols-2">
+                className="grid lg:grid-cols-4 md:grid-cols-3 md:mt-4 sm:grid-cols-2 xs:grid-col-1 overflow-auto w-full gap-4 sm:mt-3 p-2 grid-cols-2">
                 {filteredNotes?.length === 0 ? (
                     <p className="text-white">No Notes Found!</p>
                 ) : (filteredNotes?.map((note) => (
                     <NoteItem key={note.id} note={note}/>
                 )))
 
-
                 }
 
             </div>
+
+
 
             {/*Create Modal*/}
             {createNote === true ? (
@@ -133,7 +170,8 @@ const Notes = () => {
                                 <div className="w-full max-w-sm">
                                     <div className="relative rounded-2xl bg-white p-6 shadow">
                                         <div className="mb-4 flex items-center justify-between">
-                                            <h2 className=" modal-title text-xl font-semibold text-gray-900">Create a new Note</h2>
+                                            <h2 className=" modal-title text-xl font-semibold text-gray-900">Create a
+                                                new Note</h2>
 
 
                                             <button
@@ -153,14 +191,21 @@ const Notes = () => {
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             placeholder="Note Title"
                                         />
+
+                                        <input
+                                            className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            placeholder="Note Catrgory"
+                                        />
                                         <textarea
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             rows="4"
                                             placeholder="Your Note..."></textarea>
 
                                         <button
+                                            onClick={handleAddNote}
                                             className="w-full flex justify-center mt-4 gap-2 align-middle bg-bgColor dark:hover:shadow-bgColor/30
-                                 hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-blue-200 px-4 rounded-md py-2.5 text-sm transition">Done
+                                 hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-blue-200 px-4 rounded-md py-2.5 text-sm transition">
+                                            Done
                                         </button>
                                     </div>
                                 </div>
@@ -170,13 +215,7 @@ const Notes = () => {
                         </div>
                     </div>
                 </Modal>
-            ) : "" }
-
-
-
-
-
-
+            ) : ""}
 
 
         </div>
