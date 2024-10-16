@@ -1,12 +1,16 @@
-'use client';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import logo from '@/image/Home/babellogo.png';
-import { signOut, useSession } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { ModeToggle } from '../Theme/ModeToggle';
+"use client";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import logo from "@/image/Home/babellogo.png";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { ModeToggle } from "../Theme/ModeToggle";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const session = useSession();
@@ -15,30 +19,30 @@ const DashboardNavbar = () => {
 
   const NavbarItems = [
     {
-      title: 'Project',
-      href: '/dashboard/projects',
+      title: "Project",
+      href: "/dashboard/projects",
     },
     {
-      title: 'Teams',
-      href: '/dashboard/teams',
+      title: "Teams",
+      href: "/dashboard/teams",
     },
     {
-      title: 'Group Chat',
-      href: '/dashboard/chat',
+      title: "Group Chat",
+      href: "/dashboard/chat",
     },
     {
-      title: 'Dashboard',
-      href: '/dashboard',
+      title: "Dashboard",
+      href: "/dashboard",
     },
     {
-      title: 'Review',
-      href: '/dashboard/review',
+      title: "Review",
+      href: "/dashboard/review",
     },
   ];
 
   return (
-    <div className="bg-white sticky top-0 right-0 border-b-2 border-b-gray-50 z-[999] dark:bg-gray-900 dark:border-b-gray-800 ">
-      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-3  ">
+    <div className="bg-white/30 backdrop-blur-lg dark:bg-[#0F172A]/60 border-b border-white/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
+      <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
           <div className="flex gap-1 justify-center items-center">
@@ -50,9 +54,15 @@ const DashboardNavbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex">
           <ul className="flex space-x-6 items-center justify-center">
-            {NavbarItems.map(nav => (
+            {NavbarItems.map((nav) => (
               <Link href={nav.href} key={nav.href}>
-                <li className={`hover:text-blue-500 ${pathname === nav.href ? 'text-blue-500 font-semibold' : ''}`}>{nav.title}</li>
+                <li
+                  className={`hover:text-blue-500 ${
+                    pathname === nav.href ? "text-blue-500 font-semibold" : ""
+                  }`}
+                >
+                  {nav.title}
+                </li>
               </Link>
             ))}
           </ul>
@@ -66,7 +76,11 @@ const DashboardNavbar = () => {
               <PopoverTrigger>
                 <Avatar>
                   <AvatarImage
-                    src={user?.image ? user?.image : 'https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png'}
+                    src={
+                      user?.image
+                        ? user?.image
+                        : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                    }
                     className="w-16 h-16 rounded-full object-cover"
                   />
                   <AvatarFallback>CN</AvatarFallback>
