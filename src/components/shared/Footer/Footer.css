@@ -1,10 +1,23 @@
 footer a:hover {
-    color: #5151d5;
-    text-decoration: underline;
+  color: #5151d5;
+  text-decoration: underline;
 }
 
 .dark footer a:hover {
-    color: #ffdd57; 
-    text-decoration: underline;
+  color: #ffdd57;
+  text-decoration: underline;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
   }
-  
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.acess-btn {
+  animation: rotate 3s linear infinite !important;
+}
