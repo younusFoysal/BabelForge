@@ -18,6 +18,7 @@ import {
   useAuth,
   UserButton,
 } from "@clerk/nextjs";
+import {MdDashboard} from "react-icons/md";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -91,6 +92,8 @@ const Navbar = () => {
           </ul>
         </nav>
 
+
+
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
           {auth ? (
@@ -100,7 +103,7 @@ const Navbar = () => {
                   <UserButton>
                     <UserButton.MenuItems>
                       <UserButton.Action label="signOut" />
-                      <UserButton.Link label="Dashboard" href="/dashboard" />
+                      <UserButton.Link label="Dashboard" href="/dashboard"  labelIcon={<MdDashboard size={15} />}/>
                       <UserButton.Action label="manageAccount" />
                     </UserButton.MenuItems>
                   </UserButton>
