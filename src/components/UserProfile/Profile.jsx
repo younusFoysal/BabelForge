@@ -28,32 +28,39 @@ const Profile = () => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["user-profile"],
+    queryKey: ["user-profile", email],
     queryFn: async () => {
+      if (!email) return [];
       const { data } = await axiosCommon.get(`/api/user/${email}`);
       return data;
-    },
+    }
   });
 
   const {
     data: teams = []
   } = useQuery({
-    queryKey: ["teams"],
+    queryKey: ["userteams", email],
     queryFn: async () => {
+      if (!email) return [];
       const { data } = await axiosCommon.get(`/team/teams/my-teams/${email}`);
       return data;
     },
+    enabled: !!email, 
   });
 
   const {
-    data: transactions = []
+    data: transactions = [],
+    isLoading: isTransactionsLoading,
+    refetch: refetchTransactions,
   } = useQuery({
-    queryKey: ["transactions"],
+    queryKey: ["usertransactions", email],
     queryFn: async () => {
+      if (!email) return [];
       const { data } = await axiosCommon.get(`/pay/payments/${email}`);
       return data;
     },
-  });
+    enabled: !!email, 
+  }); 
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 

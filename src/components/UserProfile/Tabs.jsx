@@ -15,9 +15,8 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
-import { AvatarImage } from "@radix-ui/react-avatar"
 import Image from 'next/image'
-import { Avatar, AvatarFallback } from "@stream-io/video-react-sdk"
+import UserTransaction from "./UserTransaction"
 
 export function TabsTransaction({teams, transactions}) {
   return (
@@ -56,24 +55,14 @@ export function TabsTransaction({teams, transactions}) {
       <TabsContent value="transactions">
         <Card>
           <CardHeader>
-            <CardTitle>Password</CardTitle>
+            <CardTitle>Recent Transactions</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you'll be logged out.
+                You have total {transactions?.length} transactions
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
+         
+         <UserTransaction transactions={transactions} />
+          
         </Card>
       </TabsContent>
     </Tabs>
