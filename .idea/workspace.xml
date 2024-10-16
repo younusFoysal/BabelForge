@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="home button added">
-      <change afterPath="$PROJECT_DIR$/src/components/home/PricingCards.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/PricingCards.module.css" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Button fixed">
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/notes/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notes/NoteItem.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notes/Notes.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Notes/modal.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="prepod-test" />
+        <entry key="$PROJECT_DIR$" value="prepod" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,8 +73,8 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "prepod",
-    "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
+    "git-widget-placeholder": "foysal",
+    "last_opened_file_path": "D:/WebStrom Projects/SCIC/EndGame/babelforge/src/components/Notes",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -85,6 +88,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Notes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminDashboard" />

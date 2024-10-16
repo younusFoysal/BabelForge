@@ -34,6 +34,10 @@ const DashboardNavbar = () => {
       title: 'Review',
       href: '/dashboard/review',
     },
+    {
+      title: 'Notes',
+      href: '/dashboard/notes',
+    },
   ];
 
   return (
