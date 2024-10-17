@@ -117,7 +117,7 @@ const Notes = () => {
         );
     };
 
-    useEffect(handleSearch, [text]);
+    useEffect(handleSearch, [text,note]);
 
     // Create Note
     const handleOpenCreateNote = () => {
