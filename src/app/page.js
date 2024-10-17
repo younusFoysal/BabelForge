@@ -8,8 +8,6 @@ import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadi
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
-import UserManual from "@/components/home/UserManual";
-
 const Home = () => {
   const [loading, setLoading] = useState(true);
 
@@ -36,7 +34,6 @@ const Home = () => {
 
           <AboutStatistics></AboutStatistics>
           {/*<PricingCards/>*/}
-          <UserManual />
 
           <LeaderCTA />
 
