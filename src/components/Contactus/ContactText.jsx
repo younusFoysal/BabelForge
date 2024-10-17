@@ -14,12 +14,12 @@ const ContactText = () => {
   }, []);
 
   return (
-    <div className="mt-5 lg:mt-0" data-aos="slide-left">
+    <div className="mt-5 text-white lg:mt-0" data-aos="slide-left">
       <h2 className="text-3xl font-semibold text-center mb-12">
         Align, collaborate, and gain visibility into your work in one connected space
       </h2>
       <div className="flex py-6 gap-5">
-        <div className="flex flex-col items-center justify-center text-center border-black dark:border-white border-r-2">
+        <div className="flex flex-col items-center justify-center text-center border-white border-r-2">
           <Earth className="text-4xl" />
           <p className="w-32">
             Across <span className="font-bold">200+</span> countries
@@ -30,7 +30,7 @@ const ContactText = () => {
       </div>
 
       <div className="flex py-6 gap-5">
-        <div className="flex flex-col items-center justify-center border-black dark:border-white text-center border-r-2">
+        <div className="flex flex-col items-center justify-center border-white text-center border-r-2">
           <TrainFront className="text-4xl" />
           <p className="w-32">
             <span className="font-bold">225k+</span> paying customers
@@ -41,7 +41,7 @@ const ContactText = () => {
       </div>
 
       <div className="flex py-6 gap-5">
-        <div className="flex flex-col items-center justify-center border-black dark:border-white text-center border-r-2">
+        <div className="flex flex-col items-center justify-center border-white text-center border-r-2">
           <Activity className="text-4xl" />
           <p className="w-32">
             Serving <span className="font-bold">200+</span> industries
