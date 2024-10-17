@@ -13,6 +13,7 @@ import Image from "next/image";
 import {IoMdLink} from "react-icons/io";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import {useUser} from "@clerk/nextjs";
 
 
 const dummynotes = [
@@ -38,6 +39,9 @@ const dummynotes = [
 
 
 const Notes = () => {
+
+    const { user, isLoaded, isSignedIn} = useUser();
+    const uemail = user?.primaryEmailAddress?.emailAddress
 
 
 
@@ -156,7 +160,7 @@ const Notes = () => {
         setLoading(true);
         try {
             const newNote = {
-                email: "Untitled Task",
+                email: uemail,
 
                 title: title,
                 category: category,
