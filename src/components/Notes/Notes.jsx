@@ -184,7 +184,7 @@ const Notes = () => {
         <div>
 
             <div
-                className="flex flex-col shadow-lg w-full items-center pt-4 gap-4 rounded-xl p-4 bg-gradient-to-b from-blue-600 to-bgColor hover:shadow-lg hover:shadow-sky-200">
+                className="flex flex-col shadow-lg w-full items-center pt-4 gap-4 rounded-xl p-4 bg-gradient-to-b from-blue-600 to-bgColor hover:shadow-md hover:shadow-sky-200 duration-500">
                 <p className="text-4xl md:text-5xl font-extrabold text-white font-['Poppu']">MY Notes</p>
                 <form action="" className="max-w-[480px] w-full px-4">
                     <div className="relative">
@@ -204,7 +204,7 @@ const Notes = () => {
             <button
                 onClick={() => handleOpenCreateNote(true)}
 
-                className="flex justify-center ml-2 mt-6 gap-2 align-middle bg-bgColor shadow-md dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md hover:scale-110 duration-500 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
+                className="flex justify-center ml-2 mt-6 gap-2 align-middle bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-300 hover:shadow-md hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
             >
                 <RiStickyNoteAddLine className="self-center text-white text-lg font-extrabold" />
                 Create a Note
@@ -240,9 +240,9 @@ const Notes = () => {
 
                             <div className="flex items-center justify-center p-4">
                                 <div className="w-full max-w-sm">
-                                    <div className="relative rounded-2xl bg-white p-6 shadow">
+                                    <div className="relative rounded-2xl bg-white p-6 shadow dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
                                         <div className="mb-4 flex items-center justify-between">
-                                            <h2 className=" modal-title text-xl font-semibold text-gray-900">Create a
+                                            <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">Create a
                                                 new Note</h2>
 
 

@@ -75,21 +75,12 @@ const NoteItem = ({ note, refetch }) => {
     });
 
     const handleDelete = async (id) => {
-        const result = await Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
-        });
 
-        if (result.isConfirmed) {
-            try {
-                await deleteNoteMutation({ id });
-            } catch (err) {
-                console.error(err);
-            }
+        try {
+            await deleteNoteMutation({ id });
+            toast.success("Note Deleted!");
+        } catch (err) {
+            console.error(err);
         }
     };
 
@@ -148,14 +139,14 @@ const NoteItem = ({ note, refetch }) => {
 
             <div
                 onClick={() => handleView(note)}
-                className="w-full mr-4 pr-4 bg-blue-50/60 p-5 border border-bgColor/15 rounded-sm shadow-md hover:shadow-xl flex flex-col">
+                className="w-full mr-4 pr-4 bg-blue-50/60 p-5 border border-bgColor/15 rounded-lg shadow-md hover:shadow-xl flex flex-col duration-300 dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
                 <div className="flex gap-2 items-center">
-                    <div className="bg-gray-800 rounded-full w-2 h-2"></div>
-                    <p>News</p>
+                    <div className="bg-gray-800 rounded-full w-2 h-2 dark:bg-white/80"></div>
+                    <p>{note.category}</p>
                 </div>
                 <div className='flex-1'>
-                    <h3 className="text-xl font-bold text-gray-800 py-2">{note.title.length > 20 ? note.title.substr(0, 20) + "..." : note.title}</h3>
-                    <p className="pb-3 border-b-gray-500">
+                    <h3 className="text-xl font-bold text-gray-800 py-2 dark:text-white/80">{note.title.length > 20 ? note.title.substr(0, 20) + "..." : note.title}</h3>
+                    <p className="pb-3 border-b-gray-500 text-sm">
                         {note.details.length > 100 ? note.details.substr(0, 100) + "..." : note.details}
                     </p>
                 </div>
@@ -185,9 +176,9 @@ const NoteItem = ({ note, refetch }) => {
 
                             <div className="flex items-center justify-center p-4">
                                 <div className="w-full max-w-full">
-                                    <div className="relative rounded-2xl bg-white p-6 shadow">
+                                    <div className="relative rounded-2xl bg-white p-6 shadow dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
                                         <div className="mb-4 flex items-center justify-between">
-                                            <h2 className=" modal-title text-xl font-semibold text-gray-900">{note.title}</h2>
+                                            <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">{note.title}</h2>
 
 
                                             <button
@@ -256,9 +247,9 @@ const NoteItem = ({ note, refetch }) => {
 
                             <div className="flex items-center justify-center p-4">
                                 <div className="w-full max-w-sm">
-                                    <div className="relative rounded-2xl bg-white p-6 shadow">
+                                    <div className="relative rounded-2xl bg-white p-6 shadow dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
                                         <div className="mb-4 flex items-center justify-between">
-                                            <h2 className=" modal-title text-xl font-semibold text-gray-900">Update the
+                                            <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">Update the
                                                 Note</h2>
 
 
@@ -276,17 +267,20 @@ const NoteItem = ({ note, refetch }) => {
                                         </div>
 
                                         <form onSubmit={handleEditSubmit}>
+                                            <label className='text-sm pl-1'>Title:</label>
                                             <input
                                                 className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                 defaultValue={note?.title}
                                                 name="utitle"
                                             />
+                                            <label className='text-sm pl-1'>Category:</label>
                                             <input
                                                 className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                 defaultValue={note?.category}
                                                 name='ucategory'
 
                                             />
+                                            <label className='text-sm pl-1'>Details:</label>
                                             <textarea
                                                 className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                                 rows="4"
