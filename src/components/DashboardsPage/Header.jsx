@@ -5,11 +5,11 @@ import Button from '../shared/Buttons';
 
 const Header = () => {
   return (
-    <section className=" bg-white/50 border-[#D7D6FD8C] dark:bg-white/5 backdrop-blur-lg dark:border-white/15 border-[1px] mt-5 container mx-auto rounded-xl ">
+    <section className="   bg-white/5 backdrop-blur-lg border-white/15 border-[1px] mt-5 container mx-auto rounded-xl ">
       <div className="flex items-center flex-col container mx-auto">
-        <div className="w-[90%] md:w-[40%] flex flex-col justify-center items-center text-center pt-14">
+        <div className="w-[90%] text-white md:w-[40%] flex flex-col justify-center items-center text-center pt-14">
           <h6 className="text-blue-500">Dashboards</h6>
-          <h1 className="text-3xl md:text-4xl md:leading-[55px] leading-[40px] font-bold">
+          <h1 className="text-3xl md:text-4xl  md:leading-[55px] leading-[40px] font-bold">
             Track your team work progress with <span className="text-blue-600">dashboards</span>
           </h1>
           <p className="pt-4 pb-7 text-lg">
@@ -18,23 +18,23 @@ const Header = () => {
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             <p className="flex items-center gap-1">
-              <Check className="bg-black p-1 rounded-full" color="#fefbfb" size={16} strokeWidth={3} />
+              <Check className="bg-white p-1 rounded-full" color="#000" size={16} strokeWidth={3} />
               10+ widgets & apps
             </p>
             <p className="flex items-center gap-1">
-              <Check className="bg-black p-1 rounded-full font-bold" size={16} strokeWidth={3} color="#fefbfb" />
+              <Check className="bg-white p-1 rounded-full font-bold" size={16} strokeWidth={3} color="#000" />
               Real time Communication
             </p>
             <p className="flex items-center gap-1">
-              <Check className="bg-black p-1 rounded-full" color="#fefbfb" size={16} strokeWidth={3} />
+              <Check className="bg-white p-1 rounded-full" color="#000" size={16} strokeWidth={3} />
               High-Level overview
             </p>
             <p className="flex items-center gap-1">
-              <Check className="bg-black p-1 rounded-full" color="#fefbfb" size={16} strokeWidth={3} />
+              <Check className="bg-white p-1 rounded-full" color="#000" size={16} strokeWidth={3} />
               Advance Reporting
             </p>
             <p className="flex items-center gap-1">
-              <Check className="bg-black p-1 rounded-full" color="#fefbfb" size={16} strokeWidth={3} />
+              <Check className="bg-white p-1 rounded-full" color="#000" size={16} strokeWidth={3} />
               No code customization
             </p>
           </div>
