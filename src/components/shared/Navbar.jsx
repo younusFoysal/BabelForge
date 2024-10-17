@@ -10,8 +10,8 @@ import DashboardNavbar from '../DashboardsPage/DashboardsNavbar';
 import Button from './Buttons';
 
 import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from '@clerk/nextjs';
-import { MdDashboard } from 'react-icons/md';
 import { useTheme } from 'next-themes';
+import { MdDashboard } from 'react-icons/md';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,8 +51,8 @@ const Navbar = () => {
       href: '/contact',
     },
     {
-      title: 'Video',
-      href: '/stream',
+      title: 'Help',
+      href: '/help',
     },
   ];
 
@@ -89,6 +89,7 @@ const Navbar = () => {
                       <UserButton.Action label="signOut" />
                       <UserButton.Link label="Dashboard" href="/dashboard" labelIcon={<MdDashboard size={15} />} />
                       <UserButton.Action label="manageAccount" />
+                      <UserButton.Action label="signOut" />
                     </UserButton.MenuItems>
                   </UserButton>
                 </div>

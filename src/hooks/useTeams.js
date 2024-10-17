@@ -14,17 +14,10 @@ const UseTeams = email => {
     queryFn: async () => {
       if (email) {
         const { data } = await axiosCommon.get(`/team/teams/my-teams/${email}`);
-        console.log('email there');
-        return data;
-      } else {
-        const { data } = await axiosCommon.get(`/team/teams`);
-        console.log('email not there');
-
         return data;
       }
     },
   });
-  //console.log(teams);
 
   return [teams, isLoading, refetch, isError];
 };

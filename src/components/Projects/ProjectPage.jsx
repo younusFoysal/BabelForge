@@ -1,17 +1,10 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-import { IoIosSearch } from "react-icons/io";
+import { IoIosSearch } from 'react-icons/io';
 
 import {
   Pagination,
@@ -21,39 +14,28 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from '@/components/ui/pagination';
 
-import useProjects from "@/hooks/useProjects";
+import useProjects from '@/hooks/useProjects';
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
-import CommonTable from "../shared/CommonTable/CommonTable";
-import { useUser } from "@clerk/nextjs";
+import CommonTable from '../shared/CommonTable/CommonTable';
+import { useUser } from '@clerk/nextjs';
 
 const ProjectPage = () => {
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
 
-  // console.log(userEmail);
-
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
-  const {
-    data: projects = [],
-    isLoading,
-    refetch: projectRefetch,
-  } = useProjects(uemail, search, category);
-
-  // console.log(projects);
-  // console.log(isLoading);
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
+  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(uemail, search, category);
 
   if (!projects?.length && !search?.length && !category?.length) {
     return (
       <section className="flex flex-col justify-center items-center gap-5 text-center">
-        <h3 className="text-2xl  font-medium">
-          You have no projects yet. Start by creating your first project!
-        </h3>
+        <h3 className="text-2xl  font-medium">You have no projects yet. Start by creating your first project!</h3>
         <div>
           <Link href="/dashboard/createproject">
             <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
@@ -65,39 +47,23 @@ const ProjectPage = () => {
     );
   }
 
-  const projectCategories = [
-    "All",
-    "Software Engineering",
-    "Education",
-    "Non Profit Organization",
-    "Project Management",
-  ];
+  const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
-  const theads = [
-    "Fav",
-    "Image",
-    "Name",
-    "Type",
-    "Manager",
-    "Project URL",
-    "Start Date",
-    "End Date",
-    "More Action",
-  ];
+  const theads = ['Fav', 'Image', 'Name', 'Type', 'Manager', 'Project URL', 'Start Date', 'End Date', 'More Action'];
 
   const handleSearchByClick = () => {
-    const inputData = document.getElementById("inputField").value;
+    const inputData = document.getElementById('inputField').value;
     setSearch(inputData);
   };
 
-  const handleSearchByEnter = (e) => {
-    if (e.key === "Enter") {
-      const inputData = document.getElementById("inputField").value;
+  const handleSearchByEnter = e => {
+    if (e.key === 'Enter') {
+      const inputData = document.getElementById('inputField').value;
       setSearch(inputData);
     }
   };
 
-  const handleFilter = (value) => {
+  const handleFilter = value => {
     setCategory(value);
   };
 
@@ -127,10 +93,7 @@ const ProjectPage = () => {
               placeholder="Project Name"
             />
             <span className="translate-x-[-180%]">
-              <IoIosSearch
-                onClick={handleSearchByClick}
-                className="cursor-pointer"
-              ></IoIosSearch>
+              <IoIosSearch onClick={handleSearchByClick} className="cursor-pointer"></IoIosSearch>
             </span>
           </div>
         </div>
@@ -138,7 +101,7 @@ const ProjectPage = () => {
         {/* dropdown */}
         <div className="w-[100%]">
           <Select
-            onValueChange={(value) => {
+            onValueChange={value => {
               handleFilter(value);
             }}
           >
@@ -159,11 +122,7 @@ const ProjectPage = () => {
       </div>
 
       {/* Table content */}
-      <CommonTable
-        theads={theads}
-        tdata={projects}
-        projectRefetch={projectRefetch}
-      ></CommonTable>
+      <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>
 
       {/* pagination */}
       <div className="mt-6">
