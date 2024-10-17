@@ -1,34 +1,10 @@
-"use client";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+'use client';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-import { IoIosSearch } from "react-icons/io";
-
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-import { FaStar } from "react-icons/fa6";
-import { FaArrowDown } from "react-icons/fa6";
-import { FaRegStar } from "react-icons/fa";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { IoIosSearch } from 'react-icons/io';
 
 import {
   Pagination,
@@ -38,91 +14,56 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
+} from '@/components/ui/pagination';
 
-import { useSession } from "next-auth/react";
-import axios from "axios";
-import useProjects from "@/hooks/useProjects";
-import { Ellipsis } from "lucide-react";
+import useProjects from '@/hooks/useProjects';
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
-import CommonTable from "../shared/CommonTable/CommonTable";
-
+import CommonTable from '../shared/CommonTable/CommonTable';
+import { useUser } from '@clerk/nextjs';
 
 const ProjectPage = () => {
-  const session = useSession();
-  const userEmail = session?.data?.user?.email;
-  // console.log(userEmail);
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
 
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
-  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(userEmail, search, category);
-
-  // console.log(projects);
-  // console.log(isLoading);
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
+  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(uemail, search, category);
 
   if (!projects?.length && !search?.length && !category?.length) {
     return (
       <section className="flex flex-col justify-center items-center gap-5 text-center">
-        <h3 className="text-2xl  font-medium">
-          You have no projects yet. Start by creating your first project!
-        </h3>
+        <h3 className="text-2xl  font-medium">You have no projects yet. Start by creating your first project!</h3>
         <div>
           <Link href="/dashboard/createproject">
-            <Button className="bg-primary text-white px-4 py-2 rounded-sm">
+            <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
               Create Project
-            </Button>
+            </button>
           </Link>
         </div>
       </section>
     );
   }
 
+  const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
-
-
-  const projectCategories = [
-    "All",
-    "Software Engineering",
-    "Education",
-    "Non Profit Organization",
-    "Project Management",
-  ];
-
-  const theads = ["Fav", "Image", "Name", "Type", "Manager", "Project URL", "Start Date", "End Date", "More Action"];
+  const theads = ['Fav', 'Image', 'Name', 'Type', 'Manager', 'Project URL', 'Start Date', 'End Date', 'More Action'];
 
   const handleSearchByClick = () => {
-    const inputData = document.getElementById("inputField").value;
+    const inputData = document.getElementById('inputField').value;
     setSearch(inputData);
   };
 
-  const handleSearchByEnter = (e) => {
-    if (e.key === "Enter") {
-      const inputData = document.getElementById("inputField").value;
+  const handleSearchByEnter = e => {
+    if (e.key === 'Enter') {
+      const inputData = document.getElementById('inputField').value;
       setSearch(inputData);
     }
   };
 
-  const handleFilter = (value) => {
+  const handleFilter = value => {
     setCategory(value);
   };
 
@@ -133,9 +74,9 @@ const ProjectPage = () => {
         <h3 className="text-2xl  font-medium">Projects</h3>
         <div>
           <Link href="/dashboard/createproject">
-            <Button className="bg-primary text-white px-4 py-2 rounded-sm">
+            <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
               Create Project
-            </Button>
+            </button>
           </Link>
         </div>
       </div>
@@ -152,10 +93,7 @@ const ProjectPage = () => {
               placeholder="Project Name"
             />
             <span className="translate-x-[-180%]">
-              <IoIosSearch
-                onClick={handleSearchByClick}
-                className="cursor-pointer"
-              ></IoIosSearch>
+              <IoIosSearch onClick={handleSearchByClick} className="cursor-pointer"></IoIosSearch>
             </span>
           </div>
         </div>
@@ -163,7 +101,7 @@ const ProjectPage = () => {
         {/* dropdown */}
         <div className="w-[100%]">
           <Select
-            onValueChange={(value) => {
+            onValueChange={value => {
               handleFilter(value);
             }}
           >
@@ -182,7 +120,6 @@ const ProjectPage = () => {
           </Select>
         </div>
       </div>
-
 
       {/* Table content */}
       <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>

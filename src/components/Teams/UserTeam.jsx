@@ -1,22 +1,11 @@
 'use client';
 import AllTeams from '@/components/Teams/AllTeams';
 import UseTeams from '@/hooks/useTeams';
-import { useSession } from 'next-auth/react';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { TagsInput } from 'react-tag-input-component';
 import team from '@/image/Team/create_team.png';
@@ -28,17 +17,28 @@ import { useMutation } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import useProjects from '@/hooks/useProjects';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import { useUser } from '@clerk/nextjs';
+import { useTheme } from 'next-themes';
 
 const UserTeam = () => {
   const myRef = useRef('');
-  const session = useSession();
-  const user = session?.data?.user;
-  const [teams, isLoading, refetch] = UseTeams(user?.email);
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
   const [searchQuery, setSearchQuery] = useState('');
-  const [emails, setEmails] = useState([user?.email]);
+  const [emails, setEmails] = useState([uemail]);
+  const [teams, isLoading, refetch, isError] = UseTeams(uemail);
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = useState(false);
-  const { data: projects = [] } = useProjects(user?.email, '', '');
+  const { data: projects = [] } = useProjects(uemail, '', '');
+  const { resolvedTheme } = useTheme();
+
+  // Refetch when when the user is availble
+  useEffect(() => {
+    if (uemail) {
+      refetch();
+    }
+  }, [uemail,refetch]);
+
   const {
     register,
     handleSubmit,
@@ -71,11 +71,11 @@ const UserTeam = () => {
   // Submit Team from
   const onSubmit = data => {
     data.tmembers = emails;
-    data.tleader = user?.email;
+    data.tleader = uemail;
     mutation.mutate(data);
   };
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (isLoading && teams.length < 1) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
@@ -83,11 +83,20 @@ const UserTeam = () => {
         <h2 className="text-2xl dark:text-white text-[#333]">Teams and projects</h2>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <Button variant="outline">Create Team</Button>
+            <button
+              className={`
+                 'bg-bgColor hover:shadow-blue-200 bg-bgColor hover:shadow-lg hover:scale-110 dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor'
+                text-white text-md  duration-500  font-medium px-4 py-2 rounded-md`}
+            >
+              Create Team
+            </button>
           </DialogTrigger>
           <>
             <DialogOverlay className="DialogOverlay">
-              <DialogContent aria-describedby={'Dialouge'} className="max-w-[450px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]">
+              <DialogContent
+                aria-describedby={'Dialouge'}
+                className="max-w-[450px] dark:border-[#fff5] dark:bg-[#ffffff25] dark:backdrop-blur-[20px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]"
+              >
                 <DialogHeader>
                   <DialogTitle className="text-[20px]">Create a team</DialogTitle>
                 </DialogHeader>
@@ -105,7 +114,10 @@ const UserTeam = () => {
                           Team Name <span className="text-red-600">*</span>
                         </Label>
                         <Input
-                          {...register('tname', { required: true, minLength: 4 })}
+                          {...register('tname', {
+                            required: true,
+                            minLength: 4,
+                          })}
                           placeholder="e.g. HR Team , Design Team"
                           id="tname"
                         />
@@ -130,7 +142,10 @@ const UserTeam = () => {
                           Team Category <span className="text-red-600">*</span>
                         </Label>
                         <Input
-                          {...register('tcategory', { required: true, minLength: 3 })}
+                          {...register('tcategory', {
+                            required: true,
+                            minLength: 3,
+                          })}
                           placeholder="eg. Design , Development , Research"
                           id="tcategory"
                           className="col-span-3"
@@ -146,29 +161,33 @@ const UserTeam = () => {
                           Select Project
                         </Label>
                         <select
-                          {...register('tproject', { required: true })}
-                          className="w-full py-[11px] text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
+                          {...register('tproject')}
+                          className="w-full py-[11px] dark:text-white dark:border-transparent dark:bg-black text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
                           name="tproject"
                           id="tproject"
                         >
+                          <option disabled selected>
+                            Select Project
+                          </option>
                           {projects &&
                             projects?.map(project => {
                               return (
-                                <option className=" " key={project._id} value={project._id}>
-                                  <span className=" capitalize"> {project.pname}</span>
+                                <option key={project._id} value={project._id}>
+                                  <span className="capitalize"> {project.pname}</span>
                                 </option>
                               );
                             })}
-                          <option value=""></option>
                         </select>
-                        {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Project required</p>}
                       </div>
                       <div className="">
                         <Label htmlFor="tdes" className="text-left text-[11px] mb-[6px] block font-semibold">
                           Team Description <span className="text-red-600">*</span>
                         </Label>
                         <Textarea
-                          {...register('tdes', { required: true, minLength: 10 })}
+                          {...register('tdes', {
+                            required: true,
+                            minLength: 10,
+                          })}
                           placeholder="Tell us about your team"
                           id="tdes"
                           className="col-span-3"
@@ -180,24 +199,31 @@ const UserTeam = () => {
                         <Label htmlFor="members" className="text-left text-[11px] mb-[6px] block font-semibold">
                           Who should be in this team?
                         </Label>
-                        <TagsInput
-                          type="email"
-                          id="members"
-                          classNames="w-full"
-                          value={emails}
-                          onChange={setEmails}
-                          name="members"
-                          placeHolder="Enter emails"
-                        />
+                        <div className={resolvedTheme === 'dark' && 'parent_Tags'}>
+                          <TagsInput
+                            type="email"
+                            id="members"
+                            classNames="w-full"
+                            value={emails}
+                            onChange={setEmails}
+                            name="members"
+                            placeHolder="Enter emails"
+                          />
+                        </div>
                         <span className="text-[11px]">Press enter to add more</span>
                       </div>
                       <div className="flex items-center gap-3 justify-end">
                         <DialogClose asChild>
-                          <Button className="ml-auto hover:bg-[#dadada] bg-[#e6e6e6] text-black">Cancel</Button>
+                          <button className="ml-auto bg-[#4444445c]  hover:bg-[#4444447f] text-white text-md  duration-500  hover:shadow-lg  font-medium px-4 py-2 rounded-md">
+                            Cancel
+                          </button>
                         </DialogClose>
-                        <Button className="" type="submit">
+                        <button
+                          className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md  duration-500  hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
+                          type="submit"
+                        >
                           Create
-                        </Button>
+                        </button>
                       </div>
                     </form>
                   </div>
@@ -212,13 +238,13 @@ const UserTeam = () => {
         <input
           onChange={() => handleSeach()}
           ref={myRef}
-          className="placeholder:text-[25px]  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-7 w-full border-b-2 focus:border-[#3575ff] hover:border-[#3575ff] focus:outline-0 focus:outline-none"
+          className="placeholder:text-[25px] dark:text-white dark:bg-transparent  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-8 w-full border-b-2 focus:border-[#3575ff] hover:border-[#3575ff] focus:outline-0 focus:outline-none"
           placeholder="Search for teams and category"
           type="text"
           name="search"
           id=""
         />
-        <IoSearch className="absolute text-[22px] text-[#777] top-1/2 left-0 -translate-y-1/2" />
+        <IoSearch className="absolute text-[28px] text-[#777] top-1/2 left-0 -translate-y-1/2" />
       </div>
       <AllTeams searchQuery={searchQuery} teams={teams} isLoading={isLoading} />
     </section>

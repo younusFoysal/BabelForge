@@ -8,7 +8,7 @@ import React from 'react';
 
 const AboutUsPage = () => {
   return (
-    <div>
+    <div className="mt-[120px]">
       <AboutFirstBanner></AboutFirstBanner>
       <AboutSecondBanner></AboutSecondBanner>
       <AboutCarousel></AboutCarousel>

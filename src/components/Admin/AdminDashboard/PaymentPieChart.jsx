@@ -10,24 +10,31 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 export const description = 'An interactive piee chart';
 
 const PaymentPieChart = ({ trans, isLoading }) => {
-  const standardTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Standard'), [trans])?.reduce(
-    (sum, item) => sum + Number(item.amount),
-    0
-  );
-  const premiumTotal = React.useMemo(() => trans?.filter(item => item.pakage === 'Premium'), [trans])?.reduce(
-    (sum, item) => sum + Number(item.amount),
-    0
+  const id = 'pie-interactive';
+
+// Memoize the initial package array to avoid re-creating it on each render
+  const Initalpakage = React.useMemo(() => ['Standard', 'Premium', 'Basic'], []);
+
+// Calculate the total for Standard and Premium packages using useMemo for optimization
+  const standardTotal = React.useMemo(
+      () => trans?.filter(item => item.pakage === 'Standard').reduce((sum, item) => sum + Number(item.amount), 0),
+      [trans]
   );
 
-  const transData = [
+  const premiumTotal = React.useMemo(
+      () => trans?.filter(item => item.pakage === 'Premium').reduce((sum, item) => sum + Number(item.amount), 0),
+      [trans]
+  );
+
+// Data for the chart
+  const transData = React.useMemo(() => [
     { pakage: 'Standard', amount: standardTotal, fill: 'var(--color-Standard)' },
     { pakage: 'Premium', amount: premiumTotal, fill: 'var(--color-Premium)' },
     { pakage: 'Basic', amount: 100, fill: 'var(--color-Basic)' },
-  ];
+  ], [standardTotal, premiumTotal]);
 
-  const Initalpakage = ['Standard', 'Premium', 'Basic'];
-
-  const chartConfig = {
+// Chart configuration object
+  const chartConfig = React.useMemo(() => ({
     Standard: {
       label: 'Standard',
       color: '#06b6d4',
@@ -40,17 +47,21 @@ const PaymentPieChart = ({ trans, isLoading }) => {
       label: 'Basic',
       color: '#3b82f6',
     },
-  };
+  }), []);
 
-  const id = 'pie-interactive';
+// Manage the active package state
   const [activePakage, setactivePakage] = React.useState(Initalpakage[0]);
 
+// Calculate the active package index and filter transactions based on the active package
   const activeIndex = React.useMemo(() => Initalpakage.findIndex(item => item === activePakage), [activePakage, Initalpakage]);
+
   const activeTrans = React.useMemo(() => trans?.filter(item => item.pakage === activePakage), [trans, activePakage]);
 
+
+
   return (
-    <div className="md:col-span-3 col-span-1">
-      <Card data-chart={id} className="flex h-full flex-col">
+    <div className="md:col-span-3 col-span-1 ">
+      <Card data-chart={id} className="flex dark:bg-[#ffffff14] dark:border-[#ffffff34] h-full flex-col">
         <ChartStyle id={id} config={chartConfig} />
         <CardHeader className="flex-row items-start space-y-0 pb-0">
           <div className="grid gap-1">

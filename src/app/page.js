@@ -1,18 +1,14 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import Hero from '@/components/home/Hero';
-import LeaderCTA from '@/components/home/LeaderCTA';
-import Sponser from '@/components/home/Sponser';
-import CallToAction from '@/components/home/CallToAction';
-
-import AboutStatistics from '@/components/AboutUs/AboutStatistics';
-import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
-import AwesomeHome from '@/components/home/AwesomeHome';
-import CarouselHome from '@/components/home/CarouselHome';
-import PricingCards from "@/components/home/PricingCards";
-import GlassHome from "@/components/home/3d/GlassHome";
+"use client";
+import AboutStatistics from "@/components/AboutUs/AboutStatistics";
+import AwesomeHome from "@/components/home/AwesomeHome";
+import CarouselHome from "@/components/home/CarouselHome";
+import LeaderCTA from "@/components/home/LeaderCTA";
+import Sponser from "@/components/home/Sponser";
+import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
+import AllReviews from "@/components/Reviews/AllReviews";
 import GlassDNA from "@/components/home/3d/GlassDNA";
-
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -25,31 +21,35 @@ const Home = () => {
 
   return (
     <div>
-      {loading ? (
+      <ClerkLoading>
         <HomeLoadingSpinner></HomeLoadingSpinner>
-      ) : (
+      </ClerkLoading>
+      <ClerkLoaded>
         <div className="">
-          {/*<Hero />*/}
           <AwesomeHome />
-
           <Sponser />
           <CarouselHome />
 
           {/*<GlassHome/>*/}
-          <GlassDNA/>
+           <GlassDNA />
           {/*glass_display pearl_electron */}
-
 
           <AboutStatistics></AboutStatistics>
           {/*<PricingCards/>*/}
 
           <LeaderCTA />
+          <AllReviews />
 
           {/*<CallToAction />*/}
         </div>
-      )}
-      {/* <div className="fixed bottom-0 left-0">
-        <script src="https://cdn.userway.org/widget.js" data-account="sz3Lj3xaQ0" async></script>
+      </ClerkLoaded>
+
+      {/* <div className="absolute bottom-0 left-0">
+        <script
+          src="https://cdn.userway.org/widget.js"
+          data-account="sz3Lj3xaQ0"
+          async
+        ></script>
       </div> */}
     </div>
   );
