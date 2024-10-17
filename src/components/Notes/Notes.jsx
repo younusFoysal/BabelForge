@@ -11,7 +11,7 @@ import useAxiosCommon from "@/lib/axiosCommon";
 import {IoCloseCircle} from "react-icons/io5";
 import Image from "next/image";
 import {IoMdLink} from "react-icons/io";
-import {useMutation} from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 
@@ -40,23 +40,73 @@ const dummynotes = [
 const Notes = () => {
 
 
-    const [notes, setNotes] = useState(dummynotes)
+
     const axiosCommon = useAxiosCommon();
     const [loading, setLoading] = useState(false);
 
 
     const [createNote, setCreateNote] = useState(false);
+    const [note, setNote] = useState([]);
+    const [title, setTitle] = useState("");
+    const [category, setCategory] = useState("");
+    const [details, setDetails] = useState("");
+    const [currentDate, setCurrentDate] = useState('');
+    const [currentTime, setCurrentTime] = useState('');
+
 
 
     const [showSearch, setShowSearch] = useState(false);
     const [text, setText] = useState("");
-    const [filteredNotes, setFilteredNotes] = useState(notes);
+    const [filteredNotes, setFilteredNotes] = useState([]);
+
+    useEffect(() => {
+        const now = new Date();
+
+        // Convert to GMT+6
+        const gmt6Offset = 6 * 60 * 60 * 1000;
+        const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+        // Format date as YYYY-MM-DD
+        const year = gmt6Date.getUTCFullYear();
+        const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+
+        // Format time as HH:MM AM/PM
+        let hours = gmt6Date.getUTCHours();
+        const minutes = String(gmt6Date.getUTCMinutes()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        const formattedHours = String(hours).padStart(2, '0');
+        const formattedTime = `${formattedHours}:${minutes} ${ampm}`;
+
+        // Set the formatted date and time
+        setCurrentDate(formattedDate);
+        setCurrentTime(formattedTime);
+    }, []);
 
 
+    // Fetch tasks data
+    const { data = [], isLoading, refetch } = useQuery({
+        queryKey: ['my-notes'],
+        queryFn: async () => {
+            const { data } = await axiosCommon.get(`/note/notes`);
+            setNote(data)
+            setFilteredNotes(data)
+            return data;
+        },
+    });
+
+
+
+
+
+    console.log(filteredNotes)
 
     const handleSearch = () => {
         setFilteredNotes(
-            notes.filter((note) => {
+            note.filter((note) => {
                 if (note.title.toLowerCase().match(text.toLowerCase())) {
                     return note;
                 }
@@ -94,10 +144,26 @@ const Notes = () => {
     });
 
     // Form handler for adding task
-    const handleAddNote = async (newTask) => {
+    const handleAddNote = async () => {
+
+
+
+
+
         setLoading(true);
         try {
-            await addTaskMutation(newTask);
+            const newNote = {
+                email: "Untitled Task",
+
+                title: title,
+                category: category,
+                details: details,
+
+                ndate: currentDate,
+                ntime: currentTime
+            };
+
+            await addTaskMutation(newNote);
         } catch (err) {
             toast.error(err.message);
             setLoading(false);
@@ -188,15 +254,24 @@ const Notes = () => {
                                         </div>
 
                                         <input
+                                            type="text"
+                                            value={title}
+                                            onChange={(e) => setTitle(e.target.value)}
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             placeholder="Note Title"
                                         />
 
                                         <input
+                                            type="text"
+                                            value={category}
+                                            onChange={(e) => setCategory(e.target.value)}
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             placeholder="Note Catrgory"
                                         />
                                         <textarea
+                                            type="text"
+                                            value={details}
+                                            onChange={(e) => setDetails(e.target.value)}
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             rows="4"
                                             placeholder="Your Note..."></textarea>
