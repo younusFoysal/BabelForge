@@ -66,7 +66,7 @@ const AllReviews = () => {
                                                 height={100}
                                                 src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
                                                 className="w-12 h-12 bg-center bg-cover border rounded-full"
-                                                alt="Tim Cook"/>
+                                                alt="TiM Cook"/>
                                                 <div>
                                                     <h3 className="text-lg font-semibold text-white">Tim Cook</h3>
                                                     <p className="text-gray-500 text-md">CEO of Apple</p>
