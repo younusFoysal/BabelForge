@@ -68,7 +68,7 @@ const Checkout = () => {
                   </div>
                   <div className="my-1 ml-3 mr-6">
                     <label htmlFor="year" className="sr-only">
-                      Select expiration year
+                      Select Expiration year
                     </label>
                     <select
                       name="year"

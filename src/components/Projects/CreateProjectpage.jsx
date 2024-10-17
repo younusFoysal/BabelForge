@@ -1,16 +1,15 @@
-'use client';
+"use client";
 
-import { useSession } from 'next-auth/react';
-import React, { useEffect, useState } from 'react';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Button } from '../ui/button';
-import { Textarea } from '../ui/textarea';
-import { TagsInput } from 'react-tag-input-component';
-import useAxiosCommon from '@/lib/axiosCommon';
-import { useForm } from 'react-hook-form';
-import { useMutation } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import React, { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Button } from "../ui/button";
+import { Textarea } from "../ui/textarea";
+import { TagsInput } from "react-tag-input-component";
+import useAxiosCommon from "@/lib/axiosCommon";
+import { useForm } from "react-hook-form";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 import {
   Select,
@@ -21,6 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation"; // Correct import
+import { useUser } from "@clerk/nextjs";
 
 const projectCategories = [
   "All",
@@ -33,10 +33,9 @@ const projectCategories = [
 const CreateProjectpage = () => {
   const [currentDate, setCurrentDate] = useState("");
   const router = useRouter();
-  const session = useSession();
-  const user = session?.data?.user;
-  const useremail = session?.data?.user?.email;
-  const [emails, setEmails] = useState([useremail]);
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
+  const [emails, setEmails] = useState([uemail]);
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState("");
 
@@ -69,7 +68,7 @@ const CreateProjectpage = () => {
     onSuccess: () => {
       toast.success("Project Created Successfully!");
       reset();
-      setEmails([useremail]); // Reset emails to include the user's email only
+      setEmails([uemail]); // Reset emails to include the user's email only
       router.push("/dashboard/projects");
     },
     onError: () => {
@@ -80,15 +79,13 @@ const CreateProjectpage = () => {
   const onSubmit = (data) => {
     data.pmanager = user.email;
     data.pallmembers = emails;
-    data.pedate = "";
+    data.pedate = currentDate;
     data.psdate = currentDate;
     data.pmname = user.name;
     data.favorite = false;
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
-
-
 
   return (
     <div className="flex justify-between items-center flex-col">
@@ -104,16 +101,18 @@ const CreateProjectpage = () => {
                 Project Name <span className="text-red-600">*</span>
               </Label>
               <Input
-                {...register('pname', { required: true, minLength: 4 })}
+                {...register("pname", { required: true, minLength: 4 })}
                 placeholder="e.g. HR Team, Design Team"
-                id="pname" />
+                id="pname"
+              />
 
-              {errors.pname?.type === 'required' &&
-                <p className="text-red-600 mt-1">Project name required</p>}
+              {errors.pname?.type === "required" && (
+                <p className="text-red-600 mt-1">Project name required</p>
+              )}
 
-              {errors.pname?.type === 'minLength' &&
+              {errors.pname?.type === "minLength" && (
                 <p className="text-red-600 mt-1">Name is too short!</p>
-              }
+              )}
             </div>
 
             <div className="mb-1">
@@ -125,7 +124,7 @@ const CreateProjectpage = () => {
               </Label>
               <Input
                 type="text"
-                {...register('purl', { required: true })}
+                {...register("purl", { required: true })}
                 placeholder="Please enter your project URL"
                 id="purl"
               />
@@ -143,7 +142,7 @@ const CreateProjectpage = () => {
               </Label>
               <Input
                 type="text"
-                {...register('pimg', { required: true })}
+                {...register("pimg", { required: true })}
                 placeholder="Please enter your project image URL"
                 id="pimg"
               />

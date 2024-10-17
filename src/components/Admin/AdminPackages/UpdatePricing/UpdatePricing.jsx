@@ -66,6 +66,11 @@ const UpdatePricing = ({ pack, refetch, handlePay, priceingsec }) => {
       meeting: e.target.meeting.checked,
     };
 
+    // updatePricingCard.mutate(updatedPack)
+    console.log('testsssssssss', updatedPack);
+    
+
+  
     updatePricingCard.mutate(updatedPack);
   };
 

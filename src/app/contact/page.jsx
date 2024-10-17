@@ -3,7 +3,7 @@ import ContactText from '@/components/Contactus/ContactText';
 
 const Contactus = () => {
   return (
-    <section className="container mx-auto mt-10">
+    <section className="container mx-auto mt-[130px]">
       {/* Parent div */}
       <div className="grid overflow-hidden grid-cols-1 mb-10 lg:grid-cols-2 gap-0 lg:gap-20 p-3 ">
         {/* child 1 */}

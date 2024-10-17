@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { BsThreeDots } from "react-icons/bs";
 import { HiExclamationCircle } from "react-icons/hi";
@@ -11,12 +11,24 @@ import MemberBox from "./MemberBox";
 import LinkDialog from "./LinkDialog";
 import LinkBox from "./LinkBox";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import { Button } from "@/components/ui/button"
+import UpdateTeamModal from "./UpdateTeamModal";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> e45fc493d626332d8957ee2214b5dba9bbaab4e9
 const Team = ({ id }) => {
 
   console.log(id)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const axiosCommon = useAxiosCommon();
+
+
+
+
+
   const {
     data: team = [],
     isLoading,
@@ -33,16 +45,58 @@ const Team = ({ id }) => {
   });
 
   console.log("Team Single:", team);
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> e45fc493d626332d8957ee2214b5dba9bbaab4e9
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   const { members, _id, links } = team;
+
+   
+
+  // Open modal on button click
+  const handleUpdate = () => {
+    // console.log(id)
+    setIsModalOpen(true); 
+  };
+
+
+
+
+
 
   return (
     <div>
       <div className="h-40 w-full bg-blue-500 flex rounded-md items-center justify-center">
         <div className="text-3xl font-semibold text-white">Team Info</div>
       </div>
+
+
+     {/* Update Button */}
+     <div className="flex justify-end mt-4">
+        <Button
+          onClick={() => handleUpdate()}
+          variant="outline"
+          className="bg-primary text-white"
+        >
+          Update Team
+        </Button>
+      </div>
+
+      {/* Modal Component */}
+      {isModalOpen && (
+        <UpdateTeamModal
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
+          team={team} 
+          refetch={refetch}
+        />
+      )}
+
+
       <div className="py-20 flex lg:flex-row flex-col justify-between items-start gap-10 lg:p-0 p-4">
         {/* card left */}
         <div className="lg:w-[50%] w-full ">
@@ -129,7 +183,12 @@ const Team = ({ id }) => {
           </div>
         </div>
       </div>
-    </div>
+
+ 
+
+
+  
+    </div >
   );
 };
 
