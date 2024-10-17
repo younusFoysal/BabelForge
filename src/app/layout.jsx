@@ -1,7 +1,6 @@
 import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { ThemeProvider } from "@/components/Theme/ThemeProvider";
-
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import dynamic from "next/dynamic";
