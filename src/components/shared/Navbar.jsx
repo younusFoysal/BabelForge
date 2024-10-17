@@ -1,14 +1,12 @@
 "use client";
 
 import { AlignJustify, ArrowRight, X } from "lucide-react";
-
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
 import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
-
 import Button from "./Buttons";
 
 import {
@@ -19,12 +17,13 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { MdDashboard } from "react-icons/md";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { userId } = useAuth();
   const auth = !!userId;
-
+  const {} = useTheme();
   const pathname = usePathname();
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -65,7 +64,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="bg-white/30 backdrop-blur-lg dark:bg-transparent border-b border-white/20 dark:border-gray-800/50 fixed w-full top-0 right-0 z-[999]">
+    <div className=" backdrop-blur-lg bg-transparent border-b  border-white/10 fixed w-full top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -76,7 +75,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex">
+        <nav className="hidden text-white md:flex">
           <ul className="flex space-x-6 items-center justify-center">
             {NavbarItems.map((nav) => (
               <Link href={nav.href} key={nav.href}>
