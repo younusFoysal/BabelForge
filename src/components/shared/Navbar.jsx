@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
-import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
+
 import Button from "./Buttons";
 
 import {
@@ -129,7 +129,7 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden">
-          <button onClick={toggleMenu}>
+          <button onClick={toggleMenu} className="text-white">
             {menuOpen ? <X size={30} /> : <AlignJustify size={30} />}
           </button>
         </div>
@@ -141,14 +141,14 @@ const Navbar = () => {
           <ul className="flex flex-col space-y-4 py-4">
             {NavbarItems.map((nav) => (
               <Link href={nav.href} key={nav.href}>
-                <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
+                <li className="border-b border-gray-50 pb-3 px-6 hover:text-blue-500 text-white">
                   {nav.title}
                 </li>
               </Link>
             ))}
 
-            <Link href="/login">
-              <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
+            <Link href="/sign-in">
+              <li className="border-b border-gray-50 pb-3 px-6 hover:text-blue-500 text-white">
                 Login
               </li>
             </Link>

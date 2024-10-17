@@ -8,7 +8,6 @@ import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadi
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import AllReviews from "@/components/Reviews/AllReviews";
-import GlassDNA from "@/components/home/3d/GlassDNA";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -31,7 +30,7 @@ const Home = () => {
           <CarouselHome />
 
           {/*<GlassHome/>*/}
-           <GlassDNA />
+          {/* <GlassDNA /> */}
           {/*glass_display pearl_electron */}
 
           <AboutStatistics></AboutStatistics>
