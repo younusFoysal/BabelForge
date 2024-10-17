@@ -37,7 +37,7 @@ const Home = () => {
           {/*<PricingCards/>*/}
 
           <LeaderCTA />
-          <AllReviews/>
+          <AllReviews />
 
           {/*<CallToAction />*/}
         </div>

@@ -25,7 +25,7 @@ const MainPageWrap = () => {
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
-    <div className="w-full px-4 mt-9 md:mt-2">
+    <div className="w-full px-4  md:mt-2">
       <div className="flex gap-9 md:gap-3 mb-10 flex-wrap justify-center md:justify-between items-center">
         <h1 className="font-bold text-3xl  text-[#333] dark:text-white">
           Dashboard
