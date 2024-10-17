@@ -80,6 +80,7 @@ const CreateProjectpage = () => {
   const onSubmit = (data) => {
     data.pmanager = user.email;
     data.pallmembers = emails;
+    data.pedate = "";
     data.psdate = currentDate;
     data.pmname = user.name;
     data.favorite = false;

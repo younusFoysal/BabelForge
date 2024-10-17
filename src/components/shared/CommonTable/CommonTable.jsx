@@ -25,6 +25,7 @@ import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 import useAxiosCommon from "@/lib/axiosCommon";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 
 
@@ -32,8 +33,27 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
 
     const session = useSession();
     const userEmail = session?.data?.user?.email;
+    const [currentDate, setCurrentDate] = useState('');
 
-    console.log(tdata);
+    // useeffects
+    useEffect(() => {
+        const now = new Date();
+
+        // Convert to GMT+6
+        const gmt6Offset = 6 * 60 * 60 * 1000;
+        const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+        // Format date as YYYY-MM-DD
+        const year = gmt6Date.getUTCFullYear();
+        const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+        const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+
+        // Set the formatted date and time
+        setCurrentDate(formattedDate);
+    }, []);
+
+    // console.log(tdata);
 
     const router = useRouter();
     const path = usePathname();
@@ -41,14 +61,13 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
     // console.log("path: ", path);
 
     const handleFavorite = (data) => {
-        console.log(data);
+        // console.log(data);
         axiosCommon.patch(`project/projects/update/${data._id}`, { favorite: !data.favorite })
             .then(res => {
                 // console.log(res);
                 if (res.data.modifiedCount) {
                     // console.log(res);
                     projectRefetch();
-
                     data.favorite ? toast.success('Project removed from favorites.') : toast.success('Project added to favorites!')
 
                 }
@@ -63,6 +82,22 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                     toast.success('Message Deleted!')
                 }
             })
+    }
+
+    const handleEndProject = (id) => {
+
+        // console.log(id, currentDate);
+
+        axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
+            .then(res => {
+                // console.log(res);
+                if (res.data.modifiedCount) {
+                    // console.log(res);
+                    projectRefetch();
+                    toast.success('Project Ended.');
+                }
+            })
+
     }
 
     return (
@@ -106,13 +141,13 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                                         </p>
                                     </TableCell>
                                     <TableCell className="cursor-pointer hover:text-blue-600" onClick={() => router.push(`/dashboard/project/${data._id}`)}>
-                                        {data.pname}
+                                        {data?.pname}
                                     </TableCell>
-                                    <TableCell>{data.pcategory}</TableCell>
-                                    <TableCell>{data.pmanager}</TableCell>
-                                    <TableCell>{data.purl}</TableCell>
-                                    <TableCell>{data.psdate}</TableCell>
-                                    <TableCell>{data.pedate}</TableCell>
+                                    <TableCell>{data?.pcategory}</TableCell>
+                                    <TableCell>{data?.pmanager}</TableCell>
+                                    <TableCell>{data?.purl}</TableCell>
+                                    <TableCell>{data?.psdate}</TableCell>
+                                    <TableCell>{data?.pedate}</TableCell>
                                     <TableCell>
                                         {userEmail === data.pmanager && (
                                             <DropdownMenu>
@@ -123,9 +158,12 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                                                     <DropdownMenuItem >
                                                         <p onClick={() => router.push(`/dashboard/projects/${data._id}`)}>Update Project</p>
                                                     </DropdownMenuItem>
-                                                    <DropdownMenuItem >
-                                                        <p>End Project</p>
-                                                    </DropdownMenuItem>
+                                                    {
+                                                        !data?.pedate && <DropdownMenuItem >
+                                                            <p onClick={() => handleEndProject(data._id)}>End Project</p>
+                                                        </DropdownMenuItem>
+                                                    }
+
                                                 </DropdownMenuContent>
                                             </DropdownMenu>
                                         )}

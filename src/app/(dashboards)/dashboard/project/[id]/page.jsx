@@ -5,17 +5,38 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import React from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { IoIosLink } from "react-icons/io";
 import { space } from "postcss/lib/list";
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
+
 
 const ProjectDetails = () => {
   const axiosCommon = useAxiosCommon();
+  const router = useRouter();
   const params = useParams();
   const { id } = params;
+  const [currentDate, setCurrentDate] = useState('');
 
+  // useeffects
+  useEffect(() => {
+    const now = new Date();
+
+    // Convert to GMT+6
+    const gmt6Offset = 6 * 60 * 60 * 1000;
+    const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+    // Format date as YYYY-MM-DD
+    const year = gmt6Date.getUTCFullYear();
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // Set the formatted date and time
+    setCurrentDate(formattedDate);
+  }, []);
 
   const {
     data: project = [],
@@ -30,32 +51,64 @@ const ProjectDetails = () => {
     },
   });
 
-  if (isLoading) {
+  const {
+    data: teamsOfProject = [],
+    isLoading: teamsOfProjectLoading,
+    refetch: teamsOfProjectRefetch,
+  } = useQuery({
+    queryKey: ["teamsOfProjectss"],
+    queryFn: async () => {
+      const data = await axiosCommon.get(`team/teams/of-project/${id}`);
+      return data;
+    },
+  });
+
+
+
+  if (isLoading || teamsOfProjectLoading) {
     return <LoadingSpinner />;
   }
-  console.log(project.data);
+
+  // console.log(teamsOfProject.data);
 
   const { favorite, pallmembers, pcategory, pdes, pedate, pimg, pmanager, pmname, pname, psdate, purl, _id } = project.data;
 
+
+
+  const handleEndProject = (id) => {
+    // console.log(id);
+    // console.log(id, currentDate);
+
+    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
+      .then(res => {
+        // console.log(res);
+        if (res.data.modifiedCount) {
+          // console.log(res);
+          refetch();
+          toast.success('Project Ended.');
+        }
+      })
+  }
+
   return (
-    <section className="flex flex-col md:flex-row mt-5">
+    <section className="flex flex-col md:flex-row my-5 md:ml-2">
 
       {/* left- overview */}
-      <div className="w-full md:w-1/4 border-r">
-        <div className="w-48 h-48 mx-auto rounded-full">
+      <div className="w-[90%] mx-auto md:mx-0 md:w-1/4 border rounded-lg bg-gray-100 hover:shadow-lg duration-300 h-fit dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
+        <div className="h-48 mx-auto rounded-lg p-2">
           <Image
             src={pimg}
             width={100}
             height={100}
             alt="project_image"
-            className="rounded-full w-full h-full object-cover"
+            className="rounded-lg w-full h-full object-cover"
           />
         </div>
 
-        <div className="mt-5 space-y-2 px-3">
+        <div className="mt-5 space-y-2 px-2">
           <div>
             <h2 className="font-bold text-2xl">{pname}</h2>
-            <p className="text-gray-700">{pcategory}</p>
+            <p className="text-gray-700 dark:text-white/80">{pcategory}</p>
           </div>
           <p > <span className="font-bold">Starts at:</span> {psdate}</p>
           <p > <span className="font-bold">Ends at: </span>{pedate ? <span> {pedate}</span> : <span> On Going</span>}</p>
@@ -64,45 +117,72 @@ const ProjectDetails = () => {
             <Link className="font-semibold hover:text-blue-600" href={`${purl}`}>{purl}</Link>
           </div>
         </div>
-        <div className="flex items-center justify-center mt-5 ">
-          <button className="border p-2 rounded-lg">End Project</button>
+        <div className="flex items-center mt-5 px-2 mb-3">
+          {
+            pedate ? <button className="bg-bgColor dark:hover:shadow-bgColor/30 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md" disabled>End Project</button> :
+
+              <button onClick={() => handleEndProject(_id)} className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor hover:scale-105 text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md">End Project</button>
+          }
+
         </div>
       </div>
 
 
       {/* right- details */}
-      <div className="w-full md:w-3/4 px-7">
+      <div className="w-full md:w-3/4 px-7 my-5 md:my-0">
 
         {/* manager info */}
         <div className="space-y-3">
           <h2 className="border-b pb-2 font-bold text-xl">Manager Info</h2>
-          <div className="flex justify-center text-center">
+          <div className="flex flex-col border w-fit space-y-1 p-3 bg-gray-100 rounded-lg hover:shadow-lg duration-300 dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
 
-            <div className="w-full border-r">
-              <h3 className="font-bold">Name</h3>
-              <p className="text-gray-700">{pmname}</p>
+            <div className="w-full flex items-center gap-2">
+              <h3 className="font-bold dark:text ">Name: </h3>
+              <p className="text-gray-700 dark:text-white/80">{pmname}</p>
             </div>
 
-            <div className="w-full">
-              <h3 className="font-bold">Email</h3>
-              <p className="text-gray-700">{pmanager}</p>
+            <div className="w-full flex items-center gap-2">
+              <h3 className="font-bold">Email: </h3>
+              <p className="text-gray-700 dark:text-white/80">{pmanager}</p>
             </div>
 
           </div>
         </div>
 
         {/* description */}
-        <div className="mt-7 space-y-2">
+        <div className="mt-7 space-y-3">
           <h3 className="border-b pb-2 font-bold text-xl">Project Description</h3>
-          <p className="text-gray-700">{pdes}</p>
+          <p className="text-gray-700 border bg-gray-100 p-5 rounded-lg hover:shadow-lg duration-300 text-sm leading-7 dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20 dark:text-white/80">{pdes}</p>
         </div>
 
         {/* teams */}
-        <div className="mt-7 space-y-2">
+        <div className="mt-7">
           <h3 className="border-b pb-2 font-bold text-xl">Teams</h3>
-          <p>team1</p>
-          <p>team2</p>
-          <p>team3</p>
+          {
+            teamsOfProject?.data.length === 0 && <p className="font-semibold mt-3">No Teams Created Yet.</p>
+          }
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
+            {
+              teamsOfProject?.data.map(team =>
+                <div onClick={() => router.push(`/dashboard/teams/${team._id}`)} key={team._id} className="flex gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
+                  <div className="w-10 h-10 rounded-full">
+                    <Image
+                      src={team?.tpic}
+                      width={100}
+                      height={100}
+                      alt="project_image"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="-space-y-1">
+                    <p className="font-bold">{team?.tname}</p>
+                    <p className="text-sm text-gray-700 dark:text-white/80">{team?.tcategory}</p>
+                  </div>
+                </div>
+              )
+            }
+          </div>
+
         </div>
 
       </div>
