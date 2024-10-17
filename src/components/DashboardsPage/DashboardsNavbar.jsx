@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import logo from "@/image/Home/babellogo.png";
-import Image from "next/image";
-import Link from "next/link";
-import { SignedIn, useAuth, UserButton } from "@clerk/nextjs";
-import { ModeToggle } from "../Theme/ModeToggle";
+import logo from '@/image/Home/babellogo.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import { SignedIn, useAuth, UserButton } from '@clerk/nextjs';
+import { ModeToggle } from '../Theme/ModeToggle';
 
-import { usePathname } from "next/navigation";
-import {TbUserPentagon} from "react-icons/tb";
+import { usePathname } from 'next/navigation';
+import { TbUserPentagon } from 'react-icons/tb';
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const { userId } = useAuth();
@@ -15,24 +15,24 @@ const DashboardNavbar = () => {
 
   const NavbarItems = [
     {
-      title: "Project",
-      href: "/dashboard/projects",
+      title: 'Project',
+      href: '/dashboard/projects',
     },
     {
-      title: "Teams",
-      href: "/dashboard/teams",
+      title: 'Teams',
+      href: '/dashboard/teams',
     },
     {
-      title: "Group Chat",
-      href: "/dashboard/chat",
+      title: 'Group Chat',
+      href: '/dashboard/chat',
     },
     {
-      title: "Dashboard",
-      href: "/dashboard",
+      title: 'Dashboard',
+      href: '/dashboard',
     },
     {
-      title: "Review",
-      href: "/dashboard/review",
+      title: 'Review',
+      href: '/dashboard/review',
     },
   ];
 
@@ -50,15 +50,9 @@ const DashboardNavbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex">
           <ul className="flex space-x-6 items-center justify-center">
-            {NavbarItems?.map((nav) => (
+            {NavbarItems?.map(nav => (
               <Link href={nav.href} key={nav.href}>
-                <li
-                  className={`hover:text-blue-500 ${
-                    pathname === nav?.href ? "text-blue-500 font-semibold" : ""
-                  }`}
-                >
-                  {nav.title}
-                </li>
+                <li className={`hover:text-blue-500 ${pathname === nav?.href ? 'text-blue-500 font-semibold' : ''}`}>{nav.title}</li>
               </Link>
             ))}
           </ul>
@@ -72,11 +66,7 @@ const DashboardNavbar = () => {
               <div className="flex items-center gap-4">
                 <UserButton>
                   <UserButton.MenuItems>
-                    <UserButton.Link
-                      label="profile"
-                      href="/dashboard/profile"
-                      labelIcon={<TbUserPentagon size={15} />}
-                    />
+                    <UserButton.Link label="profile" href="/dashboard/profile" labelIcon={<TbUserPentagon size={15} />} />
                     <UserButton.Action label="signOut" />
                     <UserButton.Action label="manageAccount" />
                   </UserButton.MenuItems>

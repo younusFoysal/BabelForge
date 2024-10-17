@@ -1,7 +1,9 @@
 "use client";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import useAxiosCommon from "@/lib/axiosCommon";
+import { useUser } from "@clerk/nextjs";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
@@ -11,9 +13,7 @@ import { ImBriefcase } from "react-icons/im";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { UpdateProfile } from "../Profile/UpdateProfile";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 import { TabsTransaction } from "./Tabs";
-import { useUser } from "@clerk/nextjs";
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
@@ -21,6 +21,7 @@ const Profile = () => {
   const { user: clerkuser } = useUser();
   const uemail = clerkuser?.primaryEmailAddress?.emailAddress;
   const email = uemail;
+  console.log("email", email);
 
   const {
     data: user = [],
