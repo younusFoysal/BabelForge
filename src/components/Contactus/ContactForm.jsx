@@ -100,15 +100,12 @@ const ContactForm = () => {
   }, []);
 
   return (
-    <div
-      className="bg-blue-300   rounded-xl hover:shadow-2xl hover:shadow-blue-200 duration-500 dark:hover:shadow-gray-700"
-      data-aos="slide-right"
-    >
+    <div className="bg-blue-300 rounded-xl hover:shadow-2xl  duration-500 hover:shadow-gray-700" data-aos="slide-right">
       <Head>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" async></script>
       </Head>
-      <div className="bg-blue-500 translate-x-3 -translate-y-3 rounded-xl -z-50">
-        <div className="bg-white translate-x-2 -translate-y-2 dark:bg-[#0a192a] rounded-xl p-12 -z-50 shadow-md">
+      <div className="bg-blue-500 text-white translate-x-3 -translate-y-3 rounded-xl -z-50">
+        <div className=" translate-x-2 -translate-y-2 bg-[#0a192a] rounded-xl p-12 -z-50 shadow-md">
           <h2 className="text-2xl mb-5">Contact With our team</h2>
           <form ref={form} onSubmit={handleSubmit(onSubmit)}>
             {/* name parent */}
@@ -121,7 +118,7 @@ const ContactForm = () => {
                   {...register('firstName', { required: true })}
                   type="text"
                   id="firstName"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  class="block  w-full p-2.5 border rounded-md text-sm bg-transparent text-white border-gray-700 "
                 />
                 {errors.firstName?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">First name is required</p>}
               </div>
@@ -133,7 +130,7 @@ const ContactForm = () => {
                   {...register('lastName', { required: true })}
                   type="text"
                   id="lastName"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  class="block w-full p-2.5 border rounded-md text-sm bg-transparent text-white border-gray-700 "
                 />
                 {errors.lastName?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Last name is required</p>}
               </div>
@@ -148,7 +145,7 @@ const ContactForm = () => {
                   {...register('email', { required: true })}
                   type="email"
                   id="email"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  class="block w-full p-2.5 border rounded-md text-sm bg-transparent text-white border-gray-700 "
                 />
                 {errors.email?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Email is required</p>}
               </div>
@@ -160,7 +157,7 @@ const ContactForm = () => {
                   {...register('jobTitle')}
                   type="text"
                   id="jobTitle"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  class="block w-full p-2.5 border rounded-md text-sm bg-transparent text-white border-gray-700 "
                 />
               </div>
             </div>
@@ -172,7 +169,7 @@ const ContactForm = () => {
               <input
                 {...register('phone', { required: true, valueAsNumber: true })}
                 id="phone"
-                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                class="block w-full p-2.5 border rounded-md text-sm  bg-transparent  text-white  border-gray-700 "
               />
               {errors.phone?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Phone number is required</p>}
             </div>
@@ -186,7 +183,7 @@ const ContactForm = () => {
                   {...register('companyName', { required: true })}
                   type="text"
                   id="companyName"
-                  class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  class="block w-full p-2.5 border rounded-md text-sm  bg-transparent  text-white  border-gray-700 "
                 />
                 {errors.phone?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Company name is required</p>}
               </div>
@@ -198,7 +195,7 @@ const ContactForm = () => {
                   {...register('companySize', { required: true })}
                   id="companySize"
                   name="companySize"
-                  class="block w-full p-2.5 border rounded-md dark:bg-transparent dark:text-white dark:border-gray-700 "
+                  class="block w-full p-2.5 border rounded-md  bg-transparent  text-white  border-gray-700 "
                 >
                   <option value="" disabled selected>
                     Please select
@@ -222,7 +219,7 @@ const ContactForm = () => {
                 {...register('manageMessage', { required: true })}
                 type="text"
                 id="manageMessage"
-                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                class="block w-full p-2.5 border rounded-md text-sm  bg-transparent  text-white  border-gray-700 "
               />
               {errors.manageMessage?.type === 'required' && <p className="text-red-600 text-[12px] mt-1">Please fill up this field</p>}
             </div>
@@ -236,7 +233,7 @@ const ContactForm = () => {
                 {...register('helpMessage', { required: true })}
                 type="text"
                 id="helpMessage"
-                class="block w-full p-2.5 border rounded-md text-sm dark:bg-transparent dark:text-white dark:border-gray-700 "
+                class="block placeholder:text-white placeholder:opacity-40 w-full p-2.5 border rounded-md text-sm  bg-transparent  text-white  border-gray-700 "
                 placeholder="Tell us more about your tearn and what work you'd like to
 manage with babelforge.com"
               />
@@ -261,7 +258,7 @@ manage with babelforge.com"
             </div>
             <div className="flex justify-center mt-5">
               <button
-                className="text-white bg-primary py-2 hover:scale-105 hover:shadow-xl hover:shadow-violet-200 duration-500 dark:hover:shadow-gray-700 dark:text-black px-6 rounded-md dark:font-semibold"
+                className=" bg-primary py-2 hover:scale-105 hover:shadow-xl duration-500 hover:shadow-gray-700 text-black px-6 rounded-md font-semibold"
                 type="submit"
               >
                 Submit
