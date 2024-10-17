@@ -45,7 +45,7 @@ const layout = ({ children }) => {
       <div className="fixed top-0 left-0">
         <SideBar />
       </div>
-      <div className=" w-[96%] pl-16 py-3">{children}</div>
+      <div className="h-screen w-[96%] pl-16 py-3">{children}</div>
     </div>
   );
 };
