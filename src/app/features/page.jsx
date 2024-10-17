@@ -11,7 +11,7 @@ import Review from '@/components/DashboardsPage/Review';
 
 const Page = () => {
   return (
-    <div>
+    <div className="mt-[120px]">
       <section>
         <Header />
         <div className="container flex-row-reverse mx-auto ">

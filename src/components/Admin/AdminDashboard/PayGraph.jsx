@@ -179,7 +179,7 @@ const PayGraph = ({ trans, isLoading }) => {
 
   return (
     <div className="md:col-span-5 col-span-1">
-      <Card className="p-6">
+      <Card className="p-6 dark:bg-[#ffffff14] dark:border-[#ffffff34]">
         <div className="panel h-full xl:col-span-2">
           <div className="mb-5 flex items-center justify-between dark:text-white-light">
             <h5 className="text-lg font-semibold">Revenue</h5>
@@ -188,7 +188,7 @@ const PayGraph = ({ trans, isLoading }) => {
             Total Revenue <span className="ml-2 text-primary">${total}</span>
           </p>
           <div className="relative">
-            <div className="rounded-lg bg-white dark:bg-black">
+            <div className="rounded-lg bg-white dark:bg-transparent">
               {isMounted ? (
                 <ReactApexChart series={revenueChart.series} options={revenueChart.options} type="area" height={325} width={'100%'} />
               ) : (
