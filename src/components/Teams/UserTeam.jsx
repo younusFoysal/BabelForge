@@ -1,18 +1,9 @@
 'use client';
 import AllTeams from '@/components/Teams/AllTeams';
 import UseTeams from '@/hooks/useTeams';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '../ui/textarea';
@@ -27,23 +18,35 @@ import toast from 'react-hot-toast';
 import useProjects from '@/hooks/useProjects';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { useUser } from '@clerk/nextjs';
+import { useTheme } from 'next-themes';
 
 const UserTeam = () => {
   const myRef = useRef('');
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
-  const [teams, isLoading, refetch] = UseTeams(uemail);
   const [searchQuery, setSearchQuery] = useState('');
   const [emails, setEmails] = useState([uemail]);
+  const [teams, isLoading, refetch, isError] = UseTeams(uemail);
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = useState(false);
   const { data: projects = [] } = useProjects(uemail, '', '');
+  const { resolvedTheme } = useTheme();
+
+  //Refetch when when the user is availble
+  useEffect(() => {
+    if (uemail) {
+      refetch();
+    }
+  }, [uemail]);
+
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm();
+
+  // dark theme for input tag element
 
   // handle Search
   const handleSeach = () => {
@@ -82,7 +85,14 @@ const UserTeam = () => {
         <h2 className="text-2xl dark:text-white text-[#333]">Teams and projects</h2>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <button className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md hover:scale-110 duration-500  hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md">
+            <button
+              disabled={projects?.length > 0 ? false : true}
+              className={`${
+                projects?.length > 0
+                  ? 'bg-bgColor hover:shadow-blue-200 dark:opacity-100 hover:shadow-lg hover:scale-110 dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor'
+                  : 'bg-slate-300 dark:bg-slate-700 dark:text-white cursor-not-allowed'
+              }  text-white text-md  duration-500 dark:opacity-50 font-medium px-4 py-2 rounded-md`}
+            >
               Create Team
             </button>
           </DialogTrigger>
@@ -167,12 +177,11 @@ const UserTeam = () => {
                           {projects &&
                             projects?.map(project => {
                               return (
-                                <option className=" " key={project._id} value={project._id}>
-                                  <span className=" capitalize"> {project.pname}</span>
+                                <option key={project._id} value={project._id}>
+                                  <span className="capitalize"> {project.pname}</span>
                                 </option>
                               );
                             })}
-                          <option value=""></option>
                         </select>
                         {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Project required</p>}
                       </div>

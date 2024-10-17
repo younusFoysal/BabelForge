@@ -99,7 +99,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
             <div className="p-5">
               <h3 className="text-center text-[18px] capitalize">{tname}</h3>
               <p className="text-[14px] dark:text-white my-1 text-[#666] font-light text-center capitalize">
-                Leader: {users?.find(user => user.email === tleader)?.name || 'Unknown'}
+                Leader: {users?.find(user => user.email === tleader)?.firstName || 'Unknown'}
               </p>
               <p className="text-[14px] font-semibold mb-3 text-center capitalize">{tcategory}</p>
 
@@ -112,22 +112,22 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                       <HoverCardTrigger className="w-9 -mr-3 border-[#fff] border-[4px] h-9 rounded-full">
                         <Image
                           className="w-full h-full object-cover rounded-full"
-                          alt={memberDetails?.name || 'Member'}
+                          alt={memberDetails?.firstName || 'Member'}
                           width={40}
                           height={40}
-                          src={memberDetails?.image || usericon}
+                          src={memberDetails?.image_url || usericon}
                         />
                       </HoverCardTrigger>
                       <HoverCardContent className="gap-4 backdrop-blur-[30px] bg-[#ffffff30] h-[130px] w-[300px]">
                         <div className="flex items-center gap-4">
                           <Image
                             className="w-16 h-16 border-[#2f69fd] border-4 object-cover rounded-full"
-                            alt={memberDetails?.name || 'Member'}
+                            alt={memberDetails?.firstName || 'Member'}
                             width={50}
                             height={50}
-                            src={memberDetails?.image || usericon}
+                            src={memberDetails?.image_url || usericon}
                           />
-                          <p>{memberDetails?.name || 'Unknown'}</p>
+                          <p>{memberDetails?.firstName || 'Unknown'}</p>
                         </div>
                         <button className="bg-[#2f69fd] px-3 py-1 rounded-sm text-[13px] ml-auto flex items-center gap-3 justify-end text-white">
                           <span>Send Message</span>
