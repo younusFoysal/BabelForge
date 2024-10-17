@@ -15,6 +15,7 @@ import CurrenSidesBox from "./CurrenSidesBox";
 import { SiNextra } from "react-icons/si";
 import { CgMoreR } from "react-icons/cg";
 import { ModeToggle } from "../Theme/ModeToggle";
+import logo from "@/image/Home/babellogo.png"
 
 export default function SideBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -97,7 +98,7 @@ export default function SideBar() {
                 height={100}
                 width={100}
                 className="w-10 h-auto"
-                src="/images/babellogo.png"
+                src={logo}
                 alt="Babel"
               />
             </Link>
@@ -160,7 +161,7 @@ export default function SideBar() {
                 height={100}
                 width={100}
                 className="w-20 h-auto"
-                src="/images/babellogo.png"
+                src={logo}
                 alt="BabeL"
               />
             </div>
