@@ -1,61 +1,49 @@
-import React, {useState} from 'react';
+"use client"
+import React, { useState } from 'react';
 import Modal from "react-modal";
 import "./modal.css";
-import {FaPen, FaRegEdit, FaTrash} from "react-icons/fa";
-import {MdDeleteOutline} from "react-icons/md";
-import {useMutation} from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import { FaPen, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import useAxiosCommon from "@/lib/axiosCommon";
 
 const NoteItem = ({ note, refetch }) => {
-
     const axiosCommon = useAxiosCommon();
-    const [loading, setLoading] = useState(false);
-
-    const [selectedNote, setSelectedNote] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [formData, setFormData] = useState({}); // For storing Note data to edit
     const [utitle, setuTitle] = useState("");
     const [ucategory, setuCategory] = useState("");
     const [udetails, setuDetails] = useState("");
-    console.log(note)
-
-
 
     // Open modal for viewing Note details
-    const handleView = (Note) => {
-        setSelectedNote(Note);
+    const handleView = (note) => {
         setIsModalOpen(true);
     };
 
-    // Close detail modal
+    // Close view modal
     const closeModal = () => {
         setIsModalOpen(false);
-        setSelectedNote(null);
     };
 
-
-    // Open modal for editing Note
-    const handleEdit = () => {
-        console.log("Edit called")
-        setIsModalOpen(false);
-        //setFormData(Note); // Pre-fill form data with the selected Note
+    // Open edit modal with pre-filled data
+    const handleEdit = (note) => {
+        setuTitle(note.title);
+        setuCategory(note.category);
+        setuDetails(note.details);
         setIsEditModalOpen(true);
-
     };
 
-    // Close edit modal
+    // Close edit modal and reset form data
     const closeEditModal = () => {
-
         setIsEditModalOpen(false);
-        setFormData({});
+        setuTitle("");
+        setuCategory("");
+        setuDetails("");
     };
 
-    // Delete handle
-    const { mutateAsync: deleteNoteMutation, isLoading: isDeleting } = useMutation({
+    // Delete mutation
+    const { mutateAsync: deleteNoteMutation } = useMutation({
         mutationFn: async ({ id }) => {
             const { data } = await axiosCommon.delete(`/note/notes/${id}`);
             return data;
@@ -65,10 +53,11 @@ const NoteItem = ({ note, refetch }) => {
             toast.success('Note deleted successfully.');
         },
         onError: () => {
-            toast.error('Failed to delete the Note.');
+            toast.error('Failed to delete the note.');
         },
     });
 
+    // Delete note with confirmation
     const handleDelete = async (id) => {
         const result = await Swal.fire({
             title: 'Are you sure?',
@@ -80,226 +69,122 @@ const NoteItem = ({ note, refetch }) => {
         });
 
         if (result.isConfirmed) {
-            try {
-                await deleteNoteMutation({ id });
-            } catch (err) {
-                console.error(err);
-            }
+            await deleteNoteMutation({ id });
         }
     };
 
-
-
+    // Update mutation
     const { mutateAsync: updateNoteMutation } = useMutation({
         mutationFn: async (note) => {
-            const NoteWithoutID = { ...note };
-            delete NoteWithoutID._id; // Remove the _id field before patching
-            const { data } = await axiosCommon.patch(`/note/notes/update/${note._id}`, NoteWithoutID);
+            const updatedNote = { ...note };
+            delete updatedNote._id; // Remove _id before patching
+            const { data } = await axiosCommon.patch(`/note/notes/update/${note._id}`, updatedNote);
             return data;
         },
         onSuccess: () => {
-            toast.success('Task updated successfully!');
-            refetch(); // Refetch task data after update
+            refetch();
+            toast.success('Note updated successfully!');
         },
-        onError: (err) => {
-            toast.error(err.message);
+        onError: () => {
+            toast.error('Failed to update the note.');
         },
     });
 
-
-    // Handle form submit to update Note
+    // Submit the updated note data
     const handleSubmitEdit = async () => {
-        try {
+        const updatedNote = {
+            _id: note._id,
+            title: utitle,
+            category: ucategory,
+            details: udetails,
+        };
 
-            const updatedNote = {
-                _id: note._id,
-                title: utitle,
-                category: ucategory,
-                details: udetails,
-            };
-
-            console.log(updatedNote);
-
-            await updateNoteMutation(updatedNote)
-            closeEditModal();
-        } catch (err) {
-            console.error(err);
-        }
+        await updateNoteMutation(updatedNote);
+        closeEditModal();
     };
-
-
-
-
 
     return (
         <>
-
             <div
                 onClick={() => handleView(note)}
                 className="w-full mr-4 pr-4 bg-blue-50/60 p-5 border border-bgColor/15 rounded-sm shadow-md hover:shadow-xl">
                 <div className="flex gap-2 items-center">
                     <div className="bg-gray-800 rounded-full w-2 h-2"></div>
-                    <p>News</p>
+                    <p>{note.category}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 py-2">{note.title.length > 20 ? note.title.substr(0, 20) + "..." : note.title}</h3>
+                <h3 className="text-xl font-bold text-gray-800 py-2">
+                    {note.title.length > 20 ? note.title.substr(0, 20) + "..." : note.title}
+                </h3>
                 <p className="border-b pb-3 border-b-gray-500">
                     {note.details.length > 100 ? note.details.substr(0, 100) + "..." : note.details}
                 </p>
                 <div className="flex justify-between items-center">
-                    <p className="flex pt-3 items-center gap-2 w-ful">
+                    <p className="flex pt-3 items-center gap-2 w-full">
                         <span className="flex flex-row gap-2">
                             <small>{note.ndate}</small> <small>{note.ntime}</small>
                         </span>
                     </p>
+                    <div className="flex gap-2">
+                        <button onClick={() => handleEdit(note)} className="text-gray-500 hover:text-blue-500">
+                            <FaPen />
+                        </button>
+                        <button onClick={() => handleDelete(note._id)} className="text-gray-500 hover:text-red-500">
+                            <FaTrash />
+                        </button>
+                    </div>
                 </div>
             </div>
 
-
-
-            {/*View Modal*/}
-            {isModalOpen === true ? (
-                    <Modal
-                        isOpen={isModalOpen}
-                        onRequestClose={closeModal}
-                        contentLabel="Task Details Modal"
-                        className="modal-dialog max-w-2xl"
-                        overlayClassName="modal-overlay"
-                    >
-                        <div className="modal-content">
-                            <div className="modal-body">
-
-                                <div className="flex items-center justify-center p-4">
-                                    <div className="w-full max-w-full">
-                                        <div className="relative rounded-2xl bg-white p-6 shadow">
-                                            <div className="mb-4 flex items-center justify-between">
-                                                <h2 className=" modal-title text-xl font-semibold text-gray-900">{note.title}</h2>
-
-
-                                                <button
-                                                    onClick={closeModal}
-                                                    className="close right-5 top-5 text-gray-400 hover:text-gray-600">
-                                                    <svg className="h-5 w-5" fill="none" stroke="currentColor"
-                                                         viewBox="0 0 24 24"
-                                                         xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                              stroke-width="2"
-                                                              d="M6 18L18 6M6 6l12 12"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
-
-                                            <p
-                                                className="mb-2 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                                rows="4"
-                                                placeholder="Your Note..."> {note.details}</p>
-
-                                            <div className="flex gap-2 justify-between items-center">
-
-                                                <button
-                                                    onClick={() => handleEdit(note)}
-                                                    className="w-full flex justify-center items-center mt-4 gap-2 align-middle bg-bgColor dark:hover:shadow-bgColor/30
-                                 hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-blue-200 px-4 rounded-md py-2.5 text-sm transition">
-                                                    <FaPen/>
-                                                    Update
-                                                </button>
-
-                                                <button
-                                                    onClick={() => handleDelete(note._id)}
-                                                    className="w-full flex justify-center items-center mt-4 gap-2 align-middle bg-red-600 dark:hover:shadow-red-500/30
-                                 hover:bg-red-800 text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-red-300 px-4 rounded-md py-2.5 text-sm transition">
-                                                    <FaTrash/>
-                                                    Delete
-                                                </button>
-
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </Modal>
-                )
-                :
-                ""
-            }
-
-            {/*edit Modal*/}
-            {isEditModalOpen === true ? (
-                <Modal
-                    isOpen={isEditModalOpen}
-                    onRequestClose={closeEditModal}
-                    contentLabel="Task Details Modal"
-                    className="modal-dialog"
-                    overlayClassName="modal-overlay"
-                >
-                    <div className="modal-content">
-                        <div className="modal-body">
-
-                            <div className="flex items-center justify-center p-4">
-                                <div className="w-full max-w-sm">
-                                    <div className="relative rounded-2xl bg-white p-6 shadow">
-                                        <div className="mb-4 flex items-center justify-between">
-                                            <h2 className=" modal-title text-xl font-semibold text-gray-900">Update the
-                                                Note</h2>
-
-
-                                            <button
-                                                onClick={closeEditModal}
-                                                className="close right-5 top-5 text-gray-400 hover:text-gray-600">
-                                                <svg className="h-5 w-5" fill="none" stroke="currentColor"
-                                                     viewBox="0 0 24 24"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M6 18L18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </button>
-                                        </div>
-
-                                        <input
-                                            className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            defaultValue={note?.title}
-                                            value={utitle}
-                                            onChange={(e) => setuTitle(e.target.value)}
-
-                                        />
-                                        <input
-                                            className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            defaultValue={note?.category}
-                                            value={ucategory}
-                                            onChange={(e) => setuCategory(e.target.value)}
-
-                                        />
-                                        <textarea
-                                            className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            rows="4"
-                                            defaultValue={note?.details}
-                                            value={udetails}
-                                            onChange={(e) => setuDetails(e.target.value)}
-                                            placeholder="Your Note..."></textarea>
-
-                                        <button
-                                            onClick={handleSubmitEdit}
-
-                                            className="w-full flex justify-center mt-4 gap-2 align-middle bg-bgColor dark:hover:shadow-bgColor/30
-                                 hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-blue-200 px-4 rounded-md py-2.5 text-sm transition">
-                                            Done
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
+            {/* View Modal */}
+            <Modal
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                contentLabel="Note Details Modal"
+                className="modal-dialog max-w-2xl"
+                overlayClassName="modal-overlay"
+            >
+                <div className="modal-content">
+                    <div className="modal-body">
+                        <h2 className="modal-title text-xl font-semibold">{note.title}</h2>
+                        <p>{note.details}</p>
+                        <button onClick={() => handleEdit(note)} className="bg-blue-500 text-white">Edit</button>
+                        <button onClick={() => handleDelete(note._id)} className="bg-red-500 text-white">Delete</button>
                     </div>
-                </Modal>
-            ) : ""}
+                </div>
+            </Modal>
 
-
+            {/* Edit Modal */}
+            <Modal
+                isOpen={isEditModalOpen}
+                onRequestClose={closeEditModal}
+                contentLabel="Edit Note Modal"
+                className="modal-dialog"
+                overlayClassName="modal-overlay"
+            >
+                <div className="modal-content">
+                    <div className="modal-body">
+                        <input
+                            className="w-full mb-3"
+                            value={utitle}
+                            onChange={(e) => setuTitle(e.target.value)}
+                            placeholder="Title"
+                        />
+                        <input
+                            className="w-full mb-3"
+                            value={ucategory}
+                            onChange={(e) => setuCategory(e.target.value)}
+                            placeholder="Category"
+                        />
+                        <textarea
+                            className="w-full mb-3"
+                            value={udetails}
+                            onChange={(e) => setuDetails(e.target.value)}
+                            placeholder="Details"
+                        />
+                        <button onClick={handleSubmitEdit} className="bg-blue-500 text-white">Save</button>
+                    </div>
+                </div>
+            </Modal>
         </>
     );
 };
