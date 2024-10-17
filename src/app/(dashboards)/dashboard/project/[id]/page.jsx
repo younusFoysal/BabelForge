@@ -69,7 +69,7 @@ const ProjectDetails = () => {
     return <LoadingSpinner />;
   }
 
-  // console.log(teamsOfProject.data);
+  // console.log(project.data);
 
   const { favorite, pallmembers, pcategory, pdes, pedate, pimg, pmanager, pmname, pname, psdate, purl, _id } = project.data;
 
@@ -114,14 +114,14 @@ const ProjectDetails = () => {
           <p > <span className="font-bold">Ends at: </span>{pedate ? <span> {pedate}</span> : <span> On Going</span>}</p>
           <div className="flex items-center gap-1">
             <IoIosLink className="font-bold text-lg" />
-            <Link className="font-semibold hover:text-blue-600" href={`${purl}`}>{purl}</Link>
+            <Link className="font-semibold hover:text-blue-600" href={`${purl}`}>{purl.slice(0, 30) + "..."}</Link>
           </div>
         </div>
         <div className="flex items-center mt-5 px-2 mb-3">
           {
             pedate ? <button className="bg-bgColor dark:hover:shadow-bgColor/30 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md" disabled>End Project</button> :
 
-              <button onClick={() => handleEndProject(_id)} className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor hover:scale-105 text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md">End Project</button>
+              <button onClick={() => handleEndProject(_id)} className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">End Project</button>
           }
 
         </div>
@@ -131,31 +131,33 @@ const ProjectDetails = () => {
       {/* right- details */}
       <div className="w-full md:w-3/4 px-7 my-5 md:my-0">
 
-        {/* manager info */}
-        <div className="space-y-3">
-          <h2 className="border-b pb-2 font-bold text-xl">Manager Info</h2>
-          <div className="flex flex-col border w-fit space-y-1 p-3 bg-gray-100 rounded-lg hover:shadow-lg duration-300 dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
 
-            <div className="w-full flex items-center gap-2">
-              <h3 className="font-bold dark:text ">Name: </h3>
-              <p className="text-gray-700 dark:text-white/80">{pmname}</p>
+        {/* test */}
+
+        <div class="flex justify-center items-center">
+          <div class="w-full ml-1 mr-1 flex flex-col justify-center items-center border-gray-700 text-center">
+            <div class="w-full rounded-2xl p-8 text-white bg-gradient-to-br from-[#5f99f9] to-[#8868dc] pb-44 relative">
+              <h1 class="text-2xl mb-4 font-bold">Manager Info</h1>
+              <div className="text-center">
+                <div className="w-full flex justify-center items-center gap-2">
+                  <h3 className="font-bold ">Name: </h3>
+                  <p className="text-gray-100 dark:text-white/80">{pmname}</p>
+                </div>
+
+                <div className="w-full flex items-center justify-center gap-2">
+                  <h3 className="font-bold">Email: </h3>
+                  <p className="text-gray-100 dark:text-white/80">{pmanager}</p>
+                </div>
+              </div>
             </div>
-
-            <div className="w-full flex items-center gap-2">
-              <h3 className="font-bold">Email: </h3>
-              <p className="text-gray-700 dark:text-white/80">{pmanager}</p>
+            <div class="text-center bg-white shadow-lg w-[80%] rounded-xl -mt-32 z-10 p-9 flex items-center flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
+              <h2 class="text-2xl font-bold">Project Description</h2>
+              <p class="text-gray-700 dark:text-white/80 p-5 rounded-lg text-sm leading-7">{pdes}</p>
             </div>
-
           </div>
         </div>
 
-        {/* description */}
-        <div className="mt-7 space-y-3">
-          <h3 className="border-b pb-2 font-bold text-xl">Project Description</h3>
-          <p className="text-gray-700 border bg-gray-100 p-5 rounded-lg hover:shadow-lg duration-300 text-sm leading-7 dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20 dark:text-white/80">{pdes}</p>
-        </div>
-
-        {/* teams */}
+        
         <div className="mt-7">
           <h3 className="border-b pb-2 font-bold text-xl">Teams</h3>
           {

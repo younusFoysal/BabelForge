@@ -77,19 +77,20 @@ const CreateProjectpage = () => {
   });
 
   const onSubmit = (data) => {
-    data.pmanager = user.email;
+    data.pmanager = uemail;
     data.pallmembers = emails;
-    data.pedate = currentDate;
+    data.pedate = "";
     data.psdate = currentDate;
-    data.pmname = user.name;
+    data.pmname = user?.firstName;
     data.favorite = false;
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
+  // console.log("selected: ",selectedCategory);
 
   return (
     <div className="flex justify-between items-center flex-col">
-      <h2 className="text-4xl text-[#333] mb-4">Create projects</h2>
+      <h2 className="text-4xl text-[#333] mb-4 dark:text-white">Create projects</h2>
       <div className="w-[60%]">
         <div className="">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-[12px]">
@@ -216,9 +217,9 @@ const CreateProjectpage = () => {
             </div>
 
             <div className="flex items-center gap-3 justify-end">
-              <Button className="" type="submit">
+              <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md" type="submit">
                 Create
-              </Button>
+              </button>
             </div>
           </form>
         </div>

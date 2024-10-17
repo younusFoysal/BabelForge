@@ -102,7 +102,7 @@ const UpdateProjectPage = ({ id }) => {
 
   return (
     <div className="flex justify-between items-center flex-col">
-      <h2 className="text-4xl text-[#333] mb-4">Update projects</h2>
+      <h2 className="text-4xl text-[#333] mb-4 text-white">Update projects</h2>
       <div className="w-[60%]">
         <div className="">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-[12px]">
@@ -227,9 +227,9 @@ const UpdateProjectPage = ({ id }) => {
             </div>
 
             <div className="flex items-center gap-3 justify-end">
-              <Button className="" type="submit">
+              <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md" type="submit">
                 Update
-              </Button>
+              </button>
             </div>
           </form>
         </div>
