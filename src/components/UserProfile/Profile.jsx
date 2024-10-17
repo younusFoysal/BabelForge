@@ -3,25 +3,24 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
 import { FaNetworkWired } from "react-icons/fa";
-import { FaUserGroup } from "react-icons/fa6";
-import { GoOrganization, GoPlus } from "react-icons/go";
-import { HiUserGroup } from "react-icons/hi";
+import { GoOrganization } from "react-icons/go";
 import { ImBriefcase } from "react-icons/im";
 import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { UpdateProfile } from "../Profile/UpdateProfile";
 import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 import { TabsTransaction } from "./Tabs";
+import { useUser } from "@clerk/nextjs";
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
 
-  const { data: session } = useSession();
-  const email = session?.user?.email;
+  const { user: clerkuser } = useUser();
+  const uemail = clerkuser?.primaryEmailAddress?.emailAddress;
+  const email = uemail;
 
   const {
     data: user = [],
@@ -33,19 +32,17 @@ const Profile = () => {
       if (!email) return [];
       const { data } = await axiosCommon.get(`/api/user/${email}`);
       return data;
-    }
+    },
   });
 
-  const {
-    data: teams = []
-  } = useQuery({
+  const { data: teams = [] } = useQuery({
     queryKey: ["userteams", email],
     queryFn: async () => {
       if (!email) return [];
       const { data } = await axiosCommon.get(`/team/teams/my-teams/${email}`);
       return data;
     },
-    enabled: !!email, 
+    enabled: !!email,
   });
 
   const {
@@ -59,8 +56,8 @@ const Profile = () => {
       const { data } = await axiosCommon.get(`/pay/payments/${email}`);
       return data;
     },
-    enabled: !!email, 
-  }); 
+    enabled: !!email,
+  });
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -159,7 +156,7 @@ const Profile = () => {
             </div>
 
             {/* teams */}
-            
+
             <Link className="mt-12  text-xs hover:underline" href={""}>
               {" "}
               View privacy policy
@@ -170,7 +167,6 @@ const Profile = () => {
         {/* card right */}
         <div className="w-full  lg:mt-60 mt-10 ">
           <TabsTransaction teams={teams} transactions={transactions} />
-         
         </div>
       </div>
       <Toaster />

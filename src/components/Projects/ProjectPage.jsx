@@ -7,28 +7,11 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
 
 import { IoIosSearch } from "react-icons/io";
-
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
-import { FaStar } from "react-icons/fa6";
-import { FaArrowDown } from "react-icons/fa6";
-import { FaRegStar } from "react-icons/fa";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 import {
   Pagination,
@@ -40,42 +23,27 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-import { useSession } from "next-auth/react";
-import axios from "axios";
 import useProjects from "@/hooks/useProjects";
-import { Ellipsis } from "lucide-react";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
-import CommonTable from "../shared/CommonTable/CommonTable";
 
+import CommonTable from "../shared/CommonTable/CommonTable";
+import { useUser } from "@clerk/nextjs";
 
 const ProjectPage = () => {
-  const session = useSession();
-  const userEmail = session?.data?.user?.email;
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
+
   // console.log(userEmail);
 
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("");
-  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(userEmail, search, category);
+  const {
+    data: projects = [],
+    isLoading,
+    refetch: projectRefetch,
+  } = useProjects(uemail, search, category);
 
   // console.log(projects);
   // console.log(isLoading);
@@ -97,9 +65,6 @@ const ProjectPage = () => {
     );
   }
 
-
-
-
   const projectCategories = [
     "All",
     "Software Engineering",
@@ -108,7 +73,17 @@ const ProjectPage = () => {
     "Project Management",
   ];
 
-  const theads = ["Fav", "Image", "Name", "Type", "Manager", "Project URL", "Start Date", "End Date", "More Action"];
+  const theads = [
+    "Fav",
+    "Image",
+    "Name",
+    "Type",
+    "Manager",
+    "Project URL",
+    "Start Date",
+    "End Date",
+    "More Action",
+  ];
 
   const handleSearchByClick = () => {
     const inputData = document.getElementById("inputField").value;
@@ -183,9 +158,12 @@ const ProjectPage = () => {
         </div>
       </div>
 
-
       {/* Table content */}
-      <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>
+      <CommonTable
+        theads={theads}
+        tdata={projects}
+        projectRefetch={projectRefetch}
+      ></CommonTable>
 
       {/* pagination */}
       <div className="mt-6">
