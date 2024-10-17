@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAxiosCommon from "@/lib/axiosCommon";
 
-const NoteItem = ({ note }) => {
+const NoteItem = ({ note, refetch }) => {
 
     const axiosCommon = useAxiosCommon();
     const [loading, setLoading] = useState(false);
@@ -18,6 +18,10 @@ const NoteItem = ({ note }) => {
 
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [formData, setFormData] = useState({}); // For storing Note data to edit
+    const [utitle, setuTitle] = useState("");
+    const [ucategory, setuCategory] = useState("");
+    const [udetails, setuDetails] = useState("");
+    console.log(note)
 
 
 
@@ -35,7 +39,7 @@ const NoteItem = ({ note }) => {
 
 
     // Open modal for editing Note
-    const handleEdit = (Note) => {
+    const handleEdit = () => {
         console.log("Edit called")
         setIsModalOpen(false);
         //setFormData(Note); // Pre-fill form data with the selected Note
@@ -51,17 +55,17 @@ const NoteItem = ({ note }) => {
     };
 
     // Delete handle
-    const { mutateAsync: deleteTaskMutation, isLoading: isDeleting } = useMutation({
+    const { mutateAsync: deleteNoteMutation, isLoading: isDeleting } = useMutation({
         mutationFn: async ({ id }) => {
-            const { data } = await axiosCommon.delete(`/task/tasks/delete/${id}`);
+            const { data } = await axiosCommon.delete(`/note/notes/${id}`);
             return data;
         },
         onSuccess: () => {
             refetch();
-            toast.success('Task deleted successfully.');
+            toast.success('Note deleted successfully.');
         },
         onError: () => {
-            toast.error('Failed to delete the task.');
+            toast.error('Failed to delete the Note.');
         },
     });
 
@@ -77,24 +81,20 @@ const NoteItem = ({ note }) => {
 
         if (result.isConfirmed) {
             try {
-                await deleteTaskMutation({ id });
+                await deleteNoteMutation({ id });
             } catch (err) {
                 console.error(err);
             }
         }
     };
 
-    // Handle input changes in the edit modal
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
-    };
 
-    const { mutateAsync: updateTaskMutation } = useMutation({
-        mutationFn: async (task) => {
-            const taskWithoutID = { ...task };
-            delete taskWithoutID._id; // Remove the _id field before patching
-            const { data } = await axiosCommon.patch(`/task/tasks/update/${task._id}`, taskWithoutID);
+
+    const { mutateAsync: updateNoteMutation } = useMutation({
+        mutationFn: async (note) => {
+            const NoteWithoutID = { ...note };
+            delete NoteWithoutID._id; // Remove the _id field before patching
+            const { data } = await axiosCommon.patch(`/note/notes/update/${note._id}`, NoteWithoutID);
             return data;
         },
         onSuccess: () => {
@@ -106,18 +106,21 @@ const NoteItem = ({ note }) => {
         },
     });
 
-    const handleEditTask = async (updatedTask) => {
-        try {
-            await updateTaskMutation(updatedTask);
-        } catch (err) {
-            console.error(err);
-        }
-    };
 
     // Handle form submit to update Note
     const handleSubmitEdit = async () => {
         try {
-            await handleEditNote(formData);
+
+            const updatedNote = {
+                _id: note._id,
+                title: utitle,
+                category: ucategory,
+                details: udetails,
+            };
+
+            console.log(updatedNote);
+
+            await updateNoteMutation(updatedNote)
             closeEditModal();
         } catch (err) {
             console.error(err);
@@ -144,8 +147,8 @@ const NoteItem = ({ note }) => {
                 </p>
                 <div className="flex justify-between items-center">
                     <p className="flex pt-3 items-center gap-2 w-ful">
-                        <span className="flex flex-col">
-                            <small>{note.date}</small>
+                        <span className="flex flex-row gap-2">
+                            <small>{note.ndate}</small> <small>{note.ntime}</small>
                         </span>
                     </p>
                 </div>
@@ -201,6 +204,7 @@ const NoteItem = ({ note }) => {
                                                 </button>
 
                                                 <button
+                                                    onClick={() => handleDelete(note._id)}
                                                     className="w-full flex justify-center items-center mt-4 gap-2 align-middle bg-red-600 dark:hover:shadow-red-500/30
                                  hover:bg-red-800 text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-red-300 px-4 rounded-md py-2.5 text-sm transition">
                                                     <FaTrash/>
@@ -258,20 +262,29 @@ const NoteItem = ({ note }) => {
 
                                         <input
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            defaultValue={note.title}
+                                            defaultValue={note?.title}
+                                            value={utitle}
+                                            onChange={(e) => setuTitle(e.target.value)}
+
                                         />
                                         <input
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                            defaultValue={note.category}
+                                            defaultValue={note?.category}
+                                            value={ucategory}
+                                            onChange={(e) => setuCategory(e.target.value)}
+
                                         />
                                         <textarea
                                             className="mb-3 font-['Poppu'] w-full rounded-lg border border-gray-200 p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                                             rows="4"
-                                            defaultValue={note.details}
+                                            defaultValue={note?.details}
+                                            value={udetails}
+                                            onChange={(e) => setuDetails(e.target.value)}
                                             placeholder="Your Note..."></textarea>
 
                                         <button
                                             onClick={handleSubmitEdit}
+
                                             className="w-full flex justify-center mt-4 gap-2 align-middle bg-bgColor dark:hover:shadow-bgColor/30
                                  hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-blue-200 px-4 rounded-md py-2.5 text-sm transition">
                                             Done

@@ -136,6 +136,12 @@ const Notes = () => {
             toast.success('Note Created Successfully!');
             refetch(); // Refetch task data
             setLoading(false);
+
+            setCreateNote(false);
+            setTitle("")
+            setCategory("")
+            setDetails("")
+
         },
         onError: (err) => {
             toast.error(err.message);
@@ -145,9 +151,6 @@ const Notes = () => {
 
     // Form handler for adding task
     const handleAddNote = async () => {
-
-
-
 
 
         setLoading(true);
@@ -211,7 +214,7 @@ const Notes = () => {
                 {filteredNotes?.length === 0 ? (
                     <p className="text-white">No Notes Found!</p>
                 ) : (filteredNotes?.map((note) => (
-                    <NoteItem key={note.id} note={note}/>
+                    <NoteItem key={note.id} note={note} refetch={refetch}/>
                 )))
 
                 }
