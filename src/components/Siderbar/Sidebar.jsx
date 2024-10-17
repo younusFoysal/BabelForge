@@ -161,7 +161,7 @@ export default function SideBar() {
                 width={100}
                 className="w-20 h-auto"
                 src="/images/babellogo.png"
-                alt="Babel"
+                alt="BabeL"
               />
             </div>
 
