@@ -21,8 +21,8 @@ const AdminStatCards = () => {
 
   return (
     <div>
-      <div className="mb-6 grid grid-cols-1 gap-4 text-white sm:grid-cols-2 xl:grid-cols-4">
-        <div className="panel bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-md p-4 shadow-lg hover:shadow-cyan-300 duration-100">
+      <div className="mb-6 grid  grid-cols-1 gap-4 text-white sm:grid-cols-2 xl:grid-cols-4">
+        <div className="panel  dark:hover:shadow-cyan-500 bg-gradient-to-r from-cyan-500 to-cyan-400 rounded-md p-4 shadow-lg hover:shadow-cyan-300 duration-500">
           <div className="flex justify-between">
             <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Projects</div>
           </div>
@@ -36,7 +36,7 @@ const AdminStatCards = () => {
         </div>
 
         {/* Sessions */}
-        <div className="panel bg-gradient-to-r from-violet-500 to-violet-400 rounded-md p-4 shadow-lg hover:shadow-violet-300 duration-100">
+        <div className="panel dark:hover:shadow-violet-400 bg-gradient-to-r from-violet-500 to-violet-400 rounded-md p-4 shadow-lg hover:shadow-violet-500 duration-500">
           <div className="flex justify-between">
             <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Teams</div>
           </div>
@@ -50,7 +50,7 @@ const AdminStatCards = () => {
         </div>
 
         {/*  Time On-Site */}
-        <div className="panel bg-gradient-to-r from-blue-500 to-blue-400 rounded-md p-4 shadow-lg hover:shadow-blue-300 duration-100">
+        <div className="panel dark:hover:shadow-blue-500 bg-gradient-to-r from-blue-500 to-blue-400 rounded-md p-4 shadow-lg hover:shadow-blue-300 duration-500">
           <div className="flex justify-between">
             <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Tasks</div>
           </div>
@@ -64,7 +64,7 @@ const AdminStatCards = () => {
         </div>
 
         {/* Bounce Rate */}
-        <div className="panel bg-gradient-to-r from-fuchsia-500 to-fuchsia-400 rounded-md p-4 shadow-lg hover:shadow-fuchsia-300 duration-100">
+        <div className="panel dark:hover:shadow-fuchsia-500 bg-gradient-to-r from-fuchsia-500 to-fuchsia-400 rounded-md p-4 shadow-lg hover:shadow-fuchsia-300 duration-500">
           <div className="flex justify-between">
             <div className="text-md font-semibold ltr:mr-1 rtl:ml-1">Total Users</div>
           </div>
