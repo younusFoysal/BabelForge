@@ -2,7 +2,7 @@ import React from "react";
 import { CgList } from "react-icons/cg";
 import { FaDraftingCompass } from "react-icons/fa";
 import { FaPencil, FaUsersGear } from "react-icons/fa6";
-import { MdPostAdd } from "react-icons/md";
+import {MdOutlineNoteAlt, MdPostAdd} from "react-icons/md";
 import { PiChatsLight } from "react-icons/pi";
 import { TbBrandZoom, TbHome, TbUserPentagon } from "react-icons/tb";
 import SidebarButtonBox from "./SidebarButtonBox";
@@ -89,6 +89,12 @@ const CurrenSidesBox = ({ currentSidebarTab, setIsSidebarOpen }) => {
             label="Canvas"
             href="/dashboard/canvas"
             setIsSidebarOpen={setIsSidebarOpen}
+          />
+          <SidebarButtonBox
+              icon={<MdOutlineNoteAlt  size={20} />}
+              label="Notes"
+              href="/dashboard/notes"
+              setIsSidebarOpen={setIsSidebarOpen}
           />
         </div>
       )}
