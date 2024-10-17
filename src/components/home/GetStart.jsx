@@ -1,32 +1,19 @@
-import React, { useState } from "react";
+import { useAuth } from "@clerk/nextjs";
 import "./GetStart.css";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+
 import toast from "react-hot-toast";
 
 const GetStart = () => {
+  const { userId } = useAuth();
+  const auth = !!userId;
   const router = useRouter();
-  const session = useSession();
-  const user = session?.data?.user;
-
-  const [loading, setLoading] = useState(false);
 
   const handleClick = async () => {
-    // if (!user) {
-    //     return toast.error("Login First");
-    // }
-
-    setLoading(true);
-    const loadingToast = toast.loading("Dashboard loading...");
-
-    try {
-      await router.push("/dashboard");
-      toast.dismiss(loadingToast);
-    } catch (error) {
-      toast.error("Failed to redirect");
-    } finally {
-      setLoading(false);
+    if (!auth) {
+      return toast.error("Login First");
     }
+    router.push("/dashboard");
   };
 
   return (

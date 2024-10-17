@@ -8,6 +8,7 @@ const Button = ({ text, className, icon }) => {
   const { userId } = useAuth();
   const auth = !!userId;
   const router = useRouter();
+
   const handleClick = async () => {
     if (!auth) {
       return toast.error("Login First");
