@@ -41,9 +41,11 @@ const layout = ({ children }) => {
   const admin = ["babelforgeltd@gmail.com", "babelforgeltdfgd@gmail.com"];
 
   return (
-    <div className="flex min-h-screen bg-white dark:bg-gray-900 dark:text-white relative">
-      <SideBar />
-      <div className="lg:p-6 top-0 w-[96%] absolute left-16">{children}</div>
+    <div className="flex bg-white dark:bg-gray-900 dark:text-white relative">
+      <div className="fixed top-0 left-0">
+        <SideBar />
+      </div>
+      <div className=" w-[96%] pl-16 py-3">{children}</div>
     </div>
   );
 };
