@@ -85,8 +85,8 @@ const AboutCarousel = () => {
   };
 
   return (
-    <div className="slider-container relative my-12 w-screen mx-auto pt-8">
-      <h2 className="text-center  text-[24px] text-[#333] font-semibold dark:text-white">What would you like to manage?</h2>
+    <div className="slider-container text-white relative my-12 w-screen mx-auto pt-8">
+      <h2 className="text-center  text-[24px] font-semibold text-white">What would you like to manage?</h2>
       <Slider className="py-9 " {...settings}>
         <div style={{ width: 200 }} className="my-12 carousel_div py-12   opacity-20 text-center px-8  md:px-14  rounded-xl">
           <MdOutlineEventAvailable className="text-[55px] mx-auto block mb-4" />
