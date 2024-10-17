@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -18,28 +18,26 @@ import { Toaster } from "../ui/toaster";
 
 export function UpdateProfile({ user, refetch }) {
   const { toast } = useToast();
+  const [open, setOpen] = useState(false); // Modal open state
+
   const UpdateProfile = useMutation({
     mutationFn: async (updateData) => {
       const data = axiosCommon.patch(
         `/api/users/update/${user?.email}`,
         updateData
       );
-      console.log("Test update", (await data).data);
-
       return (await data).data;
     },
     onSuccess: (data) => {
-      console.log("Successsss", data.modifiedCount);
-
       if (data.modifiedCount > 0 || data.upsertedCount > 0) {
-        console.log("Data updated!!!");
         toast({
           title: "Updated!",
-          description: "Profile updated Successful!",
+          description: "Profile updated successfully!",
           status: "success",
         });
 
         refetch();
+        setOpen(false); // Close modal after successful update
       }
     },
     onError: (error) => {
@@ -49,26 +47,20 @@ export function UpdateProfile({ user, refetch }) {
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    const userName = e.target.username.value;
-    const displayName = e.target.name.value;
-    const department = e.target.department.value;
-    const organization = e.target.organization.value;
-    const location = e.target.location.value;
-    const email = e.target.email.value;
     const updateData = {
-      username: userName,
-      name: displayName,
-      department: department,
-      organization: organization,
-      location: location,
-      email: email,
+      username: e.target.username.value,
+      name: e.target.name.value,
+      department: e.target.department.value,
+      organization: e.target.organization.value,
+      location: e.target.location.value,
+      email: e.target.email.value,
     };
 
     UpdateProfile.mutate(updateData);
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button variant="outline" className="w-full">
           Edit Profile
@@ -105,16 +97,15 @@ export function UpdateProfile({ user, refetch }) {
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="email" className="text-right">
-                email
+                Email
               </Label>
               <Input
-                disable
                 id="email"
                 defaultValue={user?.email}
+                disabled
                 className="col-span-3"
               />
             </div>
-            {/* department */}
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="department" className="text-right">
                 Department
@@ -147,9 +138,7 @@ export function UpdateProfile({ user, refetch }) {
             </div>
           </div>
           <DialogFooter>
-            <DialogClose>
-              <Button type="submit">Save changes</Button>
-            </DialogClose>
+            <Button type="submit">Save changes</Button>
           </DialogFooter>
         </form>
       </DialogContent>
