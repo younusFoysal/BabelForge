@@ -46,8 +46,6 @@ const UserTeam = () => {
     formState: { errors },
   } = useForm();
 
-  // dark theme for input tag element
-
   // handle Search
   const handleSeach = () => {
     setSearchQuery(myRef.current.value);
@@ -87,11 +85,9 @@ const UserTeam = () => {
           <DialogTrigger asChild>
             <button
               disabled={projects?.length > 0 ? false : true}
-              className={`${
-                projects?.length > 0
-                  ? 'bg-bgColor hover:shadow-blue-200 dark:opacity-100 hover:shadow-lg hover:scale-110 dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor'
-                  : 'bg-slate-300 dark:bg-slate-700 dark:text-white cursor-not-allowed'
-              }  text-white text-md  duration-500 dark:opacity-50 font-medium px-4 py-2 rounded-md`}
+              className={`
+                 'bg-bgColor hover:shadow-blue-200 bg-bgColor hover:shadow-lg hover:scale-110 dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor'
+                text-white text-md  duration-500  font-medium px-4 py-2 rounded-md`}
             >
               Create Team
             </button>
@@ -163,10 +159,10 @@ const UserTeam = () => {
                       {/* Select Project */}
                       <div>
                         <Label htmlFor="tproject" className="text-left text-[11px] mb-[6px] block font-semibold">
-                          Select Project <span className="text-red-600">*</span>
+                          Select Project
                         </Label>
                         <select
-                          {...register('tproject', { required: true })}
+                          {...register('tproject')}
                           className="w-full py-[11px] dark:text-white dark:border-transparent dark:bg-black text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
                           name="tproject"
                           id="tproject"
@@ -183,7 +179,6 @@ const UserTeam = () => {
                               );
                             })}
                         </select>
-                        {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Project required</p>}
                       </div>
                       <div className="">
                         <Label htmlFor="tdes" className="text-left text-[11px] mb-[6px] block font-semibold">
@@ -205,20 +200,22 @@ const UserTeam = () => {
                         <Label htmlFor="members" className="text-left text-[11px] mb-[6px] block font-semibold">
                           Who should be in this team?
                         </Label>
-                        <TagsInput
-                          type="email"
-                          id="members"
-                          classNames="w-full"
-                          value={emails}
-                          onChange={setEmails}
-                          name="members"
-                          placeHolder="Enter emails"
-                        />
+                        <div className={resolvedTheme === 'dark' && 'parent_Tags'}>
+                          <TagsInput
+                            type="email"
+                            id="members"
+                            classNames="w-full"
+                            value={emails}
+                            onChange={setEmails}
+                            name="members"
+                            placeHolder="Enter emails"
+                          />
+                        </div>
                         <span className="text-[11px]">Press enter to add more</span>
                       </div>
                       <div className="flex items-center gap-3 justify-end">
                         <DialogClose asChild>
-                          <button className="ml-auto bg-[#4444445c] dark:hover:shadow-bgColor/30 hover:bg-[#4444447f] text-white text-md  duration-500  hover:shadow-lg  font-medium px-4 py-2 rounded-md">
+                          <button className="ml-auto bg-[#4444445c]  hover:bg-[#4444447f] text-white text-md  duration-500  hover:shadow-lg  font-medium px-4 py-2 rounded-md">
                             Cancel
                           </button>
                         </DialogClose>
