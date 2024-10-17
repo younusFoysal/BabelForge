@@ -2,18 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import NoteItem from "@/components/Notes/NoteItem";
-import {Button} from "@/components/ui/button";
-import {RiStickyNoteAddLine} from "react-icons/ri";
+import { Button } from "@/components/ui/button";
+import { RiStickyNoteAddLine } from "react-icons/ri";
 import Modal from "react-modal";
 import "./modal.css";
-import {useSession} from "next-auth/react";
 import useAxiosCommon from "@/lib/axiosCommon";
-import {IoCloseCircle} from "react-icons/io5";
+import { IoCloseCircle } from "react-icons/io5";
 import Image from "next/image";
-import {IoMdLink} from "react-icons/io";
-import {useMutation, useQuery} from "@tanstack/react-query";
+import { IoMdLink } from "react-icons/io";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import {useUser} from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 
 const dummynotes = [
@@ -40,7 +39,7 @@ const dummynotes = [
 
 const Notes = () => {
 
-    const { user, isLoaded, isSignedIn} = useUser();
+    const { user, isLoaded, isSignedIn } = useUser();
     const uemail = user?.primaryEmailAddress?.emailAddress
 
 
@@ -197,7 +196,7 @@ const Notes = () => {
                                 setText(e.target.value);
                                 handleSearch();
                             }}
-                            placeholder="search note"/>
+                            placeholder="search note" />
                     </div>
                 </form>
             </div>
@@ -207,7 +206,7 @@ const Notes = () => {
 
                 className="flex justify-center ml-2 mt-6 gap-2 align-middle bg-bgColor shadow-md dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md hover:scale-110 duration-500 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
             >
-                <RiStickyNoteAddLine className="self-center text-white text-lg font-extrabold"/>
+                <RiStickyNoteAddLine className="self-center text-white text-lg font-extrabold" />
                 Create a Note
 
             </button>
@@ -218,7 +217,7 @@ const Notes = () => {
                 {filteredNotes?.length === 0 ? (
                     <p className="text-white">No Notes Found!</p>
                 ) : (filteredNotes?.map((note) => (
-                    <NoteItem key={note.id} note={note} refetch={refetch}/>
+                    <NoteItem key={note.id} note={note} refetch={refetch} />
                 )))
 
                 }
@@ -251,11 +250,11 @@ const Notes = () => {
                                                 onClick={handleCloseCreateNote}
                                                 className="close right-5 top-5 text-gray-400 hover:text-gray-600">
                                                 <svg className="h-5 w-5" fill="none" stroke="currentColor"
-                                                     viewBox="0 0 24 24"
-                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
                                                     <path strokeLinecap="round" strokeLinejoin="round"
-                                                          strokeWidth="2"
-                                                          d="M6 18L18 6M6 6l12 12"></path>
+                                                        strokeWidth="2"
+                                                        d="M6 18L18 6M6 6l12 12"></path>
                                                 </svg>
                                             </button>
                                         </div>
