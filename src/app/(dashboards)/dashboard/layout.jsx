@@ -43,7 +43,7 @@ const layout = ({ children }) => {
   return (
     <div className="flex min-h-screen bg-white dark:bg-gray-900 dark:text-white relative">
       <SideBar />
-      <div className="lg:p-6 top-0 w-full absolute left-8">{children}</div>
+      <div className="lg:p-6 top-0 w-[96%] absolute left-16">{children}</div>
     </div>
   );
 };
