@@ -38,7 +38,9 @@ const ProjectPage = () => {
         <h3 className="text-2xl  font-medium">You have no projects yet. Start by creating your first project!</h3>
         <div>
           <Link href="/dashboard/createproject">
-            <Button className="bg-primary text-white px-4 py-2 rounded-sm">Create Project</Button>
+            <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
+              Create Project
+            </button>
           </Link>
         </div>
       </section>
@@ -72,7 +74,9 @@ const ProjectPage = () => {
         <h3 className="text-2xl  font-medium">Projects</h3>
         <div>
           <Link href="/dashboard/createproject">
-            <Button className="bg-primary text-white px-4 py-2 rounded-sm">Create Project</Button>
+            <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
+              Create Project
+            </button>
           </Link>
         </div>
       </div>
