@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const UseTeams = email => {
   const axiosCommon = useAxiosCommon();
-
+  console.log(email);
   const {
     data: teams = [],
     isLoading,
@@ -18,7 +18,6 @@ const UseTeams = email => {
       }
     },
   });
-
   return [teams, isLoading, refetch, isError];
 };
 
