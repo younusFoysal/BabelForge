@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="notes updated">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="dash fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,15 +125,7 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
-      <workItem from="1729168984086" duration="678000" />
-    </task>
-    <task id="LOCAL-00004" summary="File Structure Added">
-      <option name="closed" value="true" />
-      <created>1726638543764</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1726638543764</updated>
+      <workItem from="1729168984086" duration="1588000" />
     </task>
     <task id="LOCAL-00005" summary="File Structure Done">
       <option name="closed" value="true" />
@@ -522,7 +511,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729146108953</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="dash fix">
+      <option name="closed" value="true" />
+      <created>1729175099843</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1729175099843</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +538,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="packager fix" />
     <MESSAGE value="Add task Done" />
     <MESSAGE value="Server api link added" />
     <MESSAGE value="turbo added" />
@@ -566,6 +562,7 @@
     <MESSAGE value="Awesome Design Implemented" />
     <MESSAGE value="home button added" />
     <MESSAGE value="notes updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="notes updated" />
+    <MESSAGE value="dash fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="dash fix" />
   </component>
 </project>
