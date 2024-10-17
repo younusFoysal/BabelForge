@@ -1,7 +1,7 @@
 import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { ThemeProvider } from "@/components/Theme/ThemeProvider";
-import AuthProvider from "@/services/AuthProvider";
+
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import dynamic from "next/dynamic";
@@ -15,6 +15,7 @@ const metadata = {
 
 import { Poppins, Nunito } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
+import QureryProvider from "@/providers/QureryProvider";
 
 const nunito = Nunito({
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
@@ -26,19 +27,6 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider
       appearance={{
-        variables: { colorPrimary: "#000000" },
-        elements: {
-          formButtonPrimary:
-            "bg-black border border-black border-solid hover:bg-white hover:text-black",
-          socialButtonsBlockButton:
-            "bg-white border-gray-200 hover:bg-transparent hover:border-black text-gray-600 hover:text-black",
-          socialButtonsBlockButtonText: "font-semibold",
-          formButtonReset:
-            "bg-white border border-solid border-gray-200 hover:bg-transparent hover:border-black text-gray-500 hover:text-black",
-          membersPageInviteButton:
-            "bg-black border border-black border-solid hover:bg-white hover:text-black",
-          card: "bg-[#fafafa]",
-        },
         layout: {
           unsafe_disableDevelopmentModeWarnings: true,
         },
@@ -48,22 +36,22 @@ export default function RootLayout({ children }) {
         <body
           className={`${nunito.className} before:fixed before:-z-10 before:blur-[200px] before:lg:size-[600px] before:size-[400px] before:rounded-full before:top-[10%] before:md:start-[10%] before:-start-[20%] before:bg-indigo-600/20 after:fixed after:-z-10 after:blur-[200px] after:lg:size-[600px] after:size-[400px] after:rounded-full after:bottom-[10%] after:md:end-[10%] after:-end-[20%] after:bg-red-600/20 `}
         >
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <PaymentProvider>
-              <AuthProvider>
+          <QureryProvider>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <PaymentProvider>
                 <CrispWithNoSSR />
                 <Navbar />
                 {children}
                 <Footer />
                 <Toaster position="top-center" reverseOrder={false} />
-              </AuthProvider>
-            </PaymentProvider>
-          </ThemeProvider>
+              </PaymentProvider>
+            </ThemeProvider>
+          </QureryProvider>
         </body>
       </html>
     </ClerkProvider>

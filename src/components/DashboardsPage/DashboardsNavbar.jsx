@@ -14,6 +14,7 @@ import {
 import { ModeToggle } from "../Theme/ModeToggle";
 
 import { usePathname } from "next/navigation";
+import { TbUserPentagon } from "react-icons/tb";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const { userId } = useAuth();
@@ -41,8 +42,8 @@ const DashboardNavbar = () => {
       href: "/dashboard/review",
     },
     {
-      title: 'Notes',
-      href: '/dashboard/notes',
+      title: "Notes",
+      href: "/dashboard/notes",
     },
   ];
 
@@ -82,6 +83,11 @@ const DashboardNavbar = () => {
               <div className="flex items-center gap-4">
                 <UserButton>
                   <UserButton.MenuItems>
+                    <UserButton.Link
+                      label="profile"
+                      href="/dashboard/profile"
+                      labelIcon={<TbUserPentagon size={15} />}
+                    />
                     <UserButton.Action label="signOut" />
                     <UserButton.Action label="manageAccount" />
                   </UserButton.MenuItems>

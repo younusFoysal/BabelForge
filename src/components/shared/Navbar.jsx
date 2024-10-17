@@ -100,13 +100,13 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                   <UserButton>
                     <UserButton.MenuItems>
-                      <UserButton.Action label="signOut" />
                       <UserButton.Link
                         label="Dashboard"
                         href="/dashboard"
                         labelIcon={<MdDashboard size={15} />}
                       />
                       <UserButton.Action label="manageAccount" />
+                      <UserButton.Action label="signOut" />
                     </UserButton.MenuItems>
                   </UserButton>
                 </div>
