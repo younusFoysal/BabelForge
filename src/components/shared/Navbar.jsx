@@ -16,13 +16,8 @@ import {
   useAuth,
   UserButton,
 } from "@clerk/nextjs";
-<<<<<<< HEAD
 import { useTheme } from "next-themes";
 import { MdDashboard } from "react-icons/md";
-=======
-import { MdDashboard } from "react-icons/md";
-import { useTheme } from "next-themes";
->>>>>>> 3739ed48e56fa4e87e0d93f32d13941b599aaff0
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -63,13 +58,8 @@ const Navbar = () => {
       href: "/contact",
     },
     {
-<<<<<<< HEAD
       title: "Help",
       href: "/help",
-=======
-      title: "Video",
-      href: "/stream",
->>>>>>> 3739ed48e56fa4e87e0d93f32d13941b599aaff0
     },
   ];
 
