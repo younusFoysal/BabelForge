@@ -220,7 +220,7 @@ const AdminPackages = ({ priceingsec }) => {
               </defs>
             </svg>
           </span>
-          <span className="absolute left-16 top-20 -z-1">
+          <span className="absolute left-16 top-16 -z-1">
             <svg width="50" height="109" viewBox="0 0 50 109" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="47.71" cy="107.259" r="1.74121" transform="rotate(180 47.71 107.259)" fill="#3056D3"></circle>
               <circle cx="47.71" cy="91.9355" r="1.74121" transform="rotate(180 47.71 91.9355)" fill="#3056D3"></circle>

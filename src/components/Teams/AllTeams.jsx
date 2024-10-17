@@ -7,6 +7,7 @@ import { FaTelegramPlane } from 'react-icons/fa';
 import { Card } from '../ui/card';
 import { useRouter } from 'next/navigation';
 import usericon from '@/image/icon/user.png';
+import noData from '@/image/Team/no-data.svg';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
@@ -47,6 +48,15 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
   }, [searchText, selectedCategory, teams]);
 
   if (loadingTeams || isLoadingUsers) return <div>Loading...</div>;
+
+  if (filteredTeams.length < 1) {
+    return (
+      <div className="flex flex-col justify-center items-center mt-7 py-16">
+        <Image className="w-[300px] h-auto" src={noData} alt="No data" height={100} width={100} />
+        <p className="text-3xl  mt-7">No data! </p>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-12">
