@@ -7,6 +7,7 @@ import Sponser from "@/components/home/Sponser";
 import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import AllReviews from "@/components/Reviews/AllReviews";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -36,6 +37,7 @@ const Home = () => {
           {/*<PricingCards/>*/}
 
           <LeaderCTA />
+          <AllReviews/>
 
           {/*<CallToAction />*/}
         </div>
