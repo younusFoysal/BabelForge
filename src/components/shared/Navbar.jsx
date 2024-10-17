@@ -34,7 +34,7 @@ const Navbar = () => {
   if (pathname?.includes("/successPayment")) return null;
 
   if (pathname?.includes("dashboard")) {
-    return <DashboardNavbar />;
+    return null;
   }
   if (pathname?.includes("stream")) {
     return null;
