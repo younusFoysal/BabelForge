@@ -1,19 +1,12 @@
-"use client";
+'use client';
 
-import logo from "@/image/Home/babellogo.png";
+import logo from '@/image/Home/babellogo.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import { SignedIn, useAuth, UserButton } from '@clerk/nextjs';
+import { ModeToggle } from '../Theme/ModeToggle';
 
-import Image from "next/image";
-import Link from "next/link";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  useAuth,
-  UserButton,
-} from "@clerk/nextjs";
-import { ModeToggle } from "../Theme/ModeToggle";
-
-import { usePathname } from "next/navigation";
+import { usePathname } from 'next/navigation';
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const { userId } = useAuth();
@@ -21,33 +14,29 @@ const DashboardNavbar = () => {
 
   const NavbarItems = [
     {
-      title: "Project",
-      href: "/dashboard/projects",
+      title: 'Project',
+      href: '/dashboard/projects',
     },
     {
-      title: "Teams",
-      href: "/dashboard/teams",
+      title: 'Teams',
+      href: '/dashboard/teams',
     },
     {
-      title: "Group Chat",
-      href: "/dashboard/chat",
+      title: 'Group Chat',
+      href: '/dashboard/chat',
     },
     {
-      title: "Dashboard",
-      href: "/dashboard",
+      title: 'Dashboard',
+      href: '/dashboard',
     },
     {
-      title: "Review",
-      href: "/dashboard/review",
-    },
-    {
-      title: 'Notes',
-      href: '/dashboard/notes',
+      title: 'Review',
+      href: '/dashboard/review',
     },
   ];
 
   return (
-    <div className="bg-white/30 backdrop-blur-lg dark:bg-[#0F172A]/60 border-b border-white/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
+    <div className="bg-white backdrop-blur-lg dark:bg-[#0F172A]/60 border-b border-gray/20 dark:border-gray-800/50 sticky top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
         <Link href="/">
@@ -60,15 +49,9 @@ const DashboardNavbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex">
           <ul className="flex space-x-6 items-center justify-center">
-            {NavbarItems.map((nav) => (
+            {NavbarItems?.map(nav => (
               <Link href={nav.href} key={nav.href}>
-                <li
-                  className={`hover:text-blue-500 ${
-                    pathname === nav?.href ? "text-blue-500 font-semibold" : ""
-                  }`}
-                >
-                  {nav.title}
-                </li>
+                <li className={`hover:text-blue-500 ${pathname === nav?.href ? 'text-blue-500 font-semibold' : ''}`}>{nav.title}</li>
               </Link>
             ))}
           </ul>
