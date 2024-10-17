@@ -1,18 +1,13 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import LeaderCTA from "@/components/home/LeaderCTA";
-import Sponser from "@/components/home/Sponser";
-import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import AboutStatistics from "@/components/AboutUs/AboutStatistics";
-import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 import AwesomeHome from "@/components/home/AwesomeHome";
 import CarouselHome from "@/components/home/CarouselHome";
-import PricingCards from "@/components/home/PricingCards";
-import GlassHome from "@/components/home/3d/GlassHome";
-import GlassDNA from "@/components/home/3d/GlassDNA";
-
-import { useUser } from "@clerk/nextjs";
-import { useTheme } from "next-themes";
+import LeaderCTA from "@/components/home/LeaderCTA";
+import Sponser from "@/components/home/Sponser";
+import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
+import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
+import AllReviews from "@/components/Reviews/AllReviews";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -42,6 +37,7 @@ const Home = () => {
           {/*<PricingCards/>*/}
 
           <LeaderCTA />
+          <AllReviews />
 
           {/*<CallToAction />*/}
         </div>

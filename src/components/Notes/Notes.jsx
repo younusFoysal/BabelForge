@@ -2,18 +2,17 @@
 import React, { useEffect, useState } from "react";
 import { BsPlusLg } from "react-icons/bs";
 import NoteItem from "@/components/Notes/NoteItem";
-import {Button} from "@/components/ui/button";
-import {RiStickyNoteAddLine} from "react-icons/ri";
+import { Button } from "@/components/ui/button";
+import { RiStickyNoteAddLine } from "react-icons/ri";
 import Modal from "react-modal";
 import "./modal.css";
-import {useSession} from "next-auth/react";
 import useAxiosCommon from "@/lib/axiosCommon";
-import {IoCloseCircle} from "react-icons/io5";
+import { IoCloseCircle } from "react-icons/io5";
 import Image from "next/image";
-import {IoMdLink} from "react-icons/io";
-import {useMutation, useQuery} from "@tanstack/react-query";
+import { IoMdLink } from "react-icons/io";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
-import {useUser} from "@clerk/nextjs";
+import { useUser } from "@clerk/nextjs";
 
 
 const dummynotes = [
@@ -40,7 +39,7 @@ const dummynotes = [
 
 const Notes = () => {
 
-    const { user, isLoaded, isSignedIn} = useUser();
+    const { user, isLoaded, isSignedIn } = useUser();
     const uemail = user?.primaryEmailAddress?.emailAddress
 
 
@@ -185,7 +184,7 @@ const Notes = () => {
         <div>
 
             <div
-                className="flex flex-col shadow-lg w-full items-center pt-4 gap-4 rounded-xl p-4 bg-gradient-to-b from-blue-600 to-bgColor hover:shadow-lg hover:shadow-sky-200">
+                className="flex flex-col shadow-lg w-full items-center pt-4 gap-4 rounded-xl p-4 bg-gradient-to-b from-blue-600 to-bgColor hover:shadow-md hover:shadow-sky-200 duration-500">
                 <p className="text-4xl md:text-5xl font-extrabold text-white font-['Poppu']">MY Notes</p>
                 <form action="" className="max-w-[480px] w-full px-4">
                     <div className="relative">
@@ -197,7 +196,7 @@ const Notes = () => {
                                 setText(e.target.value);
                                 handleSearch();
                             }}
-                            placeholder="search note"/>
+                            placeholder="search note" />
                     </div>
                 </form>
             </div>
@@ -205,9 +204,9 @@ const Notes = () => {
             <button
                 onClick={() => handleOpenCreateNote(true)}
 
-                className="flex justify-center ml-2 mt-6 gap-2 align-middle bg-bgColor shadow-md dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md hover:scale-110 duration-500 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
+                className="flex justify-center ml-2 mt-6 gap-2 align-middle bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-300 hover:shadow-md hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
             >
-                <RiStickyNoteAddLine className="self-center text-white text-lg font-extrabold"/>
+                <RiStickyNoteAddLine className="self-center text-white text-lg font-extrabold" />
                 Create a Note
 
             </button>
@@ -218,7 +217,7 @@ const Notes = () => {
                 {filteredNotes?.length === 0 ? (
                     <p className="text-white">No Notes Found!</p>
                 ) : (filteredNotes?.map((note) => (
-                    <NoteItem key={note.id} note={note} refetch={refetch}/>
+                    <NoteItem key={note.id} note={note} refetch={refetch} />
                 )))
 
                 }
@@ -241,9 +240,9 @@ const Notes = () => {
 
                             <div className="flex items-center justify-center p-4">
                                 <div className="w-full max-w-sm">
-                                    <div className="relative rounded-2xl bg-white p-6 shadow">
+                                    <div className="relative rounded-2xl bg-white p-6 shadow dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
                                         <div className="mb-4 flex items-center justify-between">
-                                            <h2 className=" modal-title text-xl font-semibold text-gray-900">Create a
+                                            <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">Create a
                                                 new Note</h2>
 
 
@@ -251,11 +250,11 @@ const Notes = () => {
                                                 onClick={handleCloseCreateNote}
                                                 className="close right-5 top-5 text-gray-400 hover:text-gray-600">
                                                 <svg className="h-5 w-5" fill="none" stroke="currentColor"
-                                                     viewBox="0 0 24 24"
-                                                     xmlns="http://www.w3.org/2000/svg">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2"
-                                                          d="M6 18L18 6M6 6l12 12"></path>
+                                                    viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path strokeLinecap="round" strokeLinejoin="round"
+                                                        strokeWidth="2"
+                                                        d="M6 18L18 6M6 6l12 12"></path>
                                                 </svg>
                                             </button>
                                         </div>

@@ -7,7 +7,6 @@ import { SignedIn, useAuth, UserButton } from "@clerk/nextjs";
 import { ModeToggle } from "../Theme/ModeToggle";
 
 import { usePathname } from "next/navigation";
-import { TbUserPentagon } from "react-icons/tb";
 const DashboardNavbar = () => {
   const pathname = usePathname();
   const { userId } = useAuth();

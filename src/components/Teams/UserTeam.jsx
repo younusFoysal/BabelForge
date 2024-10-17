@@ -1,18 +1,9 @@
 'use client';
 import AllTeams from '@/components/Teams/AllTeams';
 import UseTeams from '@/hooks/useTeams';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoSearch } from 'react-icons/io5';
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogHeader,
-  DialogOverlay,
-  DialogPortal,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '../ui/textarea';
@@ -27,17 +18,27 @@ import toast from 'react-hot-toast';
 import useProjects from '@/hooks/useProjects';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { useUser } from '@clerk/nextjs';
+import { useTheme } from 'next-themes';
 
 const UserTeam = () => {
   const myRef = useRef('');
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
-  const [teams, isLoading, refetch] = UseTeams(uemail);
   const [searchQuery, setSearchQuery] = useState('');
   const [emails, setEmails] = useState([uemail]);
+  const [teams, isLoading, refetch, isError] = UseTeams(uemail);
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = useState(false);
   const { data: projects = [] } = useProjects(uemail, '', '');
+  const { resolvedTheme } = useTheme();
+
+  // Refetch when when the user is availble
+  useEffect(() => {
+    if (uemail) {
+      refetch();
+    }
+  }, [uemail]);
+
   const {
     register,
     handleSubmit,
@@ -74,7 +75,7 @@ const UserTeam = () => {
     mutation.mutate(data);
   };
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (isLoading && teams.length < 1) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
@@ -82,7 +83,11 @@ const UserTeam = () => {
         <h2 className="text-2xl dark:text-white text-[#333]">Teams and projects</h2>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
-            <button className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md hover:scale-110 duration-500  hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md">
+            <button
+              className={`
+                 'bg-bgColor hover:shadow-blue-200 bg-bgColor hover:shadow-lg hover:scale-110 dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor'
+                text-white text-md  duration-500  font-medium px-4 py-2 rounded-md`}
+            >
               Create Team
             </button>
           </DialogTrigger>
@@ -153,10 +158,10 @@ const UserTeam = () => {
                       {/* Select Project */}
                       <div>
                         <Label htmlFor="tproject" className="text-left text-[11px] mb-[6px] block font-semibold">
-                          Select Project <span className="text-red-600">*</span>
+                          Select Project
                         </Label>
                         <select
-                          {...register('tproject', { required: true })}
+                          {...register('tproject')}
                           className="w-full py-[11px] dark:text-white dark:border-transparent dark:bg-black text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
                           name="tproject"
                           id="tproject"
@@ -167,14 +172,12 @@ const UserTeam = () => {
                           {projects &&
                             projects?.map(project => {
                               return (
-                                <option className=" " key={project._id} value={project._id}>
-                                  <span className=" capitalize"> {project.pname}</span>
+                                <option key={project._id} value={project._id}>
+                                  <span className="capitalize"> {project.pname}</span>
                                 </option>
                               );
                             })}
-                          <option value=""></option>
                         </select>
-                        {errors.tcategory?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Project required</p>}
                       </div>
                       <div className="">
                         <Label htmlFor="tdes" className="text-left text-[11px] mb-[6px] block font-semibold">
@@ -196,20 +199,22 @@ const UserTeam = () => {
                         <Label htmlFor="members" className="text-left text-[11px] mb-[6px] block font-semibold">
                           Who should be in this team?
                         </Label>
-                        <TagsInput
-                          type="email"
-                          id="members"
-                          classNames="w-full"
-                          value={emails}
-                          onChange={setEmails}
-                          name="members"
-                          placeHolder="Enter emails"
-                        />
+                        <div className={resolvedTheme === 'dark' && 'parent_Tags'}>
+                          <TagsInput
+                            type="email"
+                            id="members"
+                            classNames="w-full"
+                            value={emails}
+                            onChange={setEmails}
+                            name="members"
+                            placeHolder="Enter emails"
+                          />
+                        </div>
                         <span className="text-[11px]">Press enter to add more</span>
                       </div>
                       <div className="flex items-center gap-3 justify-end">
                         <DialogClose asChild>
-                          <button className="ml-auto bg-[#4444445c] dark:hover:shadow-bgColor/30 hover:bg-[#4444447f] text-white text-md  duration-500  hover:shadow-lg  font-medium px-4 py-2 rounded-md">
+                          <button className="ml-auto bg-[#4444445c]  hover:bg-[#4444447f] text-white text-md  duration-500  hover:shadow-lg  font-medium px-4 py-2 rounded-md">
                             Cancel
                           </button>
                         </DialogClose>

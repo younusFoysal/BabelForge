@@ -14,7 +14,6 @@ import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 import { Button } from "@/components/ui/button"
 import UpdateTeamModal from "./UpdateTeamModal";
 
-
 const Team = ({ id }) => {
 
   console.log(id)
@@ -42,8 +41,6 @@ const Team = ({ id }) => {
   });
 
   console.log("Team Single:", team);
-
-
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 

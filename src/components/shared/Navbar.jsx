@@ -16,8 +16,8 @@ import {
   useAuth,
   UserButton,
 } from "@clerk/nextjs";
-import { MdDashboard } from "react-icons/md";
 import { useTheme } from "next-themes";
+import { MdDashboard } from "react-icons/md";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -58,8 +58,8 @@ const Navbar = () => {
       href: "/contact",
     },
     {
-      title: "Video",
-      href: "/stream",
+      title: "Help",
+      href: "/help",
     },
   ];
 
@@ -99,6 +99,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                   <UserButton>
                     <UserButton.MenuItems>
+                      <UserButton.Action label="signOut" />
                       <UserButton.Link
                         label="Dashboard"
                         href="/dashboard"

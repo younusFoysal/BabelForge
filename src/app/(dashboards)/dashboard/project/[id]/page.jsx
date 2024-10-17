@@ -5,14 +5,38 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import React from "react";
-import {useParams} from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
+import { IoIosLink } from "react-icons/io";
+import { space } from "postcss/lib/list";
+import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
+
 
 const ProjectDetails = () => {
   const axiosCommon = useAxiosCommon();
+  const router = useRouter();
   const params = useParams();
   const { id } = params;
+  const [currentDate, setCurrentDate] = useState('');
 
+  // useeffects
+  useEffect(() => {
+    const now = new Date();
+
+    // Convert to GMT+6
+    const gmt6Offset = 6 * 60 * 60 * 1000;
+    const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+    // Format date as YYYY-MM-DD
+    const year = gmt6Date.getUTCFullYear();
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // Set the formatted date and time
+    setCurrentDate(formattedDate);
+  }, []);
 
   const {
     data: project = [],
@@ -27,169 +51,145 @@ const ProjectDetails = () => {
     },
   });
 
-  if (isLoading) {
+  const {
+    data: teamsOfProject = [],
+    isLoading: teamsOfProjectLoading,
+    refetch: teamsOfProjectRefetch,
+  } = useQuery({
+    queryKey: ["teamsOfProjectss"],
+    queryFn: async () => {
+      const data = await axiosCommon.get(`team/teams/of-project/${id}`);
+      return data;
+    },
+  });
+
+
+
+  if (isLoading || teamsOfProjectLoading) {
     return <LoadingSpinner />;
   }
 
-  const { pcategory, pdes, pname, pimg, purl, pmname, pmanager, pallmembers } =
-    project.data;
+  // console.log(project.data);
+
+  const { favorite, pallmembers, pcategory, pdes, pedate, pimg, pmanager, pmname, pname, psdate, purl, _id } = project.data;
+
+
+
+  const handleEndProject = (id) => {
+    // console.log(id);
+    // console.log(id, currentDate);
+
+    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
+      .then(res => {
+        // console.log(res);
+        if (res.data.modifiedCount) {
+          // console.log(res);
+          refetch();
+          toast.success('Project Ended.');
+        }
+      })
+  }
 
   return (
-    <div
-      className="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200"
-      id="panel"
-    >
-      <div className="w-full px-6 py-6 mx-auto min-height-50vh text-slate-500">
-        <div className="relative flex flex-col flex-auto min-w-0 p-4 overflow-hidden break-words border-0 drop-shadow-xl rounded-2xl bg-white/80 bg-clip-border mb-4">
-          <div className="flex flex-wrap -mx-3">
-            <div className="flex-none w-auto max-w-full px-3">
-              <div className="text-base ease-soft-in-out h-18.5 w-18.5 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                <Image
-                  src="https://demos.creative-tim.com/soft-ui-dashboard-tailwind/assets/img/bruce-mars.jpg"
-                  width={100}
-                  height={100}
-                  alt="profile_image"
-                  className="w-full shadow-soft-sm rounded-xl"
-                />
-              </div>
-            </div>
-            <div className="flex-none w-auto max-w-full px-3 my-auto">
-              <div className="h-full">
-                <h5 className="mb-1">{pname}</h5>
-                <p className="mb-0 font-semibold leading-normal text-sm">
-                  {pcategory}
-                </p>
-              </div>
-            </div>
-            <div className="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12"></div>
+    <section className="flex flex-col md:flex-row my-5 md:ml-2">
+
+      {/* left- overview */}
+      <div className="w-[90%] mx-auto md:mx-0 md:w-1/4 border rounded-lg bg-gray-100 hover:shadow-lg duration-300 h-fit dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
+        <div className="h-48 mx-auto rounded-lg p-2">
+          <Image
+            src={pimg}
+            width={100}
+            height={100}
+            alt="project_image"
+            className="rounded-lg w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="mt-5 space-y-2 px-2">
+          <div>
+            <h2 className="font-bold text-2xl">{pname}</h2>
+            <p className="text-gray-700 dark:text-white/80">{pcategory}</p>
+          </div>
+          <p > <span className="font-bold">Starts at:</span> {psdate}</p>
+          <p > <span className="font-bold">Ends at: </span>{pedate ? <span> {pedate}</span> : <span> On Going</span>}</p>
+          <div className="flex items-center gap-1">
+            <IoIosLink className="font-bold text-lg" />
+            <Link className="font-semibold hover:text-blue-600" href={`${purl}`}>{purl.slice(0, 30) + "..."}</Link>
           </div>
         </div>
-        <div className="w-full pb-6 mx-auto removable">
-          <div className="flex flex-wrap -mx-3">
-            <div className="w-full max-w-full px-3 drop-shadow-xl lg-max:mt-6 xl:w-4/12 mb-4">
-              <div className="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                <div className="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-                  <div className="flex flex-wrap -mx-3">
-                    <div className="flex items-center w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-none">
-                      <h6 className="mb-0">Project Description</h6>
-                    </div>
-                    <div className="w-full max-w-full px-3 text-right shrink-0 md:w-4/12 md:flex-none">
-                      <a
-                        href="javascript:;"
-                        data-target="tooltip_trigger"
-                        data-placement="top"
-                      >
-                        <i
-                          className="leading-normal fas fa-user-edit text-sm text-slate-400"
-                          aria-hidden="true"
-                        ></i>
-                      </a>
-                      <div
-                        data-target="tooltip"
-                        className="px-2 py-1 text-center text-white bg-black rounded-lg text-sm hidden"
-                        role="tooltip"
-                        data-popper-placement="top"
-                      >
-                        {" "}
-                        Edit Profile{" "}
-                        <div
-                          className="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']"
-                          data-popper-arrow=""
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex-auto p-4">
-                  <p className="leading-normal text-sm">{pdes}</p>
-                  <hr className="h-px my-6 bg-transparent  bg-gradient-to-r from-transparent via-black/40 to-transparent" />
-                  <ul className="flex flex-col pl-0 mb-0 rounded-lg">
-                    <li className="relative block px-4 py-2 pt-0 pl-0 leading-normal bg-white border-0 rounded-t-lg text-sm text-inherit">
-                      <strong className="text-slate-700">Full Name:</strong>{" "}
-                      &nbsp; {pmname}
-                    </li>
-                    <li className="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit">
-                      <strong className="text-slate-700">Mobile:</strong> &nbsp;
-                      (44) 123 1234 123
-                    </li>
-                    <li className="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit">
-                      <strong className="text-slate-700">Email:</strong> &nbsp;
-                      {pmanager}
-                    </li>
-                    <li className="relative block px-4 py-2 pl-0 leading-normal bg-white border-0 border-t-0 text-sm text-inherit">
-                      <strong className="text-slate-700">Location:</strong>{" "}
-                      &nbsp; USA
-                    </li>
-                    <li className="relative block px-4 py-2 pb-0 pl-0 bg-white border-0 border-t-0 rounded-b-lg text-inherit">
-                      <strong className="leading-normal text-sm text-slate-700">
-                        Social: {purl}
-                      </strong>{" "}
-                      &nbsp;
-                      <a
-                        className="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center text-blue-800 align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none"
-                        href="javascript:;"
-                      >
-                        <i
-                          className="fab fa-facebook fa-lg"
-                          aria-hidden="true"
-                        ></i>
-                      </a>
-                      <a
-                        className="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-600"
-                        href="javascript:;"
-                      >
-                        <i
-                          className="fab fa-twitter fa-lg"
-                          aria-hidden="true"
-                        ></i>
-                      </a>
-                      <a
-                        className="inline-block py-0 pl-1 pr-2 mb-0 font-bold text-center align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-none text-sky-900"
-                        href="javascript:;"
-                      >
-                        <i
-                          className="fab fa-instagram fa-lg"
-                          aria-hidden="true"
-                        ></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="w-full max-w-full px-3 drop-shadow-xl lg-max:mt-6 xl:w-3/12 mb-4">
-              <div className="relative flex flex-col h-full min-w-0 break-words bg-white border-0 shadow-soft-xl rounded-2xl bg-clip-border">
-                <div className="p-4 pb-0 mb-0 bg-white border-b-0 rounded-t-2xl">
-                  <h6 className="mb-0">Team Leaders</h6>
-                </div>
-                <div className="flex-auto p-4">
-                  <ul className="flex flex-col pl-0 mb-0 rounded-lg">
-                    {pallmembers.map((leader, index) => (
-                      <li
-                        key={index}
-                        className="relative flex items-center px-0 py-2 mb-2 bg-white border-0 rounded-t-lg text-inherit"
-                      >
-                        <div className="text-sm font-medium leading-none flex items-center gap-2  ">
-                          <Avatar className="mt-2">
-                            <AvatarImage
-                              src="https://github.com/shadcn.png"
-                              alt="@shadcn"
-                              className="w-8 h-8 rounded-full object-cover"
-                            />
-                            <AvatarFallback>{leader}</AvatarFallback>
-                          </Avatar>
-                          <p className="text-muted-foreground">{leader}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="flex items-center mt-5 px-2 mb-3">
+          {
+            pedate ? <button className="bg-bgColor dark:hover:shadow-bgColor/30 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md" disabled>End Project</button> :
+
+              <button onClick={() => handleEndProject(_id)} className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">End Project</button>
+          }
+
         </div>
       </div>
-    </div>
+
+
+      {/* right- details */}
+      <div className="w-full md:w-3/4 px-7 my-5 md:my-0">
+
+
+        {/* test */}
+
+        <div class="flex justify-center items-center">
+          <div class="w-full ml-1 mr-1 flex flex-col justify-center items-center border-gray-700 text-center">
+            <div class="w-full rounded-2xl p-8 text-white bg-gradient-to-br from-[#5f99f9] to-[#8868dc] pb-44 relative">
+              <h1 class="text-2xl mb-4 font-bold">Manager Info</h1>
+              <div className="text-center">
+                <div className="w-full flex justify-center items-center gap-2">
+                  <h3 className="font-bold ">Name: </h3>
+                  <p className="text-gray-100 dark:text-white/80">{pmname}</p>
+                </div>
+
+                <div className="w-full flex items-center justify-center gap-2">
+                  <h3 className="font-bold">Email: </h3>
+                  <p className="text-gray-100 dark:text-white/80">{pmanager}</p>
+                </div>
+              </div>
+            </div>
+            <div class="text-center bg-white shadow-lg w-[80%] rounded-xl -mt-32 z-10 p-9 flex items-center flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
+              <h2 class="text-2xl font-bold">Project Description</h2>
+              <p class="text-gray-700 dark:text-white/80 p-5 rounded-lg text-sm leading-7">{pdes}</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div className="mt-7">
+          <h3 className="border-b pb-2 font-bold text-xl">Teams</h3>
+          {
+            teamsOfProject?.data.length === 0 && <p className="font-semibold mt-3">No Teams Created Yet.</p>
+          }
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
+            {
+              teamsOfProject?.data.map(team =>
+                <div onClick={() => router.push(`/dashboard/teams/${team._id}`)} key={team._id} className="flex gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
+                  <div className="w-10 h-10 rounded-full">
+                    <Image
+                      src={team?.tpic}
+                      width={100}
+                      height={100}
+                      alt="project_image"
+                      className="rounded-full w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="-space-y-1">
+                    <p className="font-bold">{team?.tname}</p>
+                    <p className="text-sm text-gray-700 dark:text-white/80">{team?.tcategory}</p>
+                  </div>
+                </div>
+              )
+            }
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
   );
 };
 
