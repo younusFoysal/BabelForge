@@ -4,7 +4,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Toaster } from "react-hot-toast";
 import { FaNetworkWired } from "react-icons/fa";
@@ -14,12 +13,14 @@ import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { UpdateProfile } from "../Profile/UpdateProfile";
 import { TabsTransaction } from "./Tabs";
+import { useUser } from "@clerk/nextjs";
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
 
-  const { data: session } = useSession();
-  const email = session?.user?.email;
+  const { user: clerkuser } = useUser();
+  const uemail = clerkuser?.primaryEmailAddress?.emailAddress;
+  const email = uemail;
 
   const {
     data: user = [],

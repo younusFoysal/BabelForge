@@ -1,6 +1,5 @@
 "use client";
 
-import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,7 +19,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { router } from "next/client";
+
 import { useRouter } from "next/navigation";
 
 const projectCategories = [
@@ -33,8 +32,6 @@ const projectCategories = [
 
 const UpdateProjectPage = ({ id }) => {
   const [currentDate, setCurrentDate] = useState("");
-  const session = useSession();
-  const user = session?.data?.user;
   const router = useRouter();
   const [emails, setEmails] = useState([]);
   const axiosCommon = useAxiosCommon();
@@ -84,7 +81,7 @@ const UpdateProjectPage = ({ id }) => {
     },
     onSuccess: () => {
       toast.success("Project update Successfully!");
-      router.push("/dashboard/projects")
+      router.push("/dashboard/projects");
     },
     onError: () => {
       toast.error(`Something went wrong`);

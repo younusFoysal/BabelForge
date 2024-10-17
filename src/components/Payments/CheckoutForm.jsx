@@ -3,8 +3,7 @@
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { useState, useEffect } from "react";
 import PaymentBox from "./PaymentBox";
-import { useSession } from "next-auth/react";
-import { UserContext } from "@/providers/ContextProvider";
+
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";

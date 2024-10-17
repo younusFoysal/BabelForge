@@ -30,12 +30,11 @@ const Home = () => {
       <ClerkLoaded>
         <div className="">
           <AwesomeHome />
-
           <Sponser />
           <CarouselHome />
 
           {/*<GlassHome/>*/}
-          <GlassDNA />
+          {/* <GlassDNA /> */}
           {/*glass_display pearl_electron */}
 
           <AboutStatistics></AboutStatistics>
