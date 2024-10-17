@@ -64,7 +64,7 @@ const DashboardNavbar = () => {
           </ul>
         </nav>
 
-        {/* Desktop Right Menu */}
+        {/* Desktop Right Menu   */}
         <div className="md:flex items-center space-x-4 mr-4">
           <ModeToggle />
           {auth && (
