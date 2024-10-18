@@ -22,7 +22,7 @@ const LinkDialog = ({ id, refetch, index }) => {
     const { data } = await axiosCommon.patch(`team/teams/${id}`, {
       addLink: links,
     });
-    if (data.modifiedCount > 0) {
+    if (data.result.modifiedCount > 0) {
       refetch();
       toast.success("link added successfully");
     }
