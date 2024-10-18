@@ -37,7 +37,7 @@ const UserTeam = () => {
     if (uemail) {
       refetch();
     }
-  }, [uemail]);
+  }, [uemail,refetch]);
 
   const {
     register,

@@ -14,6 +14,7 @@ import { IoLocationSharp } from "react-icons/io5";
 import { MdOutlineEmail } from "react-icons/md";
 import { UpdateProfile } from "../Profile/UpdateProfile";
 import { TabsTransaction } from "./Tabs";
+import userImage from "@/image/icon/user.png"
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
@@ -75,9 +76,9 @@ const Profile = () => {
                 <Avatar className="w-40 h-40">
                   <AvatarImage
                     src={
-                      user?.image
-                        ? user?.image
-                        : "https://getillustrations.b-cdn.net//photos/pack/3d-avatar-male_lg.png"
+                      user?.image_url
+                        ? user?.image_url
+                        : userImage
                     }
                   />
                   <AvatarFallback>Bable</AvatarFallback>
@@ -89,10 +90,7 @@ const Profile = () => {
             <UpdateProfile user={user} refetch={refetch} />
           </div>
           <div>
-            <p className="text-2xl mb-2">Name: {user?.name}</p>
-            <p className="text-lg mb-6 font-light">
-              Username: {user?.username}
-            </p>
+            <p className="text-2xl my-6">Name: {user?.firstName} {user?.lastName}</p>
           </div>
 
           {/* card content */}

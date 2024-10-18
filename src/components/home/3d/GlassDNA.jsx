@@ -113,7 +113,7 @@ function ModelLeftToRight({ scrollPosition, mousePosition }) {
     return <primitive object={scene} ref={modelRef} />;
 }
 
-export default function Home() {
+export default function GlassDNA() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
