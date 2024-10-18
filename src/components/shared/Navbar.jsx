@@ -99,7 +99,6 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                   <UserButton>
                     <UserButton.MenuItems>
-                      <UserButton.Action label="signOut" />
                       <UserButton.Link
                         label="Dashboard"
                         href="/dashboard"

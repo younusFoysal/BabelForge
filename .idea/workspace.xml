@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="dash fix" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Button fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="prepod-test" />
+        <entry key="$PROJECT_DIR$" value="prepod" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,7 +70,7 @@
     &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
     &quot;Node.js.getFileStructure.js.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -126,54 +131,7 @@
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729168984086" duration="1588000" />
-    </task>
-    <task id="LOCAL-00005" summary="File Structure Done">
-      <option name="closed" value="true" />
-      <created>1726639017381</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639017381</updated>
-    </task>
-    <task id="LOCAL-00006" summary="tailwind check done">
-      <option name="closed" value="true" />
-      <created>1726639250015</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639250015</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Swiper added">
-      <option name="closed" value="true" />
-      <created>1726687026556</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687026556</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726687341263</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687341263</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726692081480</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692081480</updated>
-    </task>
-    <task id="LOCAL-00010" summary="All ok">
-      <option name="closed" value="true" />
-      <created>1726692751091</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692751091</updated>
+      <workItem from="1729229867834" duration="321000" />
     </task>
     <task id="LOCAL-00011" summary="Link added">
       <option name="closed" value="true" />
@@ -519,7 +477,55 @@
       <option name="project" value="LOCAL" />
       <updated>1729175099843</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="new nav added">
+      <option name="closed" value="true" />
+      <created>1729198779237</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1729198779237</updated>
+    </task>
+    <task id="LOCAL-00055" summary="new nav added">
+      <option name="closed" value="true" />
+      <created>1729205012150</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1729205012150</updated>
+    </task>
+    <task id="LOCAL-00056" summary="new nav added">
+      <option name="closed" value="true" />
+      <created>1729205078888</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1729205078888</updated>
+    </task>
+    <task id="LOCAL-00057" summary="bg-fix">
+      <option name="closed" value="true" />
+      <created>1729205740345</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1729205740345</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Layout fix">
+      <option name="closed" value="true" />
+      <created>1729207560145</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729207560145</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Button fix">
+      <option name="closed" value="true" />
+      <created>1729208628902</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1729208628913</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,10 +544,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add task Done" />
-    <MESSAGE value="Server api link added" />
-    <MESSAGE value="turbo added" />
-    <MESSAGE value="carusel added" />
     <MESSAGE value="carusel fix" />
     <MESSAGE value="update" />
     <MESSAGE value="api link update" />
@@ -563,6 +565,10 @@
     <MESSAGE value="home button added" />
     <MESSAGE value="notes updated" />
     <MESSAGE value="dash fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="dash fix" />
+    <MESSAGE value="new nav added" />
+    <MESSAGE value="bg-fix" />
+    <MESSAGE value="Layout fix" />
+    <MESSAGE value="Button fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Button fix" />
   </component>
 </project>
