@@ -44,9 +44,9 @@ export default function RootLayout({ children }) {
             >
               <PaymentProvider>
                 <CrispWithNoSSR />
-                <Navbar />
+                {/* <Navbar /> */}
                 {children}
-                <Footer />
+                {/* <Footer /> */}
                 <Toaster position="top-center" reverseOrder={false} />
               </PaymentProvider>
             </ThemeProvider>
