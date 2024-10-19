@@ -6,11 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="new fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/LinkBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/LinkBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/LinkDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/LinkDialog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/MemberBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/MemberBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/Team.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/Team.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/TeamDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/TeamDialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/babellogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/babellogo.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +74,7 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "prepod",
     "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
