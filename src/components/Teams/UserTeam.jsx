@@ -32,12 +32,12 @@ const UserTeam = () => {
   const { data: projects = [] } = useProjects(uemail, '', '');
   const { resolvedTheme } = useTheme();
 
-  //Refetch when when the user is availble
+  // Refetch when when the user is availble
   useEffect(() => {
     if (uemail) {
       refetch();
     }
-  }, [uemail]);
+  }, [uemail,refetch]);
 
   const {
     register,
@@ -75,7 +75,7 @@ const UserTeam = () => {
     mutation.mutate(data);
   };
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (isLoading && teams.length < 1) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
@@ -84,7 +84,6 @@ const UserTeam = () => {
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <button
-              disabled={projects?.length > 0 ? false : true}
               className={`
                  'bg-bgColor hover:shadow-blue-200 bg-bgColor hover:shadow-lg hover:scale-110 dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor'
                 text-white text-md  duration-500  font-medium px-4 py-2 rounded-md`}

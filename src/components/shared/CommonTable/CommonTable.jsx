@@ -23,6 +23,7 @@ import { usePathname, useRouter } from "next/navigation";
 import useAxiosCommon from "@/lib/axiosCommon";
 import toast from "react-hot-toast";
 import { useUser } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
 
 const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
   const { user } = useUser();
@@ -34,6 +35,25 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
   const path = usePathname();
   const axiosCommon = useAxiosCommon();
   // console.log("path: ", path);
+  const [currentDate, setCurrentDate] = useState('');
+
+  // useeffects
+  useEffect(() => {
+    const now = new Date();
+
+    // Convert to GMT+6
+    const gmt6Offset = 6 * 60 * 60 * 1000;
+    const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+    // Format date as YYYY-MM-DD
+    const year = gmt6Date.getUTCFullYear();
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // Set the formatted date and time
+    setCurrentDate(formattedDate);
+  }, []);
 
   const handleFavorite = (data) => {
     console.log(data);
@@ -63,21 +83,38 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
     });
   };
 
+  const handleEndProject = (id) => {
+    // console.log(id);
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
+    setCurrentDate(formattedDate);
+
+    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
+      .then(res => {
+        // console.log(res);
+        if (res.data.modifiedCount) {
+          // console.log(res);
+          projectRefetch();
+          toast.success('Project Ended.');
+        }
+      })
+  }
+
   return (
     <div className="mt-8">
       <Table className="text-center">
         {/* table header */}
-        <TableHeader className="text-black font-bold">
+        <TableHeader className="text-black font-bold dark:text-white">
           <TableRow>
             {theads?.map((thead, index) =>
               thead === "Fav" ? (
                 <TableHead key={index}>
-                  <FaStar className="text-black text-lg"></FaStar>
+                  <FaStar className="text-black text-lg dark:text-white"></FaStar>
                 </TableHead>
               ) : (
                 <TableHead
                   key={index}
-                  className="font-semibold text-black text-center"
+                  className="font-semibold text-black text-center dark:text-white"
                 >
                   {thead}
                 </TableHead>
@@ -144,6 +181,11 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                               Update Project
                             </p>
                           </DropdownMenuItem>
+                          {
+                            !data.pedate && <DropdownMenuItem>
+                              <p onClick={() => handleEndProject(data._id)} > End Project </p>
+                            </DropdownMenuItem>
+                          }
                         </DropdownMenuContent>
                       </DropdownMenu>
                     )}

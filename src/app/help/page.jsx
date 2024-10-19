@@ -1,75 +1,60 @@
 const UserManual = () => {
   const manual = [
     {
-      question: "How do I create a new project in BabelForge?",
+      question: 'How do I create a new project in BabelForge?',
       answer:
         "To create a new project, log in to your BabelForge account, navigate to the 'Projects' section, and click on 'Create New Project'. Follow the prompts to set up your project details.",
     },
     {
-      question: "How can I add team members to my project?",
+      question: 'How can I add team members to my project?',
       answer:
         "Within your project dashboard, go to the 'Teams' section and click on 'Team' and Click on Add Member Enter the email addresses of the users you'd like to add, and they will added.",
     },
     {
-      question: "What is the process for assigning tasks to team members?",
+      question: 'What is the process for assigning tasks to team members?',
       answer:
         "In the 'Dashboard' section, create a new task in backlogs and assign it to a team by selecting team name from the assignee dropdown menu.",
     },
     {
-      question: "How do I track the progress of my project?",
+      question: 'How do I track the progress of my project?',
       answer:
-        " Go to Dashboard feature to monitor task completion, view project timelines, and assess overall project health through various metrics and charts.",
+        ' Go to Dashboard feature to monitor task completion, view project timelines, and assess overall project health through various metrics and charts.',
     },
   ];
 
   return (
-    <div className=" mt-32  bg-white/10 border-[#ffffff22]  backdrop-blur-lg  border-[1px] w-[90%] mx-auto   text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
+    <div className=" mt-32  bg-white/5 border-[#ffffff22]  backdrop-blur-lg  border-[1px] w-[90%] mx-auto   text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
       <div className="max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between">
         <div className="text-center">
-          <p className="mt-4 text-sm leading-7 text-gray-500 font-regular">
-            F.A.Q
-          </p>
-          <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-300">
+          <p className="mt-4 text-sm leading-7 text-white/70 font-regular">F.A.Q</p>
+          <h3 className="text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-white/90">
             Frequently Asked <span className="text-indigo-600">Questions</span>
           </h3>
         </div>
 
-        <div className="mt-20">
+        <div className=" mt-16">
           <ul className="">
             {manual.map((item, index) => (
               <li key={index} className="text-left mb-10">
                 <div className="flex flex-row items-start mb-5">
                   <div className="hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-indigo-500 text-white border-4 border-white text-xl font-semibold">
-                    <svg
-                      width="30px"
-                      fill="white"
-                      height="30px"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg width="30px" fill="white" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <g data-name="Layer 2">
                         <g data-name="menu-arrow">
-                          <rect
-                            width="24"
-                            height="24"
-                            transform="rotate(180 12 12)"
-                            opacity="0"
-                          ></rect>
+                          <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect>
                           <path d="M17 9A5 5 0 0 0 7 9a1 1 0 0 0 2 0 3 3 0 1 1 3 3 1 1 0 0 0-1 1v2a1 1 0 0 0 2 0v-1.1A5 5 0 0 0 17 9z"></path>
                           <circle cx="12" cy="19" r="1"></circle>
                         </g>
                       </g>
                     </svg>
                   </div>
-                  <div className="bg-[#33363B] p-5 px-10 w-full flex items-center">
-                    <h4 className="text-md leading-6 font-medium text-gray-100">
-                      {item.question}
-                    </h4>
+                  <div className="bg-white/5 p-5 px-10 w-full rounded-md flex items-center">
+                    <h4 className="text-md leading-6 font-medium text-gray-100">{item.question}</h4>
                   </div>
                 </div>
 
                 <div className="flex flex-row items-start">
-                  <div className="bg-[#1E1F22] p-5 px-10 w-full flex items-center">
+                  <div className="bg-white/25 p-5 px-10 rounded-md w-full flex items-center">
                     <p className="text-gray-200 text-sm">{item.answer}</p>
                   </div>
                   <div className="hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-indigo-500 text-white border-4 border-white text-xl font-semibold">
@@ -83,7 +68,7 @@ const UserManual = () => {
                       x="0px"
                       y="0px"
                       viewBox="0 0 295.238 295.238"
-                      style={{ enableBackground: "new 0 0 295.238 295.238" }}
+                      style={{ enableBackground: 'new 0 0 295.238 295.238' }}
                       xmlSpace="preserve"
                     >
                       <g>

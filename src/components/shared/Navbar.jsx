@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import logo from "../../image/Home/babellogo.png";
-import DashboardNavbar from "../DashboardsPage/DashboardsNavbar";
+
 import Button from "./Buttons";
 
 import {
@@ -34,7 +34,7 @@ const Navbar = () => {
   if (pathname?.includes("/successPayment")) return null;
 
   if (pathname?.includes("dashboard")) {
-    return <DashboardNavbar />;
+    return null;
   }
   if (pathname?.includes("stream")) {
     return null;
@@ -66,11 +66,11 @@ const Navbar = () => {
   return (
     <div className=" backdrop-blur-lg bg-transparent border-b  border-white/10 fixed w-full top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
-        {/* logo */}
+        {/* logo text-[#106ac5] */}
         <Link href="/">
           <div className="flex gap-1 justify-center items-center">
             <Image src={logo} alt="babelforge" className="w-full h-12" />
-            <h3 className="text-3xl font-bold text-[#106ac5]">BabelForge</h3>
+            <h3 className="text-3xl font-bold text-white">BabelForge</h3>
           </div>
         </Link>
 
@@ -99,10 +99,6 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                   <UserButton>
                     <UserButton.MenuItems>
-<<<<<<< HEAD
-                      <UserButton.Action label="signOut" />
-=======
->>>>>>> 3739ed48e56fa4e87e0d93f32d13941b599aaff0
                       <UserButton.Link
                         label="Dashboard"
                         href="/dashboard"
@@ -120,38 +116,53 @@ const Navbar = () => {
               <ul className="flex items-start space-x-4">
                 <SignedOut>
                   <SignInButton>
-                    <button className="capitalize text-blue-600">login</button>
+
+                    <button className="transition duration-500 hover:scale-110 relative inline-flex h-11 active:scale-95 transistion overflow-hidden rounded-lg p-[1px] focus:outline-none">
+                        <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#a402a4_0%,#0037bb_50%,#bd5fff_100%)]">
+                        </span>
+                      <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-lg bg-[#0E162A] px-7 text-md font-medium text-white backdrop-blur-3xl gap-2 undefined">
+                          Login
+                      </span>
+                    </button>
+
+
                   </SignInButton>
                 </SignedOut>
               </ul>
-              <Button text="Get Started" icon={<ArrowRight size={20} />} />
+              <Button text="Get Started" icon={<ArrowRight size={20}/>}/>
             </>
           )}
         </div>
-        {/* Desktop Right Menu */}
+        {/* Desktop Right Menu <button className="capitalize text-blue-600">login</button> */}
 
         {/* Mobile Menu Button */}
         <div className="flex md:hidden">
-          <button onClick={toggleMenu}>
-            {menuOpen ? <X size={30} /> : <AlignJustify size={30} />}
+          <button onClick={toggleMenu} className="text-white">
+            {menuOpen ? <X size={30}/> : <AlignJustify size={30}/>}
           </button>
         </div>
       </div>
 
       {/* Mobile Navigation */}
       {menuOpen && (
-        <div className="md:hidden bg-white/30 backdrop-blur-lg border-t border-gray-200">
+          <div className="md:hidden bg-white/30 backdrop-blur-lg border-t border-gray-200">
           <ul className="flex flex-col space-y-4 py-4">
             {NavbarItems.map((nav) => (
               <Link href={nav.href} key={nav.href}>
-                <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
+                <li className="border-b border-gray-50 pb-3 px-6 hover:text-blue-500 text-white">
                   {nav.title}
                 </li>
               </Link>
             ))}
 
-            <Link href="/login">
-              <li className="border-b border-gray-100 pb-3 px-6 hover:text-blue-500">
+            <Link href="/sign-in">
+
+
+
+
+
+
+              <li className="border-b border-gray-50 pb-3 px-6 hover:text-blue-500 text-white">
                 Login
               </li>
             </Link>

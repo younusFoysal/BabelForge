@@ -7,6 +7,8 @@ import Sponser from "@/components/home/Sponser";
 import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 import { ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import AllReviews from "@/components/Reviews/AllReviews";
+import GlassDNA from "@/components/home/3d/GlassDNA";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -29,13 +31,14 @@ const Home = () => {
           <CarouselHome />
 
           {/*<GlassHome/>*/}
-          {/* <GlassDNA /> */}
+           <GlassDNA />
           {/*glass_display pearl_electron */}
 
           <AboutStatistics></AboutStatistics>
           {/*<PricingCards/>*/}
 
           <LeaderCTA />
+          <AllReviews />
 
           {/*<CallToAction />*/}
         </div>

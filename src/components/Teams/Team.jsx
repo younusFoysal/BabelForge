@@ -14,7 +14,6 @@ import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 import { Button } from "@/components/ui/button"
 import UpdateTeamModal from "./UpdateTeamModal";
 
-
 const Team = ({ id }) => {
 
   console.log(id)
@@ -43,11 +42,9 @@ const Team = ({ id }) => {
 
   console.log("Team Single:", team);
 
-
-
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
-  const { members, _id, links } = team;
+  const { tmembers, _id, links } = team;
 
    
 
@@ -118,14 +115,14 @@ const Team = ({ id }) => {
                 </span>
               </p>
 
-              <p>{members?.length} members</p>
+              <p>{tmembers?.length} members</p>
             </div>
 
             <div className="py-3">
               {/* member 1 */}
               <div className="flex items-center gap-4  ">
                 <div className="flex w-full p-1 rounded-md group flex-col gap-3">
-                  {members?.map((member, index) => (
+                  {tmembers?.map((member, index) => (
                     <MemberBox
                       member={member}
                       key={index}

@@ -22,7 +22,8 @@ const TeamDialog = ({ id, refetch }) => {
     const { data } = await axiosCommon.patch(`team/teams/${id}`, {
       addMember: teamMembers,
     });
-    if (data.modifiedCount > 0) {
+    console.log(data);
+    if (data?.result?.modifiedCount > 0) {
       refetch();
       toast.success("Member added successfully!");
     }
