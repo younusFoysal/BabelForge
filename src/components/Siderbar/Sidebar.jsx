@@ -18,6 +18,9 @@ import { ModeToggle } from "../Theme/ModeToggle";
 import logo from "@/image/Home/babellogo.png";
 import AdminCurrentBox from "./AdminCurrentBox";
 import AdminMenubar from "./AdminMenubar";
+import {FaMoneyBillTransfer} from "react-icons/fa6";
+import {IoMailUnreadOutline, IoPricetagOutline} from "react-icons/io5";
+import {GiStarsStack} from "react-icons/gi";
 
 export default function SideBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -88,17 +91,22 @@ export default function SideBar() {
       links: "/dashboard",
     },
     {
-      icon: <GrWorkshop />,
+      icon: <FaMoneyBillTransfer />,
+      label: "Transactions",
+      links: "/dashboard/admin/transactions",
+    },
+    {
+      icon: <IoMailUnreadOutline  />,
       label: "Inbox",
       links: "/dashboard/admin/inbox",
     },
     {
-      icon: <MdAddTask />,
+      icon: <GiStarsStack  />,
       label: "Reviews",
       links: "/dashboard/admin/reviews",
     },
     {
-      icon: <GrChat />,
+      icon: <IoPricetagOutline  />,
       label: "packages",
       links: "/dashboard/admin/packages",
     },

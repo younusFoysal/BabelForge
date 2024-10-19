@@ -40,12 +40,16 @@ const layout = ({ children }) => {
 
   const admin = ["babelforgeltd@gmail.com", "babelforgeltdfgd@gmail.com"];
 
+  const isAdmin = admin.includes(uemail);
+
+  const conditionClass = isAdmin ? "" : "h-screen";
+
   return (
     <div className="flex bg-white dark:bg-gray-900 dark:text-white relative">
-      <div className="fixed top-0 left-0">
+      <div className="fixed z-[99] top-0 left-0">
         <SideBar />
       </div>
-      <div className=" w-[96%] pl-16 py-3">{children}</div>
+      <div className={`${conditionClass} w-[96%] pl-16 py-3`}>{children}</div>
     </div>
   );
 };

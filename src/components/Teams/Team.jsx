@@ -44,7 +44,7 @@ const Team = ({ id }) => {
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
-  const { members, _id, links } = team;
+  const { tmembers, _id, links } = team;
 
    
 
@@ -115,14 +115,14 @@ const Team = ({ id }) => {
                 </span>
               </p>
 
-              <p>{members?.length} members</p>
+              <p>{tmembers?.length} members</p>
             </div>
 
             <div className="py-3">
               {/* member 1 */}
               <div className="flex items-center gap-4  ">
                 <div className="flex w-full p-1 rounded-md group flex-col gap-3">
-                  {members?.map((member, index) => (
+                  {tmembers?.map((member, index) => (
                     <MemberBox
                       member={member}
                       key={index}
