@@ -92,7 +92,9 @@ body {
   --str-chat__primary-surface-color-low-emphasis: #edf7f7;
   --str-chat__border-radius-circle: 6px;
 }
-
+.str-chat.messaging.light.str-chat__channel-list.str-chat__channel-list-react{
+  width: 100%;
+}
 .progress-bar {
   position: fixed;
   top: 0;

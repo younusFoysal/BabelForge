@@ -15,6 +15,13 @@ import {
 } from "stream-chat-react";
 import "stream-chat-react/dist/css/v2/index.css";
 
+import { EmojiPicker } from "stream-chat-react/emojis";
+
+import { init, SearchIndex } from "emoji-mart";
+import data from "@emoji-mart/data";
+import StreamSidebar from "./StreamSidebar";
+import MenuBar from "./MenuBar";
+
 const StreamChats = ({ userData }) => {
   const TokenProvider = useCallback(async () => {
     return await createToken(userData.id);
@@ -28,22 +35,25 @@ const StreamChats = ({ userData }) => {
 
   if (!client) return <div>Setting up client & connection...</div>;
 
-  const filters = { members: { $in: [userData.id] }, type: "messaging" };
-  const sort = { last_updated: -1 };
-  const options = { limit: 20 };
-
   return (
-    <div className="flex mt-40">
+    <div className="h-screen">
       <Chat client={client}>
-        <ChannelList filters={filters} sort={sort} options={options} />
-        <Channel>
-          <Window>
-            <ChannelHeader />
-            <MessageList />
-            <MessageInput />
-          </Window>
-          <Thread />
-        </Channel>
+        <div className="flex flex-row h-full">
+          <div className="w-full max-w-[300px]">
+            <MenuBar />
+            <StreamSidebar userData={userData} />
+          </div>
+          <div className="w-full h-full">
+            <Channel EmojiPicker={EmojiPicker} emojiSearchIndex={SearchIndex}>
+              <Window>
+                <ChannelHeader />
+                <MessageList />
+                <MessageInput />
+              </Window>
+              <Thread />
+            </Channel>
+          </div>
+        </div>
       </Chat>
     </div>
   );

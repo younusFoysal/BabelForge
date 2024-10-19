@@ -43,7 +43,7 @@ export default function RootLayout({ children }) {
               disableTransitionOnChange
             >
               <PaymentProvider>
-                <CrispWithNoSSR />
+                {/* <CrispWithNoSSR /> */}
                 {/* <Navbar /> */}
                 {children}
                 {/* <Footer /> */}
