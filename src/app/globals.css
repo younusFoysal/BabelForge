@@ -99,6 +99,9 @@ body {
 .str-chat.messaging.light.str-chat__channel-list.str-chat__channel-list-react{
   width: 100%;
 }
+.str-chat.str-chat__theme-dark.str-chat__channel-list.str-chat__channel-list-react{
+  width: 100%;
+}
 .progress-bar {
   position: fixed;
   top: 0;

@@ -10,9 +10,13 @@ import StreamSidebar from "./StreamSidebar";
 import ChatChannel from "./ChatChannel";
 import HomeLoadingSpinner from "../shared/HomeLoadingSpinner/HomeLoadingSpinner";
 import { Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 const StreamChats = ({ userData }) => {
   const [Chatsidebaropen, setChatsidebaropen] = useState(false);
+  const { resolvedTheme } = useTheme();
+
   const TokenProvider = useCallback(async () => {
     return await createToken(userData.id);
   }, [userData.id]);
@@ -32,8 +36,15 @@ const StreamChats = ({ userData }) => {
 
   return (
     <div className="h-screen">
-      <Chat client={client}>
-        <div className="md:hidden border-b border-b-[#DBDDE1] P-3 bg-white">
+      <Chat
+        client={client}
+        theme={cn(
+          resolvedTheme === "dark"
+            ? "str-chat__theme-dark"
+            : "str-chat__theme-dark"
+        )}
+      >
+        <div className="md:hidden border-b border-b-[#DBDDE1] P-3 bg-white ">
           <button onClick={() => setChatsidebaropen(!Chatsidebaropen)}>
             {!Chatsidebaropen ? (
               <Menu size={20} className="text-black" />
