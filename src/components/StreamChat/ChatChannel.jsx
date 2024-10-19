@@ -12,11 +12,11 @@ import { EmojiPicker } from "stream-chat-react/emojis";
 import { init, SearchIndex } from "emoji-mart";
 import data from "@emoji-mart/data";
 
-const ChatChannel = ({ show }) => {
+const ChatChannel = ({ show, showThread }) => {
   return (
     <div className={`w-full h-full ${show ? "block" : "hidden"}`}>
       <Channel EmojiPicker={EmojiPicker} emojiSearchIndex={SearchIndex}>
-        <Window>
+        <Window thread={showThread}>
           <ChannelHeader />
           <MessageList />
           <MessageInput />

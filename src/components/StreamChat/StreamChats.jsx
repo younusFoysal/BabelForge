@@ -12,10 +12,23 @@ import HomeLoadingSpinner from "../shared/HomeLoadingSpinner/HomeLoadingSpinner"
 import { Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { useWindowSize } from "@/hooks/useWindoSize";
+import { mdBreakPoint } from "@/lib/tailwind";
 
 const StreamChats = ({ userData }) => {
   const [Chatsidebaropen, setChatsidebaropen] = useState(false);
   const { resolvedTheme } = useTheme();
+
+  const windowSize = useWindowSize();
+  const largeScreen = windowSize.width >= mdBreakPoint;
+
+  useEffect(() => {
+    if (windowSize.width >= mdBreakPoint) return setChatsidebaropen(false);
+  }, [windowSize.width]);
+
+  const handleClose = useCallback(() => {
+    setChatsidebaropen(false);
+  }, []);
 
   const TokenProvider = useCallback(async () => {
     return await createToken(userData.id);
@@ -54,8 +67,15 @@ const StreamChats = ({ userData }) => {
           </button>
         </div>
         <div className="flex flex-row h-full">
-          <StreamSidebar userData={userData} show={Chatsidebaropen} />
-          <ChatChannel show={!Chatsidebaropen} />
+          <StreamSidebar
+            userData={userData}
+            show={largeScreen || Chatsidebaropen}
+            onClose={handleClose}
+          />
+          <ChatChannel
+            show={largeScreen || !Chatsidebaropen}
+            showThread={!largeScreen}
+          />
         </div>
       </Chat>
     </div>
