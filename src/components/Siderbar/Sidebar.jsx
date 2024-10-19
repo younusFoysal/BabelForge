@@ -9,18 +9,24 @@ import {
 } from "@/components/ui/tooltip";
 import Image from "next/image";
 import Link from "next/link";
-import { SignedIn, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import { MdAddTask } from "react-icons/md";
 import CurrenSidesBox from "./CurrenSidesBox";
 import { SiNextra } from "react-icons/si";
 import { CgMoreR } from "react-icons/cg";
 import { ModeToggle } from "../Theme/ModeToggle";
-import logo from "@/image/Home/babellogo.png"
+import logo from "@/image/Home/babellogo.png";
+import AdminCurrentBox from "./AdminCurrentBox";
+import AdminMenubar from "./AdminMenubar";
+import {FaMoneyBillTransfer} from "react-icons/fa6";
+import {IoMailUnreadOutline, IoPricetagOutline} from "react-icons/io5";
+import {GiStarsStack} from "react-icons/gi";
 
 export default function SideBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentSidebarTab, setCurrentSidebarTab] = useState(null);
-
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 600) {
@@ -78,8 +84,44 @@ export default function SideBar() {
     },
   ];
 
+  const AdminmenuButton = [
+    {
+      icon: <TbHome />,
+      label: "Home",
+      links: "/dashboard",
+    },
+    {
+      icon: <FaMoneyBillTransfer />,
+      label: "Transactions",
+      links: "/dashboard/admin/transactions",
+    },
+    {
+      icon: <IoMailUnreadOutline  />,
+      label: "Inbox",
+      links: "/dashboard/admin/inbox",
+    },
+    {
+      icon: <GiStarsStack  />,
+      label: "Reviews",
+      links: "/dashboard/admin/reviews",
+    },
+    {
+      icon: <IoPricetagOutline  />,
+      label: "packages",
+      links: "/dashboard/admin/packages",
+    },
+  ];
+
+  const admin = [
+    "babelforgeltd@gmail.com",
+    "babelforgeltdfgd@gmail.com",
+    "morshidulrahman4167@gmail.com",
+  ];
+
+  const isAdmin = admin.includes(uemail);
+
   return (
-    <div className="flex h-screen antialiased text-gray-900 dark:bg-slate-900 dark:text-light">
+    <div className="flex h-screen antialiased text-gray-900 dark:bg-transparent dark:text-light">
       <div className="flex flex-shrink-0 transition-all">
         {isSidebarOpen && (
           <div
@@ -125,28 +167,46 @@ export default function SideBar() {
               </div>
             </SignedIn>
 
-            {menuButton.map((item, index) => (
-              <TooltipProvider key={index}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Link
-                      href={""}
-                      onClick={() => toggleSidebar(item.tab)}
-                      className={`p-2 transition-colors rounded-lg shadow-md hover:bg-bgColor hover:text-white focus:outline-none focus:ring focus:ring-bgColor focus:ring-offset-white focus:ring-offset-2 ${
-                        isSidebarOpen && currentSidebarTab === item.tab
-                          ? "text-white bg-bgColor"
-                          : "text-white bg-slate-600"
-                      }`}
-                    >
-                      {item.icon}
-                    </Link>
-                  </TooltipTrigger>
-                  <TooltipContent className="bg-slate-900 text-white outline-none rounded-sm text-xs border-slate-800">
-                    <p>{item.label}</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            ))}
+            {isAdmin ? (
+              <>
+                {AdminmenuButton.map((item, index) => (
+                  <AdminMenubar
+                    key={index}
+                    isSidebarOpen={isSidebarOpen}
+                    currentSidebarTab={isSidebarOpen}
+                    item={item}
+                  />
+                ))}
+              </>
+            ) : (
+              <>
+                {menuButton.map((item, index) => (
+                  <TooltipProvider key={index}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Link
+                          href={""}
+                          onClick={() => toggleSidebar(item.tab)}
+                          className={`p-2 transition-colors rounded-lg shadow-md hover:bg-bgColor hover:text-white focus:outline-none focus:ring focus:ring-bgColor focus:ring-offset-white focus:ring-offset-2 ${
+                            isSidebarOpen && currentSidebarTab === item.tab
+                              ? "text-white bg-bgColor"
+                              : "text-white bg-slate-600"
+                          }`}
+                        >
+                          {item.icon}
+                        </Link>
+                      </TooltipTrigger>
+                      <TooltipContent
+                        side="right"
+                        className="bg-slate-900 text-white outline-none rounded-sm text-xs border-slate-800 z-[99999]"
+                      >
+                        <p>{item.label}</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  </TooltipProvider>
+                ))}
+              </>
+            )}
           </div>
         </nav>
 
