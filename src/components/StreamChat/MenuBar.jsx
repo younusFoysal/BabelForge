@@ -4,7 +4,7 @@ import React from "react";
 
 const MenuBar = () => {
   return (
-    <div className="flex items-center justify-between bg-white px-3 pt-2 border-e border-e-[#DBDDE1]">
+    <div className="flex items-center justify-between bg-white px-3 p-3 border-e border-e-[#DBDDE1]">
       <div>
         <UserButton />
       </div>
