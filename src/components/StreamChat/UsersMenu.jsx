@@ -7,7 +7,7 @@ import { useChatContext } from "stream-chat-react";
 
 const UsersMenu = ({ userData, handleUsermenubutton, handleClose }) => {
   const [users, setUsers] = useState([]);
-  const { client } = useChatContext();
+  const { client, setActiveChannel, onChannelSelected } = useChatContext();
 
   useEffect(() => {
     const loadusers = async () => {
@@ -26,6 +26,27 @@ const UsersMenu = ({ userData, handleUsermenubutton, handleClose }) => {
     loadusers();
   }, [client, userData.id]);
 
+  const handleChannel = (channel) => {
+    setActiveChannel(channel);
+  };
+
+  const sartwithUser = async (userId) => {
+    try {
+      const channel = client.channel("messaging", {
+        members: [userId, userData.id],
+      });
+      await channel.create();
+      handleChannel(channel);
+    } catch (e) {
+      toast.error("faild creating user");
+    }
+  };
+
+  const handleuserButton = (id) => {
+    handleUsermenubutton();
+    sartwithUser(id);
+  };
+
   return (
     <div className="absolute bg-white z-30 h-full w-full border-e border-e-[#DBDDE1] duration-300 transition-all  overflow-y-auto  ">
       <div
@@ -36,9 +57,9 @@ const UsersMenu = ({ userData, handleUsermenubutton, handleClose }) => {
       </div>
       {users?.map((user) => (
         <button
-          className="flex items-center px-3 mb-4 w-full gap-2 animate-pulse"
+          className="flex items-center px-3 mb-4 w-full gap-2"
           key={user.id}
-          onClick={handleUsermenubutton}
+          onClick={() => handleuserButton(user?.id)}
         >
           <img
             src={user?.image}
