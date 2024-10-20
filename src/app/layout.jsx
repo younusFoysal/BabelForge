@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
             >
               <PaymentProvider>
                 <CrispWithNoSSR />
-                {/* <Navbar /> */}
+                <Navbar />
                 <Toaster />
                 {children}
                 <Footer />
