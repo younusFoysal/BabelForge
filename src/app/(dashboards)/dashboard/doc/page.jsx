@@ -1,8 +1,9 @@
+import TextDoc from "@/components/Doc/TextDoc";
 
 const Doc = () => {
     return (
-        <div>
-            test
+        <div className="mt-20">
+            <TextDoc/>
         </div>
     );
 };
