@@ -4,10 +4,17 @@ import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useChatContext } from "stream-chat-react";
+import SingleUser from "./SingleUser";
 
-const UsersMenu = ({ userData, handleUsermenubutton, handleClose }) => {
+const UsersMenu = ({
+  userData,
+  handleUsermenubutton,
+  handleClose,
+  onchangeSelected,
+}) => {
   const [users, setUsers] = useState([]);
-  const { client, setActiveChannel, onChannelSelected } = useChatContext();
+  const { client, setActiveChannel } = useChatContext();
+  const { selected, setselectUser } = useState([]);
 
   useEffect(() => {
     const loadusers = async () => {
@@ -48,31 +55,21 @@ const UsersMenu = ({ userData, handleUsermenubutton, handleClose }) => {
   };
 
   return (
-    <div className="absolute bg-white z-30 h-full w-full border-e border-e-[#DBDDE1] duration-300 transition-all  overflow-y-auto  ">
-      <div
-        className="flex gap-2 items-center p-3 text-lg cursor-pointer"
-        onClick={handleClose}
-      >
-        <ArrowLeft size={20} className="text-black" /> users
+    <div className="absolute bg-white z-30 h-full w-full border-e border-e-[#DBDDE1] duration-300 transition-all  overflow-y-auto  dark:bg-gray-900">
+      <div className="flex gap-2 items-center p-3 text-lg cursor-pointer">
+        <span onClick={handleClose} className="flex gap-1 items-center">
+          <ArrowLeft size={20} className="text-black" />
+          users
+        </span>
       </div>
       {users?.map((user) => (
-        <button
-          className="flex items-center px-3 mb-4 w-full gap-2"
+        <SingleUser
           key={user.id}
-          onClick={() => handleuserButton(user?.id)}
-        >
-          <img
-            src={user?.image}
-            alt={user?.name}
-            className="w-10 h-10 rounded-full"
-          />
-          <p className="whitespace-nowrap overflow-hidden text-ellipsis">
-            {user?.name} || {user?.id}
-          </p>
-          {user?.online && (
-            <span className="text-xs text-green-600">online</span>
-          )}
-        </button>
+          user={user}
+          selectUser={selected.includes(user.id)}
+          handleuserButton={handleuserButton}
+          onchangeSelected={onchangeSelected}
+        />
       ))}
     </div>
   );
