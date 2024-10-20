@@ -27,7 +27,7 @@ const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
       <blockquote className="mt-2 text-sm">{message}</blockquote>
       <ul className="flex gap-2 mt-4">
         {Array.from({ length: reviewRating }, (_, index) => (
-          <li>
+          <li key={`star-${index}`}>
             <FaStar className="text-[20px] text-white/80" key={index} />
           </li>
         ))}
