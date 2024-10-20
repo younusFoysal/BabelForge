@@ -54,7 +54,7 @@ const StreamChats = ({ userData }) => {
         theme={cn(
           resolvedTheme === "dark"
             ? "str-chat__theme-dark"
-            : "str-chat__theme-dark"
+            : "str-chat__theme-light"
         )}
       >
         <div className="md:hidden border-b border-b-[#DBDDE1] P-3 bg-white ">

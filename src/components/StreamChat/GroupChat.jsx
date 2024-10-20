@@ -14,16 +14,16 @@ const GroupChat = ({ onConfirm, onClearSelection }) => {
         required
         onChange={(e) => setGroupChatInput(e.target.value)}
       />
-      <div className="flex justify-center items-center gap-3  py-2">
+      <div className="flex justify-center items-center gap-6  py-2">
         <button
           onClick={() => onConfirm(groupChatInput)}
-          className="px-4 py-2 rounded-md bg-blue-600 text-sm cursor-pointer"
+          className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-md transition-all duration-500 hover:shadow-lg text-white text-sm cursor-pointer"
         >
-          start group chat
+          Start Group Chat
         </button>
         <button
           onClick={onClearSelection}
-          className="px-4 py-2 rounded-md bg-red-500 text-white text-sm cursor-pointer"
+          className="px-4 py-2 rounded-md border bg-gradient-to-r from-red-600 to-red-700 text-white transition-all duration-500 hover:shadow-lg text-sm cursor-pointer"
         >
           Clear
         </button>
