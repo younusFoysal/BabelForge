@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="dash fix" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="new fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/babellogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/babellogo.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,27 +67,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Node.js.GetFileStructure.cjs.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.getFileStructure.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Node.js.GetFileStructure.cjs.executor": "Run",
+    "Node.js.GetFileStructure.js.executor": "Run",
+    "Node.js.getFileStructure.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "prepod",
+    "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
@@ -125,15 +134,6 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
-      <workItem from="1729168984086" duration="1588000" />
-    </task>
-    <task id="LOCAL-00005" summary="File Structure Done">
-      <option name="closed" value="true" />
-      <created>1726639017381</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639017381</updated>
     </task>
     <task id="LOCAL-00006" summary="tailwind check done">
       <option name="closed" value="true" />
@@ -503,23 +503,31 @@
       <option name="project" value="LOCAL" />
       <updated>1728905970582</updated>
     </task>
-    <task id="LOCAL-00052" summary="notes updated">
+    <task id="LOCAL-00052" summary="canvas tested">
       <option name="closed" value="true" />
-      <created>1729146108953</created>
+      <created>1728985595003</created>
       <option name="number" value="00052" />
       <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1729146108953</updated>
+      <updated>1728985595003</updated>
     </task>
-    <task id="LOCAL-00053" summary="dash fix">
+    <task id="LOCAL-00053" summary="canvas tested">
       <option name="closed" value="true" />
-      <created>1729175099843</created>
+      <created>1728985726882</created>
       <option name="number" value="00053" />
       <option name="presentableId" value="LOCAL-00053" />
       <option name="project" value="LOCAL" />
-      <updated>1729175099843</updated>
+      <updated>1728985726882</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="new fix">
+      <option name="closed" value="true" />
+      <created>1728988038983</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1728988038983</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,8 +569,8 @@
     <MESSAGE value="button fix" />
     <MESSAGE value="Awesome Design Implemented" />
     <MESSAGE value="home button added" />
-    <MESSAGE value="notes updated" />
-    <MESSAGE value="dash fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="dash fix" />
+    <MESSAGE value="canvas tested" />
+    <MESSAGE value="new fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="new fix" />
   </component>
 </project>

@@ -24,7 +24,7 @@ const LinkBox = ({ id, refetch, link }) => {
       removeLink: link,
     });
 
-    if (data.modifiedCount > 0) {
+    if (data.result.modifiedCount > 0) {
       refetch();
 
       toast.success("remove link successfully");
