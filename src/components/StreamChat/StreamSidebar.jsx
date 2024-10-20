@@ -43,7 +43,7 @@ const StreamSidebar = ({ userData, show, onClose }) => {
         show ? "flex" : "hidden"
       } `}
     >
-      {usermenuOpen && <UsersMenu />}
+      {usermenuOpen && <UsersMenu userData={userData} />}
       <MenuBar handleUserMenuToggle={handleUserMenuToggle} />
       <ChannelList
         filters={filters}
