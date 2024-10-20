@@ -2,10 +2,11 @@ import Footer from "@/components/shared/Footer/Footer";
 import Navbar from "@/components/shared/Navbar";
 import { ThemeProvider } from "@/components/Theme/ThemeProvider";
 import "./globals.css";
-import { Toaster } from "react-hot-toast";
+// import { Toaster } from 'react-hot-toast';
 import dynamic from "next/dynamic";
 import PaymentProvider from "@/providers/ContextProvider";
 import React from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 const metadata = {
   title: "BabelForge",
@@ -43,11 +44,12 @@ export default function RootLayout({ children }) {
               disableTransitionOnChange
             >
               <PaymentProvider>
-                {/* <CrispWithNoSSR /> */}
-                {/* <Navbar /> */}
+                <CrispWithNoSSR />
+                <Navbar />
+                <Toaster />
                 {children}
-                {/* <Footer /> */}
-                <Toaster position="top-center" reverseOrder={false} />
+                <Footer />
+                {/* <Toaster position="top-center" reverseOrder={false} /> */}
               </PaymentProvider>
             </ThemeProvider>
           </QureryProvider>
