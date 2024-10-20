@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useChatContext } from "stream-chat-react";
 import SingleUser from "./SingleUser";
+import GroupChat from "./GroupChat";
 
 const UsersMenu = ({
   userData,
@@ -14,7 +15,7 @@ const UsersMenu = ({
 }) => {
   const [users, setUsers] = useState([]);
   const { client, setActiveChannel } = useChatContext();
-  const { selected, setselectUser } = useState([]);
+  const [selectedUsers, setSelectedUsers] = useState([]);
 
   useEffect(() => {
     const loadusers = async () => {
@@ -49,9 +50,26 @@ const UsersMenu = ({
     }
   };
 
+  const startGroupChat = async (members, name) => {
+    try {
+      const channel = client.channel("messaging", {
+        members,
+        name,
+      });
+      await channel.create();
+      handleChannel(channel);
+    } catch (e) {
+      toast.error("faild creating channel");
+    }
+  };
+
   const handleuserButton = (id) => {
     handleUsermenubutton();
     sartwithUser(id);
+  };
+
+  const clearselection = () => {
+    setSelectedUsers([]);
   };
 
   return (
@@ -62,15 +80,30 @@ const UsersMenu = ({
           users
         </span>
       </div>
+      {selectedUsers.length > 0 && (
+        <GroupChat
+          onClearSelection={clearselection}
+          onConfirm={(name) => {
+            startGroupChat([userData.id, ...selectedUsers], name);
+          }}
+        />
+      )}
       {users?.map((user) => (
         <SingleUser
           key={user.id}
           user={user}
-          selectUser={selected.includes(user.id)}
+          select={selectedUsers.includes(user.id)}
           handleuserButton={handleuserButton}
-          onchangeSelected={onchangeSelected}
+          onchangeSelected={(selected) =>
+            setSelectedUsers(
+              selected
+                ? [...selectedUsers, user.id]
+                : selectedUsers.filter((userId) => userId !== user.id)
+            )
+          }
         />
       ))}
+      <div>{JSON.stringify(selectedUsers)}</div>
     </div>
   );
 };

@@ -1,12 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const SingleUser = ({
-  user,
-  onchangeSelected,
-  handleuserButton,
-  selectUser,
-}) => {
+const SingleUser = ({ user, onchangeSelected, handleuserButton, select }) => {
   return (
     <>
       <button
@@ -15,7 +10,7 @@ const SingleUser = ({
       >
         <input
           type="checkbox"
-          checked={selectUser}
+          checked={select}
           onChange={(e) => onchangeSelected(e.target.checked)}
         />
         <div
