@@ -40,7 +40,7 @@ const Home = () => {
 
           <LeaderCTA />
           {/* <AllReviews /> */}
-          {/* <MarqueeDemoVertical /> */}
+          <MarqueeDemoVertical />
 
           {/*<CallToAction />*/}
         </div>
