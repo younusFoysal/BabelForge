@@ -54,20 +54,32 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        'accordion-down': {
-          from: {
-            height: '0',
+        'toast-show': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(100%)',
           },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
+          '100%': {
+            opacity: '1',
+            transform: 'translateX(0)',
           },
         },
-        'accordion-up': {
+        'toast-hide': {
+          '0%': {
+            opacity: '1',
+            transform: 'translateX(0)',
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'translateX(100%)',
+          },
+        },
+        'marquee-vertical': {
           from: {
-            height: 'var(--radix-accordion-content-height)',
+            transform: 'translateY(0)',
           },
           to: {
-            height: '0',
+            transform: 'translateY(calc(-100% - var(--gap)))',
           },
         },
         float: {
@@ -76,8 +88,9 @@ module.exports = {
         },
       },
       animation: {
-        'accordion-down': 'accordion-down 0.2s ease-out',
-        'accordion-up': 'accordion-up 0.2s ease-out',
+        'toast-show': 'toast-show 0.5s ease-out',
+        'toast-hide': 'toast-hide 0.5s ease-in',
+        'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
         float: 'float 5s ease-in-out infinite',
       },
     },

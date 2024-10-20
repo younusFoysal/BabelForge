@@ -1,63 +1,47 @@
-"use client";
-import React, { useRef, useState } from "react";
-import { Card } from "@/components/ui/card";
-import { BsThreeDots } from "react-icons/bs";
-import { HiExclamationCircle } from "react-icons/hi";
-import { FaCheckSquare } from "react-icons/fa";
-import TeamDialog from "./TeamDialog";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useQuery } from "@tanstack/react-query";
-import MemberBox from "./MemberBox";
-import LinkDialog from "./LinkDialog";
-import LinkBox from "./LinkBox";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
-import { Button } from "@/components/ui/button"
-import UpdateTeamModal from "./UpdateTeamModal";
+'use client';
+import React, { useState } from 'react';
+import { Card } from '@/components/ui/card';
+import { BsThreeDots } from 'react-icons/bs';
+import { HiExclamationCircle } from 'react-icons/hi';
+import TeamDialog from './TeamDialog';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useQuery } from '@tanstack/react-query';
+import MemberBox from './MemberBox';
+import LinkDialog from './LinkDialog';
+import LinkBox from './LinkBox';
+import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import { Button } from '@/components/ui/button';
+import UpdateTeamModal from './UpdateTeamModal';
 
 const Team = ({ id }) => {
-
-  console.log(id)
+  console.log(id);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const axiosCommon = useAxiosCommon();
 
-
-
-
-
   const {
     data: team = [],
     isLoading,
-    isError,
     refetch,
   } = useQuery({
-    queryKey: ["team"],
+    queryKey: ['team'],
     queryFn: async () => {
-      const { data } = await axiosCommon(
-        `/team/teams/one-team/${id}`
-      );
+      const { data } = await axiosCommon(`/team/teams/one-team/${id}`);
       return data;
     },
   });
 
-  console.log("Team Single:", team);
+  console.log('Team Single:', team);
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   const { tmembers, _id, links } = team;
 
-   
-
   // Open modal on button click
   const handleUpdate = () => {
     // console.log(id)
-    setIsModalOpen(true); 
+    setIsModalOpen(true);
   };
-
-
-
-
-
 
   return (
     <div>
@@ -65,28 +49,15 @@ const Team = ({ id }) => {
         <div className="text-3xl font-semibold text-white">Team Info</div>
       </div>
 
-
-     {/* Update Button */}
-     <div className="flex justify-end mt-4">
-        <Button
-          onClick={() => handleUpdate()}
-          variant="outline"
-          className="bg-primary text-white"
-        >
+      {/* Update Button */}
+      <div className="flex justify-end mt-4">
+        <Button onClick={() => handleUpdate()} variant="outline" className="bg-primary text-white">
           Update Team
         </Button>
       </div>
 
       {/* Modal Component */}
-      {isModalOpen && (
-        <UpdateTeamModal
-          isOpen={isModalOpen}
-          setIsOpen={setIsModalOpen}
-          team={team} 
-          refetch={refetch}
-        />
-      )}
-
+      {isModalOpen && <UpdateTeamModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} team={team} refetch={refetch} />}
 
       <div className="py-20 flex lg:flex-row flex-col justify-between items-start gap-10 lg:p-0 p-4">
         {/* card left */}
@@ -123,12 +94,7 @@ const Team = ({ id }) => {
               <div className="flex items-center gap-4  ">
                 <div className="flex w-full p-1 rounded-md group flex-col gap-3">
                   {tmembers?.map((member, index) => (
-                    <MemberBox
-                      member={member}
-                      key={index}
-                      id={_id}
-                      refetch={refetch}
-                    />
+                    <MemberBox member={member} key={index} id={_id} refetch={refetch} />
                   ))}
                 </div>
               </div>
@@ -138,18 +104,14 @@ const Team = ({ id }) => {
 
         {/* card right */}
         <div className="w-full  pt-10 ">
-          <h3 className="text-start text-base font-semibold uppercase">
-            Team Description
-          </h3>
+          <h3 className="text-start text-base font-semibold uppercase">Team Description</h3>
 
           <Card className="mt-4 space-y-2 p-4 dark:bg-gray-800 dark:border-gray-800">
             <div className="p-2 mb-2 rounded-md space-y-2">
               <div className="flex justify-start items-center gap-3">
                 <div>
                   <p className="space-x-3">
-                    <span>
-                      {team?.tdes}
-                    </span>
+                    <span>{team?.tdes}</span>
                   </p>
                 </div>
               </div>
@@ -162,24 +124,13 @@ const Team = ({ id }) => {
 
             <div className="p-4 ">
               {links?.map((link, index) => (
-                <LinkBox
-                  key={index}
-                  link={link}
-                  id={_id}
-                  refetch={refetch}
-                  index={index}
-                />
+                <LinkBox key={index} link={link} id={_id} refetch={refetch} index={index} />
               ))}
             </div>
           </div>
         </div>
       </div>
-
- 
-
-
-  
-    </div >
+    </div>
   );
 };
 
