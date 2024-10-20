@@ -4,7 +4,7 @@ import React from "react";
 
 const MenuBar = ({ handleUserMenuToggle }) => {
   return (
-    <div className="flex items-center justify-between bg-white px-3 p-3 border-e border-e-[#DBDDE1] dark:bg-black">
+    <div className=" flex items-center justify-between bg-white px-3 p-3 border-e border-e-[#DBDDE1] dark:bg-black">
       <div className="text-white">
         <UserButton />
       </div>

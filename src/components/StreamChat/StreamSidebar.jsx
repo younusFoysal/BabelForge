@@ -34,16 +34,27 @@ const StreamSidebar = ({ userData, show, onClose }) => {
   }, [show]);
 
   const handleUserMenuToggle = () => {
-    setusermenuOpen(!usermenuOpen);
+    setusermenuOpen(true);
+  };
+
+  const handleUsermenubutton = () => {
+    onClose();
+    setusermenuOpen(false);
   };
 
   return (
     <div
-      className={`relative w-full flex-col md:max-w-[300px] ${
+      className={`relative w-full flex-col md:max-w-[300px] h-screen ${
         show ? "flex" : "hidden"
       } `}
     >
-      {usermenuOpen && <UsersMenu userData={userData} />}
+      {usermenuOpen && (
+        <UsersMenu
+          handleClose={() => setusermenuOpen(false)}
+          userData={userData}
+          handleUsermenubutton={handleUsermenubutton}
+        />
+      )}
       <MenuBar handleUserMenuToggle={handleUserMenuToggle} />
       <ChannelList
         filters={filters}
