@@ -29,6 +29,7 @@ const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
       <ul className="flex gap-2 mt-4">
         {Array.from({ length: reviewRating }, (_, index) => (
           <li key={`star-${index}`}>
+          <li key={index}>
             <FaStar className="text-[20px] text-white/80" key={index} />
           </li>
         ))}
@@ -58,7 +59,7 @@ export function MarqueeDemoVertical() {
   const thirdRow = limitedReviews.slice(reviewSize * 2);
 
   return (
-    <div className=" px-4">
+    <div className=" mb-24 px-4">
       <div className="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
         <div className="mb-12 space-y-5 md:mb-16 text-center">
           <div className="inline-block px-3 py-1 text-sm font-semibold text-indigo-100 rounded-lg md:text-center text-cn bg-[#202c47] bg-opacity-60 hover:cursor-pointer hover:bg-opacity-40">
@@ -76,7 +77,7 @@ export function MarqueeDemoVertical() {
           ))}
         </div>
 
-        <Marquee vertical className="[--duration:40s] space-y-4 hidden md:block">
+        <Marquee  vertical className="[--duration:40s] space-y-4 hidden md:block">
           {firstRow?.map(review => (
             <ReviewCard key={review.name} {...review} />
           ))}
