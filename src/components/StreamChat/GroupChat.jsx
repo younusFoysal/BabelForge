@@ -1,18 +1,18 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 const GroupChat = ({ onConfirm, onClearSelection }) => {
-  const [groupChatInput, setGroupChatInput] = useState("");
+  const [groupChatInput, setGroupChatInput] = useState('');
   return (
-    <div className="sticy top-0 flex flex-col gap-3 bg-white p-3 shadow-sm">
+    <div className="sticy top-0 flex flex-col gap-3 dark:bg-[#17191c] bg-white p-3 shadow-sm">
       <input
         placeholder="group name"
         type="text"
         className="rounded border border-gray-300 p-2"
         value={groupChatInput}
         required
-        onChange={(e) => setGroupChatInput(e.target.value)}
+        onChange={e => setGroupChatInput(e.target.value)}
       />
       <div className="flex justify-center items-center gap-6  py-2">
         <button
