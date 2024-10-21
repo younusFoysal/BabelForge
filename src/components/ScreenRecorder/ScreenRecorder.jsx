@@ -41,9 +41,11 @@ const ScreenRecorder = () => {
 
             {/* video functionality */}
             {videoUrl && (
-                <div className="mt-4 p-2 w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 transform hover:scale-105">
+                <div className="mt-4 w-full max-w-md bg-white rounded-lg shadow-lg overflow-hidden transition duration-300 transform hover:scale-105">
                     <video src={videoUrl} controls className="w-full h-48 object-cover rounded-t-lg" />
-                  
+                    <div className="py-4  flex justify-between items-center">
+                        <span className="text-lg font-semibold text-gray-700">Your Recording</span>
+                    </div>
                 </div>
             )}
         </section>
