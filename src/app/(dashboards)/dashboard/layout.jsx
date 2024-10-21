@@ -18,6 +18,9 @@ import { FaStar } from 'react-icons/fa6';
 import { useUser } from '@clerk/nextjs';
 import SideBar from '@/components/Siderbar/Sidebar';
 
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -32,12 +35,15 @@ const layout = ({ children }) => {
   const conditionClass = isAdmin ? '' : 'h-screen';
 
   return (
-    <div className="flex bg-white dark:bg-gray-900 dark:text-white relative">
-      <div className="fixed z-[99] top-0 left-0">
-        <SideBar />
+    <SidebarProvider>
+      <AppSidebar className="bg-white" />
+      <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
+        <main>
+          <SidebarTrigger />
+          {children}
+        </main>
       </div>
-      <div className={`${conditionClass} w-[96%] pl-16 py-3`}>{children}</div>
-    </div>
+    </SidebarProvider>
   );
 };
 
