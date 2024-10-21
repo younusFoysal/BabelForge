@@ -26,6 +26,10 @@ const ScreenRecorderProvider = ({ children }) => {
                 audio: true, 
             });
 
+            const audioStream = await navigator.mediaDevices.getUserMedia({
+                audio: true, 
+            });
+
     };
 
     const stopRecording = () => {
