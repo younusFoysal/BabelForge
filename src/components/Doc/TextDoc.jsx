@@ -2,8 +2,9 @@
 
 import Quill from "quill";
 import 'quill/dist/quill.snow.css';
-import { useCallback, useEffect, useRef, useState } from "react";
-import {io} from 'socket.io-client';
+import { useCallback, useEffect, useState } from "react";
+import axios from 'axios';
+import useAxiosCommon from "@/lib/axiosCommon";
 
 const TOOLBAR_OPTIONS = [
   [{header: [1,2,3,4,5,6,false]}],
@@ -20,46 +21,53 @@ const TOOLBAR_OPTIONS = [
 ]
 
 const TextDoc = () => {
-  const [socket, setSocket] = useState();
-  const [Quill, setQuill] = useState();
+  const [quill, setQuill] = useState(null);
+  const axiosCommon = useAxiosCommon()
 
-  useEffect(()=>{
-    const soc = io('http://localhost:3001');
-        setSocket(soc);
-    return ()=>{
-      soc.disconnect();
+  const saveDocument = async () => {
+    if (!quill) return;
+
+    const content = quill.getContents();
+    try {
+      console.log(content);
+      
+      const response = await axiosCommon.post('/document/documents', { content });
+      const docId = response.data.docId;
+      console.log("Document saved with ID:", docId);
+
+      const shareableLink = `${window.location.origin}/dashboard/doc/${docId}`;
+      console.log("Shareable Link:", shareableLink);
+      alert(`Shareable Link: ${shareableLink}`);
+    } catch (error) {
+      console.error("Error saving document:", error);
     }
-  },[])
+  };
 
-  useEffect(()=>{
-    if(Quill == null || socket == null) return;
-    Quill.on('text-change', (delta, oldDelta, source)=>{
-      if(source !== 'user') return;
-      socket.emit('send-changes', delta);
-    })
-
-    return ()=>{
-      Quill.off('text-change');
-    }
-
-  },[])
-  
   const wrapperRef = useCallback((wrapper) => {
     if (!wrapper) return;
 
-    wrapper.innerHTML = '';
+    wrapper.innerHTML = '';  // Clear the wrapper before initializing Quill
     const editor = document.createElement('div');
     wrapper.append(editor);
-    const q =  new Quill(editor,{
+
+    const q = new Quill(editor, {
       theme: 'snow',
       modules: {
-        toolbar: TOOLBAR_OPTIONS
-      }
+        toolbar: TOOLBAR_OPTIONS,
+      },
     });
-      setQuill(q);
-   
+
+    setQuill(q);  // Set the Quill instance
   }, []);
-  return <div className="editor-container" ref={wrapperRef}></div>;
+
+  return (
+    <div>
+    <div className="flex justify-end">
+    <button className="text-end" onClick={saveDocument}>Save</button>
+    </div>
+      <div className="editor-container" ref={wrapperRef}></div>
+    </div>
+  );
 };
 
 export default TextDoc;
