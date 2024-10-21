@@ -31,13 +31,7 @@ const Team = ({ id }) => {
     },
   });
 
-<<<<<<< HEAD
-  console.log("Team Single:", team);
-
-
-=======
   console.log('Team Single:', team);
->>>>>>> ed92a02fd7ba8e4ff0e3b11c70399ad739ad72b8
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
