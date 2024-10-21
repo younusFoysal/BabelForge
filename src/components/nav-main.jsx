@@ -36,7 +36,7 @@ export function NavMain({ items }) {
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
                         <Link
-                          className={`hover:text-blue-500 ${pathname === subItem.url ? 'text-blue-500 bg-[#63636317] font-semibold' : ''}`}
+                          className={` pl-4 ${pathname === subItem.url ? 'text-[#5f55ee]  bg-[#e5e4fc]' : 'hover:bg-[#f0f1f3] '}`}
                           href={subItem.url}
                         >
                           <span>{subItem.title}</span>

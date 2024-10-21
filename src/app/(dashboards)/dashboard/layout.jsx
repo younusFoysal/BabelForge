@@ -15,11 +15,12 @@ import { FaListUl, FaRegStar } from 'react-icons/fa';
 import { BiSolidOffer } from 'react-icons/bi';
 import { RxDashboard } from 'react-icons/rx';
 import { FaStar } from 'react-icons/fa6';
-import { useUser } from '@clerk/nextjs';
+import { UserButton, useUser } from '@clerk/nextjs';
 import SideBar from '@/components/Siderbar/Sidebar';
 
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
+import { ModeToggle } from '@/components/Theme/ModeToggle';
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -36,10 +37,19 @@ const layout = ({ children }) => {
 
   return (
     <SidebarProvider>
-      <AppSidebar className="bg-white" />
+      <AppSidebar className="bg-[#f7f8f9] text-[#34383e]" />
       <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
-        <main>
-          <SidebarTrigger />
+        <main className="relative">
+          {/* Dashboard Top */}
+          <div className="flex bg-[#f7f8f94e] sticky backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-6 py-4 justify-between items-center">
+            <div>
+              <SidebarTrigger />
+            </div>
+            <div className="flex items-center gap-3">
+              <ModeToggle />
+              <UserButton />
+            </div>
+          </div>
           {children}
         </main>
       </div>
