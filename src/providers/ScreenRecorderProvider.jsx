@@ -30,6 +30,13 @@ const ScreenRecorderProvider = ({ children }) => {
                 audio: true, 
             });
 
+            // Combine both streams into one
+            const combinedStream = new MediaStream([
+                ...displayStream.getTracks(),
+                ...audioStream.getTracks(), 
+            ]);
+
+           
     };
 
     const stopRecording = () => {
