@@ -45,6 +45,14 @@ const ScreenRecorder = () => {
                     <video src={videoUrl} controls className="w-full h-48 object-cover rounded-t-lg" />
                     <div className="py-4  flex justify-between items-center">
                         <span className="text-lg font-semibold text-gray-700">Your Recording</span>
+                        <a
+                            href={videoUrl}
+                            download="recording.webm"
+                            className="flex items-center px-4 py-2 text-white bg-green-500 rounded-lg shadow-lg hover:bg-green-600 transition duration-300 transform hover:scale-105"
+                        >
+                            <FaDownload className="mr-2" />
+                            Download Video
+                        </a>
                     </div>
                 </div>
             )}
