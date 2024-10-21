@@ -42,14 +42,14 @@ const MyCalendar = () => {
     const eventPropGetter = (event) => {
         console.log(event.status);
         let backgroundColor = 'lightblue';
-        let textColor = '#000000';
+        let textColor = '#ffff';
 
         if (event.status === 'todo') {
-            backgroundColor = '#fffacd';
+            backgroundColor = '#4a90e2';
         } else if (event.status === 'inprogress') {
-            backgroundColor = '#add8e6';
+            backgroundColor = '#a84ecf';
         } else if (event.status === 'done') {
-            backgroundColor = '#90ee90';
+            backgroundColor = '#796fd8';
         }
 
         return { style: { backgroundColor, color: textColor } };
