@@ -36,7 +36,11 @@ const ScreenRecorderProvider = ({ children }) => {
                 ...audioStream.getTracks(), 
             ]);
 
-           
+            mediaRecorder.current = new MediaRecorder(combinedStream, {
+                mimeType: 'video/webm',
+            });
+
+        
     };
 
     const stopRecording = () => {
