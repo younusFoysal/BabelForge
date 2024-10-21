@@ -86,7 +86,6 @@ const ScreenRecorderProvider = ({ children }) => {
   };
 
   const stopRecording = () => {
-    setIsRecording(false);
     if (mediaRecorder.current) {
       mediaRecorder.current.stop();
       setRecording(false);
@@ -97,7 +96,6 @@ const ScreenRecorderProvider = ({ children }) => {
     <ScreenRecorderContext.Provider
       value={{
         recording,
-        isRecording,
         videoUrl,
         startRecording,
         stopRecording,

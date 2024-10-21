@@ -85,6 +85,10 @@ export function AppSidebar({ ...props }) {
             title: 'Notes',
             url: '/dashboard/notes',
           },
+          {
+            title: 'Screen Record',
+            url: '/dashboard/ScreenRecorder',
+          },
         ],
       },
     ],
