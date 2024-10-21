@@ -26,7 +26,8 @@ const Navbar = () => {
 
   if (pathname?.includes("sign-in") || pathname?.includes("sign-up"))
     return null;
-  if (pathname?.includes("/successPayment")) return null;
+  if (pathname?.includes("/successPayment") || pathname?.includes("meet"))
+    return null;
 
   if (pathname?.includes("dashboard")) {
     return null;
@@ -124,9 +125,7 @@ const Navbar = () => {
             </>
           )}
         </div>
-        {/* Desktop Right Menu <button className="capitalize text-blue-600">login</button> */}
 
-        {/* Mobile Menu Button */}
         <div className="flex md:hidden">
           <Sheet>
             <SheetTrigger>
