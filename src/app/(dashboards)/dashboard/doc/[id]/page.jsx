@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import useAxiosCommon from '@/lib/axiosCommon';
+import { useUser } from '@clerk/nextjs';
 
 const DocumentPage = ({ params }) => {
     const id = params?.id;
@@ -11,6 +12,8 @@ const DocumentPage = ({ params }) => {
     const [error, setError] = useState(null);
     const quillRef = React.useRef(null);
     const axiosCommon = useAxiosCommon();
+    const { user, isLoaded, isSignedIn } = useUser();
+    const email = user?.primaryEmailAddress?.emailAddress;
 
     useEffect(() => {
         if (!id) return; // If ID is not yet available, do nothing
@@ -18,7 +21,9 @@ const DocumentPage = ({ params }) => {
         const fetchDocument = async () => {
             try {
                 const response = await axiosCommon.get(`/document/documents/${id}`);
-                setDocumentContent(response.data.content); // Set the fetched content
+                setDocumentContent(response.data.content); 
+                
+                
             } catch (err) {
                 setError('Failed to fetch document');
                 console.error(err);
@@ -30,20 +35,23 @@ const DocumentPage = ({ params }) => {
         fetchDocument(); // Call the fetch function
     }, [axiosCommon, id]);
 
+    console.log(documentContent?.content);
+    
+
     useEffect(() => {
-        if (documentContent && quillRef.current) {
+        if (documentContent?.content && quillRef.current) {
             const quill = new Quill(quillRef.current, {
                 theme: 'snow',
                 modules: {
                     toolbar: true, // Disable the toolbar for viewing
                 },
-                readOnly: false, // Set the editor to read-only
+                readOnly: email === documentContent.email ? false : true, 
             });
 
             // Set the content of the Quill editor
             quill.setContents(documentContent);
         }
-    }, [documentContent]);
+    }, [documentContent, email]);
 
     if (loading) return <div>Loading...</div>; // Show loading state
     if (error) return <div>{error}</div>; // Show error if fetching fails

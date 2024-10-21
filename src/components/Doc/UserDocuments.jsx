@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useUser } from '@clerk/nextjs';
 import useAxiosCommon from '@/lib/axiosCommon';
 import Link from 'next/link';
@@ -29,7 +28,7 @@ const UserDocuments = () => {
         };
 
         fetchDocuments();
-    }, [email]);
+    }, [axiosCommon, email]);
 
     const openDocument = (docId) => {
         console.log("Opening document:", docId);
