@@ -5,13 +5,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import SteamNavber from "./MeetNavbar";
-import Button from "../shared/Buttons";
+import MeetingButton from "./MeetingButton";
+import { IoIosVideocam } from "react-icons/io";
+import MeetHero from "./MeetHero";
 const initialValues = {
   dateTime: new Date(),
   description: "",
   link: "",
 };
-import { IoIosVideocam } from "react-icons/io";
+
 const MeetingTypeList = () => {
   const router = useRouter();
   const [meetingState, setMeetingState] = useState(undefined);
@@ -53,15 +55,18 @@ const MeetingTypeList = () => {
   if (!user) return <h1>please first login </h1>;
 
   return (
-    <div>
+    <div className="bg-white h-screen w-full ">
       <SteamNavber />
-      <div className="flex w-full h-screen items-center justify-center">
-        <Button
-          onClick={createMeeting}
-          text="Create Meeting"
-          icon={<IoIosVideocam size={20} />}
-        ></Button>
-      </div>
+
+      <MeetHero
+        MeetButton={
+          <MeetingButton
+            handleClick={createMeeting}
+            text="Create Meeting"
+            icon={<IoIosVideocam size={20} />}
+          />
+        }
+      />
     </div>
   );
 };
