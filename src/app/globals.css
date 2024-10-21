@@ -287,7 +287,7 @@ body {
   background-color: white;
 }
 
-.editor-container .ql-container.ql-snow {
+.editor-container.ql-container.ql-snow {
   border: none;
   display: flex;
   justify-content: center;
@@ -296,10 +296,19 @@ body {
 .editor-container .ql-toolbar.ql-snow {
   display: flex;
   justify-content: center;
-  position: sticky;
-  top: 80px;
-  z-index: 100;
   background-color: white;
+}
+
+.ql-container.ql-snow.ql-disabled{
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.ql-container.ql-snow{
+  border: none;
+  display: flex;
+  justify-content: center;
 }
 
 /* @layer base {
