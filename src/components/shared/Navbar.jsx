@@ -130,7 +130,7 @@ const Navbar = () => {
         <div className="flex md:hidden">
           <Sheet>
             <SheetTrigger>
-              <AlignJustify size={30} className="text-white" />
+              <AlignJustify size={30} className="dark:text-white text-black" />
             </SheetTrigger>
             <SheetContent
               side={"top"}
