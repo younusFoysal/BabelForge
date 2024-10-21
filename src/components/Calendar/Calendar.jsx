@@ -65,6 +65,24 @@ const MyCalendar = () => {
     // Close the modal
     const handleClose = () => setShowModal(false);
 
+    const eventPropGetter = (event) => {
+        console.log(event.status);
+        let backgroundColor = 'lightblue'; // Default color
+        let textColor = '#000000';
+
+        // Customize color based on event title (you can use any event property)
+        if (event.status === 'todo') {
+            backgroundColor = '#fffacd';
+        } else if (event.status === 'inprogress') {
+            backgroundColor = '#add8e6';
+        } else if (event.status === 'done') {
+            backgroundColor = '#90ee90';
+        }
+
+        // Return styles
+        return { style: { backgroundColor, color: textColor } };
+    };
+
     // Render the calendar component
     return (
         <div style={{ height: '500px', margin: '50px' }}>
