@@ -5,6 +5,7 @@ import 'quill/dist/quill.snow.css';
 import { useCallback, useEffect, useState } from "react";
 import axios from 'axios';
 import useAxiosCommon from "@/lib/axiosCommon";
+import { useUser } from "@clerk/nextjs";
 
 const TOOLBAR_OPTIONS = [
   [{header: [1,2,3,4,5,6,false]}],
@@ -21,6 +22,9 @@ const TOOLBAR_OPTIONS = [
 ]
 
 const TextDoc = () => {
+  const { user, isLoaded, isSignedIn } = useUser();
+    const uemail = user?.primaryEmailAddress?.emailAddress
+
   const [quill, setQuill] = useState(null);
   const axiosCommon = useAxiosCommon()
 
@@ -30,8 +34,14 @@ const TextDoc = () => {
     const content = quill.getContents();
     try {
       console.log(content);
-      
-      const response = await axiosCommon.post('/document/documents', { content });
+
+      const data = {
+        content,
+        email: uemail
+      }
+
+      // Send email with the content
+      const response = await axiosCommon.post('/document/documents', data);
       const docId = response.data.docId;
       console.log("Document saved with ID:", docId);
 
@@ -41,7 +51,8 @@ const TextDoc = () => {
     } catch (error) {
       console.error("Error saving document:", error);
     }
-  };
+};
+
 
   const wrapperRef = useCallback((wrapper) => {
     if (!wrapper) return;
