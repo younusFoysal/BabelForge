@@ -55,7 +55,11 @@ const ScreenRecorderProvider = ({ children }) => {
                 recordedChunks.current = []; 
             };
 
-        
+            mediaRecorder.current.start();
+            setRecording(true);
+        } catch (err) {
+            console.error('Error accessing display media: ', err);
+        }
     };
 
     const stopRecording = () => {
