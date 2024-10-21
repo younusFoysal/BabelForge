@@ -59,7 +59,7 @@ export function AppSidebar({ ...props }) {
         items: [
           {
             title: 'Group Chat',
-            url: '/dashboard/groupmessage',
+            url: '/dashboard/chat',
           },
 
           {
