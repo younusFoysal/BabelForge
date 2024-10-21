@@ -57,12 +57,12 @@ const StreamChats = ({ userData }) => {
             : "str-chat__theme-light"
         )}
       >
-        <div className="md:hidden border-b border-b-[#DBDDE1] P-3 bg-white ">
+        <div className="md:hidden border-b border-b-[#DBDDE1] P-3 bg-white dark:bg-[#17191c] dark:border-b-[#202327]">
           <button onClick={() => setChatsidebaropen(!Chatsidebaropen)}>
             {!Chatsidebaropen ? (
-              <Menu size={20} className="text-black" />
+              <Menu size={25} className="text-black dark:text-white" />
             ) : (
-              <X size={20} className="text-black" />
+              <X size={25} className="text-black dark:text-white" />
             )}
           </button>
         </div>
