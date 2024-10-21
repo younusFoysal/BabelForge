@@ -1,12 +1,13 @@
-import React from "react";
-import { ExportTeamInfo } from "./ExportTeamInfo";
-import DetailsCard from "./DetailsCard";
-import { PieCharts } from "./PieCharts";
-import TeamInfo from "./TeamInfo";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
-import { useUser } from "@clerk/nextjs";
+import React from 'react';
+import { ExportTeamInfo } from './ExportTeamInfo';
+import DetailsCard from './DetailsCard';
+import { PieCharts } from './PieCharts';
+import TeamInfo from './TeamInfo';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useQuery } from '@tanstack/react-query';
+import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import { useUser } from '@clerk/nextjs';
+import DashboardNavbarBox from '@/components/DashboardsPage/DashboardNavbarBox';
 
 const MainPageWrap = () => {
   const axiosCommon = useAxiosCommon();
@@ -15,7 +16,7 @@ const MainPageWrap = () => {
   const uemail = user?.primaryEmailAddress?.emailAddress;
 
   const { isLoading, data: stats } = useQuery({
-    queryKey: ["dashuser", uemail],
+    queryKey: ['dashuser', uemail],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/dashboard/stat/${uemail}`);
       return data;
@@ -26,10 +27,9 @@ const MainPageWrap = () => {
 
   return (
     <div className="w-full px-4  md:mt-2">
+      {/* <DashboardNavbarBox /> */}
       <div className="flex gap-9 md:gap-3 mb-10 flex-wrap justify-center md:justify-between items-center">
-        <h1 className="font-bold text-3xl  text-[#333] dark:text-white">
-          Dashboard
-        </h1>
+        <h1 className="font-bold text-3xl  text-[#333] dark:text-white">Dashboard</h1>
         <ExportTeamInfo stats={stats} isLoading={isLoading} />
       </div>
       {/* Details Card Section Start here */}

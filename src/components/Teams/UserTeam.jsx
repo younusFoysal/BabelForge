@@ -37,7 +37,7 @@ const UserTeam = () => {
     if (uemail) {
       refetch();
     }
-  }, [uemail,refetch]);
+  }, [uemail, refetch]);
 
   const {
     register,
@@ -78,7 +78,7 @@ const UserTeam = () => {
   if (isLoading && teams.length < 1) return <LoadingSpinner></LoadingSpinner>;
 
   return (
-    <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
+    <section className="w-full mt-3 py-5 px-4 max-w-6xl mx-auto">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl dark:text-white text-[#333]">Teams and projects</h2>
         <Dialog open={open} onOpenChange={setOpen}>
