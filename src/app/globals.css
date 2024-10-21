@@ -9,58 +9,125 @@ body {
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --duration: 700ms;
+    --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
     --radius: 0.5rem;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
+    --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
+    --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
+}
+
+/* steremcss */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  display: flex;
+}
+
+.str-chat__channel-list {
+  width: 30%;
+}
+
+.str-chat__channel {
+  width: 100%;
+}
+
+.str-chat__thread {
+  width: 45%;
+}
+
+
+.str-chat {
+  --str-chat__primary-color: #009688;
+  --str-chat__active-primary-color: #004d40;
+  --str-chat__surface-color: #f5f5f5;
+  --str-chat__secondary-surface-color: #fafafa;
+  --str-chat__primary-surface-color: #e0f2f1;
+  --str-chat__primary-surface-color-low-emphasis: #edf7f7;
+  --str-chat__border-radius-circle: 6px;
+}
+
+.str-chat.messaging.light.str-chat__channel-list.str-chat__channel-list-react {
+  width: 100%;
+}
+
+.str-chat.str-chat__theme-dark.str-chat__channel-list.str-chat__channel-list-react {
+  width: 100%;
+}
+
+.str-chat.str-chat__theme-light.str-chat__channel-list.str-chat__channel-list-react {
+  width: 100%;
 }
 
 .progress-bar {
@@ -78,21 +145,34 @@ body {
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
+
 .pl {
   animation-name: bump;
   animation-timing-function: linear;
   width: 8em;
   height: 8em;
 }
+
 .pl__ring {
   --hue: 223;
   stroke: hsla(var(--hue), 10%, 10%, 0.1);
   transition: stroke 0.3s;
 }
+
 .pl__worm {
   animation-name: worm;
   animation-timing-function: cubic-bezier(0.42, 0.17, 0.75, 0.83);
 }
+
+/* For calendar */
+
+.sx-react-calendar-wrapper {
+  width: 1200px;
+  max-width: 100vw;
+  height: 800px;
+  max-height: 90vh;
+}
+
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
@@ -101,6 +181,7 @@ body {
     --bg: hsl(var(--hue), 10%, 10%);
     --fg: hsl(var(--hue), 10%, 90%);
   }
+
   .pl__ring {
     --hue: 223;
     stroke: hsla(var(--hue), 10%, 90%, 0.1);
@@ -109,6 +190,7 @@ body {
 
 /* Animations */
 @keyframes bump {
+
   from,
   42%,
   46%,
@@ -127,35 +209,45 @@ body {
   to {
     transform: translate(0, 0);
   }
+
   44% {
     transform: translate(1.33%, 6.75%);
   }
+
   53% {
     transform: translate(-16.67%, -0.54%);
   }
+
   61% {
     transform: translate(3.66%, -2.46%);
   }
+
   69% {
     transform: translate(-0.59%, 15.27%);
   }
+
   76% {
     transform: translate(-1.92%, -4.68%);
   }
+
   83% {
     transform: translate(9.38%, 0.96%);
   }
+
   90% {
     transform: translate(-4.55%, 1.98%);
   }
 }
+
 @keyframes worm {
   from {
     stroke-dashoffset: 10;
   }
+
   25% {
     stroke-dashoffset: 295;
   }
+
   to {
     stroke-dashoffset: 1165;
   }
@@ -164,6 +256,7 @@ body {
 .float-animation {
   transform: translatey(0px);
   animation: float 6s ease-in-out infinite;
+
   img {
     width: 100%;
     height: auto;
@@ -174,9 +267,11 @@ body {
   0% {
     transform: translatey(0px);
   }
+
   50% {
     transform: translatey(-20px);
   }
+
   100% {
     transform: translatey(0px);
   }
@@ -205,4 +300,23 @@ body {
   top: 80px;
   z-index: 100;
   background-color: white;
+}
+
+/* @layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
