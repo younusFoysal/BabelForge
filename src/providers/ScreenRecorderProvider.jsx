@@ -1,6 +1,5 @@
-
 "use client";
-import React, { createContext, useContext, useRef, useState } from "react";
+import React, { createContext, useContext, useRef, useState, useEffect } from "react";
 
 const ScreenRecorderContext = createContext();
 
@@ -14,11 +13,31 @@ const ScreenRecorderProvider = ({ children }) => {
     const mediaRecorder = useRef(null);
     const recordedChunks = useRef([]);
 
+    // Effect to warn the user before reload/close
+    useEffect(() => {
+        const handleBeforeUnload = (event) => {
+            if (recording) {
+                event.preventDefault();
+                event.returnValue = 'are you sure'; // This shows the confirmation dialog
+            }
+        };
+
+        if (recording) {
+            window.addEventListener("beforeunload", handleBeforeUnload);
+        } else {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        }
+
+        // Clean up the event listener when the component unmounts
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+    }, [recording]);
+
     const startRecording = async () => {
         if (recording) return;
 
         try {
-            
             const displayStream = await navigator.mediaDevices.getDisplayMedia({
                 video: {
                     cursor: "always",
@@ -30,10 +49,9 @@ const ScreenRecorderProvider = ({ children }) => {
                 audio: true, 
             });
 
-            // Combine both streams into one
             const combinedStream = new MediaStream([
                 ...displayStream.getTracks(),
-                ...audioStream.getTracks(), 
+                ...audioStream.getTracks(),
             ]);
 
             mediaRecorder.current = new MediaRecorder(combinedStream, {
@@ -52,7 +70,7 @@ const ScreenRecorderProvider = ({ children }) => {
                 });
                 const url = URL.createObjectURL(blob);
                 setVideoUrl(url);
-                recordedChunks.current = []; 
+                recordedChunks.current = [];
             };
 
             mediaRecorder.current.start();
