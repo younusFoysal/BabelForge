@@ -21,6 +21,7 @@ import SideBar from '@/components/Siderbar/Sidebar';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import { ModeToggle } from '@/components/Theme/ModeToggle';
+import { useRecording } from '@/providers/ScreenRecorderProvider';
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -17,6 +17,7 @@ import { Poppins, Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import QureryProvider from '@/providers/QureryProvider';
 import { usePathname } from 'next/navigation';
+import ScreenRecorderProvider from '@/providers/ScreenRecorderProvider';
 
 const nunito = Nunito({
   weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
@@ -40,14 +41,16 @@ export default function RootLayout({ children }) {
         >
           <QureryProvider>
             {/* <CrispWithNoSSR /> */}
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-              <PaymentProvider>
-                <Navbar />
-                <Toaster />
-                {children}
-                <Footer />
-              </PaymentProvider>
-            </ThemeProvider>
+            <ScreenRecorderProvider>
+              <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+                <PaymentProvider>
+                  <Navbar />
+                  <Toaster />
+                  {children}
+                  <Footer />
+                </PaymentProvider>
+              </ThemeProvider>
+            </ScreenRecorderProvider>
           </QureryProvider>
         </body>
       </html>
