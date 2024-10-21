@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   useCall,
   useCallStateHooks,
@@ -19,7 +19,7 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
 
   if (!calls) throw new Error("use call is must be Component");
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     if (mictoggleon) {
       calls?.camera.disable();
@@ -31,7 +31,7 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
   }, [mictoggleon, calls?.camera, calls?.microphone]);
 
   return (
-    <div className="w-full h-screen flex justify-center items-center gap-4 flex-col">
+    <div className="w-full h-screen flex justify-center items-center gap-4 flex-col ">
       <h1 className="  font-bold text-2xl">meeting setup</h1>
       <VideoPreview />
       <div className="flex gpa-2 items-center text-xl h-10">
