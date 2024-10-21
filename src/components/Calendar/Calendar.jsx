@@ -8,11 +8,9 @@ import { useUser } from '@clerk/nextjs';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 
-// Set up the localizer using moment.js
 const localizer = momentLocalizer(moment);
 
 const MyCalendar = () => {
-    // Sample events to display in the calendar
     const axiosCommon = useAxiosCommon();
     const { user } = useUser();
     const uemail = user?.primaryEmailAddress?.emailAddress;
@@ -29,29 +27,23 @@ const MyCalendar = () => {
             return data;
         },
     });
-    // console.log("events: ", tasks.data);
 
-    // State to manage modal visibility and selected event details
     const [showModal, setShowModal] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);
-    // const [view, setView] = useState(Views.WEEK);
     const [date, setDate] = useState(new Date());
 
-    // Handle event click to show the modal with event details
     const handleSelectEvent = (event) => {
         setSelectedEvent(event);
         setShowModal(true);
     };
 
-    // Close the modal
     const handleClose = () => setShowModal(false);
 
     const eventPropGetter = (event) => {
         console.log(event.status);
-        let backgroundColor = 'lightblue'; // Default color
+        let backgroundColor = 'lightblue';
         let textColor = '#000000';
 
-        // Customize color based on event title (you can use any event property)
         if (event.status === 'todo') {
             backgroundColor = '#fffacd';
         } else if (event.status === 'inprogress') {
@@ -60,11 +52,9 @@ const MyCalendar = () => {
             backgroundColor = '#90ee90';
         }
 
-        // Return styles
         return { style: { backgroundColor, color: textColor } };
     };
 
-    // Render the calendar component
     return (
         <div style={{ height: '500px', margin: '50px 50px 50px 400px ' }}>
             <Calendar
@@ -75,20 +65,20 @@ const MyCalendar = () => {
                 style={{ height: 500 }}
 
                 defaultView="month"
-                views={['month', 'week', 'day']}
+                views={['month']}
 
                 // views={[Views.MONTH, Views.WEEK, Views.DAY]}
                 // defaultView={view}
-                // view={view} // Include the view prop
-                date={date} // Include the date prop
+                // view={view}
+                date={date}
                 // onView={(view) => setView(view)}
                 onNavigate={(date) => {
                     setDate(new Date(date));
                 }}
 
-                step={30} // Time intervals for 'day' view
-                timeslots={2} // Number of time slots per interval
-                onSelectEvent={handleSelectEvent} // Event click handler
+                step={30}
+                timeslots={2}
+                onSelectEvent={handleSelectEvent}
                 eventPropGetter={eventPropGetter}
             />
 
