@@ -33,7 +33,7 @@ const ScreenRecorder = () => {
                         onClick={handleStopRecording}
                         className="flex items-center px-6 py-3 text-white bg-red-600 rounded-lg shadow-lg hover:bg-red-700 transition duration-300 transform hover:scale-105"
                     >
-                       
+                        <FaStop className="mr-2" />
                         Stop Recording
                     </button>
                 )}
