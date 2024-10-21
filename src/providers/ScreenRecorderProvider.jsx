@@ -40,7 +40,13 @@ const ScreenRecorderProvider = ({ children }) => {
                 mimeType: 'video/webm',
             });
 
-        
+            mediaRecorder.current.ondataavailable = (event) => {
+                if (event.data.size > 0) {
+                    recordedChunks.current.push(event.data);
+                }
+            };
+
+           
     };
 
     const stopRecording = () => {
