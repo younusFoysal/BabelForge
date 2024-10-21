@@ -17,7 +17,14 @@ const ScreenRecorderProvider = ({ children }) => {
     const startRecording = async () => {
         if (recording) return;
 
-    
+      
+
+    const stopRecording = () => {
+        if (mediaRecorder.current) {
+            mediaRecorder.current.stop();
+            setRecording(false);
+        }
+    };
 
     return (
         <ScreenRecorderContext.Provider
