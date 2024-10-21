@@ -46,7 +46,16 @@ const ScreenRecorderProvider = ({ children }) => {
                 }
             };
 
-           
+            mediaRecorder.current.onstop = () => {
+                const blob = new Blob(recordedChunks.current, {
+                    type: 'video/webm',
+                });
+                const url = URL.createObjectURL(blob);
+                setVideoUrl(url);
+                recordedChunks.current = []; 
+            };
+
+        
     };
 
     const stopRecording = () => {
