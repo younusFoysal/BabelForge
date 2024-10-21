@@ -34,6 +34,10 @@ const DashboardNavbar = () => {
       title: "Review",
       href: "/dashboard/review",
     },
+    {
+      title: 'ScreenRecorder',
+      href: '/dashboard/ScreenRecorder',
+    },
   ];
 
   return (

@@ -5,6 +5,7 @@ import logo from "@/image/Home/babellogo.png";
 import { Facebook, Instagram, Linkedin, Twitter, Youtube } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import "./Footer.css";
 import { IoAccessibility } from "react-icons/io5";
@@ -47,7 +48,8 @@ const Footer = () => {
   if (pathname?.includes("stream")) {
     return null;
   }
-  if (pathname?.includes("/successPayment")) return null;
+  if (pathname?.includes("/successPayment") || pathname?.includes("meet"))
+    return null;
   return (
     <footer className="p-2 md:p-16 pt-10  text-gray-200 bg-gray-900 border-t-gray-800 border-t-[1px]">
       {/* upper part */}
@@ -100,7 +102,6 @@ const Footer = () => {
           <a href=""></a>
         </div>
       </div>
-
       {/* lower part */}
       <div className="mt-10 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-0">
         <div className="space-y-3 text-center md:text-start">
