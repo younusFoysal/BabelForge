@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="new fix">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="doc page start">
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Doc/Doc.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/Home/babellogo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/babellogo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="prepod-test" />
+        <entry key="$PROJECT_DIR$" value="prepod" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,7 +71,7 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "prepod",
+    "git-widget-placeholder": "foysal",
     "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -134,22 +131,7 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
-    </task>
-    <task id="LOCAL-00006" summary="tailwind check done">
-      <option name="closed" value="true" />
-      <created>1726639250015</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639250015</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Swiper added">
-      <option name="closed" value="true" />
-      <created>1726687026556</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687026556</updated>
+      <workItem from="1729442824871" duration="1439000" />
     </task>
     <task id="LOCAL-00008" summary="Image path fix">
       <option name="closed" value="true" />
@@ -527,7 +509,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728988038983</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="pkg fix">
+      <option name="closed" value="true" />
+      <created>1729459241484</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1729459241484</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Chat Button fix">
+      <option name="closed" value="true" />
+      <created>1729460540264</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1729460540264</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,9 +544,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add task Done" />
-    <MESSAGE value="Server api link added" />
-    <MESSAGE value="turbo added" />
     <MESSAGE value="carusel added" />
     <MESSAGE value="carusel fix" />
     <MESSAGE value="update" />
@@ -571,6 +566,30 @@
     <MESSAGE value="home button added" />
     <MESSAGE value="canvas tested" />
     <MESSAGE value="new fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="new fix" />
+    <MESSAGE value="pkg fix" />
+    <MESSAGE value="Chat Button fix" />
+    <MESSAGE value="doc page start" />
+    <option name="LAST_COMMIT_MESSAGE" value="doc page start" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Reviews/Scrolle.jsx</url>
+          <line>11</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Reviews/Scrolle.jsx</url>
+          <line>108</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Reviews/Scrolle.jsx</url>
+          <line>60</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
