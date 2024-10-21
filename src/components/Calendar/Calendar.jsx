@@ -1,84 +1,119 @@
-"use client";
+"use client"
 
-import { useCalendarApp, ScheduleXCalendar } from "@schedule-x/react";
-import {
-    createViewDay,
-    createViewMonthGrid,
-    createViewWeek,
-} from "@schedule-x/calendar";
-import { createEventsServicePlugin } from "@schedule-x/events-service";
-import { createEventModalPlugin } from '@schedule-x/event-modal'
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useUser } from '@clerk/nextjs';
+import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 
-import "@schedule-x/theme-default/dist/index.css";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useQuery } from "@tanstack/react-query";
-import { useUser } from "@clerk/nextjs";
-import LoadingSpinner from "../shared/LoadingSpinner/LoadingSpinner";
-import { useEffect, useState } from "react";
+// Set up the localizer using moment.js
+const localizer = momentLocalizer(moment);
 
-function CalendarApp() {
-    const [events, setEvents] = useState([]); // Initialize state using useState
+const MyCalendar = () => {
+    // Sample events to display in the calendar
+    const axiosCommon = useAxiosCommon();
     const { user } = useUser();
     const uemail = user?.primaryEmailAddress?.emailAddress;
 
-    const axiosCommon = useAxiosCommon();
-
-    // Fetch the tasks using react-query
-    const { data: tasks = [], isLoading } = useQuery({
-        queryKey: ["calendarTasks", uemail], // Include email as a dependency
+    const {
+        data: tasks = [],
+        isLoading,
+        isError,
+        refetch,
+    } = useQuery({
+        queryKey: ["updateproject"],
         queryFn: async () => {
-            const response = await axiosCommon.get(
-                `task/tasks/my-tasks/${uemail}`
-            );
-            return response.data; // Ensure you return the actual data property
+            const data = await axiosCommon.get(`/task/events/${uemail}`);
+            return data;
         },
-        enabled: !!uemail, // Only fetch if email exists
     });
+    // console.log("events: ", tasks.data);
 
-    const plugins = [createEventsServicePlugin(), createEventModalPlugin()];
+    // const events = [
+    //     {
+    //         title: 'Team Meeting',
+    //         start: "2024-10-22", // Date(year, monthIndex, day, hour, minute)
+    //         end: "2024-10-22",
+    //         allDay: false,
+    //     },
+    //     {
+    //         title: 'Client Call',
+    //         start: new Date(2024, 9, 23, 14, 0),
+    //         end: new Date(2024, 9, 23, 15, 0),
+    //         allDay: false,
+    //     },
+    //     {
+    //         title: 'Project Review',
+    //         start: new Date(2024, 9, 24, 9, 0),
+    //         end: new Date(2024, 9, 24, 10, 0),
+    //         allDay: false,
+    //     },
+    // ];
 
-    // Initialize the calendar app
-    const calendar = useCalendarApp(
-        {
-            views: [createViewDay(), createViewWeek(), createViewMonthGrid()],
-            events: [
-                {
-                    id: '1',
-                    title: 'Event 1',
-                    start: '2024-10-24 10:00',
-                    description: 'askdldfgadg adfsf',
-                    end: '2024-10-24 10:00',
-                },
-            ], // Use dynamic events fetched from the API
-        },
-        plugins
-    );
+    // State to manage modal visibility and selected event details
+    const [showModal, setShowModal] = useState(false);
+    const [selectedEvent, setSelectedEvent] = useState(null);
 
-    // Ensure tasks are mapped to events after fetch
-    useEffect(() => {
-        if (tasks.length > 0) {
-            const updatedEvents = tasks.map((task) => ({
-                id: task._id,
-                title: task.tname,
-                start: task.tdate,
-                end: task.tdate,
-                description: task.tdes,
-            }));
-            setEvents(updatedEvents); // Set all events at once
-        }
-    }, [tasks]); // Re-run whenever tasks change
-    console.log(events);
+    // Handle event click to show the modal with event details
+    const handleSelectEvent = (event) => {
+        setSelectedEvent(event);
+        setShowModal(true);
+    };
 
-    // Show loading spinner while tasks are loading
-    if (isLoading) {
-        return <LoadingSpinner />;
-    }
+    // Close the modal
+    const handleClose = () => setShowModal(false);
 
+    // Render the calendar component
     return (
-        <div className="flex items-center justify-center my-7 ml-48 dark:bg-white/20">
-            <ScheduleXCalendar calendarApp={calendar} />
+        <div style={{ height: '500px', margin: '50px' }}>
+            <Calendar
+                localizer={localizer}
+                events={tasks.data}
+                startAccessor="start"
+                endAccessor="end"
+                style={{ height: 500 }}
+                defaultView="month" // Default view of the calendar (can be 'month', 'week', 'day', etc.)
+                views={['month', 'week', 'day']} // Available views
+                step={30} // Time intervals for 'day' view
+                timeslots={2} // Number of time slots per interval
+                onSelectEvent={handleSelectEvent} // Event click handler
+                eventPropGetter={eventPropGetter}
+            />
+
+
+            {/* Modal to display event details */}
+            {showModal && (
+                <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
+                    <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-1/3">
+                        <div className="border-b px-4 py-2 flex justify-between items-center">
+                            <h3 className="font-semibold text-lg">{selectedEvent?.title}</h3>
+                            <button
+                                className="text-black close focus:outline-none"
+                                onClick={handleClose}
+                            >
+                                &times;
+                            </button>
+                        </div>
+                        <div className="p-4">
+                            <p><strong>Description:</strong> {selectedEvent?.description}</p>
+                            <p><strong>Start:</strong> {selectedEvent?.start.toLocaleString()}</p>
+                            <p><strong>End:</strong> {selectedEvent?.end.toLocaleString()}</p>
+                        </div>
+                        <div className="flex justify-end p-4">
+                            <button
+                                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+                                onClick={handleClose}
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
-}
+};
 
-export default CalendarApp;
+export default MyCalendar;
