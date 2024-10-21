@@ -6,6 +6,9 @@ import { IoCloseCircle } from 'react-icons/io5';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useUser } from '@clerk/nextjs';
+import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { ToastAction } from '@/components/ui/toast';
 
 const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
@@ -16,6 +19,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const axiosCommon = useAxiosCommon();
   const uemail = user?.primaryEmailAddress?.emailAddress; // For storing task data to edit
   const useremail = uemail;
+  const { toast } = useToast();
 
   let num = 1;
 
@@ -77,6 +81,17 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
 
   return (
     <div>
+      <Button
+        variant="outline"
+        onClick={() => {
+          toast({
+            title: 'Uh oh! Something went wrong.',
+            description: 'There was a problem with your request.',
+          });
+        }}
+      >
+        Show Toast
+      </Button>
       <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <thead className="bg-gray-50">
           <tr>

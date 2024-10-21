@@ -5,6 +5,7 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import { FaStar } from 'react-icons/fa';
 import usericon from '@/image/icon/user.png';
+import ImageWithFallback from '../ImageWithFallback';
 
 const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
   return (
@@ -18,7 +19,7 @@ const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
       )}
     >
       <div className="flex flex-row items-center gap-2">
-        <Image className="rounded-full" width={32} height={32} alt="" src={image} onError={e => (e.currentTarget.src = usericon)} />
+        <ImageWithFallback className="rounded-full" width="32" height="32" src={image} fallbackSrc={usericon} />
         <div className="flex flex-col">
           <figcaption className="text-sm font-medium dark:text-white">{name}</figcaption>
           <p className="text-xs opacity-65 font-medium dark:text-white/40">{companyName}</p>
@@ -27,8 +28,8 @@ const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
       <blockquote className="mt-2 text-sm">{message}</blockquote>
       <ul className="flex gap-2 mt-4">
         {Array.from({ length: reviewRating }, (_, index) => (
-          <li key={index}>
-            <FaStar className="text-[20px] text-white/80" key={index} />
+          <li key={`star-${index}`}>
+            <FaStar className="text-[20px] text-white/80" />
           </li>
         ))}
       </ul>
@@ -75,7 +76,7 @@ export function MarqueeDemoVertical() {
           ))}
         </div>
 
-        <Marquee  vertical className="[--duration:40s] space-y-4 hidden md:block">
+        <Marquee vertical className="[--duration:40s] space-y-4 hidden md:block">
           {firstRow?.map(review => (
             <ReviewCard key={review.name} {...review} />
           ))}
