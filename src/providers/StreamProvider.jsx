@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { StreamVideoClient, StreamVideo } from "@stream-io/video-react-sdk";
 import { useUser } from "@clerk/nextjs";
 import { tokenProvider } from "@/actions/steam.actions";
+import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 
 const API_KEY = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 
@@ -19,7 +20,7 @@ const StreamVideoProvider = ({ children }) => {
       apiKey: API_KEY,
       user: {
         id: user?.id,
-        name: user?.username || user?.id,
+        name: user?.firstName || user?.username,
         image: user?.imageUrl,
       },
       tokenProvider,
@@ -28,7 +29,7 @@ const StreamVideoProvider = ({ children }) => {
     setVideoClient(client);
   }, [user, isLoaded]);
 
-  if (!videoClient) return <h1>loading......</h1>;
+  if (!videoClient) return <HomeLoadingSpinner />;
 
   return <StreamVideo client={videoClient}>{children}</StreamVideo>;
 };
