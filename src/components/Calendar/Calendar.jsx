@@ -1,42 +1,40 @@
 "use client"
 
-import { ScheduleXCalendar, useCalendarApp } from "@schedule-x/react";
+import { useNextCalendarApp, ScheduleXCalendar } from '@schedule-x/react'
+
 import {
+    createViewDay,
+    createViewMonthAgenda,
     createViewMonthGrid,
     createViewWeek,
 } from '@schedule-x/calendar'
+import { createEventsServicePlugin } from '@schedule-x/events-service'
+import { createDragAndDropPlugin } from '@schedule-x/drag-and-drop'
 
-import '@schedule-x/theme-default/dist/calendar.css'
+import '@schedule-x/theme-default/dist/index.css'
 
-const Calendar = () => {
+function CalendarApp() {
+    const plugins = [createEventsServicePlugin(), createDragAndDropPlugin(), eventModal()]
 
-    const calendar = useCalendarApp({
-        views: [
-            createViewWeek(),
-            createViewMonthGrid()
-        ],
+    const calendar = useNextCalendarApp({
+        views: [createViewDay(), createViewWeek(), createViewMonthGrid(), createViewMonthAgenda()],
         events: [
             {
                 id: '1',
                 title: 'Event 1',
-                start: '2024-10-24 12:30',
-                end: '2024-10-24 14:00',
-            },
-            {
-                id: '2',
-                title: 'Event 2',
-                start: '2024-10-24 02:30',
-                end: '2024-10-24 14:00',
+                description: "ajksdfga sdf asdifuhlnasiudfhjkasdf asdf",
+                start: '2024-10-16',
+                end: '2024-11-16',
             },
         ],
-        selectedDate: '2024-10-01'
-    })
+    }, plugins)
+
 
     return (
-        <div>
-            <ScheduleXCalendar calendarApp={calendar}></ScheduleXCalendar>
+        <div >
+            <ScheduleXCalendar calendarApp={calendar} />
         </div>
-    );
-};
+    )
+}
 
-export default Calendar;
+export default CalendarApp
