@@ -23,7 +23,7 @@ const MyCalendar = () => {
         isError,
         refetch,
     } = useQuery({
-        queryKey: ["updateproject"],
+        queryKey: ["events"],
         queryFn: async () => {
             const data = await axiosCommon.get(`/task/events/${uemail}`);
             return data;
@@ -31,30 +31,11 @@ const MyCalendar = () => {
     });
     // console.log("events: ", tasks.data);
 
-    // const events = [
-    //     {
-    //         title: 'Team Meeting',
-    //         start: "2024-10-22", // Date(year, monthIndex, day, hour, minute)
-    //         end: "2024-10-22",
-    //         allDay: false,
-    //     },
-    //     {
-    //         title: 'Client Call',
-    //         start: new Date(2024, 9, 23, 14, 0),
-    //         end: new Date(2024, 9, 23, 15, 0),
-    //         allDay: false,
-    //     },
-    //     {
-    //         title: 'Project Review',
-    //         start: new Date(2024, 9, 24, 9, 0),
-    //         end: new Date(2024, 9, 24, 10, 0),
-    //         allDay: false,
-    //     },
-    // ];
-
     // State to manage modal visibility and selected event details
     const [showModal, setShowModal] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);
+    // const [view, setView] = useState(Views.WEEK);
+    const [date, setDate] = useState(new Date());
 
     // Handle event click to show the modal with event details
     const handleSelectEvent = (event) => {
@@ -85,15 +66,26 @@ const MyCalendar = () => {
 
     // Render the calendar component
     return (
-        <div style={{ height: '500px', margin: '50px' }}>
+        <div style={{ height: '500px', margin: '50px 50px 50px 400px ' }}>
             <Calendar
                 localizer={localizer}
                 events={tasks.data}
                 startAccessor="start"
                 endAccessor="end"
                 style={{ height: 500 }}
-                defaultView="month" // Default view of the calendar (can be 'month', 'week', 'day', etc.)
-                views={['month', 'week', 'day']} // Available views
+
+                defaultView="month"
+                views={['month', 'week', 'day']}
+
+                // views={[Views.MONTH, Views.WEEK, Views.DAY]}
+                // defaultView={view}
+                // view={view} // Include the view prop
+                date={date} // Include the date prop
+                // onView={(view) => setView(view)}
+                onNavigate={(date) => {
+                    setDate(new Date(date));
+                }}
+
                 step={30} // Time intervals for 'day' view
                 timeslots={2} // Number of time slots per interval
                 onSelectEvent={handleSelectEvent} // Event click handler
