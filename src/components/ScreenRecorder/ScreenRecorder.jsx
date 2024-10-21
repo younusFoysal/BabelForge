@@ -25,7 +25,7 @@ const ScreenRecorder = () => {
                         onClick={handleStartRecording}
                         className="flex items-center px-6 py-3 text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
                     >
-                        
+                        <FaVideo className="mr-2" />
                         Start Recording
                     </button>
                 ) : (
