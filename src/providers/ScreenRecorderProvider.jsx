@@ -1,5 +1,5 @@
 'use client';
-import React, { createContext, useContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useContext, useRef, useState, useEffect } from 'react';
 
 const ScreenRecorderContext = createContext();
 
@@ -12,27 +12,29 @@ const ScreenRecorderProvider = ({ children }) => {
   const [videoUrl, setVideoUrl] = useState(null);
   const mediaRecorder = useRef(null);
   const recordedChunks = useRef([]);
-  const [isRecording, setIsRecording] = useState(false);
 
+  // Effect to warn the user before reload/close
   useEffect(() => {
     const handleBeforeUnload = event => {
-      if (isRecording) {
-        const message = 'Screen recording is in progress. Are you sure you want to leave?';
+      if (recording) {
         event.preventDefault();
-        event.returnValue = message; // For some browsers
-        return message;
+        event.returnValue = 'are you sure'; // This shows the confirmation dialog
       }
     };
-    // Add event listener globally
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    // Cleanup when component unmounts
+
+    if (recording) {
+      window.addEventListener('beforeunload', handleBeforeUnload);
+    } else {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    }
+
+    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [isRecording]);
+  }, [recording]);
 
   const startRecording = async () => {
-    setIsRecording(true);
     if (recording) return;
 
     try {
@@ -47,7 +49,6 @@ const ScreenRecorderProvider = ({ children }) => {
         audio: true,
       });
 
-      // Combine both streams into one
       const combinedStream = new MediaStream([...displayStream.getTracks(), ...audioStream.getTracks()]);
 
       mediaRecorder.current = new MediaRecorder(combinedStream, {
@@ -60,6 +61,14 @@ const ScreenRecorderProvider = ({ children }) => {
         }
       };
 
+      mediaRecorder.current.onstop = () => {
+        const blob = new Blob(recordedChunks.current, {
+          type: 'video/webm',
+        });
+        const url = URL.createObjectURL(blob);
+        setVideoUrl(url);
+        recordedChunks.current = [];
+      };
       mediaRecorder.current.onstop = () => {
         const blob = new Blob(recordedChunks.current, {
           type: 'video/webm',
