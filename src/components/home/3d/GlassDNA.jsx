@@ -18,7 +18,7 @@ function ModelRightToLeft({ scrollPosition, mousePosition }) {
                     // Set the color and opacity for the material
                     child.material.color = new THREE.Color(0x106AC5); // Green color
                     child.material.transparent = true;
-                    child.material.opacity = 0.5; // Adjust opacity (0 is fully transparent, 1 is fully opaque)
+                    child.material.opacity = 0.7; // Adjust opacity (0 is fully transparent, 1 is fully opaque)
                 }
             });
         }
@@ -113,7 +113,7 @@ function ModelLeftToRight({ scrollPosition, mousePosition }) {
     return <primitive object={scene} ref={modelRef} />;
 }
 
-export default function Home() {
+export default function GlassDNA() {
     const [scrollPosition, setScrollPosition] = useState(0);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 

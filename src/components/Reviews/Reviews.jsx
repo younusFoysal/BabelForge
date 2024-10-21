@@ -28,7 +28,7 @@ const Reviews = () => {
 
   useEffect(() => {
     setValue("name", userfullNameorEmail || "Your Name");
-  }, [uemail]);
+  }, [uemail, setValue, userfullNameorEmail]);
 
   const onSubmit = async (data) => {
     const currentDate = new Date();

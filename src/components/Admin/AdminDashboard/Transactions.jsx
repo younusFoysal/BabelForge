@@ -5,9 +5,14 @@ import useTrans from '@/hooks/useTrans';
 import masterCard from '@/image/icon/mastercard.jpg';
 import visa from '@/image/icon/visa.png';
 import Image from 'next/image';
+import {usePathname} from "next/navigation";
 
 const Transactions = ({ transAmout }) => {
   const [trans, isLoading] = useTrans();
+  const pathname = usePathname();
+
+  const isPath = pathname.includes("/dashboard/admin/transactions")
+
 
   if (isLoading) return <LoadingSpinner />;
 
@@ -15,7 +20,7 @@ const Transactions = ({ transAmout }) => {
   const sortedTrans = trans?.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
-    <div className="my-10">
+    <div className={` ${isPath && "h-screen"}  my-10 dark:bg-transparent`}>
       <div className="mx-auto max-w-screen-xl ">
         <h1 className="mt-5 mb-5 dark:text-white ml-5 text-2xl font-bold text-gray-900">Recent Transactions</h1>
       </div>

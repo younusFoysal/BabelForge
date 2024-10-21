@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="dash fix" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Chat Button fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.jsx" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="prepod-test" />
+        <entry key="$PROJECT_DIR$" value="foysal" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -125,31 +128,7 @@
       <workItem from="1728588396315" duration="614000" />
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
-      <workItem from="1729168984086" duration="1588000" />
-    </task>
-    <task id="LOCAL-00005" summary="File Structure Done">
-      <option name="closed" value="true" />
-      <created>1726639017381</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639017381</updated>
-    </task>
-    <task id="LOCAL-00006" summary="tailwind check done">
-      <option name="closed" value="true" />
-      <created>1726639250015</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639250015</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Swiper added">
-      <option name="closed" value="true" />
-      <created>1726687026556</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687026556</updated>
+      <workItem from="1729442824871" duration="1439000" />
     </task>
     <task id="LOCAL-00008" summary="Image path fix">
       <option name="closed" value="true" />
@@ -503,23 +482,47 @@
       <option name="project" value="LOCAL" />
       <updated>1728905970582</updated>
     </task>
-    <task id="LOCAL-00052" summary="notes updated">
+    <task id="LOCAL-00052" summary="canvas tested">
       <option name="closed" value="true" />
-      <created>1729146108953</created>
+      <created>1728985595003</created>
       <option name="number" value="00052" />
       <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1729146108953</updated>
+      <updated>1728985595003</updated>
     </task>
-    <task id="LOCAL-00053" summary="dash fix">
+    <task id="LOCAL-00053" summary="canvas tested">
       <option name="closed" value="true" />
-      <created>1729175099843</created>
+      <created>1728985726882</created>
       <option name="number" value="00053" />
       <option name="presentableId" value="LOCAL-00053" />
       <option name="project" value="LOCAL" />
-      <updated>1729175099843</updated>
+      <updated>1728985726882</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="new fix">
+      <option name="closed" value="true" />
+      <created>1728988038983</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1728988038983</updated>
+    </task>
+    <task id="LOCAL-00055" summary="pkg fix">
+      <option name="closed" value="true" />
+      <created>1729459241484</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1729459241484</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Chat Button fix">
+      <option name="closed" value="true" />
+      <created>1729460540264</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1729460540264</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -538,8 +541,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add task Done" />
-    <MESSAGE value="Server api link added" />
     <MESSAGE value="turbo added" />
     <MESSAGE value="carusel added" />
     <MESSAGE value="carusel fix" />
@@ -561,8 +562,10 @@
     <MESSAGE value="button fix" />
     <MESSAGE value="Awesome Design Implemented" />
     <MESSAGE value="home button added" />
-    <MESSAGE value="notes updated" />
-    <MESSAGE value="dash fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="dash fix" />
+    <MESSAGE value="canvas tested" />
+    <MESSAGE value="new fix" />
+    <MESSAGE value="pkg fix" />
+    <MESSAGE value="Chat Button fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Chat Button fix" />
   </component>
 </project>

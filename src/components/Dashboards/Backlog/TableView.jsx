@@ -1,11 +1,14 @@
-"use client";
-import React, { useState } from "react";
-import Modal from "react-modal";
-import "./modal.css";
-import { IoCloseCircle } from "react-icons/io5";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useUser } from "@clerk/nextjs";
+'use client';
+import React, { useState } from 'react';
+import Modal from 'react-modal';
+import './modal.css';
+import { IoCloseCircle } from 'react-icons/io5';
+import { useQuery } from '@tanstack/react-query';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useUser } from '@clerk/nextjs';
+import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { ToastAction } from '@/components/ui/toast';
 
 const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
@@ -16,11 +19,12 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const axiosCommon = useAxiosCommon();
   const uemail = user?.primaryEmailAddress?.emailAddress; // For storing task data to edit
   const useremail = uemail;
+  const { toast } = useToast();
 
   let num = 1;
 
   // Open modal for viewing task details
-  const handleView = (task) => {
+  const handleView = task => {
     setSelectedTask(task);
     setIsModalOpen(true);
   };
@@ -32,7 +36,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   };
 
   // Open modal for editing task
-  const handleEdit = (task) => {
+  const handleEdit = task => {
     setFormData(task); // Pre-fill form data with the selected task
     setIsEditModalOpen(true);
   };
@@ -44,9 +48,9 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   };
 
   // Handle input changes in the edit modal
-  const handleInputChange = (e) => {
+  const handleInputChange = e => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   // Handle form submit to update task
@@ -68,53 +72,44 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["uteams"],
+    queryKey: ['uteams'],
     queryFn: async () => {
-      const { data } = await axiosCommon.get(
-        `/team/teams/my-teams/${useremail}`
-      );
+      const { data } = await axiosCommon.get(`/team/teams/my-teams/${useremail}`);
       return data;
     },
   });
 
-  console.log("uteams:", uteams);
-
   return (
     <div>
+      <Button
+        variant="outline"
+        onClick={() => {
+          toast({
+            title: 'Uh oh! Something went wrong.',
+            description: 'There was a problem with your request.',
+          });
+        }}
+      >
+        Show Toast
+      </Button>
       <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <thead className="bg-gray-50">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Num
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Task
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Assigned to
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Status
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Start
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Team
-            </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Actions
-            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Num</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Task</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned to</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
-          {tasks?.map((task) => (
+          {tasks?.map(task => (
             <tr key={task._id}>
               <td className="px-6 py-4 whitespace-nowrap">{num++}</td>
               <td className="px-6 py-4 whitespace-nowrap">
-                <div className="text-sm font-medium text-gray-900">
-                  {task?.tname}
-                </div>
+                <div className="text-sm font-medium text-gray-900">{task?.tname}</div>
                 <div className="text-sm text-gray-500">{task?.tdes}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
@@ -124,11 +119,11 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
               <td className="px-6 py-4 whitespace-nowrap">
                 <span
                   className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                    task?.tproces === "todo"
-                      ? "bg-gray-100 text-black"
-                      : task?.tproces === "inProgress"
-                      ? "bg-blue-100 text-blue-500"
-                      : "bg-green-100 text-green-800"
+                    task?.tproces === 'todo'
+                      ? 'bg-gray-100 text-black'
+                      : task?.tproces === 'inProgress'
+                      ? 'bg-blue-100 text-blue-500'
+                      : 'bg-green-100 text-green-800'
                   }`}
                 >
                   {task?.tproces.toUpperCase()}
@@ -139,26 +134,15 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                 <br />
                 <span className="text-sm text-gray-500">{task?.ttime} </span>
               </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
-                {task?.teamId}
-              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{task?.teamId}</td>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <button
-                  className="mr-2 bg-blue-500 px-2 py-1 rounded text-white hover:bg-blue-800"
-                  onClick={() => handleView(task)}
-                >
+                <button className="mr-2 bg-blue-500 px-2 py-1 rounded text-white hover:bg-blue-800" onClick={() => handleView(task)}>
                   Details
                 </button>
-                <button
-                  className="mr-2 bg-yellow-500 px-2 py-1 rounded text-white hover:bg-yellow-700"
-                  onClick={() => handleEdit(task)}
-                >
+                <button className="mr-2 bg-yellow-500 px-2 py-1 rounded text-white hover:bg-yellow-700" onClick={() => handleEdit(task)}>
                   Edit
                 </button>
-                <button
-                  className="bg-red-500 px-2 py-1 rounded text-white hover:bg-red-800"
-                  onClick={() => handleDelete(task._id)}
-                >
+                <button className="bg-red-500 px-2 py-1 rounded text-white hover:bg-red-800" onClick={() => handleDelete(task._id)}>
                   Delete
                 </button>
               </td>
@@ -209,37 +193,24 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                 className="p-2 border rounded-lg w-full mb-4"
               />
 
-              <select
-                name="teamId"
-                value={formData.teamId}
-                onChange={handleInputChange}
-                className="p-2 border rounded-lg w-full mb-4"
-              >
+              <select name="teamId" value={formData.teamId} onChange={handleInputChange} className="p-2 border rounded-lg w-full mb-4">
                 <option value="">Select Team</option>
 
-                {uteams?.map((team) => (
+                {uteams?.map(team => (
                   <option key={team._id} value={team.tname}>
                     {team.tname}
                   </option>
                 ))}
               </select>
 
-              <select
-                name="tproces"
-                value={formData.tproces}
-                onChange={handleInputChange}
-                className="p-2 border rounded-lg w-full mb-4"
-              >
+              <select name="tproces" value={formData.tproces} onChange={handleInputChange} className="p-2 border rounded-lg w-full mb-4">
                 <option value="todo">To Do</option>
                 <option value="inProgress">In Progress</option>
                 <option value="done">Done</option>
               </select>
             </div>
             <div className="modal-footer">
-              <button
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg"
-                onClick={handleSubmitEdit}
-              >
+              <button className="bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={handleSubmitEdit}>
                 Save Changes
               </button>
             </div>
@@ -265,21 +236,15 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
             </div>
             <div className="modal-body">
               <p>
-                <span className="font-bold">Description:</span>{" "}
-                {selectedTask.tdes}
+                <span className="font-bold">Description:</span> {selectedTask.tdes}
               </p>
               <p>
-                <span className="font-bold">Assigned To:</span>{" "}
-                {selectedTask.tassignTo}
+                <span className="font-bold">Assigned To:</span> {selectedTask.tassignTo}
               </p>
               <p>
                 <span className="font-bold">Process:</span>
 
-                {selectedTask?.tproces === "todo"
-                  ? "📝 TODO"
-                  : selectedTask?.tproces === "done"
-                  ? "✅ DONE"
-                  : "⏰ IN PROGRESS"}
+                {selectedTask?.tproces === 'todo' ? '📝 TODO' : selectedTask?.tproces === 'done' ? '✅ DONE' : '⏰ IN PROGRESS'}
               </p>
               {/* Display other task details */}
             </div>

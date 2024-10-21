@@ -22,7 +22,7 @@ const MemberBox = ({ member, refetch, id }) => {
       removeMember: member,
     });
 
-    if (data.modifiedCount > 0) {
+    if (data.result.modifiedCount > 0) {
       refetch();
 
       toast.success("deleted member successfully");
@@ -51,7 +51,7 @@ const MemberBox = ({ member, refetch, id }) => {
         <DropdownMenuContent align="end" className="w-[100px] mt-1">
           <DropdownMenuGroup>
             <DropdownMenuItem className="capitalize" onClick={handlesubmit}>
-              leave team
+             Remove
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
