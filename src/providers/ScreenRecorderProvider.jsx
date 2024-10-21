@@ -17,7 +17,16 @@ const ScreenRecorderProvider = ({ children }) => {
     const startRecording = async () => {
         if (recording) return;
 
-      
+        try {
+            
+            const displayStream = await navigator.mediaDevices.getDisplayMedia({
+                video: {
+                    cursor: "always",
+                },
+                audio: true, 
+            });
+
+    };
 
     const stopRecording = () => {
         if (mediaRecorder.current) {
