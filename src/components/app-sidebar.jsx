@@ -1,7 +1,5 @@
-'use client';
-
 import * as React from 'react';
-import { BookOpen, Bot, Frame, GalleryVerticalEnd, Map, PieChart, Settings2, SquareTerminal } from 'lucide-react';
+import { BookOpen, CircleHelp, Bot, Frame, PieChart, Settings2, SquareTerminal } from 'lucide-react';
 import { NavMain } from '@/components/nav-main';
 import { NavProjects } from '@/components/nav-projects';
 import { NavUser } from '@/components/nav-user';
@@ -102,9 +100,9 @@ export function AppSidebar({ ...props }) {
         icon: PieChart,
       },
       {
-        name: 'Travel',
+        name: 'Help',
         url: '#',
-        icon: Map,
+        icon: CircleHelp,
       },
     ],
   };
