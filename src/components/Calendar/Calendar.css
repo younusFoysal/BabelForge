@@ -1,0 +1,19 @@
+.rbc-toolbar-label {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.event-calendar .rbc-btn-group button {
+    color: white;
+}
+
+.event-calendar .rbc-off-range-bg{
+    background-color: #1f1f1f;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    .rbc-btn-group button {
+        color: #fff;
+    }
+}

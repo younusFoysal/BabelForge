@@ -7,6 +7,8 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useUser } from '@clerk/nextjs';
 import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import './Calendar.css'
+import { useTheme } from 'next-themes';
 
 const localizer = momentLocalizer(moment);
 
@@ -14,6 +16,7 @@ const MyCalendar = () => {
     const axiosCommon = useAxiosCommon();
     const { user } = useUser();
     const uemail = user?.primaryEmailAddress?.emailAddress;
+    const { resolvedTheme } = useTheme();
 
     const {
         data: tasks = [],
@@ -43,20 +46,27 @@ const MyCalendar = () => {
         console.log(event.status);
         let backgroundColor = 'lightblue';
         let textColor = '#ffff';
+        let borderLeft = '4px solid transparent';
 
         if (event.status === 'todo') {
-            backgroundColor = '#4a90e2';
+            backgroundColor = '#d0e1ff';
+            textColor = '#4a90e2';
+            borderLeft = '4px solid #4a90e2';
         } else if (event.status === 'inprogress') {
-            backgroundColor = '#a84ecf';
+            backgroundColor = '#e2d7f2';
+            textColor = '#a84ecf';
+            borderLeft = '4px solid #a84ecf';
         } else if (event.status === 'done') {
-            backgroundColor = '#796fd8';
+            backgroundColor = '#edd8f3';
+            textColor = '#785c7d';
+            borderLeft = '4px solid #785c7d';
         }
 
-        return { style: { backgroundColor, color: textColor } };
+        return { style: { backgroundColor, color: textColor, borderLeft, fontWeight: 'bold', fontSize: '0.75rem', padding: '4px', marginTop: '2px' } };
     };
 
     return (
-        <div style={{ height: '500px', margin: '50px 50px 50px 400px ' }}>
+        <div className={resolvedTheme == 'dark' && "event-calendar"} style={{ height: '500px', margin: '30px' }}>
             <Calendar
                 localizer={localizer}
                 events={tasks.data}
