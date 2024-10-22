@@ -22,7 +22,7 @@ const layout = ({ children }) => {
       <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
         <main className="relative">
           {/* Dashboard Top */}
-          <div className="flex  sticky backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center">
+          <div className="flex z-[99] sticky backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center">
             <SidebarTrigger />
             <div>
               <DashboardTopRight />
