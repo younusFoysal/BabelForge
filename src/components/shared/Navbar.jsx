@@ -7,7 +7,6 @@ import logo from '../../image/Home/babellogo.png';
 
 import Button from './Buttons';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-
 import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from '@clerk/nextjs';
 import { useTheme } from 'next-themes';
 import { MdDashboard } from 'react-icons/md';
@@ -16,7 +15,7 @@ import {ModeToggle} from "@/components/Theme/ModeToggle";
 const Navbar = () => {
   const { userId } = useAuth();
   const auth = !!userId;
-  const {} = useTheme();
+  const { setTheme, themes } = useTheme();
   const pathname = usePathname();
 
   if (pathname?.includes('sign-in') || pathname?.includes('sign-up')) return null;

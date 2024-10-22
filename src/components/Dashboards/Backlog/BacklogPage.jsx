@@ -1,5 +1,3 @@
-'use client';
-import React, { useEffect, useState } from 'react';
 import TableView from '@/components/Dashboards/Backlog/TableView';
 
 const BacklogPage = () => {

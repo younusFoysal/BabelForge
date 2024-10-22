@@ -7,7 +7,6 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useUser } from '@clerk/nextjs';
 import { useToast } from '@/hooks/use-toast';
-import { Button } from '@/components/ui/button';
 
 const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
@@ -16,7 +15,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [formData, setFormData] = useState({});
   const { user } = useUser();
   const axiosCommon = useAxiosCommon();
-  const uemail = user?.primaryEmailAddress?.emailAddress; // For storing task data to edit
+  const uemail = user?.primaryEmailAddress?.emailAddress;
   const useremail = uemail;
   const { toast } = useToast();
 
@@ -36,7 +35,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
 
   // Open modal for editing task
   const handleEdit = task => {
-    setFormData(task); // Pre-fill form data with the selected task
+    setFormData(task);
     setIsEditModalOpen(true);
   };
 
@@ -80,17 +79,6 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
 
   return (
     <div>
-      <Button
-        variant="outline"
-        onClick={() => {
-          toast({
-            title: 'Uh oh! Something went wrong.',
-            variant: 'error',
-          });
-        }}
-      >
-        Show Toast
-      </Button>
       <table className="min-w-full divide-y divide-gray-200 overflow-x-auto">
         <thead className="bg-gray-50">
           <tr>
@@ -255,3 +243,19 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
 };
 
 export default TableView;
+
+// #TODO
+
+{
+  /* <Button
+variant="outline"
+onClick={() => {
+  toast({
+    title: 'Uh oh! Something went wrong.',
+    variant: 'error',
+  });
+}}
+>
+Show Toast
+</Button> */
+}
