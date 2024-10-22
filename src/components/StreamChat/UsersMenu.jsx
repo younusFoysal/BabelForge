@@ -68,11 +68,11 @@ const UsersMenu = ({ userData, handleUsermenubutton, handleClose, onchangeSelect
   };
 
   return (
-    <div className="absolute bg-white z-30 h-full w-full border-e border-e-[#DBDDE1] duration-300 transition-all  overflow-y-auto dark:bg-[#17191c]">
+    <div className="absolute bg-white z-30 h-full w-full border-e border-e-[#DBDDE1] duration-300 transition-all  overflow-y-auto dark:bg-[#111827]">
       <div className="flex gap-2 items-center p-3 text-lg cursor-pointer">
         <span onClick={handleClose} className="flex gap-1 items-center">
           <ArrowLeft size={20} className="text-black dark:text-white" />
-          users
+          Users
         </span>
       </div>
       {selectedUsers.length > 0 && (

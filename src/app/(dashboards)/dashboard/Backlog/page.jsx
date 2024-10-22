@@ -1,13 +1,12 @@
 'use client';
 import { useState } from 'react';
-import toast from 'react-hot-toast';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import useAxiosCommon from '@/lib/axiosCommon';
 import AddTask from '@/components/Dashboards/Task/AddTask';
-import BacklogPage from '@/components/Dashboards/Backlog/BacklogPage';
 import TableView from '@/components/Dashboards/Backlog/TableView';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import { toast } from '@/hooks/use-toast';
 
 const Page = () => {
   const axiosCommon = useAxiosCommon();
@@ -20,12 +19,17 @@ const Page = () => {
       return data;
     },
     onSuccess: () => {
-      toast.success('Task Added Successfully!');
-      refetch(); // Refetch task data
+      toast({
+        description: 'Task Added Successfully! ',
+      });
+      refetch();
       setLoading(false);
     },
     onError: err => {
-      toast.error(err.message);
+      toast({
+        description: 'Error! Try Again !',
+        variant: 'error',
+      });
       setLoading(false);
     },
   });
@@ -36,7 +40,10 @@ const Page = () => {
     try {
       await addTaskMutation(newTask);
     } catch (err) {
-      toast.error(err.message);
+      toast({
+        description: err.message,
+        variant: 'error',
+      });
       setLoading(false);
     }
   };
@@ -62,10 +69,16 @@ const Page = () => {
     },
     onSuccess: () => {
       refetch();
-      toast.success('Task deleted successfully.');
+      toast({
+        description: 'Task deleted successfully. ',
+        variant: 'success',
+      });
     },
     onError: () => {
-      toast.error('Failed to delete the task.');
+      toast({
+        description: 'Failed to delete the task!',
+        variant: 'error',
+      });
     },
   });
 
@@ -97,11 +110,17 @@ const Page = () => {
       return data;
     },
     onSuccess: () => {
-      toast.success('Task updated successfully!');
+      toast({
+        description: 'Task updated successfully!',
+        variant: 'success',
+      });
       refetch(); // Refetch task data after update
     },
     onError: err => {
-      toast.error(err.message);
+      toast({
+        description: err.message,
+        variant: 'error',
+      });
     },
   });
 

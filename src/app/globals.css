@@ -107,7 +107,6 @@ body {
   width: 45%;
 }
 
-
 .str-chat {
   --str-chat__primary-color: #009688;
   --str-chat__active-primary-color: #004d40;
@@ -116,6 +115,11 @@ body {
   --str-chat__primary-surface-color: #e0f2f1;
   --str-chat__primary-surface-color-low-emphasis: #edf7f7;
   --str-chat__border-radius-circle: 6px;
+}
+
+.str-chat__avatar .str-chat__avatar-fallback,
+.str-chat__avatar.str-chat__avatar--no-letters {
+  background: #6c3bde !important;
 }
 
 .str-chat.messaging.light.str-chat__channel-list.str-chat__channel-list-react {
@@ -173,7 +177,6 @@ body {
   max-height: 90vh;
 }
 
-
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -190,7 +193,6 @@ body {
 
 /* Animations */
 @keyframes bump {
-
   from,
   42%,
   46%,
