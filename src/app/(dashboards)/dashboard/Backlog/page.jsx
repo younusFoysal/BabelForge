@@ -117,6 +117,7 @@ const Page = () => {
 
   // Form handler for updating a task
   const handleEditTask = async updatedTask => {
+    console.log(updatedTask);
     try {
       await updateTaskMutation(updatedTask);
     } catch (err) {
@@ -129,7 +130,7 @@ const Page = () => {
   return (
     <div>
       {/* <AddTask handleAddTask={handleAddTask} /> */}
-      {/* <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} /> */}
+      <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
       <TaskPage handleDelete={handleDelete} task={tasks} />
     </div>
   );
