@@ -1,5 +1,4 @@
 'use client';
-import { toast } from '@/hooks/use-toast';
 import { useAuth } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 
@@ -10,10 +9,7 @@ const Button = ({ text, className, icon }) => {
 
   const handleClick = async () => {
     if (!auth) {
-      return toast({
-        title: 'Please login to continue ',
-        variant: 'error',
-      });
+      return router.push('/sign-in');
     }
     router.push('/dashboard');
   };

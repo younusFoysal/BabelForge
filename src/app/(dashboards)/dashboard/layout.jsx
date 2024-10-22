@@ -28,7 +28,7 @@ const layout = ({ children }) => {
               <DashboardTopRight />
             </div>
           </div>
-          {children}
+          <div className="px-9 py-7">{children}</div>
         </main>
       </div>
     </SidebarProvider>
