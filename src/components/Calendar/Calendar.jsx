@@ -66,7 +66,7 @@ const MyCalendar = () => {
     };
 
     return (
-        <div className={resolvedTheme == 'dark' && "my-event-calendar"} style={{ height: '500px', margin: '30px' }}>
+        <div className={resolvedTheme == 'dark' ? "event-calendar-dark" : "event-calendar-light"} style={{ height: '500px', margin: '30px' }}>
             <Calendar
                 localizer={localizer}
                 events={tasks.data}

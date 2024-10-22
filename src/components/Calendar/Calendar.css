@@ -3,12 +3,36 @@
     font-size: 1.5rem;
 }
 
-.my-event-calendar .rbc-btn-group button {
+.event-calendar-dark .rbc-btn-group button {
     color: white;
 }
 
-.my-event-calendar .rbc-off-range-bg {
+.event-calendar-dark .rbc-btn-group button:hover {
+    background-color: #0362F3FF;
+    color: white;
+    /* Assuming bgHoverColor is a custom CSS variable */
+    transform: scale(1.05);
+    /* Equivalent to 'hover:scale-105' */
+    box-shadow: 0 10px 15px -3px rgba(3, 98, 243, 1), 0 4px 6px -2px rgba(3, 98, 243, 1);
+    /* Equivalent to 'hover:shadow-lg hover:shadow-[#0362F3FF]' */
+}
+
+.event-calendar-light .rbc-btn-group button:hover {
+    background-color: #0362F3FF;
+    color: white;
+    /* Assuming bgHoverColor is a custom CSS variable */
+    transform: scale(1.05);
+    /* Equivalent to 'hover:scale-105' */
+    box-shadow: 0 10px 15px -3px rgba(3, 98, 243, 1), 0 4px 6px -2px rgba(3, 98, 243, 1);
+    /* Equivalent to 'hover:shadow-lg hover:shadow-[#0362F3FF]' */
+}
+
+.event-calendar-dark .rbc-off-range-bg {
     background-color: #1f1f1f;
+}
+
+.rbc-current .rbc-button-link {
+    color: #1f1f1f;
 }
 
 .rbc-event:hover {
