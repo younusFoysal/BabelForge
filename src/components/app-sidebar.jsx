@@ -101,6 +101,10 @@ export function AppSidebar({ ...props }) {
             url: "/dashboard/notes",
           },
           {
+            title: "Calendar",
+            url: "/dashboard/calendar",
+          },
+          {
             title: 'Screen Record',
             url: '/dashboard/ScreenRecorder',
           },
