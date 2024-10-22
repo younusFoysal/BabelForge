@@ -1,9 +1,10 @@
-'use client';
+'use client'
 import React, { useEffect, useState, useCallback } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useUser } from '@clerk/nextjs';
+import { useMutation } from '@tanstack/react-query';
 
 const TOOLBAR_OPTIONS = [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -15,7 +16,7 @@ const TOOLBAR_OPTIONS = [
     [{ align: [] }],
     ['image', 'blockquote', 'code-block'],
     ['clean'],
-    ['link']
+    ['link'],
 ];
 
 const DocumentPage = ({ params }) => {
@@ -30,6 +31,7 @@ const DocumentPage = ({ params }) => {
     const { user } = useUser();
     const email = user?.primaryEmailAddress?.emailAddress;
 
+    // Fetch document content
     useEffect(() => {
         if (!id) return; 
 
@@ -51,45 +53,57 @@ const DocumentPage = ({ params }) => {
         fetchDocument(); 
     }, [axiosCommon, id, email]);
 
-    const saveDocument = async () => {
+    // UseMutation for updating the document
+    const { mutate: updateDocument } = useMutation({
+        mutationFn: async (data) => {
+            const response = await axiosCommon.put(`/document/doc/${id}`, data);
+            return response.data;
+        },
+        
+        onSuccess: (updatedData) => {
+            console.log("Document saved successfully:", updatedData);
+        },
+        onError: (error) => {
+            console.error("Error saving document:", error);
+        }
+    });
+
+    // Save document content function
+    const saveDocument = useCallback(() => {
         if (!quillRef.current) return;
 
         const content = quillRef.current.getContents();
+        const data = {
+            content,
+            email,
+        };
+        updateDocument(data); 
+    }, [updateDocument, email]);
 
-        try {
-            const data = {
-                content,
-                email, 
-            };
+    // Autosave with delay
+    useEffect(() => {
+        if (!isChange) return;
 
-            const response = await axiosCommon.put(`/document/doc/${id}`, data);
-            console.log("Document saved successfully:", response.data);
-        } catch (error) {
-            console.error("Error saving document:", error);
-        }
+        const timeout = setTimeout(() => {
+            saveDocument(); 
+        }, 3000);
+
+        return () => clearTimeout(timeout); 
+    }, [isChange, saveDocument]);
+
+    // Share button
+    const handleShare = () => {
+        const currentUrl = window.location.href;
+        navigator.clipboard.writeText(currentUrl)
+            .then(() => {
+                alert("Link copied to clipboard!");
+            })
+            .catch(err => {
+                console.error("Failed to copy: ", err);
+            });
     };
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            saveDocument();
-        }, 3000);
-    
-        console.log(isChange); 
-    
-        return () => clearTimeout(timeout); 
-    }, [isChange]);
-    
-
- 
-    const handleonchange = () => {
-        console.log(wrapperRef.current);
-        console.log('test');
-        
-        
-    }
-
-    
-
+    // Quill editor setup
     const wrapperRef = useCallback((wrapper) => {
         if (!wrapper) return;
 
@@ -106,32 +120,16 @@ const DocumentPage = ({ params }) => {
         });
 
         quill.on('text-change', (delta, oldDelta, source) => {
-             if (source == 'user') {
-              console.log(delta.ops[0].retain);
-              setIsChange(delta.ops[0].retain);
-
+            if (source === 'user') {
+                setIsChange(delta);  
             }
-          });
+        });
 
-        // Set the initial content
         if (documentContent) {
             quill.setContents(documentContent);
         }
 
-        // Assign the Quill instance to the ref
         quillRef.current = quill;
-        console.log(quillRef.current);
-        console.log(quill);
-        
-
-        quill.on('text-change', (delta, oldDelta, source) => {
-  if (source == 'api') {
-    console.log('An API call triggered this change.');
-  } else if (source == 'user') {
-    console.log('A user action triggered this change.');
-  }
-});
-        
     }, [documentContent, isEditable]);
 
     if (loading) return <div>Loading...</div>; 
@@ -141,12 +139,15 @@ const DocumentPage = ({ params }) => {
         <div>
             {isEditable && (
                 <div className="flex justify-end">
-                    <button className="text-end" onClick={saveDocument}>
+                    <button className="bg-blue-400 px-3 rounded-xl text-white" onClick={saveDocument}>
                         Save
                     </button>
                 </div>
             )}
-            <div className="editor-container" onChange={handleonchange} ref={wrapperRef}></div>
+            <button className="bg-green-400 px-3 rounded-xl text-white" onClick={handleShare}>
+                    Share
+                </button>
+            <div className="editor-container" ref={wrapperRef}></div>
         </div>
     );
 };

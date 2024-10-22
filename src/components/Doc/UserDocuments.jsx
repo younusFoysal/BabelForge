@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useUser } from '@clerk/nextjs';
 import useAxiosCommon from '@/lib/axiosCommon';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 import Link from 'next/link';
 
 const UserDocuments = () => {
@@ -32,12 +32,15 @@ const UserDocuments = () => {
         fetchDocuments();
     }, [axiosCommon, email]);
 
-    const openDocument = (docId) => {
-        console.log("Opening document:", docId);
-
-        // Navigate to document page for viewing/editing
-        router.push(`/dashboard/doc/${docId}`);
-    };
+    const handleCreate = async () => {
+        try {
+            const response = await axiosCommon.post('/document/documents', { email });
+            const docId = response.data.docId;
+            router.push(`/dashboard/doc/${docId}`);
+        } catch (err) {
+            console.error('Failed to create document:', err);
+        }
+    }
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
@@ -61,6 +64,7 @@ const UserDocuments = () => {
                     </li>
                 ))}
             </ul>
+            <button onClick={handleCreate}>Create New Doc</button>
         </div>
     );
 };
