@@ -95,7 +95,7 @@ const DocumentPage = ({ params }) => {
 
         const timeout = setTimeout(() => {
             saveDocument(); 
-        }, 3000);
+        }, 40000);
 
         return () => clearTimeout(timeout); 
     }, [isChange, saveDocument]);
