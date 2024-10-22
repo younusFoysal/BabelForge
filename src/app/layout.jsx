@@ -3,7 +3,6 @@ import Footer from '@/components/shared/Footer/Footer';
 import Navbar from '@/components/shared/Navbar';
 import { ThemeProvider } from '@/components/Theme/ThemeProvider';
 import './globals.css';
-import dynamic from 'next/dynamic';
 import PaymentProvider from '@/providers/ContextProvider';
 import React from 'react';
 import { Toaster } from '@/components/ui/toaster';

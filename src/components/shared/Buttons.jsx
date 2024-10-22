@@ -11,7 +11,8 @@ const Button = ({ text, className, icon }) => {
   const handleClick = async () => {
     if (!auth) {
       return toast({
-        title: 'Please Login',
+        title: 'Please login to continue ',
+        variant: 'error',
       });
     }
     router.push('/dashboard');

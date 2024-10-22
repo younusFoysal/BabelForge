@@ -1,8 +1,7 @@
-import { useAuth } from "@clerk/nextjs";
-import "./GetStart.css";
-import { useRouter } from "next/navigation";
-
-import toast from "react-hot-toast";
+import { useAuth } from '@clerk/nextjs';
+import './GetStart.css';
+import { useRouter } from 'next/navigation';
+import { toast } from '@/hooks/use-toast';
 
 const GetStart = () => {
   const { userId } = useAuth();
@@ -11,21 +10,19 @@ const GetStart = () => {
 
   const handleClick = async () => {
     if (!auth) {
-      return toast.error("Login First");
+      return toast({
+        description: 'Please login',
+        variant: 'error',
+      });
     }
-    router.push("/dashboard");
+    router.push('/dashboard');
   };
 
   return (
     <>
       <button onClick={handleClick} className="button">
         <div className="dots_border"></div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          className="sparkle"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="sparkle">
           <path
             className="path"
             stroke-linejoin="round"
