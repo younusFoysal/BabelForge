@@ -17,8 +17,8 @@ import {
   DropdownMenuShortcut,
 } from '@/components/ui/dropdown-menu';
 
-import { labels } from '../data/data';
-import { taskSchema } from '../data/schema';
+import { labels } from '@/data/data';
+import { taskSchema } from '@/data/schema';
 
 export function DataTableRowActions({ row }) {
   const task = taskSchema.parse(row.original);

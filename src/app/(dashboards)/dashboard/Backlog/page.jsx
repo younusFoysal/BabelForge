@@ -7,6 +7,7 @@ import TableView from '@/components/Dashboards/Backlog/TableView';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { toast } from '@/hooks/use-toast';
+import TaskPage from './TaskPage';
 
 const Page = () => {
   const axiosCommon = useAxiosCommon();
@@ -139,6 +140,7 @@ const Page = () => {
     <div>
       <AddTask handleAddTask={handleAddTask} />
       <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
+      <TaskPage />
     </div>
   );
 };

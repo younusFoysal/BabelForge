@@ -35,7 +35,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
 
   // Open modal for editing task
   const handleEdit = task => {
-    setFormData(task); // Pre-fill form data with the selected task
+    setFormData(task);
     setIsEditModalOpen(true);
   };
 

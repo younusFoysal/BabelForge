@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { DataTableViewOptions } from '@/components/ui/data-table-view-options';
 
-import { priorities, statuses } from '../data/data';
-import { DataTableFacetedFilter } from './data-table-faceted-filter';
+import { priorities, statuses } from '@/data/data';
+import { DataTableFacetedFilter } from '@/components/ui/data-table-faceted-filter';
 
 export function DataTableToolbar({ table }) {
   const isFiltered = table.getState().columnFilters.length > 0;

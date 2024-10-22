@@ -2,9 +2,9 @@
 
 import { Badge } from '@/components/ui/badge';
 import { Checkbox } from '@/components/ui/checkbox';
-import { labels, priorities, statuses } from '../data/data';
-import DataTableColumnHeader from './data-table-column-header';
-import DataTableRowActions from './data-table-row-actions';
+import { labels, priorities, statuses } from '@/data/data';
+import DataTableColumnHeader from '@/components/ui/data-table-column-header';
+import DataTableRowActions from '@/components/ui/data-table-row-actions';
 
 // Define the columns for the data table
 export const columns = [

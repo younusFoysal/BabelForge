@@ -1,5 +1,4 @@
 'use client';
-
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
