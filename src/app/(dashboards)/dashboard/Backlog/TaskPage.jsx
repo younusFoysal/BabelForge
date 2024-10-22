@@ -12,10 +12,18 @@ import {
 } from '@tanstack/react-table';
 
 import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ArrowUpDownIcon, Settings2 } from 'lucide-react';
+import { ArrowUpDownIcon, MoreHorizontal, Settings2 } from 'lucide-react';
 import debounce from 'lodash.debounce';
 import { CaretSortIcon } from '@radix-ui/react-icons';
 
@@ -61,7 +69,6 @@ export default function TaskPage({ task }) {
     ],
     []
   ); // Memoize data to prevent unnecessary re-renders
-  let i = 0;
   const columns = useMemo(
     () => [
       {
@@ -100,13 +107,57 @@ export default function TaskPage({ task }) {
       },
       {
         accessorKey: 'tdate',
-        header: 'Start Date',
+        header: ({ column }) => {
+          return (
+            <Button
+              className="pl-0 hover:bg-transparent"
+              variant="ghost"
+              onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+            >
+              Start Date
+              <CaretSortIcon className="ml-2 h-4 w-4" />
+            </Button>
+          );
+        },
         cell: ({ row }) => <div className="lowercase">{row.getValue('tdate')}</div>,
       },
       {
         accessorKey: 'teamId',
         header: 'Team',
         cell: ({ row }) => <div className="lowercase">{row.getValue('teamId')}</div>,
+      },
+      {
+        id: 'actions',
+        enableHiding: false,
+        cell: ({ row }) => {
+          const task = row.original;
+          return (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" className="h-8 w-8 p-0">
+                  <span className="sr-only">Open menu</span>
+                  <MoreHorizontal className="h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Actions</DropdownMenuLabel>
+
+                <DropdownMenuItem>Edit</DropdownMenuItem>
+                <DropdownMenuItem>Delete</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() =>
+                    navigator.clipboard.writeText(
+                      `Task : ${task.tname} , Assigned : ${task.tassignTo},Status : ${task.tproces} , Start Date : ${task.tdate} , Assigned Teams : ${task.teamId}`
+                    )
+                  }
+                >
+                  Copy Task Info
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          );
+        },
       },
     ],
     []
