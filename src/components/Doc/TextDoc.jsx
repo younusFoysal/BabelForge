@@ -57,7 +57,7 @@ const TextDoc = () => {
   const wrapperRef = useCallback((wrapper) => {
     if (!wrapper) return;
 
-    wrapper.innerHTML = '';  // Clear the wrapper before initializing Quill
+    wrapper.innerHTML = '';  
     const editor = document.createElement('div');
     wrapper.append(editor);
 
@@ -68,7 +68,7 @@ const TextDoc = () => {
       },
     });
 
-    setQuill(q);  // Set the Quill instance
+    setQuill(q);  
   }, []);
 
   return (

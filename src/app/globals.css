@@ -298,9 +298,13 @@ body {
 }
 
 .editor-container .ql-toolbar.ql-snow {
-  display: flex;
-  justify-content: center;  
+  /* display: flex; */
+  /* justify-content: center;   */
   background-color: white;
+  width: 8.5in;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 
 .ql-container.ql-snow.ql-disabled{

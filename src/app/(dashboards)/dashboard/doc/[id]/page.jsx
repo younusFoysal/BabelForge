@@ -15,17 +15,17 @@ const TOOLBAR_OPTIONS = [
     [{ align: [] }],
     ['image', 'blockquote', 'code-block'],
     ['clean'],
-    ['link'],
-    ['formula'],
+    ['link']
 ];
 
 const DocumentPage = ({ params }) => {
     const id = params?.id; 
+    const [isChange, setIsChange] = useState(null);
     const [documentContent, setDocumentContent] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isEditable, setIsEditable] = useState(false);
-    const quillRef = React.useRef(null); // This will hold the Quill instance
+    const quillRef = React.useRef(null); 
     const axiosCommon = useAxiosCommon();
     const { user } = useUser();
     const email = user?.primaryEmailAddress?.emailAddress;
@@ -54,7 +54,7 @@ const DocumentPage = ({ params }) => {
     const saveDocument = async () => {
         if (!quillRef.current) return;
 
-        const content = quillRef.current.getContents(); // Fetch the content from the Quill instance
+        const content = quillRef.current.getContents();
 
         try {
             const data = {
@@ -62,13 +62,33 @@ const DocumentPage = ({ params }) => {
                 email, 
             };
 
-            const response = await axiosCommon.put(`/document/documents/${id}`, data);
+            const response = await axiosCommon.put(`/document/doc/${id}`, data);
             console.log("Document saved successfully:", response.data);
-            alert("Document saved successfully!");
         } catch (error) {
             console.error("Error saving document:", error);
         }
     };
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            saveDocument();
+        }, 3000);
+    
+        console.log(isChange); 
+    
+        return () => clearTimeout(timeout); 
+    }, [isChange]);
+    
+
+ 
+    const handleonchange = () => {
+        console.log(wrapperRef.current);
+        console.log('test');
+        
+        
+    }
+
+    
 
     const wrapperRef = useCallback((wrapper) => {
         if (!wrapper) return;
@@ -85,6 +105,14 @@ const DocumentPage = ({ params }) => {
             readOnly: !isEditable, 
         });
 
+        quill.on('text-change', (delta, oldDelta, source) => {
+             if (source == 'user') {
+              console.log(delta.ops[0].retain);
+              setIsChange(delta.ops[0].retain);
+
+            }
+          });
+
         // Set the initial content
         if (documentContent) {
             quill.setContents(documentContent);
@@ -92,6 +120,18 @@ const DocumentPage = ({ params }) => {
 
         // Assign the Quill instance to the ref
         quillRef.current = quill;
+        console.log(quillRef.current);
+        console.log(quill);
+        
+
+        quill.on('text-change', (delta, oldDelta, source) => {
+  if (source == 'api') {
+    console.log('An API call triggered this change.');
+  } else if (source == 'user') {
+    console.log('A user action triggered this change.');
+  }
+});
+        
     }, [documentContent, isEditable]);
 
     if (loading) return <div>Loading...</div>; 
@@ -106,7 +146,7 @@ const DocumentPage = ({ params }) => {
                     </button>
                 </div>
             )}
-            <div className="editor-container" ref={wrapperRef}></div>
+            <div className="editor-container" onChange={handleonchange} ref={wrapperRef}></div>
         </div>
     );
 };

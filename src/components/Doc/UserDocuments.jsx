@@ -43,19 +43,19 @@ const UserDocuments = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div>
+        <div className='mx-auto max-w-[500px]'>
             <h1>Your Documents</h1>
-            <ul>
-                {documents.map((doc) => (
-                    <li key={doc._id}>
+            <ul >
+                {documents.map((doc, idx) => (
+                    <li className='p-4 bg-gray-200 my-2 hover:cursor-pointer max-w-96' key={doc._id}>
                         {/* If user's email matches the document email, allow editing */}
                         {doc.email === email ? (
                             <Link href={`/dashboard/doc/${doc?._id}`}>
-                                {doc?.title || 'Untitled'} (Editable) - Document ID: {doc?._id}
+                                {doc?.title || 'Untitled Document-'}{idx+1} (Editable) - Document ID: {doc?._id}
                             </Link>
                         ) : (
                             <div>
-                                {doc?.title || 'Untitled'} (View Only) - Document ID: {doc?._id}
+                                {doc?.title || 'Untitled Document-'} {idx+1}(View Only) - Document ID: {doc?._id}
                             </div>
                         )}
                     </li>
