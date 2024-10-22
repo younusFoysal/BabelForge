@@ -138,8 +138,8 @@ const Page = () => {
 
   return (
     <div>
-      <AddTask handleAddTask={handleAddTask} />
-      <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
+      {/* <AddTask handleAddTask={handleAddTask} /> */}
+      {/* <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} /> */}
       <TaskPage />
     </div>
   );
