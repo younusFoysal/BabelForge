@@ -1,5 +1,5 @@
 'use client';
-import AboutStatistics from '@/components/AboutUs/AboutStatistics';
+import AboutStatistics from '@/components/home/AboutStatistics';
 import AwesomeHome from '@/components/home/AwesomeHome';
 import CarouselHome from '@/components/home/CarouselHome';
 import LeaderCTA from '@/components/home/LeaderCTA';
@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import AllReviews from '@/components/Reviews/AllReviews';
 import GlassDNA from '@/components/home/3d/GlassDNA';
 import { MarqueeDemoVertical, ReviewCard } from '@/components/Reviews/MarqueeDemoVertical';
+import HomeStats from "@/components/home/Hero/HomeStats";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -34,13 +35,14 @@ const Home = () => {
           {/*<GlassHome/>*/}
           {/* <GlassDNA /> */}
           {/*glass_display pearl_electron */}
+            <HomeStats/>
 
           <AboutStatistics></AboutStatistics>
           {/*<PricingCards/>*/}
 
           <LeaderCTA />
           {/* <AllReviews /> */}
-          {/* <MarqueeDemoVertical /> */}
+           <MarqueeDemoVertical />
 
           {/*<CallToAction />*/}
         </div>

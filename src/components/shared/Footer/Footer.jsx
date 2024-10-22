@@ -63,7 +63,7 @@ const Footer = () => {
                 alt="babelforge"
                 className=" size-6 lg:size-14 "
               />
-              <h3 className="text-3xl font-bold text-[#106ac5] dark:text-">
+              <h3 className="text-3xl font-bold text-white dark:text-">
                 BabelForge
               </h3>
             </div>

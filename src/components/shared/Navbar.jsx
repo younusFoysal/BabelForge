@@ -11,6 +11,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from '@clerk/nextjs';
 import { useTheme } from 'next-themes';
 import { MdDashboard } from 'react-icons/md';
+import {ModeToggle} from "@/components/Theme/ModeToggle";
 
 const Navbar = () => {
   const { userId } = useAuth();
@@ -77,6 +78,7 @@ const Navbar = () => {
         <div className="md:flex items-center space-x-4 hidden">
           {auth ? (
             <div className="md:flex items-center space-x-4 mr-4">
+              <ModeToggle />
               <SignedIn>
                 <div className="flex items-center gap-4">
                   <UserButton>
@@ -91,6 +93,7 @@ const Navbar = () => {
             </div>
           ) : (
             <>
+              <ModeToggle />
               <ul className="flex items-start space-x-4">
                 <SignedOut>
                   <SignInButton>

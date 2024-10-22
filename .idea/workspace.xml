@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Chat Button fix">
+      <change afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/about-us/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about-us/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/webhooks/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/webhooks/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutStatistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -84,11 +92,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\home" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminDashboard" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
     </key>
   </component>
   <component name="SharedIndexes">
