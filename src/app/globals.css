@@ -279,6 +279,48 @@ body {
   }
 }
 
+/* Doc CSS Component */
+.editor-container .ql-editor {
+  width: 8.5in;
+  min-height: 11in;
+  padding: 1in;
+  margin: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  background-color: white;
+}
+
+.editor-container.ql-editor .dark{
+  background-color: black;
+}
+
+.editor-container.ql-container.ql-snow {
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.editor-container .ql-toolbar.ql-snow {
+  /* display: flex; */
+  /* justify-content: center;   */
+  background-color: white;
+  width: 8.5in;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.ql-container.ql-snow.ql-disabled{
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
+.ql-container.ql-snow{
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+
 /* @layer base {
   * {
     @apply border-border;

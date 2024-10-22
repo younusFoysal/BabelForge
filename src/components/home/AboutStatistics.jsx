@@ -8,8 +8,9 @@ const AboutStatistics = () => {
   const [scrollState, setScrollState] = useState(false);
 
   return (
-    <div className="   bg-white/10 border-[#ffffff22] backdrop-blur-lg  border-[1px] w-[90%] mx-auto   text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
-      <h1 className="text-4xl md:text-7xl font-bold text-center">babelforge.com by the numbers</h1>
+      <>
+    <div className=" bg-white/10 border-[#ffffff22] backdrop-blur-lg  border-[1px] w-[90%] mx-auto   text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
+      <h1 className="text-4xl md:text-7xl font-bold text-center">BabelForge.com by the numbers</h1>
       <ScrollTrigger onEnter={() => setScrollState(true)} onExit={() => setScrollState(false)}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center items-center">
           <div className="border-r h-full space-y-3">
@@ -23,7 +24,7 @@ const AboutStatistics = () => {
           <div className="border-r h-full space-y-3">
             <h3 className="text-xl md:text-4xl font-bold">{scrollState && <CountUp start={0} end={150} duration={2.5}></CountUp>}+</h3>
             <p className="text-sm md:text-lg">
-              countries use <br /> babelforge.com
+              countries use <br /> BabelForge.com
             </p>
           </div>
 
@@ -37,6 +38,7 @@ const AboutStatistics = () => {
         </div>
       </ScrollTrigger>
     </div>
+      </>
   );
 };
 
