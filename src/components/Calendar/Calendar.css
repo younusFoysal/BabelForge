@@ -8,23 +8,17 @@
 }
 
 .event-calendar-dark .rbc-btn-group button:hover {
-    background-color: #0362F3FF;
+    background: linear-gradient(to right, #2563EB, #7C3AED);
+    /* Equivalent to 'bg-gradient-to-r from-blue-600 to-purple-600' */
     color: white;
-    /* Assuming bgHoverColor is a custom CSS variable */
-    transform: scale(1.05);
-    /* Equivalent to 'hover:scale-105' */
-    box-shadow: 0 10px 15px -3px rgba(3, 98, 243, 1), 0 4px 6px -2px rgba(3, 98, 243, 1);
-    /* Equivalent to 'hover:shadow-lg hover:shadow-[#0362F3FF]' */
+    /* Equivalent to 'text-white' */
 }
 
 .event-calendar-light .rbc-btn-group button:hover {
-    background-color: #0362F3FF;
+    background: linear-gradient(to right, #2563EB, #7C3AED);
+    /* Equivalent to 'bg-gradient-to-r from-blue-600 to-purple-600' */
     color: white;
-    /* Assuming bgHoverColor is a custom CSS variable */
-    transform: scale(1.05);
-    /* Equivalent to 'hover:scale-105' */
-    box-shadow: 0 10px 15px -3px rgba(3, 98, 243, 1), 0 4px 6px -2px rgba(3, 98, 243, 1);
-    /* Equivalent to 'hover:shadow-lg hover:shadow-[#0362F3FF]' */
+    /* Equivalent to 'text-white' */
 }
 
 .event-calendar-dark .rbc-off-range-bg {
@@ -37,5 +31,10 @@
 
 .rbc-event:hover {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition-duration: 300ms;
+}
+
+.event-calendar-dark .rbc-event:hover {
+    box-shadow: 0 7px 10px -3px rgba(229, 226, 226, 0.89), 0 4px 6px -4px rgb(229, 226, 226, 0.89);
     transition-duration: 300ms;
 }
