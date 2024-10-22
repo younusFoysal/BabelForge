@@ -1,22 +1,17 @@
-"use client";
-import { AlignJustify, ArrowRight, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import logo from "../../image/Home/babellogo.png";
+'use client';
+import { AlignJustify, ArrowRight, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import logo from '../../image/Home/babellogo.png';
 
-import Button from "./Buttons";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import Button from './Buttons';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  useAuth,
-  UserButton,
-} from "@clerk/nextjs";
-import { useTheme } from "next-themes";
-import { MdDashboard } from "react-icons/md";
+import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from '@clerk/nextjs';
+import { useTheme } from 'next-themes';
+import { MdDashboard } from 'react-icons/md';
+import {ModeToggle} from "@/components/Theme/ModeToggle";
 
 const Navbar = () => {
   const { userId } = useAuth();
@@ -24,38 +19,36 @@ const Navbar = () => {
   const {} = useTheme();
   const pathname = usePathname();
 
-  if (pathname?.includes("sign-in") || pathname?.includes("sign-up"))
-    return null;
-  if (pathname?.includes("/successPayment") || pathname?.includes("meet"))
-    return null;
+  if (pathname?.includes('sign-in') || pathname?.includes('sign-up')) return null;
+  if (pathname?.includes('/successPayment')) return null;
 
-  if (pathname?.includes("dashboard")) {
+  if (pathname?.includes('dashboard')) {
     return null;
   }
-  if (pathname?.includes("stream")) {
+  if (pathname?.includes('stream')) {
     return null;
   }
 
   const NavbarItems = [
     {
-      title: "Features",
-      href: "/features",
+      title: 'Features',
+      href: '/features',
     },
     {
-      title: "Price",
-      href: "/pricing",
+      title: 'Price',
+      href: '/pricing',
     },
     {
-      title: "About Us",
-      href: "/about-us",
+      title: 'About Us',
+      href: '/about-us',
     },
     {
-      title: "Contact Us",
-      href: "/contact",
+      title: 'Contact Us',
+      href: '/contact',
     },
     {
-      title: "Help",
-      href: "/help",
+      title: 'Help',
+      href: '/help',
     },
   ];
 
@@ -73,15 +66,9 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <nav className="hidden text-white md:flex">
           <ul className="flex space-x-6 items-center justify-center">
-            {NavbarItems.map((nav) => (
+            {NavbarItems.map(nav => (
               <Link href={nav.href} key={nav.href}>
-                <li
-                  className={`hover:text-blue-500 ${
-                    pathname === nav.href ? "text-blue-500 font-semibold" : ""
-                  }`}
-                >
-                  {nav.title}
-                </li>
+                <li className={`hover:text-blue-500 ${pathname === nav.href ? 'text-blue-500 font-semibold' : ''}`}>{nav.title}</li>
               </Link>
             ))}
           </ul>
@@ -91,15 +78,12 @@ const Navbar = () => {
         <div className="md:flex items-center space-x-4 hidden">
           {auth ? (
             <div className="md:flex items-center space-x-4 mr-4">
+              <ModeToggle />
               <SignedIn>
                 <div className="flex items-center gap-4">
                   <UserButton>
                     <UserButton.MenuItems>
-                      <UserButton.Link
-                        label="Dashboard"
-                        href="/dashboard"
-                        labelIcon={<MdDashboard size={15} />}
-                      />
+                      <UserButton.Link label="Dashboard" href="/dashboard" labelIcon={<MdDashboard size={15} />} />
                       <UserButton.Action label="manageAccount" />
                       <UserButton.Action label="signOut" />
                     </UserButton.MenuItems>
@@ -109,6 +93,7 @@ const Navbar = () => {
             </div>
           ) : (
             <>
+              <ModeToggle />
               <ul className="flex items-start space-x-4">
                 <SignedOut>
                   <SignInButton>
@@ -131,32 +116,22 @@ const Navbar = () => {
             <SheetTrigger>
               <AlignJustify size={30} className="dark:text-white text-black" />
             </SheetTrigger>
-            <SheetContent
-              side={"top"}
-              className="md:hidden bg-white/30 backdrop-blur-lg border-t border-gray-200 mt-20"
-            >
+            <SheetContent side={'top'} className="md:hidden bg-white/30 backdrop-blur-lg border-t border-gray-200 mt-20">
               <div>
                 <ul className="flex flex-col space-y-4 py-4">
-                  {NavbarItems.map((nav) => (
+                  {NavbarItems.map(nav => (
                     <Link href={nav.href} key={nav.href}>
-                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">
-                        {nav.title}
-                      </li>
+                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">{nav.title}</li>
                     </Link>
                   ))}
                   {!auth && (
                     <Link href="/sign-in">
-                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">
-                        Login
-                      </li>
+                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">Login</li>
                     </Link>
                   )}
                   <li>
                     <div className="w-full items-center justify-center flex">
-                      <Button
-                        text="Get Started"
-                        icon={<ArrowRight size={20} />}
-                      />
+                      <Button text="Get Started" icon={<ArrowRight size={20} />} />
                     </div>
                   </li>
                 </ul>

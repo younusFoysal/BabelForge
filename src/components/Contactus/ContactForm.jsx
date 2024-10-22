@@ -8,8 +8,8 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { Checkbox } from '../ui/checkbox';
+import { toast } from '@/hooks/use-toast';
 
 const ContactForm = () => {
   const [currentDate, setCurrentDate] = useState('');
@@ -57,18 +57,12 @@ const ContactForm = () => {
   const mutation = useMutation({
     mutationFn: async data => {
       const res = await axiosCommon.post('/message/messages/add', data);
-      // console.log(res.data);
       return res.data;
     },
     onSuccess: () => {
-      // console.log('successfully');
-      toast.success(' Message send Successfully!');
       reset();
     },
-    onError: error => {
-      // console.log(error.message);
-      toast.error(error.message);
-    },
+    onError: error => {},
   });
 
   const onSubmit = data => {
@@ -78,12 +72,16 @@ const ContactForm = () => {
     // Sending email through EmailJS
     emailjs.sendForm('service_69vnh7j', 'template_fcmd8bd', form.current, 'R0SQsAJVqN9XXxY0A').then(
       result => {
-        console.log(result.text);
-        toast.success('Email sent successfully!');
+        toast({
+          description: 'Email sent successfully!',
+          variant: 'success',
+        });
       },
       error => {
-        console.error(error.text);
-        toast.error('Failed to send the email.');
+        toast({
+          description: 'Failed to send the email.',
+          variant: 'error',
+        });
       }
     );
 

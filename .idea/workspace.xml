@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Chat Button fix">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Stat Card added">
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/test/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/CommonConfirmation/ConUseModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/CommonConfirmation/DeleteConfirmationModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/TestModal.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/[id]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +89,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app\(dashboards)\dashboard" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\home" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminDashboard" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -129,14 +134,6 @@
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
-    </task>
-    <task id="LOCAL-00008" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726687341263</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687341263</updated>
     </task>
     <task id="LOCAL-00009" summary="Image path fix">
       <option name="closed" value="true" />
@@ -522,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729460540264</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Stat Card added">
+      <option name="closed" value="true" />
+      <created>1729612238165</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1729612238165</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,7 +546,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="turbo added" />
     <MESSAGE value="carusel added" />
     <MESSAGE value="carusel fix" />
     <MESSAGE value="update" />
@@ -566,6 +570,7 @@
     <MESSAGE value="new fix" />
     <MESSAGE value="pkg fix" />
     <MESSAGE value="Chat Button fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Chat Button fix" />
+    <MESSAGE value="Stat Card added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Stat Card added" />
   </component>
 </project>
