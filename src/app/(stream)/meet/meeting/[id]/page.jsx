@@ -1,5 +1,6 @@
 "use client";
 
+import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 import MeetingRoom from "@/components/Steam/MeetingRoom";
 import MeetingSetup from "@/components/Steam/MeetingSetup";
 import { useGetCallbyId } from "@/hooks/useGetcall";
@@ -16,9 +17,9 @@ const Meeting = () => {
 
   if (!user && !isLoaded) return <h1>you have to login first</h1>;
 
-  if (!isLoaded || callLoading) return <div>Loading...</div>;
+  if (!isLoaded || callLoading) return <HomeLoadingSpinner />;
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/stream/meeting/${id}`;
+  const meetingLink = `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/meet/meeting/${id}`;
 
   return (
     <main className="h-screen w-full">

@@ -107,9 +107,7 @@ const Navbar = () => {
             </>
           )}
         </div>
-        {/* Desktop Right Menu <button className="capitalize text-blue-600">login</button> */}
 
-        {/* Mobile Menu Button */}
         <div className="flex md:hidden">
           <Sheet>
             <SheetTrigger>
