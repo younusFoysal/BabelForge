@@ -24,6 +24,7 @@ const DocumentPage = ({ params }) => {
     const [isChange, setIsChange] = useState(null);
     const [documentContent, setDocumentContent] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [buttonLoading, setButtonLoading] = useState(false);
     const [error, setError] = useState(null);
     const [isEditable, setIsEditable] = useState(false);
     const quillRef = React.useRef(null); 
@@ -59,18 +60,26 @@ const DocumentPage = ({ params }) => {
             const response = await axiosCommon.put(`/document/doc/${id}`, data);
             return response.data;
         },
-        
+
         onSuccess: (updatedData) => {
             console.log("Document saved successfully:", updatedData);
+            const timeout = setTimeout(() => {
+                setButtonLoading(false);
+            }, 2000);
         },
         onError: (error) => {
             console.error("Error saving document:", error);
         }
+        
+        
     });
+
 
     // Save document content function
     const saveDocument = useCallback(() => {
         if (!quillRef.current) return;
+
+        setButtonLoading(true);
 
         const content = quillRef.current.getContents();
         const data = {
@@ -137,16 +146,19 @@ const DocumentPage = ({ params }) => {
 
     return (
         <div>
+            <div className='flex justify-evenly my-5'>
+                <h1 className='font-bold text-2xl'>{documentContent?.title ? documentContent?.title : "Untitled"}</h1>
             {isEditable && (
                 <div className="flex justify-end">
                     <button className="bg-blue-400 px-3 rounded-xl text-white" onClick={saveDocument}>
-                        Save
+                        {buttonLoading ? 'Saving...' : 'Save'}
                     </button>
                 </div>
             )}
             <button className="bg-green-400 px-3 rounded-xl text-white" onClick={handleShare}>
                     Share
                 </button>
+            </div>
             <div className="editor-container" ref={wrapperRef}></div>
         </div>
     );
