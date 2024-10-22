@@ -42,26 +42,26 @@ const MeetingRoom = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
       <div className="relative flex size-full items-center justify-center">
-        <div className=" flex size-full max-w-[1000px] items-center">
+        <div className="flex w-full max-w-[1250px] items-center flex-col gap-5 md:flex-row bg-red-500">
           <CallLayout />
         </div>
         <div
           className={cn(
-            "h-[calc(100vh-86px)] ml-2 bg-gray-800 w-[20%] rounded-md p-5 transition-all duration-500",
+            "fixed right-0 top-0 h-full w-[100%] sm:w-[30%] md:w-[20%] bg-gray-800 rounded-md p-5 transition-all duration-500 ease-in-out",
             {
-              block: showParticipants,
-              hidden: !showParticipants,
+              "translate-x-0": showParticipants,
+              "translate-x-full": !showParticipants,
             }
           )}
         >
           <CallParticipantsList onClose={() => setShowParticipants(false)} />
         </div>
 
-        <div className="fixed bottom-0 flex gap-5 justify-center items-center pt-4 flex-wrap">
+        <div className="fixed bottom-0 flex gap-5 justify-center items-center pt-4 flex-wrap w-full px-4">
           <CallControls onLeave={() => router.push(`/`)} />
           <DropdownMenu>
             <div className="flex items-center">
-              <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
+              <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b] transition-all duration-300">
                 <LayoutList size={20} className="text-white" />
               </DropdownMenuTrigger>
             </div>
@@ -79,7 +79,7 @@ const MeetingRoom = () => {
             </DropdownMenuContent>
           </DropdownMenu>
           <button onClick={() => setShowParticipants((prev) => !prev)}>
-            <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
+            <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b] transition-all duration-300">
               <Users size={20} className="text-white" />
             </div>
           </button>

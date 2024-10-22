@@ -1,11 +1,26 @@
-import * as React from 'react';
-import { BookOpen, CircleHelp, Bot, Frame, PieChart, Settings2, SquareTerminal } from 'lucide-react';
-import { NavMain } from '@/components/nav-main';
-import { NavProjects } from '@/components/nav-projects';
-import { NavUser } from '@/components/nav-user';
-import { TeamSwitcher } from '@/components/team-switcher';
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail, useSidebar } from '@/components/ui/sidebar';
-import { useUser } from '@clerk/nextjs';
+import * as React from "react";
+import {
+  BookOpen,
+  CircleHelp,
+  Bot,
+  Frame,
+  PieChart,
+  Settings2,
+  SquareTerminal,
+} from "lucide-react";
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarRail,
+  useSidebar,
+} from "@/components/ui/sidebar";
+import { useUser } from "@clerk/nextjs";
 
 export function AppSidebar({ ...props }) {
   const { user } = useUser();
@@ -18,90 +33,94 @@ export function AppSidebar({ ...props }) {
     },
     navMain: [
       {
-        title: 'Dashboard',
-        url: '/dashboard',
+        title: "Dashboard",
+        url: "/dashboard",
         icon: SquareTerminal,
         isActive: true,
         items: [
           {
-            title: 'Overview',
-            url: '/dashboard',
+            title: "Overview",
+            url: "/dashboard",
           },
           {
-            title: 'Teams',
-            url: '/dashboard/teams',
+            title: "Teams",
+            url: "/dashboard/teams",
           },
           {
-            title: 'Projects',
-            url: '/dashboard/projects',
+            title: "Projects",
+            url: "/dashboard/projects",
           },
         ],
       },
       {
-        title: 'Tasks',
-        url: '#',
+        title: "Tasks",
+        url: "#",
         icon: Bot,
         items: [
           {
-            title: 'Backlog',
-            url: '/dashboard/Backlog',
+            title: "Backlog",
+            url: "/dashboard/Backlog",
           },
           {
-            title: 'Board',
-            url: '/dashboard/board',
+            title: "Board",
+            url: "/dashboard/board",
           },
         ],
       },
       {
-        title: 'Chat',
-        url: '#',
+        title: "Chat",
+        url: "#",
         icon: BookOpen,
         items: [
           {
-            title: 'Group Chat',
-            url: '/dashboard/chat',
+            title: "Group Chat",
+            url: "/dashboard/chat",
           },
 
           {
-            title: 'Meeting',
-            url: '/dashboard/meeting',
+            title: "Meeting",
+            url: "/meet",
           },
         ],
       },
       {
-        title: 'Tools',
-        url: '#',
+        title: "Tools",
+        url: "#",
         icon: Settings2,
         items: [
           {
-            title: 'Babel AI',
-            url: '/dashboard/babelai',
+            title: "Babel AI",
+            url: "/dashboard/babelai",
           },
           {
-            title: 'Canvas',
-            url: '/dashboard/canvas',
+            title: "Canvas",
+            url: "/dashboard/canvas",
           },
           {
-            title: 'Notes',
-            url: '/dashboard/notes',
+            title: "Notes",
+            url: "/dashboard/notes",
+          },
+          {
+            title: 'Screen Record',
+            url: '/dashboard/ScreenRecorder',
           },
         ],
       },
     ],
     projects: [
       {
-        name: 'Design Engineering',
-        url: '#',
+        name: "Design Engineering",
+        url: "#",
         icon: Frame,
       },
       {
-        name: 'Sales & Marketing',
-        url: '#',
+        name: "Sales & Marketing",
+        url: "#",
         icon: PieChart,
       },
       {
-        name: 'Help',
-        url: '#',
+        name: "Help",
+        url: "#",
         icon: CircleHelp,
       },
     ],
