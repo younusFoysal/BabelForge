@@ -287,6 +287,10 @@ body {
   background-color: white;
 }
 
+.editor-container.ql-editor .dark{
+  background-color: black;
+}
+
 .editor-container.ql-container.ql-snow {
   border: none;
   display: flex;
@@ -295,7 +299,7 @@ body {
 
 .editor-container .ql-toolbar.ql-snow {
   display: flex;
-  justify-content: center;
+  justify-content: center;  
   background-color: white;
 }
 

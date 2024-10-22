@@ -25,9 +25,9 @@ const DocumentPage = ({ params }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isEditable, setIsEditable] = useState(false);
-    const quillRef = React.useRef(null);
+    const quillRef = React.useRef(null); // This will hold the Quill instance
     const axiosCommon = useAxiosCommon();
-    const { user, isLoaded, isSignedIn } = useUser();
+    const { user } = useUser();
     const email = user?.primaryEmailAddress?.emailAddress;
 
     useEffect(() => {
@@ -40,8 +40,6 @@ const DocumentPage = ({ params }) => {
 
                 setDocumentContent(fetchedDoc.content.content);
                 setIsEditable(fetchedDoc?.content?.email === email); 
-                console.log(fetchedDoc?.content.content);
-                
             } catch (err) {
                 setError('Failed to fetch document');
                 console.error(err);
@@ -53,12 +51,10 @@ const DocumentPage = ({ params }) => {
         fetchDocument(); 
     }, [axiosCommon, id, email]);
 
-    
     const saveDocument = async () => {
         if (!quillRef.current) return;
 
-        const quill = quillRef.current.__quill; 
-        const content = quill.getContents(); 
+        const content = quillRef.current.getContents(); // Fetch the content from the Quill instance
 
         try {
             const data = {
@@ -74,7 +70,6 @@ const DocumentPage = ({ params }) => {
         }
     };
 
-   
     const wrapperRef = useCallback((wrapper) => {
         if (!wrapper) return;
 
@@ -90,13 +85,13 @@ const DocumentPage = ({ params }) => {
             readOnly: !isEditable, 
         });
 
-       
+        // Set the initial content
         if (documentContent) {
             quill.setContents(documentContent);
         }
 
-      
-        quillRef.current = editor;
+        // Assign the Quill instance to the ref
+        quillRef.current = quill;
     }, [documentContent, isEditable]);
 
     if (loading) return <div>Loading...</div>; 
