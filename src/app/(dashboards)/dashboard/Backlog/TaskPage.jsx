@@ -10,7 +10,6 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
 } from '@tanstack/react-table';
-
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -23,9 +22,10 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { ArrowUpDownIcon, MoreHorizontal, Settings2 } from 'lucide-react';
+import { MoreHorizontal, Settings2 } from 'lucide-react';
 import debounce from 'lodash.debounce';
 import { CaretSortIcon } from '@radix-ui/react-icons';
+import Alert from '@/components/shared/Alert';
 
 export default function TaskPage({ task }) {
   const [sorting, setSorting] = useState([]);
@@ -33,6 +33,10 @@ export default function TaskPage({ task }) {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [globalFilter, setGlobalFilter] = useState('');
+
+  const handleContinue = () => {
+    console.log('user continue');
+  };
 
   const data = useMemo(
     () => [
@@ -143,7 +147,22 @@ export default function TaskPage({ task }) {
                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
 
                 <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem>Delete</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Alert onContinue={handleContinue}>
+                    {openDialog => (
+                      <div>
+                        <button
+                          onClick={e => {
+                            e.stopPropagation();
+                            openDialog();
+                          }}
+                        >
+                          Open Alert Dialog
+                        </button>
+                      </div>
+                    )}
+                  </Alert>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   onClick={() =>
@@ -186,6 +205,8 @@ export default function TaskPage({ task }) {
   const handleFilterChange = debounce(value => {
     setGlobalFilter(value || '');
   }, 300); // Debounce to prevent frequent re-renders
+
+  // Delete The Task
 
   return (
     <div className="w-full">
