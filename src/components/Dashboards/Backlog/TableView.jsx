@@ -8,7 +8,6 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useUser } from '@clerk/nextjs';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
-import { ToastAction } from '@/components/ui/toast';
 
 const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
