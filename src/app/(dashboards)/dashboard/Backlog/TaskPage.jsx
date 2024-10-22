@@ -27,52 +27,20 @@ import debounce from 'lodash.debounce';
 import { CaretSortIcon } from '@radix-ui/react-icons';
 import Alert from '@/components/shared/Alert';
 
-export default function TaskPage({ task }) {
+export default function TaskPage({ task, handleDelete }) {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
   const [globalFilter, setGlobalFilter] = useState('');
 
-  const handleContinue = () => {
-    console.log('user continue');
+  const handleContinue = _id => {
+    handleDelete(_id);
   };
 
-  const data = useMemo(
-    () => [
-      {
-        _id: '6716c3c0eb0733c5b99ed5c0',
-        tname: 'Shutter Island',
-        tdes: 'Movies move us like',
-        tcomments: [
-          { user_ID: 'comment1', datetime: '10/12/24' },
-          { user_ID: 'comment2', datetime: '11/12/24' },
-        ],
-        tassignTo: 'Nazmul Hassan',
-        tproces: 'inprogress',
-        author: 'nazmul.nahid0055@gmail.com',
-        teamId: 'team_ID',
-        tdate: '2024-10-21',
-        ttime: '03:09 AM',
-      },
-      {
-        _id: '6713711e55e5dc5401a04780',
-        tname: 'Untitled Task',
-        tdes: 'This is a description',
-        tcomments: [
-          { user_ID: 'comment1', datetime: '10/12/24' },
-          { user_ID: 'comment2', datetime: '11/12/24' },
-        ],
-        tassignTo: 'MD. SAIF',
-        tproces: 'todo',
-        author: 'cdbd4418.chaldal@gmail.com',
-        teamId: 'team_ID',
-        tdate: '2024-10-19',
-        ttime: '02:36 PM',
-      },
-    ],
-    []
-  ); // Memoize data to prevent unnecessary re-renders
+  const data = useMemo(() => task, [task]);
+
+  console.log(data);
   const columns = useMemo(
     () => [
       {
@@ -145,10 +113,9 @@ export default function TaskPage({ task }) {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>Actions</DropdownMenuLabel>
-
                 <DropdownMenuItem>Edit</DropdownMenuItem>
                 <DropdownMenuItem>
-                  <Alert onContinue={handleContinue}>
+                  <Alert onContinue={() => handleContinue(task._id)}>
                     {openDialog => (
                       <div>
                         <button
@@ -157,7 +124,7 @@ export default function TaskPage({ task }) {
                             openDialog();
                           }}
                         >
-                          Open Alert Dialog
+                          Delete
                         </button>
                       </div>
                     )}
@@ -276,9 +243,7 @@ export default function TaskPage({ task }) {
         </Table>
       </div>
       <div className="flex items-center justify-end space-x-2 py-4">
-        <div className="flex-1 text-sm text-muted-foreground">
-          {table.getFilteredSelectedRowModel().rows.length} of {table.getFilteredRowModel().rows.length} row(s) selected.
-        </div>
+        <div className="flex-1 text-sm text-muted-foreground">Total {table.getFilteredRowModel().rows.length} tasks availble</div>
       </div>
     </div>
   );

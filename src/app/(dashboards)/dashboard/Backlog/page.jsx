@@ -85,21 +85,10 @@ const Page = () => {
   });
 
   const handleDelete = async id => {
-    const result = await Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-    });
-
-    if (result.isConfirmed) {
-      try {
-        await deleteTaskMutation({ id });
-      } catch (err) {
-        console.error(err);
-      }
+    try {
+      await deleteTaskMutation({ id });
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -116,7 +105,7 @@ const Page = () => {
         description: 'Task updated successfully!',
         variant: 'success',
       });
-      refetch(); // Refetch task data after update
+      refetch();
     },
     onError: err => {
       toast({
@@ -140,8 +129,8 @@ const Page = () => {
   return (
     <div>
       {/* <AddTask handleAddTask={handleAddTask} /> */}
-      <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
-      <TaskPage task={tasks} />
+      {/* <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} /> */}
+      <TaskPage handleDelete={handleDelete} task={tasks} />
     </div>
   );
 };
