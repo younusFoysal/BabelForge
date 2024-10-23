@@ -79,7 +79,7 @@ const Navbar = () => {
                 <li
                   className={` min-w-[82px] text-center hover:text-purple-700 hover:font-bold${
                     pathname === nav.href
-                      ? "dark:text-purple-400 text-purple-700 font-bold dark:font-semibold"
+                      ? "dark:text-purple-400 text-purple-700 font-bold dark:font-bold"
                       : ""
                   }`}
                 >

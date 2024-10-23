@@ -4,8 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Help Page Redesign &amp; Responsive done">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Nav Redesign &amp; Responsive done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutCarousel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutCarousel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutCulture.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutCulture.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutFirstBanner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutFirstBanner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutSecondBanner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutSecondBanner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contactus/ContactForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contactus/ContactForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contactus/ContactText.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contactus/ContactText.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Sponser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Sponser.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,15 +137,8 @@
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
-      <workItem from="1729662069791" duration="5256000" />
-    </task>
-    <task id="LOCAL-00011" summary="Link added">
-      <option name="closed" value="true" />
-      <created>1726693884245</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1726693884245</updated>
+      <workItem from="1729662069791" duration="5657000" />
+      <workItem from="1729684647631" duration="7286000" />
     </task>
     <task id="LOCAL-00012" summary="nav Responsive added">
       <option name="closed" value="true" />
@@ -523,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729666258511</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Nav Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729668432937</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1729668432937</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -542,7 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="update" />
     <MESSAGE value="api link update" />
     <MESSAGE value="signup fix" />
     <MESSAGE value="Profile fix" />
@@ -567,6 +575,7 @@
     <MESSAGE value="Stat Card added" />
     <MESSAGE value="common Confirm modal added" />
     <MESSAGE value="Help Page Redesign &amp; Responsive done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Help Page Redesign &amp; Responsive done" />
+    <MESSAGE value="Nav Redesign &amp; Responsive done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nav Redesign &amp; Responsive done" />
   </component>
 </project>

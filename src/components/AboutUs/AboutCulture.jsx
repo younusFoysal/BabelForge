@@ -61,7 +61,7 @@ const aboutCardData = [
 const AboutCulture = () => {
   return (
     <div className="mt-24 space-y-20">
-      <h3 className="text-center font-bold text-3xl md:text-4xl text-white">Our Culture and Values</h3>
+      <h3 className="text-center font-bold text-3xl md:text-4xl text-gray-900 dark:text-white">Our Culture and Values</h3>
       <div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {aboutCardData.map(text => (
           <AboutCultureCard key={text.id} image={text.image} headline={text.headline} hoverText={text.hoverText}></AboutCultureCard>
