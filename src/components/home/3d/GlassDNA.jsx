@@ -3,12 +3,14 @@ import { useEffect, useRef, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
+import { useTheme } from "next-themes";
 
 // First model: Right to Left
 function ModelRightToLeft({ scrollPosition, mousePosition }) {
     const { scene, animations } = useGLTF('/babellogo.glb'); // First 3D object
     const mixer = useRef();
     const modelRef = useRef();
+    const { setTheme, resolvedTheme } = useTheme();
 
     // Apply color and opacity to the meshes in the model
     useEffect(() => {
@@ -18,11 +20,16 @@ function ModelRightToLeft({ scrollPosition, mousePosition }) {
                     // Set the color and opacity for the material
                     child.material.color = new THREE.Color(0x106AC5); // Green color
                     child.material.transparent = true;
-                    child.material.opacity = 0.7; // Adjust opacity (0 is fully transparent, 1 is fully opaque)
+                    if (resolvedTheme === "dark"){
+                        child.material.opacity = 0.7
+                    }else {
+                        child.material.opacity = 0.1
+                    }
+                     // Adjust opacity (0 is fully transparent, 1 is fully opaque)
                 }
             });
         }
-    }, [scene]);
+    }, [scene, resolvedTheme]);
 
     // Create animation mixer and clips
     useEffect(() => {
