@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Home Dark Redesign &amp; Responsive done">
-      <change afterPath="$PROJECT_DIR$/src/components/Payments/PaymentCard.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/Home/payment.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutFirstBanner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutFirstBanner.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Payments/CheckoutForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Payments/CheckoutForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Payments/PaymentBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Payments/PaymentBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/providers/ContextProvider.jsx" beforeDir="false" />
-    </list>
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Payment Dark Redesign &amp; Responsive done" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -137,15 +127,7 @@
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
-      <workItem from="1729684647631" duration="22956000" />
-    </task>
-    <task id="LOCAL-00015" summary="AOS Added">
-      <option name="closed" value="true" />
-      <created>1726778071223</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778071223</updated>
+      <workItem from="1729684647631" duration="23707000" />
     </task>
     <task id="LOCAL-00016" summary="Readme added">
       <option name="closed" value="true" />
@@ -531,7 +513,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729705249734</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Payment Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729716207380</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716207380</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -550,7 +540,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Profile fix" />
     <MESSAGE value="few fix" />
     <MESSAGE value="Deploy" />
     <MESSAGE value="loading added" />
@@ -575,6 +564,7 @@
     <MESSAGE value="Nav Redesign &amp; Responsive done" />
     <MESSAGE value="Dark Redesign &amp; Responsive done" />
     <MESSAGE value="Home Dark Redesign &amp; Responsive done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Home Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Payment Dark Redesign &amp; Responsive done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Payment Dark Redesign &amp; Responsive done" />
   </component>
 </project>
