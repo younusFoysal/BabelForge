@@ -46,11 +46,12 @@ const UserDocuments = () => {
     if (error) return <div>{error}</div>;
 
     return (
-        <div className='mx-auto max-w-[500px]'>
-            <h1>Your Documents</h1>
-            <ul >
+        <div className='mx-auto max-w-[500px'>
+            <h1 className='text-center font-bold text-2xl'>Your Documents</h1>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-8'>
+            <button onClick={handleCreate}>Create New Doc</button>
                 {documents.map((doc, idx) => (
-                    <li className='p-4 bg-gray-200 my-2 hover:cursor-pointer max-w-96' key={doc._id}>
+                    <div className='p-4 bg-gray-200 my-2 hover:cursor-pointer max-w-' key={doc._id}>
                         {/* If user's email matches the document email, allow editing */}
                         {doc.email === email ? (
                             <Link href={`/dashboard/doc/${doc?._id}`}>
@@ -61,10 +62,10 @@ const UserDocuments = () => {
                                 {doc?.title || 'Untitled Document-'} {idx+1}(View Only) - Document ID: {doc?._id}
                             </div>
                         )}
-                    </li>
+                    </div>
                 ))}
-            </ul>
-            <button onClick={handleCreate}>Create New Doc</button>
+            </div>
+            
         </div>
     );
 };
