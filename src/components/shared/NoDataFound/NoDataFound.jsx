@@ -14,7 +14,7 @@ const NoDataFound = ({ text, btnText, btnLink }) => {
                     className="rounded-full w-full h-full object-cover"
                 />
             </div>
-            <p className='text-xl md:text-2xl font-bold'>{text}</p>
+            <p className='text-xl md:text-2xl font-bold text-gray-700 dark:text-white/80'>{text}</p>
             {
                 btnText && <div>
                     <Link href={btnLink}>

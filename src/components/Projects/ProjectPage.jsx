@@ -26,6 +26,7 @@ import { useUser } from '@clerk/nextjs';
 import NoDataFound from '../shared/NoDataFound/NoDataFound';
 import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
+
 const ProjectPage = () => {
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
@@ -48,13 +49,15 @@ const ProjectPage = () => {
 
   const theads = ['Fav', 'Image', 'Name', 'Type', 'Manager', 'Project URL', 'Start Date', 'End Date', 'More Action'];
 
-  const handleSearchByClick = () => {
+  const handleSearchByClick = (e) => {
+    e.preventDefault();
     const inputData = document.getElementById('inputField').value;
     setSearch(inputData);
   };
 
   const handleSearchByEnter = e => {
     if (e.key === 'Enter') {
+      e.preventDefault();
       const inputData = document.getElementById('inputField').value;
       setSearch(inputData);
     }

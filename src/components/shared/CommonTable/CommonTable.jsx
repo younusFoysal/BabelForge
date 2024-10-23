@@ -21,9 +21,11 @@ import { FaRegStar, FaStar } from "react-icons/fa6";
 import { Ellipsis } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import useAxiosCommon from "@/lib/axiosCommon";
-import toast from "react-hot-toast";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
+import { toast } from '@/hooks/use-toast';
+import Alert from '@/components/shared/Alert';
+import Link from "next/link";
 
 const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
   const { user } = useUser();
@@ -67,9 +69,15 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
           // console.log(res);
           projectRefetch();
 
-          data.favorite
-            ? toast.success("Project removed from favorites.")
-            : toast.success("Project added to favorites!");
+          !data.favorite ?
+            toast({
+              description: 'Project Added To Favorite',
+              variant: 'success',
+            }) :
+            toast({
+              description: 'Project Removed From Favorite',
+              variant: 'success',
+            })
         }
       });
   };
@@ -85,6 +93,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
 
   const handleEndProject = (id) => {
     // console.log(id);
+
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0];
     setCurrentDate(formattedDate);
@@ -95,7 +104,10 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
         if (res.data.modifiedCount) {
           // console.log(res);
           projectRefetch();
-          toast.success('Project Ended.');
+          toast({
+            description: 'Project Ended',
+            variant: 'success',
+          });
         }
       })
   }
@@ -162,7 +174,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                   </TableCell>
                   <TableCell>{data.pcategory}</TableCell>
                   <TableCell>{data.pmanager}</TableCell>
-                  <TableCell>{data.purl}</TableCell>
+                  <TableCell><Link href={data.purl} target="_blank" className="hover:text-blue-600">{data.purl}</Link></TableCell>
                   <TableCell>{data.psdate}</TableCell>
                   <TableCell>{data.pedate}</TableCell>
                   <TableCell>
@@ -183,7 +195,21 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                           </DropdownMenuItem>
                           {
                             !data.pedate && <DropdownMenuItem>
-                              <p onClick={() => handleEndProject(data._id)} > End Project </p>
+                              {/* <p onClick={() => handleEndProject(data._id)} > End Project </p> */}
+                              <Alert title='Are you absolutely sure?'
+                                description='This action cannot be undone. This will end the project' onContinue={() => handleEndProject(data._id)}>
+                                {openDialog => (
+                                  <button
+                                    className="w-full text-left"
+                                    onClick={e => {
+                                      e.stopPropagation();
+                                      openDialog();
+                                    }}
+                                  >
+                                    End Project
+                                  </button>
+                                )}
+                              </Alert>
                             </DropdownMenuItem>
                           }
                         </DropdownMenuContent>
@@ -226,7 +252,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
           ))}
         </TableBody>
       </Table>
-    </div>
+    </div >
   );
 };
 
