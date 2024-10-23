@@ -3,7 +3,6 @@
 import { useCall, useCallStateHooks } from "@stream-io/video-react-sdk";
 
 import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
 
 const EndCallButton = () => {
   const call = useCall();
@@ -24,16 +23,21 @@ const EndCallButton = () => {
 
   if (!isMeetingOwner) return null;
 
-  const endCall = async () => {
+  const EndCall = async () => {
     await call.endCall();
+    call.camera.disable();
+    call.microphone.disable();
     router.push("/");
     router.refresh();
   };
 
   return (
-    <Button onClick={endCall} className="bg-red-500">
+    <button
+      onClick={EndCall}
+      className="bg-red-500 text-white px-3 py-2 rounded-md"
+    >
       End call for everyone
-    </Button>
+    </button>
   );
 };
 

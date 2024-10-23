@@ -6,6 +6,7 @@ import {
   CallParticipantsList,
   PaginatedGridLayout,
   SpeakerLayout,
+  useCall,
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import { LayoutList, Users } from "lucide-react";
@@ -26,6 +27,7 @@ const MeetingRoom = () => {
   const [layout, setLayout] = useState("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
   const router = useRouter();
+  const call = useCall();
   const { useCallEndedAt } = useCallStateHooks();
   const callEndedAt = useCallEndedAt();
   const callHasEnded = !!callEndedAt;
@@ -35,6 +37,14 @@ const MeetingRoom = () => {
       router.push("/");
     }
   }, [callHasEnded]);
+
+  const LeaveCall = async () => {
+    await call.endCall();
+    call.camera.disable();
+    call.microphone.disable();
+    router.push("/");
+    router.refresh();
+  };
 
   const CallLayout = () => {
     switch (layout) {
@@ -68,7 +78,7 @@ const MeetingRoom = () => {
         </div>
 
         <div className="fixed bottom-0 flex gap-5 justify-center items-center pt-4 flex-wrap w-full px-4">
-          <CallControls onLeave={() => router.push(`/`)} />
+          <CallControls onLeave={LeaveCall} />
           <DropdownMenu>
             <div className="flex items-center">
               <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b] transition-all duration-300">
