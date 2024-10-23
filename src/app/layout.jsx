@@ -1,11 +1,10 @@
-"use client";
-import Footer from "@/components/shared/Footer/Footer";
-import Navbar from "@/components/shared/Navbar";
-import { ThemeProvider } from "@/components/Theme/ThemeProvider";
-import "./globals.css";
-import PaymentProvider from "@/providers/ContextProvider";
-import React from "react";
-import { Toaster } from "@/components/ui/toaster";
+'use client';
+import Footer from '@/components/shared/Footer/Footer';
+import Navbar from '@/components/shared/Navbar';
+import { ThemeProvider } from '@/components/Theme/ThemeProvider';
+import './globals.css';
+import React from 'react';
+import { Toaster } from '@/components/ui/toaster';
 
 const metadata = {
   title: "BabelForge",
@@ -50,12 +49,10 @@ export default function RootLayout({ children }) {
                 enableSystem
                 disableTransitionOnChange
               >
-                <PaymentProvider>
                   <Navbar />
                   <Toaster />
                   {children}
                   <Footer />
-                </PaymentProvider>
               </ThemeProvider>
             </ScreenRecorderProvider>
           </QureryProvider>

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Dark Redesign &amp; Responsive done">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Payment Success Dark Redesign &amp; Responsive done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -132,39 +134,7 @@
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
-      <workItem from="1729684647631" duration="13469000" />
-    </task>
-    <task id="LOCAL-00014" summary="Title &amp; Fav Icon added">
-      <option name="closed" value="true" />
-      <created>1726776353082</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1726776353082</updated>
-    </task>
-    <task id="LOCAL-00015" summary="AOS Added">
-      <option name="closed" value="true" />
-      <created>1726778071223</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778071223</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Readme added">
-      <option name="closed" value="true" />
-      <created>1726778512654</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778512654</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fav Icon Added">
-      <option name="closed" value="true" />
-      <created>1726778819179</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778819179</updated>
+      <workItem from="1729684647631" duration="29920000" />
     </task>
     <task id="LOCAL-00018" summary="Price card Updated">
       <option name="closed" value="true" />
@@ -526,7 +496,39 @@
       <option name="project" value="LOCAL" />
       <updated>1729699311982</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Home Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729705249734</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1729705249734</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Payment Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729716207380</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716207380</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Payment Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729716446269</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716446269</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Payment Success Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729717410019</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1729717410020</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -545,9 +547,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="signup fix" />
-    <MESSAGE value="Profile fix" />
-    <MESSAGE value="few fix" />
     <MESSAGE value="Deploy" />
     <MESSAGE value="loading added" />
     <MESSAGE value="canvas added" />
@@ -570,6 +569,21 @@
     <MESSAGE value="Help Page Redesign &amp; Responsive done" />
     <MESSAGE value="Nav Redesign &amp; Responsive done" />
     <MESSAGE value="Dark Redesign &amp; Responsive done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Home Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Payment Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Payment Success Dark Redesign &amp; Responsive done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Payment Success Dark Redesign &amp; Responsive done" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx</url>
+          <line>1</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

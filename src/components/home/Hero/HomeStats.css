@@ -1,10 +1,11 @@
-
 .outer {
-    height: 300px;
     border-radius: 10px;
     padding: 1px;
-    background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
     position: relative;
+    width: 100%;
+    max-width: 1400px; /* Wider max-width */
+    height: 350px; /* Increased height */
+    margin: 0 auto; /* Center the container */
 }
 
 .dot {
@@ -13,30 +14,28 @@
     position: absolute;
     background-color: #fff;
     box-shadow: 0 0 10px #ffffff;
-    border-radius: 100px;
+    border-radius: 50%;
     z-index: 2;
-    right: 10%;
-    top: 10%;
     animation: moveDot 6s linear infinite;
 }
 
 @keyframes moveDot {
     0%,
     100% {
-        top: 10%;
-        right: 10%;
+        top: 5%;
+        right: 5%;
     }
     25% {
-        top: 10%;
-        right: calc(100% - 35px);
+        top: 5%;
+        right: 95%;
     }
     50% {
-        top: calc(100% - 30px);
-        right: calc(100% - 35px);
+        top: 95%;
+        right: 95%;
     }
     75% {
-        top: calc(100% - 30px);
-        right: 10%;
+        top: 95%;
+        right: 5%;
     }
 }
 
@@ -47,7 +46,6 @@
     border-radius: 9px;
     border: solid 1px #202222;
     background-size: 20px 20px;
-    background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -55,9 +53,10 @@
     flex-direction: column;
     color: #fff;
 }
+
 .ray {
-    width: 220px;
-    height: 45px;
+    width: 1031px;
+    height: 50px;
     border-radius: 100px;
     position: absolute;
     background-color: #c7c7c7;
@@ -65,13 +64,14 @@
     box-shadow: 0 0 50px #fff;
     filter: blur(10px);
     transform-origin: 10%;
-    top: 0%;
-    left: 0;
-    transform: rotate(40deg);
+    top: 11%;
+    left: 0%;
+    transform: rotate(11deg);
 }
 
-.card .text {
+.text {
     font-weight: bolder;
+    font-size: 4rem;
     background: linear-gradient(45deg, #000000 4%, #fff, #000);
     background-clip: text;
     color: transparent;
@@ -83,21 +83,52 @@
     position: absolute;
     background-color: #2c2c2c;
 }
+
 .topl {
-    top: 10%;
+    top: 5%;
     background: linear-gradient(90deg, #888888 30%, #1d1f1f 70%);
 }
+
 .bottoml {
-    bottom: 10%;
+    bottom: 5%;
 }
+
 .leftl {
-    left: 10%;
+    left: 5%;
     width: 1px;
     height: 100%;
     background: linear-gradient(180deg, #747474 30%, #222424 70%);
 }
+
 .rightl {
-    right: 10%;
+    right: 5%;
     width: 1px;
     height: 100%;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    .outer {
+    }
+
+    .card {
+        border: solid 1px #404040;
+    }
+
+    .line {
+        background-color: #606060;
+    }
+
+    .topl {
+        background: linear-gradient(90deg, #666666 30%, #333333 70%);
+    }
+
+    .leftl {
+        background: linear-gradient(180deg, #555555 30%, #333333 70%);
+    }
+
+    .ray {
+        background-color: #888888;
+        box-shadow: 0 0 50px #aaaaaa;
+    }
 }
