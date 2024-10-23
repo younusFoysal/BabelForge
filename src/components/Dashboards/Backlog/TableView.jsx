@@ -39,12 +39,9 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const { resolvedTheme } = useTheme();
   const [emails, setEmails] = useState([]);
 
-  console.log(emails);
-
   // set email
   useEffect(() => {
     setEmails(formData?.tassignTo);
-    console.log(formData?.tassignTo);
   }, [formData]);
 
   let num = 1;
