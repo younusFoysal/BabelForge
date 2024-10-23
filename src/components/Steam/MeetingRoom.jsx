@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
 import {
   CallControls,
   CallParticipantsList,
@@ -8,23 +8,17 @@ import {
   SpeakerLayout,
   useCall,
   useCallStateHooks,
-} from "@stream-io/video-react-sdk";
-import { LayoutList, Users } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-} from "../ui/dropdown-menu";
-import EndCallButton from "./EndCallButton";
+} from '@stream-io/video-react-sdk';
+import { LayoutList, Users } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuSeparator } from '../ui/dropdown-menu';
+import EndCallButton from './EndCallButton';
 
 const MeetingRoom = () => {
   const searchParams = useSearchParams();
-  const isPersonalRoom = !!searchParams.get("personal");
-  const [layout, setLayout] = useState("speaker-left");
+  const isPersonalRoom = !!searchParams.get('personal');
+  const [layout, setLayout] = useState('speaker-left');
   const [showParticipants, setShowParticipants] = useState(false);
   const router = useRouter();
   const call = useCall();
@@ -34,30 +28,30 @@ const MeetingRoom = () => {
 
   useEffect(() => {
     if (callHasEnded) {
-      router.push("/");
+      router.push('/');
     }
   }, [callHasEnded]);
 
   const LeaveCall = async () => {
     await call.endCall();
-    call.camera.disable();
-    call.microphone.disable();
-    router.push("/");
+    call?.camera.disable();
+    call?.microphone.disable();
+    router.push('/');
     router.refresh();
   };
 
   const CallLayout = () => {
     switch (layout) {
-      case "grid":
+      case 'grid':
         return <PaginatedGridLayout />;
-      case "speaker-right":
+      case 'speaker-right':
         return <SpeakerLayout participantsBarPosition="left" />;
       default:
         return <SpeakerLayout participantsBarPosition="right" />;
     }
   };
 
-  const GirdData = ["Grid", "Speaker-Left", "Speaker-Right"];
+  const GirdData = ['Grid', 'Speaker-Left', 'Speaker-Right'];
 
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
@@ -67,10 +61,10 @@ const MeetingRoom = () => {
         </div>
         <div
           className={cn(
-            "fixed right-0 top-0 h-full w-[100%] sm:w-[30%] md:w-[20%] bg-gray-800 rounded-md p-5 transition-all duration-500 ease-in-out",
+            'fixed right-0 top-0 h-full w-[100%] sm:w-[30%] md:w-[20%] bg-gray-800 rounded-md p-5 transition-all duration-500 ease-in-out',
             {
-              "translate-x-0": showParticipants,
-              "translate-x-full": !showParticipants,
+              'translate-x-0': showParticipants,
+              'translate-x-full': !showParticipants,
             }
           )}
         >
@@ -88,17 +82,13 @@ const MeetingRoom = () => {
             <DropdownMenuContent className="border-dark-1 bg-dark-1 dark:text-white">
               {GirdData.map((item, index) => (
                 <div key={index}>
-                  <DropdownMenuItem
-                    onClick={() => setLayout(item.toLowerCase())}
-                  >
-                    {item}
-                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setLayout(item.toLowerCase())}>{item}</DropdownMenuItem>
                   <DropdownMenuSeparator className="border-dark-1" />
                 </div>
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <button onClick={() => setShowParticipants((prev) => !prev)}>
+          <button onClick={() => setShowParticipants(prev => !prev)}>
             <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b] transition-all duration-300">
               <Users size={20} className="text-white" />
             </div>
