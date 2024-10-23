@@ -16,8 +16,8 @@ const Faq = () => {
   return (
     <section>
       <div>
-        <div className=" flex flex-col lg:justify-center text-white  p-4 lg:w-[70%] mx-auto md:p-8">
-          <h2 className="mb-12 text-4xl font-bold leading-none text-white text-center sm:text-5xl">Frequently Asked Questions</h2>
+        <div className=" flex flex-col lg:justify-center text-black dark:text-white  p-4 lg:w-[70%] mx-auto md:p-8">
+          <h2 className="mb-12 text-4xl font-bold leading-none text-purple-700 dark:text-white text-center sm:text-5xl">Frequently Asked Questions</h2>
           <div className="space-y-4">
             <details className="w-full border border-gray-200  rounded-lg" data-aos="zoom-in-down">
               <summary className="py-6 px-4 lg:text-2xl text-lg outline-none cursor-pointer focus:underline">
