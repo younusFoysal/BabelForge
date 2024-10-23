@@ -11,6 +11,7 @@ import MeetingButton from "./MeetingButton";
 import { IoIosVideocam } from "react-icons/io";
 import { MdContentCopy } from "react-icons/md";
 import SteamNavber from "./MeetNavbar";
+import { ShareLink } from "../Doc/ShareLink";
 
 const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
   const [mictoggleon, setmictoogleon] = useState(false);
@@ -62,18 +63,7 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
             }}
             icon={<IoIosVideocam size={20} />}
           ></MeetingButton>
-
-          <MeetingButton
-            className="from-blue-600 to-purple-600"
-            text=" Copy Invitation"
-            handleClick={() => {
-              navigator.clipboard.writeText(meetingLink);
-              toast({
-                description: "Meeting Link Copied",
-              });
-            }}
-            icon={<MdContentCopy size={18} />}
-          ></MeetingButton>
+          <ShareLink colour={true} />
         </div>
       </div>
     </div>
