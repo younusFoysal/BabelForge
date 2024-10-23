@@ -7,7 +7,6 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { useUser } from '@clerk/nextjs';
-import DashboardNavbarBox from '@/components/DashboardsPage/DashboardNavbarBox';
 
 const MainPageWrap = () => {
   const axiosCommon = useAxiosCommon();
@@ -26,8 +25,7 @@ const MainPageWrap = () => {
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
-    <div className="w-full px-4  md:mt-2">
-      {/* <DashboardNavbarBox /> */}
+    <div className="w-full   md:mt-2">
       <div className="flex gap-9 md:gap-3 mb-10 flex-wrap justify-center md:justify-between items-center">
         <h1 className="font-bold text-3xl  text-[#333] dark:text-white">Dashboard</h1>
         <ExportTeamInfo stats={stats} isLoading={isLoading} />

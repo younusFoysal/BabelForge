@@ -51,7 +51,7 @@ const Footer = () => {
   if (pathname?.includes("/successPayment") || pathname?.includes("meet"))
     return null;
   return (
-    <footer className="p-2 md:p-16 pt-10  text-gray-200 bg-gray-900 border-t-gray-800 border-t-[1px]">
+    <footer className="p-2 md:p-16 pt-10  text-gray-200 bg-[#181024] border-t-gray-800 border-t-[1px]">
       {/* upper part */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-7 items-center justify-between border-[#ffffff57] border-b pb-12">
         <div className="flex flex-col space-y-1 text-sm">
@@ -63,7 +63,7 @@ const Footer = () => {
                 alt="babelforge"
                 className=" size-6 lg:size-14 "
               />
-              <h3 className="text-3xl font-bold text-[#106ac5] dark:text-">
+              <h3 className="text-3xl font-bold text-white dark:text-">
                 BabelForge
               </h3>
             </div>

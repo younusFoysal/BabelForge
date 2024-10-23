@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils';
 import Marquee from '@/components/ui/marquee';
-import Image from 'next/image';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import { FaStar } from 'react-icons/fa';
@@ -68,7 +67,7 @@ export function MarqueeDemoVertical() {
           <p className="text-xl text-gray-100 md:text-center md:text-2xl">Here&apos;s what others have to say about us.</p>
         </div>
       </div>
-      <div className="relative space-y-7 mx-auto container grid md:h-[500px] w-full grid-cols-1 md:grid-cols-3  overflow-hidden ">
+      <div className="relative shadow-[inset_0_0_60px_30px_rgba(255,255,255,0.37)] border-[#ffffff5a] rounded-xl border  mx-auto container grid md:h-[500px] w-full grid-cols-1 md:grid-cols-3  overflow-hidden ">
         {/* For mobile */}
         <div className="space-y-4 md:hidden">
           {reviews?.slice(0, 4)?.map(review => (
