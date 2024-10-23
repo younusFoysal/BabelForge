@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Stat Card added">
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/test/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/shared/CommonConfirmation/ConUseModal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/shared/CommonConfirmation/DeleteConfirmationModal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/shared/TestModal.jsx" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Dark Redesign &amp; Responsive done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/[id]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,46 +131,8 @@
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
-    </task>
-    <task id="LOCAL-00009" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726692081480</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692081480</updated>
-    </task>
-    <task id="LOCAL-00010" summary="All ok">
-      <option name="closed" value="true" />
-      <created>1726692751091</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692751091</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Link added">
-      <option name="closed" value="true" />
-      <created>1726693884245</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1726693884245</updated>
-    </task>
-    <task id="LOCAL-00012" summary="nav Responsive added">
-      <option name="closed" value="true" />
-      <created>1726695355909</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1726695355909</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Nav Logo Added">
-      <option name="closed" value="true" />
-      <created>1726771880583</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1726771880583</updated>
+      <workItem from="1729662069791" duration="5657000" />
+      <workItem from="1729684647631" duration="13469000" />
     </task>
     <task id="LOCAL-00014" summary="Title &amp; Fav Icon added">
       <option name="closed" value="true" />
@@ -527,7 +486,47 @@
       <option name="project" value="LOCAL" />
       <updated>1729612238165</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="common Confirm modal added">
+      <option name="closed" value="true" />
+      <created>1729622689692</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729622689692</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Help Page Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729666258511</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1729666258511</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Nav Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729668432937</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1729668432937</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729692429306</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1729692429307</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729699311982</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1729699311982</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,10 +545,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="carusel added" />
-    <MESSAGE value="carusel fix" />
-    <MESSAGE value="update" />
-    <MESSAGE value="api link update" />
     <MESSAGE value="signup fix" />
     <MESSAGE value="Profile fix" />
     <MESSAGE value="few fix" />
@@ -571,6 +566,10 @@
     <MESSAGE value="pkg fix" />
     <MESSAGE value="Chat Button fix" />
     <MESSAGE value="Stat Card added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stat Card added" />
+    <MESSAGE value="common Confirm modal added" />
+    <MESSAGE value="Help Page Redesign &amp; Responsive done" />
+    <MESSAGE value="Nav Redesign &amp; Responsive done" />
+    <MESSAGE value="Dark Redesign &amp; Responsive done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dark Redesign &amp; Responsive done" />
   </component>
 </project>

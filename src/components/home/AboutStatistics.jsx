@@ -9,7 +9,7 @@ const AboutStatistics = () => {
 
   return (
       <>
-    <div className=" bg-white/10 border-[#ffffff22] backdrop-blur-lg  border-[1px] w-[90%] mx-auto   text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
+    <div className=" bg-white dark:bg-white/10 border-[#ffffff22] backdrop-blur-lg  border-[1px] w-[90%] mx-auto text-gray-800  dark:text-white px-2 md:px-5 py-10 my-10 mb-20  rounded-xl space-y-16">
       <h1 className="text-4xl md:text-7xl font-bold text-center">BabelForge.com by the numbers</h1>
       <ScrollTrigger onEnter={() => setScrollState(true)} onExit={() => setScrollState(false)}>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center items-center">

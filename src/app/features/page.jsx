@@ -15,7 +15,7 @@ const Page = () => {
       <section>
         <Header />
         <div className="container text-white flex-row-reverse mx-auto ">
-          <h2 className="text-2xl max-w-[300px] md:max-w-[700px] mx-auto md:text-4xl  text-center mt-20">
+          <h2 className="text-2xl text-black dark:text-white max-w-[300px] md:max-w-[700px] mx-auto md:text-4xl  text-center mt-20">
             Get all of your data control in one place
           </h2>
           <DashboardCard
@@ -47,10 +47,10 @@ const Page = () => {
           />
         </div>
         {/* Make decision section */}
-        <div className=" bg-white/5 backdrop-blur-lg text-white border-white/15 border-[1px] p-20 flex flex-col justify-center">
+        <div className=" bg-white/50 dark:bg-white/5 backdrop-blur-lg text-white border-white/15 border-[1px] p-20 flex flex-col justify-center">
           <div className="text-center space-y-5 container mx-auto">
-            <h1 className="text-3xl md:text-4xl font-bold">Make decisions with confidence</h1>
-            <p className="text-lg">Ready to see how BabelForge.com improves alignment across teams?</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-black dark:text-white">Make decisions with confidence</h1>
+            <p className="text-lg text-black dark:text-white">Ready to see how BabelForge.com improves alignment across teams?</p>
             <div className="flex justify-center">
               <Button text="get started" icon={<ArrowRight size={20} />} />
             </div>
