@@ -47,7 +47,7 @@ const SteamNavber = () => {
               </SignedIn>
               <Link href="/">
                 <button
-                  className={`px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group   dark:bg-gray-50 dark:text-black`}
+                  className={`px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group   dark:bg-gray-50`}
                 >
                   <span className="group-hover:translate-x-2 duration-500 transition-all">
                     <ArrowLeft size={20} />
