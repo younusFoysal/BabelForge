@@ -1,5 +1,11 @@
-'use client';
-import React, { createContext, useContext, useRef, useState, useEffect } from 'react';
+"use client";
+import React, {
+  createContext,
+  useContext,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 
 const ScreenRecorderContext = createContext();
 
@@ -14,23 +20,22 @@ const ScreenRecorderProvider = ({ children }) => {
   const mediaRecorder = useRef(null);
   const recordedChunks = useRef([]);
 
-  // Warn user before closing or reloading the page
   useEffect(() => {
-    const handleBeforeUnload = event => {
+    const handleBeforeUnload = (event) => {
       if (recording) {
         event.preventDefault();
-        event.returnValue = 'Are you sure?'; // Show the confirmation dialog
+        event.returnValue = "Are you sure?";
       }
     };
 
     if (recording) {
-      window.addEventListener('beforeunload', handleBeforeUnload);
+      window.addEventListener("beforeunload", handleBeforeUnload);
     } else {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     }
 
     return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, [recording]);
 
@@ -39,7 +44,7 @@ const ScreenRecorderProvider = ({ children }) => {
 
     try {
       const displayStream = await navigator.mediaDevices.getDisplayMedia({
-        video: { cursor: 'always' },
+        video: { cursor: "always" },
         audio: true,
       });
 
@@ -47,20 +52,23 @@ const ScreenRecorderProvider = ({ children }) => {
         audio: true,
       });
 
-      const combinedStream = new MediaStream([...displayStream.getTracks(), ...audioStream.getTracks()]);
+      const combinedStream = new MediaStream([
+        ...displayStream.getTracks(),
+        ...audioStream.getTracks(),
+      ]);
 
       mediaRecorder.current = new MediaRecorder(combinedStream, {
-        mimeType: 'video/webm',
+        mimeType: "video/webm",
       });
 
-      mediaRecorder.current.ondataavailable = event => {
+      mediaRecorder.current.ondataavailable = (event) => {
         if (event.data.size > 0) {
           recordedChunks.current.push(event.data);
         }
       };
 
       mediaRecorder.current.onstop = () => {
-        const blob = new Blob(recordedChunks.current, { type: 'video/webm' });
+        const blob = new Blob(recordedChunks.current, { type: "video/webm" });
         const url = URL.createObjectURL(blob);
         setVideoUrl(url);
         recordedChunks.current = [];
@@ -70,13 +78,18 @@ const ScreenRecorderProvider = ({ children }) => {
       setRecording(true);
       setPaused(false);
     } catch (err) {
-      console.error('Error accessing display media: ', err);
+      console.error("Error accessing display media: ", err);
     }
   };
 
   const stopRecording = () => {
     if (mediaRecorder.current) {
       mediaRecorder.current.stop();
+
+      mediaRecorder.current.stream.getTracks().forEach((track) => {
+        track.stop();
+      });
+
       setRecording(false);
       setPaused(false);
     }

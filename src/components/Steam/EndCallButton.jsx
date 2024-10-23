@@ -3,6 +3,7 @@
 import { useCall, useCallStateHooks } from "@stream-io/video-react-sdk";
 
 import { useRouter } from "next/navigation";
+import { useMediaControl } from "./MediaControlProvider";
 
 const EndCallButton = () => {
   const call = useCall();
@@ -15,6 +16,7 @@ const EndCallButton = () => {
 
   const { useLocalParticipant } = useCallStateHooks();
   const localParticipant = useLocalParticipant();
+  const { stopMedia } = useMediaControl();
 
   const isMeetingOwner =
     localParticipant &&
@@ -25,9 +27,8 @@ const EndCallButton = () => {
 
   const EndCall = async () => {
     await call.endCall();
-    call.camera.disable();
-    call.microphone.disable();
-    router.push("/");
+    stopMedia();
+    router.push("/dashboard");
     router.refresh();
   };
 
