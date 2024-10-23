@@ -23,6 +23,8 @@ import Link from 'next/link';
 
 import CommonTable from '../shared/CommonTable/CommonTable';
 import { useUser } from '@clerk/nextjs';
+import NoDataFound from '../shared/NoDataFound/NoDataFound';
+import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const ProjectPage = () => {
   const { user } = useUser();
@@ -32,18 +34,13 @@ const ProjectPage = () => {
   const [category, setCategory] = useState('');
   const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(uemail, search, category);
 
+
+
+
+
   if (!projects?.length && !search?.length && !category?.length) {
     return (
-      <section className="flex flex-col justify-center items-center gap-5 text-center">
-        <h3 className="text-2xl  font-medium">You have no projects yet. Start by creating your first project!</h3>
-        <div>
-          <Link href="/dashboard/createproject">
-            <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
-              Create Project
-            </button>
-          </Link>
-        </div>
-      </section>
+      <NoDataFound text={"No Project Created Yet."} btnText={"Create Project"} btnLink={"/dashboard/createproject"}></NoDataFound>
     );
   }
 
@@ -66,6 +63,8 @@ const ProjectPage = () => {
   const handleFilter = value => {
     setCategory(value);
   };
+
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <section>
@@ -121,11 +120,16 @@ const ProjectPage = () => {
         </div>
       </div>
 
-      {/* Table content */}
-      <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>
+      {
+        projects.length ? <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable> :
+          <NoDataFound text={"No Data Found"}></NoDataFound>
+      }
 
-      {/* pagination */}
-      <div className="mt-6">
+
+
+
+      {/*TODO- pagination */}
+      {/* <div className="mt-6">
         <Pagination className="flex justify-start ">
           <PaginationContent>
             <PaginationItem>
@@ -142,7 +146,7 @@ const ProjectPage = () => {
             </PaginationItem>
           </PaginationContent>
         </Pagination>
-      </div>
+      </div> */}
     </section>
   );
 };

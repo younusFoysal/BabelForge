@@ -145,7 +145,7 @@ const ProjectDetails = () => {
                 </div>
               </div>
             </div>
-            <div className="text-left bg-white shadow-lg w-[80%] rounded-xl -mt-32 -ml-40 z-10 p-9 flex items-center flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
+            <div className="text-left bg-gray-100 shadow-lg w-[80%] rounded-xl -mt-32 -ml-40 z-10 p-9 flex items-center flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
               <h2 className="text-2xl font-bold">Project Description</h2>
               <p className="text-gray-700 dark:text-white/80 p-5 rounded-lg text-sm leading-7">{pdes}</p>
             </div>
