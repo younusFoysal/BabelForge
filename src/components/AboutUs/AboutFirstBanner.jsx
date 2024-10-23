@@ -7,8 +7,8 @@ const AboutFirstBanner = () => {
   return (
     <div className="my-10 space-y-16 text-black dark:text-white">
       {/* Banner headline */}
-      <div className="flex flex-col lg:flex-row items-center px-2 lg:px-24 text-center lg:text-start">
-        <div className="w-full lg:w-3/5 text-3xl md:text-6xl font-bold space-y-3 py-10 ">
+      <div className="flex flex-col lg:flex-row justify-evenly items-center px-2 lg:px-24 text-center lg:text-start">
+        <div className="w-full ml-[2%] lg:w-3/5 text-3xl md:text-6xl font-bold space-y-3 py-10 ">
           <p>So how did</p>
           <p className=" text-purple-700 dark:text-purple-600">BabelForge.com</p>
           <p>come to be?</p>
