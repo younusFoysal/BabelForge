@@ -9,6 +9,8 @@ import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import paymentimg from "@/image/Home/payment.png"
 import "./PaymentCard.css"
+import HomeLoadingSpinner from "../shared/HomeLoadingSpinner/HomeLoadingSpinner";
+
 
 const CheckoutForm = ({ id, amount }) => {
   const stripe = useStripe();
@@ -95,9 +97,9 @@ const CheckoutForm = ({ id, amount }) => {
 
   if (!clientSecret || !elements || !stripe) {
     return (
-      <div>
-        <h1>loading.......</h1>
-      </div>
+      <>
+        <HomeLoadingSpinner />
+      </>
     );
   }
 

@@ -7,7 +7,6 @@ import {
   PaginatedGridLayout,
   SpeakerLayout,
   useCall,
-  useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import { LayoutList, Users } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -20,29 +19,32 @@ import {
   DropdownMenuSeparator,
 } from "../ui/dropdown-menu";
 import EndCallButton from "./EndCallButton";
-
+import { toast } from "@/hooks/use-toast";
+import { useMediaControl } from "@/components/Steam/MediaControlProvider";
 const MeetingRoom = () => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
   const [layout, setLayout] = useState("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
   const router = useRouter();
-  const call = useCall();
-  const { useCallEndedAt } = useCallStateHooks();
-  const callEndedAt = useCallEndedAt();
-  const callHasEnded = !!callEndedAt;
 
+  const { stopMedia } = useMediaControl();
+  const callHasEnded = false;
+  const call = useCall();
   useEffect(() => {
     if (callHasEnded) {
-      router.push("/");
+      toast({
+        description: "Call has ended.",
+      });
+      stopMedia();
+      router.push("/dashboard");
     }
-  }, [callHasEnded]);
+  }, [callHasEnded, stopMedia, router]);
 
   const LeaveCall = async () => {
     await call.endCall();
-    call.camera.disable();
-    call.microphone.disable();
-    router.push("/");
+    stopMedia();
+    router.push("/dashboard");
     router.refresh();
   };
 
@@ -62,7 +64,7 @@ const MeetingRoom = () => {
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
       <div className="relative flex h-full items-center justify-center">
-        <div className="flex w-full max-w-[1250px]  overflow-hidden ">
+        <div className="flex w-full max-w-[1250px] overflow-hidden ">
           <CallLayout />
         </div>
         <div

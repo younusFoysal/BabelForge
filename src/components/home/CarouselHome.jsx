@@ -214,8 +214,8 @@ const CarouselHome = () => {
         ))}
       </Slider>
       {/* Carousel White Overlay */}
-      <div className="hidden md:block absolute z-20 left-0 top-0 h-full w-[200px] bg-gradient-to-l  from-[#00000005] to-[#1C1B21]"></div>
-      <div className="hidden md:block absolute z-20 right-0 top-0 h-full w-[200px] from-[#00000005] to-[#1C1B21] bg-gradient-to-r "></div>
+      <div className="hidden md:block absolute z-20 left-0 top-0 h-full from-[#ffffff0f] to-[#fff] w-[200px] bg-gradient-to-l  dark:from-[#00000005] dark:to-[#1C1B21]"></div>
+      <div className="hidden md:block absolute z-20 right-0 top-0 h-full w-[200px] to-[#fff] from-[#ffffff0f] dark:from-[#00000005] dark:to-[#1C1B21] bg-gradient-to-r "></div>
     </div>
   );
 };
