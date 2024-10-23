@@ -148,27 +148,28 @@ const ProjectDetails = () => {
 
         <div className="flex justify-center items-center">
           <div className="w-full ml-1 mr-1 flex flex-col justify-center items-center border-gray-700 text-center">
+            {/* manager info */}
             <div className="w-full rounded-2xl p-8 text-white bg-gradient-to-br from-[#5f99f9] to-[#8868dc] pb-44 relative">
               <h1 className="text-3xl mb-4 font-bold text-left">Manager Info</h1>
               <div className="text-center">
-                <div className="w-full flex items-center gap-2">
+                <div className="w-full flex items-center  gap-2">
                   <h3 className="font-bold ">Name: </h3>
                   <p className="text-gray-100 dark:text-white/80">{pmname}</p>
                 </div>
 
-                <div className="w-full flex items-center justify-center gap-2">
+                <div className="w-full flex items-center  gap-2">
                   <h3 className="font-bold">Email: </h3>
                   <p className="text-gray-100 dark:text-white/80">{pmanager}</p>
                 </div>
               </div>
             </div>
-            <div className="text-left bg-gray-100 shadow-lg w-[80%] rounded-xl -mt-32 -ml-40 z-10 p-9 flex items-center flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
-              <h2 className="text-2xl font-bold">Project Description</h2>
+            <div className="text-left bg-gray-100 shadow-lg w-[80%] rounded-xl -mt-32 -ml-40 z-10 p-9 flex flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
+              <h2 className="text-2xl font-bold text-left w-full px-5">Project Description</h2>
               <p className="text-gray-700 dark:text-white/80 p-5 rounded-lg text-sm leading-7">{pdes}</p>
             </div>
           </div>
         </div>
-
+        {/* Teams */}
         <div className="mt-7">
           <h3 className="border-b pb-2 font-bold text-xl">Teams</h3>
           {teamsOfProject?.data.length === 0 && <p className="font-semibold mt-3">No Teams Created Yet.</p>}

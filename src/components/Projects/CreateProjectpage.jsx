@@ -8,7 +8,7 @@ import { TagsInput } from 'react-tag-input-component';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import { toast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
@@ -60,21 +60,25 @@ const CreateProjectpage = () => {
       return res.data;
     },
     onSuccess: () => {
-      toast.success('Project Created Successfully!');
+      toast({
+        description: 'Project Created Successfully!',
+        variant: 'success',
+      })
       reset();
       setEmails([uemail]); // Reset emails to include the user's email only
       router.push('/dashboard/projects');
     },
     onError: () => {
-      toast.error(`Something went Wrong!`);
+      toast({
+        description: 'Something went wrong',
+        variant: 'error',
+      })
     },
   });
   const handleCreate = () => {
-    // console.log(submitted);
     setSubmitted(true); // Set submitted state to true
     // if (!selectedCategory) return;
   }
-  // console.log("emails: ", emails);
   const onSubmit = (data) => {
     if (!selectedCategory) return;
 
@@ -88,12 +92,11 @@ const CreateProjectpage = () => {
     }
     data.pedate = "";
     data.psdate = currentDate;
-    data.pmname = user?.firstName;
+    data.pmname = user?.fullName;
     data.favorite = false;
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
-  // console.log("selected: ",selectedCategory);
   // if (!uemail) return <LoadingSpinner></LoadingSpinner>
   return (
     <div className="flex justify-between items-center flex-col">
