@@ -289,13 +289,20 @@ body {
   background-color: white;
 }
 
-.editor-container.ql-editor .dark{
+.editor-container.ql-editor.dark{
   background-color: black;
+  color: black;
+  
+}
+
+.editor-container .ql-container.ql-snow{
+  border: none;
 }
 
 .editor-container.ql-container.ql-snow {
   border: none important;
   display: flex;
+  color: black;
   /* justify-content: center; */
 }
 
@@ -309,6 +316,13 @@ body {
 
 }
 
+@media screen and (max-width: 700px) {
+  .editor-container .ql-toolbar.ql-snow, .editor-container {
+    width: 90%;
+  }
+  
+}
+
 .ql-container.ql-snow.ql-disabled{
   border: none important;
   display: flex;
@@ -316,11 +330,11 @@ body {
 }
 
 .ql-container.ql-snow{
-  border: none important;
-  border-color: red;
   display: flex;
   justify-content: center;
 }
+
+
 
 /* @layer base {
   * {
