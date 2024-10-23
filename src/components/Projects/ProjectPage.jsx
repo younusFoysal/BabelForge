@@ -81,17 +81,17 @@ const ProjectPage = () => {
       </div>
 
       {/* Input box content */}
-      <div className="my-8 w-full flex justify-start items-center gap-6">
+      <div className="my-8 w-full flex flex-col md:flex-row justify-start items-center gap-3 md:gap-6">
         {/* search box */}
-        <div className="lg:w-[30%] w-full">
-          <div className="flex justify-center items-center">
+        <div className=" w-full lg:w-[30%]">
+          <div className="flex justify-center items-center relative">
             <Input
               onKeyDown={handleSearchByEnter}
               id="inputField"
-              className="py-4 border-gray-500 border-[1px]"
+              className="w-full py-4 border-gray-500 border-[1px]"
               placeholder="Project Name"
             />
-            <span className="translate-x-[-180%]">
+            <span className="absolute right-2 top-1/2 -translate-y-1/2">
               <IoIosSearch onClick={handleSearchByClick} className="cursor-pointer"></IoIosSearch>
             </span>
           </div>
