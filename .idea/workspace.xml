@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="common Confirm modal added">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Help Page Redesign &amp; Responsive done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/help/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/help/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -131,15 +129,7 @@
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
-      <workItem from="1729662069791" duration="2909000" />
-    </task>
-    <task id="LOCAL-00010" summary="All ok">
-      <option name="closed" value="true" />
-      <created>1726692751091</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692751091</updated>
+      <workItem from="1729662069791" duration="5256000" />
     </task>
     <task id="LOCAL-00011" summary="Link added">
       <option name="closed" value="true" />
@@ -525,7 +515,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729622689692</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Help Page Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729666258511</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1729666258511</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="carusel fix" />
     <MESSAGE value="update" />
     <MESSAGE value="api link update" />
     <MESSAGE value="signup fix" />
@@ -569,6 +566,7 @@
     <MESSAGE value="Chat Button fix" />
     <MESSAGE value="Stat Card added" />
     <MESSAGE value="common Confirm modal added" />
-    <option name="LAST_COMMIT_MESSAGE" value="common Confirm modal added" />
+    <MESSAGE value="Help Page Redesign &amp; Responsive done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Help Page Redesign &amp; Responsive done" />
   </component>
 </project>
