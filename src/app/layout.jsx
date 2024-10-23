@@ -3,7 +3,6 @@ import Footer from '@/components/shared/Footer/Footer';
 import Navbar from '@/components/shared/Navbar';
 import { ThemeProvider } from '@/components/Theme/ThemeProvider';
 import './globals.css';
-import PaymentProvider from '@/providers/ContextProvider';
 import React from 'react';
 import { Toaster } from '@/components/ui/toaster';
 
@@ -43,12 +42,10 @@ export default function RootLayout({ children }) {
             <ScreenRecorderProvider>
                {/*<CrispWithNoSSR /> */}
               <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                <PaymentProvider>
                   <Navbar />
                   <Toaster />
                   {children}
                   <Footer />
-                </PaymentProvider>
               </ThemeProvider>
             </ScreenRecorderProvider>
           </QureryProvider>

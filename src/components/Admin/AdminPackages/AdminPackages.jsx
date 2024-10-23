@@ -308,8 +308,8 @@ const AdminPackages = ({ priceingsec }) => {
                   y2="188"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#3056D3" stop-opacity="0.15"></stop>
-                  <stop offset="1" stop-color="#C4C4C4" stop-opacity="0"></stop>
+                  <stop stopColor="#3056D3" stopOpacity="0.15"></stop>
+                  <stop offset="1" stopColor="#C4C4C4" stopOpacity="0"></stop>
                 </linearGradient>
               </defs>
             </svg>
