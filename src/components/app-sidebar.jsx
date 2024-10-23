@@ -65,6 +65,10 @@ export function AppSidebar({ ...props }) {
             title: "Board",
             url: "/dashboard/board",
           },
+          {
+            title: "Task Calendar",
+            url: "/dashboard/calendar",
+          },
         ],
       },
       {
@@ -99,10 +103,6 @@ export function AppSidebar({ ...props }) {
           {
             title: "Notes",
             url: "/dashboard/notes",
-          },
-          {
-            title: "Calendar",
-            url: "/dashboard/calendar",
           },
           {
             title: 'Screen Record',
