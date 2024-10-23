@@ -11,6 +11,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import docImage from '../../../public/Images/doc.png'
 import createDoc from '../../../public/Images/createDoc.png'
 import Image from 'next/image';
+import { Skeleton } from '../ui/skeleton';
 
 const UserDocuments = () => {
     const { user } = useUser();
@@ -62,16 +63,22 @@ const UserDocuments = () => {
         deleteDocument(docId); 
     };
 
-    const getDocumentContent = (contentObj) => {
-        if (contentObj && contentObj.ops) {
-            return contentObj.ops.map((op, index) => (
-                <p key={index}>{op.insert}</p>
-            ));
-        }
-        return <p className='text-sm text-gray-500'>No content available</p>;
-    };
+    
 
-    if(isLoading) return <div>Loading.......</div>;
+    if(isLoading) return <div  className='mx-auto max-w-[1300px]'>
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-16 mt-16 lg:grid-cols-4 lg:gap-8">
+      <Skeleton className="h-[300px]  rounded-xl" />
+      <div className="space-y-2">
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-8">
+      <Skeleton className="h-[300px]  rounded-xl" />     
+      <Skeleton className="h-[300px]  rounded-xl" />     
+      <Skeleton className="h-[300px]  rounded-xl" />      
+      <Skeleton className="h-[300px]  rounded-xl" />   
+      
+    </div>
+    </div>;
 
 
     return (
