@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 import { useTheme } from 'next-themes';
 import './CreateProject.css';
+import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
@@ -25,7 +26,13 @@ const CreateProjectpage = () => {
   const [emails, setEmails] = useState([uemail]);
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   const { resolvedTheme } = useTheme();
+
+
+  useEffect(() => {
+    setEmails([uemail]);
+  }, [uemail])
 
   const {
     register,
@@ -62,10 +69,23 @@ const CreateProjectpage = () => {
       toast.error(`Something went Wrong!`);
     },
   });
-
+  const handleCreate = () => {
+    // console.log(submitted);
+    setSubmitted(true); // Set submitted state to true
+    // if (!selectedCategory) return;
+  }
+  // console.log("emails: ", emails);
   const onSubmit = (data) => {
+    if (!selectedCategory) return;
+
     data.pmanager = uemail;
-    data.pallmembers = emails;
+
+    if (!emails.length) {
+      data.pallmembers = [uemail];
+    }
+    else {
+      data.pallmembers = emails;
+    }
     data.pedate = "";
     data.psdate = currentDate;
     data.pmname = user?.firstName;
@@ -74,7 +94,7 @@ const CreateProjectpage = () => {
     mutation.mutate(data);
   };
   // console.log("selected: ",selectedCategory);
-
+  // if (!uemail) return <LoadingSpinner></LoadingSpinner>
   return (
     <div className="flex justify-between items-center flex-col">
       <h2 className="text-4xl text-[#333] mb-4 dark:text-white">Create projects</h2>
@@ -126,7 +146,7 @@ const CreateProjectpage = () => {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              {!selectedCategory && <p className="text-red-600 mt-1">Category required</p>}
+              {submitted && !selectedCategory && <p className="text-red-600 mt-1">Category required</p>}
             </div>
 
             <div className="mb-1">
@@ -145,11 +165,11 @@ const CreateProjectpage = () => {
               <div className={resolvedTheme === 'dark' && 'parent_Tags'}>
                 <TagsInput value={emails} onChange={setEmails} placeHolder="Enter emails" />
               </div>
-              <span>Press enter to add more</span>
+              <span>Press enter to add</span>
             </div>
 
             <div className="flex items-center gap-3 justify-end">
-              <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md" type="submit">
+              <button onClick={handleCreate} className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md" type="submit">
                 Create
               </button>
             </div>

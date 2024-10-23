@@ -8,6 +8,7 @@ import Link from 'next/link';
 import { IoIosLink } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
+import Alert from '@/components/shared/Alert';
 
 const ProjectDetails = () => {
   const axiosCommon = useAxiosCommon();
@@ -101,13 +102,14 @@ const ProjectDetails = () => {
           </p>
           <div className="flex items-center gap-1">
             <IoIosLink className="font-bold text-lg" />
-            <Link className="font-semibold hover:text-blue-600" href={`${purl}`}>
+            <Link target="_blank" className="font-semibold hover:text-blue-600" href={`${purl}`}>
               {purl.slice(0, 30) + '...'}
             </Link>
           </div>
         </div>
         <div className="flex items-center mt-5 px-2 mb-3">
           {pedate ? (
+
             <button
               className="bg-bgColor dark:hover:shadow-bgColor/30 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
               disabled
@@ -115,12 +117,27 @@ const ProjectDetails = () => {
               End Project
             </button>
           ) : (
-            <button
-              onClick={() => handleEndProject(_id)}
-              className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
-            >
-              End Project
-            </button>
+
+            <Alert title='Are you absolutely sure?'
+              description='This action cannot be undone and specifies that the project has ended.' onContinue={() => handleEndProject(_id)}>
+              {openDialog => (
+                <button
+                  className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+                  onClick={e => {
+                    e.stopPropagation();
+                    openDialog();
+                  }}
+                >
+                  End Project
+                </button>
+              )}
+            </Alert>
+            // <button
+            //   onClick={() => handleEndProject(_id)}
+            //   className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+            // >
+            //   End Project
+            // </button>
           )}
         </div>
       </div>
