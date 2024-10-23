@@ -112,6 +112,27 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
       })
   }
 
+  const handleDeleteProject = (id) => {
+    axiosCommon.delete(`project/projects/${id}`)
+      .then(res => {
+        // console.log(res);
+        if (res.data.deletedCount) {
+          // console.log(res);
+          projectRefetch();
+          toast({
+            description: 'Project Deleted',
+            variant: 'success',
+          });
+        }
+        else {
+          toast({
+            description: 'Something went wrong',
+            variant: 'error',
+          });
+        }
+      })
+  }
+
   return (
     <div className="mt-8">
       <Table className="text-center">
@@ -193,6 +214,25 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                               Update Project
                             </p>
                           </DropdownMenuItem>
+
+                          <DropdownMenuItem>
+                            {/* <p onClick={() => handleEndProject(data._id)} > End Project </p> */}
+                            <Alert title='Are you absolutely sure?'
+                              description='This action cannot be undone  and the project will be deleted!' onContinue={() => handleDeleteProject(data._id)}>
+                              {openDialog => (
+                                <button
+                                  className="w-full text-left"
+                                  onClick={e => {
+                                    e.stopPropagation();
+                                    openDialog();
+                                  }}
+                                >
+                                  Delete Project
+                                </button>
+                              )}
+                            </Alert>
+                          </DropdownMenuItem>
+
                           {
                             !data.pedate && <DropdownMenuItem>
                               {/* <p onClick={() => handleEndProject(data._id)} > End Project </p> */}
@@ -212,6 +252,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                               </Alert>
                             </DropdownMenuItem>
                           }
+
                         </DropdownMenuContent>
                       </DropdownMenu>
                     )}
