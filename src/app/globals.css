@@ -295,8 +295,13 @@ body {
   
 }
 
+.editor-container{
+  overflow: scroll;
+}
+
 .editor-container .ql-container.ql-snow{
   border: none;
+
 }
 
 .editor-container.ql-container.ql-snow {
@@ -316,11 +321,14 @@ body {
 
 }
 
-@media screen and (max-width: 700px) {
-  .editor-container .ql-toolbar.ql-snow, .editor-container {
-    width: 90%;
+@media screen and (max-width: 850px) {
+  .editor-container .ql-toolbar.ql-snow, .editor-container  {
+    width: 100%;
+
   }
-  
+  .editor-container .ql-editor{
+    padding: 40px;
+  }
 }
 
 .ql-container.ql-snow.ql-disabled{
