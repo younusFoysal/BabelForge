@@ -65,18 +65,22 @@ const Navbar = () => {
         <Link href="/">
           <div className="flex gap-1 justify-center items-center">
             <Image src={logo} alt="babelforge" className="w-full h-12" />
-            <h3 className="text-3xl font-bold text-white">BabelForge</h3>
+            <h3 className="text-3xl font-bold text-purple-700 dark:text-white">
+              BabelForge
+            </h3>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden text-white md:flex">
-          <ul className="flex space-x-6 items-center justify-center">
+        <nav className="hidden text-purple-700 dark:text-white md:flex">
+          <ul className="flex space-x-3 items-center justify-center">
             {NavbarItems.map((nav) => (
               <Link href={nav.href} key={nav.href}>
                 <li
-                  className={`hover:text-blue-500 ${
-                    pathname === nav.href ? "text-blue-500 font-semibold" : ""
+                  className={` min-w-[82px] text-center hover:text-purple-700 hover:font-bold${
+                    pathname === nav.href
+                      ? "dark:text-purple-400 text-purple-700 font-bold dark:font-semibold"
+                      : ""
                   }`}
                 >
                   {nav.title}
@@ -127,7 +131,8 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className="flex md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
+          <ModeToggle />
           <Sheet>
             <SheetTrigger>
               <AlignJustify size={30} className="dark:text-white text-black" />

@@ -9,16 +9,17 @@ export const useScreenRecorder = () => {
 
 const ScreenRecorderProvider = ({ children }) => {
   const [recording, setRecording] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
   const mediaRecorder = useRef(null);
   const recordedChunks = useRef([]);
 
-  // Effect to warn the user before reload/close
+  // Warn user before closing or reloading the page
   useEffect(() => {
     const handleBeforeUnload = event => {
       if (recording) {
         event.preventDefault();
-        event.returnValue = 'are you sure'; // This shows the confirmation dialog
+        event.returnValue = 'Are you sure?'; // Show the confirmation dialog
       }
     };
 
@@ -28,7 +29,6 @@ const ScreenRecorderProvider = ({ children }) => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     }
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
@@ -39,9 +39,7 @@ const ScreenRecorderProvider = ({ children }) => {
 
     try {
       const displayStream = await navigator.mediaDevices.getDisplayMedia({
-        video: {
-          cursor: 'always',
-        },
+        video: { cursor: 'always' },
         audio: true,
       });
 
@@ -62,17 +60,7 @@ const ScreenRecorderProvider = ({ children }) => {
       };
 
       mediaRecorder.current.onstop = () => {
-        const blob = new Blob(recordedChunks.current, {
-          type: 'video/webm',
-        });
-        const url = URL.createObjectURL(blob);
-        setVideoUrl(url);
-        recordedChunks.current = [];
-      };
-      mediaRecorder.current.onstop = () => {
-        const blob = new Blob(recordedChunks.current, {
-          type: 'video/webm',
-        });
+        const blob = new Blob(recordedChunks.current, { type: 'video/webm' });
         const url = URL.createObjectURL(blob);
         setVideoUrl(url);
         recordedChunks.current = [];
@@ -80,6 +68,7 @@ const ScreenRecorderProvider = ({ children }) => {
 
       mediaRecorder.current.start();
       setRecording(true);
+      setPaused(false);
     } catch (err) {
       console.error('Error accessing display media: ', err);
     }
@@ -89,6 +78,19 @@ const ScreenRecorderProvider = ({ children }) => {
     if (mediaRecorder.current) {
       mediaRecorder.current.stop();
       setRecording(false);
+      setPaused(false);
+    }
+  };
+
+  const togglePauseResumeRecording = () => {
+    if (mediaRecorder.current && recording) {
+      if (paused) {
+        mediaRecorder.current.resume();
+        setPaused(false);
+      } else {
+        mediaRecorder.current.pause();
+        setPaused(true);
+      }
     }
   };
 
@@ -96,9 +98,11 @@ const ScreenRecorderProvider = ({ children }) => {
     <ScreenRecorderContext.Provider
       value={{
         recording,
+        paused,
         videoUrl,
         startRecording,
         stopRecording,
+        togglePauseResumeRecording,
       }}
     >
       {children}
