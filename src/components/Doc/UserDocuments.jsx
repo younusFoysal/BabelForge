@@ -6,36 +6,20 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
 import { Button } from '../ui/button';
-import { MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal, Plus } from 'lucide-react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import docImage from '../../../public/Images/doc.png'
+import createDoc from '../../../public/Images/createDoc.png'
+import Image from 'next/image';
 
 const UserDocuments = () => {
     const { user } = useUser();
     const email = user?.primaryEmailAddress?.emailAddress;
     const axiosCommon = useAxiosCommon();
-    // const [documents, setDocuments] = useState([]);
     const router = useRouter();
 
     console.log();
     
-
-    // useEffect(() => {
-    //     const fetchDocuments = async () => {
-    //         if (!email) return;
-
-    //         try {
-    //             const response = await axiosCommon.get(`/document/document/${email}`);
-    //             setDocuments(response.data);
-    //         } catch (err) {
-    //             setError("Failed to fetch documents");
-    //             console.error(err);
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    // //     };
-
-    //     fetchDocuments();
-    // }, [axiosCommon, email]);
 
     const {data: documents, isLoading, isError, refetch} = useQuery({
         queryKey: ['documents', email],
@@ -93,14 +77,17 @@ const UserDocuments = () => {
     return (
         <div className='mx-auto max-w-[500px'>
             <h1 className='text-2xl'>Start a new documents</h1>
-            <button onClick={handleCreate}>Create New Doc</button>
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-8'>
+           <div className='grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-6 lg:gap-8'>
+           <button className='h-[300px] rounded-md flex justify-center items-center bg-gray-200 dark:bg-gray-600/70' onClick={handleCreate}> <Image height={180} width={180} src={createDoc} alt="doc" /></button>
+           </div>
+           <h3 className='mt-8 mb-2'>Your recent work</h3>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-6 lg:gap-8'>
                 {documents.map((doc, idx) => (
                      <Link key={doc._id} href={`/dashboard/doc/${doc?._id}`}>
-                    <div onClick={(e) => e.stopPropagation()} className='p-4 h-[500px] bg-gray-200 my-2 hover:cursor-pointer max-w-'>
+                    <div onClick={(e) => e.stopPropagation()} className='p-4 h-[300px] bg-gray-200 my-2 rounded-md dark:bg-gray-700/60 hover:cursor-pointer max-w-'>
                        
-                            <div className='h-5/6 bg-white mb-8 p-5 '>
-                            {getDocumentContent(doc?.content)}
+                            <div className='h-5/6 bg-white mb-8 p-5 flex justify-center items-center'>
+                            <Image height={160} width={160} src={docImage} alt="doc" />
                             </div>     {/*  In this div i want to show the content of the document */}
                                <div className='flex items-center justify-between'>
                             <span>
