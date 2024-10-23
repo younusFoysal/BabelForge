@@ -13,7 +13,7 @@ const AwesomeHome = () => {
 
   return (
     <div className="mb-14">
-      <section className="relative pb-0  min-h-screen flex items-center pt-32 lg:pt-52  lg:py-36 overflow-hidden  bg-slate-900 w-full">
+      <section className="relative pb-0  min-h-screen flex items-center pt-32 lg:pt-52  lg:py-36 overflow-hidden bg-slate-900 w-full">
         <div className={`absolute inset-0 bg-[url('https://i.ibb.co/3hyT6Nw/overlay.png')] bg-repeat  opacity-60 `}></div>
 
         <div className="container mx-auto relative z-1">
