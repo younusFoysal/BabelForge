@@ -7,12 +7,14 @@ import TableView from '@/components/Dashboards/Backlog/TableView';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { toast } from '@/hooks/use-toast';
-import TaskPage from './TaskPage';
-import Alert from '@/components/shared/Alert';
+import { useUser } from '@clerk/nextjs';
 
 const Page = () => {
   const axiosCommon = useAxiosCommon();
   const [loading, setLoading] = useState(false);
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
+  const useremail = uemail;
 
   // Post task data
   const { mutateAsync: addTaskMutation } = useMutation({
@@ -41,6 +43,10 @@ const Page = () => {
     setLoading(true);
     try {
       await addTaskMutation(newTask);
+      toast({
+        description: 'Task Added',
+        variant: 'success',
+      });
     } catch (err) {
       toast({
         description: err.message,
@@ -58,7 +64,7 @@ const Page = () => {
   } = useQuery({
     queryKey: ['my-works'],
     queryFn: async () => {
-      const { data } = await axiosCommon.get(`/task/tasks`);
+      const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${useremail}`);
       return data;
     },
   });
@@ -117,7 +123,6 @@ const Page = () => {
 
   // Form handler for updating a task
   const handleEditTask = async updatedTask => {
-    console.log(updatedTask);
     try {
       await updateTaskMutation(updatedTask);
     } catch (err) {
@@ -129,9 +134,8 @@ const Page = () => {
 
   return (
     <div>
-      {/* <AddTask handleAddTask={handleAddTask} /> */}
+      <AddTask handleAddTask={handleAddTask} />
       <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
-      <TaskPage handleDelete={handleDelete} task={tasks} />
     </div>
   );
 };
