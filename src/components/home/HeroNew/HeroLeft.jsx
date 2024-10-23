@@ -6,10 +6,10 @@ const HeroLeft = () => {
     <div className="relative xl:pb-0">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center lg:text-left">
-          <h1 className="xl:max-w-[700px] text-white lg:max-w-[600px] text-3xl text-center lg:text-left font-light leading-snug  sm:text-5xl sm:leading-snug lg:text-5xl lg:leading-snug">
+          <h1 className="xl:max-w-[700px] dark:text-white lg:max-w-[600px] text-3xl text-center lg:text-left font-light leading-snug  sm:text-5xl sm:leading-snug lg:text-5xl lg:leading-snug">
             Increase <br className="sm:hidden" />
             Project Workflow with <br />
-            <span className="relative text-white inline-flex justify-center md:justify-start whitespace-nowrap font-bold">
+            <span className="relative dark:text-white inline-flex justify-center md:justify-start whitespace-nowrap font-bold">
               <svg
                 className="absolute -bottom-8  w-2/3 text-blue-600 sm:block"
                 viewBox="0 0 490 42"
@@ -28,7 +28,7 @@ const HeroLeft = () => {
               Team Collaboration
             </span>
           </h1>
-          <p className="mt-10 max-w-2xl text-base text-white leading-7 ">
+          <p className="mt-10 max-w-2xl text-base dark:text-white leading-7 ">
             Everything under One Roof. <br /> Build your project with Task Management, and Collaboration for a Successful Project.
           </p>
 

@@ -67,7 +67,7 @@ export function MarqueeDemoVertical() {
           <p className="text-xl dark:text-white text-gray-800 md:text-center md:text-2xl">Here&apos;s what others have to say about us.</p>
         </div>
       </div>
-      <div className="relative shadow-[inset_0_0_60px_30px_rgba(255,255,255,0.37)] border-[#ffffff5a] rounded-xl border  mx-auto container grid md:h-[500px] w-full grid-cols-1 md:grid-cols-3  overflow-hidden ">
+      <div className="relative shadow-[inset_0_0_80px_50px_rgba(255,255,255,2555)] dark:shadow-[inset_0_0_60px_30px_rgba(255,255,255,0.37)] border-[#ffffff5a] rounded-xl border  mx-auto container grid md:h-[500px] w-full grid-cols-1 md:grid-cols-3  overflow-hidden ">
         {/* For mobile */}
         <div className="space-y-4 md:hidden">
           {reviews?.slice(0, 4)?.map(review => (
