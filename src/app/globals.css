@@ -296,7 +296,7 @@ body {
 .editor-container.ql-container.ql-snow {
   border: none;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .editor-container .ql-toolbar.ql-snow {

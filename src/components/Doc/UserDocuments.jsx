@@ -44,9 +44,7 @@ const UserDocuments = () => {
             return response.data;
         }
     })
-        console.log(documents);
         
-        if (isError) return <div>{error}</div>;
 
         // create new document
     const handleCreate = async () => {

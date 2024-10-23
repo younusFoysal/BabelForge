@@ -5,6 +5,7 @@ import 'quill/dist/quill.snow.css';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useUser } from '@clerk/nextjs';
 import { useMutation } from '@tanstack/react-query';
+import { ShareLink } from '@/components/Doc/ShareLink';
 
 const TOOLBAR_OPTIONS = [
     [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -23,6 +24,7 @@ const DocumentPage = ({ params }) => {
     const id = params?.id; 
     const [isChange, setIsChange] = useState(null);
     const [documentContent, setDocumentContent] = useState(null);
+    const [documentTitle, setDocumentTitle] = useState(null);
     const [loading, setLoading] = useState(true);
     const [buttonLoading, setButtonLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -42,6 +44,7 @@ const DocumentPage = ({ params }) => {
                 const fetchedDoc = response.data;
 
                 setDocumentContent(fetchedDoc.content.content);
+                setDocumentTitle(fetchedDoc.content.title);
                 setIsEditable(fetchedDoc?.content?.email === email); 
             } catch (err) {
                 setError('Failed to fetch document');
@@ -100,6 +103,9 @@ const DocumentPage = ({ params }) => {
         return () => clearTimeout(timeout); 
     }, [isChange, saveDocument]);
 
+    console.log(documentTitle);
+    
+
     // Share button
     const handleShare = () => {
         const currentUrl = window.location.href;
@@ -147,7 +153,7 @@ const DocumentPage = ({ params }) => {
     return (
         <div>
             <div className='flex justify-evenly my-5'>
-                <h1 className='font-bold text-2xl'>{documentContent?.title ? documentContent?.title : "Untitled"}</h1>
+                <h1 className='font-bold text-2xl'>{documentTitle ? documentTitle : "Untitled"}</h1>
             {isEditable && (
                 <div className="flex justify-end">
                     <button className="bg-blue-400 px-3 rounded-xl text-white" onClick={saveDocument}>
@@ -155,9 +161,7 @@ const DocumentPage = ({ params }) => {
                     </button>
                 </div>
             )}
-            <button className="bg-green-400 px-3 rounded-xl text-white" onClick={handleShare}>
-                    Share
-                </button>
+            <ShareLink />
             </div>
             <div className="editor-container" ref={wrapperRef}></div>
         </div>
