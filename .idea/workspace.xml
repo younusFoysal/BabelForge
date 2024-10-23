@@ -6,12 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Dark Redesign &amp; Responsive done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/Review.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/Review.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Pricing/Faq.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pricing/Faq.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,15 +132,7 @@
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
-      <workItem from="1729684647631" duration="10654000" />
-    </task>
-    <task id="LOCAL-00013" summary="Nav Logo Added">
-      <option name="closed" value="true" />
-      <created>1726771880583</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1726771880583</updated>
+      <workItem from="1729684647631" duration="13469000" />
     </task>
     <task id="LOCAL-00014" summary="Title &amp; Fav Icon added">
       <option name="closed" value="true" />
@@ -529,7 +518,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729692429307</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729699311982</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1729699311982</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
