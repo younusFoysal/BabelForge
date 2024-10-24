@@ -344,7 +344,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                           <MdAssignmentTurnedIn className="mr-2 text-green-600 text-[20px]" /> Assigned to :
                         </span>
                         <span className="flex text-[14px] flex-col gap-2">
-                          {formData?.tassignTo.map((item, idx) => {
+                          {formData?.tassignTo?.map((item, idx) => {
                             return (
                               <span key={idx}>
                                 {idx + 1} . {item}
