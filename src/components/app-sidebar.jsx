@@ -1,4 +1,4 @@
-import * as React from "react";
+"use client";
 import {
   BookOpen,
   CircleHelp,
@@ -24,18 +24,29 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useUser } from "@clerk/nextjs";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosCommon from "@/lib/axiosCommon";
+import { useEffect, useState } from "react";
 
 export function AppSidebar({ ...props }) {
-  const { user } = useUser();
-
+  const { user, isLoaded } = useUser();
+  const [Packages, setPackages] = useState("");
   const uemail = user?.primaryEmailAddress?.emailAddress;
   // foysal@gmail.com
-  const admin = [
-    "babelforgeltd@gmail.com",
-    "babelforgeltdfgd@gmail.com",
-    "mrdevware@gmail.com",
-  ];
-  const isAdmin = admin.includes(uemail);
+  const admin = ["babelforgeltd@gmail.com", "babelforgeltdfgd@gmail.com"];
+  const axiosCommon = useAxiosCommon();
+
+  useEffect(() => {
+    const userpay = async () => {
+      try {
+        const { data } = await axiosCommon.get(`/pay/singlePay/${uemail}`);
+        setPackages(data[0]?.pakage);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    userpay();
+  }, [isLoaded, user]);
 
   const data = {
     user: {
@@ -127,23 +138,6 @@ export function AppSidebar({ ...props }) {
         ],
       },
     ],
-    projects: [
-      {
-        name: "Design Engineering",
-        url: "#",
-        icon: Frame,
-      },
-      {
-        name: "Sales & Marketing",
-        url: "#",
-        icon: PieChart,
-      },
-      {
-        name: "Help",
-        url: "#",
-        icon: CircleHelp,
-      },
-    ],
   };
 
   const AdminData = {
@@ -233,6 +227,43 @@ export function AppSidebar({ ...props }) {
     ],
   };
 
+  const filteredNavMain = data.navMain
+    .map((mainItem) => {
+      if (
+        Packages !== "Standard" &&
+        Packages !== "Premium" &&
+        mainItem.title === "Chat"
+      ) {
+        return null;
+      }
+
+      if (mainItem.title === "Chat") {
+        mainItem.items = mainItem.items.filter(
+          (subItem) =>
+            Packages === "Standard" ||
+            Packages === "Premium" ||
+            subItem.title !== "Meeting"
+        );
+      }
+
+      if (mainItem.title === "Tools") {
+        mainItem.items = mainItem.items.filter(
+          (subItem) =>
+            Packages === "Standard" ||
+            Packages === "Premium" ||
+            (subItem.title !== "Canvas" && subItem.title !== "Babel AI")
+        );
+      }
+
+      return mainItem;
+    })
+    .filter(Boolean);
+
+  const isAdmin = admin.includes(uemail);
+
+  console.log(filteredNavMain);
+  console.log(Packages);
+
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -242,7 +273,7 @@ export function AppSidebar({ ...props }) {
         {isAdmin ? (
           <NavMain items={AdminData.navMain} />
         ) : (
-          <NavMain items={data.navMain} />
+          <NavMain items={filteredNavMain} />
         )}
         {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
