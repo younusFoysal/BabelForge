@@ -48,7 +48,7 @@ export default function AddTask({ handleAddTask }) {
         { user_ID: 'comment1', datetime: '10/12/24' },
         { user_ID: 'comment2', datetime: '11/12/24' },
       ],
-      tassignTo: [username],
+      tassignTo: [useremail],
       tproces: 'todo',
       author: useremail,
       teamId: 'team_ID',
