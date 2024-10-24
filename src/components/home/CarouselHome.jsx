@@ -183,7 +183,7 @@ const CarouselHome = () => {
   };
   return (
     <div className=" relative w-screen mx-auto mb-[120px] mt-[20px] pt-8">
-      <h2 className="text-center mb-10 text-[24px]  font-semibold  text-white">What would you like to manage?</h2>
+      <h2 className="text-center mb-10 text-[24px]  font-semibold  text-gray-800 dark:text-white">What would you like to manage?</h2>
       <Slider {...settings}>
         {carouselItems?.map(item => (
           <div className="px-2" key={item.title}>
