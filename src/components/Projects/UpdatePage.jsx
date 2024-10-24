@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '../ui/textarea';
@@ -22,17 +22,23 @@ const UpdateProjectPage = ({ id }) => {
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState(''); // Use state to store selected category
 
+  // useEffect(() => {
+  //   // Trigger the reload when the component is mounted (page is entered)
+  //   window.location.reload();
+  // }, []);
+
   const {
     data: person = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['updateproject'],
+    queryKey: ['updateproject', id],
     queryFn: async () => {
       const data = await axiosCommon.get(`/project/projects/single/${id}`);
       return data;
     },
   });
+
 
   const {
     register,
@@ -61,14 +67,16 @@ const UpdateProjectPage = ({ id }) => {
     },
   });
 
+  if (isLoading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
+
   const onSubmit = data => {
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
 
-  if (isLoading) {
-    return <LoadingSpinner></LoadingSpinner>;
-  }
+
 
   const { pcategory, pdes, pname, pimg, purl } = person.data;
 
