@@ -94,7 +94,7 @@ const Notes = () => {
     const { data = [], isLoading, refetch } = useQuery({
         queryKey: ['my-notes'],
         queryFn: async () => {
-            const { data } = await axiosCommon.get(`/note/notes`);
+            const { data } = await axiosCommon.get(`/note/notes/my-notes/${uemail}`);
             setNote(data)
             setFilteredNotes(data)
             return data;
@@ -181,7 +181,7 @@ const Notes = () => {
 
 
     return (
-        <div className="pl-20 pt-2">
+        <div className=" pt-2">
 
             <div
                 className=" flex flex-col shadow-lg w-full items-center pt-4 gap-4 rounded-xl p-4 bg-gradient-to-b from-blue-600 to-bgColor hover:shadow-md hover:shadow-sky-200 duration-500">
@@ -213,7 +213,7 @@ const Notes = () => {
 
 
             <div
-                className="grid lg:grid-cols-4 md:grid-cols-3 md:mt-4 sm:grid-cols-2 xs:grid-col-1 overflow-auto w-full gap-4 sm:mt-3 p-2 grid-cols-2">
+                className="grid lg:grid-cols-4 md:grid-cols-3 md:mt-4 sm:grid-cols-2 xs:grid-col-1 overflow-auto w-full gap-4 sm:mt-3 p-2 grid-cols-1">
                 {filteredNotes?.length === 0 ? (
                     <p className="text-white">No Notes Found!</p>
                 ) : (filteredNotes?.map((note) => (
