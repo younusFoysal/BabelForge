@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '../ui/textarea';
@@ -22,17 +22,23 @@ const UpdateProjectPage = ({ id }) => {
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState(''); // Use state to store selected category
 
+  // useEffect(() => {
+  //   // Trigger the reload when the component is mounted (page is entered)
+  //   window.location.reload();
+  // }, []);
+
   const {
     data: person = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['updateproject'],
+    queryKey: ['updateproject', id],
     queryFn: async () => {
       const data = await axiosCommon.get(`/project/projects/single/${id}`);
       return data;
     },
   });
+
 
   const {
     register,
@@ -50,25 +56,27 @@ const UpdateProjectPage = ({ id }) => {
       toast({
         description: 'Project Updated Successfully!',
         variant: 'success',
-      })
+      });
       router.push('/dashboard/projects');
     },
     onError: () => {
       toast({
         description: 'Nothing Changed.',
         variant: 'error',
-      })
+      });
     },
   });
+
+  if (isLoading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
 
   const onSubmit = data => {
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
 
-  if (isLoading) {
-    return <LoadingSpinner></LoadingSpinner>;
-  }
+
 
   const { pcategory, pdes, pname, pimg, purl } = person.data;
 
@@ -156,9 +164,9 @@ const UpdateProjectPage = ({ id }) => {
               {errors.pdes?.type === 'minLength' && <p className="text-red-600 mt-1">Description too short!</p>}
             </div>
 
-            <div className="flex items-center gap-3 justify-end">
+            <div className="flex  items-center gap-3 justify-end">
               <button
-                className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+                className="px-6 py-3 mt-4 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
                 type="submit"
               >
                 Update

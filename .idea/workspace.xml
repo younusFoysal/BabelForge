@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Payment Success Dark Redesign &amp; Responsive done">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="getstart button fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,14 +131,6 @@
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
       <workItem from="1729684647631" duration="29920000" />
-    </task>
-    <task id="LOCAL-00018" summary="Price card Updated">
-      <option name="closed" value="true" />
-      <created>1726779338267</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1726779338267</updated>
     </task>
     <task id="LOCAL-00019" summary="React To NextJS">
       <option name="closed" value="true" />
@@ -528,7 +516,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729717410020</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="getstart button fix">
+      <option name="closed" value="true" />
+      <created>1729793553893</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1729793553894</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -547,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Deploy" />
     <MESSAGE value="loading added" />
     <MESSAGE value="canvas added" />
     <MESSAGE value="chat fix" />
@@ -572,7 +567,8 @@
     <MESSAGE value="Home Dark Redesign &amp; Responsive done" />
     <MESSAGE value="Payment Dark Redesign &amp; Responsive done" />
     <MESSAGE value="Payment Success Dark Redesign &amp; Responsive done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment Success Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="getstart button fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="getstart button fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -580,7 +576,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx</url>
           <line>1</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

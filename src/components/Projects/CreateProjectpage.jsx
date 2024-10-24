@@ -29,10 +29,9 @@ const CreateProjectpage = () => {
   const [submitted, setSubmitted] = useState(false);
   const { resolvedTheme } = useTheme();
 
-
   useEffect(() => {
     setEmails([uemail]);
-  }, [uemail])
+  }, [uemail]);
 
   const {
     register,
@@ -63,7 +62,7 @@ const CreateProjectpage = () => {
       toast({
         description: 'Project Created Successfully!',
         variant: 'success',
-      })
+      });
       reset();
       setEmails([uemail]); // Reset emails to include the user's email only
       router.push('/dashboard/projects');
@@ -72,25 +71,24 @@ const CreateProjectpage = () => {
       toast({
         description: 'Something went wrong',
         variant: 'error',
-      })
+      });
     },
   });
   const handleCreate = () => {
     setSubmitted(true); // Set submitted state to true
     // if (!selectedCategory) return;
-  }
-  const onSubmit = (data) => {
+  };
+  const onSubmit = data => {
     if (!selectedCategory) return;
 
     data.pmanager = uemail;
 
     if (!emails.length) {
       data.pallmembers = [uemail];
-    }
-    else {
+    } else {
       data.pallmembers = emails;
     }
-    data.pedate = "";
+    data.pedate = '';
     data.psdate = currentDate;
     data.pmname = user?.fullName;
     data.favorite = false;
@@ -101,7 +99,7 @@ const CreateProjectpage = () => {
   return (
     <div className="flex justify-between items-center flex-col">
       <h2 className="text-4xl text-[#333] mb-4 dark:text-white">Create projects</h2>
-      <div className="w-[60%]">
+      <div className="md:w-[80%] max-w-[700px] w-full">
         <div className="">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-[12px]">
             <div className="mb-1">
@@ -117,7 +115,7 @@ const CreateProjectpage = () => {
 
             <div className="mb-1">
               <Label htmlFor="purl" className="text-left mb-2 block font-semibold">
-                Project Url <span className="text-red-600">*</span>
+                Project URL <span className="text-red-600">*</span>
               </Label>
               <Input type="text" {...register('purl', { required: true })} placeholder="Please enter your project URL" id="purl" />
               {errors.purl?.type === 'required' && <p className="text-red-600 mt-1">Project URL required</p>}
@@ -125,10 +123,10 @@ const CreateProjectpage = () => {
 
             <div className="mb-1">
               <Label htmlFor="pimg" className="text-left mb-2 block font-semibold">
-                Project Image Url <span className="text-red-600">*</span>
+                Project Image URL <span className="text-red-600">*</span>
               </Label>
               <Input type="text" {...register('pimg', { required: true })} placeholder="Please enter your project image URL" id="pimg" />
-              {errors.pimg?.type === 'required' && <p className="text-red-600 mt-1">Project image URL required</p>}
+              {errors.pimg?.type === 'required' && <p className="text-red-600 mt-1">Project Image URL required</p>}
             </div>
 
             <div className="mb-1">
@@ -172,7 +170,11 @@ const CreateProjectpage = () => {
             </div>
 
             <div className="flex items-center gap-3 justify-end">
-              <button onClick={handleCreate} className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md" type="submit">
+              <button
+                onClick={handleCreate}
+                className="px-7 py-2 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
+                type="submit"
+              >
                 Create
               </button>
             </div>

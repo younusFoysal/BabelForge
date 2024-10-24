@@ -10,7 +10,17 @@ import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import Alert from '@/components/shared/Alert';
 import usePerson from '@/hooks/usePerson';
-import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useUser } from '@clerk/nextjs';
@@ -25,9 +35,6 @@ const ProjectDetails = () => {
   const [currentDate, setCurrentDate] = useState('');
   const [memberEmail, setMemberEmail] = useState(null);
   const [person, isUserLoading] = usePerson(memberEmail);
-
-
-
 
   const {
     data: project = [],
@@ -67,7 +74,6 @@ const ProjectDetails = () => {
   });
   // console.log("project members: ", projectMembers.data);
 
-
   // useEffect to set the first member email when pallmembers changes
   // useEffect(() => {
   //   if (project?.data?.pallmembers?.length > 0) {
@@ -77,7 +83,6 @@ const ProjectDetails = () => {
 
   // const [person] = usePerson(memberEmail);
   // console.log(person.data);
-
 
   const handleAddMember = e => {
     e.preventDefault();
@@ -95,15 +100,15 @@ const ProjectDetails = () => {
     //     variant: 'error',
     //   });
     // }
-
-  }
+  };
 
   useEffect(() => {
     if (memberEmail) {
       // Check if user is loading to avoid checking before data is available
       if (!isUserLoading) {
         if (person.data) {
-          axiosCommon.patch(`project/projects/update/${id}`, { addMember: memberEmail })
+          axiosCommon
+            .patch(`project/projects/update/${id}`, { addMember: memberEmail })
             .then(res => {
               if (res.data.modifiedCount) {
                 memberRefetch();
@@ -111,8 +116,7 @@ const ProjectDetails = () => {
                   description: 'Member Added',
                   variant: 'success',
                 });
-              }
-              else {
+              } else {
                 toast({
                   description: 'Member Already Exists.',
                   variant: 'success',
@@ -122,13 +126,12 @@ const ProjectDetails = () => {
             .catch(error => {
               if (error.status == 400) {
                 toast({
-                  description: "Member Already Exists.",
+                  description: 'Member Already Exists.',
                   variant: 'error',
                 });
               }
             });
-        }
-        else {
+        } else {
           toast({
             description: 'Member Not Found.',
             variant: 'error',
@@ -138,8 +141,6 @@ const ProjectDetails = () => {
     }
   }, [person, isUserLoading, memberEmail, axiosCommon, id, memberRefetch]);
 
-
-
   if (isLoading || teamsOfProjectLoading || isMembersLoading) {
     return <LoadingSpinner />;
   }
@@ -148,24 +149,21 @@ const ProjectDetails = () => {
   // pallmembers.map(member => SetMemberEmail(member));
 
   const handleEndProject = id => {
-    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
-      .then(res => {
-        if (res.data.modifiedCount) {
-          refetch();
-          toast({
-            description: 'Project Ended.',
-            variant: 'success',
-          });
-        }
-      });
+    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate }).then(res => {
+      if (res.data.modifiedCount) {
+        refetch();
+        toast({
+          description: 'Project Ended.',
+          variant: 'success',
+        });
+      }
+    });
   };
 
-
-
   return (
-    <section className="flex flex-col md:flex-row my-5 md:ml-2">
+    <section className="flex flex-row gap-5">
       {/* left- overview */}
-      <div className="w-[90%] mx-auto md:mx-0 md:w-1/4 border rounded-lg bg-gray-100 hover:shadow-lg duration-300 h-fit dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
+      <div className="lg:w-[50%] w-full  mx-auto md:mx-0  border rounded-lg bg-gray-100 hover:shadow-lg duration-300 h-fit dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
         <div className="h-48 mx-auto rounded-lg p-2">
           <Image src={pimg} width={100} height={100} alt="project_image" className="rounded-lg w-full h-full object-cover" />
         </div>
@@ -193,7 +191,6 @@ const ProjectDetails = () => {
         </div>
         <div className="flex items-center mt-5 px-2 mb-3">
           {pedate ? (
-
             <button
               className="bg-bgColor dark:hover:shadow-bgColor/30 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
               disabled
@@ -201,12 +198,14 @@ const ProjectDetails = () => {
               End Project
             </button>
           ) : (
-
-            <Alert title='Are you absolutely sure?'
-              description='This action cannot be undone and specifies that the project has ended.' onContinue={() => handleEndProject(_id)}>
+            <Alert
+              title="Are you absolutely sure?"
+              description="This action cannot be undone and specifies that the project has ended."
+              onContinue={() => handleEndProject(_id)}
+            >
               {openDialog => (
                 <button
-                  className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+                  className="px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
                   onClick={e => {
                     e.stopPropagation();
                     openDialog();
@@ -227,7 +226,7 @@ const ProjectDetails = () => {
       </div>
 
       {/* right- details */}
-      <div className="w-full md:w-3/4 px-7 my-5 md:my-0">
+      <div className="w-full col-span-6 px-7 my-5 md:my-0">
         {/* test */}
 
         <div className="flex justify-center items-center">
@@ -284,65 +283,66 @@ const ProjectDetails = () => {
 
         {/* Members */}
         <div className="mt-7">
-          <div className='flex items-end justify-between border-b pb-2'>
+          <div className="flex items-end justify-between border-b pb-2">
             <h3 className="font-bold text-xl">Members</h3>
 
             <Dialog>
               <DialogTrigger asChild>
-                {
-                  uemail === pmanager && <button className='bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-3 py-1 rounded-md'>Add Member</button>
-                }
-
+                {uemail === pmanager && (
+                  <button className="px-6 py-3 mt-4 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white">
+                    Add Member
+                  </button>
+                )}
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle>Add Member</DialogTitle>
-                  <DialogDescription>
-                    Add a member in the project by Email.
-                  </DialogDescription>
+                  <DialogDescription>Add a member in the project by Email.</DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                   <form onSubmit={handleAddMember} className="flex flex-col gap-2">
+                    <input id="name" name="email" placeholder="Email" required className="border p-2 rounded-lg" />
                     <input
-                      id="name"
-                      name='email'
-                      placeholder='email'
-                      required
-                      className="border p-2 rounded-lg"
+                      className="px-6 py-3 mt-4   capitalize bg-gradient-to-r  from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-100 cursor-pointer flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
+                      type="submit"
+                      value="Add Member"
                     />
-                    <input className='bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-3 py-1 rounded-md' type="submit" value="Add Member" />
                   </form>
                 </div>
               </DialogContent>
             </Dialog>
           </div>
 
-
           {pallmembers.length === 0 && <p className="font-semibold mt-3">No Teams Added Yet.</p>}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
-            {projectMembers?.data?.slice().reverse().map((member, idx) => (
-              <div
-                key={idx}
-                className="grid grid-cols-6 gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20"
-              >
-                <div className="col-span-2 p-2 rounded-full overflow-hidden flex items-center">
-                  <Image
-                    src={member?.image_url}
-                    width={100}
-                    height={100}
-                    alt="project_image"
-                    className="rounded-full w-16 h-16 object-cover"
-                  />
+            {projectMembers?.data
+              ?.slice()
+              .reverse()
+              .map((member, idx) => (
+                <div
+                  key={idx}
+                  className="grid grid-cols-6 gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20"
+                >
+                  <div className="col-span-2 p-2 rounded-full overflow-hidden flex items-center">
+                    <Image
+                      src={member?.image_url}
+                      width={100}
+                      height={100}
+                      alt="project_image"
+                      className="rounded-full w-16 h-16 object-cover"
+                    />
+                  </div>
+                  <div className="-space-y-1 col-span-4">
+                    <p className="font-bold">{member?.firstName + ' ' + member?.lastName}</p>
+                    <p className="text-sm text-gray-700 dark:text-white/80">{member?.email}</p>
+                    {pmanager === member?.email ? (
+                      <p className="text-sm text-gray-700 dark:text-white/80">Manager</p>
+                    ) : (
+                      <p className="text-sm text-gray-700 dark:text-white/80">Member</p>
+                    )}
+                  </div>
                 </div>
-                <div className="-space-y-1 col-span-4">
-                  <p className="font-bold">{member?.firstName + " " + member?.lastName}</p>
-                  <p className="text-sm text-gray-700 dark:text-white/80">{member?.email}</p>
-                  {
-                    pmanager === member?.email ? <p className="text-sm text-gray-700 dark:text-white/80">Manager</p> : <p className="text-sm text-gray-700 dark:text-white/80">Member</p>
-                  }
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
