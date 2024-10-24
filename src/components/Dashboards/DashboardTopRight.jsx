@@ -1,15 +1,23 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { ModeToggle } from '../Theme/ModeToggle';
-import { UserButton } from '@clerk/nextjs';
-import { useScreenRecorder } from '@/providers/ScreenRecorderProvider';
-import { toast } from '@/hooks/use-toast';
-import { CgRecord } from 'react-icons/cg';
-import { useRouter } from 'next/navigation';
-import { FaPause, FaPlay } from 'react-icons/fa6';
+"use client";
+import React, { useEffect, useState } from "react";
+import { ModeToggle } from "../Theme/ModeToggle";
+import { UserButton } from "@clerk/nextjs";
+import { useScreenRecorder } from "@/providers/ScreenRecorderProvider";
+import { toast } from "@/hooks/use-toast";
+import { CgRecord } from "react-icons/cg";
+import { useRouter } from "next/navigation";
+import { FaPause, FaPlay } from "react-icons/fa6";
+import { BadgeCheck } from "lucide-react";
 
 const DashboardTopRight = () => {
-  const { recording, paused, togglePauseResumeRecording, videoUrl, startRecording, stopRecording } = useScreenRecorder();
+  const {
+    recording,
+    paused,
+    togglePauseResumeRecording,
+    videoUrl,
+    startRecording,
+    stopRecording,
+  } = useScreenRecorder();
   const router = useRouter();
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -18,7 +26,7 @@ const DashboardTopRight = () => {
   useEffect(() => {
     let intervalId;
     if (isRunning) {
-      intervalId = setInterval(() => setTime(prevTime => prevTime + 1), 10);
+      intervalId = setInterval(() => setTime((prevTime) => prevTime + 1), 10);
     }
     return () => clearInterval(intervalId);
   }, [isRunning]);
@@ -33,7 +41,7 @@ const DashboardTopRight = () => {
     setIsRunning(false);
     setTime(0);
   };
-  const formatTime = unit => String(unit).padStart(2, '0');
+  const formatTime = (unit) => String(unit).padStart(2, "0");
 
   useEffect(() => {
     if (recording) {
@@ -61,9 +69,9 @@ const DashboardTopRight = () => {
       stop();
       reset();
       toast({
-        description: 'Recoding Ended',
+        description: "Recoding Ended",
       });
-      router.push('/dashboard/ScreenRecorder');
+      router.push("/dashboard/ScreenRecorder");
     }
   };
 
@@ -72,22 +80,46 @@ const DashboardTopRight = () => {
       <button
         onClick={handleRec}
         className={` ${
-          !recording ? 'hover:bg-[#960ece] hover:text-white' : ' bg-red-600 text-white'
+          !recording
+            ? "hover:bg-[#960ece] hover:text-white"
+            : " bg-red-600 text-white"
         } h-full flex duration-200 rounded-md py-[4px] px-2 border  items-center gap-1`}
       >
-        <CgRecord className={`${recording && ' animate-pulse duration-1000 text-white'}  text-[18px]`} />{' '}
+        <CgRecord
+          className={`${
+            recording && " animate-pulse duration-1000 text-white"
+          }  text-[18px]`}
+        />{" "}
         <span className="text-[12px]">
-          {!recording ? 'Start Record' : `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(seconds)}:${formatTime(milliseconds)}`}
+          {!recording
+            ? "Start Record"
+            : `${formatTime(hours)}:${formatTime(minutes)}:${formatTime(
+                seconds
+              )}:${formatTime(milliseconds)}`}
         </span>
       </button>
       {recording && (
         <button onClick={togglePauseResumeRecording} className="duration-500">
-          {!paused ? <FaPause className=" duration-500 text-[20px]" /> : <FaPlay className="duration-500 text-[20px]" />}
+          {!paused ? (
+            <FaPause className=" duration-500 text-[20px]" />
+          ) : (
+            <FaPlay className="duration-500 text-[20px]" />
+          )}
         </button>
       )}
       <ModeToggle />
 
-      <UserButton />
+      <UserButton>
+        <UserButton.MenuItems>
+          <UserButton.Link
+            label="Profile"
+            href="/dashboard/profile"
+            labelIcon={<BadgeCheck size={15} />}
+          />
+          <UserButton.Action label="manageAccount" />
+          <UserButton.Action label="signOut" />
+        </UserButton.MenuItems>
+      </UserButton>
     </div>
   );
 };

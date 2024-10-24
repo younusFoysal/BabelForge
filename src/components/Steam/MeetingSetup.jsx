@@ -42,7 +42,7 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
     <div className="">
       <SteamNavber />
       <div className="w-full h-screen flex justify-center items-center gap-4 flex-col ">
-        <h1 className=" text-white font-bold text-2xl capitalize">
+        <h1 className=" dark:text-white/80 font-bold text-2xl capitalize">
           meeting setup
         </h1>
         <VideoPreview />
@@ -52,7 +52,10 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
             checked={mictoggleon}
             onChange={(e) => setmictoogleon(e.target.checked)}
           />
-          <span className="pl-2 text-white"> Mic and camera disabled</span>
+          <span className="pl-2 dark:text-white/80">
+            {" "}
+            Mic and camera disabled
+          </span>
         </div>
         <div className="mt-4 flex gap-4 items-center">
           <MeetingButton

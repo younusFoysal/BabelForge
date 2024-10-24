@@ -7,7 +7,7 @@ const useRole = () => {
   const { user, isLoaded } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
   const { data: role = "", isLoading } = useQuery({
-    queryKey: ["role"],
+    queryKey: ["role", user, isLoaded],
     enabled: !isLoaded || !!user,
     queryFn: async () => {
       const { data } = await axiosCommon(`api/user/${uemail}`);
