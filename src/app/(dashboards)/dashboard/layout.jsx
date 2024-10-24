@@ -46,7 +46,7 @@ const layout = ({ children }) => {
             </div>
           )}
           <div
-            className={!pathName?.includes("/dashboard/chat") && "px-9 py-7"}
+            className={!pathName?.includes("/dashboard/chat") && "px-4 md:px-9 py-7"}
           >
             {children}
           </div>
