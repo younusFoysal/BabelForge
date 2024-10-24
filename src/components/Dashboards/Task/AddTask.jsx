@@ -43,21 +43,21 @@ export default function AddTask({ handleAddTask }) {
   const handleSubmit = async () => {
     const newTask = {
       tname: taskName || 'Untitled Task',
-      tdes: 'This is a description',
-      tcomments: [
-        { user_ID: 'comment1', datetime: '10/12/24' },
-        { user_ID: 'comment2', datetime: '11/12/24' },
-      ],
+      tdes: 'Add Description Here',
+      // tcomments: [
+      //   { user_ID: 'comment1', datetime: '10/12/24' },
+      //   { user_ID: 'comment2', datetime: '11/12/24' },
+      // ],
       tassignTo: [useremail],
       tproces: 'todo',
       author: useremail,
-      teamId: 'team_ID',
+      teamId: 'No Team',
       tdate: currentDate,
       ttime: currentTime,
     };
 
     await handleAddTask(newTask);
-    setTaskName(''); // Clear input after submitting
+    setTaskName('');
   };
 
   return (

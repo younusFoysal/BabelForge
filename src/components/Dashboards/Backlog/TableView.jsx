@@ -18,7 +18,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
 import Alert from '@/components/shared/Alert';
-import { MdAddTask, MdAssignmentInd, MdAssignmentTurnedIn, MdOutlineAssignmentInd } from 'react-icons/md';
+import { MdAccessTimeFilled, MdAddTask, MdAssignmentInd, MdAssignmentTurnedIn, MdOutlineAssignmentInd } from 'react-icons/md';
 import Image from 'next/image';
 import { Panel, PanelResizeHandle, PanelGroup } from 'react-resizable-panels';
 import { Label } from '@/components/ui/label';
@@ -28,6 +28,8 @@ import { useTheme } from 'next-themes';
 import { TagsInput } from 'react-tag-input-component';
 import { FaBookOpen } from 'react-icons/fa6';
 import { RiTeamFill } from 'react-icons/ri';
+import { BsCalendarDateFill } from 'react-icons/bs';
+import { IoCloseSharp } from 'react-icons/io5';
 
 const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
@@ -48,11 +50,6 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   }, [formData]);
 
   let num = 1;
-  // Close detail modal
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedTask(null);
-  };
 
   // Open modal for editing task
   const handleEdit = task => {
@@ -97,7 +94,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
 
   return (
     <div>
-      <div className="w-full overflow-scroll">
+      <div className="w-full overflow-auto">
         {tasks?.length == 0 && (
           <div className="flex flex-col mt-[60px] w-full items-center justify-center">
             <Image className="w-[300px] h-auto" src={noData} alt="No data" height={100} width={100} />
@@ -214,7 +211,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
           >
             <div className="w-7xl relative z-[999] py-0 max-h-[80%]   px-4">
               <div className="py-6 w-full left-0 sticky px-4 top-0 dark:bg-black dark:text-white bg-white">
-                <div>
+                <div className="">
                   <span className="text-[16px] flex items-center gap-2">
                     <MdAddTask className="text-[18px]" />
                     {formData.tname} <span> / </span>
@@ -226,6 +223,12 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                       {formData.tproces == 'inProgress' ? 'In Progress' : formData.tproces}
                     </span>
                   </span>
+                  <button
+                    onClick={() => closeEditModal()}
+                    className="text-[24px] fixed top-4 right-4 hover:scale-110 duration-300 hover:rotate-180"
+                  >
+                    <IoCloseSharp />
+                  </button>
                 </div>
               </div>
               <PanelGroup autoSaveId="example" direction="horizontal">
@@ -338,7 +341,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                 <PanelResizeHandle className="w-[2px] mx-2 bg-blue-400" />
                 <Panel minSize={30} defaultSize={50}>
                   <div className="">
-                    <div className="px-4 border py-4 h-full rounded border-[#b7b7b7]">
+                    <div className="px-4 space-y-5 border py-4 h-full rounded border-[#b7b7b7]">
                       <p className="flex gap-5">
                         <span className="text-[15px] flex  text-[#111]">
                           <MdAssignmentTurnedIn className="mr-2 text-green-600 text-[20px]" /> Assigned to :
@@ -353,19 +356,32 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                           })}
                         </span>
                       </p>
-                      <p className="flex gap-5 mt-3">
+                      <p className="flex gap-5">
                         <span className="text-[14px] items-center flex  text-[#111]">
                           <FaBookOpen className="mr-2 text-blue-400 text-[18px]" /> Author :
                         </span>
                         <span className="text-[13px]">{formData.author}</span>
                       </p>
-                      <p className="flex gap-5 mt-3">
+                      <p className="flex gap-5 ">
                         <span className="text-[14px] items-center flex  text-[#111]">
                           <RiTeamFill className="mr-2 text-yellow-600 text-[18px]" /> Team :
                         </span>
                         <span className="text-[13px]">{formData.teamId}</span>
                       </p>
+                      <p className="flex gap-5 ">
+                        <span className="text-[14px] items-center flex  text-[#111]">
+                          <BsCalendarDateFill className="mr-2 text-yellow-600 text-[18px]" /> Created at :
+                        </span>
+                        <span className="text-[13px]">{formData.tdate}</span>
+                      </p>
+                      <p className="flex gap-5 ">
+                        <span className="text-[14px] items-center flex  text-[#111]">
+                          <MdAccessTimeFilled className="mr-2 text-yellow-600 text-[18px]" /> Created on :
+                        </span>
+                        <span className="text-[13px]">{formData.ttime}</span>
+                      </p>
                     </div>
+                    <div className="rounded border-[#b7b7b7]"></div>
                   </div>
                 </Panel>
               </PanelGroup>

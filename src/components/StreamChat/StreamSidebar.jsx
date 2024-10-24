@@ -1,21 +1,17 @@
-"use client";
-import React, { useCallback, useEffect, useState } from "react";
-import {
-  ChannelList,
-  ChannelPreviewMessenger,
-  ChannelPreviewUIComponentProps,
-} from "stream-chat-react";
-import MenuBar from "./MenuBar";
-import UsersMenu from "./UsersMenu";
+'use client';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ChannelList, ChannelPreviewMessenger, ChannelPreviewUIComponentProps } from 'stream-chat-react';
+import MenuBar from './MenuBar';
+import UsersMenu from './UsersMenu';
 
 const StreamSidebar = ({ userData, show, onClose }) => {
   const [usermenuOpen, setusermenuOpen] = useState(false);
-  const filters = { members: { $in: [userData.id] }, type: "messaging" };
+  const filters = { members: { $in: [userData.id] }, type: 'messaging' };
   const sort = { last_updated: -1 };
   const options = { limit: 20 };
 
   const custompreview = useCallback(
-    (props) => {
+    props => {
       return (
         <ChannelPreviewMessenger
           {...props}
@@ -43,17 +39,9 @@ const StreamSidebar = ({ userData, show, onClose }) => {
   };
 
   return (
-    <div
-      className={`relative w-full flex-col md:max-w-[300px] h-screen ${
-        show ? "flex" : "hidden"
-      } `}
-    >
+    <div className={`relative w-full flex-col h-full md:max-w-[300px] ${show ? 'flex' : 'hidden'} `}>
       {usermenuOpen && (
-        <UsersMenu
-          handleClose={() => setusermenuOpen(false)}
-          userData={userData}
-          handleUsermenubutton={handleUsermenubutton}
-        />
+        <UsersMenu handleClose={() => setusermenuOpen(false)} userData={userData} handleUsermenubutton={handleUsermenubutton} />
       )}
       <MenuBar handleUserMenuToggle={handleUserMenuToggle} />
       <ChannelList
