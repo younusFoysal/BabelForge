@@ -7,6 +7,7 @@ import {
   PaginatedGridLayout,
   SpeakerLayout,
   useCall,
+  useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import { LayoutList, Users } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -28,16 +29,19 @@ const MeetingRoom = () => {
   const [showParticipants, setShowParticipants] = useState(false);
   const router = useRouter();
   const { stopMedia } = useMediaControl();
-  const callHasEnded = false;
   const call = useCall();
+  const { useCallEndedAt } = useCallStateHooks();
+  const callEndedAt = useCallEndedAt();
+  const callHasEnded = !!callEndedAt;
 
-  let LeaveCall;
   useEffect(() => {
     if (callHasEnded) {
       toast({
-        description: "Call has ended.",
+        description: "call has ended",
+        variant: "success",
       });
-      stopMedia();
+      call.camera.disable();
+      call.microphone.disable();
       router.push("/dashboard");
     }
   }, [callHasEnded, stopMedia, router, LeaveCall]);
