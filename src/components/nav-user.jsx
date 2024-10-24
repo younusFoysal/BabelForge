@@ -79,20 +79,8 @@ export function NavUser({ user }) {
                   Account
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard className="mr-2" />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell className="mr-2" />
-                Notifications
-              </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut className="mr-2" />
-              Log out
-            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

@@ -13,7 +13,6 @@ const metadata = {
 import { Poppins, Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import QureryProvider from '@/providers/QureryProvider';
-import { usePathname } from 'next/navigation';
 import ScreenRecorderProvider from '@/providers/ScreenRecorderProvider';
 import dynamic from 'next/dynamic';
 
@@ -22,8 +21,7 @@ const nunito = Nunito({
   subsets: ['latin'],
 });
 export default function RootLayout({ children }) {
-  // const CrispWithNoSSR = dynamic(() => import('@/components/crisp'));
-  const location = usePathname();
+  const CrispWithNoSSR = dynamic(() => import('@/components/crisp'));
 
   return (
     <ClerkProvider
@@ -39,7 +37,7 @@ export default function RootLayout({ children }) {
         >
           <QureryProvider>
             <ScreenRecorderProvider>
-              {/* <CrispWithNoSSR /> */}
+              <CrispWithNoSSR />
               <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                 <Navbar />
                 <Toaster />
