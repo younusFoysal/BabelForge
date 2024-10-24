@@ -69,7 +69,10 @@ export default function AddTask({ handleAddTask }) {
         placeholder="Add new task"
         className="p-2 border border-gray-300 rounded-lg flex-1 dark:bg-transparent"
       />
-      <button onClick={handleSubmit} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+      <button
+        onClick={handleSubmit}
+        className=" px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500 text-sm  flex gap-1 items-center group  dark:bg-gray-50 text-white"
+      >
         Add Task
       </button>
     </div>
