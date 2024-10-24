@@ -1,7 +1,7 @@
 import useAxiosCommon from "@/lib/axiosCommon";
 
 import React from "react";
-import toast from "react-hot-toast";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +12,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "../ui/button";
 import { MoreHorizontal } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 const MemberBox = ({ member, refetch, id }) => {
   const axiosCommon = useAxiosCommon();
   const [open, setOpen] = React.useState(false);
@@ -24,8 +25,10 @@ const MemberBox = ({ member, refetch, id }) => {
 
     if (data.result.modifiedCount > 0) {
       refetch();
-
-      toast.success("deleted member successfully");
+      toast({
+        description: "Member deleted successfully",
+        variant: "success",
+      });
     }
   };
 
@@ -51,7 +54,7 @@ const MemberBox = ({ member, refetch, id }) => {
         <DropdownMenuContent align="end" className="w-[100px] mt-1">
           <DropdownMenuGroup>
             <DropdownMenuItem className="capitalize" onClick={handlesubmit}>
-             Remove
+              Remove
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>

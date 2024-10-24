@@ -1,15 +1,28 @@
-'use client';
-import * as React from 'react';
-import { CalendarIcon } from '@radix-ui/react-icons';
-import { addDays, format } from 'date-fns';
-import { CiExport } from 'react-icons/ci';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
-import { ExcelColumn, default as ExcelFile, ExcelSheet } from 'react-data-export';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { IoPrintOutline } from 'react-icons/io5';
+"use client";
+import * as React from "react";
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { addDays, format } from "date-fns";
+import { CiExport } from "react-icons/ci";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  ExcelColumn,
+  default as ExcelFile,
+  ExcelSheet,
+} from "react-data-export";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { IoPrintOutline } from "react-icons/io5";
 
 export function ExportTeamInfo({ className, stats, isLoading }) {
   const [exportInfo, setExportInfo] = React.useState([stats]);
@@ -23,8 +36,8 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
 
   return (
     <div className="flex items-center gap-3">
-      <div className={cn('grid gap-2', className)}>
-        <Popover>
+      <div className={cn("grid gap-2", className)}>
+        {/* <Popover>
           <PopoverTrigger asChild>
             <Button
               id="date"
@@ -48,7 +61,7 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
           <PopoverContent className="w-auto p-0" align="start">
             <Calendar initialFocus mode="range" defaultMonth={date?.from} selected={date} onSelect={setDate} numberOfMonths={2} />
           </PopoverContent>
-        </Popover>
+        </Popover> */}
       </div>
       {/* Export Data as exel */}
       <ExcelFile
