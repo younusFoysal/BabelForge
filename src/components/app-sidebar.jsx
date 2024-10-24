@@ -23,31 +23,16 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { useUser } from "@clerk/nextjs";
-
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useEffect, useState } from "react";
+import useRole from "@/hooks/useRole";
 
 export function AppSidebar({ ...props }) {
   const { user, isLoaded } = useUser();
-  const [Packages, setPackages] = useState("");
+
   const uemail = user?.primaryEmailAddress?.emailAddress;
   // foysal@gmail.com
   const admin = ["babelforgeltd@gmail.com", "babelforgeltdfgd@gmail.com"];
-  const axiosCommon = useAxiosCommon();
 
-  useEffect(() => {
-    const userpay = async () => {
-      try {
-        const { data } = await axiosCommon.get(`/pay/singlePay/${uemail}`);
-        setPackages(data[0]?.pakage);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    userpay();
-  }, [isLoaded, user]);
-
-  console.log(Packages);
+  const [role] = useRole();
 
   const data = {
     user: {
@@ -148,129 +133,28 @@ export function AppSidebar({ ...props }) {
     ],
   };
 
-  const AdminData = {
-    user: {
-      name: `${user?.fullName}`,
-      email: `${user?.primaryEmailAddress?.emailAddress}`,
-      avatar: `${user?.imageUrl}`,
-    },
-    navMain: [
-      {
-        title: "Dashboard",
-        url: "/dashboard",
-        icon: SquareTerminal,
-        isActive: true,
-        items: [
-          {
-            title: "Overview",
-            url: "/dashboard",
-          },
-        ],
-      },
-      {
-        title: "Transaction",
-        url: "#",
-        icon: BadgeDollarSign,
-        items: [
-          {
-            title: "Transactions",
-            url: "/dashboard/admin/transactions",
-          },
-        ],
-      },
-      {
-        title: "Connect",
-        url: "#",
-        icon: MessageSquareText,
-        items: [
-          {
-            title: "inbox",
-            url: "/dashboard/admin/inbox",
-          },
-
-          {
-            title: "reviews",
-            url: "/dashboard/admin/reviews",
-          },
-        ],
-      },
-      {
-        title: "Packages",
-        url: "#",
-        icon: Package,
-        items: [
-          {
-            title: "Packages",
-            url: "/dashboard/admin/Packages",
-          },
-        ],
-      },
-      {
-        title: "Tools",
-        url: "#",
-        icon: Settings2,
-        items: [
-          {
-            title: "Babel AI",
-            url: "/dashboard/babelai",
-          },
-          {
-            title: "Canvas",
-            url: "/dashboard/canvas",
-          },
-          {
-            title: "Notes",
-            url: "/dashboard/notes",
-          },
-          {
-            title: "Docs",
-            url: "/dashboard/doc",
-          },
-          {
-            title: "Screen Record",
-            url: "/dashboard/ScreenRecorder",
-          },
-        ],
-      },
-    ],
-  };
-
   const filteredNavMain = data.navMain
-    .map((mainItem) => {
-      if (
-        Packages !== "Standard" &&
-        Packages !== "Premium" &&
-        mainItem.title === "Chat"
-      ) {
-        return null;
+    .map((item) => {
+      if (item.title === "Chat") {
+        return role === "Standard" || role === "Premium" ? item : null;
       }
 
-      if (mainItem.title === "Chat") {
-        mainItem.items = mainItem.items.filter(
-          (subItem) =>
-            Packages === "Standard" ||
-            Packages === "Premium" ||
-            subItem.title !== "Meeting"
+      if (item.title === "Tools") {
+        const filteredItems = item.items.filter(
+          (tool) =>
+            (tool.title !== "Babel AI" && tool.title !== "Canvas") ||
+            role === "Standard" ||
+            role === "Premium"
         );
+
+        return { ...item, items: filteredItems };
       }
 
-      if (mainItem.title === "Tools") {
-        mainItem.items = mainItem.items.filter(
-          (subItem) =>
-            Packages === "Standard" ||
-            Packages === "Premium" ||
-            (subItem.title !== "Canvas" && subItem.title !== "Babel AI")
-        );
-      }
-
-      return mainItem;
+      return item;
     })
     .filter(Boolean);
 
   const isAdmin = admin.includes(uemail);
-
-  console.log(filteredNavMain);
-  console.log(Packages);
 
   return (
     <Sidebar collapsible="icon" {...props}>
