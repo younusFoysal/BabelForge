@@ -185,7 +185,7 @@ const AdminInbox = () => {
       </div>
 
       {/* Mobile view or small device view */}
-      <div className={`fixed pt-20 md:px-20 lg:px-0 px-2 inset-0 bg-gray-900 bg-opacity-50 lg:hidden ${selectedMessage ? 'flex' : 'hidden'} flex-col p-4`}>
+      <div className={`fixed pt-20 md:px-20 lg:px-0 px-2 inset-0 bg-gray-900 bg-opacity-50 lg:hidden z-50 ${selectedMessage ? 'flex' : 'hidden'} flex-col p-4`}>
         <div className="bg-white dark:bg-gray-800 rounded-lg p-6 overflow-y-auto max-h-80">
           <p className="text-base font-semibold text-gray-900 dark:text-gray-100">
             {selectedMessage?.firstName} {selectedMessage?.lastName}

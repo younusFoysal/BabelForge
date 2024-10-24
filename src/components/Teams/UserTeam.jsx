@@ -35,9 +35,10 @@ const UserTeam = () => {
   // Refetch when when the user is availble
   useEffect(() => {
     if (uemail) {
+      setEmails([uemail]);
       refetch();
     }
-  }, [uemail, refetch]);
+  }, [uemail]);
 
   const {
     register,
@@ -95,7 +96,7 @@ const UserTeam = () => {
             <DialogOverlay className="DialogOverlay">
               <DialogContent
                 aria-describedby={'Dialouge'}
-                className="max-w-[450px] dark:border-[#fff5] dark:bg-[#ffffff25] dark:backdrop-blur-[20px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]"
+                className="max-w-[450px] dark:border-[#fff5] dark:bg-[#ffffff25] dark:backdrop-blur-[20px] max-h-[90%] overflow-scroll z-[999] md:max-w-[1200px]"
               >
                 <DialogHeader>
                   <DialogTitle className="text-[20px]">Create a team</DialogTitle>

@@ -1,10 +1,10 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useUser } from "@clerk/nextjs";
+'use client';
+import { useEffect, useState } from 'react';
+import { useUser } from '@clerk/nextjs';
 
 export default function AddTask({ handleAddTask }) {
-  const [currentDate, setCurrentDate] = useState("");
-  const [currentTime, setCurrentTime] = useState("");
+  const [currentDate, setCurrentDate] = useState('');
+  const [currentTime, setCurrentTime] = useState('');
 
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
@@ -20,17 +20,17 @@ export default function AddTask({ handleAddTask }) {
 
     // Format date as YYYY-MM-DD
     const year = gmt6Date.getUTCFullYear();
-    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, "0");
-    const day = String(gmt6Date.getUTCDate()).padStart(2, "0");
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
     const formattedDate = `${year}-${month}-${day}`;
 
     // Format time as HH:MM AM/PM
     let hours = gmt6Date.getUTCHours();
-    const minutes = String(gmt6Date.getUTCMinutes()).padStart(2, "0");
-    const ampm = hours >= 12 ? "PM" : "AM";
+    const minutes = String(gmt6Date.getUTCMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
     hours = hours ? hours : 12;
-    const formattedHours = String(hours).padStart(2, "0");
+    const formattedHours = String(hours).padStart(2, '0');
     const formattedTime = `${formattedHours}:${minutes} ${ampm}`;
 
     // Set the formatted date and time
@@ -38,26 +38,26 @@ export default function AddTask({ handleAddTask }) {
     setCurrentTime(formattedTime);
   }, []);
 
-  const [taskName, setTaskName] = useState("");
+  const [taskName, setTaskName] = useState('');
 
   const handleSubmit = async () => {
     const newTask = {
-      tname: taskName || "Untitled Task",
-      tdes: "This is a description",
+      tname: taskName || 'Untitled Task',
+      tdes: 'This is a description',
       tcomments: [
-        { user_ID: "comment1", datetime: "10/12/24" },
-        { user_ID: "comment2", datetime: "11/12/24" },
+        { user_ID: 'comment1', datetime: '10/12/24' },
+        { user_ID: 'comment2', datetime: '11/12/24' },
       ],
-      tassignTo: username,
-      tproces: "todo",
+      tassignTo: [useremail],
+      tproces: 'todo',
       author: useremail,
-      teamId: "team_ID",
+      teamId: 'team_ID',
       tdate: currentDate,
       ttime: currentTime,
     };
 
     await handleAddTask(newTask);
-    setTaskName(""); // Clear input after submitting
+    setTaskName(''); // Clear input after submitting
   };
 
   return (
@@ -65,14 +65,11 @@ export default function AddTask({ handleAddTask }) {
       <input
         type="text"
         value={taskName}
-        onChange={(e) => setTaskName(e.target.value)}
+        onChange={e => setTaskName(e.target.value)}
         placeholder="Add new task"
         className="p-2 border border-gray-300 rounded-lg flex-1 dark:bg-transparent"
       />
-      <button
-        onClick={handleSubmit}
-        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-      >
+      <button onClick={handleSubmit} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
         Add Task
       </button>
     </div>
