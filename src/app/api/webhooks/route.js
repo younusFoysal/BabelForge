@@ -62,6 +62,7 @@ export async function POST(req) {
             image_url: image_url,
             email: email_addresses[0].email_address,
             username: username,
+            package: "Basic",
           },
         },
         { returnDocument: "after", upsert: true }

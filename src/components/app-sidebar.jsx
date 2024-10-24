@@ -1,4 +1,4 @@
-import * as React from "react";
+"use client";
 import {
   BookOpen,
   CircleHelp,
@@ -21,20 +21,33 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-  useSidebar,
 } from "@/components/ui/sidebar";
 import { useUser } from "@clerk/nextjs";
+
+import useAxiosCommon from "@/lib/axiosCommon";
+import { useEffect, useState } from "react";
 
 export function AppSidebar({ ...props }) {
   const { user, isLoaded } = useUser();
   const [Packages, setPackages] = useState("");
   const uemail = user?.primaryEmailAddress?.emailAddress;
   // foysal@gmail.com
-  const admin = [
-    "babelforgeltd@gmail.com",
-    "babelforgeltdfgd@gmail.com",
-    "mrdevware@gmail.com",
-  ];
+  const admin = ["babelforgeltd@gmail.com", "babelforgeltdfgd@gmail.com"];
+  const axiosCommon = useAxiosCommon();
+
+  useEffect(() => {
+    const userpay = async () => {
+      try {
+        const { data } = await axiosCommon.get(`/pay/singlePay/${uemail}`);
+        setPackages(data[0]?.pakage);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    userpay();
+  }, [isLoaded, user]);
+
+  console.log(Packages);
 
   const data = {
     user: {
@@ -128,18 +141,8 @@ export function AppSidebar({ ...props }) {
     ],
     projects: [
       {
-        name: "Design Engineering",
-        url: "#",
-        icon: Frame,
-      },
-      {
-        name: "Sales & Marketing",
-        url: "#",
-        icon: PieChart,
-      },
-      {
         name: "Help",
-        url: "#",
+        url: "/help",
         icon: CircleHelp,
       },
     ],
@@ -278,12 +281,13 @@ export function AppSidebar({ ...props }) {
         {isAdmin ? (
           <NavMain items={AdminData.navMain} />
         ) : (
-          <NavMain items={data.navMain} />
+          <NavMain items={filteredNavMain} />
         )}
-        {/* <NavProjects projects={data.projects} /> */}
+        <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
+        {/* <UserButton> </UserButton> */}
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
