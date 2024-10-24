@@ -19,8 +19,6 @@ const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const pathName = usePathname();
 
-  console.log(pathName);
-
   return (
     <SidebarProvider>
       {!pathName?.includes("/dashboard/meet/meeting") && (
