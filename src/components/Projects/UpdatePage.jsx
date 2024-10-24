@@ -50,14 +50,14 @@ const UpdateProjectPage = ({ id }) => {
       toast({
         description: 'Project Updated Successfully!',
         variant: 'success',
-      })
+      });
       router.push('/dashboard/projects');
     },
     onError: () => {
       toast({
         description: 'Nothing Changed.',
         variant: 'error',
-      })
+      });
     },
   });
 
@@ -156,9 +156,9 @@ const UpdateProjectPage = ({ id }) => {
               {errors.pdes?.type === 'minLength' && <p className="text-red-600 mt-1">Description too short!</p>}
             </div>
 
-            <div className="flex items-center gap-3 justify-end">
+            <div className="flex  items-center gap-3 justify-end">
               <button
-                className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+                className="px-6 py-3 mt-4 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
                 type="submit"
               >
                 Update
