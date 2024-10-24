@@ -1,4 +1,3 @@
-'use client';
 import Footer from '@/components/shared/Footer/Footer';
 import Navbar from '@/components/shared/Navbar';
 import { ThemeProvider } from '@/components/Theme/ThemeProvider';
@@ -15,7 +14,6 @@ const metadata = {
 import { Poppins, Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import QureryProvider from '@/providers/QureryProvider';
-import { usePathname } from 'next/navigation';
 import ScreenRecorderProvider from '@/providers/ScreenRecorderProvider';
 import dynamic from 'next/dynamic';
 
@@ -25,7 +23,6 @@ const nunito = Nunito({
 });
 export default function RootLayout({ children }) {
   const CrispWithNoSSR = dynamic(() => import('@/components/crisp'));
-  const location = usePathname();
 
   return (
     <ClerkProvider

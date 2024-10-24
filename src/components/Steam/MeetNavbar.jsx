@@ -18,7 +18,7 @@ const SteamNavber = () => {
 
   // GoBackButton to navigate with cleanup
   const GoBackButton = async route => {
-    await call.endCall();
+    await call?.endCall();
     call?.camera.disable();
     call?.microphone.disable();
     router.push(route);
