@@ -16,6 +16,7 @@ const layout = ({ children }) => {
   const admin = ['babelforgeltd@gmail.com', 'babelforgeltdfgd@gmail.com'];
   const isAdmin = admin.includes(uemail);
   const conditionClass = isAdmin ? '' : 'h-screen';
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const pathName = usePathname();
 
   return (
