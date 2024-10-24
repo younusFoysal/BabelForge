@@ -105,27 +105,27 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
           <table className="w-full divide-y divide-gray-200 ">
             <thead className="bg-gray-50 dark:text-white dark:bg-[#ffffff4f] backdrop-blur-[100px]">
               <tr>
-                <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Num</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Task</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assigned to</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Start</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Team</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Num</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Task</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Assigned to</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Status</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Start</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Team</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Actions</th>
               </tr>
             </thead>
 
-            <tbody className="bg-white dark:bg-black divide-y divide-gray-200">
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200">
               {tasks?.map(task => (
                 <tr key={task._id}>
                   <td className="px-6 py-4 whitespace-nowrap">{num++}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{task?.tname}</div>
-                    <div className="text-sm text-gray-500">{task?.tdes}</div>
+                    <div className="text-sm font-medium text-gray-900 dark:text-gray-200">{task?.tname}</div>
+                    <div className="text-sm text-gray-400">{task?.tdes}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{Array.isArray(task?.tassignTo) ? task.tassignTo[0] : task?.tassignTo}</div>
-                    <div className="text-sm text-gray-500">{task?.author}</div>
+                    <div className="text-sm text-gray-900 dark:text-gray-200">{Array.isArray(task?.tassignTo) ? task.tassignTo[0] : task?.tassignTo}</div>
+                    <div className="text-sm text-gray-400">{task?.author}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span
@@ -140,12 +140,12 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                       {task?.tproces.toUpperCase()}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-black">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-black dark:text-gray-200">
                     {task?.tdate}
                     <br />
                     <span className="text-sm text-gray-500">{task?.ttime} </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-black">{task?.teamId}</td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-black dark:text-gray-200">{task?.teamId}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
