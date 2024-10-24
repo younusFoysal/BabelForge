@@ -102,8 +102,8 @@ export function AppSidebar({ ...props }) {
         icon: Settings2,
         items: [
           {
-            title: "Babel AI",
-            url: "/dashboard/babelai",
+            title: "AI Assistant",
+            url: "/dashboard/aiassistant",
           },
           {
             title: "Canvas",

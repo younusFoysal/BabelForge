@@ -62,7 +62,7 @@ const Page = () => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['my-works'],
+    queryKey: ['my-works', useremail],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${useremail}`);
       return data;
