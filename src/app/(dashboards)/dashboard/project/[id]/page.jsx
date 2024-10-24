@@ -27,7 +27,22 @@ const ProjectDetails = () => {
   const [person, isUserLoading] = usePerson(memberEmail);
 
 
+  useEffect(() => {
+    const now = new Date();
 
+    // Convert to GMT+6
+    const gmt6Offset = 6 * 60 * 60 * 1000;
+    const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+    // Format date as YYYY-MM-DD
+    const year = gmt6Date.getUTCFullYear();
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}`;
+
+    // Set the formatted date and time
+    setCurrentDate(formattedDate);
+  }, []);
 
   const {
     data: project = [],
@@ -148,6 +163,7 @@ const ProjectDetails = () => {
   // pallmembers.map(member => SetMemberEmail(member));
 
   const handleEndProject = id => {
+    console.log(id);
     axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
       .then(res => {
         if (res.data.modifiedCount) {
@@ -203,7 +219,7 @@ const ProjectDetails = () => {
           ) : (
 
             <Alert title='Are you absolutely sure?'
-              description='This action cannot be undone and specifies that the project has ended.' onContinue={() => handleEndProject(_id)}>
+              description='This action cannot be undone and specifies that the project has ended.' onContinue={() => handleEndProject(id)}>
               {openDialog => (
                 <button
                   className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
@@ -320,7 +336,7 @@ const ProjectDetails = () => {
 
           {pallmembers.length === 0 && <p className="font-semibold mt-3">No Teams Added Yet.</p>}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
-            {projectMembers?.data?.slice().reverse().map((member, idx) => (
+            {projectMembers?.data?.map((member, idx) => (
               <div
                 key={idx}
                 className="grid grid-cols-6 gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20"
