@@ -10,8 +10,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "../ui/button";
-import toast from "react-hot-toast";
+
 import { FaPlus } from "react-icons/fa6";
+import { toast } from "@/hooks/use-toast";
 
 const LinkDialog = ({ id, refetch, index }) => {
   const axiosCommon = useAxiosCommon();
@@ -22,22 +23,27 @@ const LinkDialog = ({ id, refetch, index }) => {
     const { data } = await axiosCommon.patch(`team/teams/${id}`, {
       addLink: links,
     });
+
     if (data.result.modifiedCount > 0) {
       refetch();
-      toast.success("link added successfully");
+      toast({
+        description: "link added succesfully",
+        variant: "success",
+      });
     }
   };
 
   return (
     <Dialog>
-      <DialogTrigger className="flex-1 font-medium bg-gray-50  p-3 mb-2 rounded-sm  w-full dark:bg-gray-800">
-        <h3 className="flex justify-between items-center font-semibold">
-          Links
+      <div className="flex justify-between items-center font-medium bg-gray-50 px-4 mb-2 rounded-sm  w-full dark:bg-gray-800">
+        <h3 className="font-semibold">Links</h3>
+        <DialogTrigger>
           <span className="bg-gray-50 p-1 hover:bg-gray-100 cursor-pointer dark:bg-gray-800 dark:hover:bg-gray-800">
             <FaPlus></FaPlus>
           </span>
-        </h3>
-      </DialogTrigger>
+        </DialogTrigger>
+      </div>
+
       <DialogContent>
         <DialogTitle className="text-center">Add to Link</DialogTitle>
         <input

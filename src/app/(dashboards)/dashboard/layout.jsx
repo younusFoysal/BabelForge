@@ -19,14 +19,11 @@ const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const pathName = usePathname();
 
-  console.log(pathName);
-
   return (
     <SidebarProvider>
       {!pathName?.includes("/dashboard/meet/meeting") && (
         <AppSidebar className="bg-[#f7f8f9] dark:bg-[#151e30] dark:text-[#d4d4d4] text-[#34383e]" />
       )}
-
       <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
         <main className="relative">
           {/* Dashboard ToP */}
@@ -49,7 +46,7 @@ const layout = ({ children }) => {
             </div>
           )}
           <div
-            className={!pathName?.includes("/dashboard/chat") && "px-9 py-7"}
+            className={!pathName?.includes("/dashboard/chat") && "px-4 md:px-9 py-7"}
           >
             {children}
           </div>

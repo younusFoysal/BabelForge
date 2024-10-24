@@ -88,7 +88,7 @@ const MeetingRoom = () => {
 
         <div className="fixed bottom-0 flex gap-5 justify-center items-center pt-4 flex-wrap w-full px-4">
           <CallControls onLeave={LeaveCall} />
-          <DropdownMenu>
+          {/* <DropdownMenu>
             <div className="flex items-center">
               <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b] transition-all duration-300">
                 <LayoutList size={20} className="text-white" />
@@ -106,7 +106,7 @@ const MeetingRoom = () => {
                 </div>
               ))}
             </DropdownMenuContent>
-          </DropdownMenu>
+          </DropdownMenu> */}
           <button onClick={() => setShowParticipants((prev) => !prev)}>
             <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b] transition-all duration-300">
               <Users size={20} className="text-white" />
