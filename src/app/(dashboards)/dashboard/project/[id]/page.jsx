@@ -8,6 +8,8 @@ import Link from 'next/link';
 import { IoIosLink } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
+import Alert from '@/components/shared/Alert';
+import usePerson from '@/hooks/usePerson';
 
 const ProjectDetails = () => {
   const axiosCommon = useAxiosCommon();
@@ -15,6 +17,7 @@ const ProjectDetails = () => {
   const params = useParams();
   const { id } = params;
   const [currentDate, setCurrentDate] = useState('');
+  // const [memberEmail, SetMemberEmail] = useState('');
 
   // useeffects
   useEffect(() => {
@@ -59,11 +62,35 @@ const ProjectDetails = () => {
     },
   });
 
-  if (isLoading || teamsOfProjectLoading) {
+  const {
+    data: projectMembers,
+    isLoading: isMembersLoading,
+  } = useQuery({
+    queryKey: ['projectMembersAll', id],
+    queryFn: async () => {
+      const data = await axiosCommon.get(`/project/projects/members/${id}`);
+      return data;
+    },
+  });
+  // console.log("project members: ", projectMembers.data);
+
+
+  // useEffect to set the first member email when pallmembers changes
+  // useEffect(() => {
+  //   if (project?.data?.pallmembers?.length > 0) {
+  //     SetMemberEmail(project.data.pallmembers[0]); // Set the email of the first member
+  //   }
+  // }, [project]);
+
+  // const [person] = usePerson(memberEmail);
+  // console.log(person.data);
+
+  if (isLoading || teamsOfProjectLoading || isMembersLoading) {
     return <LoadingSpinner />;
   }
 
   const { favorite, pallmembers, pcategory, pdes, pedate, pimg, pmanager, pmname, pname, psdate, purl, _id } = project.data;
+  // pallmembers.map(member => SetMemberEmail(member));
 
   const handleEndProject = id => {
     axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate }).then(res => {
@@ -101,13 +128,14 @@ const ProjectDetails = () => {
           </p>
           <div className="flex items-center gap-1">
             <IoIosLink className="font-bold text-lg" />
-            <Link className="font-semibold hover:text-blue-600" href={`${purl}`}>
+            <Link target="_blank" className="font-semibold hover:text-blue-600" href={`${purl}`}>
               {purl.slice(0, 30) + '...'}
             </Link>
           </div>
         </div>
         <div className="flex items-center mt-5 px-2 mb-3">
           {pedate ? (
+
             <button
               className="bg-bgColor dark:hover:shadow-bgColor/30 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
               disabled
@@ -115,12 +143,27 @@ const ProjectDetails = () => {
               End Project
             </button>
           ) : (
-            <button
-              onClick={() => handleEndProject(_id)}
-              className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
-            >
-              End Project
-            </button>
+
+            <Alert title='Are you absolutely sure?'
+              description='This action cannot be undone and specifies that the project has ended.' onContinue={() => handleEndProject(_id)}>
+              {openDialog => (
+                <button
+                  className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+                  onClick={e => {
+                    e.stopPropagation();
+                    openDialog();
+                  }}
+                >
+                  End Project
+                </button>
+              )}
+            </Alert>
+            // <button
+            //   onClick={() => handleEndProject(_id)}
+            //   className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+            // >
+            //   End Project
+            // </button>
           )}
         </div>
       </div>
@@ -131,27 +174,28 @@ const ProjectDetails = () => {
 
         <div className="flex justify-center items-center">
           <div className="w-full ml-1 mr-1 flex flex-col justify-center items-center border-gray-700 text-center">
+            {/* manager info */}
             <div className="w-full rounded-2xl p-8 text-white bg-gradient-to-br from-[#5f99f9] to-[#8868dc] pb-44 relative">
               <h1 className="text-3xl mb-4 font-bold text-left">Manager Info</h1>
               <div className="text-center">
-                <div className="w-full flex items-center gap-2">
+                <div className="w-full flex items-center  gap-2">
                   <h3 className="font-bold ">Name: </h3>
                   <p className="text-gray-100 dark:text-white/80">{pmname}</p>
                 </div>
 
-                <div className="w-full flex items-center justify-center gap-2">
+                <div className="w-full flex items-center  gap-2">
                   <h3 className="font-bold">Email: </h3>
                   <p className="text-gray-100 dark:text-white/80">{pmanager}</p>
                 </div>
               </div>
             </div>
-            <div className="text-left bg-white shadow-lg w-[80%] rounded-xl -mt-32 -ml-40 z-10 p-9 flex items-center flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
-              <h2 className="text-2xl font-bold">Project Description</h2>
+            <div className="text-left bg-gray-100 shadow-lg w-[80%] rounded-xl -mt-32 -ml-40 z-10 p-9 flex flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300">
+              <h2 className="text-2xl font-bold text-left w-full px-5">Project Description</h2>
               <p className="text-gray-700 dark:text-white/80 p-5 rounded-lg text-sm leading-7">{pdes}</p>
             </div>
           </div>
         </div>
-
+        {/* Teams */}
         <div className="mt-7">
           <h3 className="border-b pb-2 font-bold text-xl">Teams</h3>
           {teamsOfProject?.data.length === 0 && <p className="font-semibold mt-3">No Teams Created Yet.</p>}
@@ -174,6 +218,37 @@ const ProjectDetails = () => {
                 <div className="-space-y-1">
                   <p className="font-bold">{team?.tname}</p>
                   <p className="text-sm text-gray-700 dark:text-white/80">{team?.tcategory}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Members */}
+        <div className="mt-7">
+          <h3 className="border-b pb-2 font-bold text-xl">Members</h3>
+          {pallmembers.length === 0 && <p className="font-semibold mt-3">No Teams Added Yet.</p>}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
+            {projectMembers?.data?.slice().reverse().map((member, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-6 gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20"
+              >
+                <div className="col-span-2 p-2 rounded-full overflow-hidden flex items-center">
+                  <Image
+                    src={member?.image_url}
+                    width={100}
+                    height={100}
+                    alt="project_image"
+                    className="rounded-full w-16 h-16 object-cover"
+                  />
+                </div>
+                <div className="-space-y-1 col-span-4">
+                  <p className="font-bold">{member?.firstName + " " + member?.lastName}</p>
+                  <p className="text-sm text-gray-700 dark:text-white/80">{member?.email}</p>
+                  {
+                    pmanager === member?.email ? <p className="text-sm text-gray-700 dark:text-white/80">Manager</p> : <p className="text-sm text-gray-700 dark:text-white/80">Member</p>
+                  }
                 </div>
               </div>
             ))}
