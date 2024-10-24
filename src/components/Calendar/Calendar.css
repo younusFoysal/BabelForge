@@ -1,0 +1,40 @@
+.rbc-toolbar-label {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.event-calendar-dark .rbc-btn-group button {
+    color: white;
+}
+
+.event-calendar-dark .rbc-btn-group button:hover {
+    background: linear-gradient(to right, #2563EB, #7C3AED);
+    color: white;
+}
+
+.event-calendar-light .rbc-btn-group button:hover {
+    background: linear-gradient(to right, #2563EB, #7C3AED);
+    color: white;
+}
+
+.event-calendar-dark .rbc-off-range-bg {
+    background-color: #1f1f1f;
+}
+
+.rbc-current .rbc-button-link {
+    color: #1f1f1f;
+}
+
+.rbc-event:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition-duration: 300ms;
+}
+
+.event-calendar-dark .rbc-event:hover {
+    box-shadow: 0 7px 10px -3px rgba(229, 226, 226, 0.89), 0 4px 6px -4px rgb(229, 226, 226, 0.89);
+    transition-duration: 300ms;
+}
+
+.rbc-row-bg .rbc-today {
+    background-color: #f1f0fe;
+}

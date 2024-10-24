@@ -4,6 +4,10 @@ import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import SteamNavber from "./MeetNavbar";
+import MeetingButton from "./MeetingButton";
+import { IoIosVideocam } from "react-icons/io";
+import MeetHero from "./MeetHero";
 const initialValues = {
   dateTime: new Date(),
   description: "",
@@ -37,7 +41,7 @@ const MeetingTypeList = () => {
       });
       setCallDetail(call);
       if (!values.description) {
-        router.push(`stream/meeting/${call.id}`);
+        router.push(`meet/meeting/${call.id}`);
       }
       toast.success("meeting created");
     } catch (error) {
@@ -51,13 +55,16 @@ const MeetingTypeList = () => {
   if (!user) return <h1>please first login </h1>;
 
   return (
-    <div>
-      <button
-        onClick={createMeeting}
-        className="bg-blue-500 px-4 py-2 rounded-lg"
-      >
-        Create Meeting
-      </button>
+    <div className="dark:bg-gray-900 h-screen w-full ">
+      <MeetHero
+        MeetButton={
+          <MeetingButton
+            handleClick={createMeeting}
+            text="Create Meeting"
+            icon={<IoIosVideocam size={20} />}
+          />
+        }
+      />
     </div>
   );
 };

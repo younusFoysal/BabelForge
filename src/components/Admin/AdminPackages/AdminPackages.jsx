@@ -78,9 +78,7 @@ const AdminPackages = ({ priceingsec }) => {
   return (
     <div>
       <div
-        className={`relative z-10 overflow-hidden rounded-sm text-white p-11 shadow-default ${
-          isAdmin ? "bg-bgColor/90" : "bg-transparent"
-        }`}
+        className={`relative z-10 overflow-hidden rounded-sm text-black dark:text-white p-11 shadow-default bg-white/50 dark:bg-transparent`}
       >
         <div className="w-full overflow-x-auto">
           <table className="w-full">
@@ -91,11 +89,11 @@ const AdminPackages = ({ priceingsec }) => {
                 {packages.map((pack) => (
                   <th key={pack._id} className="w-1/4 min-w-[200px] px-5">
                     <div className="text-left py-4 h-[250px] flex flex-col justify-between">
-                      <span className="mb-3.5 block text-xl font-bold text-white ">
+                      <span className="mb-3.5 block text-xl font-bold text-black dark:text-white ">
                         {pack.title}
                       </span>
                       <h4 className="mb-2">
-                        <span className="text-[28px] font-bold text-white lg:text-[32px]">
+                        <span className="text-[28px] font-bold text-black dark:text-white lg:text-[32px]">
                           ${pack.price}
                         </span>
                         <span className="font-medium my-auto">
@@ -124,20 +122,20 @@ const AdminPackages = ({ priceingsec }) => {
               {/* table header */}
               <tr>
                 <td className="px-7 py-5 ">
-                  <h5 className="font-medium text-white">Key Features</h5>
+                  <h5 className="font-medium text-black dark:text-white">Key Features</h5>
                 </td>
                 <td className="px-7 py-5 ">
-                  <h5 className="text-center font-medium ttext-white">
+                  <h5 className="text-center font-medium text-black dark:text-white">
                     Features Limits
                   </h5>
                 </td>
                 <td className=" px-7 py-5 ">
-                  <h5 className="text-center font-medium text-white">
+                  <h5 className="text-center font-medium text-black dark:text-white">
                     Features Limits
                   </h5>
                 </td>
                 <td className=" px-7 py-5 d">
-                  <h5 className="text-center font-medium text-white">
+                  <h5 className="text-center font-medium text-black dark:text-white">
                     Features Limits
                   </h5>
                 </td>
@@ -145,20 +143,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* projects limit */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="font-medium">Projects</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[0]?.projects}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[1]?.projects}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[2]?.projects}
                   </p>
@@ -167,51 +165,51 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* Teams limit */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="font-medium">Teams</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[0]?.team}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[1]?.team}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[2]?.team}</p>
                 </td>
               </tr>
               {/* tasks limit */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="font-medium">Tasks</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[0]?.task}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[1]?.task}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[2]?.task}</p>
                 </td>
               </tr>
 
               {/* group chat feature */}
               <tr>
-                <td className="border-t border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="font-medium">Group Chat</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.groupchat ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.groupchat ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.groupchat ? trueSVG : falseSVG}
                   </p>
@@ -220,20 +218,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* canvas feature */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="font-medium">Canvas</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.canvas ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.canvas ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.canvas ? trueSVG : falseSVG}
                   </p>
@@ -242,20 +240,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* babel ai feature */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="font-medium">Babel AI</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.BabelAi ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.BabelAi ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.BabelAi ? trueSVG : falseSVG}
                   </p>
@@ -264,20 +262,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* meetings feature */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="font-medium">Meetings</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.meeting ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.meeting ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.meeting ? trueSVG : falseSVG}
                   </p>
@@ -310,8 +308,8 @@ const AdminPackages = ({ priceingsec }) => {
                   y2="188"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#3056D3" stop-opacity="0.15"></stop>
-                  <stop offset="1" stop-color="#C4C4C4" stop-opacity="0"></stop>
+                  <stop stopColor="#3056D3" stopOpacity="0.15"></stop>
+                  <stop offset="1" stopColor="#C4C4C4" stopOpacity="0"></stop>
                 </linearGradient>
               </defs>
             </svg>

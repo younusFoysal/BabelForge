@@ -8,7 +8,7 @@ export async function POST(req) {
 
   if (!WEBHOOK_SECRET) {
     throw new Error(
-      "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
+      "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or ..env.local"
     );
   }
 
@@ -62,6 +62,7 @@ export async function POST(req) {
             image_url: image_url,
             email: email_addresses[0].email_address,
             username: username,
+            package: "Basic",
           },
         },
         { returnDocument: "after", upsert: true }

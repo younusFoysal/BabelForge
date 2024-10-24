@@ -6,7 +6,7 @@ import CommonText from './CommonText';
 
 const AboutSecondBanner = () => {
   return (
-    <div className="mt-12 text-white">
+    <div className="mt-12 text-black dark:text-white">
       {/* top */}
       <div className="flex flex-col lg:flex-row justify-between items-center gap-0 lg:gap-10 mx-2 lg:px-10 ">
         {/* left-text*/}
@@ -30,7 +30,7 @@ const AboutSecondBanner = () => {
           <Image className="w-full h-full rounded-xl object-cover" src={banner4} alt="banner image2" />
         </div>
         {/* right-text */}
-        <div className="w-full text-white lg:w-1/2 space-y-3 lg:space-y-7">
+        <div className="w-full text-black dark:text-white lg:w-1/2 space-y-3 lg:space-y-7">
           <CommonText
             text={
               'June 10th, 2021 marked the start of a new era for babelforge.com we rang the opening bell and officially became a publicly traded company on Nasdaq.'

@@ -35,9 +35,10 @@ const UserTeam = () => {
   // Refetch when when the user is availble
   useEffect(() => {
     if (uemail) {
+      setEmails([uemail]);
       refetch();
     }
-  }, [uemail,refetch]);
+  }, [uemail]);
 
   const {
     register,
@@ -78,15 +79,14 @@ const UserTeam = () => {
   if (isLoading && teams.length < 1) return <LoadingSpinner></LoadingSpinner>;
 
   return (
-    <section className="w-full mt-3 px-4 max-w-5xl mx-auto">
+    <section className="w-full mt-3 py-5 px-4 max-w-6xl mx-auto">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl dark:text-white text-[#333]">Teams and projects</h2>
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <button
               className={`
-                 'bg-bgColor hover:shadow-blue-200 bg-bgColor hover:shadow-lg hover:scale-110 dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor'
-                text-white text-md  duration-500  font-medium px-4 py-2 rounded-md`}
+                 px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500 hover:shadow-purple-200 dark:hover:shadow-purple-800 text-sm hover:scale-105 flex gap-1 items-center group  text-white`}
             >
               Create Team
             </button>
@@ -95,7 +95,7 @@ const UserTeam = () => {
             <DialogOverlay className="DialogOverlay">
               <DialogContent
                 aria-describedby={'Dialouge'}
-                className="max-w-[450px] dark:border-[#fff5] dark:bg-[#ffffff25] dark:backdrop-blur-[20px] max-h-screen overflow-scroll z-[999] md:max-w-[900px]"
+                className="max-w-[450px] dark:border-[#fff5] dark:bg-[#ffffff25] dark:backdrop-blur-[20px] max-h-[90%] overflow-scroll z-[999] md:max-w-[1200px]"
               >
                 <DialogHeader>
                   <DialogTitle className="text-[20px]">Create a team</DialogTitle>

@@ -1,17 +1,21 @@
 'use client';
 import { useState } from 'react';
-import toast from 'react-hot-toast';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import useAxiosCommon from '@/lib/axiosCommon';
 import AddTask from '@/components/Dashboards/Task/AddTask';
-import BacklogPage from '@/components/Dashboards/Backlog/BacklogPage';
 import TableView from '@/components/Dashboards/Backlog/TableView';
 import Swal from 'sweetalert2';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import { toast } from '@/hooks/use-toast';
+import { useUser } from '@clerk/nextjs';
 
 const Page = () => {
   const axiosCommon = useAxiosCommon();
   const [loading, setLoading] = useState(false);
+  const { user } = useUser();
+  //console.log(user);
+  const uemail = user?.primaryEmailAddress?.emailAddress;
+  //console.log(uemail);
 
   // Post task data
   const { mutateAsync: addTaskMutation } = useMutation({
@@ -20,12 +24,17 @@ const Page = () => {
       return data;
     },
     onSuccess: () => {
-      toast.success('Task Added Successfully!');
-      refetch(); // Refetch task data
+      toast({
+        description: 'Task Added Successfully! ',
+      });
+      refetch();
       setLoading(false);
     },
     onError: err => {
-      toast.error(err.message);
+      toast({
+        description: 'Error! Try Again !',
+        variant: 'error',
+      });
       setLoading(false);
     },
   });
@@ -35,8 +44,15 @@ const Page = () => {
     setLoading(true);
     try {
       await addTaskMutation(newTask);
+      toast({
+        description: 'Task Added',
+        variant: 'success',
+      });
     } catch (err) {
-      toast.error(err.message);
+      toast({
+        description: err.message,
+        variant: 'error',
+      });
       setLoading(false);
     }
   };
@@ -47,9 +63,9 @@ const Page = () => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['my-works'],
+    queryKey: ['my-works', uemail],
     queryFn: async () => {
-      const { data } = await axiosCommon.get(`/task/tasks`);
+      const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${uemail}`);
       return data;
     },
   });
@@ -62,29 +78,24 @@ const Page = () => {
     },
     onSuccess: () => {
       refetch();
-      toast.success('Task deleted successfully.');
+      toast({
+        description: 'Task deleted successfully. ',
+        variant: 'success',
+      });
     },
     onError: () => {
-      toast.error('Failed to delete the task.');
+      toast({
+        description: 'Failed to delete the task!',
+        variant: 'error',
+      });
     },
   });
 
   const handleDelete = async id => {
-    const result = await Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel!',
-    });
-
-    if (result.isConfirmed) {
-      try {
-        await deleteTaskMutation({ id });
-      } catch (err) {
-        console.error(err);
-      }
+    try {
+      await deleteTaskMutation({ id });
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -97,11 +108,17 @@ const Page = () => {
       return data;
     },
     onSuccess: () => {
-      toast.success('Task updated successfully!');
-      refetch(); // Refetch task data after update
+      toast({
+        description: 'Task updated successfully!',
+        variant: 'success',
+      });
+      refetch();
     },
     onError: err => {
-      toast.error(err.message);
+      toast({
+        description: err.message,
+        variant: 'error',
+      });
     },
   });
 
