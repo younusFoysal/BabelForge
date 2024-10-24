@@ -1,35 +1,30 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
-import { TagsInput } from 'react-tag-input-component';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useForm } from 'react-hook-form';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import { toast } from '@/hooks/use-toast';
 import './UpdatePage.css';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
+import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
 const UpdateProjectPage = ({ id }) => {
-  const { resolvedTheme } = useTheme();
-  const [currentDate, setCurrentDate] = useState('');
   const router = useRouter();
-  const [emails, setEmails] = useState([]);
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState(''); // Use state to store selected category
 
   const {
     data: person = [],
     isLoading,
-    isError,
     refetch,
   } = useQuery({
     queryKey: ['updateproject'],
@@ -42,23 +37,8 @@ const UpdateProjectPage = ({ id }) => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
-
-  useEffect(() => {
-    const now = new Date();
-
-    const gmt6Offset = 6 * 60 * 60 * 1000;
-    const gmt6Date = new Date(now.getTime() + gmt6Offset);
-
-    const year = gmt6Date.getUTCFullYear();
-    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`;
-
-    setCurrentDate(formattedDate);
-  }, [person]);
 
   const mutation = useMutation({
     mutationFn: async data => {
@@ -66,22 +46,28 @@ const UpdateProjectPage = ({ id }) => {
       return res.data;
     },
     onSuccess: () => {
-      toast.success('Project update Successfully!');
+      refetch();
+      toast({
+        description: 'Project Updated Successfully!',
+        variant: 'success',
+      })
       router.push('/dashboard/projects');
     },
     onError: () => {
-      toast.error(`Something went wrong`);
+      toast({
+        description: 'Nothing Changed.',
+        variant: 'error',
+      })
     },
   });
 
   const onSubmit = data => {
-    data.pallmembers = emails;
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
 
   if (isLoading) {
-    return <h1>Loading...........</h1>;
+    return <LoadingSpinner></LoadingSpinner>;
   }
 
   const { pcategory, pdes, pname, pimg, purl } = person.data;
@@ -101,6 +87,7 @@ const UpdateProjectPage = ({ id }) => {
                 {...register('pname', { required: true, minLength: 4 })}
                 placeholder="e.g. HR Team, Design Team"
                 id="pname"
+                required
               />
               {errors.pname?.type === 'required' && <p className="text-red-600 mt-1">Project name required</p>}
               {errors.pname?.type === 'minLength' && <p className="text-red-600 mt-1">Name is too short!</p>}
@@ -116,6 +103,7 @@ const UpdateProjectPage = ({ id }) => {
                 {...register('purl', { required: true })}
                 placeholder="Please enter your project URL"
                 id="purl"
+                required
               />
             </div>
 
@@ -129,6 +117,7 @@ const UpdateProjectPage = ({ id }) => {
                 {...register('pimg', { required: true })}
                 placeholder="Please enter your project image URL"
                 id="pimg"
+                required
               />
             </div>
 
@@ -165,16 +154,6 @@ const UpdateProjectPage = ({ id }) => {
               />
               {errors.pdes?.type === 'required' && <p className="text-red-600 mt-1">Description required</p>}
               {errors.pdes?.type === 'minLength' && <p className="text-red-600 mt-1">Description too short!</p>}
-            </div>
-
-            <div className="mb-1">
-              <Label htmlFor="members" className="text-left mb-2 block font-semibold">
-                Who should be in this project?
-              </Label>
-              <div className={resolvedTheme === 'dark' && 'parent_Tags'}>
-                <TagsInput type="email" id="members" value={emails} onChange={setEmails} placeHolder="Enter emails" />
-              </div>
-              <span>Press enter to add more</span>
             </div>
 
             <div className="flex items-center gap-3 justify-end">
