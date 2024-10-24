@@ -103,15 +103,21 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
         )}
         {!tasks?.length == 0 && (
           <table className="w-full divide-y divide-gray-200 ">
-            <thead className="bg-gray-50 dark:text-white dark:bg-[#ffffff4f] backdrop-blur-[100px]">
+            <thead className="bg-gray-50 dark:text-white dark:bg-[#ffffff1a] backdrop-blur-[100px]">
               <tr>
                 <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Num</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Task</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Assigned to</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Status</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
+                  Assigned to
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
+                  Status
+                </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Start</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Team</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Actions</th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">
+                  Actions
+                </th>
               </tr>
             </thead>
 
@@ -124,7 +130,9 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                     <div className="text-sm text-gray-400">{task?.tdes}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900 dark:text-gray-200">{Array.isArray(task?.tassignTo) ? task.tassignTo[0] : task?.tassignTo}</div>
+                    <div className="text-sm text-gray-900 dark:text-gray-200">
+                      {Array.isArray(task?.tassignTo) ? task.tassignTo[0] : task?.tassignTo}
+                    </div>
                     <div className="text-sm text-gray-400">{task?.author}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
@@ -206,11 +214,11 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
             isOpen={isEditModalOpen}
             onRequestClose={closeEditModal}
             contentLabel="Edit Task Modal"
-            className="modal-dialog"
+            className="modal-dialog bg-white dark:bg-[#111827]"
             overlayClassName="modal-overlay"
           >
-            <div className="w-7xl relative z-[999] py-0 max-h-[80%]   px-4">
-              <div className="py-6 w-full left-0 sticky px-4 top-0 dark:bg-black dark:text-white bg-white">
+            <div className="w-7xl dark:bg-[#111827] dark:text-white relative z-[999] py-0 max-h-[80%]  px-4">
+              <div className="py-6 w-full left-0 sticky px-4 top-0 dark:bg-[#111827] dark:text-white bg-white">
                 <div className="">
                   <span className="text-[16px] flex items-center gap-2">
                     <MdAddTask className="text-[18px]" />
@@ -232,7 +240,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                 </div>
               </div>
               <PanelGroup autoSaveId="example" direction="horizontal">
-                <Panel className="" minSize={40} defaultSize={50}>
+                <Panel minSize={40} defaultSize={50}>
                   <div className="px-4 h-full overflow-scroll">
                     <h2>Edit Task</h2>
                     <div className="grid gap-5 grid-cols-9">
@@ -328,7 +336,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                           <div className="flex items-center gap-3 justify-end">
                             <button
                               onClick={handleSubmitEdit}
-                              className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md  duration-500  hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
+                              className="px-7 py-2 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
                             >
                               Update
                             </button>
@@ -338,12 +346,12 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                     </div>
                   </div>
                 </Panel>
-                <PanelResizeHandle className="w-[2px] mx-2 bg-blue-400" />
-                <Panel minSize={30} defaultSize={50}>
+                <PanelResizeHandle className="w-[2px] hidden md:block mx-4 bg-[#95959583] dark:bg-[#ffffff3d] hover:bg-blue-400" />
+                <Panel className="hidden md:block" minSize={30} defaultSize={50}>
                   <div className="">
-                    <div className="px-4 space-y-5 border py-4 h-full rounded border-[#b7b7b7]">
+                    <div className="px-4 dark:text-white space-y-5 border py-4 h-full rounded border-[#b7b7b7]">
                       <p className="flex gap-5">
-                        <span className="text-[15px] flex  text-[#111]">
+                        <span className="text-[15px] flex dark:text-white  text-[#111]">
                           <MdAssignmentTurnedIn className="mr-2 text-green-600 text-[20px]" /> Assigned to :
                         </span>
                         <span className="flex text-[14px] flex-col gap-2">
@@ -357,25 +365,25 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                         </span>
                       </p>
                       <p className="flex gap-5">
-                        <span className="text-[14px] items-center flex  text-[#111]">
+                        <span className="text-[14px] items-center flex dark:text-white text-[#111]">
                           <FaBookOpen className="mr-2 text-blue-400 text-[18px]" /> Author :
                         </span>
                         <span className="text-[13px]">{formData.author}</span>
                       </p>
                       <p className="flex gap-5 ">
-                        <span className="text-[14px] items-center flex  text-[#111]">
+                        <span className="text-[14px] items-center flex dark:text-white text-[#111]">
                           <RiTeamFill className="mr-2 text-yellow-600 text-[18px]" /> Team :
                         </span>
                         <span className="text-[13px]">{formData.teamId}</span>
                       </p>
                       <p className="flex gap-5 ">
-                        <span className="text-[14px] items-center flex  text-[#111]">
+                        <span className="text-[14px] items-center flex dark:text-white text-[#111]">
                           <BsCalendarDateFill className="mr-2 text-yellow-600 text-[18px]" /> Created at :
                         </span>
                         <span className="text-[13px]">{formData.tdate}</span>
                       </p>
                       <p className="flex gap-5 ">
-                        <span className="text-[14px] items-center flex  text-[#111]">
+                        <span className="text-[14px] items-center flex dark:text-white text-[#111]">
                           <MdAccessTimeFilled className="mr-2 text-yellow-600 text-[18px]" /> Created on :
                         </span>
                         <span className="text-[13px]">{formData.ttime}</span>
