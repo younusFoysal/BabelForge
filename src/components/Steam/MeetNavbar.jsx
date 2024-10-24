@@ -1,26 +1,26 @@
 'use client';
 import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from '@clerk/nextjs';
-import Link from 'next/link';
+
 import React from 'react';
 import Logo from '@/image/Home/babellogo.png';
 import { MdDashboard } from 'react-icons/md';
 import Image from 'next/image';
 import Button from '../shared/Buttons';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useCall, useCalls } from '@stream-io/video-react-sdk';
+import { useCall } from '@stream-io/video-react-sdk';
 import { useRouter } from 'next/navigation';
+import { useMediaControl } from './MediaControlProvider';
 
 const SteamNavber = () => {
   const call = useCall();
   const { userId } = useAuth();
   const auth = !!userId;
   const router = useRouter();
+  const { stopMedia } = useMediaControl();
 
-  // GoBackButton to navigate with cleanup
   const GoBackButton = async route => {
-    await call?.endCall();
-    call?.camera.disable();
-    call?.microphone.disable();
+    await call.endCall();
+    stopMedia();
     router.push(route);
     router.refresh();
   };

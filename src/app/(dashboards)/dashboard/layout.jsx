@@ -21,7 +21,7 @@ const layout = ({ children }) => {
       <AppSidebar className="bg-[#f7f8f9] dark:bg-[#151e30] dark:text-[#d4d4d4] text-[#34383e]" />
       <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
         <main className="relative">
-          {/* Dashboard Top */}
+          {/* Dashboard ToP */}
           <div className="flex z-[99] sticky backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center">
             <SidebarTrigger />
             <div>

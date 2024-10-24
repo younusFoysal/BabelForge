@@ -289,14 +289,26 @@ body {
   background-color: white;
 }
 
-.editor-container.ql-editor .dark{
+.editor-container.ql-editor.dark{
   background-color: black;
+  color: black;
+  
+}
+
+.editor-container{
+  overflow: scroll;
+}
+
+.editor-container .ql-container.ql-snow{
+  border: none;
+
 }
 
 .editor-container.ql-container.ql-snow {
-  border: none;
+  border: none important;
   display: flex;
-  justify-content: center;
+  color: black;
+  /* justify-content: center; */
 }
 
 .editor-container .ql-toolbar.ql-snow {
@@ -309,17 +321,28 @@ body {
 
 }
 
+@media screen and (max-width: 850px) {
+  .editor-container .ql-toolbar.ql-snow, .editor-container  {
+    width: 100%;
+
+  }
+  .editor-container .ql-editor{
+    padding: 40px;
+  }
+}
+
 .ql-container.ql-snow.ql-disabled{
-  border: none;
+  border: none important;
   display: flex;
   justify-content: center;
 }
 
 .ql-container.ql-snow{
-  border: none;
   display: flex;
   justify-content: center;
 }
+
+
 
 /* @layer base {
   * {

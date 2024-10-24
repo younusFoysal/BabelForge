@@ -2,7 +2,6 @@ import Footer from '@/components/shared/Footer/Footer';
 import Navbar from '@/components/shared/Navbar';
 import { ThemeProvider } from '@/components/Theme/ThemeProvider';
 import './globals.css';
-import PaymentProvider from '@/providers/ContextProvider';
 import React from 'react';
 import { Toaster } from '@/components/ui/toaster';
 
@@ -14,6 +13,7 @@ const metadata = {
 import { Poppins, Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import QureryProvider from '@/providers/QureryProvider';
+import { usePathname } from 'next/navigation';
 import ScreenRecorderProvider from '@/providers/ScreenRecorderProvider';
 import dynamic from 'next/dynamic';
 
@@ -22,7 +22,8 @@ const nunito = Nunito({
   subsets: ['latin'],
 });
 export default function RootLayout({ children }) {
-  const CrispWithNoSSR = dynamic(() => import('@/components/crisp'));
+  // const CrispWithNoSSR = dynamic(() => import('@/components/crisp'));
+  const location = usePathname();
 
   return (
     <ClerkProvider
@@ -38,14 +39,12 @@ export default function RootLayout({ children }) {
         >
           <QureryProvider>
             <ScreenRecorderProvider>
-              <CrispWithNoSSR />
+              {/* <CrispWithNoSSR /> */}
               <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-                <PaymentProvider>
-                  <Navbar />
-                  <Toaster />
-                  {children}
-                  <Footer />
-                </PaymentProvider>
+                <Navbar />
+                <Toaster />
+                {children}
+                <Footer />
               </ThemeProvider>
             </ScreenRecorderProvider>
           </QureryProvider>

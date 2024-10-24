@@ -5,12 +5,13 @@ import {
   VideoPreview,
 } from "@stream-io/video-react-sdk";
 import { useState, useEffect } from "react";
-import toast from "react-hot-toast";
 
+import { toast } from "@/hooks/use-toast";
 import MeetingButton from "./MeetingButton";
 import { IoIosVideocam } from "react-icons/io";
 import { MdContentCopy } from "react-icons/md";
 import SteamNavber from "./MeetNavbar";
+import { ShareLink } from "../Doc/ShareLink";
 
 const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
   const [mictoggleon, setmictoogleon] = useState(false);
@@ -19,7 +20,10 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
   const callEndedAt = useCallEndedAt();
   const callHasEnded = !!callEndedAt;
 
-  if (callHasEnded) return toast.error("Call has ended");
+  if (callHasEnded)
+    return toast({
+      description: "call has ended ",
+    });
 
   if (!calls) throw new Error("use call is must be Component");
 
@@ -59,16 +63,7 @@ const MeetingSetup = ({ setIsSetupComplete, meetingLink }) => {
             }}
             icon={<IoIosVideocam size={20} />}
           ></MeetingButton>
-
-          <MeetingButton
-            className="from-blue-600 to-purple-600"
-            text=" Copy Invitation"
-            handleClick={() => {
-              navigator.clipboard.writeText(meetingLink);
-              toast.success("meeting link copied ");
-            }}
-            icon={<MdContentCopy size={18} />}
-          ></MeetingButton>
+          <ShareLink colour={true} />
         </div>
       </div>
     </div>
