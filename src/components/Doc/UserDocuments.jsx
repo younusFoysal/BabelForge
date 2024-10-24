@@ -12,6 +12,7 @@ import docImage from '../../../public/Images/doc.png'
 import createDoc from '../../../public/Images/createDoc.png'
 import Image from 'next/image';
 import { Skeleton } from '../ui/skeleton';
+import Alert from '../shared/Alert';
 
 const UserDocuments = () => {
     const { user } = useUser();
@@ -58,7 +59,7 @@ const UserDocuments = () => {
     });
 
     const handleDelete = async (docId, event) => {
-        event.stopPropagation();
+       
 
         deleteDocument(docId); 
     };
@@ -112,8 +113,23 @@ const UserDocuments = () => {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                       <DropdownMenuItem 
-                        onClick={(e) => handleDelete(doc._id, e)}
-                      >Delete</DropdownMenuItem>
+                     
+                      ><Alert
+                      title='Delete Document'
+                      description='Are you sure you want to delete this document?'
+                       onContinue={() => handleDelete(doc._id)}>
+                      {openDialog => (
+                        <button
+                          className="w-full text-left"
+                          onClick={e => {
+                            e.stopPropagation();
+                            openDialog();
+                          }}
+                        >
+                          Delete
+                        </button>
+                      )}
+                    </Alert></DropdownMenuItem>
                       </DropdownMenuContent>
                             </DropdownMenu>
                             </span>
