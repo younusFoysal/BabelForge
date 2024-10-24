@@ -56,7 +56,7 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
-                <button className="bg-bgColor hover:bg-bgHoverColor flex items-center gap-2 text-white text-md hover:scale-110 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md flex items-center gap-2  text-md hover:scale-110 duration-500 hover:shadow-lg hover:shadow-purple-200 dark:hover:shadow-purple-800 font-medium px-4 py-2">
                   <CiExport className="font-bold text-lg" /> Export
                 </button>
               </TooltipTrigger>
@@ -80,7 +80,7 @@ export function ExportTeamInfo({ className, stats, isLoading }) {
       {/* Print Button */}
       <button
         onClick={window.print}
-        className="bg-bgColor hover:shadow-[#0362F3FF] hover:bg-bgHoverColor flex items-center gap-2 text-white text-md hover:scale-110 duration-500 hover:shadow-lg  font-medium px-4 py-2 rounded-md"
+        className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-purple-200 dark:hover:shadow-purple-800  flex items-center gap-2  text-md hover:scale-110 duration-500 hover:shadow-lg  font-medium px-4 py-2 rounded-md"
       >
         <IoPrintOutline className="font-bold text-lg" /> Print
       </button>
