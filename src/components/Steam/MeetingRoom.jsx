@@ -27,10 +27,11 @@ const MeetingRoom = () => {
   const [layout, setLayout] = useState("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
   const router = useRouter();
-
   const { stopMedia } = useMediaControl();
   const callHasEnded = false;
   const call = useCall();
+
+  let LeaveCall;
   useEffect(() => {
     if (callHasEnded) {
       toast({
@@ -39,11 +40,11 @@ const MeetingRoom = () => {
       stopMedia();
       router.push("/dashboard");
     }
-  }, [callHasEnded, stopMedia, router]);
+  }, [callHasEnded, stopMedia, router, LeaveCall]);
 
-  const LeaveCall = async () => {
-    await call.endCall();
+  LeaveCall = async () => {
     stopMedia();
+    await call.endCall();
     router.push("/dashboard");
     router.refresh();
   };

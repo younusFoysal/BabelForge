@@ -96,7 +96,7 @@ const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
 
                     {/* Footer Buttons */}
                     <DialogFooter>
-                        <Button type="submit" className="bg-primary text-white">
+                        <Button type="submit" className="bg-primary text-white dark:bg-gray-800">
                             Save
                         </Button>
                         <Button

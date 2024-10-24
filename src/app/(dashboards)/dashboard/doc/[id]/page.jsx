@@ -151,8 +151,8 @@ const DocumentPage = ({ params }) => {
 
     return (
         <div>
-            <div className='flex justify-evenly my-5'>
-                <input className='font-bold text-2xl' onBlur={saveDocument} onChange={(e)=>{setUpdateTitle(e.target.value), console.log(updateTitle);
+            <div className='flex md:justify-evenly md:flex-row flex-col gap-2 my-5'>
+                <input className='font-bold dark:bg-gray-900 text-2xl' onBlur={saveDocument} onChange={(e)=>{setUpdateTitle(e.target.value), console.log(updateTitle);
                 }}  onClick={handleTitleChange} readOnly={!isEditableTitle} type="text" defaultValue={documentTitle ? documentTitle : "Untitled"} />
             {isEditable && (
                 <div className="flex gap-5 justify-end">
