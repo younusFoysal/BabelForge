@@ -5,6 +5,7 @@ import { AppSidebar } from '@/components/app-sidebar';
 import { ModeToggle } from '@/components/Theme/ModeToggle';
 import { Video } from 'lucide-react';
 import DashboardTopRight from '@/components/Dashboards/DashboardTopRight';
+import { usePathname } from 'next/navigation';
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -15,6 +16,7 @@ const layout = ({ children }) => {
   const admin = ['babelforgeltd@gmail.com', 'babelforgeltdfgd@gmail.com'];
   const isAdmin = admin.includes(uemail);
   const conditionClass = isAdmin ? '' : 'h-screen';
+  const pathName = usePathname();
 
   return (
     <SidebarProvider>
@@ -22,13 +24,17 @@ const layout = ({ children }) => {
       <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
         <main className="relative">
           {/* Dashboard ToP */}
-          <div className="flex z-[99] sticky backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center">
+          <div
+            className={` ${
+              pathName?.includes('/dashboard/chat') ? ' absolute top-0 w-full right-0' : 'sticky'
+            } flex z-[99]  backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center`}
+          >
             <SidebarTrigger />
             <div>
               <DashboardTopRight />
             </div>
           </div>
-          <div className="px-9 py-7">{children}</div>
+          <div className={!pathName?.includes('/dashboard/chat') && 'px-9 py-7'}>{children}</div>
         </main>
       </div>
     </SidebarProvider>
@@ -36,3 +42,5 @@ const layout = ({ children }) => {
 };
 
 export default layout;
+
+// px-9 py-7

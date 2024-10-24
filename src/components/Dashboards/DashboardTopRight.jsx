@@ -11,20 +11,18 @@ import { FaPause, FaPlay } from 'react-icons/fa6';
 const DashboardTopRight = () => {
   const { recording, paused, togglePauseResumeRecording, videoUrl, startRecording, stopRecording } = useScreenRecorder();
   const router = useRouter();
-  // state to store time
-  const [time, setTime] = useState(0); // Time in centiseconds (1/100th of a second)
+  const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   // Effect to handle the timer logic
   useEffect(() => {
     let intervalId;
     if (isRunning) {
-      intervalId = setInterval(() => setTime(prevTime => prevTime + 1), 10); // Increment every 10ms
+      intervalId = setInterval(() => setTime(prevTime => prevTime + 1), 10);
     }
-    return () => clearInterval(intervalId); // Cleanup interval on unmount or stop
+    return () => clearInterval(intervalId);
   }, [isRunning]);
 
-  // Calculate hours, minutes, seconds, and milliseconds
   const hours = Math.floor(time / 360000);
   const minutes = Math.floor((time % 360000) / 6000);
   const seconds = Math.floor((time % 6000) / 100);
@@ -35,7 +33,6 @@ const DashboardTopRight = () => {
     setIsRunning(false);
     setTime(0);
   };
-  // Helper to format time with leading zeroes
   const formatTime = unit => String(unit).padStart(2, '0');
 
   useEffect(() => {

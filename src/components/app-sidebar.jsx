@@ -133,6 +133,93 @@ export function AppSidebar({ ...props }) {
     ],
   };
 
+  const AdminData = {
+    user: {
+      name: `${user?.fullName}`,
+      email: `${user?.primaryEmailAddress?.emailAddress}`,
+      avatar: `${user?.imageUrl}`,
+    },
+    navMain: [
+      {
+        title: "Dashboard",
+        url: "/dashboard",
+        icon: SquareTerminal,
+        isActive: true,
+        items: [
+          {
+            title: "Overview",
+            url: "/dashboard",
+          },
+        ],
+      },
+      {
+        title: "Transaction",
+        url: "#",
+        icon: BadgeDollarSign,
+        items: [
+          {
+            title: "Transactions",
+            url: "/dashboard/admin/transactions",
+          },
+        ],
+      },
+      {
+        title: "Connect",
+        url: "#",
+        icon: MessageSquareText,
+        items: [
+          {
+            title: "inbox",
+            url: "/dashboard/admin/inbox",
+          },
+
+          {
+            title: "reviews",
+            url: "/dashboard/admin/reviews",
+          },
+        ],
+      },
+      {
+        title: "Packages",
+        url: "#",
+        icon: Package,
+        items: [
+          {
+            title: "Packages",
+            url: "/dashboard/admin/Packages",
+          },
+        ],
+      },
+      {
+        title: "Tools",
+        url: "#",
+        icon: Settings2,
+        items: [
+          {
+            title: "Babel AI",
+            url: "/dashboard/babelai",
+          },
+          {
+            title: "Canvas",
+            url: "/dashboard/canvas",
+          },
+          {
+            title: "Notes",
+            url: "/dashboard/notes",
+          },
+          {
+            title: "Docs",
+            url: "/dashboard/doc",
+          },
+          {
+            title: "Screen Record",
+            url: "/dashboard/ScreenRecorder",
+          },
+        ],
+      },
+    ],
+  };
+
   const filteredNavMain = data.navMain
     .map((item) => {
       if (item.title === "Chat") {
