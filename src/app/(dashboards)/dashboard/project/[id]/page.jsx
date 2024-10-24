@@ -10,6 +10,9 @@ import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import Alert from '@/components/shared/Alert';
 import usePerson from '@/hooks/usePerson';
+import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const ProjectDetails = () => {
   const axiosCommon = useAxiosCommon();
@@ -17,25 +20,62 @@ const ProjectDetails = () => {
   const params = useParams();
   const { id } = params;
   const [currentDate, setCurrentDate] = useState('');
-  // const [memberEmail, SetMemberEmail] = useState('');
+  const [memberEmail, setMemberEmail] = useState(null);
+  const [person, isUserLoading] = usePerson(memberEmail);
 
-  // useeffects
+  // useEffect(() => {
+  //   setMemberEmail(person.data.email);
+  // }, [person])
+  // // useeffects
+  // useEffect(() => {
+  //   const now = new Date();
+
+  //   // Convert to GMT+6
+  //   const gmt6Offset = 6 * 60 * 60 * 1000;
+  //   const gmt6Date = new Date(now.getTime() + gmt6Offset);
+
+  //   // Format date as YYYY-MM-DD
+  //   const year = gmt6Date.getUTCFullYear();
+  //   const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
+  //   const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+  //   const formattedDate = `${year}-${month}-${day}`;
+
+  //   // Set the formatted date and time
+  //   setCurrentDate(formattedDate);
+  // }, []);
+
   useEffect(() => {
-    const now = new Date();
+    if (person?.data) {
+      toast({
+        description: 'Member Added Successfully',
+        variant: 'success',
+      });
+    } else if (person?.error) {
+      toast({
+        description: 'Member not found',
+        variant: 'error',
+      });
+    }
+  }, [person]);
 
-    // Convert to GMT+6
-    const gmt6Offset = 6 * 60 * 60 * 1000;
-    const gmt6Date = new Date(now.getTime() + gmt6Offset);
-
-    // Format date as YYYY-MM-DD
-    const year = gmt6Date.getUTCFullYear();
-    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`;
-
-    // Set the formatted date and time
-    setCurrentDate(formattedDate);
-  }, []);
+  const handleAddMember = e => {
+    e.preventDefault();
+    setMemberEmail(e.target.email.value);
+    e.target.reset();
+    // if (person.data) {
+    //   toast({
+    //     description: 'Member Added Successfully',
+    //     variant: 'success',
+    //   });
+    // }
+    // else {
+    //   toast({
+    //     description: 'Member not found',
+    //     variant: 'error',
+    //   });
+    // }
+    // setMemberEmail(null);
+  }
 
   const {
     data: project = [],
@@ -85,6 +125,7 @@ const ProjectDetails = () => {
   // const [person] = usePerson(memberEmail);
   // console.log(person.data);
 
+
   if (isLoading || teamsOfProjectLoading || isMembersLoading) {
     return <LoadingSpinner />;
   }
@@ -103,6 +144,8 @@ const ProjectDetails = () => {
       }
     });
   };
+
+
 
   return (
     <section className="flex flex-col md:flex-row my-5 md:ml-2">
@@ -226,7 +269,37 @@ const ProjectDetails = () => {
 
         {/* Members */}
         <div className="mt-7">
-          <h3 className="border-b pb-2 font-bold text-xl">Members</h3>
+          <div className='flex items-end justify-between border-b pb-2'>
+            <h3 className="font-bold text-xl">Members</h3>
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className='bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-3 py-1 rounded-md'>Add Member</button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle>Add Member</DialogTitle>
+                  <DialogDescription>
+                    Add a member in the project by Email.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <form onSubmit={handleAddMember} className="flex flex-col gap-2">
+                    <input
+                      id="name"
+                      name='email'
+                      placeholder='email'
+                      required
+                      className="border p-2 rounded-lg"
+                    />
+                    <input className='bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-3 py-1 rounded-md' type="submit" value="Add Member" />
+                  </form>
+                </div>
+              </DialogContent>
+            </Dialog>
+          </div>
+
+
           {pallmembers.length === 0 && <p className="font-semibold mt-3">No Teams Added Yet.</p>}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
             {projectMembers?.data?.slice().reverse().map((member, idx) => (
