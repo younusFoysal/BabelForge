@@ -181,7 +181,7 @@ const Notes = () => {
 
 
     return (
-        <div className=" pt-2">
+        <div className="pt-2">
 
             <div
                 className=" flex flex-col shadow-lg w-full items-center pt-4 gap-4 rounded-xl p-4 bg-gradient-to-b from-blue-600 to-bgColor hover:shadow-md hover:shadow-sky-200 duration-500">
