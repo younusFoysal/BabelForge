@@ -7,6 +7,7 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useUser } from '@clerk/nextjs';
 import { useToast } from '@/hooks/use-toast';
 import noData from '@/image/Team/no-data.svg';
+import { TfiWrite } from 'react-icons/tfi';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,7 +18,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
 import Alert from '@/components/shared/Alert';
-import { MdAddTask } from 'react-icons/md';
+import { MdAddTask, MdAssignmentInd, MdAssignmentTurnedIn, MdOutlineAssignmentInd } from 'react-icons/md';
 import Image from 'next/image';
 import { Panel, PanelResizeHandle, PanelGroup } from 'react-resizable-panels';
 import { Label } from '@/components/ui/label';
@@ -25,6 +26,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useTheme } from 'next-themes';
 import { TagsInput } from 'react-tag-input-component';
+import { FaBookOpen } from 'react-icons/fa6';
+import { RiTeamFill } from 'react-icons/ri';
 
 const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   const [selectedTask, setSelectedTask] = useState(null);
@@ -335,7 +338,34 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                 <PanelResizeHandle className="w-[2px] mx-2 bg-blue-400" />
                 <Panel minSize={30} defaultSize={50}>
                   <div className="">
-                    <div className="px-4 border h-full border-[#b7b7b7]">hey</div>
+                    <div className="px-4 border py-4 h-full rounded border-[#b7b7b7]">
+                      <p className="flex gap-5">
+                        <span className="text-[15px] flex  text-[#111]">
+                          <MdAssignmentTurnedIn className="mr-2 text-green-600 text-[20px]" /> Assigned to :
+                        </span>
+                        <span className="flex text-[14px] flex-col gap-2">
+                          {formData?.tassignTo.map((item, idx) => {
+                            return (
+                              <span key={idx}>
+                                {idx + 1} . {item}
+                              </span>
+                            );
+                          })}
+                        </span>
+                      </p>
+                      <p className="flex gap-5 mt-3">
+                        <span className="text-[14px] items-center flex  text-[#111]">
+                          <FaBookOpen className="mr-2 text-blue-400 text-[18px]" /> Author :
+                        </span>
+                        <span className="text-[13px]">{formData.author}</span>
+                      </p>
+                      <p className="flex gap-5 mt-3">
+                        <span className="text-[14px] items-center flex  text-[#111]">
+                          <RiTeamFill className="mr-2 text-yellow-600 text-[18px]" /> Team :
+                        </span>
+                        <span className="text-[13px]">{formData.teamId}</span>
+                      </p>
+                    </div>
                   </div>
                 </Panel>
               </PanelGroup>
