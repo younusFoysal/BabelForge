@@ -33,7 +33,7 @@ const TeamDialog = ({ id, refetch }) => {
   return (
     <>
       <Dialog>
-        <DialogTrigger className="flex-1 font-medium hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm dark:bg-gray-800">
+        <DialogTrigger className="flex-1 font-medium bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-purple-200 dark:hover:shadow-purple-800 text-white hover:text-white transition-all duration-500 hover:scale-105  p-2 mb-2 rounded-sm dark:bg-gray-800">
           Add Member
         </DialogTrigger>
         <DialogContent>

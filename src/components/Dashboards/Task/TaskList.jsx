@@ -16,7 +16,8 @@ import AddTask from "./AddTask";
 import axios from "axios";
 import useAxiosCommon from "@/lib/axiosCommon";
 import {useQuery} from "@tanstack/react-query";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner"; // Import axios for API requests
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import {useUser} from "@clerk/nextjs"; // Import axios for API requests
 
 export default function TaskList() {
   const [tasks, setTasks] = useState({
@@ -25,6 +26,10 @@ export default function TaskList() {
     done: [],
   });
 
+  const { user } = useUser();
+  const useremail = user?.primaryEmailAddress?.emailAddress;
+
+
   const [activeTask, setActiveTask] = useState(null);
   const axiosCommon = useAxiosCommon();
 
@@ -32,7 +37,7 @@ export default function TaskList() {
   const { data: taskdata = [], isLoading, refetch } = useQuery({
     queryKey: ['alltaskss'],
     queryFn: async () => {
-      const { data } = await axiosCommon.get(`/task/tasks`);
+      const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${useremail}`);
 
       // Organize tasks into categories
       const organizedTasks = {
@@ -71,8 +76,6 @@ export default function TaskList() {
     },
   });
   console.log(tasks);
-
-
 
 
   const handleDragStart = (event) => {

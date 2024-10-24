@@ -51,7 +51,7 @@ const Team = ({ id }) => {
 
       {/* Update Button */}
       <div className="flex justify-end mt-4">
-        <Button onClick={() => handleUpdate()} variant="outline" className="bg-primary text-white">
+        <Button onClick={() => handleUpdate()} variant="outline" className=" bg-gradient-to-r from-blue-600 to-purple-600 rounded-md hover:shadow-purple-200 dark:hover:shadow-purple-800 text-white hover:text-white transition-all duration-500 hover:scale-105">
           Update Team
         </Button>
       </div>

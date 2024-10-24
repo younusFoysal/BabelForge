@@ -86,7 +86,7 @@ const UserTeam = () => {
           <DialogTrigger asChild>
             <button
               className={`
-                 px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group  dark:bg-gray-50 text-white`}
+                 px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500 hover:shadow-purple-200 dark:hover:shadow-purple-800 text-sm hover:scale-105 flex gap-1 items-center group  text-white`}
             >
               Create Team
             </button>
