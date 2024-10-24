@@ -95,7 +95,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
   return (
     <div>
       <div className="w-full overflow-auto">
-        {tasks?.length == 0 && (
+        {tasks?.length === 0 && (
           <div className="flex flex-col mt-[60px] w-full items-center justify-center">
             <Image className="w-[300px] h-auto" src={noData} alt="No data" height={100} width={100} />
             <p className="text-[26px] font-semibold mt-6">No task found !</p>

@@ -39,15 +39,14 @@ export function ShareLink({ colour }) {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className={`${
-            colour &&
-            "px-6   capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500  hover:scale-105 flex gap-1 items-center group py-[22px] dark:bg-gray-50 text-white text-sm "
+          className={`${ colour &&
+            "px-6 capitalize border-2 border-purple-700 bg-white dark:bg-gray-900  hover:bg-purple-700  rounded-md transition-all duration-500 group  hover:scale-105 hover:text-white flex gap-1 items-center group py-[22px]  text-purple-700 dark:text-purple-400 text-sm "
           }`}
         >
           Share{" "}
           {colour && (
             <span>
-              <RiShareForwardFill className="text-white" size={20} />
+              <RiShareForwardFill className="text-purple-700 dark:text-purple-500 group-hover:text-white transition-all duration-500 " size={20} />
             </span>
           )}
         </Button>
@@ -84,15 +83,13 @@ export function ShareLink({ colour }) {
               id="link"
               defaultValue={window.location.href}
               readOnly
-              className={`${colour && "bg-[#181024]"}`}
+              className={`${colour && " dark:bg-[#181024]"}`}
             />
           </div>
           <Button
             onClick={handleCopy}
             size="sm"
-            className={`px-3 ${
-              colour && "bg-gradient-to-r from-blue-600 to-purple-600"
-            }`}
+            className={`px-3 bg-gradient-to-r from-blue-600 to-purple-600 dark:text-white`}
           >
             <span className="sr-only">Copy</span>
             <Copy className={`h-4 w-4 ${colour && "text-white"}`} />
@@ -103,10 +100,9 @@ export function ShareLink({ colour }) {
             <Button
               type="button"
               variant="secondary"
-              className={`${
-                colour &&
-                "px-6   capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500  hover:scale-105 flex gap-1 items-center group py-5 dark:bg-gray-50 text-white text-sm "
-              }`}
+              className={`
+                px-6 capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500  hover:scale-105 flex gap-1 items-center group py-5 dark:bg-gray-50 text-white text-sm 
+              `}
             >
               Close
             </Button>

@@ -13,8 +13,9 @@ const Page = () => {
   const axiosCommon = useAxiosCommon();
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
+  //console.log(user);
   const uemail = user?.primaryEmailAddress?.emailAddress;
-  const useremail = uemail;
+  //console.log(uemail);
 
   // Post task data
   const { mutateAsync: addTaskMutation } = useMutation({
@@ -62,9 +63,9 @@ const Page = () => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ['my-works', useremail],
+    queryKey: ['my-works', uemail],
     queryFn: async () => {
-      const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${useremail}`);
+      const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${uemail}`);
       return data;
     },
   });

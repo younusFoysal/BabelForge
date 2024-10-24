@@ -22,7 +22,7 @@ const ScreenRecorder = () => {
         {!recording ? (
           <button
             onClick={handleStartRecording}
-            className="flex items-center px-6 py-3 text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
+            className="flex items-center px-6 py-3 text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
           >
             <FaVideo className="mr-2" />
             Start Recording
@@ -49,7 +49,7 @@ const ScreenRecorder = () => {
             <a
               href={videoUrl}
               download="recording.webm"
-              className="flex items-center px-4 py-2 text-white bg-green-500 rounded-lg shadow-lg hover:bg-green-600 transition duration-300 transform hover:scale-105"
+              className="flex items-center px-4 py-2 text-white bg-purple-600 rounded-lg shadow-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105"
             >
               <FaDownload className="mr-2" />
               Download Video
