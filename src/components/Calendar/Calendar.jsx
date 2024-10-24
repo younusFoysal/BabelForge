@@ -31,6 +31,7 @@ const MyCalendar = () => {
         },
     });
 
+
     const [showModal, setShowModal] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [date, setDate] = useState(new Date());
@@ -48,15 +49,19 @@ const MyCalendar = () => {
         let borderLeft = '4px solid transparent';
 
         if (event.status === 'todo') {
-            backgroundColor = '#d0e1ff';
+            backgroundColor = '#d0e1ff'; //light blue
             textColor = '#4a90e2';
             borderLeft = '4px solid #4a90e2';
-        } else if (event.status === 'inprogress') {
-            backgroundColor = '#e2d7f2';
-            textColor = '#a84ecf';
-            borderLeft = '4px solid #a84ecf';
-        } else if (event.status === 'done') {
-            backgroundColor = '#edd8f3';
+        }
+
+        else if (event.status === 'inprogress') {
+            backgroundColor = '#eeddff';
+            textColor = '#6b357a';
+            borderLeft = '4px solid #6b357a';
+        }
+
+        else if (event.status === 'done') {
+            backgroundColor = '#edd8f3'; //light purple
             textColor = '#785c7d';
             borderLeft = '4px solid #785c7d';
         }

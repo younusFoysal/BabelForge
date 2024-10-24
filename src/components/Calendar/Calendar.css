@@ -34,3 +34,7 @@
     box-shadow: 0 7px 10px -3px rgba(229, 226, 226, 0.89), 0 4px 6px -4px rgb(229, 226, 226, 0.89);
     transition-duration: 300ms;
 }
+
+.rbc-row-bg .rbc-today {
+    background-color: #f1f0fe;
+}
