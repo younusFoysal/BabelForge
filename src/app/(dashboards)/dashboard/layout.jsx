@@ -24,7 +24,6 @@ const layout = ({ children }) => {
       {!pathName?.includes("/dashboard/meet/meeting") && (
         <AppSidebar className="bg-[#f7f8f9] dark:bg-[#151e30] dark:text-[#d4d4d4] text-[#34383e]" />
       )}
-
       <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
         <main className="relative">
           {/* Dashboard ToP */}
