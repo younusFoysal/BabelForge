@@ -83,7 +83,7 @@ const UpdateProjectPage = ({ id }) => {
   return (
     <div className="flex justify-between items-center flex-col">
       <h2 className="text-4xl text-[#333] mb-4 dark:text-white">Update projects</h2>
-      <div className="w-[60%]">
+      <div className="w-full md:w-[70%]">
         <div className="">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-[12px]">
             <div className="mb-1">
