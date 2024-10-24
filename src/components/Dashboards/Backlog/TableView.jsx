@@ -44,7 +44,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
 
   // set email
   useEffect(() => {
-    setEmails(formData?.tassignTo);
+    setEmails([formData?.tassignTo]);
   }, [formData]);
 
   let num = 1;
@@ -262,10 +262,10 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                                 type="email"
                                 id="members"
                                 classNames="w-full"
-                                value={emails}
+                                value={Array.isArray(emails[0]) ? emails[0] : emails}
                                 onChange={setEmails}
                                 name="members"
-                                placeHolder="Enter emails"
+                                placeHolder="Enter emails here"
                               />
                             </div>
                             <span className="text-[11px]">Press enter to add more</span>
