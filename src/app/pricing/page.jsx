@@ -1,7 +1,5 @@
-import AdminPackages from '@/components/Admin/AdminPackages/AdminPackages';
-import Review from '@/components/Admin/AdminReview/Review';
-import Faq from '@/components/Pricing/Faq';
-import PriceCard from '@/components/Pricing/PriceCard';
+import AdminPackages from "@/components/Admin/AdminPackages/AdminPackages";
+import Faq from "@/components/Pricing/Faq";
 
 const Pricing = () => {
   return (
