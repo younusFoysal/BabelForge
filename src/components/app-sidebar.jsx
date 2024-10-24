@@ -35,7 +35,6 @@ export function AppSidebar({ ...props }) {
     "babelforgeltdfgd@gmail.com",
     "mrdevware@gmail.com",
   ];
-  const isAdmin = admin.includes(uemail);
 
   const data = {
     user: {
