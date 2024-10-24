@@ -58,6 +58,7 @@ const AdminInbox = () => {
     });
   };
 
+
   // Open the selected mail
   const openMail = (message) => {
     setSelectedMessage(message);
@@ -68,16 +69,18 @@ const AdminInbox = () => {
  
 
   return (
-    <div className="h-screen flex flex-col lg:flex-row bg-blue-100 dark:bg-gray-900">
+    <div className="h-screen  flex flex-col lg:flex-row bg-blue-100 dark:bg-gray-900">
       {/* Sidebar containing messages */}
-      <div className="w-full lg:w-1/3 dark:bg-gray-800 p-4 overflow-y-auto custom-scrollbar">
+      <div className="w-full  lg:w-1/3 dark:bg-gray-800 p-4 overflow-y-auto custom-scrollbar">
         <div className="bg-white rounded-3xl dark:bg-gray-700">
           <div>
-            {messages?.map((message) => (
+          {messages?.map((message, index) => (
               <div
                 key={message?._id}
                 onClick={() => openMail(message)}
-                className={`cursor-pointer border-b-[1px] hover:border-b-4 hover:border-blue-600 p-4 shadow-sm hover:bg-slate-200 dark:hover:bg-gray-600 transition-all flex flex-col justify-between h-full relative`}
+                className={`cursor-pointer border-b-[1px] hover:border-b-4 hover:border-blue-600 p-4 shadow-sm hover:bg-slate-200 dark:hover:bg-gray-600 transition-all flex flex-col justify-between h-full relative ${
+                  index === 0 ? 'rounded-t-3xl' : index === messages.length - 1 ? 'rounded-b-3xl' : ''
+                }`}
               >
                 <div className="flex gap-3">
                   <Image alt="" className="w-12 h-12 rounded-full  dark:bg-gray-500  " src={userIcon}
@@ -106,7 +109,7 @@ const AdminInbox = () => {
       </div>
 
       {/* Main content area */}
-      <div className='overflow-y-auto w-full lg:w-2/3 bg-blue-100 lg:block hidden dark:bg-gray-800'>
+      <div className='overflow-hidden w-full lg:w-2/3 bg-blue-100 lg:block hidden dark:bg-gray-800'>
         <div className='h-full'>
           {!selectedMessage ? (
             <div className="flex justify-center items-center h-full">
