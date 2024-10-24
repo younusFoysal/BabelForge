@@ -13,7 +13,7 @@ const AIHelper = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [chatHistory, setChatHistory] = useState([
-        { sender: "Babel AI", message: "Hi, how can I help you today?" }
+        { sender: "AI Assistant", message: "Hi, how can I help you today?" }
     ]);
 
 
@@ -37,7 +37,7 @@ const AIHelper = () => {
             setChatHistory([
                 ...chatHistory,
                 { sender: 'You', message: prompt },
-                { sender: 'Babel AI', message: data.response }
+                { sender: 'AI Assistant', message: data.response }
             ]);
             setPrompt('');
         } catch (err) {
@@ -65,7 +65,7 @@ const AIHelper = () => {
 
             <div className="flex flex-col items-center mx-auto mb-4">
                 <h1 className="font-semibold text-[1.5rem] leading-8 sm:text-4xl sm:leading-tight mb-4 block">
-                    Babel AI
+                    Your AI Assistant
                 </h1>
                 <h2 className="font-semibold text-[1.25rem] leading-7 sm:text-2xl sm:leading-tight mb-4 block">
                     Need help in task management? ask...
@@ -74,19 +74,19 @@ const AIHelper = () => {
 
             <div className="drop-shadow-xl bg-white p-6 rounded-lg border border-[#e5e7eb] h-[634px] w-full">
                 <div className="flex flex-col space-y-1.5 pb-6">
-                    <h2 className="font-semibold text-lg tracking-tight ">Babel AI</h2>
-                    <p className="text-sm w-full text-[#6b7280] leading-3">Your Personal Guide.</p>
+                    <h2 className="font-semibold text-lg tracking-tight ">AI Assistant</h2>
+                    <p className="text-sm w-full text-[#6b7280] leading-3">Your Personal Guide. AI Assistant can make mistakes. Check important info.</p>
                 </div>
 
                 <div className="pr-4 h-[474px] min-w-full overflow-y-auto">
                     {chatHistory.map((chat, index) => (
-                        <div key={index} className={`flex gap-3 my-4 text-sm ${chat.sender === 'Babel AI' ? 'justify-start' : 'justify-end'}`}>
+                        <div key={index} className={`flex gap-3 my-4 text-sm ${chat.sender === 'AI Assistant' ? 'justify-start' : 'justify-end'}`}>
                             <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
-                                <div className={`rounded-full ${chat.sender === 'Babel AI' ? 'bg-blue-100 border-blue-500' : 'bg-gray-100'} border`}>
-                                    <Image src={chat.sender === 'Babel AI' ? logo : userbw} alt={chat.sender} className="w-full" />
+                                <div className={`rounded-full ${chat.sender === 'AI Assistant' ? 'bg-blue-100 border-blue-500' : 'bg-gray-100'} border`}>
+                                    <Image src={chat.sender === 'AI Assistant' ? logo : userbw} alt={chat.sender} className="w-full" />
                                 </div>
                             </span>
-                            <div className={`p-2 rounded-lg ${chat.sender === 'Babel AI' ? 'bg-blue-50 text-black border border-blue-200' : 'bg-gray-100 border text-black'}`}>
+                            <div className={`p-2 rounded-lg ${chat.sender === 'AI Assistant' ? 'bg-blue-50 text-black border border-blue-200' : 'bg-gray-100 border text-black'}`}>
                                 <p className="font-bold">{chat.sender}</p>
                                 <div className="chat-message">
                                     <ReactMarkdown components={renderers}>{chat.message}</ReactMarkdown>
@@ -105,7 +105,7 @@ const AIHelper = () => {
                             onChange={(e) => setPrompt(e.target.value)}
                         />
                         <button
-                            className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-black hover:bg-[#111827E6] h-10 px-4 py-2"
+                            className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md text-sm font-medium  hover:scale-105 duration-500  disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2"
                             type="submit"
                             disabled={loading || !prompt.trim()}
                         >

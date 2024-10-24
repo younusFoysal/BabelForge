@@ -26,7 +26,7 @@ export default function TaskList() {
     done: [],
   });
 
-  const { user } = useUser();
+  const { user, isLoaded } = useUser();
   const useremail = user?.primaryEmailAddress?.emailAddress;
 
 
@@ -35,7 +35,7 @@ export default function TaskList() {
 
 
   const { data: taskdata = [], isLoading, refetch } = useQuery({
-    queryKey: ['alltaskss'],
+    queryKey: ['alltaskss', user, isLoaded],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${useremail}`);
 

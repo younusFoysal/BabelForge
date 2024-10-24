@@ -48,8 +48,8 @@ const StreamChats = ({ userData }) => {
     );
 
   return (
-    <div className="max-w-[1000px] my-auto flex items-center justify-center mx-auto h-screen">
-      <div className="md:h-[530px] h-[400px] dark:bg-[#17191c] md:overflow-hidden  md:shadow-2xl w-full rounded-2xl md:border">
+    <div className="max-w-full my-auto flex items-center justify-center mx-auto">
+      <div className="h-[300px]  m-16 md:h-[750px] dark:bg-[#17191c] md:overflow-hidden md:shadow-2xl w-full rounded-2xl md:border">
         <Chat client={client} theme={cn(resolvedTheme === 'dark' ? 'str-chat__theme-dark' : 'str-chat__theme-light')}>
           <div className="md:hidden pt-4 py-3 border-b border-b-[#DBDDE1] p-3 bg-white dark:bg-[#17191c] dark:border-b-[#202327]">
             <button onClick={() => setChatsidebaropen(!Chatsidebaropen)}>
