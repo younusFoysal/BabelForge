@@ -9,6 +9,7 @@ import { IoIosLink } from 'react-icons/io';
 import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import Alert from '@/components/shared/Alert';
+import usePerson from '@/hooks/usePerson';
 
 const ProjectDetails = () => {
   const axiosCommon = useAxiosCommon();
@@ -16,6 +17,7 @@ const ProjectDetails = () => {
   const params = useParams();
   const { id } = params;
   const [currentDate, setCurrentDate] = useState('');
+  // const [memberEmail, SetMemberEmail] = useState('');
 
   // useeffects
   useEffect(() => {
@@ -60,11 +62,35 @@ const ProjectDetails = () => {
     },
   });
 
-  if (isLoading || teamsOfProjectLoading) {
+  const {
+    data: projectMembers,
+    isLoading: isMembersLoading,
+  } = useQuery({
+    queryKey: ['projectMembersAll', id],
+    queryFn: async () => {
+      const data = await axiosCommon.get(`/project/projects/members/${id}`);
+      return data;
+    },
+  });
+  // console.log("project members: ", projectMembers.data);
+
+
+  // useEffect to set the first member email when pallmembers changes
+  // useEffect(() => {
+  //   if (project?.data?.pallmembers?.length > 0) {
+  //     SetMemberEmail(project.data.pallmembers[0]); // Set the email of the first member
+  //   }
+  // }, [project]);
+
+  // const [person] = usePerson(memberEmail);
+  // console.log(person.data);
+
+  if (isLoading || teamsOfProjectLoading || isMembersLoading) {
     return <LoadingSpinner />;
   }
 
   const { favorite, pallmembers, pcategory, pdes, pedate, pimg, pmanager, pmname, pname, psdate, purl, _id } = project.data;
+  // pallmembers.map(member => SetMemberEmail(member));
 
   const handleEndProject = id => {
     axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate }).then(res => {
@@ -192,6 +218,37 @@ const ProjectDetails = () => {
                 <div className="-space-y-1">
                   <p className="font-bold">{team?.tname}</p>
                   <p className="text-sm text-gray-700 dark:text-white/80">{team?.tcategory}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Members */}
+        <div className="mt-7">
+          <h3 className="border-b pb-2 font-bold text-xl">Members</h3>
+          {pallmembers.length === 0 && <p className="font-semibold mt-3">No Teams Added Yet.</p>}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-3">
+            {projectMembers?.data?.slice().reverse().map((member, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-6 gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20"
+              >
+                <div className="col-span-2 p-2 rounded-full overflow-hidden flex items-center">
+                  <Image
+                    src={member?.image_url}
+                    width={100}
+                    height={100}
+                    alt="project_image"
+                    className="rounded-full w-16 h-16 object-cover"
+                  />
+                </div>
+                <div className="-space-y-1 col-span-4">
+                  <p className="font-bold">{member?.firstName + " " + member?.lastName}</p>
+                  <p className="text-sm text-gray-700 dark:text-white/80">{member?.email}</p>
+                  {
+                    pmanager === member?.email ? <p className="text-sm text-gray-700 dark:text-white/80">Manager</p> : <p className="text-sm text-gray-700 dark:text-white/80">Member</p>
+                  }
                 </div>
               </div>
             ))}

@@ -210,15 +210,18 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                           <Ellipsis></Ellipsis>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
-                          <DropdownMenuItem>
-                            <p
-                              onClick={() =>
-                                router.push(`/dashboard/projects/${data._id}`)
-                              }
-                            >
-                              Update Project
-                            </p>
-                          </DropdownMenuItem>
+                          {
+                            !data.pedate && <DropdownMenuItem>
+                              <p
+                                onClick={() =>
+                                  router.push(`/dashboard/projects/${data._id}`)
+                                }
+                              >
+                                Update Project
+                              </p>
+                            </DropdownMenuItem>
+                          }
+
 
                           <DropdownMenuItem>
                             {/* <p onClick={() => handleEndProject(data._id)} > End Project </p> */}
