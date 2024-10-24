@@ -16,7 +16,6 @@ const EndCallButton = () => {
 
   const { useLocalParticipant } = useCallStateHooks();
   const localParticipant = useLocalParticipant();
-  const { stopMedia } = useMediaControl();
 
   const isMeetingOwner =
     localParticipant &&
@@ -27,7 +26,8 @@ const EndCallButton = () => {
 
   const EndCall = async () => {
     await call.endCall();
-    stopMedia();
+    call.camera.disable();
+    call.microphone.disable();
     router.push("/dashboard");
     router.refresh();
   };

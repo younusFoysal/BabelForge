@@ -1,15 +1,22 @@
-'use client';
-import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from '@clerk/nextjs';
+"use client";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  useAuth,
+  UserButton,
+} from "@clerk/nextjs";
 
-import React from 'react';
-import Logo from '@/image/Home/babellogo.png';
-import { MdDashboard } from 'react-icons/md';
-import Image from 'next/image';
-import Button from '../shared/Buttons';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useCall } from '@stream-io/video-react-sdk';
-import { useRouter } from 'next/navigation';
-import { useMediaControl } from './MediaControlProvider';
+import React from "react";
+import Logo from "@/image/Home/babellogo.png";
+import { MdDashboard } from "react-icons/md";
+import Image from "next/image";
+import Button from "../shared/Buttons";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useCall } from "@stream-io/video-react-sdk";
+import { useRouter } from "next/navigation";
+import { useMediaControl } from "./MediaControlProvider";
+import { ModeToggle } from "../Theme/ModeToggle";
 
 const SteamNavber = () => {
   const call = useCall();
@@ -18,7 +25,7 @@ const SteamNavber = () => {
   const router = useRouter();
   const { stopMedia } = useMediaControl();
 
-  const GoBackButton = async route => {
+  const GoBackButton = async (route) => {
     await call.endCall();
     stopMedia();
     router.push(route);
@@ -29,20 +36,28 @@ const SteamNavber = () => {
     <div className="backdrop-blur-lg bg-transparent border-b border-white/10 fixed w-full top-0 right-0 z-[999]">
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo */}
-        <div className="flex gap-1 justify-center items-center cursor-pointer" onClick={() => GoBackButton('/')}>
+        <div
+          className="flex gap-1 justify-center items-center cursor-pointer"
+          onClick={() => GoBackButton("/")}
+        >
           <Image src={Logo} alt="babelforge" className="w-full h-12" />
-          <h3 className="text-3xl font-bold text-white">BabelForge</h3>
+          <h3 className="text-3xl font-bold text-purple-700">BabelForge</h3>
         </div>
 
         {/* Desktop Right Menu */}
         <div className="md:flex items-center space-x-4 hidden">
+          <ModeToggle />
           {auth ? (
             <div className="md:flex items-center space-x-4 mr-4">
               <SignedIn>
                 <div className="flex items-center gap-4">
                   <UserButton>
                     <UserButton.MenuItems>
-                      <UserButton.Link label="Dashboard" href="/dashboard" labelIcon={<MdDashboard size={15} />} />
+                      <UserButton.Link
+                        label="Dashboard"
+                        href="/dashboard"
+                        labelIcon={<MdDashboard size={15} />}
+                      />
                       <UserButton.Action label="manageAccount" />
                       <UserButton.Action label="signOut" />
                     </UserButton.MenuItems>
@@ -51,7 +66,7 @@ const SteamNavber = () => {
               </SignedIn>
 
               <button
-                onClick={() => GoBackButton('/dashboard')}
+                onClick={() => GoBackButton("/dashboard")}
                 className="px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group dark:bg-gray-50 cursor-pointer"
               >
                 <span className="group-hover:translate-x-2 duration-500 transition-all">
