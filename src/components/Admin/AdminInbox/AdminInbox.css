@@ -1,8 +1,11 @@
 
 .custom-scrollbar {
-    scrollbar-width: thin; 
-    scrollbar-color: #a855f7 #f1f1f1; 
-}
+    /* scrollbar-width: thin;  */
+    scrollbar-color: transparent transparent; 
+  }
+
+ 
+  
 
 
 
