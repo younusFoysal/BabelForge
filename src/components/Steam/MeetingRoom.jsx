@@ -43,12 +43,14 @@ const MeetingRoom = () => {
       call.camera.disable();
       call.microphone.disable();
       router.push("/dashboard");
+      router.refresh();
     }
-  }, [callHasEnded, stopMedia, router, LeaveCall]);
+  }, [callHasEnded, stopMedia, router]);
 
-  LeaveCall = async () => {
-    stopMedia();
+  const LeaveCall = async () => {
     await call.endCall();
+    call.camera.disable();
+    call.microphone.disable();
     router.push("/dashboard");
     router.refresh();
   };

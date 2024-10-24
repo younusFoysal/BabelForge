@@ -55,9 +55,7 @@ const MeetingTypeList = () => {
   if (!user) return <h1>please first login </h1>;
 
   return (
-    <div className="bg-white h-screen w-full ">
-      <SteamNavber />
-
+    <div className="dark:bg-gray-900 h-screen w-full ">
       <MeetHero
         MeetButton={
           <MeetingButton

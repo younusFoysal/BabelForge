@@ -92,7 +92,7 @@ export function AppSidebar({ ...props }) {
 
           {
             title: "Meeting",
-            url: "/meet",
+            url: "/dashboard/meet",
           },
         ],
       },
