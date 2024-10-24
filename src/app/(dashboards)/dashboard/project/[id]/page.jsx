@@ -13,8 +13,11 @@ import usePerson from '@/hooks/usePerson';
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogOverlay, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useUser } from '@clerk/nextjs';
 
 const ProjectDetails = () => {
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
   const axiosCommon = useAxiosCommon();
   const router = useRouter();
   const params = useParams();
@@ -23,59 +26,8 @@ const ProjectDetails = () => {
   const [memberEmail, setMemberEmail] = useState(null);
   const [person, isUserLoading] = usePerson(memberEmail);
 
-  // useEffect(() => {
-  //   setMemberEmail(person.data.email);
-  // }, [person])
-  // // useeffects
-  // useEffect(() => {
-  //   const now = new Date();
 
-  //   // Convert to GMT+6
-  //   const gmt6Offset = 6 * 60 * 60 * 1000;
-  //   const gmt6Date = new Date(now.getTime() + gmt6Offset);
 
-  //   // Format date as YYYY-MM-DD
-  //   const year = gmt6Date.getUTCFullYear();
-  //   const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
-  //   const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
-  //   const formattedDate = `${year}-${month}-${day}`;
-
-  //   // Set the formatted date and time
-  //   setCurrentDate(formattedDate);
-  // }, []);
-
-  useEffect(() => {
-    if (person?.data) {
-      toast({
-        description: 'Member Added Successfully',
-        variant: 'success',
-      });
-    } else if (person?.error) {
-      toast({
-        description: 'Member not found',
-        variant: 'error',
-      });
-    }
-  }, [person]);
-
-  const handleAddMember = e => {
-    e.preventDefault();
-    setMemberEmail(e.target.email.value);
-    e.target.reset();
-    // if (person.data) {
-    //   toast({
-    //     description: 'Member Added Successfully',
-    //     variant: 'success',
-    //   });
-    // }
-    // else {
-    //   toast({
-    //     description: 'Member not found',
-    //     variant: 'error',
-    //   });
-    // }
-    // setMemberEmail(null);
-  }
 
   const {
     data: project = [],
@@ -105,6 +57,7 @@ const ProjectDetails = () => {
   const {
     data: projectMembers,
     isLoading: isMembersLoading,
+    refetch: memberRefetch,
   } = useQuery({
     queryKey: ['projectMembersAll', id],
     queryFn: async () => {
@@ -126,6 +79,67 @@ const ProjectDetails = () => {
   // console.log(person.data);
 
 
+  const handleAddMember = e => {
+    e.preventDefault();
+    setMemberEmail(e.target.email.value);
+    e.target.reset();
+    // if (person.data) {
+    //   toast({
+    //     description: 'Member Added Successfully',
+    //     variant: 'success',
+    //   });
+    // }
+    // else {
+    //   toast({
+    //     description: 'Member not found',
+    //     variant: 'error',
+    //   });
+    // }
+
+  }
+
+  useEffect(() => {
+    if (memberEmail) {
+      // Check if user is loading to avoid checking before data is available
+      if (!isUserLoading) {
+        if (person.data) {
+          axiosCommon.patch(`project/projects/update/${id}`, { addMember: memberEmail })
+            .then(res => {
+              if (res.data.modifiedCount) {
+                memberRefetch();
+                toast({
+                  description: 'Member Added',
+                  variant: 'success',
+                });
+              }
+              else {
+                toast({
+                  description: 'Member Already Exists.',
+                  variant: 'success',
+                });
+              }
+            })
+            .catch(error => {
+              if (error.status == 400) {
+                toast({
+                  description: "Member Already Exists.",
+                  variant: 'error',
+                });
+              }
+            });
+        }
+        else {
+          toast({
+            description: 'Member Not Found.',
+            variant: 'error',
+          });
+        }
+      }
+    }
+  }, [person, isUserLoading, memberEmail, axiosCommon, id, memberRefetch]);
+
+
+
   if (isLoading || teamsOfProjectLoading || isMembersLoading) {
     return <LoadingSpinner />;
   }
@@ -134,15 +148,16 @@ const ProjectDetails = () => {
   // pallmembers.map(member => SetMemberEmail(member));
 
   const handleEndProject = id => {
-    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate }).then(res => {
-      if (res.data.modifiedCount) {
-        refetch();
-        toast({
-          description: 'Project Ended.',
-          variant: 'success',
-        });
-      }
-    });
+    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
+      .then(res => {
+        if (res.data.modifiedCount) {
+          refetch();
+          toast({
+            description: 'Project Ended.',
+            variant: 'success',
+          });
+        }
+      });
   };
 
 
@@ -274,7 +289,10 @@ const ProjectDetails = () => {
 
             <Dialog>
               <DialogTrigger asChild>
-                <button className='bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-3 py-1 rounded-md'>Add Member</button>
+                {
+                  uemail === pmanager && <button className='bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-3 py-1 rounded-md'>Add Member</button>
+                }
+
               </DialogTrigger>
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
