@@ -7,6 +7,8 @@ const usePerson = (email) => {
     const { data: person = [], isLoading: isUserLoading, isError, refetch } = useQuery({
         queryKey: ['person', email],
         queryFn: async () => {
+            if (!email)
+                return;
             const data = await axiosCommon.get(`/api/user/${email}`)
             return data;
         }

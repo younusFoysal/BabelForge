@@ -1,3 +1,4 @@
+import { Eraser, Pencil, Trash2 } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas';
 
@@ -17,8 +18,10 @@ const CanvasComponent = () => {
     return (
         <div className="flex flex-col items-center p-4">
             {/* Controls Section */}
-            <div className="flex justify-center space-x-4 mb-4">
-                {/* Color Picker */}
+            <div className="flex flex-col-reverse md:flex-row items-center justify-center space-x-4 mb-4">
+                {/* First div */}
+                <div className='flex justify-center items-center gap-5'>
+                    {/* Color Picker */}
                 <div>
                     <input
                         type="color"
@@ -32,7 +35,7 @@ const CanvasComponent = () => {
 
                 {/* Pen Size */}
                 <div className="flex items-center space-x-2">
-                    <label className="text-sm">Pen Size</label>
+                    <label className="text-sm"><Pencil /></label>
                     <input
                         type="range"
                         min="1"
@@ -47,7 +50,7 @@ const CanvasComponent = () => {
 
                 {/* Eraser Size */}
                 <div className="flex items-center space-x-2">
-                    <label className="text-sm">Eraser Size</label>
+                    <label className="text-sm"><Eraser /></label>
                     <input
                         type="range"
                         min="5"
@@ -59,20 +62,22 @@ const CanvasComponent = () => {
                         disabled={!isEraser} // Only enable eraser size when eraser is active
                     />
                 </div>
+                </div>
 
-                {/* Tool Selection */}
+                <div className='flex gap-3'>
+                    {/* Tool Selection */}
                 <div className="flex space-x-2">
                     <button
                         onClick={() => setIsEraser(false)}
                         className={`px-4 py-2 rounded ${!isEraser ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
                     >
-                        Pen
+                      <Pencil />
                     </button>
                     <button
                         onClick={() => setIsEraser(true)}
                         className={`px-4 py-2 rounded ${isEraser ? 'bg-blue-500 text-white' : 'bg-gray-300'}`}
                     >
-                        Eraser
+                       <Eraser />
                     </button>
                 </div>
 
@@ -81,8 +86,9 @@ const CanvasComponent = () => {
                     onClick={handleClearCanvas}
                     className="px-4 py-2 bg-red-500 text-white rounded"
                 >
-                    Clear Canvas
+                   <Trash2 />
                 </button>
+                </div>
             </div>
 
             {/* Canvas Section */}
