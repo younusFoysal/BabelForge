@@ -12,7 +12,7 @@ export default function NotFound() {
                 <div className="mb-8">
                     <h2 className="mt-6 text-6xl font-extrabold text-gray-900 dark:text-gray-100">404</h2>
                     <p className="mt-2 text-3xl font-bold text-gray-900 dark:text-gray-100">Page not found</p>
-                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Sorry, we couldn&apos;t find the page you&apos;re
+                    <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Sorry, We couldn&apos;t find the page you&apos;re
                         looking for.</p>
                 </div>
                 <div className="mt-8">
