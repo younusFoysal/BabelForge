@@ -45,7 +45,7 @@ const MeetingRoom = () => {
       router.push("/dashboard");
       router.refresh();
     }
-  }, [callHasEnded, stopMedia, router]);
+  }, [callHasEnded, stopMedia, router, call.camera, call.microphone]);
 
   const LeaveCall = async () => {
     await call.endCall();

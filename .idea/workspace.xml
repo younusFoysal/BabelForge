@@ -4,25 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="responsive fix">
-      <change afterPath="$PROJECT_DIR$/src/404.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/diagrams/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/[...not_found]/layout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/[...not_found]/not-found.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/[...not_found]/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Canvas/Diagram.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/Home/404.png" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Diagram added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/[id]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/test/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/test/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Canvas/CanvasComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Canvas/CanvasComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Doc/ShareLink.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Doc/ShareLink.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ScreenRecorder/ScreenRecorder.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ScreenRecorder/ScreenRecorder.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Steam/MeetingRoom.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Steam/MeetingRoom.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,27 +61,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Node.js.GetFileStructure.cjs.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.getFileStructure.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Node.js.GetFileStructure.cjs.executor": "Run",
+    "Node.js.GetFileStructure.js.executor": "Run",
+    "Node.js.getFileStructure.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
@@ -147,14 +131,6 @@
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
       <workItem from="1729684647631" duration="29920000" />
-    </task>
-    <task id="LOCAL-00022" summary="packager fix">
-      <option name="closed" value="true" />
-      <created>1727219148389</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1727219148389</updated>
     </task>
     <task id="LOCAL-00023" summary="Add task Done">
       <option name="closed" value="true" />
@@ -540,7 +516,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729799903081</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Diagram added">
+      <option name="closed" value="true" />
+      <created>1729814067853</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1729814067853</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -559,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="chat fix" />
     <MESSAGE value="admin dashboard page start" />
     <MESSAGE value="admin dashboard page card" />
     <MESSAGE value="Admin Transactions page" />
@@ -584,7 +567,8 @@
     <MESSAGE value="getstart button fix" />
     <MESSAGE value="task button fix" />
     <MESSAGE value="responsive fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="responsive fix" />
+    <MESSAGE value="Diagram added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Diagram added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

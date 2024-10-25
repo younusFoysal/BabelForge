@@ -63,7 +63,7 @@ const TeamDialog = ({ id, refetch }) => {
         }
       }
     }
-  }, [teamMembers, person]);
+  }, [teamMembers, person, axiosCommon, id, isUserLoading, refetch]);
 
   return (
     <>
