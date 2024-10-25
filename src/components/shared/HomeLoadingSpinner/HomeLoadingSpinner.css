@@ -46,7 +46,7 @@
 }
 
 .boxes .box > div {
-    --background: #5C8DF6;
+    --background: #b324ed;
     --top: auto;
     --right: auto;
     --bottom: auto;
@@ -71,13 +71,13 @@
 }
 
 .boxes .box > div:nth-child(2) {
-    --background: #145af2;
+    --background: #a814f2;
     --right: 0;
     --rotateY: 90deg;
 }
 
 .boxes .box > div:nth-child(3) {
-    --background: #447cf5;
+    --background: #ba44f5;
     --rotateX: -90deg;
 }
 
