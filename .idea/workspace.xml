@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Diagram added">
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Milestone 6">
+      <change afterPath="$PROJECT_DIR$/src/image/Home/light-dash-OLD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Home/light-dash-dark.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Steam/MeetingRoom.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Steam/MeetingRoom.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/light-dash.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/light-dash.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,14 +134,6 @@
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
       <workItem from="1729684647631" duration="29920000" />
-    </task>
-    <task id="LOCAL-00023" summary="Add task Done">
-      <option name="closed" value="true" />
-      <created>1727224554136</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1727224554136</updated>
     </task>
     <task id="LOCAL-00024" summary="Server api link added">
       <option name="closed" value="true" />
@@ -524,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729814067853</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Milestone 6">
+      <option name="closed" value="true" />
+      <created>1729814772410</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1729814772410</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -543,7 +546,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="admin dashboard page start" />
     <MESSAGE value="admin dashboard page card" />
     <MESSAGE value="Admin Transactions page" />
     <MESSAGE value="Chart fix" />
@@ -568,7 +570,8 @@
     <MESSAGE value="task button fix" />
     <MESSAGE value="responsive fix" />
     <MESSAGE value="Diagram added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diagram added" />
+    <MESSAGE value="Milestone 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Milestone 6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

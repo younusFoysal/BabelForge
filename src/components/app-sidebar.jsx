@@ -190,7 +190,7 @@ export function AppSidebar({ ...props }) {
         items: [
           {
             title: "Packages",
-            url: "/dashboard/admin/Packages",
+            url: "/dashboard/admin/packages",
           },
         ],
       },
