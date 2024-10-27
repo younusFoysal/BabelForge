@@ -1,63 +1,96 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { BsThreeDots } from "react-icons/bs";
 import { HiExclamationCircle } from "react-icons/hi";
-import { FaCheckSquare } from "react-icons/fa";
 import TeamDialog from "./TeamDialog";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
 import MemberBox from "./MemberBox";
 import LinkDialog from "./LinkDialog";
 import LinkBox from "./LinkBox";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import { Button } from "@/components/ui/button";
+import UpdateTeamModal from "./UpdateTeamModal";
+import Image from "next/image";
 
-const Team = () => {
+const Team = ({ id }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const axiosCommon = useAxiosCommon();
+
   const {
     data: team = [],
     isLoading,
-    isError,
     refetch,
   } = useQuery({
-    queryKey: ["team"],
+    queryKey: ["team", id],
     queryFn: async () => {
-      const { data } = await axiosCommon(
-        `team/teams/my-teams/morshidul4@gmail.com`
-      );
+      const { data } = await axiosCommon(`/team/teams/one-team/${id}`);
       return data;
     },
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
-  const { members, _id, links } = team[0];
+  const { tmembers, _id, links, tpic, tname } = team;
+
+  const handleUpdate = () => {
+    setIsModalOpen(true);
+  };
 
   return (
     <div>
-      <div className="h-40 w-full bg-blue-500 flex items-center justify-center">
-        <div className="text-3xl font-semibold text-white">Team Info</div>
+      <div className="h-52 w-full  flex rounded-md items-center justify-center">
+        <Image
+          height={300}
+          width={900}
+          src={tpic}
+          alt={tname}
+          className="w-full h-full object-cover"
+        />
       </div>
+
+      {/* Update Button */}
+      <div className="flex justify-end mt-4">
+        <Button
+          onClick={() => handleUpdate()}
+          variant="outline"
+          className=" bg-gradient-to-r from-blue-600 to-purple-600 rounded-md hover:shadow-purple-200 dark:hover:shadow-purple-800 text-white hover:text-white transition-all duration-500 hover:scale-105"
+        >
+          Update Team
+        </Button>
+      </div>
+
+      {/* Modal Component */}
+      {isModalOpen && (
+        <UpdateTeamModal
+          isOpen={isModalOpen}
+          setIsOpen={setIsModalOpen}
+          team={team}
+          refetch={refetch}
+        />
+      )}
+
       <div className="py-20 flex lg:flex-row flex-col justify-between items-start gap-10 lg:p-0 p-4">
         {/* card left */}
         <div className="lg:w-[50%] w-full ">
           {/* card header user info */}
-          <div className="space-y-5 py-10">
+          <div className="space-y-3 py-10">
             <div className="flex items-center gap-2">
               <span className="text-3xl font-semibold">Team:</span>
-              <h3 className="text-3xl font-semibold">Babel</h3>
+              <h3 className="text-3xl font-semibold">{team?.tname}</h3>
             </div>
-            <div className="flex justify-between item-center gap-2 text-center ">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xl font-semibold">Category:</span>
+              <h3 className="text-base font-semibold">{team?.tcategory}</h3>
+            </div>
+            <div className="flex justify-between item-center gap-2 text-center dark:bg-gray-800">
               <TeamDialog id={_id} refetch={refetch} />
-              <span className="hover:bg-gray-300 bg-gray-100  p-2 mb-2 rounded-sm w-10 cursor-pointer">
-                <BsThreeDots className="flex flex-col justify-center item-center text-2xl"></BsThreeDots>
-              </span>
             </div>
           </div>
 
           {/* card content */}
-          <Card className="p-6">
+          <Card className="p-6 dark:bg-gray-800 dark:border-gray-800">
             <div className="space-y-2 border-b border-gray-200 pb-3">
               <p className="flex justify-between items-center">
                 <span className="text-xl font-semibold">Members</span>
@@ -66,14 +99,14 @@ const Team = () => {
                 </span>
               </p>
 
-              <p>{members?.length} members</p>
+              <p>{tmembers?.length} members</p>
             </div>
 
             <div className="py-3">
               {/* member 1 */}
               <div className="flex items-center gap-4  ">
                 <div className="flex w-full p-1 rounded-md group flex-col gap-3">
-                  {members?.map((member, index) => (
+                  {tmembers?.map((member, index) => (
                     <MemberBox
                       member={member}
                       key={index}
@@ -93,20 +126,12 @@ const Team = () => {
             Team Description
           </h3>
 
-          <Card className="mt-4 space-y-2 p-4">
+          <Card className="mt-4 space-y-2 p-4 dark:bg-gray-800 dark:border-gray-800">
             <div className="p-2 mb-2 rounded-md space-y-2">
               <div className="flex justify-start items-center gap-3">
                 <div>
                   <p className="space-x-3">
-                    <span>
-                      The BabelForge team consists of skilled developers
-                      specializing in frontend technologies like React and
-                      Next.js. Focused on delivering seamless user experiences,
-                      they combine creativity and technical expertise to build
-                      scalable, secure web applications. Their collaborative
-                      approach ensures high-quality solutions tailored to meet
-                      modern business needs.
-                    </span>
+                    <span>{team?.tdes}</span>
                   </p>
                 </div>
               </div>

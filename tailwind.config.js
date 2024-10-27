@@ -1,14 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    darkMode: ["class"],
-    content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  darkMode: ['class'],
+  content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
   	extend: {
   		colors: {
+  			bgColor: '#0362F3FF',
+  			bgHoverColor: '#0362F3',
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
@@ -56,6 +54,42 @@ module.exports = {
   			sm: 'calc(var(--radius) - 4px)'
   		},
   		keyframes: {
+  			'toast-show': {
+  				'0%': {
+  					opacity: '0',
+  					transform: 'translateX(100%)'
+  				},
+  				'100%': {
+  					opacity: '1',
+  					transform: 'translateX(0)'
+  				}
+  			},
+  			'toast-hide': {
+  				'0%': {
+  					opacity: '1',
+  					transform: 'translateX(0)'
+  				},
+  				'100%': {
+  					opacity: '0',
+  					transform: 'translateX(100%)'
+  				}
+  			},
+  			'marquee-vertical': {
+  				from: {
+  					transform: 'translateY(0)'
+  				},
+  				to: {
+  					transform: 'translateY(calc(-100% - var(--gap)))'
+  				}
+  			},
+  			float: {
+  				'0%, 100%': {
+  					transform: 'translateY(0)'
+  				},
+  				'50%': {
+  					transform: 'translateY(-10px)'
+  				}
+  			},
   			'accordion-down': {
   				from: {
   					height: '0'
@@ -74,6 +108,10 @@ module.exports = {
   			}
   		},
   		animation: {
+  			'toast-show': 'toast-show 0.5s ease-out',
+  			'toast-hide': 'toast-hide 0.5s ease-in',
+  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
+  			float: 'float 5s ease-in-out infinite',
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
   		}

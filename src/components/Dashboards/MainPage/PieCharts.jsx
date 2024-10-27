@@ -3,51 +3,57 @@
 import * as React from 'react';
 import { TrendingUp } from 'lucide-react';
 import { Label, Pie, PieChart } from 'recharts';
-
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
+import { useState } from 'react';
 
-const chartData = [
-  { task: 'completed', taskCount: 275, fill: 'var(--color-completed)' },
-  { task: 'pending', taskCount: 200, fill: 'var(--color-pending)' },
-  { task: 'InProgress', taskCount: 287, fill: 'var(--color-InProgress)' },
-  { task: 'Delayed', taskCount: 287, fill: 'var(--color-Delayed)' },
-  { task: 'canceled', taskCount: 287, fill: 'var(--color-canceled)' },
-];
+export function PieCharts({ stats, isLoading }) {
+  const [stat, setStat] = useState(stats);
+  const chartData = [
+    {
+      task: 'completed',
+      taskCount: stat?.DoneTask,
+      fill: 'var(--color-completed)',
+    },
+    {
+      task: 'pending',
+      taskCount: stat?.pendingTasks,
+      fill: 'var(--color-pending)',
+    },
+    {
+      task: 'InProgress',
+      taskCount: stat?.InprogressTask,
+      fill: 'var(--color-InProgress)',
+    },
+    { task: 'Todo', taskCount: stat?.TodoTasks, fill: 'var(--color-Delayed)' },
+  ];
 
-const chartConfig = {
-  taskCount: {
-    label: 'Task',
-  },
-  completed: {
-    label: 'Completed',
-    color: 'hsl(var(--chart-2))',
-  },
-  pending: {
-    label: 'Pending',
-    color: 'hsl(var(--chart-5))',
-  },
-  InProgress: {
-    label: 'In Progress',
-    color: 'hsl(var(--chart-3))',
-  },
-  Delayed: {
-    label: 'Delayed',
-    color: 'hsl(var(--chart-4))',
-  },
-  canceled: {
-    label: 'Canceled',
-    color: 'hsl(var(--chart-1))',
-  },
-};
+  const chartConfig = {
+    taskCount: {
+      label: 'Task',
+    },
+    completed: {
+      label: 'Completed',
+      color: 'hsl(var(--chart-2))',
+    },
+    pending: {
+      label: 'Pending',
+      color: 'hsl(var(--chart-5))',
+    },
+    InProgress: {
+      label: 'In Progress',
+      color: 'hsl(var(--chart-3))',
+    },
+    Delayed: {
+      label: 'Todo',
+      color: 'hsl(var(--chart-4))',
+    },
+  };
 
-export function PieCharts() {
-  const totalTask = React.useMemo(() => {
-    return chartData.reduce((acc, curr) => acc + curr.taskCount, 0);
-  }, []);
+  if (isLoading) return <div>Loading...</div>;
 
   return (
-    <Card className="flex rounded-xl py-5 flex-col">
+    <Card className="flex rounded-xl py-5 flex-col dark:bg-gray-800 dark:border-gray-800">
       <CardHeader className="items-center pb-0">
         <CardTitle>Task Progress Charts</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
@@ -63,7 +69,7 @@ export function PieCharts() {
                     return (
                       <text x={viewBox.cx} y={viewBox.cy} textAnchor="middle" dominantBaseline="middle">
                         <tspan x={viewBox.cx} y={viewBox.cy} className="fill-foreground text-3xl font-bold">
-                          {totalTask.toLocaleString()}
+                          {stat.totalTasks}
                         </tspan>
                         <tspan x={viewBox.cx} y={(viewBox.cy || 0) + 24} className="fill-muted-foreground">
                           Total Task

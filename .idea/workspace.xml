@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Profile fix">
-      <change afterPath="$PROJECT_DIR$/src/app/features/page.jsx" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Milestone 6">
+      <change afterPath="$PROJECT_DIR$/src/image/Home/light-dash-OLD.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Home/light-dash-dark.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/dashboards/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/dashboards/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/light-dash.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/light-dash.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="saif-next" />
+        <entry key="$PROJECT_DIR$" value="foysal" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,29 +64,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Node.js.GetFileStructure.cjs.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.GetFileStructure.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;prepod&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/WebStrom Projects/SCIC/EndGame/babelforge&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Node.js.GetFileStructure.cjs.executor": "Run",
+    "Node.js.GetFileStructure.js.executor": "Run",
+    "Node.js.getFileStructure.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2024.1.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app\(dashboards)\dashboard" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\home" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminDashboard" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -120,190 +123,17 @@
       <workItem from="1727202895928" duration="926000" />
       <workItem from="1727207125868" duration="1078000" />
       <workItem from="1727381122515" duration="1218000" />
-    </task>
-    <task id="LOCAL-00001" summary="First Commit">
-      <option name="closed" value="true" />
-      <created>1726591239569</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1726591239569</updated>
-    </task>
-    <task id="LOCAL-00002" summary="File Structure Added">
-      <option name="closed" value="true" />
-      <created>1726637285307</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1726637285307</updated>
-    </task>
-    <task id="LOCAL-00003" summary="File Structure Added">
-      <option name="closed" value="true" />
-      <created>1726637469315</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1726637469315</updated>
-    </task>
-    <task id="LOCAL-00004" summary="File Structure Added">
-      <option name="closed" value="true" />
-      <created>1726638543764</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1726638543764</updated>
-    </task>
-    <task id="LOCAL-00005" summary="File Structure Done">
-      <option name="closed" value="true" />
-      <created>1726639017381</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639017381</updated>
-    </task>
-    <task id="LOCAL-00006" summary="tailwind check done">
-      <option name="closed" value="true" />
-      <created>1726639250015</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1726639250015</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Swiper added">
-      <option name="closed" value="true" />
-      <created>1726687026556</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687026556</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726687341263</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687341263</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726692081480</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692081480</updated>
-    </task>
-    <task id="LOCAL-00010" summary="All ok">
-      <option name="closed" value="true" />
-      <created>1726692751091</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692751091</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Link added">
-      <option name="closed" value="true" />
-      <created>1726693884245</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1726693884245</updated>
-    </task>
-    <task id="LOCAL-00012" summary="nav Responsive added">
-      <option name="closed" value="true" />
-      <created>1726695355909</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1726695355909</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Nav Logo Added">
-      <option name="closed" value="true" />
-      <created>1726771880583</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1726771880583</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Title &amp; Fav Icon added">
-      <option name="closed" value="true" />
-      <created>1726776353082</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1726776353082</updated>
-    </task>
-    <task id="LOCAL-00015" summary="AOS Added">
-      <option name="closed" value="true" />
-      <created>1726778071223</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778071223</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Readme added">
-      <option name="closed" value="true" />
-      <created>1726778512654</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778512654</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fav Icon Added">
-      <option name="closed" value="true" />
-      <created>1726778819179</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778819179</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Price card Updated">
-      <option name="closed" value="true" />
-      <created>1726779338267</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1726779338267</updated>
-    </task>
-    <task id="LOCAL-00019" summary="React To NextJS">
-      <option name="closed" value="true" />
-      <created>1727034154322</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1727034154322</updated>
-    </task>
-    <task id="LOCAL-00020" summary="task add function added">
-      <option name="closed" value="true" />
-      <created>1727216567271</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1727216567271</updated>
-    </task>
-    <task id="LOCAL-00021" summary="task update function added">
-      <option name="closed" value="true" />
-      <created>1727218407786</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1727218407786</updated>
-    </task>
-    <task id="LOCAL-00022" summary="packager fix">
-      <option name="closed" value="true" />
-      <created>1727219148389</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1727219148389</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Add task Done">
-      <option name="closed" value="true" />
-      <created>1727224554136</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1727224554136</updated>
+      <workItem from="1727462132676" duration="3939000" />
+      <workItem from="1727505346900" duration="6479000" />
+      <workItem from="1728159889961" duration="313000" />
+      <workItem from="1728315956080" duration="1734000" />
+      <workItem from="1728497214945" duration="3134000" />
+      <workItem from="1728588396315" duration="614000" />
+      <workItem from="1728741754275" duration="350000" />
+      <workItem from="1728753805344" duration="12695000" />
+      <workItem from="1729442824871" duration="1439000" />
+      <workItem from="1729662069791" duration="5657000" />
+      <workItem from="1729684647631" duration="29920000" />
     </task>
     <task id="LOCAL-00024" summary="Server api link added">
       <option name="closed" value="true" />
@@ -385,7 +215,319 @@
       <option name="project" value="LOCAL" />
       <updated>1727381084146</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="few fix">
+      <option name="closed" value="true" />
+      <created>1727978052124</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1727978052124</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Deploy">
+      <option name="closed" value="true" />
+      <created>1727982090443</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1727982090443</updated>
+    </task>
+    <task id="LOCAL-00036" summary="loading added">
+      <option name="closed" value="true" />
+      <created>1728159747262</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1728159747262</updated>
+    </task>
+    <task id="LOCAL-00037" summary="canvas added">
+      <option name="closed" value="true" />
+      <created>1728283726466</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1728283726466</updated>
+    </task>
+    <task id="LOCAL-00038" summary="chat fix">
+      <option name="closed" value="true" />
+      <created>1728315984683</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1728315984683</updated>
+    </task>
+    <task id="LOCAL-00039" summary="admin dashboard page start">
+      <option name="closed" value="true" />
+      <created>1728456671734</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1728456671734</updated>
+    </task>
+    <task id="LOCAL-00040" summary="admin dashboard page card">
+      <option name="closed" value="true" />
+      <created>1728459422155</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1728459422155</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Admin Transactions page">
+      <option name="closed" value="true" />
+      <created>1728472954431</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1728472954431</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Admin Transactions page">
+      <option name="closed" value="true" />
+      <created>1728476861026</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1728476861026</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Admin Dash Added">
+      <option name="closed" value="true" />
+      <created>1728479314085</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1728479314085</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Admin Dash Added">
+      <option name="closed" value="true" />
+      <created>1728508191801</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1728508191801</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Admin Dash Added">
+      <option name="closed" value="true" />
+      <created>1728509629688</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1728509629688</updated>
+    </task>
+    <task id="LOCAL-00046" summary="version">
+      <option name="closed" value="true" />
+      <created>1728510590516</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1728510590516</updated>
+    </task>
+    <task id="LOCAL-00047" summary="button fix">
+      <option name="closed" value="true" />
+      <created>1728513879820</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1728513879820</updated>
+    </task>
+    <task id="LOCAL-00048" summary="button fix">
+      <option name="closed" value="true" />
+      <created>1728514015901</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1728514015901</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Awesome Design Implemented">
+      <option name="closed" value="true" />
+      <created>1728774213294</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1728774213294</updated>
+    </task>
+    <task id="LOCAL-00050" summary="home button added">
+      <option name="closed" value="true" />
+      <created>1728905904328</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1728905904328</updated>
+    </task>
+    <task id="LOCAL-00051" summary="home button added">
+      <option name="closed" value="true" />
+      <created>1728905970582</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1728905970582</updated>
+    </task>
+    <task id="LOCAL-00052" summary="canvas tested">
+      <option name="closed" value="true" />
+      <created>1728985595003</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1728985595003</updated>
+    </task>
+    <task id="LOCAL-00053" summary="canvas tested">
+      <option name="closed" value="true" />
+      <created>1728985726882</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1728985726882</updated>
+    </task>
+    <task id="LOCAL-00054" summary="new fix">
+      <option name="closed" value="true" />
+      <created>1728988038983</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1728988038983</updated>
+    </task>
+    <task id="LOCAL-00055" summary="pkg fix">
+      <option name="closed" value="true" />
+      <created>1729459241484</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1729459241484</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Chat Button fix">
+      <option name="closed" value="true" />
+      <created>1729460540264</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1729460540264</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Stat Card added">
+      <option name="closed" value="true" />
+      <created>1729612238165</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1729612238165</updated>
+    </task>
+    <task id="LOCAL-00058" summary="common Confirm modal added">
+      <option name="closed" value="true" />
+      <created>1729622689692</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729622689692</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Help Page Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729666258511</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1729666258511</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Nav Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729668432937</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1729668432937</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729692429306</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1729692429307</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729699311982</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1729699311982</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Home Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729705249734</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1729705249734</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Payment Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729716207380</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716207380</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Payment Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729716446269</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716446269</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Payment Success Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729717410019</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1729717410020</updated>
+    </task>
+    <task id="LOCAL-00067" summary="getstart button fix">
+      <option name="closed" value="true" />
+      <created>1729793553893</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1729793553894</updated>
+    </task>
+    <task id="LOCAL-00068" summary="getstart button fix">
+      <option name="closed" value="true" />
+      <created>1729794402935</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1729794402935</updated>
+    </task>
+    <task id="LOCAL-00069" summary="task button fix">
+      <option name="closed" value="true" />
+      <created>1729796098437</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1729796098437</updated>
+    </task>
+    <task id="LOCAL-00070" summary="responsive fix">
+      <option name="closed" value="true" />
+      <created>1729799903081</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1729799903081</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Diagram added">
+      <option name="closed" value="true" />
+      <created>1729814067853</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1729814067853</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Milestone 6">
+      <option name="closed" value="true" />
+      <created>1729814772410</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1729814772410</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,31 +546,42 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="nav Responsive added" />
-    <MESSAGE value="Nav Logo Added" />
-    <MESSAGE value="Title &amp; Fav Icon added" />
-    <MESSAGE value="AOS Added" />
-    <MESSAGE value="Readme added" />
-    <MESSAGE value="Fav Icon Added" />
-    <MESSAGE value="Price card Updated" />
-    <MESSAGE value="React To NextJS" />
-    <MESSAGE value="task DND page Done" />
-    <MESSAGE value="DND fix" />
-    <MESSAGE value="nav fix" />
-    <MESSAGE value="done" />
-    <MESSAGE value="side bar icon added" />
-    <MESSAGE value="task add function added" />
-    <MESSAGE value="task update function added" />
-    <MESSAGE value="packager fix" />
-    <MESSAGE value="Add task Done" />
-    <MESSAGE value="Server api link added" />
-    <MESSAGE value="turbo added" />
-    <MESSAGE value="carusel added" />
-    <MESSAGE value="carusel fix" />
-    <MESSAGE value="update" />
-    <MESSAGE value="api link update" />
-    <MESSAGE value="signup fix" />
-    <MESSAGE value="Profile fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Profile fix" />
+    <MESSAGE value="admin dashboard page card" />
+    <MESSAGE value="Admin Transactions page" />
+    <MESSAGE value="Chart fix" />
+    <MESSAGE value="Admin Dash Added" />
+    <MESSAGE value="version" />
+    <MESSAGE value="button fix" />
+    <MESSAGE value="Awesome Design Implemented" />
+    <MESSAGE value="home button added" />
+    <MESSAGE value="canvas tested" />
+    <MESSAGE value="new fix" />
+    <MESSAGE value="pkg fix" />
+    <MESSAGE value="Chat Button fix" />
+    <MESSAGE value="Stat Card added" />
+    <MESSAGE value="common Confirm modal added" />
+    <MESSAGE value="Help Page Redesign &amp; Responsive done" />
+    <MESSAGE value="Nav Redesign &amp; Responsive done" />
+    <MESSAGE value="Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Home Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Payment Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Payment Success Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="getstart button fix" />
+    <MESSAGE value="task button fix" />
+    <MESSAGE value="responsive fix" />
+    <MESSAGE value="Diagram added" />
+    <MESSAGE value="Milestone 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Milestone 6" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

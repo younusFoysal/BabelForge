@@ -1,221 +1,137 @@
-import React from 'react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectLabel,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
-import { IoIosSearch } from "react-icons/io";
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table";
-import { FaStar } from "react-icons/fa6";
-import { FaArrowDown } from "react-icons/fa6";
-import { FaRegStar } from "react-icons/fa";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-    Pagination,
-    PaginationContent,
-    PaginationEllipsis,
-    PaginationItem,
-    PaginationLink,
-    PaginationNext,
-    PaginationPrevious,
-} from "@/components/ui/pagination"
+'use client';
+import { Input } from '@/components/ui/input';
 
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
+import { IoIosSearch } from 'react-icons/io';
 
+import useProjects from '@/hooks/useProjects';
 
+import { useState } from 'react';
+import Link from 'next/link';
 
-
+import CommonTable from '../shared/CommonTable/CommonTable';
+import { useUser } from '@clerk/nextjs';
+import NoDataFound from '../shared/NoDataFound/NoDataFound';
+import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const ProjectPage = () => {
-    return (
-        <section className='container mx-auto'>
+  const { user } = useUser();
+  const uemail = user?.primaryEmailAddress?.emailAddress;
 
-            {/* page heading */}
-            <div className='flex justify-between items-center'>
-                <h3 className='text-2xl  font-medium'>Projects</h3>
-                <Button className='bg-primary text-white' variant="outline">Create Project</Button>
-            </div>
+  const [search, setSearch] = useState('');
+  const [category, setCategory] = useState('');
+  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(uemail, search, category);
 
+  if (!projects?.length && !search?.length && !category?.length) {
+    return <NoDataFound text={'No Project Created Yet.'} btnText={'Create Project'} btnLink={'/dashboard/createproject'}></NoDataFound>;
+  }
 
+  const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
-            {/* Input box content */}
-            <div className='my-8 w-full flex justify-start items-center gap-6'>
+  const theads = ['Fav', 'Image', 'Name', 'Type', 'Manager', 'Project URL', 'Start Date', 'End Date', 'More Action'];
 
-                {/* search box */}
-                <div className='lg:w-[30%] w-full' >
-                    <div className='flex justify-center items-center'>
-                        <Input className='py-4 border-gray-500 border-[1px]' placeholder='Search Projects' />
-                        <span className='translate-x-[-180%]'><IoIosSearch ></IoIosSearch></span>
-                    </div>
-                </div>
+  const handleSearchByClick = e => {
+    e.preventDefault();
+    const inputData = document.getElementById('inputField').value;
+    setSearch(inputData);
+  };
 
+  const handleSearchByEnter = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const inputData = document.getElementById('inputField').value;
+      setSearch(inputData);
+    }
+  };
 
-                {/* dropdown */}
-                <div className='w-[100%]'>
-                    <Select >
-                        <SelectTrigger className="lg:w-[30%] w-full py-4 border-gray-500 border-[1px] rounded-sm ">
-                            <SelectValue placeholder="Filter By Product" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                <SelectItem value="apple">Business project</SelectItem>
-                                <SelectItem value="banana">Software Project</SelectItem>
-                                <SelectItem value="blueberry">Service Management</SelectItem>
-                                <SelectItem value="grapes">product Discovery</SelectItem>
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
-                </div>
+  const handleFilter = value => {
+    setCategory(value);
+  };
 
-            </div>
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
+  return (
+    <section>
+      {/* page heading */}
+      <div className="flex justify-between items-center">
+        <h3 className="text-2xl  font-medium">Projects</h3>
+        <div>
+          <Link href="/dashboard/createproject">
+            <button className="px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white">
+              Create Project
+            </button>
+          </Link>
+        </div>
+      </div>
 
+      {/* Input box content */}
+      <div className="my-8 w-full flex flex-col md:flex-row justify-start items-center gap-3 md:gap-6">
+        {/* search box */}
+        <div className=" w-full lg:w-[30%]">
+          <div className="flex justify-center items-center relative">
+            <Input
+              onKeyDown={handleSearchByEnter}
+              id="inputField"
+              className="w-full py-4 border-gray-500 border-[1px]"
+              placeholder="Project Name"
+            />
+            <span className="absolute right-2 top-1/2 -translate-y-1/2">
+              <IoIosSearch onClick={handleSearchByClick} className="cursor-pointer"></IoIosSearch>
+            </span>
+          </div>
+        </div>
 
+        {/* dropdown */}
+        <div className="w-[100%]">
+          <Select
+            onValueChange={value => {
+              handleFilter(value);
+            }}
+          >
+            <SelectTrigger className="lg:w-[30%] w-full py-4 border-gray-500 border-[1px] rounded-sm ">
+              <SelectValue placeholder="Filter By Category" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                {projectCategories.map((category, index) => (
+                  <SelectItem key={index} value={category}>
+                    {category}
+                  </SelectItem>
+                ))}
+              </SelectGroup>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
 
-            {/* Table content */}
-            <div className='mt-8'>
+      {projects.length ? (
+        <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>
+      ) : (
+        <NoDataFound text={'No Data Found'}></NoDataFound>
+      )}
 
-                <Table>
-
-                    <TableHeader >
-                        <TableRow >
-                            <TableHead className="w-[20%] font-semibold text-black flex  items-center gap-3">
-                                <span><FaStar ></FaStar></span>
-                                Name
-                                <span><FaArrowDown  ></FaArrowDown > </span>
-                            </TableHead>
-                            <TableHead className="font-semibold text-black">Key
-
-                            </TableHead>
-                            <TableHead className="font-semibold text-black w-[20%]">Type</TableHead>
-                            <TableHead className="font-semibold text-black w-[20%]">Lead</TableHead>
-                            <TableHead className="font-semibold text-black">Project URL</TableHead>
-                            <TableHead className="font-semibold text-black">More Action</TableHead>
-                        </TableRow>
-                    </TableHeader>
-
-                    <TableBody>
-                        {/* 1st row */}
-                        <TableRow className='border-y-2 border-gray-300'>
-                            <TableCell className="font-medium flex items-center gap-3">
-
-                                <span><FaRegStar className='text-xl'></FaRegStar></span>
-                                <div className="flex items-center gap-2 font-normal text-primary">
-                                    <p className="rounded-full p-1">
-                                        <Avatar className="w-8 h-8">
-                                            <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                                            <AvatarFallback>TA</AvatarFallback>
-                                        </Avatar>
-                                    </p>
-                                   Babel Forge
-                                </div>
-
-                            </TableCell>
-                            <TableCell>BABELFORGE</TableCell>
-                            <TableCell>Team-managed software</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                        </TableRow>
-                        {/*  row 2 */}
-                        <TableRow className='border-y-2 border-gray-300'>
-                            <TableCell className="font-medium flex items-center gap-3">
-
-                                <span><FaRegStar className='text-xl'></FaRegStar></span>
-                                <div className="flex items-center gap-2 font-normal text-primary">
-                                    <p className="rounded-full p-1">
-                                        <Avatar className="w-8 h-8">
-                                            <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                                            <AvatarFallback>TA</AvatarFallback>
-                                        </Avatar>
-                                    </p>
-                                   Babel Forge
-                                </div>
-
-                            </TableCell>
-                            <TableCell>BABELFORGE</TableCell>
-                            <TableCell>Team-managed software</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                        </TableRow>
-                        {/*  row 3*/}
-                        <TableRow className='border-y-2 border-gray-300'>
-                            <TableCell className="font-medium flex items-center gap-3">
-
-                                <span><FaRegStar className='text-xl'></FaRegStar></span>
-                                <div className="flex items-center gap-2 font-normal text-primary">
-                                    <p className="rounded-full p-1">
-                                        <Avatar className="w-8 h-8">
-                                            <AvatarImage src="https://i.ibb.co.com/zrCsVD7/github.jpg" />
-                                            <AvatarFallback>TA</AvatarFallback>
-                                        </Avatar>
-                                    </p>
-                                   Babel Forge
-                                </div>
-
-                            </TableCell>
-                            <TableCell>BABELFORGE</TableCell>
-                            <TableCell>Team-managed software</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                            <TableCell className="">content</TableCell>
-                        </TableRow>
-
-                    </TableBody>
-
-
-
-
-
-                </Table>
-
-            </div>
-
-
-
-
-            {/* pagination */}
-            <div className='mt-6'>
-
-                <Pagination className='flex justify-start '>
-                    <PaginationContent>
-                        <PaginationItem>
-                            <PaginationPrevious href="#" />
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationLink href="#">1</PaginationLink>
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationEllipsis />
-                        </PaginationItem>
-                        <PaginationItem>
-                            <PaginationNext href="#" />
-                        </PaginationItem>
-                    </PaginationContent>
-                </Pagination>
-
-
-            </div>
-
-
-
-        </section>
-    );
+      {/*TODO- pagination */}
+      {/* <div className="mt-6">
+        <Pagination className="flex justify-start ">
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div> */}
+    </section>
+  );
 };
 
 export default ProjectPage;
