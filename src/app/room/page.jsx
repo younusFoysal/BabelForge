@@ -2,10 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 import { useAuth } from "@clerk/nextjs";
 import useMeet from "@/hooks/useMeet";
-const Meet = () => {
+const Meett = () => {
   const { fullName, setFullName } = useMeet();
   const [roomID, setRoomID] = useState("");
   const router = useRouter();
@@ -56,12 +57,14 @@ const Meet = () => {
                     </button>
                   </div>
                   <div className="mt-4 flex items-center justify-center">
-                    <button
-                      className="text-lg font-medium hover:text-blue-400 hover:underline"
-                      onClick={() => router.push(`/room/${userId}`)}
-                    >
-                      Or create a new meeting
-                    </button>
+                    <Link href={`/room/${userId}`} target="_blank">
+                      <button
+                          className="text-lg font-medium hover:text-blue-400 hover:underline"
+                      >
+                        Or create a new meeting
+                      </button>
+                    </Link>
+
                   </div>
                 </>
               )}
@@ -73,4 +76,4 @@ const Meet = () => {
   );
 };
 
-export default Meet;
+export default Meett;
