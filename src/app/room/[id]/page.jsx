@@ -51,7 +51,9 @@ const RoomId = ({ params }) => {
     });
   }, [fullName, userId, roomID]);
 
-  return <div className="w-full h-screen" ref={roomContainerRef}></div>;
+  return <div className="relative w-full h-screen" ref={roomContainerRef}>
+    <button className="absolute top-20 left-0 bg-purple-700">vhchtgctgctg</button>
+  </div>;
 };
 
 export default RoomId;

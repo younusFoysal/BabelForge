@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.D9WLyEQaARfWqCTyVrpU {
+  background-color: #f5f5f5; /* Light theme background color */
+}
+
+.dark .D9WLyEQaARfWqCTyVrpU {
+  background-color: #0d0d0d; /* Dark theme background color */
+}
+
 body {
   overflow-x: hidden;
 }
