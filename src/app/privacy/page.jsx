@@ -2,7 +2,7 @@ import React from "react";
 
 const Privacy = () => {
     return (
-        <section className="lg:px-0 bg-white/5 pb-[70px]  px-4 pt-[120px]">
+        <section className="lg:px-0 bg-white/5 pb-[70px]  px-4 pt-[100px]">
             <div className="container mx-auto py-8 px-4">
                 <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
                 <p className="mb-2 italic">Last updated: [Date]</p>
@@ -82,7 +82,7 @@ const Privacy = () => {
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold mb-2">8. Contact Us</h2>
                     <p className="mb-2">
-                        If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:your-contact-email@example.com" className="text-blue-500 underline">[your-contact-email@example.com]</a>.
+                        If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:your-contact-email@example.com" className="text-blue-500 underline">babelforgeltd@gmail.com</a>.
                     </p>
                 </section>
             </div>
