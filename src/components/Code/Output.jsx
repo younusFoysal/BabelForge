@@ -41,7 +41,7 @@ const Output = ({ editorRef, language }) => {
       </button>
 
       <div className={cn('h-[75vh] p-2 border rounded-md', isError ? 'border-red-500 text-red-400' : 'border-gray-600')}>
-        {output ? output.map((line, i) => <p key={i}>{line}</p>) : <p>Click "Run Code" to see the output here</p>}
+        {output ? output.map((line, i) => <p key={i}>{line}</p>) : <p>Click &quot;Run Code&quot; to see the output here</p>}
       </div>
     </div>
   );
