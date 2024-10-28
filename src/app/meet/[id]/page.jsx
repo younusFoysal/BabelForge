@@ -1,41 +1,44 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
-import { useAuth } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
+import { useAuth, useUser } from "@clerk/nextjs";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
-import useMeet from "@/hooks/useMeet";
+import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
 
 const RoomId = ({ params }) => {
-  const { fullName } = useMeet();
-  const { userId } = useAuth();
+  const { user } = useUser();
+  const { userId, isLoaded } = useAuth();
   const roomID = params.id;
-  const roomContainerRef = useRef(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!roomContainerRef.current) return;
+    if (isLoaded && user) {
+      setLoading(false);
+    }
+  }, [isLoaded, user]);
 
+  const userInfo =
+    user?.username || user?.fullName || user?.firstName || "user" + Date.now();
+
+  let myMeeting = async (element) => {
     const appID = parseInt(process.env.NEXT_PUBLIC_ZEGO_APP_ID);
     const serverSecret = process.env.NEXT_PUBLIC_ZEGO_SERVER_SECRET;
-
     const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
       appID,
       serverSecret,
       roomID,
       userId,
-      fullName || "user" + Date.now(),
+      userInfo,
       720
     );
 
-    // Create instance object from Kit Token.
     const zp = ZegoUIKitPrebuilt.create(kitToken);
 
-    // Start the call
     zp.joinRoom({
-      container: roomContainerRef.current,
+      container: element,
       sharedLinks: [
         {
-          name: "Personal link",
+          name: "Shareable link",
           url:
             window.location.protocol +
             "//" +
@@ -49,11 +52,17 @@ const RoomId = ({ params }) => {
         mode: ZegoUIKitPrebuilt.VideoConference,
       },
     });
-  }, [fullName, userId, roomID]);
+  };
 
-  return <div className="relative w-full h-screen" ref={roomContainerRef}>
-    <button className="absolute top-20 left-0 bg-purple-700">vhchtgctgctg</button>
-  </div>;
+  return (
+    <div className="w-full h-screen">
+      {loading ? (
+        <HomeLoadingSpinner />
+      ) : (
+        <div className="w-full h-screen" ref={myMeeting}></div>
+      )}
+    </div>
+  );
 };
 
 export default RoomId;
