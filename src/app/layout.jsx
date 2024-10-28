@@ -10,7 +10,7 @@ const metadata = {
   description: 'Everything under One Roof.\n' + 'Build your project with Task Management, and Collaboration for a Successful Project.',
 };
 
-import { Poppins, Nunito } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import QureryProvider from '@/providers/QureryProvider';
 import ScreenRecorderProvider from '@/providers/ScreenRecorderProvider';
