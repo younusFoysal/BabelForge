@@ -1,8 +1,8 @@
+"use client";
 import Image from "next/image";
 import metimg from "@/image/Home/meetbanner.png";
 import MeetingButton from "./MeetingButton";
 import { IoIosVideocam } from "react-icons/io";
-
 import { useAuth } from "@clerk/nextjs";
 const MeetHero = () => {
   const { userId } = useAuth();
