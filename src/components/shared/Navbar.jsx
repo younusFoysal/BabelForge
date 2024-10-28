@@ -1,22 +1,19 @@
-"use client";
-import { AlignJustify, ArrowRight, X } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import logo from "../../image/Home/babellogo.png";
+'use client';
+import { AlignJustify, ArrowRight, X } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import logo from '../../image/Home/babellogo.png';
+const CrispWithNoSSR = dynamic(() => import('@/components/crisp'));
 
-import Button from "./Buttons";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  useAuth,
-  UserButton,
-} from "@clerk/nextjs";
-import { useTheme } from "next-themes";
-import { MdDashboard } from "react-icons/md";
-import { ModeToggle } from "@/components/Theme/ModeToggle";
+import Button from './Buttons';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { SignedIn, SignedOut, SignInButton, useAuth, UserButton } from '@clerk/nextjs';
+import { useTheme } from 'next-themes';
+import { MdDashboard } from 'react-icons/md';
+import { ModeToggle } from '@/components/Theme/ModeToggle';
+import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
 
 const Navbar = () => {
   const { userId } = useAuth();
@@ -24,63 +21,78 @@ const Navbar = () => {
   const { setTheme, themes } = useTheme();
   const pathname = usePathname();
 
-  if (pathname?.includes("sign-in") || pathname?.includes("sign-up"))
-    return null;
-  if (pathname?.includes("/successPayment")) return null;
+  // Manage Crisp chat visibility
+  useEffect(() => {
+    if (pathname.includes('dashboard')) {
+      window.$crisp?.push(['do', 'chat:hide']);
+    }
+    // Display Crisp chat when on this page
+    window.$crisp?.push(['do', 'chat:show']);
 
-  if (pathname?.includes("dashboard")) {
+    const handleRouteChange = () => {
+      // Hide Crisp chat when navigating away
+      window.$crisp?.push(['do', 'chat:hide']);
+    };
+    return () => {
+      // Clean up event listener and hide chat on unmount
+      handleRouteChange();
+      window.$crisp?.push(['do', 'chat:hide']);
+    };
+  }, [pathname]);
+
+  if (pathname?.includes('sign-in') || pathname?.includes('sign-up')) return null;
+  if (pathname?.includes('/successPayment')) return null;
+
+  if (pathname?.includes('dashboard')) {
     return null;
   }
-  if (pathname?.includes("meet")) {
+  if (pathname?.includes('meet')) {
     return null;
   }
 
   const NavbarItems = [
     {
-      title: "Features",
-      href: "/features",
+      title: 'Features',
+      href: '/features',
     },
     {
-      title: "Price",
-      href: "/pricing",
+      title: 'Price',
+      href: '/pricing',
     },
     {
-      title: "About Us",
-      href: "/about-us",
+      title: 'About Us',
+      href: '/about-us',
     },
     {
-      title: "Contact Us",
-      href: "/contact",
+      title: 'Contact Us',
+      href: '/contact',
     },
     {
-      title: "Help",
-      href: "/help",
+      title: 'Help',
+      href: '/help',
     },
   ];
 
   return (
     <div className=" backdrop-blur-lg bg-transparent border-b  border-white/10 fixed w-full top-0 right-0 z-[999]">
+      <CrispWithNoSSR />
       <div className="flex items-center justify-between container max-w-screen-2xl mx-auto px-4 py-4">
         {/* logo text-[#106ac5] */}
         <Link href="/">
           <div className="flex gap-1 justify-center items-center">
             <Image src={logo} alt="babelforge" className="w-full h-12" />
-            <h3 className="text-3xl font-bold text-purple-700 dark:text-white">
-              BabelForge
-            </h3>
+            <h3 className="text-3xl font-bold text-purple-700 dark:text-white">BabelForge</h3>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden text-purple-700 dark:text-white md:flex">
           <ul className="flex space-x-3 items-center justify-center">
-            {NavbarItems.map((nav) => (
+            {NavbarItems.map(nav => (
               <Link href={nav.href} key={nav.href}>
                 <li
                   className={` min-w-[82px] text-center hover:text-purple-700 hover:font-bold${
-                    pathname === nav.href
-                      ? "dark:text-purple-400 text-purple-700 font-bold dark:font-bold"
-                      : ""
+                    pathname === nav.href ? 'dark:text-purple-400 text-purple-700 font-bold dark:font-bold' : ''
                   }`}
                 >
                   {nav.title}
@@ -99,11 +111,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-4">
                   <UserButton>
                     <UserButton.MenuItems>
-                      <UserButton.Link
-                        label="Dashboard"
-                        href="/dashboard"
-                        labelIcon={<MdDashboard size={15} />}
-                      />
+                      <UserButton.Link label="Dashboard" href="/dashboard" labelIcon={<MdDashboard size={15} />} />
                       <UserButton.Action label="manageAccount" />
                       <UserButton.Action label="signOut" />
                     </UserButton.MenuItems>
@@ -137,32 +145,22 @@ const Navbar = () => {
             <SheetTrigger>
               <AlignJustify size={30} className="dark:text-white text-black" />
             </SheetTrigger>
-            <SheetContent
-              side={"top"}
-              className="md:hidden bg-white/30 backdrop-blur-lg border-t border-gray-200 mt-20"
-            >
+            <SheetContent side={'top'} className="md:hidden bg-white/30 backdrop-blur-lg border-t border-gray-200 mt-20">
               <div>
                 <ul className="flex flex-col space-y-4 py-4">
-                  {NavbarItems.map((nav) => (
+                  {NavbarItems.map(nav => (
                     <Link href={nav.href} key={nav.href}>
-                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">
-                        {nav.title}
-                      </li>
+                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">{nav.title}</li>
                     </Link>
                   ))}
                   {!auth && (
                     <Link href="/sign-in">
-                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">
-                        Login
-                      </li>
+                      <li className="border-b border-gray-50 pb-3 px-4 hover:text-blue-500 text-white">Login</li>
                     </Link>
                   )}
                   <li>
                     <div className="w-full items-center justify-center flex">
-                      <Button
-                        text="Get Started"
-                        icon={<ArrowRight size={20} />}
-                      />
+                      <Button text="Get Started" icon={<ArrowRight size={20} />} />
                     </div>
                   </li>
                 </ul>

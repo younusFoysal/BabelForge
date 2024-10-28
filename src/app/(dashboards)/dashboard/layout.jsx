@@ -4,6 +4,7 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import DashboardTopRight from '@/components/Dashboards/DashboardTopRight';
 import { usePathname } from 'next/navigation';
+import dynamic from 'next/dynamic';
 
 const layout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ExportTeamInfo } from './ExportTeamInfo';
 import DetailsCard from './DetailsCard';
 import { PieCharts } from './PieCharts';
