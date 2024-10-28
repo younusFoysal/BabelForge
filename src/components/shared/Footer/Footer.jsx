@@ -55,7 +55,7 @@ const Footer = () => {
     <footer className="p-2 md:p-16 pt-10  text-gray-200 bg-[#181024] border-t-gray-800 border-t-[1px] footer-background relative">
       {/* <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10"></div> */}
       {/* upper part */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-7 items-center justify-between border-[#ffffff57] border-b pb-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-7 lg:gap-12 justify-between border-[#ffffff57] border-b pb-12">
         <div className="flex flex-col space-y-1 text-sm">
           {/* logo */}
           <div className="flex gap-1 justify-center lg:justify-start items-center ">
@@ -80,27 +80,22 @@ const Footer = () => {
         </div>
         <div className="flex flex-col  space-y-3 text-sm h-full text-center md:text-start">
           <h3 className="text-xl font-semibold uppercase">Company</h3>
-          <a href="">About Us</a>
-          <a href="">Pricing</a>
-          <a href="">Contact Us</a>
-          <a href="">Templates</a>
-          <a href="">24/7 support</a>
+          <Link href="/about-us">About Us</Link>
+          <Link href="/pricing">Pricing</Link>
+          <Link href="/contact">Contact Us</Link>
         </div>
         <div className="flex flex-col  space-y-3 text-sm h-full text-center md:text-start">
           <h3 className="text-xl font-semibold uppercase">Features</h3>
-          <a href="">Create Projects</a>
-          <a href="">Dashboards</a>
-          <a href="">Issue Tracking</a>
-          <a href="">Reporting</a>
-          <a href="">Communicate</a>
+          <Link href="/dashboard/projects">Create Projects</Link>
+          <Link href="/dashboard/projects">Teams</Link>
+          <Link href="/dashboard/Backlog">Tasks</Link>
+          <Link href="/dashboard/meet">Communicate</Link>
         </div>
         <div className="flex flex-col  space-y-3 text-sm h-full text-center md:text-start">
           <h3 className="text-xl font-semibold uppercase">Legal</h3>
-          <a href="">Technology</a>
-          <a href="">Education</a>
-          <a href="">Project Management</a>
-          <a href="">Non-Profit Organization</a>
-          <a href=""></a>
+          <Link href="/privacy">Privacy Policy</Link>
+          <Link href="/terms">Terms & Conditions</Link>
+          <Link href="/help">Get Help</Link>
         </div>
       </div>
       {/* lower part */}
