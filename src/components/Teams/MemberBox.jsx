@@ -32,9 +32,12 @@ const MemberBox = ({ member, refetch, id }) => {
     }
   };
 
+  const truncatedLink =
+    member.length > 20 ? `${member.substring(0, 20)}...` : member;
+
   return (
-    <div className="flex w-full justify-between rounded-md border px-4 py-2 items-center dark:bg-gray-900 dark:border-gray-800">
-      <div className="text-sm font-medium leading-none flex items-center gap-2  ">
+    <div className="flex w-full justify-between rounded-md border px-1 flex-wrap sm:px-4 py-2 items-center dark:bg-gray-900 dark:border-gray-800">
+      <div className="text-xs sm:text-sm font-medium leading-none flex items-center sm:gap-2 ">
         <Avatar className="mt-2">
           <AvatarImage
             src="https://github.com/shadcn.png"
@@ -43,7 +46,7 @@ const MemberBox = ({ member, refetch, id }) => {
           />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-        <p className="text-muted-foreground">{member}</p>
+        <p className="text-muted-foreground">{truncatedLink}</p>
       </div>
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger asChild>

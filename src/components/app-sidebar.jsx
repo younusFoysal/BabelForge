@@ -233,7 +233,9 @@ export function AppSidebar({ ...props }) {
       if (item.title === "Tools") {
         const filteredItems = item.items.filter(
           (tool) =>
-            (tool.title !== "Babel AI" && tool.title !== "Canvas" && tool.title !== "Diagrams") ||
+            (tool.title !== "Babel AI" &&
+              tool.title !== "Canvas" &&
+              tool.title !== "Diagrams") ||
             role === "Standard" ||
             role === "Premium"
         );
