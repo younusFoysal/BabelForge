@@ -52,7 +52,6 @@
     "@schedule-x/theme-default": "^2.4.1",
     "@smastrom/react-rating": "^1.5.0",
     "@stream-io/node-sdk": "^0.4.4",
-    "@stream-io/video-react-sdk": "^1.6.1",
     "@stripe/react-stripe-js": "^2.8.1",
     "@stripe/stripe-js": "^4.7.0",
     "@tailwindcss/typography": "^0.5.15",
@@ -119,8 +118,7 @@
     "three": "^0.169.0",
     "uuid": "^10.0.0",
     "vaul": "^0.9.6",
-    "zod": "^3.23.8",
-    "zustand": "^5.0.0"
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/drawflow": "^0.0.12",
