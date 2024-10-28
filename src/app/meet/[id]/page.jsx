@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { useAuth, useUser } from "@clerk/nextjs";
-import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
-import HomeLoadingSpinner from "@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner";
+import { useEffect, useState } from 'react';
+import { useAuth, useUser } from '@clerk/nextjs';
+import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
+import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
+import './Meet.css';
 
 const RoomId = ({ params }) => {
   const { user } = useUser();
@@ -17,20 +18,12 @@ const RoomId = ({ params }) => {
     }
   }, [isLoaded, user]);
 
-  const userInfo =
-    user?.username || user?.fullName || user?.firstName || "user" + Date.now();
+  const userInfo = user?.username || user?.fullName || user?.firstName || 'user' + Date.now();
 
-  let myMeeting = async (element) => {
+  let myMeeting = async element => {
     const appID = parseInt(process.env.NEXT_PUBLIC_ZEGO_APP_ID);
     const serverSecret = process.env.NEXT_PUBLIC_ZEGO_SERVER_SECRET;
-    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(
-      appID,
-      serverSecret,
-      roomID,
-      userId,
-      userInfo,
-      720
-    );
+    const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userId, userInfo, 720);
 
     const zp = ZegoUIKitPrebuilt.create(kitToken);
 
@@ -38,14 +31,8 @@ const RoomId = ({ params }) => {
       container: element,
       sharedLinks: [
         {
-          name: "Shareable link",
-          url:
-            window.location.protocol +
-            "//" +
-            window.location.host +
-            window.location.pathname +
-            "?roomID=" +
-            roomID,
+          name: 'Shareable link',
+          url: window.location.protocol + '//' + window.location.host + window.location.pathname + '?roomID=' + roomID,
         },
       ],
       scenario: {
@@ -55,13 +42,7 @@ const RoomId = ({ params }) => {
   };
 
   return (
-    <div className="w-full h-screen">
-      {loading ? (
-        <HomeLoadingSpinner />
-      ) : (
-        <div className="w-full h-screen" ref={myMeeting}></div>
-      )}
-    </div>
+    <div className="w-full h-screen">{loading ? <HomeLoadingSpinner /> : <div className="w-full  h-screen" ref={myMeeting}></div>}</div>
   );
 };
 
