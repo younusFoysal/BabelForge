@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import HeroLeft from '@/components/home/HeroNew/HeroLeft';
 import homepic from '@/image/Home/light-dash.png';
 import homepicdark from '@/image/Home/light-dash-dark.png';
 import overlay from '@/image/Home/overlay.png';
-import {useTheme} from "next-themes";
+import { useTheme } from 'next-themes';
 
 const AwesomeHome = () => {
   const bgStyle = {
@@ -19,7 +19,7 @@ const AwesomeHome = () => {
 
   useEffect(() => {
     if (resolvedTheme) {
-      setDarkMode(resolvedTheme === "dark");
+      setDarkMode(resolvedTheme === 'dark');
       setMounted(true);
     }
   }, [resolvedTheme]);

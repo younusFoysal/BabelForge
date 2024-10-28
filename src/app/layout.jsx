@@ -4,7 +4,6 @@ import { ThemeProvider } from '@/components/Theme/ThemeProvider';
 import './globals.css';
 import React from 'react';
 import { Toaster } from '@/components/ui/toaster';
-
 const metadata = {
   title: 'BabelForge',
   description: 'Everything under One Roof.\n' + 'Build your project with Task Management, and Collaboration for a Successful Project.',
@@ -14,15 +13,12 @@ import { Nunito } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import QureryProvider from '@/providers/QureryProvider';
 import ScreenRecorderProvider from '@/providers/ScreenRecorderProvider';
-import dynamic from 'next/dynamic';
 
 const nunito = Nunito({
   weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
 });
 export default function RootLayout({ children }) {
-  const CrispWithNoSSR = dynamic(() => import('@/components/crisp'));
-
   return (
     <ClerkProvider
       appearance={{
@@ -37,7 +33,6 @@ export default function RootLayout({ children }) {
         >
           <QureryProvider>
             <ScreenRecorderProvider>
-              <CrispWithNoSSR />
               <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                 <Navbar />
                 <Toaster />
