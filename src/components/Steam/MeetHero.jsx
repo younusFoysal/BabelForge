@@ -21,7 +21,7 @@ const MeetHero = () => {
             </h1>
             <p className="text-black-500 mt-4 mb-6">
               Provide a network for all your needs with ease and fun using
-              LaslesVPN discover interesting features from us.
+              LaslesVPN discover interesting features from us
             </p>
             {/* <div>
               <div className="flex items-center justify-center gap-4 ">
