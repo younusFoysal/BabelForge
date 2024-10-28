@@ -79,7 +79,7 @@ const Footer = () => {
           </p>
         </div>
         <div className="flex flex-col  space-y-3 text-sm h-full text-center md:text-start">
-          <h3 className="text-xl font-semibold">Company</h3>
+          <h3 className="text-xl font-semibold uppercase">Company</h3>
           <a href="">About Us</a>
           <a href="">Pricing</a>
           <a href="">Contact Us</a>
@@ -87,7 +87,7 @@ const Footer = () => {
           <a href="">24/7 support</a>
         </div>
         <div className="flex flex-col  space-y-3 text-sm h-full text-center md:text-start">
-          <h3 className="text-xl font-semibold">Features</h3>
+          <h3 className="text-xl font-semibold uppercase">Features</h3>
           <a href="">Create Projects</a>
           <a href="">Dashboards</a>
           <a href="">Issue Tracking</a>
@@ -95,7 +95,7 @@ const Footer = () => {
           <a href="">Communicate</a>
         </div>
         <div className="flex flex-col  space-y-3 text-sm h-full text-center md:text-start">
-          <h3 className="text-xl font-semibold">Use Cases</h3>
+          <h3 className="text-xl font-semibold uppercase">Legal</h3>
           <a href="">Technology</a>
           <a href="">Education</a>
           <a href="">Project Management</a>
