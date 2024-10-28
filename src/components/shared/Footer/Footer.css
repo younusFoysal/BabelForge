@@ -14,6 +14,13 @@ footer a:hover {
   background-position: center;
 }
 
+.footer-top-bg {
+  background-image: url('/Images/footer-top.png');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: screen;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
