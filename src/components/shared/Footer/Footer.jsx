@@ -10,6 +10,7 @@ import { usePathname } from "next/navigation";
 import "./Footer.css";
 import { IoAccessibility } from "react-icons/io5";
 import { useState } from "react";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   const pathname = usePathname();
@@ -51,23 +52,23 @@ const Footer = () => {
   if (pathname?.includes("/successPayment") || pathname?.includes("meet"))
     return null;
   return (
-    <footer className="p-2 md:p-16 pt-10  text-gray-200 bg-[#181024] border-t-gray-800 border-t-[1px]">
+    <footer className="p-2 md:p-16 pt-10  text-gray-200 bg-[#181024] border-t-gray-800 border-t-[1px] footer-background relative">
+      {/* <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10"></div> */}
       {/* upper part */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-7 items-center justify-between border-[#ffffff57] border-b pb-12">
         <div className="flex flex-col space-y-1 text-sm">
           {/* logo */}
-          <Link href="/">
-            <div className="flex gap-1 justify-center lg:justify-start items-center ">
-              <Image
-                src={logo}
-                alt="babelforge"
-                className=" size-6 lg:size-14 "
-              />
-              <h3 className="text-3xl font-bold text-white dark:text-">
-                BabelForge
-              </h3>
-            </div>
-          </Link>
+          <div className="flex gap-1 justify-center lg:justify-start items-center ">
+            <Image
+              src={logo}
+              alt="babelforge"
+              className=" size-6 lg:size-14"
+            />
+            <h3 className="text-3xl font-bold text-white dark:text-">
+              BabelForge
+            </h3>
+          </div>
+
 
           <p className="text-center md:text-start text-xs font-semibold">
             Where Teams Forge Success.
@@ -116,7 +117,7 @@ const Footer = () => {
               <Youtube />
             </Link>
             <Link href="">
-              <Twitter />
+              <FaXTwitter />
             </Link>
             <Link href="">
               <Instagram />
@@ -152,9 +153,8 @@ const Footer = () => {
 
           <button
             title="Accessibility"
-            className={`relative w-12 h-12 flex items-center justify-center transition-all duration-300 ease-in-out ${
-              accessLoading ? "cursor-wait" : "cursor-pointer"
-            }`}
+            className={`relative w-12 h-12 flex items-center justify-center transition-all duration-300 ease-in-out ${accessLoading ? "cursor-wait" : "cursor-pointer"
+              }`}
             id="triggerId"
             onClick={handleAcessBtn}
           >
@@ -164,11 +164,10 @@ const Footer = () => {
 
             <span
               className={`absolute inset-0 rounded-full border-dashed border-[2px] transition-all duration-500 
-          ${
-            accessLoading
-              ? "border-[#74767D] acess-btn "
-              : "border-[#74767D] hover:bg-[#e5e5e5] hover:text-[#8c8c8c] hover:border-transparent"
-          }`}
+          ${accessLoading
+                  ? "border-[#74767D] acess-btn "
+                  : "border-[#74767D] hover:bg-[#e5e5e5] hover:text-[#8c8c8c] hover:border-transparent"
+                }`}
             ></span>
           </button>
         </div>
