@@ -42,7 +42,9 @@ const RoomId = ({ params }) => {
   };
 
   return (
-    <div className="w-full h-screen">{loading ? <HomeLoadingSpinner /> : <div className="w-full  h-screen" ref={myMeeting}></div>}</div>
+    <div className="w-full h-screen meet_container">
+      {loading ? <HomeLoadingSpinner /> : <div className="w-full meet  h-screen" ref={myMeeting}></div>}
+    </div>
   );
 };
 

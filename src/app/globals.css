@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.D9WLyEQaARfWqCTyVrpU {
-  background-color: #f5f5f5; /* Light theme background color */
-}
-
-.dark .D9WLyEQaARfWqCTyVrpU {
-  background-color: #0d0d0d; /* Dark theme background color */
-}
-
 body {
   overflow-x: hidden;
 }
@@ -297,19 +289,17 @@ body {
   background-color: white;
 }
 
-.editor-container.ql-editor.dark{
+.editor-container.ql-editor.dark {
   background-color: black;
   color: black;
-  
 }
 
-.editor-container{
+.editor-container {
   overflow: scroll;
 }
 
-.editor-container .ql-container.ql-snow{
+.editor-container .ql-container.ql-snow {
   border: none;
-
 }
 
 .editor-container.ql-container.ql-snow {
@@ -326,31 +316,28 @@ body {
   width: 8.5in;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 @media screen and (max-width: 850px) {
-  .editor-container .ql-toolbar.ql-snow, .editor-container  {
+  .editor-container .ql-toolbar.ql-snow,
+  .editor-container {
     width: 100%;
-
   }
-  .editor-container .ql-editor{
+  .editor-container .ql-editor {
     padding: 40px;
   }
 }
 
-.ql-container.ql-snow.ql-disabled{
+.ql-container.ql-snow.ql-disabled {
   border: none important;
   display: flex;
   justify-content: center;
 }
 
-.ql-container.ql-snow{
+.ql-container.ql-snow {
   display: flex;
   justify-content: center;
 }
-
-
 
 /* @layer base {
   * {
@@ -370,5 +357,3 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
- 
