@@ -64,7 +64,7 @@ const Privacy = () => {
                 </section>
 
                 <section className="mb-6">
-                    <h2 className="text-2xl font-semibold mb-2">6. Children's Privacy</h2>
+                    <h2 className="text-2xl font-semibold mb-2">6. Children&apos;s Privacy</h2>
                     <p className="mb-2">
                         BabelForge is not intended for children under 13, and we do not knowingly collect personal information from children under 13.
                     </p>

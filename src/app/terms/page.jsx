@@ -28,7 +28,7 @@ const Terms = () => {
                     </p>
                     <ul className="list-disc list-inside mb-2">
                         <li>Uploading content that is illegal, harmful, or offensive</li>
-                        <li>Attempting to interfere with the platform's functionality or security</li>
+                        <li>Attempting to interfere with the platform&apos;s functionality or security</li>
                         <li>Violating intellectual property rights of BabelForge or other users</li>
                     </ul>
                 </section>
@@ -50,7 +50,7 @@ const Terms = () => {
                 <section className="mb-6">
                     <h2 className="text-2xl font-semibold mb-2">6. Limitation of Liability</h2>
                     <p className="mb-2">
-                        BabelForge is provided on an "as-is" and "as-available" basis. We do not guarantee the accuracy, completeness, or reliability of any content or features. To the maximum extent permitted by law, BabelForge disclaims all liability for any damages resulting from the use or inability to use the platform.
+                        BabelForge is provided on an &quot;as-is&quot; and &quot;as-available&quot; basis. We do not guarantee the accuracy, completeness, or reliability of any content or features. To the maximum extent permitted by law, BabelForge disclaims all liability for any damages resulting from the use or inability to use the platform.
                     </p>
                 </section>
 
