@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -111,7 +111,7 @@
     "socket.io-client": "^4.8.0",
     "stream-chat": "^8.40.9",
     "stream-chat-react": "^12.2.1",
-    "stripe": "^17.1.0",
+    "stripe": "^17.2.1",
     "svix": "^1.37.0",
     "sweetalert2": "^11.14.1",
     "swiper": "^11.1.14",

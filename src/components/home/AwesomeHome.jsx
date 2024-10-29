@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import HeroLeft from '@/components/home/HeroNew/HeroLeft';
 import homepic from '@/image/Home/light-dash.png';
 import homepicdark from '@/image/Home/light-dash-dark.png';
-import overlay from '@/image/Home/overlay.png';
 import { useTheme } from 'next-themes';
 
 const AwesomeHome = () => {
+  const { resolvedTheme } = useTheme();
   const bgStyle = {
     backgroundImage: `url('/images/overlay.png')`,
     backgroundRepeat: 'repeat',
     opacity: 0.1,
   };
-
-  const { setTheme, resolvedTheme } = useTheme();
-  const [isDarkMode, setDarkMode] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    if (resolvedTheme) {
-      setDarkMode(resolvedTheme === 'dark');
-      setMounted(true);
-    }
-  }, [resolvedTheme]);
 
   return (
     <div className="mb-14">
@@ -43,7 +32,7 @@ const AwesomeHome = () => {
                 <Image
                   width={800}
                   height={800}
-                  src={homepic}
+                  src={resolvedTheme == 'dark' ? homepicdark : homepic}
                   className="h-full scale-90  lg:scale-[1.45] object-contain z-10"
                   alt="Dashboard Demo Image"
                 />

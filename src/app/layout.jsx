@@ -6,7 +6,7 @@ import React from 'react';
 import { Toaster } from '@/components/ui/toaster';
 const metadata = {
   title: 'BabelForge',
-  description: 'Everything under One Roof.\n' + 'Build your project with Task Management, and Collaboration for a Successful Project.',
+  description: 'Everything Under One Roof.\n' + 'Build your project with Task Management, and Collaboration for a Successful Project.',
 };
 
 import { Nunito } from 'next/font/google';
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
     >
       <html lang="en">
         <body
-          className={`${nunito.className} bg-white dark:bg-[#111827] before:fixed before:-z-10 before:blur-[200px] before:lg:size-[600px] before:size-[400px] before:rounded-full before:top-[10%] before:md:start-[10%] before:-start-[20%] before:bg-indigo-600/20 after:fixed after:-z-10 after:blur-[200px] after:lg:size-[600px] after:size-[400px] after:rounded-full after:bottom-[10%] after:md:end-[10%] after:-end-[20%] after:bg-red-600/20`}
+          className={`${nunito.className} bg-white dark:bg-[#010313] before:fixed before:-z-10 before:blur-[200px] before:lg:size-[600px] before:size-[400px] before:rounded-full before:top-[10%] before:md:start-[10%] before:-start-[20%] before:bg-indigo-600/20 after:fixed after:-z-10 after:blur-[200px] after:lg:size-[600px] after:size-[400px] after:rounded-full after:bottom-[10%] after:md:end-[10%] after:-end-[20%] after:bg-red-600/20`}
         >
           <QureryProvider>
             <ScreenRecorderProvider>

@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/table"
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
-import { FaRegTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import {IoTrashOutline} from "react-icons/io5";
 
@@ -77,23 +76,23 @@ const AdminReview = () => {
         <section className="container mx-auto">
 
             {/* Table container */}
-            <div>
+            <div className="dark:bg-[#181024] border dark:border-[#3e1878c2] rounded-md">
                 
                 <Table>
                     <TableHeader>
                         <TableRow>
-                            <TableHead className="font-semibold text-black text-base">No</TableHead>
+                            <TableHead className="font-semibold text-black dark:text-gray-50">No</TableHead>
 
 
-                            <TableHead className="font-semibold text-black text-base">Name</TableHead>
+                            <TableHead className="font-semibold text-black dark:text-gray-50">Name</TableHead>
 
-                            <TableHead className="font-semibold text-black text-base ">Review Message</TableHead>
+                            <TableHead className="font-semibold text-black dark:text-gray-50 ">Review Message</TableHead>
 
-                            <TableHead className="font-semibold text-black text-base ">Review Date</TableHead>
+                            <TableHead className="font-semibold text-black dark:text-gray-50 ">Review Date</TableHead>
 
-                            <TableHead className="font-semibold text-black text-base">Review Rating</TableHead>
+                            <TableHead className="font-semibold text-black dark:text-gray-50">Review Rating</TableHead>
 
-                            <TableHead className="font-semibold text-black text-base"> Action </TableHead>
+                            <TableHead className="font-semibold text-black dark:text-gray-50"> Action </TableHead>
 
 
                         </TableRow>
@@ -114,15 +113,9 @@ const AdminReview = () => {
 
                                     <TableCell >{review?.reviewRating || "not given"}</TableCell>
 
-                                    {/*   <TableCell >
-                                        <span onClick={() => handleDelete(review._id)} className="px-3 py-1 font-semibold rounded-md bg-red-500 text-gray-50 hover:bg-red-700 cursor-pointer">
-                                            <span>Delete</span>
-                                        </span>
-                                    </TableCell> */}
-
                                     <TableCell >
                                         <button onClick={() => handleDelete(review._id)}
-                                            className="border hover:bg-red-600 hover:text-white  p-2 rounded-md">
+                                            className="border hover:bg-red-400 dark:hover:bg-[#3e1878c2]  hover:text-white dark:text-red-400  p-2 rounded-md">
                                             <span className="text-xl "><IoTrashOutline  /></span>
                                         </button>
                                     </TableCell>

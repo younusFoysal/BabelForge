@@ -3,8 +3,6 @@ import {
   BookOpen,
   CircleHelp,
   Bot,
-  Frame,
-  PieChart,
   Settings2,
   SquareTerminal,
   MessageSquareText,
@@ -30,7 +28,11 @@ export function AppSidebar({ ...props }) {
 
   const uemail = user?.primaryEmailAddress?.emailAddress;
   // foysal@gmail.com
-  const admin = ["babelforgeltd@gmail.com", "babelforgeltdfgd@gmail.com"];
+  const admin = [
+    "babelforgeltd@gmail.com",
+    "babelforgeltdfgd@gmail.com",
+    "morshidulrahman4167@gmail.com",
+  ];
 
   const [role] = useRole();
 
@@ -173,12 +175,12 @@ export function AppSidebar({ ...props }) {
         icon: MessageSquareText,
         items: [
           {
-            title: "inbox",
+            title: "Inbox",
             url: "/dashboard/admin/inbox",
           },
 
           {
-            title: "reviews",
+            title: "Reviews",
             url: "/dashboard/admin/reviews",
           },
         ],
@@ -264,7 +266,6 @@ export function AppSidebar({ ...props }) {
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
-        {/* <UserButton> </UserButton> */}
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

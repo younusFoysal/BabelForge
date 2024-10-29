@@ -1,26 +1,9 @@
-import { useAuth } from '@clerk/nextjs';
 import './GetStart.css';
-import { useRouter } from 'next/navigation';
-import { toast } from '@/hooks/use-toast';
 
 const GetStart = () => {
-  const { userId } = useAuth();
-  const auth = !!userId;
-  const router = useRouter();
-
-  const handleClick = async () => {
-    if (!auth) {
-      return toast({
-        description: 'Please login',
-        variant: 'error',
-      });
-    }
-    router.push('/dashboard');
-  };
-
   return (
     <>
-      <button onClick={handleClick} className="button">
+      <a href="/dashboard" className="button">
         <div className="dots_border"></div>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="sparkle">
           <path
@@ -49,7 +32,7 @@ const GetStart = () => {
           ></path>
         </svg>
         <span className="text_button">Get Start</span>
-      </button>
+      </a>
     </>
   );
 };
