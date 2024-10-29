@@ -1,3 +1,4 @@
+'use client';
 import { Eraser, Pencil, Trash2 } from 'lucide-react';
 import {useEffect, useRef, useState} from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas';
