@@ -21,9 +21,9 @@ const layout = ({ children }) => {
   return (
     <SidebarProvider>
       {!pathName?.includes('/dashboard/meet/meeting') && (
-        <AppSidebar className="bg-[#f7f8f9] dark:bg-[#151e30] dark:text-[#d4d4d4] text-[#34383e]" />
+        <AppSidebar className="bg-[#f7f8f9] dark:border-[#3e1878c2]  dark:bg-[#140e1e] dark:text-[#d4d4d4] text-[#34383e]" />
       )}
-      <div className="bg-white w-full dark:bg-gray-900 dark:text-white relative">
+      <div className="bg-white w-full dark:bg-[#010313] dark:text-white relative">
         <main className="relative">
           {/* Dashboard ToP */}
           {!pathName?.includes('/dashboard/meet/meeting') && (

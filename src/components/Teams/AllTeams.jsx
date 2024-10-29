@@ -87,7 +87,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
           <Card
             onClick={() => router.push(`/dashboard/teams/${_id}`)}
             key={_id}
-            className="border hover:dark:bg-[#ffffff34] dark:border-[#ffffff28] dark:bg-[#ffffff14] hover:shadow-lg cursor-pointer duration-300 rounded-2xl"
+            className="border dark:hover:shadow-[#3e1878c2] hover:dark:border-[#3e1878] hover:dark:bg-[#200e3be2] dark:border-[#3e1878c2] dark:bg-[#181024] hover:shadow-lg dark:hover:shadow-2xl cursor-pointer duration-300 rounded-2xl"
           >
             <Image
               className="w-[95px] mx-auto h-[95px] mt-6 rounded-full object-cover"
@@ -104,7 +104,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
               <p className="text-[14px] font-semibold mb-3 text-center capitalize">{tcategory}</p>
 
               {/* Team members */}
-              <div className="flex mr-3 bg-[#f0f0f072] py-2 rounded-3xl cursor-pointer items-center justify-center">
+              <div className="flex dark:border-[#3e1878c2] dark:border dark:bg-[#2b2b51] mr-3 bg-[#f0f0f072] py-2 rounded-3xl cursor-pointer items-center justify-center">
                 {tmembers?.slice(0, 3).map((member, index) => {
                   const memberDetails = users?.find(user => user.email === member);
                   return (
