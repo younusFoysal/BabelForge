@@ -7,6 +7,11 @@ import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { FaArrowLeft } from "react-icons/fa6";
 
+ const metadata = {
+  title: "Payment | BabelForge",
+  description: "Make a payment for your order.",
+}
+
 const Page = () => {
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;

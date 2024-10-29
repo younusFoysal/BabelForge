@@ -1,5 +1,10 @@
 import React from "react";
 
+export const metadata = {
+    title: "Terms and Conditions | BabelForge",
+    description: "Read our terms and conditions for using BabelForge.",
+}
+
 const Terms = () => {
     return (
         <section className="lg:px-0 bg-white/5 pb-[70px]  px-4 pt-[100px]">

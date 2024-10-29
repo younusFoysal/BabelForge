@@ -8,6 +8,12 @@ import Button from '@/components/shared/Buttons';
 import { ArrowRight } from 'lucide-react';
 import Sponser from '@/components/home/Sponser';
 import Review from '@/components/DashboardsPage/Review';
+import { description } from '@/components/Admin/AdminDashboard/PaymentGraph';
+
+export const metadata = {
+  title: 'Features | BabelForge',
+  description: 'Get all of your data control in one place. Gain real-time insights, View data your way, Prioritize work smarter',
+}
 
 const Page = () => {
   return (
