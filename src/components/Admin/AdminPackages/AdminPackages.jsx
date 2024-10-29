@@ -21,11 +21,13 @@ const AdminPackages = ({ priceingsec }) => {
     },
   });
 
-  // console.log(packages);
-
-  const handlePay = (id) => {
+  const handlePay = (link) => {
     if (priceingsec) {
-      router.push(`/checkout/${id}`);
+      if (link == "Standard") {
+        router.push(`${process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PLAN_LINK}`);
+      } else if (link == "Premium") {
+        router.push(`${process.env.NEXT_PUBLIC_STRIPE_YEARLY_PLAN_LINK}`);
+      }
     }
   };
 
@@ -108,6 +110,7 @@ const AdminPackages = ({ priceingsec }) => {
                       {/* TODO: UPDATE COMPONENT */}
                       <UpdatePricing
                         pack={pack}
+                        title={pack.title}
                         priceingsec={priceingsec}
                         handlePay={handlePay}
                         refetch={refetch}
@@ -122,7 +125,9 @@ const AdminPackages = ({ priceingsec }) => {
               {/* table header */}
               <tr>
                 <td className="px-7 py-5 ">
-                  <h5 className="font-medium text-black dark:text-white">Key Features</h5>
+                  <h5 className="font-medium text-black dark:text-white">
+                    Key Features
+                  </h5>
                 </td>
                 <td className="px-7 py-5 ">
                   <h5 className="text-center font-medium text-black dark:text-white">
