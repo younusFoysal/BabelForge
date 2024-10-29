@@ -35,7 +35,7 @@ const AwesomeHome = () => {
             </div>
             <div className="flex justify-between items-center px-4 w-full">
               <div className="mx-auto lg:ml-0">
-                {/*new div*/}
+                {/*new f div*/}
                 <HeroLeft />
               </div>
             </div>
