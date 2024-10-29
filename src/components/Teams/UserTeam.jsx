@@ -48,7 +48,7 @@ const UserTeam = () => {
   } = useForm();
 
   // handle Search
-  const handleSeach = () => {
+  const handleSearch = () => {
     setSearchQuery(myRef.current.value);
   };
 
@@ -236,9 +236,9 @@ const UserTeam = () => {
       {/* Search Teams and Projects */}
       <div className="relative mt-8">
         <input
-          onChange={() => handleSeach()}
+          onChange={() => handleSearch()}
           ref={myRef}
-          className="placeholder:text-[25px] dark:text-white dark:bg-transparent  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-8 w-full border-b-2 focus:border-[#3575ff] hover:border-[#3575ff] focus:outline-0 focus:outline-none"
+          className="placeholder:text-[25px] dark:text-white dark:bg-transparent  text-[25px] text-[#777] placeholder:text-[#777] duration-500 py-1 px-5 pl-8 w-full border-b-2 focus:border-[#5c23b2] dark:focus:border-[#3e1878] hover:border-[#5c23b2]  dark:hover:border-[#3e1878] focus:outline-0 focus:outline-none"
           placeholder="Search for teams and category"
           type="text"
           name="search"

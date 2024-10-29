@@ -1,24 +1,6 @@
-import { useAuth } from '@clerk/nextjs';
 import './GetStart.css';
-import { useRouter } from 'next/navigation';
-import { toast } from '@/hooks/use-toast';
-import Link from 'next/link';
 
 const GetStart = () => {
-  const { userId } = useAuth();
-  const auth = !!userId;
-  const router = useRouter();
-
-  // const handleClick = async () => {
-  //   if (!auth) {
-  //     return toast({
-  //       description: 'Please login',
-  //       variant: 'error',
-  //     });
-  //   }
-  //   router.push('/dashboard');
-  // };
-
   return (
     <>
       <a href="/dashboard" className="button">
