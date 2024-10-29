@@ -3,9 +3,22 @@ footer a:hover {
   text-decoration: underline;
 }
 
-.dark footer a:hover {
+footer a:hover {
   color: #ffdd57;
   text-decoration: underline;
+}
+
+.footer-background {
+  background-image: url('/Images/footer.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.footer-top-bg {
+  background-image: url('/Images/footer-top.png');
+  background-size: cover;
+  background-position: center;
+  mix-blend-mode: screen;
 }
 
 @keyframes rotate {
