@@ -22,19 +22,12 @@ import {
 } from "@/components/ui/sidebar";
 import { useUser } from "@clerk/nextjs";
 import useRole from "@/hooks/useRole";
+import usePlan from "@/hooks/usePlan";
 
 export function AppSidebar({ ...props }) {
   const { user, isLoaded } = useUser();
-
-  const uemail = user?.primaryEmailAddress?.emailAddress;
-  // foysal@gmail.com
-  const admin = [
-    "babelforgeltd@gmail.com",
-    "babelforgeltdfgd@gmail.com",
-    "morshidulrahman4167@gmail.com",
-  ];
-
   const [role] = useRole();
+  const [plan] = usePlan();
 
   const data = {
     user: {
@@ -202,8 +195,8 @@ export function AppSidebar({ ...props }) {
         icon: Settings2,
         items: [
           {
-            title: "Babel AI",
-            url: "/dashboard/babelai",
+            title: "AI Assistant",
+            url: "/dashboard/aiassistant",
           },
           {
             title: "Canvas",
@@ -229,7 +222,7 @@ export function AppSidebar({ ...props }) {
   const filteredNavMain = data.navMain
     .map((item) => {
       if (item.title === "Chat") {
-        return role === "Standard" || role === "Premium" ? item : null;
+        return plan === "Standard" || plan === "Premium" ? item : null;
       }
 
       if (item.title === "Tools") {
@@ -238,8 +231,8 @@ export function AppSidebar({ ...props }) {
             (tool.title !== "Babel AI" &&
               tool.title !== "Canvas" &&
               tool.title !== "Diagrams") ||
-            role === "Standard" ||
-            role === "Premium"
+            plan === "Standard" ||
+            plan === "Premium"
         );
 
         return { ...item, items: filteredItems };
@@ -249,15 +242,13 @@ export function AppSidebar({ ...props }) {
     })
     .filter(Boolean);
 
-  const isAdmin = admin.includes(uemail);
-
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
         <TeamSwitcher />
       </SidebarHeader>
       <SidebarContent>
-        {isAdmin ? (
+        {role == "admin" ? (
           <NavMain items={AdminData.navMain} />
         ) : (
           <NavMain items={filteredNavMain} />
