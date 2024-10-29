@@ -98,7 +98,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
         )}
         {!tasks?.length == 0 && (
           <table className="w-full divide-y dark:divide-gray-700 divide-gray-200">
-            <thead className="bg-gray-50 dark:text-white dark:bg-[#ffffff1a] backdrop-blur-[100px]">
+            <thead className="bg-gray-50 dark:text-white dark:bg-[#200e3be2] backdrop-blur-[100px]">
               <tr>
                 <th className="px-2 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Num</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-200 uppercase tracking-wider">Task</th>
@@ -116,7 +116,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
               </tr>
             </thead>
 
-            <tbody className="bg-white dark:bg-gray-900 divide-y dark:divide-gray-700 divide-gray-200">
+            <tbody className="bg-white dark:bg-[#181024] divide-y dark:divide-gray-700 divide-gray-200">
               {tasks?.map(task => (
                 <tr key={task._id}>
                   <td className="px-6 py-4 whitespace-nowrap">{num++}</td>
@@ -209,12 +209,12 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
             isOpen={isEditModalOpen}
             onRequestClose={closeEditModal}
             contentLabel="Edit Task Modal"
-            className="modal-dialog bg-white dark:bg-[#111827]"
+            className="modal-dialog bg-white dark:bg-[#181024]"
             overlayClassName="modal-overlay"
           >
-            <div className="w-7xl dark:bg-[#111827] dark:text-white relative z-[999] py-0 max-h-[80%]  px-4">
-              <div className="py-6 w-full left-0 sticky px-4 top-0 dark:bg-[#111827] dark:text-white bg-white">
-                <div className="">
+            <div className="w-7xl rounded-2xl dark:bg-[#181024] dark:text-white relative z-[999] py-0 max-h-[80%]  px-4">
+              <div className="py-6 w-full left-0 sticky px-4 top-0 dark:bg-[#181024] dark:text-white bg-white">
+                <div>
                   <span className="text-[16px] flex items-center gap-2">
                     <MdAddTask className="text-[18px]" />
                     {formData.tname} <span> / </span>
@@ -236,7 +236,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
               </div>
               <PanelGroup autoSaveId="example" direction="horizontal">
                 <Panel minSize={40} defaultSize={50}>
-                  <div className="px-4 h-full overflow-scroll">
+                  <div className="px-4 h-full custom-scroll overflow-y-auto">
                     <h2>Edit Task</h2>
                     <div className="grid gap-5 grid-cols-9">
                       <div className="col-span-9">
@@ -341,7 +341,7 @@ const TableView = ({ tasks, handleDelete, handleEditTask }) => {
                     </div>
                   </div>
                 </Panel>
-                <PanelResizeHandle className="w-[2px] hidden md:block mx-4 bg-[#95959583] dark:bg-[#ffffff3d] hover:bg-blue-400" />
+                <PanelResizeHandle className="w-[2px] hidden md:block mx-4 bg-[#95959583] dark:bg-[#3e1878] hover:bg-blue-400" />
                 <Panel className="hidden md:block" minSize={30} defaultSize={50}>
                   <div className="">
                     <div className="px-4 dark:text-white space-y-5 border py-4 h-full rounded border-[#b7b7b7]">
