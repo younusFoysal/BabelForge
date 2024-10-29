@@ -53,7 +53,7 @@ export function PieCharts({ stats, isLoading }) {
   if (isLoading) return <div>Loading...</div>;
 
   return (
-    <Card className="flex rounded-xl py-5 flex-col dark:bg-gray-800 dark:border-gray-800">
+    <Card className="flex rounded-xl py-5 flex-col ">
       <CardHeader className="items-center pb-0">
         <CardTitle>Task Progress Charts</CardTitle>
         <CardDescription>January - June 2024</CardDescription>
