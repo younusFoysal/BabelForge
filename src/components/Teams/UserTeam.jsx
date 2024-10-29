@@ -95,7 +95,7 @@ const UserTeam = () => {
             <DialogOverlay className="DialogOverlay">
               <DialogContent
                 aria-describedby={'Dialouge'}
-                className="max-w-[450px] dark:border-[#fff5] dark:bg-[#ffffff25] dark:backdrop-blur-[20px] max-h-[90%] overflow-scroll z-[999] md:max-w-[1200px]"
+                className="max-w-[450px] dark:border-[#3e1878c2] dark:bg-[#181024] dark:backdrop-blur-[20px] max-h-[90%] overflow-y-scroll z-[999] md:max-w-[1200px]"
               >
                 <DialogHeader>
                   <DialogTitle className="text-[20px]">Create a team</DialogTitle>
@@ -162,7 +162,7 @@ const UserTeam = () => {
                         </Label>
                         <select
                           {...register('tproject')}
-                          className="w-full py-[11px] dark:text-white dark:border-transparent dark:bg-black text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
+                          className="w-full py-[11px] dark:text-white dark:border-[#3e1878c2] dark:bg-black text-[14px] px-[12px]  text-[#777] bg-transparent border rounded-md"
                           name="tproject"
                           id="tproject"
                         >
@@ -192,8 +192,8 @@ const UserTeam = () => {
                           id="tdes"
                           className="col-span-3"
                         />
-                        {errors.tdes?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Descrition required</p>}
-                        {errors.tdes?.type === 'minLength' && <p className="text-red-600 text-[11px] mt-1">Descrition too short !</p>}
+                        {errors.tdes?.type === 'required' && <p className="text-red-600 text-[11px] mt-1">Description required</p>}
+                        {errors.tdes?.type === 'minLength' && <p className="text-red-600 text-[11px] mt-1">Description too short !</p>}
                       </div>
                       <div className="">
                         <Label htmlFor="members" className="text-left text-[11px] mb-[6px] block font-semibold">
@@ -219,7 +219,7 @@ const UserTeam = () => {
                           </button>
                         </DialogClose>
                         <button
-                          className="bg-bgColor dark:hover:shadow-bgColor/30 hover:bg-bgHoverColor text-white text-md  duration-500  hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
+                          className=" capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white text-white text-md  duration-500  hover:shadow-lg  font-medium px-4 py-2 rounded-md"
                           type="submit"
                         >
                           Create

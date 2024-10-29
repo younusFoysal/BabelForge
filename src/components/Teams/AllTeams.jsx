@@ -65,10 +65,10 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
         <div className="flex items-center gap-4">
           <p>Category :</p>
           <Select onValueChange={setSelectedCategory} defaultValue="All">
-            <SelectTrigger className="w-[180px] dark:bg-[#ffffff2a]">
+            <SelectTrigger className="w-[180px] ">
               <SelectValue placeholder="All" />
             </SelectTrigger>
-            <SelectContent className="dark:bg-[#ffffff2a] backdrop-blur-[30px] dark:border-[#ffffff5b]">
+            <SelectContent className="backdrop-blur-[30px]">
               <SelectGroup>
                 {categories?.map(item => (
                   <SelectItem key={item} value={item}>
@@ -109,7 +109,7 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                   const memberDetails = users?.find(user => user.email === member);
                   return (
                     <HoverCard key={index}>
-                      <HoverCardTrigger className="w-9 -mr-3 border-[#fff] border-[4px] h-9 rounded-full">
+                      <HoverCardTrigger className="w-9 -mr-3 border-[#fff] dark:border-[#3e1878] border-[4px] h-9 rounded-full">
                         <Image
                           className="w-full h-full object-cover rounded-full"
                           alt={memberDetails?.firstName || 'Member'}
@@ -118,10 +118,10 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                           src={memberDetails?.image_url || usericon}
                         />
                       </HoverCardTrigger>
-                      <HoverCardContent className="gap-4 backdrop-blur-[30px] bg-[#ffffff30] h-[130px] w-[300px]">
-                        <div className="flex items-center gap-4">
+                      <HoverCardContent className="gap-4 backdrop-blur-[30px] bg-[#ffffff30] h-[80px] w-[250px]">
+                        <div className="flex h-full items-center gap-4">
                           <Image
-                            className="w-16 h-16 border-[#2f69fd] border-4 object-cover rounded-full"
+                            className="w-12 h-12 border-[#3e1878c2] border-4 object-cover rounded-full"
                             alt={memberDetails?.firstName || 'Member'}
                             width={50}
                             height={50}
@@ -129,16 +129,16 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                           />
                           <p>{memberDetails?.firstName || 'Unknown'}</p>
                         </div>
-                        <button className="bg-[#2f69fd] px-3 py-1 rounded-sm text-[13px] ml-auto flex items-center gap-3 justify-end text-white">
+                        {/* <button className=" capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white px-3 py-1 rounded-sm text-[13px] ml-auto flex items-center gap-3 justify-end text-white">
                           <span>Send Message</span>
                           <FaTelegramPlane />
-                        </button>
+                        </button> */}
                       </HoverCardContent>
                     </HoverCard>
                   );
                 })}
                 {tmembers?.length > 3 && (
-                  <div className="flex text-[12px] bg-[#ddddde] border-[#fff] border-[4px] w-9 h-9 rounded-full items-center justify-center text-[#333]">
+                  <div className="flex text-[12px] dark:border-[#3e1878] dark:bg-[#5b319a] dark:text-white bg-[#ddddde] border-[#fff] border-[4px] w-9 h-9 rounded-full items-center justify-center text-[#333]">
                     +{tmembers.length - 3}
                   </div>
                 )}

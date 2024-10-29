@@ -80,7 +80,7 @@ const AdminPackages = ({ priceingsec }) => {
   return (
     <div>
       <div
-        className={`relative z-10 overflow-hidden rounded-sm text-black dark:text-white p-11 shadow-default bg-white/50 dark:bg-transparent`}
+        className={`relative z-10 overflow-hidden rounded-sm text-black dark:text-white p-11 shadow-default bg-white/50 dark:bg-[#181024]`}
       >
         <div className="w-full overflow-x-auto">
           <table className="w-full">
@@ -148,20 +148,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* projects limit */}
               <tr>
-                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Projects</p>
                 </td>
-                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[0]?.projects}
                   </p>
                 </td>
-                <td className="border-t border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[1]?.projects}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[2]?.projects}
                   </p>
@@ -170,51 +170,51 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* Teams limit */}
               <tr>
-                <td className="border-t  border-purple-700  dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Teams</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[0]?.team}</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[1]?.team}</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[2]?.team}</p>
                 </td>
               </tr>
               {/* tasks limit */}
               <tr>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Tasks</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[0]?.task}</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[1]?.task}</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[2]?.task}</p>
                 </td>
               </tr>
 
               {/* group chat feature */}
               <tr>
-                <td className="border-t border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Group Chat</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.groupchat ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.groupchat ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.groupchat ? trueSVG : falseSVG}
                   </p>
@@ -223,20 +223,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* canvas feature */}
               <tr>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Canvas</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.canvas ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.canvas ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.canvas ? trueSVG : falseSVG}
                   </p>
@@ -245,20 +245,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* babel ai feature */}
               <tr>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Babel AI</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.BabelAi ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.BabelAi ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.BabelAi ? trueSVG : falseSVG}
                   </p>
@@ -267,20 +267,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* meetings feature */}
               <tr>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Meetings</p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.meeting ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.meeting ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-purple-700 dark:border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.meeting ? trueSVG : falseSVG}
                   </p>

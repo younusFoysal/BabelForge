@@ -357,3 +357,146 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* Multiple Input Tag */
+
+.parent_Tags .rti--container {
+  background: black;
+  border-color: #3e1878c2;
+}
+
+.rti--container:focus-within {
+  border-color: #333 !important;
+  box-shadow: none !important;
+}
+
+.parent_Tags .rti--container:focus-within {
+  border-color: #fff;
+  box-shadow: none;
+}
+
+.parent_Tags .rti--input {
+  background: #000;
+}
+
+.parent_Tags .rti--tag {
+  background: #341267e2;
+  color: #fff;
+  border: 1px solid #4301a6e2;
+}
+
+.rti--input {
+  width: 100%;
+  padding-left: 6px;
+  font-size: 14px !important;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.rti--tag {
+  font-size: 14px !important;
+  padding-left: 10px !important;
+  border-radius: 50px !important;
+}
+
+.rti--tag button {
+  padding-right: 7px !important;
+}
+
+.rti--input::placeholder {
+  font-size: 14px;
+  font-weight: light;
+  opacity: 1;
+  color: #777;
+}
+
+/* Clerk Nav Style */
+
+.dark .cl-userButtonPopoverMain,
+.dark .cl-cardBox,
+.dark .cl-signIn-start,
+.dark .cl-signUp-start,
+.dark .cl-footer,
+.dark .cl-signIn-alternativeMethods,
+.dark .cl-signUp-emailCode {
+  background: #201630;
+  color: #fff !important;
+  border: 1px solid #3e1878c2;
+}
+
+.dark .cl-button {
+  background: #201630;
+  color: #fff !important;
+  border: 1px solid #3e187864;
+}
+
+.dark .cl-internal-1lldyk3:hover {
+  background-color: #3e1878c2;
+}
+
+.dark .cl-navbar,
+.dark .cl-internal-1cftg7i,
+.dark .cl-formFieldInput {
+  background: #140e1e;
+  color: #fff;
+}
+
+.dark .cl-internal-18n5pfw {
+  background-color: #2c1154c2;
+}
+
+.dark .cl-pageScrollBox {
+  background: #181024;
+  color: #fff !important;
+}
+
+/* .cl-profileSectionPrimaryButton {
+  background: linear-gradient(to right, #2563eb, #9333ea);
+  color: #fff;
+} */
+
+.dark .cl-badge {
+  color: #fff;
+  background: #3e1878c2;
+}
+
+.dark .cl-actionCard {
+  color: #fff;
+  background: #220e40f7;
+  box-shadow: none !important;
+  border: 1px solid #ffffff46;
+}
+
+.dark .cl-headerTitle,
+.dark .cl-internal-pp7u0o,
+.dark .cl-profileSectionTitleText,
+.dark .cl-userPreview,
+.dark .cl-internal-bolkfx,
+.dark .cl-internal-1pz8pdy,
+.dark .cl-formFieldLabel,
+.dark .cl-footerActionText,
+.dark .cl-footerActionLink,
+.dark .cl-headerSubtitle,
+.dark .cl-dividerRow,
+.dark .cl-formResendCodeLink,
+.dark .cl-identityPreviewText,
+.dark .cl-headerTitle {
+  color: #fff;
+}
+
+.dark .cl-internal-1ftpdtb {
+  background: #fff;
+}
+
+.dark .cl-socialButtonsIconButton {
+  border-color: #ffffff65;
+  background: #ffffffd9;
+}
+
+.dark .cl-otpCodeFieldInput {
+  box-shadow: rgba(255, 255, 255, 0.278) 0px 0px 0px 1px, rgba(0, 0, 0, 0.07) 0px 0px 1px 0px;
+}
+
+.dark .cl-otpCodeFieldInput:hover {
+  box-shadow: rgba(255, 255, 255, 0.622) 0px 0px 0px 1px, rgba(0, 0, 0, 0.191) 0px 0px 1px 0px;
+}
