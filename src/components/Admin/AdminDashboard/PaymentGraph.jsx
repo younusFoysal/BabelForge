@@ -47,7 +47,7 @@ const PaymentGraph = ({ trans, isLoading }) => {
 
   return (
     <div className="">
-      <Card>
+      <Card className='dark:bg-[#181024] dark:border-[#3e1878c2]'>
         <CardHeader>
           <CardTitle>Revenue Over Time</CardTitle>
           <CardDescription>Payments for the selected period</CardDescription>

@@ -178,8 +178,8 @@ const PayGraph = ({ trans, isLoading }) => {
   }
 
   return (
-    <div className="md:col-span-5 col-span-1">
-      <Card className="p-6 dark:bg-[#ffffff14] dark:border-[#ffffff34]">
+    <div className="md:col-span-5 col-span-1  ">
+      <Card className="p-6  dark:bg-[#181024] dark:border-[#3e1878c2]">
         <div className="panel h-full xl:col-span-2">
           <div className="mb-5 flex items-center justify-between dark:text-white-light">
             <h5 className="text-lg font-semibold">Revenue</h5>

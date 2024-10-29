@@ -13,7 +13,7 @@ const AdminDashboard = () => {
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
-    <div className="px-4 h-full">
+    <div className="px-4 h-full dark:bg-[#181024] py-4 rounded-md">
       <AdminStatCards />
       <div className=" grid grid-cols-1 md:grid-cols-8 gap-5">
         <PayGraph trans={trans} isLoading={isLoading} />
