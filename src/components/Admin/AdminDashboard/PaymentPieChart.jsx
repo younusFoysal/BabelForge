@@ -61,7 +61,7 @@ const PaymentPieChart = ({ trans, isLoading }) => {
 
   return (
     <div className="md:col-span-3 col-span-1 ">
-      <Card data-chart={id} className="flex dark:bg-[#ffffff14] dark:border-[#ffffff34] h-full flex-col">
+      <Card data-chart={id} className="flex  dark:border-[#3e1878c2] h-full flex-col dark:bg-[#181024]">
         <ChartStyle id={id} config={chartConfig} />
         <CardHeader className="flex-row items-start space-y-0 pb-0">
           <div className="grid gap-1">
@@ -69,10 +69,10 @@ const PaymentPieChart = ({ trans, isLoading }) => {
             <CardDescription>January - June 2024</CardDescription>
           </div>
           <Select value={activePakage} onValueChange={setactivePakage}>
-            <SelectTrigger className="ml-auto h-7 w-[130px] rounded-lg pl-2.5" aria-label="Select a value">
+            <SelectTrigger className="ml-auto h-7 w-[130px] rounded-lg pl-2.5 dark:bg-[#181024]  dark:border-[#3e1878c2]" aria-label="Select a value">
               <SelectValue placeholder="Select month" />
             </SelectTrigger>
-            <SelectContent align="end" className="rounded-xl">
+            <SelectContent align="end" className="rounded-xl dark:bg-[#181024]  dark:border-[#3e1878c2]">
               {Initalpakage?.map(key => {
                 const config = chartConfig[key];
                 if (!config) {

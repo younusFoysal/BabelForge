@@ -20,14 +20,14 @@ const Transactions = ({ transAmout }) => {
   const sortedTrans = trans?.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 
   return (
-    <div className={` ${isPath && "h-screen"}  my-10 dark:bg-transparent`}>
+    <div className={` ${isPath && "h-screen"}  my-4 rounded-sm dark:bg-transparent`}>
       <div className="mx-auto max-w-screen-xl ">
-        <h1 className="mt-5 mb-5 dark:text-white ml-5 text-2xl font-bold text-gray-900">Recent Transactions</h1>
+        <h1 className=" mb-5 dark:text-white ml-5 text-2xl font-bold text-gray-900">Recent Transactions</h1>
       </div>
 
-      <div className="mt-6 overflow-hidden dark:text-white rounded-xl bg-white dark:bg-[#ffffff1d] px-6 shadow lg:px-4">
+      <div className="mt-6 overflow-hidden border dark:border-[#3e1878c2]  dark:text-white rounded-xl bg-white dark:bg-[#181024] px-6 shadow lg:px-4">
         <table className="min-w-full border-collapse border-spacing-y-2 border-spacing-x-2">
-          <thead className="hidden border-b dark:border-[#ffffff47] lg:table-header-group">
+          <thead className="hidden border-b  dark:border-[#3e1878c2] lg:table-header-group">
             <tr>
               <td className="whitespace-normal py-4 text-sm font-semibold text-gray-500 dark:text-white sm:px-3">Order Date</td>
               <td className="whitespace-normal py-4 text-sm font-medium text-gray-500 dark:text-white sm:px-3">Transaction ID</td>
@@ -39,7 +39,7 @@ const Transactions = ({ transAmout }) => {
             </tr>
           </thead>
 
-          <tbody className="bg-white dark:text-white dark:bg-transparent lg:border-gray-300">
+          <tbody className="bg-white dark:bg-[#181024] dark:border-[#3e1878c2] lg:border-gray-300">
             {sortedTrans &&
               sortedTrans?.slice(0, transAmout)?.map((item, id) => (
                 <tr className="" key={item._id}>
@@ -72,7 +72,7 @@ const Transactions = ({ transAmout }) => {
                     ${item.amount}
                   </td>
                   <td
-                    className={`whitespace-no-wrap py-4 text-right text-sm sm:px-3 lg:text-left ${
+                    className={`whitespace-no-wrap pt-4 text-right text-sm sm:px-3 lg:text-left ${
                       item.status === 'failed'
                         ? 'text-yellow-600 font-semibold'
                         : item.status === 'pending'
