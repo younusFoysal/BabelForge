@@ -43,7 +43,7 @@ const AwesomeHome = () => {
                 <Image
                   width={800}
                   height={800}
-                  src={homepic}
+                  src={resolvedTheme == 'dark' ? homepicdark : homepic}
                   className="h-full scale-90  lg:scale-[1.45] object-contain z-10"
                   alt="Dashboard Demo Image"
                 />

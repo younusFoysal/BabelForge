@@ -13,8 +13,6 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 import { useTheme } from 'next-themes';
-import './CreateProject.css';
-import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 

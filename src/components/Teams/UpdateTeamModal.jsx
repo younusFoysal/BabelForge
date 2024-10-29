@@ -1,20 +1,14 @@
-import React from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { toast } from "@/hooks/use-toast";
+import React from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { toast } from '@/hooks/use-toast';
 
 const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
   const axiosCommon = useAxiosCommon();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
     const tname = form.tname.value;
@@ -27,8 +21,8 @@ const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
 
     if (res.data) {
       toast({
-        description: "Update team succesfully",
-        variant: "success",
+        description: 'Update team succesfully',
+        variant: 'success',
       });
       refetch();
     }
@@ -38,7 +32,7 @@ const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent>
+      <DialogContent className="dark:bg-[#181024]">
         <DialogHeader>
           <DialogTitle>Update Team</DialogTitle>
         </DialogHeader>
@@ -57,9 +51,7 @@ const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
 
           {/* Team Description Input */}
           <div className="mb-4">
-            <label className="block text-sm font-medium">
-              Team Description
-            </label>
+            <label className="block text-sm font-medium">Team Description</label>
             <Input
               type="text"
               defaultValue={team?.tdes}
@@ -93,18 +85,11 @@ const UpdateTeamModal = ({ isOpen, setIsOpen, team, refetch }) => {
 
           {/* Footer Buttons */}
           <DialogFooter>
-            <Button
-              type="submit"
-              className="bg-primary text-white dark:bg-gray-800"
-            >
-              Save
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setIsOpen(false)}
-            >
+            <Button type="button" variant="outline" onClick={() => setIsOpen(false)}>
               Cancel
+            </Button>
+            <Button type="submit" className="bg-primary mb-4 md:mb-0 text-white dark:bg-gray-800">
+              Save
             </Button>
           </DialogFooter>
         </form>

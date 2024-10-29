@@ -65,10 +65,10 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
         <div className="flex items-center gap-4">
           <p>Category :</p>
           <Select onValueChange={setSelectedCategory} defaultValue="All">
-            <SelectTrigger className="w-[180px] dark:bg-[#ffffff2a]">
+            <SelectTrigger className="w-[180px] ">
               <SelectValue placeholder="All" />
             </SelectTrigger>
-            <SelectContent className="dark:bg-[#ffffff2a] backdrop-blur-[30px] dark:border-[#ffffff5b]">
+            <SelectContent className="backdrop-blur-[30px]">
               <SelectGroup>
                 {categories?.map(item => (
                   <SelectItem key={item} value={item}>
