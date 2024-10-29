@@ -18,7 +18,7 @@ function ModelRightToLeft({ scrollPosition, mousePosition }) {
             scene.traverse((child) => {
                 if (child.isMesh) {
                     // Set the color and opacity for the material
-                    child.material.color = new THREE.Color(0x106AC5); // Green color
+                    child.material.color = new THREE.Color(0x9a00d6); // Green color
                     child.material.transparent = true;
                     if (resolvedTheme === "dark"){
                         child.material.opacity = 0.7

@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Milestone 6">
-      <change afterPath="$PROJECT_DIR$/src/image/Home/light-dash-OLD.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/image/Home/light-dash-dark.png" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Subscription added">
+      <change afterPath="$PROJECT_DIR$/src/components/home/FAQ.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/Pricing.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/RoadMap.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Home/light-dash-dark-OLD.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/Home/light-dash.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/light-dash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/light-dash-dark.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/light-dash-dark.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="foysal" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,7 +76,7 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "prepod",
     "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -134,14 +139,6 @@
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
       <workItem from="1729684647631" duration="29920000" />
-    </task>
-    <task id="LOCAL-00024" summary="Server api link added">
-      <option name="closed" value="true" />
-      <created>1727224812685</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1727224812685</updated>
     </task>
     <task id="LOCAL-00025" summary="turbo added">
       <option name="closed" value="true" />
@@ -527,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729814772410</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Loading Color Change">
+      <option name="closed" value="true" />
+      <created>1730144558712</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1730144558713</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -546,8 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="admin dashboard page card" />
-    <MESSAGE value="Admin Transactions page" />
     <MESSAGE value="Chart fix" />
     <MESSAGE value="Admin Dash Added" />
     <MESSAGE value="version" />
@@ -571,7 +574,9 @@
     <MESSAGE value="responsive fix" />
     <MESSAGE value="Diagram added" />
     <MESSAGE value="Milestone 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Milestone 6" />
+    <MESSAGE value="Loading Color Change" />
+    <MESSAGE value="Subscription added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subscription added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

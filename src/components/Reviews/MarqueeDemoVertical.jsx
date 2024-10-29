@@ -14,7 +14,7 @@ const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
         // light styles
         // 'border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]',
         // dark styles
-        'border-gray-50/[.1] bg-white dark:bg-white/5 text-black dark:text-white hover:bg-gray-50/[.15]'
+        'border-gray-50/[.1]  bg-white dark:bg-white/5 text-black dark:text-white hover:bg-gray-50/[.15]'
       )}
     >
       <div className="flex flex-row items-center gap-2">
@@ -57,7 +57,7 @@ export function MarqueeDemoVertical() {
   const thirdRow = limitedReviews.slice(reviewSize * 2);
 
   return (
-    <div className=" mb-24 px-4">
+    <div className="  mb-24 px-4">
       <div className="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
         <div className="mb-12 space-y-5 md:mb-16 text-center">
           <div className="inline-block px-3 py-1 text-sm font-semibold text-indigo-100 rounded-lg md:text-center text-cn bg-[#202c47] bg-opacity-60 hover:cursor-pointer hover:bg-opacity-40">
@@ -67,7 +67,7 @@ export function MarqueeDemoVertical() {
           <p className="text-xl dark:text-white text-gray-800 md:text-center md:text-2xl">Here&apos;s what others have to say about us.</p>
         </div>
       </div>
-      <div className="relative  border-[#ffffff5a] rounded-xl border  mx-auto container grid md:h-[500px] w-full grid-cols-1 md:grid-cols-3  overflow-hidden ">
+      <div className="relative backdrop-blur-lg border-[#ffffff5a] rounded-xl border  mx-auto container grid md:h-[500px] lg:h-[650px] w-full grid-cols-1 md:grid-cols-3  overflow-hidden ">
         {/* For mobile */}
         <div className="space-y-4 md:hidden">
           {reviews?.slice(0, 4)?.map(review => (

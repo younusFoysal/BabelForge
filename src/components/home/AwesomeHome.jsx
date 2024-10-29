@@ -6,12 +6,7 @@ import homepicdark from '@/image/Home/light-dash-dark.png';
 import { useTheme } from 'next-themes';
 
 const AwesomeHome = () => {
-  const { resolvedTheme } = useTheme();
-  const bgStyle = {
-    backgroundImage: `url('/images/overlay.png')`,
-    backgroundRepeat: 'repeat',
-    opacity: 0.1,
-  };
+
 
   return (
     <div className="mb-14">
@@ -30,9 +25,9 @@ const AwesomeHome = () => {
 
               <div className="absolute right-0 top-2 animate-float  lg:-right-[560px]  w-auto  lg:w-[800px] h-[300px] lg:h-[550px]">
                 <Image
-                  width={800}
-                  height={800}
-                  src={resolvedTheme == 'dark' ? homepicdark : homepic}
+                  width={1200}
+                  height={1200}
+                  src={homepic}
                   className="h-full scale-90  lg:scale-[1.45] object-contain z-10"
                   alt="Dashboard Demo Image"
                 />
