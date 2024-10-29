@@ -1,16 +1,5 @@
 'use client';
-import {
-  BookOpen,
-  CircleHelp,
-  Bot,
-  Frame,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-  MessageSquareText,
-  BadgeDollarSign,
-  Package,
-} from 'lucide-react';
+import { BookOpen, CircleHelp, Bot, Settings2, SquareTerminal, MessageSquareText, BadgeDollarSign, Package } from 'lucide-react';
 import { NavMain } from '@/components/nav-main';
 import { NavProjects } from '@/components/nav-projects';
 import { NavUser } from '@/components/nav-user';
@@ -23,7 +12,6 @@ export function AppSidebar({ ...props }) {
   const { user, isLoaded } = useUser();
 
   const uemail = user?.primaryEmailAddress?.emailAddress;
-  // foysal@gmail.com
   const admin = ['babelforgeltd@gmail.com', 'babelforgeltdfgd@gmail.com'];
 
   const [role] = useRole();
@@ -250,7 +238,6 @@ export function AppSidebar({ ...props }) {
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
-        {/* <UserButton> </UserButton> */}
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

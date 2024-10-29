@@ -118,10 +118,10 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                           src={memberDetails?.image_url || usericon}
                         />
                       </HoverCardTrigger>
-                      <HoverCardContent className="gap-4 backdrop-blur-[30px] bg-[#ffffff30] h-[130px] w-[300px]">
-                        <div className="flex items-center gap-4">
+                      <HoverCardContent className="gap-4 backdrop-blur-[30px] bg-[#ffffff30] h-[80px] w-[250px]">
+                        <div className="flex h-full items-center gap-4">
                           <Image
-                            className="w-16 h-16 border-[#3e1878c2] border-4 object-cover rounded-full"
+                            className="w-12 h-12 border-[#3e1878c2] border-4 object-cover rounded-full"
                             alt={memberDetails?.firstName || 'Member'}
                             width={50}
                             height={50}
@@ -129,10 +129,10 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
                           />
                           <p>{memberDetails?.firstName || 'Unknown'}</p>
                         </div>
-                        <button className=" capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white px-3 py-1 rounded-sm text-[13px] ml-auto flex items-center gap-3 justify-end text-white">
+                        {/* <button className=" capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white px-3 py-1 rounded-sm text-[13px] ml-auto flex items-center gap-3 justify-end text-white">
                           <span>Send Message</span>
                           <FaTelegramPlane />
-                        </button>
+                        </button> */}
                       </HoverCardContent>
                     </HoverCard>
                   );
