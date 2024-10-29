@@ -12,6 +12,7 @@ import GlassDNA from '@/components/home/3d/GlassDNA';
 import { MarqueeDemoVertical, ReviewCard } from '@/components/Reviews/MarqueeDemoVertical';
 import HomeStats from '@/components/home/Hero/HomeStats';
 import dynamic from 'next/dynamic';
+import PricingCards from '@/components/home/PricingCards';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -39,7 +40,7 @@ const Home = () => {
           {/*  <HomeStats/>*/}
 
           <AboutStatistics></AboutStatistics>
-          {/*<PricingCards/>*/}
+          {/* <PricingCards /> */}
 
           <LeaderCTA />
           {/* <AllReviews /> */}
