@@ -63,7 +63,7 @@ const Home = () => {
           <CarouselHome />
 
           {/*<GlassHome/>*/}
-           <GlassDNA />
+          {/* <GlassDNA /> */}
           {/*glass_display pearl_electron */}
           {/*  <HomeStats/>*/}
 

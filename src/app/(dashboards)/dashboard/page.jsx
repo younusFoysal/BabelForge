@@ -1,21 +1,15 @@
-'use client';
-import MainPageWrap from '@/components/Dashboards/MainPage/MainPageWrap';
-import AdminDashboard from '@/components/Admin/AdminDashboard/AdminDashboard';
-import { useUser } from '@clerk/nextjs';
-import { useEffect } from 'react';
-import CripsHandle from './CripsHandle';
+"use client";
+import MainPageWrap from "@/components/Dashboards/MainPage/MainPageWrap";
+import AdminDashboard from "@/components/Admin/AdminDashboard/AdminDashboard";
+import CripsHandle from "./CripsHandle";
+import useRole from "@/hooks/useRole";
 
 const page = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { user } = useUser();
-  const uemail = user?.primaryEmailAddress?.emailAddress;
-  // foysal@gmail.com
-
-  const admin = ['babelforgeltd@gmail.com', 'babelforgeltdfgd@gmail.com', 'morshidulrahman4167@gmail.com'];
+  const [role] = useRole();
 
   return (
     <>
-      <CripsHandle /> {admin.includes(uemail) ? <AdminDashboard /> : <MainPageWrap />}
+      <CripsHandle /> {role == "admin" ? <AdminDashboard /> : <MainPageWrap />}
     </>
   );
 };
