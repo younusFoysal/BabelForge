@@ -207,6 +207,10 @@ export function AppSidebar({ ...props }) {
             url: "/dashboard/notes",
           },
           {
+            title: "Diagrams",
+            url: "/dashboard/diagrams",
+          },
+          {
             title: "Docs",
             url: "/dashboard/doc",
           },
@@ -228,7 +232,7 @@ export function AppSidebar({ ...props }) {
       if (item.title === "Tools") {
         const filteredItems = item.items.filter(
           (tool) =>
-            (tool.title !== "Babel AI" &&
+            (tool.title !== "AI Assistant" &&
               tool.title !== "Canvas" &&
               tool.title !== "Diagrams") ||
             plan === "Standard" ||
