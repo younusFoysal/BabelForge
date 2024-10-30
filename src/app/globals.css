@@ -533,3 +533,8 @@ body {
 .dark .str-chat__channel-preview-messenger:hover {
   background: #561dab42 !important;
 }
+
+/* Mobile sidebar */
+/* #radix-:rn: {
+  z-index: 99;
+} */

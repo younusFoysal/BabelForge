@@ -17,8 +17,10 @@ const layout = ({ children }) => {
           {/* Dashboard ToP */}
           <div
             className={` ${
-              pathName?.includes('/dashboard/chat') ? ' absolute top-0 w-full right-0' : 'sticky'
-            } flex z-[99]  backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center`}
+              pathName?.includes('/dashboard/chat') || pathName?.includes('/dashboard/meet') || pathName?.includes('/dashboard/aiassistant')
+                ? ' absolute top-0 w-full right-0'
+                : 'sticky'
+            } flex z-[49]  backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center`}
           >
             <SidebarTrigger />
             <div>
@@ -26,7 +28,9 @@ const layout = ({ children }) => {
             </div>
           </div>
 
-          <div className={!pathName?.includes('/dashboard/chat') && 'px-4 md:px-9 py-7'}>{children}</div>
+          <div className={(!pathName?.includes('/dashboard/chat') || !pathName?.includes('/dashboard/aiassistant')) && 'px-4 md:px-9 py-7'}>
+            {children}
+          </div>
         </main>
       </div>
     </SidebarProvider>
