@@ -69,7 +69,7 @@ const Team = ({ id }) => {
             </div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xl font-semibold">Category:</span>
-              <h3 className="text-base font-semibold">{team?.tcategory}</h3>
+              <h3 className="text-base capitalize font-semibold">{team?.tcategory}</h3>
             </div>
             <div className="flex justify-between item-center gap-2 text-center dark:bg-gray-800">
               <TeamDialog id={_id} refetch={refetch} />
@@ -77,7 +77,7 @@ const Team = ({ id }) => {
           </div>
 
           {/* card content */}
-          <Card className="p-6 dark:bg-gray-800 dark:border-gray-800">
+          <Card className="p-6 dark:bg-[#181024] dark:border-[#3e1878c2]">
             <div className="space-y-2 border-b border-gray-200 pb-3">
               <p className="flex justify-between items-center">
                 <span className="text-xl font-semibold">Members</span>
