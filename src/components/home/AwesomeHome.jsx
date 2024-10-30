@@ -2,8 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import HeroLeft from '@/components/home/HeroNew/HeroLeft';
 import homepic from '@/image/Home/light-dash.png';
-import homepicdark from '@/image/Home/light-dash-dark.png';
-import { useTheme } from 'next-themes';
 
 const AwesomeHome = () => {
 
