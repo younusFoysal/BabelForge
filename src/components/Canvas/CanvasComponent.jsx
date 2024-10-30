@@ -49,10 +49,10 @@ const CanvasComponent = () => {
               <input
                 type="color"
                 value={strokeColor}
-                onChange={e => setStrokeColor(e.target.value)}
+                onChange={e => setStrokeColor(e.target.value)} 
                 className="w-10 h-10 cursor-pointer"
                 title="Pick a color"
-                disabled={isEraser} // Disable color picker in eraser mode
+                disabled={isEraser} 
               />
             </div>
 
