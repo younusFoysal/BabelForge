@@ -1,28 +1,21 @@
-"use client";
-import React, { useState, useCallback, useRef } from "react";
-import ReactFlow, {
-  addEdge,
-  Background,
-  Controls,
-  MiniMap,
-  useNodesState,
-  useEdgesState,
-} from "react-flow-renderer";
-import { v4 as uuidv4 } from "uuid";
-import * as htmlToImage from "html-to-image"; // Correct import
-import usePlan from "@/hooks/usePlan";
-import useRole from "@/hooks/useRole";
-import { redirect } from "next/navigation";
+'use client';
+import React, { useState, useCallback, useRef } from 'react';
+import ReactFlow, { addEdge, Background, Controls, MiniMap, useNodesState, useEdgesState } from 'react-flow-renderer';
+import { v4 as uuidv4 } from 'uuid';
+import * as htmlToImage from 'html-to-image'; // Correct import
+import usePlan from '@/hooks/usePlan';
+import useRole from '@/hooks/useRole';
+import { redirect } from 'next/navigation';
 
 const initialNodes = [
-  { id: "1", data: { label: "Node 1" }, position: { x: 250, y: 5 } },
-  { id: "2", data: { label: "Node 2" }, position: { x: 100, y: 100 } },
-  { id: "3", data: { label: "Node 3" }, position: { x: 400, y: 100 } },
+  { id: '1', data: { label: 'Node 1' }, position: { x: 250, y: 5 } },
+  { id: '2', data: { label: 'Node 2' }, position: { x: 100, y: 100 } },
+  { id: '3', data: { label: 'Node 3' }, position: { x: 400, y: 100 } },
 ];
 
 const initialEdges = [
-  { id: "e1-2", source: "1", target: "2", animated: true },
-  { id: "e1-3", source: "1", target: "3" },
+  { id: 'e1-2', source: '1', target: '2', animated: true },
+  { id: 'e1-3', source: '1', target: '3' },
 ];
 
 const Diagram = () => {
@@ -30,12 +23,11 @@ const Diagram = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [editingNode, setEditingNode] = useState(null);
-  const [nodeLabel, setNodeLabel] = useState("");
+  const [nodeLabel, setNodeLabel] = useState('');
 
   const [plan] = usePlan();
   const [role] = useRole();
-  if (plan !== "Premium" || plan !== "Standard" || role !== "admin")
-    redirect("/dashboard");
+  if (plan === 'Basic' || !role === 'admin') redirect('/dashboard');
 
   // Add new node
   const addNode = () => {
@@ -44,14 +36,11 @@ const Diagram = () => {
       data: { label: `New Node` },
       position: { x: Math.random() * 400, y: Math.random() * 400 },
     };
-    setNodes((nds) => nds.concat(newNode));
+    setNodes(nds => nds.concat(newNode));
   };
 
   // Handle edge connection
-  const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    [setEdges]
-  );
+  const onConnect = useCallback(params => setEdges(eds => addEdge(params, eds)), [setEdges]);
 
   // Open node editor on double click
   const onNodeDoubleClick = (event, node) => {
@@ -61,11 +50,7 @@ const Diagram = () => {
 
   // Save edited node label
   const saveNodeLabel = () => {
-    setNodes((nds) =>
-      nds.map((node) =>
-        node.id === editingNode ? { ...node, data: { label: nodeLabel } } : node
-      )
-    );
+    setNodes(nds => nds.map(node => (node.id === editingNode ? { ...node, data: { label: nodeLabel } } : node)));
     setEditingNode(null);
   };
 
@@ -74,17 +59,17 @@ const Diagram = () => {
     if (diagramRef.current) {
       htmlToImage
         .toPng(diagramRef.current)
-        .then((dataUrl) => {
-          const link = document.createElement("a");
+        .then(dataUrl => {
+          const link = document.createElement('a');
           link.href = dataUrl;
-          link.download = "diagram.png";
+          link.download = 'diagram.png';
           link.click();
         })
-        .catch((err) => {
-          console.error("Error generating image:", err);
+        .catch(err => {
+          console.error('Error generating image:', err);
         });
     } else {
-      console.error("Diagram ref is not defined");
+      console.error('Diagram ref is not defined');
     }
   };
 
@@ -108,7 +93,7 @@ const Diagram = () => {
             <input
               type="text"
               value={nodeLabel}
-              onChange={(e) => setNodeLabel(e.target.value)}
+              onChange={e => setNodeLabel(e.target.value)}
               className="p-1.5 border rounded dark:bg-gray-900 dark:border-gray-400"
             />
             <button
