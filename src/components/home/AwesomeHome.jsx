@@ -3,8 +3,6 @@ import Image from "next/image";
 import HeroLeft from "@/components/home/HeroNew/HeroLeft";
 import homepic from "@/image/Home/light-dash.png";
 
-import { useTheme } from "next-themes";
-
 const AwesomeHome = () => {
   return (
     <div className="mb-14">
