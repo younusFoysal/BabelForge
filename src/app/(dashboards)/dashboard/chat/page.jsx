@@ -1,6 +1,5 @@
 import StreamChats from "@/components/StreamChat/StreamChats";
 import { currentUser } from "@clerk/nextjs/server";
-import React from "react";
 
 const Chat = async () => {
   const user = await currentUser();
