@@ -74,7 +74,7 @@ const DashboardTopRight = () => {
         onClick={handleRec}
         className={` ${
           !recording
-            ? 'hover:bg-gradient-to-r hover:border-transparent border border-[#979797] hover:from-blue-600 hover:to-purple-600  hover:text-white'
+            ? 'bg-gradient-to-r dark:border-transparent hover:border-transparent border border-[#979797] from-blue-600 to-purple-600  text-white'
             : ' bg-red-600 text-white'
         } h-full flex duration-200 rounded-md py-[4px] px-2 border  items-center gap-1`}
       >
