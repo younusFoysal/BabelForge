@@ -47,7 +47,7 @@ const Footer = () => {
   if (pathname?.includes('/successPayment') || pathname?.includes('meet')) return null;
   return (
     <footer className="relative">
-      <div className="footer-top-bg w-full mx-auto h-[200px] z-10 absolute top-0 left-0 -translate-y-full"></div>
+      <div className="footer-top-bg w-full mx-auto h-[150px] z-10 absolute top-0 left-0 -translate-y-full"></div>
       <div className="p-2 md:p-16 pt-10  text-gray-200 bg-[#181024] border-t-gray-800 border-t-[1px] footer-background relative">
         {/* <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10"></div> */}
         {/* upper part */}
