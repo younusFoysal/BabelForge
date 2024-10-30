@@ -12,6 +12,35 @@ import GlassDNA from '@/components/home/3d/GlassDNA';
 import { MarqueeDemoVertical, ReviewCard } from '@/components/Reviews/MarqueeDemoVertical';
 import HomeStats from '@/components/home/Hero/HomeStats';
 import dynamic from 'next/dynamic';
+import PricingCards from "@/components/home/PricingCards";
+import RoadMap from "@/components/home/RoadMap";
+import FAQ from "@/components/home/FAQ";
+import PricingHome from "@/components/home/Pricing";
+
+
+const categories = [
+  {
+    name: 'General',
+    questions: [
+      { question: 'How can I pay for my appointment?', answer: 'Lorem ipsum dolor sit amet...' },
+      { question: 'What documents do I need to bring?', answer: 'Lorem ipsum dolor sit amet...' }
+    ]
+  },
+  {
+    name: 'Trust & Safety',
+    questions: [
+      { question: 'How do you handle sensitive information?', answer: 'Lorem ipsum dolor sit amet...' },
+      { question: 'What safety protocols are in place?', answer: 'Lorem ipsum dolor sit amet...' }
+    ]
+  },
+  {
+    name: 'Services',
+    questions: [
+      { question: 'What are your opening hours?', answer: 'Lorem ipsum dolor sit amet...' },
+      { question: 'Can I book an appointment online?', answer: 'Lorem ipsum dolor sit amet...' }
+    ]
+  }
+];
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -39,11 +68,17 @@ const Home = () => {
           {/*  <HomeStats/>*/}
 
           <AboutStatistics></AboutStatistics>
+          <RoadMap/>
           {/*<PricingCards/>*/}
+          <PricingHome/>
+
 
           <LeaderCTA />
           {/* <AllReviews /> */}
           <MarqueeDemoVertical />
+
+          <FAQ categories={categories}/>
+
 
           {/*<CallToAction />*/}
         </div>

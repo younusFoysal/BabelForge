@@ -4,9 +4,12 @@ import metimg from '@/image/Home/meetbanner.png';
 import MeetingButton from './MeetingButton';
 import { IoIosVideocam } from 'react-icons/io';
 import { useAuth } from '@clerk/nextjs';
+import usePlan from '@/hooks/usePlan';
+import { redirect } from 'next/navigation';
 const MeetHero = () => {
   const { userId } = useAuth();
-
+  const [plan] = usePlan();
+  if (plan === 'Basic') redirect('/dashboard');
   return (
     <div>
       <div className="max-w-screen-xl h-screen px-8 xl:px-16 mx-auto dark:bg" id="about">
