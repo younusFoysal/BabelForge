@@ -2,12 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import HeroLeft from '@/components/home/HeroNew/HeroLeft';
 import homepic from '@/image/Home/light-dash.png';
-import homepicdark from '@/image/Home/light-dash-dark.png';
-import { useTheme } from 'next-themes';
 
 const AwesomeHome = () => {
-
-
   return (
     <div className="mb-14">
       <section className="relative pb-0 backdrop-blur-[300px] bg-white  min-h-screen flex items-center pt-32 lg:pt-52  lg:py-36 overflow-hidden dark:bg-slate-900 w-full">
