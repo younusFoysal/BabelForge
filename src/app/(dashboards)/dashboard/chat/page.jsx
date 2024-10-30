@@ -1,6 +1,11 @@
 import StreamChats from "@/components/StreamChat/StreamChats";
 import { currentUser } from "@clerk/nextjs/server";
 
+export const metadata = {
+  title: "Chat | BabelForge",
+  description: "Chat for BabelForge",
+}
+
 const Chat = async () => {
   const user = await currentUser();
 

@@ -1,4 +1,9 @@
 
+export const metadata = {
+    title: 'Privacy Policy | BabelForge',
+    description: 'Learn how we collect, use, and protect your information at BabelForge.',
+}
+
 const Privacy = () => {
     return (
         <section className="lg:px-0 bg-white/5 pb-[70px]  px-4 pt-[100px]">

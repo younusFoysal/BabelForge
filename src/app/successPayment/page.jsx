@@ -3,6 +3,11 @@ import Image from 'next/image';
 import { FaArrowLeft } from 'react-icons/fa6';
 import Link from 'next/link';
 
+ const metadata = {
+  title: "Payment | BabelForge",
+  description: "Make a payment for your order.",
+}
+
 const Page = () => {
   return (
     <div className="px-5 h-screen flex items-center justify-start">

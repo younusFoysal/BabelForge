@@ -6,6 +6,11 @@ import AboutStatistics from '@/components/home/AboutStatistics';
 import JoinTeamCTA from '@/components/AboutUs/JoinTeamCTA';
 import React from 'react';
 
+export const metadata = {
+  title: 'About Us | BabelForge',
+  description: 'We are a team of developers who are passionate about building tools that help developers build better software.',
+}
+
 const AboutUsPage = () => {
   return (
     <div className="mt-[120px]">

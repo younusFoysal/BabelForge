@@ -1,6 +1,11 @@
 import CreateProjectpage from "@/components/Projects/CreateProjectpage";
 import React from "react";
 
+export const metadata = {
+  title: "Create Project | BabelForge",
+  description: "Create a new project for BabelForge",
+}
+
 const CreatePoject = () => {
   // Your component logic here
 
