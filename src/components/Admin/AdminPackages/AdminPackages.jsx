@@ -6,15 +6,18 @@ import { redirect, usePathname, useRouter } from "next/navigation";
 import React from "react";
 import UpdatePricing from "./UpdatePricing/UpdatePricing";
 import useRole from "@/hooks/useRole";
+import { useAuth } from "@clerk/nextjs";
+import { toast } from "@/hooks/use-toast";
 
 const AdminPackages = ({ priceingsec }) => {
   const router = useRouter();
   const pathname = usePathname();
   const [role] = useRole();
+  const { userId } = useAuth();
 
-  if (role !== "admin") {
-    if (pathname.includes("/dashboard/admin/packages")) {
-      redirect("/");
+  if (pathname?.includes("/dashboard/admin/packages")) {
+    if (role !== "admin") {
+      redirect("/dashboard");
     }
   }
 
@@ -28,7 +31,20 @@ const AdminPackages = ({ priceingsec }) => {
   });
 
   const handlePay = (link) => {
-    if (priceingsec) {
+    if (link == "Basic" && userId) {
+      toast({
+        description: "Basic plan is available for free",
+        variant: "",
+      });
+      return;
+    }
+    if (!userId) {
+      toast({
+        description: "You have to login first",
+        variant: "error",
+      });
+    }
+    if (priceingsec && userId) {
       if (link == "Standard") {
         router.push(`${process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PLAN_LINK}`);
       } else if (link == "Premium") {
@@ -94,7 +110,7 @@ const AdminPackages = ({ priceingsec }) => {
                       </span>
                       <h4 className="mb-2">
                         <span className="text-[28px] font-bold text-black dark:text-white lg:text-[32px]">
-                          ${pack.price}
+                          {pack.title == "Basic" ? "Free" : `${pack.price}`}
                         </span>
                         <span className="font-medium my-auto">
                           {" "}
