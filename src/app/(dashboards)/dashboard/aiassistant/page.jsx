@@ -1,5 +1,5 @@
 import React from 'react';
-import AIHelper from "@/components/AIHelper/AIHelper";
+import AIHelper from '@/components/AIHelper/AIHelper';
 
 export const metadata = {
     title: "AI Assistant | BabelForge",
@@ -7,13 +7,7 @@ export const metadata = {
 }
 
 const Page = () => {
-    return (
-        <div>
-
-            <AIHelper></AIHelper>
-            
-        </div>
-    );
+  return <AIHelper></AIHelper>;
 };
 
 export default Page;
