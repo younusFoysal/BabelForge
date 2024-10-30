@@ -418,7 +418,8 @@ body {
 .dark .cl-signUp-start,
 .dark .cl-footer,
 .dark .cl-signIn-alternativeMethods,
-.dark .cl-signUp-emailCode {
+.dark .cl-signUp-emailCode,
+.dark .cl-signIn-password {
   background: #201630;
   color: #fff !important;
   border: 1px solid #3e1878c2;
@@ -480,7 +481,8 @@ body {
 .dark .cl-dividerRow,
 .dark .cl-formResendCodeLink,
 .dark .cl-identityPreviewText,
-.dark .cl-headerTitle {
+.dark .cl-headerTitle,
+.dark .cl-formFieldAction__password {
   color: #fff;
 }
 
