@@ -5,11 +5,15 @@ import useTrans from "@/hooks/useTrans";
 import masterCard from "@/image/icon/mastercard.jpg";
 import visa from "@/image/icon/visa.png";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
+import useRole from "@/hooks/useRole";
 
 const Transactions = ({ transAmout }) => {
   const [trans, isLoading] = useTrans();
   const pathname = usePathname();
+  const [role] = useRole();
+
+  if (role !== "admin") redirect("/");
 
   const isPath = pathname.includes("/dashboard/admin/transactions");
 

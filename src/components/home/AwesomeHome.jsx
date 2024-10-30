@@ -1,17 +1,17 @@
-import React from 'react';
-import Image from 'next/image';
-import HeroLeft from '@/components/home/HeroNew/HeroLeft';
-import homepic from '@/image/Home/light-dash.png';
-import homepicdark from '@/image/Home/light-dash-dark.png';
-import { useTheme } from 'next-themes';
+import React from "react";
+import Image from "next/image";
+import HeroLeft from "@/components/home/HeroNew/HeroLeft";
+import homepic from "@/image/Home/light-dash.png";
+
+import { useTheme } from "next-themes";
 
 const AwesomeHome = () => {
-
-
   return (
     <div className="mb-14">
       <section className="relative pb-0 backdrop-blur-[300px] bg-white  min-h-screen flex items-center pt-32 lg:pt-52  lg:py-36 overflow-hidden dark:bg-slate-900 w-full">
-        <div className={`absolute inset-0 bg-[url('https://i.ibb.co/3hyT6Nw/overlay.png')] bg-repeat  opacity-10 `}></div>
+        <div
+          className={`absolute inset-0 bg-[url('https://i.ibb.co/3hyT6Nw/overlay.png')] bg-repeat  opacity-10 `}
+        ></div>
 
         <div className="container mx-auto relative z-1">
           <div className="relative flex gap-5 flex-col-reverse lg:block">
