@@ -1,10 +1,10 @@
-import { Eraser, Pencil, Trash2 } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import { ReactSketchCanvas } from "react-sketch-canvas";
-import { useTheme } from "next-themes";
-import usePlan from "@/hooks/usePlan";
-import useRole from "@/hooks/useRole";
-import { redirect } from "next/navigation";
+import { Eraser, Pencil, Trash2 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ReactSketchCanvas } from 'react-sketch-canvas';
+import { useTheme } from 'next-themes';
+import usePlan from '@/hooks/usePlan';
+import useRole from '@/hooks/useRole';
+import { redirect } from 'next/navigation';
 
 const CanvasComponent = () => {
   const canvasRef = useRef(null);
@@ -12,10 +12,9 @@ const CanvasComponent = () => {
 
   const [plan] = usePlan();
   const [role] = useRole();
-  if (plan !== "Premium" || plan !== "Standard" || role !== "admin")
-    redirect("/dashboard");
+  if (plan === 'Basic' || !role === 'admin') redirect('/dashboard');
 
-  const [strokeColor, setStrokeColor] = useState("#000000");
+  const [strokeColor, setStrokeColor] = useState('#000000');
   const [strokeWidth, setStrokeWidth] = useState(4);
   const [eraserWidth, setEraserWidth] = useState(10);
   const [isEraser, setIsEraser] = useState(false);
@@ -28,7 +27,7 @@ const CanvasComponent = () => {
 
   useEffect(() => {
     if (resolvedTheme) {
-      setDarkMode(resolvedTheme === "dark");
+      setDarkMode(resolvedTheme === 'dark');
       setMounted(true);
     }
   }, [resolvedTheme]);
@@ -36,9 +35,7 @@ const CanvasComponent = () => {
   return (
     <>
       <div className="flex flex-col items-center mx-auto mb-4">
-        <hspan className="font-semibold text-[1.5rem] leading-8 sm:text-4xl sm:leading-tight ">
-          Drawing Canvas
-        </hspan>
+        <hspan className="font-semibold text-[1.5rem] leading-8 sm:text-4xl sm:leading-tight ">Drawing Canvas</hspan>
       </div>
       <div className="flex flex-col items-center p-2 h-full">
         {/* Controls Section */}
@@ -51,7 +48,7 @@ const CanvasComponent = () => {
               <input
                 type="color"
                 value={strokeColor}
-                onChange={(e) => setStrokeColor(e.target.value)}
+                onChange={e => setStrokeColor(e.target.value)}
                 className="w-10 h-10 cursor-pointer"
                 title="Pick a color"
                 disabled={isEraser} // Disable color picker in eraser mode
@@ -70,7 +67,7 @@ const CanvasComponent = () => {
                   max="20"
                   step="0.5"
                   value={strokeWidth}
-                  onChange={(e) => setStrokeWidth(parseFloat(e.target.value))}
+                  onChange={e => setStrokeWidth(parseFloat(e.target.value))}
                   className="w-24"
                   disabled={isEraser} // Disable pen size when eraser is active
                 />
@@ -87,7 +84,7 @@ const CanvasComponent = () => {
                   max="30"
                   step="1"
                   value={eraserWidth}
-                  onChange={(e) => setEraserWidth(parseFloat(e.target.value))}
+                  onChange={e => setEraserWidth(parseFloat(e.target.value))}
                   className="w-24"
                   disabled={!isEraser} // Only enable eraser size when eraser is active
                 />
@@ -101,9 +98,7 @@ const CanvasComponent = () => {
               <button
                 onClick={() => setIsEraser(false)}
                 className={`px-4 py-2 rounded flex items-center gap-2 hover:shadow-lg ${
-                  !isEraser
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 rounded-md text-white"
-                    : "bg-gray-300"
+                  !isEraser ? 'bg-gradient-to-r from-blue-600 to-purple-600 rounded-md text-white' : 'bg-gray-300'
                 }`}
               >
                 <Pencil /> <span>Pencil</span>
@@ -111,9 +106,7 @@ const CanvasComponent = () => {
               <button
                 onClick={() => setIsEraser(true)}
                 className={`px-4 py-2 rounded flex items-center gap-2 hover:shadow-lg  ${
-                  isEraser
-                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md "
-                    : "bg-gray-300"
+                  isEraser ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md ' : 'bg-gray-300'
                 }`}
               >
                 <Eraser /> <span>Eraser</span>
@@ -135,8 +128,8 @@ const CanvasComponent = () => {
           <ReactSketchCanvas
             ref={canvasRef}
             strokeWidth={isEraser ? eraserWidth : strokeWidth} // Adjust width based on tool
-            strokeColor={isEraser ? "white" : strokeColor} // Set eraser to "white" (canvas color)
-            canvasColor={"white"}
+            strokeColor={isEraser ? 'white' : strokeColor} // Set eraser to "white" (canvas color)
+            canvasColor={'white'}
             allowOnlyPointerType="all"
           />
         </div>
