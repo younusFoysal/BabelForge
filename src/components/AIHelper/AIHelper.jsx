@@ -6,7 +6,6 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import logo from '@/image/Home/babellogo.png';
 import userbw from '@/image/icon/userbw.png';
-import useAxiosCommon from '@/lib/axiosCommon';
 import usePlan from '@/hooks/usePlan';
 import useRole from '@/hooks/useRole';
 import { redirect } from 'next/navigation';
@@ -22,7 +21,7 @@ const AIHelper = () => {
 
   const handleSubmit = async e => {
     e.preventDefault();
-    if (!prompt.trim()) return; // Avoid empty prompts
+    if (!prompt.trim()) return;
 
     setLoading(true);
     setError('');
@@ -34,7 +33,7 @@ const AIHelper = () => {
         body: JSON.stringify({ prompt }),
       });
 
-      if (!res.ok) throw new Error('Network response was not ok');
+      if (!res.ok) throw new Error('Network error!');
 
       const data = await res.json();
       setChatHistory([...chatHistory, { sender: 'You', message: prompt }, { sender: 'AI Assistant', message: data.response }]);
@@ -68,15 +67,15 @@ const AIHelper = () => {
         </h2>
       </div>
 
-      <div className="drop-shadow-xl bg-white p-6 rounded-lg border border-[#e5e7eb] h-[634px] w-full">
+      <div className="drop-shadow-xl flex flex-col dark:border-[#3e1878c2] dark:bg-[#181024] bg-white p-6 rounded-lg border border-[#e5e7eb] h-[634px] w-full">
         <div className="flex flex-col space-y-1.5 pb-6">
           <h2 className="font-semibold text-lg tracking-tight ">AI Assistant</h2>
-          <p className="text-sm w-full text-[#6b7280] leading-3">
+          <p className="text-sm w-full text-[#6b7280] leading-5">
             Your Personal Guide. AI Assistant can make mistakes. Check important info.
           </p>
         </div>
 
-        <div className="pr-4 h-[474px] min-w-full overflow-y-auto">
+        <div className="pr-4 flex-1 py-6 min-w-full overflow-y-auto">
           {chatHistory.map((chat, index) => (
             <div key={index} className={`flex gap-3 my-4 text-sm ${chat.sender === 'AI Assistant' ? 'justify-start' : 'justify-end'}`}>
               <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
@@ -86,7 +85,9 @@ const AIHelper = () => {
               </span>
               <div
                 className={`p-2 rounded-lg ${
-                  chat.sender === 'AI Assistant' ? 'bg-blue-50 text-black border border-blue-200' : 'bg-gray-100 border text-black'
+                  chat.sender === 'AI Assistant'
+                    ? 'bg-blue-50 dark:bg-[#200e3b] dark:border-[#3e1878] dark:text-white text-black border border-blue-200'
+                    : 'bg-gray-100 dark:bg-[#5e28b0] dark:border-[#a264ff] dark:text-white border text-black'
                 }`}
               >
                 <p className="font-bold">{chat.sender}</p>
@@ -101,7 +102,7 @@ const AIHelper = () => {
         <div className="flex items-center pt-0">
           <form className="flex items-center justify-center w-full space-x-2" onSubmit={handleSubmit}>
             <input
-              className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] text-[#030712]"
+              className="flex dark:text-white dark:bg-[#010313] dark:border-[#5d23b6] h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] text-[#030712]"
               placeholder="Type your message"
               value={prompt}
               onChange={e => setPrompt(e.target.value)}

@@ -17,7 +17,7 @@ const layout = ({ children }) => {
           {/* Dashboard ToP */}
           <div
             className={` ${
-              pathName?.includes('/dashboard/chat') ? ' absolute top-0 w-full right-0' : 'sticky'
+              pathName?.includes('/dashboard/chat') || pathName?.includes('/dashboard/meet') ? ' absolute top-0 w-full right-0' : 'sticky'
             } flex z-[99]  backdrop-blur-[100px] border-b border-b-[#00000014] top-0 w-full px-5 py-[14px] justify-between items-center`}
           >
             <SidebarTrigger />
