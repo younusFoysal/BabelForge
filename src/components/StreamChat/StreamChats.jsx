@@ -52,9 +52,9 @@ const StreamChats = ({ userData }) => {
 
   return (
     <div className="max-w-full h-screen flex items-center mx-auto">
-      <div className="h-[calc(100%-7rem)] md:mt-16 mx-12 dark:bg-[#17191c] md:overflow-hidden md:shadow-2xl w-full rounded-2xl md:border">
+      <div className="h-[calc(100%-7rem)] md:mt-16 mx-6 md:mx-12 dark:bg-[#181024] md:overflow-hidden md:shadow-2xl w-full rounded-2xl md:border">
         <Chat client={client} theme={cn(resolvedTheme === 'dark' ? 'str-chat__theme-dark' : 'str-chat__theme-light')}>
-          <div className="md:hidden pt-4 py-3 border-b border-b-[#DBDDE1] p-3 bg-white dark:bg-[#17191c] dark:border-b-[#202327]">
+          <div className="md:hidden rounded-tl-2xl rounded-tr-2xl pt-4 py-3 border-b border-b-[#DBDDE1] p-3 bg-white dark:bg-[#181024] dark:border-b-[#202327]">
             <button onClick={() => setChatsidebaropen(!Chatsidebaropen)}>
               {!Chatsidebaropen ? (
                 <Menu size={25} className="text-black dark:text-white" />
