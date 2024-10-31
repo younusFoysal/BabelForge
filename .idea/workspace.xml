@@ -4,101 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Version 7 Pre Build">
-      <change afterPath="$PROJECT_DIR$/src/app/checkout/[id]/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Backlogs/Backlogs.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DashboardLayout/DashboardLayout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Doc/DocumentPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Note/Note.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Pricing/MobilePrice.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RoleLayout/RoleLayout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/FAQ.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/Pricing.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/home/RoadMap.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/usePlan.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/providers/AuthProvider.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/ScreenRecorder/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/ScreenRecorder/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/inbox/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/inbox/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/packages/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/packages/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/reviews/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/reviews/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/transactions/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/transactions/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/aiassistant/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/aiassistant/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/board/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/board/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/calendar/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/calendar/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/canvas/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/canvas/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/chat/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/chat/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/code/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/code/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/createproject/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/createproject/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/diagrams/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/diagrams/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/[id]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/inbox/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/inbox/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/meet/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/meet/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/notes/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/notes/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/projects/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/projects/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/review/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/review/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/about-us/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about-us/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/about/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/contact/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/features/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/help/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/help/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pricing/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pricing/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/privacy/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/privacy/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sign-in/[[...sign-in]]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-in/[[...sign-in]]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/sign-up/[[...sign-up]]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-up/[[...sign-up]]/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/successPayment/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/successPayment/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/terms/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/terms/page.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AIHelper/AIHelper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AIHelper/AIHelper.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/RecentMeetings.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/Transactions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/Transactions.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminInbox/AdminInbox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminInbox/AdminInbox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/UpdatePricing/UpdatePricing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/UpdatePricing/UpdatePricing.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminReview/Review.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminReview/Review.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Canvas/CanvasComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Canvas/CanvasComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Canvas/Diagram.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Canvas/Diagram.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/DashboardTopRight.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/DashboardTopRight.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Notes/Notes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notes/Notes.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Steam/MeetHero.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Steam/MeetHero.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StreamChat/MenuBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StreamChat/MenuBar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StreamChat/StreamChats.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StreamChat/StreamChats.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StreamChat/UsersMenu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StreamChat/UsersMenu.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/LinkBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/LinkBox.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/Team.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/Team.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Teams/TeamDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/TeamDialog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/app-sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/app-sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/PricingCards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/PricingCards.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/PricingCards.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/PricingCards.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/dialog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useRole.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useRole.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/Home/babellogo-OLD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/Home/gartner.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/Home/light-dash-OLD.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image/Home/light-dash-dark.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/axiosCommon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/axiosCommon.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.js" afterDir="false" />
-    </list>
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Version 7 Pre Build" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +65,7 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging master",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -222,14 +128,6 @@
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
       <workItem from="1729684647631" duration="29920000" />
-    </task>
-    <task id="LOCAL-00024" summary="Server api link added">
-      <option name="closed" value="true" />
-      <created>1727224812685</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1727224812685</updated>
     </task>
     <task id="LOCAL-00025" summary="turbo added">
       <option name="closed" value="true" />
@@ -615,7 +513,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729814772410</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Version 7 Pre Build">
+      <option name="closed" value="true" />
+      <created>1730356611189</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1730356611189</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

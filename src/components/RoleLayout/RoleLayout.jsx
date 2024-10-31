@@ -11,7 +11,7 @@ const RoleLayout = () => {
 
     return (
         <>
-            <CripsHandle /> {role == "admin" ? <AdminDashboard /> : <MainPageWrap />}
+            <CripsHandle /> {role === "admin" ? <AdminDashboard /> : <MainPageWrap />}
         </>
     );
 };
