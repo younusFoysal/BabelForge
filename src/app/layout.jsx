@@ -1,24 +1,26 @@
-import Footer from '@/components/shared/Footer/Footer';
-import Navbar from '@/components/shared/Navbar';
-import { ThemeProvider } from '@/components/Theme/ThemeProvider';
-import './globals.css';
-import React from 'react';
-import { Toaster } from '@/components/ui/toaster';
-
+import Footer from "@/components/shared/Footer/Footer";
+import Navbar from "@/components/shared/Navbar";
+import { ThemeProvider } from "@/components/Theme/ThemeProvider";
+import "./globals.css";
+import React from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata = {
-  title: 'BabelForge | A Team Collaboration Tool',
-  description: 'Everything under One Roof.\n' + 'Build your project with Task Management, and Collaboration for a Successful Project.',
+  title: "BabelForge | A Team Collaboration Tool",
+  description:
+    "Everything under One Roof.\n" +
+    "Build your project with Task Management, and Collaboration for a Successful Project.",
 };
 
-import { Nunito } from 'next/font/google';
-import { ClerkProvider } from '@clerk/nextjs';
-import QureryProvider from '@/providers/QureryProvider';
-import ScreenRecorderProvider from '@/providers/ScreenRecorderProvider';
+import { Nunito } from "next/font/google";
+import { ClerkProvider } from "@clerk/nextjs";
+import QureryProvider from "@/providers/QureryProvider";
+import ScreenRecorderProvider from "@/providers/ScreenRecorderProvider";
+import AuthProvider from "@/providers/AuthProvider";
 
 const nunito = Nunito({
-  weight: ['200', '300', '400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
 });
 export default function RootLayout({ children }) {
   return (
@@ -35,7 +37,12 @@ export default function RootLayout({ children }) {
         >
           <QureryProvider>
             <ScreenRecorderProvider>
-              <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
                 <Navbar />
                 <Toaster />
                 {children}

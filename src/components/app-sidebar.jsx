@@ -11,6 +11,7 @@ import usePlan from '@/hooks/usePlan';
 
 export function AppSidebar({ ...props }) {
   const { user, isLoaded } = useUser();
+
   const [role] = useRole();
   const [plan] = usePlan();
 
@@ -22,23 +23,24 @@ export function AppSidebar({ ...props }) {
     },
     navMain: [
       {
-        title: 'Dashboard',
-        url: '/dashboard',
+        title: "Dashboard",
+        url: "/dashboard",
         icon: SquareTerminal,
         isActive: true,
         items: [
           {
-            title: 'Overview',
-            url: '/dashboard',
+            title: "Overview",
+            url: "/dashboard",
           },
           {
-            title: 'Teams',
-            url: '/dashboard/teams',
+            title: "Projects",
+            url: "/dashboard/projects",
           },
           {
-            title: 'Projects',
-            url: '/dashboard/projects',
+            title: "Teams",
+            url: "/dashboard/teams",
           },
+
         ],
       },
       {
@@ -82,16 +84,16 @@ export function AppSidebar({ ...props }) {
         icon: Settings2,
         items: [
           {
-            title: 'AI Assistant',
-            url: '/dashboard/aiassistant',
+            title: "AI Assistant",
+            url: "/dashboard/aiassistant",
           },
           {
-            title: 'Canvas',
-            url: '/dashboard/canvas',
+            title: "Canvas",
+            url: "/dashboard/canvas",
           },
           {
-            title: 'Diagrams',
-            url: '/dashboard/diagrams',
+            title: "Diagrams",
+            url: "/dashboard/diagrams",
           },
           {
             title: 'Notes',

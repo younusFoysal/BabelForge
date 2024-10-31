@@ -127,7 +127,7 @@ const AdminInbox = () => {
             </div>
           ) : (
             <div className="h-full p-4 dark:bg-[#181024] gray-800">
-              <div className="bg-white dark:bg-[#181024] gray-700 shadow w-full rounded-full mb-6 px-2">
+              <div className="bg-white border dark:border-[#3e1878c2] dark:bg-[#181024] gray-700 shadow w-full rounded-full mb-6 px-2">
                 <div className="grid grid-cols-2 px-4 py-2">
                   <h3 className="text-base flex items-center gap-[4px]">
                     <span>
@@ -146,7 +146,7 @@ const AdminInbox = () => {
                 </div>
               </div>
 
-              <div className="bg-white dark:bg-[#181024] gray-700 p-6 rounded-3xl lg:h-96 pb-10 relative">
+              <div className="bg-white border dark:border-[#3e1878c2] dark:bg-[#181024] gray-700 p-6 rounded-3xl lg:h-96 pb-10 relative">
                 <div className="flex flex-col md:flex-row justify-between items-start mb-1">
                   <div className="flex gap-3">
                     <Image

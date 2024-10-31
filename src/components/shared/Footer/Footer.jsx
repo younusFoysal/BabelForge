@@ -2,15 +2,15 @@
 import apple from '@/image/Footer/apple.png';
 import google from '@/image/Footer/google.png';
 import logo from '@/image/Home/babellogo.png';
-import { Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
+import { Facebook, Linkedin } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+
 import { usePathname } from 'next/navigation';
 import './Footer.css';
 import { IoAccessibility } from 'react-icons/io5';
 import { useState } from 'react';
-import { FaXTwitter } from 'react-icons/fa6';
+import { FaGithub, FaXTwitter } from 'react-icons/fa6';
 
 const Footer = () => {
   const pathname = usePathname();
@@ -47,7 +47,7 @@ const Footer = () => {
   if (pathname?.includes('/successPayment') || pathname?.includes('meet')) return null;
   return (
     <footer className="relative">
-      <div className="footer-top-bg w-full mx-auto h-[200px] z-10 absolute top-0 left-0 -translate-y-full"></div>
+      <div className="footer-top-bg w-full mx-auto h-[150px] z-10 absolute top-0 left-0 -translate-y-full"></div>
       <div className="p-2 md:p-16 pt-10  text-gray-200 bg-[#181024] border-t-gray-800 border-t-[1px] footer-background relative">
         {/* <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10"></div> */}
         {/* upper part */}
@@ -88,17 +88,17 @@ const Footer = () => {
         <div className="mt-10 flex flex-col-reverse md:flex-row items-center justify-between gap-10 md:gap-0">
           <div className="space-y-3 text-center md:text-start">
             <div className="flex gap-2 items-center justify-center md:justify-start text-2xl">
-              <Link href="">
+              <Link href="https://www.linkedin.com/in/babelforge/">
                 <Linkedin />
               </Link>
-              <Link href="">
+              <Link href="https://www.facebook.com/babelforge/">
                 <Facebook />
               </Link>
-              <Link href="">
+              <Link href="https://x.com/BabelForge">
                 <FaXTwitter />
               </Link>
-              <Link href="">
-                <Instagram />
+              <Link href="https://github.com/teambabeldev">
+                <FaGithub />
               </Link>
             </div>
             <div className="text-sm font-light">
@@ -120,9 +120,8 @@ const Footer = () => {
 
             <button
               title="Accessibility"
-              className={`relative w-12 h-12 flex items-center justify-center transition-all duration-300 ease-in-out ${
-                accessLoading ? 'cursor-wait' : 'cursor-pointer'
-              }`}
+              className={`relative w-12 h-12 flex items-center justify-center transition-all duration-300 ease-in-out ${accessLoading ? 'cursor-wait' : 'cursor-pointer'
+                }`}
               id="triggerId"
               onClick={handleAcessBtn}
             >
@@ -132,11 +131,10 @@ const Footer = () => {
 
               <span
                 className={`absolute inset-0 rounded-full border-dashed border-[2px] transition-all duration-500 
-          ${
-            accessLoading
-              ? 'border-[#74767D] acess-btn '
-              : 'border-[#74767D] hover:bg-[#e5e5e5] hover:text-[#8c8c8c] hover:border-transparent'
-          }`}
+          ${accessLoading
+                    ? 'border-[#74767D] acess-btn '
+                    : 'border-[#74767D] hover:bg-[#e5e5e5] hover:text-[#8c8c8c] hover:border-transparent'
+                  }`}
               ></span>
             </button>
           </div>
