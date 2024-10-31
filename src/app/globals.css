@@ -285,14 +285,18 @@ body {
   min-height: 11in;
   padding: 1in;
   margin: 1rem;
+  border: 1px solid transparent;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
 
-.editor-container.ql-editor.dark {
-  background-color: black;
-  color: black;
+.dark .editor-container .ql-editor{
+  color: white;
+  background-color: #181024;
+  border-color: #3e1878c2;
 }
+
+
 
 .editor-container {
   overflow: scroll;
@@ -317,6 +321,22 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+.dark .editor-container .ql-toolbar.ql-snow{
+  background-color: #181024;
+  color: white;
+  border-color: #3e1878c2;
+}
+
+.dark .editor-container .ql-toolbar.ql-snow > * > * {
+  color: white !important;
+  fill: white !important;
+}
+
+.dark .editor-container .ql-toolbar.ql-snow .ql-stroke, .dark .ql-fill{
+  stroke: white !important;
+}
+
 
 @media screen and (max-width: 850px) {
   .editor-container .ql-toolbar.ql-snow,
