@@ -42,7 +42,7 @@ const Home = () => {
           {/* <AllReviews /> */}
           <MarqueeDemoVertical />
 
-          <FAQ />
+          {/*<FAQ />*/}
 
 
           {/*<CallToAction />*/}
