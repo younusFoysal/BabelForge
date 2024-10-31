@@ -47,13 +47,14 @@ export function AppSidebar({ ...props }) {
             url: "/dashboard",
           },
           {
-            title: "Teams",
-            url: "/dashboard/teams",
-          },
-          {
             title: "Projects",
             url: "/dashboard/projects",
           },
+          {
+            title: "Teams",
+            url: "/dashboard/teams",
+          },
+
         ],
       },
       {
