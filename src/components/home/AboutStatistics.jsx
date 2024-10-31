@@ -1,11 +1,22 @@
 'use client';
 
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 
 const AboutStatistics = () => {
   const [scrollState, setScrollState] = useState(false);
+  const axiosCommon = useAxiosCommon();
+
+  const { isLoading, data: stats } = useQuery({
+    queryKey: ["home-statistics"],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`admin/dashboard`);
+      return data;
+    },
+  });
 
   return (
     <>
@@ -14,26 +25,25 @@ const AboutStatistics = () => {
         <ScrollTrigger onEnter={() => setScrollState(true)} onExit={() => setScrollState(false)}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center items-center">
             <div className="border-r dark:border-gray-500 h-full space-y-3">
-              <h3 className="text-xl md:text-4xl font-bold">{scrollState && <CountUp start={0} end={1200} duration={2.5}></CountUp>}</h3>
-              <p className="text-sm md:text-lg">Product launched</p>
+              <h3 className="text-xl md:text-4xl font-bold">{scrollState && <CountUp start={0} end={stats?.plen} duration={3}></CountUp>}</h3>
+              <p className="text-sm md:text-lg">Total projects created.</p>
             </div>
             <div className="border-r-0 dark:border-gray-500 md:border-r h-full space-y-3">
-              <h3 className="text-xl md:text-4xl font-bold">{scrollState && <CountUp start={0} end={1900} duration={2.5}></CountUp>}+</h3>
-              <p className="text-sm md:text-lg">employees</p>
+              <h3 className="text-xl md:text-4xl font-bold">{scrollState && <CountUp start={0} end={stats?.tmlen} duration={3}></CountUp>}+</h3>
+              <p className="text-sm md:text-lg">Total teams under all projects.</p>
             </div>
             <div className="border-r dark:border-gray-500 h-full space-y-3">
-              <h3 className="text-xl md:text-4xl font-bold">{scrollState && <CountUp start={0} end={150} duration={2.5}></CountUp>}+</h3>
+              <h3 className="text-xl md:text-4xl font-bold">{scrollState && <CountUp start={0} end={stats?.tslen} duration={3}></CountUp>}+</h3>
               <p className="text-sm md:text-lg">
-                countries use <br /> BabelForge.com
+                Total assigned tasks.
               </p>
             </div>
 
             <div className="h-full space-y-3">
               <h3 className="text-xl md:text-4xl font-bold">
-                {scrollState && <CountUp start={0} end={225} duration={2.5}></CountUp>}
-                k+
+                {scrollState && <CountUp start={0} end={stats?.ulen} duration={3}></CountUp>}+
               </h3>
-              <p className="text-sm md:text-lg">customers use Bableforge.com to manage their work</p>
+              <p className="text-sm md:text-lg">Customers use bableforge.com</p>
             </div>
           </div>
         </ScrollTrigger>

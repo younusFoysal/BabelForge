@@ -4,12 +4,17 @@ const nextConfig = {
     missingSuspenseWithCSRBailout: false,
   },
   images: {
+    domains: ['localhost'],
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
         port: '',
         pathname: '**',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
       },
     ],
   },

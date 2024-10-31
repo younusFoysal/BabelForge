@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
-import { BsThreeDots } from 'react-icons/bs';
 import { HiExclamationCircle } from 'react-icons/hi';
 import TeamDialog from './TeamDialog';
 import useAxiosCommon from '@/lib/axiosCommon';
@@ -13,6 +12,8 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { Button } from '@/components/ui/button';
 import UpdateTeamModal from './UpdateTeamModal';
 import Image from 'next/image';
+import ImageWithFallback from '../ImageWithFallback';
+import teamCover from '@/image/Team/teamCover.jpeg';
 
 const Team = ({ id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +42,7 @@ const Team = ({ id }) => {
   return (
     <div>
       <div className="h-52 w-full  flex rounded-md items-center justify-center">
-        <Image height={300} width={900} src={tpic} alt={tname} className="w-full h-full object-cover" />
+        <ImageWithFallback fallbackSrc={teamCover} height={300} width={900} src={tpic} alt={tname} className="w-full h-full object-cover" />
       </div>
 
       {/* Update Button */}
@@ -69,7 +70,7 @@ const Team = ({ id }) => {
             </div>
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xl font-semibold">Category:</span>
-              <h3 className="text-base font-semibold">{team?.tcategory}</h3>
+              <h3 className="text-base capitalize font-semibold">{team?.tcategory}</h3>
             </div>
             <div className="flex justify-between item-center gap-2 text-center dark:bg-gray-800">
               <TeamDialog id={_id} refetch={refetch} />
@@ -77,7 +78,7 @@ const Team = ({ id }) => {
           </div>
 
           {/* card content */}
-          <Card className="p-6 dark:bg-gray-800 dark:border-gray-800">
+          <Card className="p-6 dark:bg-[#181024] dark:border-[#3e1878c2]">
             <div className="space-y-2 border-b border-gray-200 pb-3">
               <p className="flex justify-between items-center">
                 <span className="text-xl font-semibold">Members</span>
