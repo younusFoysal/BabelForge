@@ -164,7 +164,7 @@ export default function TaskList() {
         tproces: newStatus,
       });
     } catch (error) {
-      console.error('Error updating task status:', error);
+      console.error('Error updating task Status:', error);
     }
   };
 
