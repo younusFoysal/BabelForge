@@ -285,14 +285,18 @@ body {
   min-height: 11in;
   padding: 1in;
   margin: 1rem;
+  border: 1px solid transparent;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   background-color: white;
 }
 
-.editor-container.ql-editor.dark {
-  background-color: black;
-  color: black;
+.dark .editor-container .ql-editor{
+  color: white;
+  background-color: #181024;
+  border-color: #3e1878c2;
 }
+
+
 
 .editor-container {
   overflow: scroll;
@@ -317,6 +321,22 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+
+.dark .editor-container .ql-toolbar.ql-snow{
+  background-color: #181024;
+  color: white;
+  border-color: #3e1878c2;
+}
+
+.dark .editor-container .ql-toolbar.ql-snow > * > * {
+  color: white !important;
+  fill: white !important;
+}
+
+.dark .editor-container .ql-toolbar.ql-snow .ql-stroke, .dark .ql-fill{
+  stroke: white !important;
+}
+
 
 @media screen and (max-width: 850px) {
   .editor-container .ql-toolbar.ql-snow,
@@ -418,7 +438,8 @@ body {
 .dark .cl-signUp-start,
 .dark .cl-footer,
 .dark .cl-signIn-alternativeMethods,
-.dark .cl-signUp-emailCode {
+.dark .cl-signUp-emailCode,
+.dark .cl-signIn-password {
   background: #201630;
   color: #fff !important;
   border: 1px solid #3e1878c2;
@@ -450,11 +471,6 @@ body {
   color: #fff !important;
 }
 
-/* .cl-profileSectionPrimaryButton {
-  background: linear-gradient(to right, #2563eb, #9333ea);
-  color: #fff;
-} */
-
 .dark .cl-badge {
   color: #fff;
   background: #3e1878c2;
@@ -480,7 +496,8 @@ body {
 .dark .cl-dividerRow,
 .dark .cl-formResendCodeLink,
 .dark .cl-identityPreviewText,
-.dark .cl-headerTitle {
+.dark .cl-headerTitle,
+.dark .cl-formFieldAction__password {
   color: #fff;
 }
 
@@ -500,3 +517,44 @@ body {
 .dark .cl-otpCodeFieldInput:hover {
   box-shadow: rgba(255, 255, 255, 0.622) 0px 0px 0px 1px, rgba(0, 0, 0, 0.191) 0px 0px 1px 0px;
 }
+
+/* Chat CSS */
+
+.dark .str-chat__empty-channel,
+.dark .str-chat__channel-header,
+.dark .str-chat__message-input,
+.dark .str-chat__list,
+.dark .str-chat__channel-list-messenger-react__main,
+.dark .str-chat__channel-list-messenger__main,
+.dark .str-chat__channel-preview-messenger,
+.dark .str-chat__channel-preview,
+.dark .str-chat__channel-search-bar,
+.dark .str-chat__list-notifications {
+  background: #181024 !important;
+}
+
+.str-chat__channel-list-messenger {
+  padding-bottom: 0 !important;
+}
+
+.dark .str-chat__channel-preview-messenger--active {
+  background: #331166 !important;
+}
+.dark .str-chat__list {
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.dark .str-chat__message-input {
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.dark .str-chat__channel-preview-messenger:hover {
+  background: #561dab42 !important;
+}
+
+/* Mobile sidebar */
+/* #radix-:rn: {
+  z-index: 99;
+} */

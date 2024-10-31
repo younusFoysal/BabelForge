@@ -1,6 +1,11 @@
 import React, {Suspense} from 'react';
 import Profile from "@/components/UserProfile/Profile";
 
+export const metadata = {
+    title: "Profile | BabelForge",
+    description: "User Profile for BabelForge",
+}
+
 const Page = () => {
     return (
         <div>

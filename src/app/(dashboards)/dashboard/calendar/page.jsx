@@ -1,5 +1,10 @@
 import Calendar from "@/components/Calendar/Calendar";
 
+export const metadata = {
+    title: "Calendar | BabelForge",
+    description: "Calendar for BabelForge",
+}
+
 const CalendarPage = () => {
     return (
         <div>

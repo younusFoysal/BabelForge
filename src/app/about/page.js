@@ -2,6 +2,8 @@ import React from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import AboutCarousel from '@/components/AboutUs/AboutCarousel';
 
+
+
 const AboutPage = () => {
   return (
     <>

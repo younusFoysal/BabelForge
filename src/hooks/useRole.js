@@ -11,7 +11,7 @@ const useRole = () => {
     enabled: !isLoaded || !!user,
     queryFn: async () => {
       const { data } = await axiosCommon(`api/user/${uemail}`);
-      return data.package;
+      return data.role;
     },
   });
 

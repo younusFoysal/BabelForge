@@ -2,17 +2,26 @@
 
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import React from "react";
 import UpdatePricing from "./UpdatePricing/UpdatePricing";
-import { useUser } from "@clerk/nextjs";
+import useRole from "@/hooks/useRole";
+import { useAuth } from "@clerk/nextjs";
+import { toast } from "@/hooks/use-toast";
 
 const AdminPackages = ({ priceingsec }) => {
   const router = useRouter();
-  const axiosCommon = useAxiosCommon();
+  const pathname = usePathname();
+  const [role] = useRole();
+  const { userId } = useAuth();
 
-  const { user } = useUser();
-  const uemail = user?.primaryEmailAddress?.emailAddress;
+  if (pathname?.includes("/dashboard/admin/packages")) {
+    if (role !== "admin") {
+      redirect("/dashboard");
+    }
+  }
+
+  const axiosCommon = useAxiosCommon();
   const { data: packages = [], refetch } = useQuery({
     queryKey: ["packages"],
     queryFn: async () => {
@@ -22,7 +31,17 @@ const AdminPackages = ({ priceingsec }) => {
   });
 
   const handlePay = (link) => {
-    if (priceingsec) {
+    if (link == "Basic" && userId) {
+      toast({
+        description: "Basic plan is available for free",
+        variant: "",
+      });
+      return;
+    }
+    if (!userId) {
+      router.push("/sign-in");
+    }
+    if (priceingsec && userId) {
       if (link == "Standard") {
         router.push(`${process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PLAN_LINK}`);
       } else if (link == "Premium") {
@@ -30,14 +49,6 @@ const AdminPackages = ({ priceingsec }) => {
       }
     }
   };
-
-  const admin = [
-    "babelforgeltd@gmail.com",
-    "babelforgeltdfgd@gmail.com",
-    "morshidulrahman4167@gmail.com",
-  ];
-
-  const isAdmin = admin.includes(uemail);
 
   // SVGs
   const trueSVG = (
@@ -80,7 +91,7 @@ const AdminPackages = ({ priceingsec }) => {
   return (
     <div>
       <div
-        className={`relative z-10 overflow-hidden rounded-sm text-black dark:text-white p-11 shadow-default bg-white/50 dark:bg-[#181024]`}
+        className={`relative z-10 pt-[140px] overflow-hidden rounded-sm text-black dark:text-white p-11 shadow-default bg-white/50 dark:bg-[#181024b5]`}
       >
         <div className="w-full overflow-x-auto">
           <table className="w-full">
@@ -96,7 +107,7 @@ const AdminPackages = ({ priceingsec }) => {
                       </span>
                       <h4 className="mb-2">
                         <span className="text-[28px] font-bold text-black dark:text-white lg:text-[32px]">
-                          ${pack.price}
+                          {pack.title == "Basic" ? "Free" : `${pack.price}`}
                         </span>
                         <span className="font-medium my-auto">
                           {" "}

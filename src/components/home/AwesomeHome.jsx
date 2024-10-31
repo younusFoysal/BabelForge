@@ -2,17 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import HeroLeft from '@/components/home/HeroNew/HeroLeft';
 import homepic from '@/image/Home/light-dash.png';
-import homepicdark from '@/image/Home/light-dash-dark.png';
-import { useTheme } from 'next-themes';
 
 const AwesomeHome = () => {
-  const { resolvedTheme } = useTheme();
-  const bgStyle = {
-    backgroundImage: `url('/images/overlay.png')`,
-    backgroundRepeat: 'repeat',
-    opacity: 0.1,
-  };
-
   return (
     <div className="mb-14">
       <section className="relative pb-0 backdrop-blur-[300px] bg-white  min-h-screen flex items-center pt-32 lg:pt-52  lg:py-36 overflow-hidden dark:bg-slate-900 w-full">
@@ -30,9 +21,9 @@ const AwesomeHome = () => {
 
               <div className="absolute right-0 top-2 animate-float  lg:-right-[560px]  w-auto  lg:w-[800px] h-[300px] lg:h-[550px]">
                 <Image
-                  width={800}
-                  height={800}
-                  src={resolvedTheme == 'dark' ? homepicdark : homepic}
+                  width={1200}
+                  height={1200}
+                  src={homepic}
                   className="h-full scale-90  lg:scale-[1.45] object-contain z-10"
                   alt="Dashboard Demo Image"
                 />
@@ -40,7 +31,7 @@ const AwesomeHome = () => {
             </div>
             <div className="flex justify-between items-center px-4 w-full">
               <div className="mx-auto lg:ml-0">
-                {/*new div*/}
+                {/*new f div*/}
                 <HeroLeft />
               </div>
             </div>

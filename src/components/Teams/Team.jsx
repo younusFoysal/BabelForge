@@ -1,18 +1,18 @@
-"use client";
-import React, { useState } from "react";
-import { Card } from "@/components/ui/card";
-import { BsThreeDots } from "react-icons/bs";
-import { HiExclamationCircle } from "react-icons/hi";
-import TeamDialog from "./TeamDialog";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useQuery } from "@tanstack/react-query";
-import MemberBox from "./MemberBox";
-import LinkDialog from "./LinkDialog";
-import LinkBox from "./LinkBox";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
-import { Button } from "@/components/ui/button";
-import UpdateTeamModal from "./UpdateTeamModal";
-import Image from "next/image";
+'use client';
+import React, { useState } from 'react';
+import { Card } from '@/components/ui/card';
+import { BsThreeDots } from 'react-icons/bs';
+import { HiExclamationCircle } from 'react-icons/hi';
+import TeamDialog from './TeamDialog';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useQuery } from '@tanstack/react-query';
+import MemberBox from './MemberBox';
+import LinkDialog from './LinkDialog';
+import LinkBox from './LinkBox';
+import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import { Button } from '@/components/ui/button';
+import UpdateTeamModal from './UpdateTeamModal';
+import Image from 'next/image';
 
 const Team = ({ id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,7 +23,7 @@ const Team = ({ id }) => {
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["team", id],
+    queryKey: ['team', id],
     queryFn: async () => {
       const { data } = await axiosCommon(`/team/teams/one-team/${id}`);
       return data;
@@ -41,13 +41,7 @@ const Team = ({ id }) => {
   return (
     <div>
       <div className="h-52 w-full  flex rounded-md items-center justify-center">
-        <Image
-          height={300}
-          width={900}
-          src={tpic}
-          alt={tname}
-          className="w-full h-full object-cover"
-        />
+        <Image height={300} width={900} src={tpic} alt={tname} className="w-full h-full object-cover" />
       </div>
 
       {/* Update Button */}
@@ -62,14 +56,7 @@ const Team = ({ id }) => {
       </div>
 
       {/* Modal Component */}
-      {isModalOpen && (
-        <UpdateTeamModal
-          isOpen={isModalOpen}
-          setIsOpen={setIsModalOpen}
-          team={team}
-          refetch={refetch}
-        />
-      )}
+      {isModalOpen && <UpdateTeamModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} team={team} refetch={refetch} />}
 
       <div className="py-20 flex lg:flex-row flex-col justify-between items-start gap-10 lg:p-0 p-4">
         {/* card left */}
@@ -107,12 +94,7 @@ const Team = ({ id }) => {
               <div className="flex items-center gap-4  ">
                 <div className="flex w-full p-1 rounded-md group flex-col gap-3">
                   {tmembers?.map((member, index) => (
-                    <MemberBox
-                      member={member}
-                      key={index}
-                      id={_id}
-                      refetch={refetch}
-                    />
+                    <MemberBox member={member} key={index} id={_id} refetch={refetch} />
                   ))}
                 </div>
               </div>
@@ -122,11 +104,9 @@ const Team = ({ id }) => {
 
         {/* card right */}
         <div className="w-full  pt-10 ">
-          <h3 className="text-start text-base font-semibold uppercase">
-            Team Description
-          </h3>
+          <h3 className="text-start text-base font-semibold uppercase">Team Description</h3>
 
-          <Card className="mt-4 space-y-2 p-4 dark:bg-gray-800 dark:border-gray-800">
+          <Card className="mt-4 space-y-2 p-4 ">
             <div className="p-2 mb-2 rounded-md space-y-2">
               <div className="flex justify-start items-center gap-3">
                 <div>
@@ -144,13 +124,7 @@ const Team = ({ id }) => {
 
             <div className="p-4 ">
               {links?.map((link, index) => (
-                <LinkBox
-                  key={index}
-                  link={link}
-                  id={_id}
-                  refetch={refetch}
-                  index={index}
-                />
+                <LinkBox key={index} link={link} id={_id} refetch={refetch} index={index} />
               ))}
             </div>
           </div>
