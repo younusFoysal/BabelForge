@@ -1,8 +1,29 @@
+"use client"
 import React, { useState } from 'react';
+import useAxiosCommon from "@/lib/axiosCommon";
+import {useQuery} from "@tanstack/react-query";
+import {useUser} from "@clerk/nextjs";
 
-const Faq = ({ categories }) => {
-    const [activeCategory, setActiveCategory] = useState(categories[0].name);
-    const [openQuestion, setOpenQuestion] = useState({ [categories[0].name]: 0 }); // Track open question for each category
+const Faq = () => {
+
+    const [loading, setLoading] = useState(true);
+    const axiosCommon = useAxiosCommon();
+    const { user, isLoaded } = useUser();
+
+    const { data: faqs = [], refetch, isLoading } = useQuery({
+        queryKey: ["home-faqs"],
+        enabled: !isLoaded,
+        queryFn: async () => {
+            const res = await axiosCommon.get("/faq/faqs");
+            return res.data;
+        },
+    });
+
+
+    // console.log(faqs);
+
+    const [activeCategory, setActiveCategory] = useState(categories[0]?.name);
+    const [openQuestion, setOpenQuestion] = useState({ [categories[0]?.name]: 0 }); // Track open question for each category
 
     const handleQuestionToggle = (categoryName, index) => {
         setOpenQuestion((prev) => ({
@@ -10,6 +31,8 @@ const Faq = ({ categories }) => {
             [categoryName]: prev[categoryName] === index ? null : index
         }));
     };
+
+
 
     return (
         <div>
@@ -30,7 +53,7 @@ const Faq = ({ categories }) => {
                         <div className="lg:mx-12 lg:w-1/6">
                             <h1 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Table of Contents</h1>
                             <div className="space-y-4">
-                                {categories.map((category, index) => (
+                                {categories?.map((category, index) => (
                                     <button
                                         key={index}
                                         onClick={() => {
@@ -51,11 +74,9 @@ const Faq = ({ categories }) => {
 
                         {/* Right Column: Questions for the Active Category */}
                         <div className="flex-1 mt-8 lg:mx-12 lg:mt-0">
-                            {categories
-                                .filter((category) => category.name === activeCategory)
-                                .map((category) => (
+                            {categories?.filter((category) => category.name === activeCategory)?.map((category) => (
                                     <div key={category.name}>
-                                        {category.questions.map((question, qIndex) => (
+                                        {category?.questions?.map((question, qIndex) => (
                                             <div key={qIndex} className="mb-8">
                                                 <button
                                                     className="flex items-center justify-between w-full focus:outline-none"
@@ -87,7 +108,7 @@ const Faq = ({ categories }) => {
                                                     </div>
                                                 </button>
 
-                                                {openQuestion[category.name] === qIndex && (
+                                                {openQuestion[category?.name] === qIndex && (
                                                     <div className="mt-4 md:mx-10">
                                                         <p className="max-w-3xl px-4 text-gray-500 dark:text-gray-300">
                                                             {question.answer}

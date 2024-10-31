@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Version 7 Pre Build" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Version 7 Pre Build Fix">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,14 +130,6 @@
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
       <workItem from="1729684647631" duration="29920000" />
-    </task>
-    <task id="LOCAL-00025" summary="turbo added">
-      <option name="closed" value="true" />
-      <created>1727288348230</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1727288348230</updated>
     </task>
     <task id="LOCAL-00026" summary="turbo added">
       <option name="closed" value="true" />
@@ -521,7 +515,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730356611189</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Version 7 Pre Build Fix">
+      <option name="closed" value="true" />
+      <created>1730357075626</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1730357075626</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,7 +542,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Admin Transactions page" />
     <MESSAGE value="Chart fix" />
     <MESSAGE value="Admin Dash Added" />
     <MESSAGE value="version" />
@@ -565,7 +566,8 @@
     <MESSAGE value="Diagram added" />
     <MESSAGE value="Milestone 6" />
     <MESSAGE value="Version 7 Pre Build" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 7 Pre Build" />
+    <MESSAGE value="Version 7 Pre Build Fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 7 Pre Build Fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
