@@ -1,7 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
-import { BsThreeDots } from 'react-icons/bs';
 import { HiExclamationCircle } from 'react-icons/hi';
 import TeamDialog from './TeamDialog';
 import useAxiosCommon from '@/lib/axiosCommon';
@@ -13,6 +12,8 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { Button } from '@/components/ui/button';
 import UpdateTeamModal from './UpdateTeamModal';
 import Image from 'next/image';
+import ImageWithFallback from '../ImageWithFallback';
+import teamCover from '@/image/Team/teamCover.jpeg';
 
 const Team = ({ id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -41,7 +42,7 @@ const Team = ({ id }) => {
   return (
     <div>
       <div className="h-52 w-full  flex rounded-md items-center justify-center">
-        <Image height={300} width={900} src={tpic} alt={tname} className="w-full h-full object-cover" />
+        <ImageWithFallback fallbackSrc={teamCover} height={300} width={900} src={tpic} alt={tname} className="w-full h-full object-cover" />
       </div>
 
       {/* Update Button */}
