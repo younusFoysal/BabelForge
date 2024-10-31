@@ -1,11 +1,11 @@
-'use client';
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import './modal.css';
-import { FaPen, FaTrash } from 'react-icons/fa';
-import { useMutation } from '@tanstack/react-query';
-import useAxiosCommon from '@/lib/axiosCommon';
-import { toast } from '@/hooks/use-toast';
+"use client";
+import React, { useState } from "react";
+import Modal from "react-modal";
+import "./modal.css";
+import { FaPen, FaTrash } from "react-icons/fa";
+import { useMutation } from "@tanstack/react-query";
+import useAxiosCommon from "@/lib/axiosCommon";
+import { toast } from "@/hooks/use-toast";
 
 const NoteItem = ({ note, refetch }) => {
   const axiosCommon = useAxiosCommon();
@@ -15,23 +15,19 @@ const NoteItem = ({ note, refetch }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [formData, setFormData] = useState({}); // For storing Note data to edit
+  const [formData, setFormData] = useState({});
 
   // Open modal for viewing Note details
-  const handleView = Note => {
+  const handleView = (Note) => {
     setSelectedNote(Note);
     setIsModalOpen(true);
   };
 
   // Close detail modal
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setSelectedNote(null);
-  };
 
   // Open modal for editing Note
   const handleEdit = () => {
-    console.log('Edit called');
+    console.log("Edit called");
     setIsModalOpen(false);
     //setFormData(Note); // Pre-fill form data with the selected Note
     setIsEditModalOpen(true);
@@ -44,32 +40,33 @@ const NoteItem = ({ note, refetch }) => {
   };
 
   // Delete handle
-  const { mutateAsync: deleteNoteMutation, isLoading: isDeleting } = useMutation({
-    mutationFn: async ({ id }) => {
-      const { data } = await axiosCommon.delete(`/note/notes/${id}`);
-      return data;
-    },
-    onSuccess: () => {
-      refetch();
-      toast({
-        description: 'Note deleted successfully.',
-        variant: 'success',
-      });
-    },
-    onError: () => {
-      toast({
-        description: 'Failed to delete the Note.',
-        variant: 'error',
-      });
-    },
-  });
+  const { mutateAsync: deleteNoteMutation, isLoading: isDeleting } =
+    useMutation({
+      mutationFn: async ({ id }) => {
+        const { data } = await axiosCommon.delete(`/note/notes/${id}`);
+        return data;
+      },
+      onSuccess: () => {
+        refetch();
+        toast({
+          description: "Note deleted successfully.",
+          variant: "success",
+        });
+      },
+      onError: () => {
+        toast({
+          description: "Failed to delete the Note.",
+          variant: "error",
+        });
+      },
+    });
 
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     try {
       await deleteNoteMutation({ id });
       toast({
-        description: 'Note Deleted!',
-        variant: 'success',
+        description: "Note Deleted!",
+        variant: "success",
       });
     } catch (err) {
       console.error(err);
@@ -77,29 +74,32 @@ const NoteItem = ({ note, refetch }) => {
   };
 
   const { mutateAsync: updateNoteMutation } = useMutation({
-    mutationFn: async note => {
+    mutationFn: async (note) => {
       const NoteWithoutID = { ...note };
       delete NoteWithoutID._id; // Remove the _id field before patching
-      const { data } = await axiosCommon.patch(`/note/notes/update/${note._id}`, NoteWithoutID);
+      const { data } = await axiosCommon.patch(
+        `/note/notes/update/${note._id}`,
+        NoteWithoutID
+      );
       return data;
     },
     onSuccess: () => {
       toast({
-        description: 'Task updated successfully!',
-        variant: 'success',
+        description: "Task updated successfully!",
+        variant: "success",
       });
       refetch(); // Refetch task data after update
     },
-    onError: err => {
+    onError: (err) => {
       toast({
         description: err.message,
-        variant: 'error',
+        variant: "error",
       });
     },
   });
 
   // Handle form submit to update Note
-  const handleEditSubmit = async e => {
+  const handleEditSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const utitle = form.utitle.value;
@@ -135,9 +135,15 @@ const NoteItem = ({ note, refetch }) => {
         </div>
         <div className="flex-1">
           <h3 className="text-xl font-bold text-gray-800 py-2 dark:text-white/80">
-            {note.title.length > 20 ? note.title.substr(0, 20) + '...' : note.title}
+            {note.title.length > 20
+              ? note.title.substr(0, 20) + "..."
+              : note.title}
           </h3>
-          <p className="pb-3 border-b-gray-500 text-sm">{note.details.length > 100 ? note.details.substr(0, 100) + '...' : note.details}</p>
+          <p className="pb-3 border-b-gray-500 text-sm">
+            {note.details.length > 100
+              ? note.details.substr(0, 100) + "..."
+              : note.details}
+          </p>
         </div>
 
         <div className="flex justify-between items-center border-t">
@@ -164,11 +170,27 @@ const NoteItem = ({ note, refetch }) => {
                 <div className="w-full max-w-full">
                   <div className="relative rounded-2xl bg-white p-6 shadow dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
                     <div className="mb-4 flex items-center justify-between">
-                      <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">{note.title}</h2>
+                      <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">
+                        {note.title}
+                      </h2>
 
-                      <button onClick={closeModal} className="close right-5 top-5 text-gray-400 hover:text-gray-600">
-                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                      <button
+                        onClick={closeModal}
+                        className="close right-5 top-5 text-gray-400 hover:text-gray-600"
+                      >
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                          ></path>
                         </svg>
                       </button>
                     </div>
@@ -178,7 +200,7 @@ const NoteItem = ({ note, refetch }) => {
                       rows="4"
                       placeholder="Your Note..."
                     >
-                      {' '}
+                      {" "}
                       {note.details}
                     </p>
 
@@ -208,7 +230,7 @@ const NoteItem = ({ note, refetch }) => {
           </div>
         </Modal>
       ) : (
-        ''
+        ""
       )}
 
       {/*edit Modal*/}
@@ -226,11 +248,27 @@ const NoteItem = ({ note, refetch }) => {
                 <div className="w-full max-w-sm">
                   <div className="relative rounded-2xl bg-white p-6 shadow dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
                     <div className="mb-4 flex items-center justify-between">
-                      <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">Update the Note</h2>
+                      <h2 className=" modal-title text-xl font-semibold text-gray-900 dark:text-white">
+                        Update the Note
+                      </h2>
 
-                      <button onClick={closeEditModal} className="close right-5 top-5 text-gray-400 hover:text-gray-600">
-                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                      <button
+                        onClick={closeEditModal}
+                        className="close right-5 top-5 text-gray-400 hover:text-gray-600"
+                      >
+                        <svg
+                          className="h-5 w-5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"
+                          ></path>
                         </svg>
                       </button>
                     </div>
@@ -272,7 +310,7 @@ const NoteItem = ({ note, refetch }) => {
           </div>
         </Modal>
       ) : (
-        ''
+        ""
       )}
     </>
   );
