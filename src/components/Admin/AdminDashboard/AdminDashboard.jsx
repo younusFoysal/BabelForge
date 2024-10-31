@@ -8,13 +8,13 @@ import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import PayGraph from '@/components/Admin/AdminDashboard/PayGraph';
 import useRole from '@/hooks/useRole';
 import { redirect } from 'next/navigation';
-import Link from 'next/link';
 
 const AdminDashboard = () => {
   const [trans, isLoading] = useTrans();
   const [role] = useRole();
 
   if (role !== 'admin') redirect('/');
+  
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 

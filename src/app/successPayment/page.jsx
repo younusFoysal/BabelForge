@@ -1,7 +1,8 @@
+'use client'
 import paymentImage from '@/image/payment/payDone.png';
 import Image from 'next/image';
-import { FaArrowLeft } from 'react-icons/fa6';
-import Link from 'next/link';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
  const metadata = {
   title: "Payment | BabelForge",
@@ -9,6 +10,16 @@ import Link from 'next/link';
 }
 
 const Page = () => {
+  const router = useRouter();
+  useEffect(() => {
+    setTimeout(() => {
+      router.push('/dashboard');
+
+    }
+    , 1000
+  )
+    
+  }, [router]);
   return (
     <div className="px-5 h-screen flex items-center justify-start">
       <div className="mx-auto max-w-[490px]">
@@ -18,17 +29,7 @@ const Page = () => {
           <p className="font-medium text-black dark:text-white">
             Thank you for connecting with BabelForge. Simply manage your project in an efficient way. Stay connected!
           </p>
-          <Link
-            href="/"
-            className="mt-7.5 inline-flex group items-center gap-2 rounded-md bg-gradient-to-r from-blue-600 to-purple-600  text-white px-6 py-3 font-medium hover:scale-105 duration-500 hover:bg-opacity-90 hover:shadow-xl mt-5 cursor-pointer"
-          >
-            <span className="group-hover:-translate-x-2 duration-500 transition-all">
-              {' '}
-              <FaArrowLeft />
-            </span>
-
-            <span>Back to Home</span>
-          </Link>
+          
         </div>
       </div>
     </div>
