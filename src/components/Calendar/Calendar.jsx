@@ -10,6 +10,9 @@ import { useState } from 'react';
 import './Calendar.css'
 import { useTheme } from 'next-themes';
 
+import Modal from 'react-modal';
+import { IoCloseSharp } from 'react-icons/io5';
+
 const localizer = momentLocalizer(moment);
 
 const MyCalendar = () => {
@@ -43,6 +46,8 @@ const MyCalendar = () => {
 
     const handleClose = () => setShowModal(false);
 
+    console.log('event: ', selectedEvent);
+
     const eventPropGetter = (event) => {
         let backgroundColor = 'lightblue';
         let textColor = '#ffff';
@@ -54,10 +59,10 @@ const MyCalendar = () => {
             borderLeft = '4px solid #4a90e2';
         }
 
-        else if (event.status === 'inprogress') {
-            backgroundColor = '#eeddff';
-            textColor = '#6b357a';
-            borderLeft = '4px solid #6b357a';
+        else if (event.status === 'inProgress') {
+            backgroundColor = 'rgb(199 210 254)';
+            textColor = 'rgb(55 48 163)';
+            borderLeft = '4px solid rgb(55 48 163)';
         }
 
         else if (event.status === 'done') {
@@ -99,33 +104,71 @@ const MyCalendar = () => {
 
             {/* Modal to display event details */}
             {showModal && (
-                <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 ">
-                    <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-1/3 dark:bg-gray-900/90 dark:text-gray-300 dark:border-white/30 dark:hover:shadow-white/20">
-                        <div className="border-b px-4 py-2 flex justify-between items-center">
-                            <h3 className="font-semibold text-lg">{selectedEvent?.title}</h3>
-                            <button
-                                className="text-black close focus:outline-none"
-                                onClick={handleClose}
-                            >
-                                &times;
-                            </button>
-                        </div>
-                        <div className="p-4">
-                            <p><strong>Description:</strong> {selectedEvent?.description}</p>
-                            <p><strong>Assigned At: </strong> {selectedEvent?.start.toLocaleString()}</p>
-                            <p><strong>Assigned By: </strong> {selectedEvent?.author}</p>
-                            <p><strong>Status: </strong> <span className='capitalize'>{selectedEvent?.status}</span></p>
-                        </div>
-                        <div className="flex justify-end p-4">
-                            <button
-                                className="px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105"
-                                onClick={handleClose}
-                            >
-                                Close
-                            </button>
+
+
+                <Modal
+                    isOpen={showModal}
+
+                    contentLabel="Edit Task Modal"
+                    className="modal-dialog bg-white dark:bg-[#181024]"
+                    overlayClassName="modal-overlay"
+                >
+                    <div className="w-7xl rounded-2xl dark:bg-[#181024] dark:text-white relative z-[999] py-0 max-h-[80%]  px-4">
+                        <div className="py-6 w-full left-0 sticky px-4 top-0 dark:bg-[#181024] dark:text-white bg-white">
+                            <div>
+                                <div>
+                                    <h2 className='border-b dark:border-b-[#3e1878c2] font-bold pb-2'>{selectedEvent?.title}</h2>
+                                    <div className="p-4 dark:text-gray-100 space-y-2">
+                                        <p><strong>Description:</strong> {selectedEvent?.description}</p>
+                                        <p><strong>Assigned At: </strong> {selectedEvent?.start.toLocaleString()}</p>
+                                        <p><strong>Assigned By: </strong> {selectedEvent?.author}</p>
+                                        <p><strong>Status: </strong> <span className='capitalize'>{selectedEvent?.status}</span></p>
+                                    </div>
+                                </div>
+
+                                <button
+                                    onClick={() => setShowModal(false)}
+                                    className="text-[24px] fixed top-4 right-4 hover:scale-110 duration-300 hover:rotate-180"
+                                >
+                                    <IoCloseSharp />
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </Modal>
+
+
+
+
+
+                //testimg
+                // <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 ">
+                //     <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-1/3 dark:bg-gray-900/90 dark:text-gray-300 dark:border-white/30 dark:hover:shadow-white/20">
+                //         <div className="border-b px-4 py-2 flex justify-between items-center">
+                //             <h3 className="font-semibold text-lg">{selectedEvent?.title}</h3>
+                //             <button
+                //                 className="text-black close focus:outline-none"
+                //                 onClick={handleClose}
+                //             >
+                //                 &times;
+                //             </button>
+                //         </div>
+                //         <div className="p-4">
+                //             <p><strong>Description:</strong> {selectedEvent?.description}</p>
+                //             <p><strong>Assigned At: </strong> {selectedEvent?.start.toLocaleString()}</p>
+                //             <p><strong>Assigned By: </strong> {selectedEvent?.author}</p>
+                //             <p><strong>Status: </strong> <span className='capitalize'>{selectedEvent?.status}</span></p>
+                //         </div>
+                //         <div className="flex justify-end p-4">
+                //             <button
+                //                 className="px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105"
+                //                 onClick={handleClose}
+                //             >
+                //                 Close
+                //             </button>
+                //         </div>
+                //     </div>
+                // </div>
             )}
         </div>
     );
