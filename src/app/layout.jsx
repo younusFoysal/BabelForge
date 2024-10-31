@@ -9,7 +9,7 @@ export const metadata = {
   title: "BabelForge | A Team Collaboration Tool",
   description:
     "Everything under One Roof.\n" +
-    "Build your project with Task Management, and Collaboration for a Successful Project.",
+    "Build your Project with Task Management, and Collaboration for a Successful Project.",
 };
 
 import { Nunito } from "next/font/google";
