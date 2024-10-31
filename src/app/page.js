@@ -34,7 +34,8 @@ const Home = () => {
     },
   });
 
-  console.log(faqs);
+
+  // console.log(faqs);
 
   useEffect(() => {
     setTimeout(() => {
