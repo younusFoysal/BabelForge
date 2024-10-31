@@ -5,9 +5,12 @@ import React from 'react';
 import UpdatePricing from '../Admin/AdminPackages/UpdatePricing/UpdatePricing';
 import { useRouter } from 'next/navigation';
 import { IoMdCheckmarkCircleOutline } from 'react-icons/io';
+import { useAuth } from '@clerk/nextjs';
 
 export default function MobilePrice({ priceingsec }) {
   const router = useRouter();
+  const { userId } = useAuth();
+  const auth = !!userId;
   const axiosCommon = useAxiosCommon();
   const { data: packages = [], refetch } = useQuery({
     queryKey: ['packages'],
@@ -55,7 +58,9 @@ export default function MobilePrice({ priceingsec }) {
                   <span className="mb-3 block text-lg font-semibold text-primary">{pack.title}</span>
                   <h2 className="mb-5 text-[42px] font-bold text-dark dark:text-white">
                     {pack.price}
-                    <span className="text-base font-medium text-body-color dark:text-dark-6">/ {pack.priceDetails}</span>
+                    <span className="text-base font-medium text-body-color dark:text-dark-6">
+                      {pack.price === 'Free' ? '' : '/'} {pack.price === 'Free' ? '' : pack.priceDetails}
+                    </span>
                   </h2>
                   <p className="mb-8 border-b border-stroke pb-8 text-base text-body-color dark:border-dark-3 dark:text-dark-6"></p>
                   <div className="mb-9 flex flex-col gap-[14px]">
@@ -104,7 +109,16 @@ export default function MobilePrice({ priceingsec }) {
                       )}
                     </ul>
                   </div>
-                  <UpdatePricing pack={pack} title={pack.title} priceingsec={priceingsec} handlePay={handlePay} refetch={refetch} />
+                  {pack.price !== 'Free' ? (
+                    <UpdatePricing pack={pack} title={pack.title} priceingsec={priceingsec} handlePay={handlePay} refetch={refetch} />
+                  ) : (
+                    <button
+                      onClick={() => router.push('/dashboard')}
+                      className="overflow-hidden mt-auto w-full p-2 h-12  text-white border-none rounded-md text-xl font-bold cursor-pointer  capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white"
+                    >
+                      {auth ? 'Dashboard' : 'Signup'}
+                    </button>
+                  )}
                   <div>
                     <span className="absolute right-0 top-7 z-[-1]">
                       <svg width={77} height={172} viewBox="0 0 77 172" fill="none" xmlns="http://www.w3.org/2000/svg">

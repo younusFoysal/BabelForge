@@ -1,4 +1,4 @@
-"use client"
+'use client';
 import AboutStatistics from '@/components/home/AboutStatistics';
 import AwesomeHome from '@/components/home/AwesomeHome';
 import CarouselHome from '@/components/home/CarouselHome';
@@ -8,14 +8,11 @@ import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadi
 import { ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
 import GlassDNA from '@/components/home/3d/GlassDNA';
 import { MarqueeDemoVertical, ReviewCard } from '@/components/Reviews/MarqueeDemoVertical';
-import RoadMap from "@/components/home/RoadMap";
-import FAQ from "@/components/home/FAQ";
-import PricingHome from "@/components/home/Pricing";
-
-
+import RoadMap from '@/components/home/RoadMap';
+import FAQ from '@/components/home/FAQ';
+import PricingHome from '@/components/home/Pricing';
 
 const Home = () => {
-
   return (
     <div>
       <ClerkLoading>
@@ -28,7 +25,7 @@ const Home = () => {
           <CarouselHome />
 
           {/*<GlassHome/>*/}
-           <GlassDNA />
+          <GlassDNA />
           {/*glass_display pearl_electron */}
           {/*  <HomeStats/>*/}
 
@@ -37,13 +34,11 @@ const Home = () => {
           {/*<PricingCards/>*/}
           <PricingHome />
 
-
           <LeaderCTA />
           {/* <AllReviews /> */}
           <MarqueeDemoVertical />
 
-          <FAQ />
-
+          <FAQ isBG={true} />
 
           {/*<CallToAction />*/}
         </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from 'lucide-react';
+import { ChevronsUpDown, Sparkles } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -14,9 +14,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar';
 import Link from 'next/link';
+import usePlan from '@/hooks/usePlan';
 
 export function NavUser({ user }) {
   const { isMobile } = useSidebar();
+  const [plan, isLoading] = usePlan();
   if (user.email == 'undefined')
     return (
       <div className="flex items-center space-x-4">
@@ -63,14 +65,17 @@ export function NavUser({ user }) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Link className="flex items-center" href="/pricing">
-                  <Sparkles className="mr-2" />
-                  Upgrade to Pro
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
+            {(!isLoading && plan === 'Standard') ||
+              (plan === 'Basic' && (
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <Link className="flex items-center" href="/pricing">
+                      <Sparkles className="mr-2" />
+                      Upgrade to Pro
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              ))}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
