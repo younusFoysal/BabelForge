@@ -21,20 +21,40 @@
     background-color: #1f1f1f;
 }
 
+.event-calendar-dark .rbc-header {
+    background-color: #181024;
+}
+
+.rbc-header {
+    background-color: rgb(216 180 254);
+}
+
 .rbc-current .rbc-button-link {
     color: #1f1f1f;
 }
 
 .rbc-event:hover {
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 8px -4px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     transition-duration: 300ms;
 }
 
 .event-calendar-dark .rbc-event:hover {
-    box-shadow: 0 7px 10px -3px rgba(229, 226, 226, 0.89), 0 4px 6px -4px rgb(229, 226, 226, 0.89);
+    box-shadow: 0 4px 8px -4px rgba(229, 226, 226, 0.89), 0 4px 6px -4px rgb(229, 226, 226, 0.89);
     transition-duration: 300ms;
 }
 
 .rbc-row-bg .rbc-today {
     background-color: #f1f0fe;
+}
+
+.event-calendar-dark .rbc-row-bg .rbc-today {
+    background-color: #200e3be2;
+    color: white;
+}
+
+.event-calendar-dark .rbc-show-more {
+    color: black;
+    background-color: rgb(224 231 255);
+    border-radius: 0.2rem;
+    padding: 1px;
 }
