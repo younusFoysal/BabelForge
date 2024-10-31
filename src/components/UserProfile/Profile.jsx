@@ -60,6 +60,7 @@ const Profile = () => {
     },
     enabled: !!email,
   });
+console.log(transactions);
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -90,11 +91,11 @@ const Profile = () => {
             <UpdateProfile user={user} refetch={refetch} />
           </div>
           <div>
-            <p className="text-2xl my-6">Name: {user?.firstName} {user?.lastName}</p>
+            <p className="text-2xl my-6">{user?.firstName} {user?.lastName}</p>
           </div>
 
           {/* card content */}
-          <Card className="p-6 dark:bg-gray-800 dark:border-gray-800">
+          <Card className="p-6 dark:bg-[#181024] border dark:border-[#3e1878c2]">
             {/* about */}
             <h3 className="text-start text-xl uppercase">About</h3>
 

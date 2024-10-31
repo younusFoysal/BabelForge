@@ -18,7 +18,7 @@ import { Toaster } from "../ui/toaster";
 
 export function UpdateProfile({ user, refetch }) {
   const { toast } = useToast();
-  const [open, setOpen] = useState(false); // Modal open state
+  const [open, setOpen] = useState(false); 
 
   const UpdateProfile = useMutation({
     mutationFn: async (updateData) => {
@@ -37,7 +37,7 @@ export function UpdateProfile({ user, refetch }) {
         });
 
         refetch();
-        setOpen(false); // Close modal after successful update
+        setOpen(false); 
       }
     },
     onError: (error) => {
@@ -62,7 +62,7 @@ export function UpdateProfile({ user, refetch }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="w-full">
+        <Button variant="outline" className="w-full capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 text-white">
           Edit Profile
         </Button>
       </DialogTrigger>
