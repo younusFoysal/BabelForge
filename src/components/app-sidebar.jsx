@@ -11,6 +11,7 @@ import usePlan from '@/hooks/usePlan';
 
 export function AppSidebar({ ...props }) {
   const { user, isLoaded } = useUser();
+
   const [role] = useRole();
   const [plan] = usePlan();
 
