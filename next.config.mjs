@@ -4,7 +4,6 @@ const nextConfig = {
     missingSuspenseWithCSRBailout: false,
   },
   images: {
-    domains: ['localhost'],
     remotePatterns: [
       {
         protocol: 'https',
