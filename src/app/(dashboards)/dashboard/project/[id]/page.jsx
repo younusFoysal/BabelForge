@@ -196,7 +196,7 @@ const ProjectDetails = () => {
   return (
     <section className="flex flex-col lg:flex-row gap-5">
       {/* left- overview */}
-      <div className="lg:w-[50%] w-full  mx-auto md:mx-0  border rounded-lg bg-gray-100 hover:shadow-lg duration-300 h-fit dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20">
+      <div className="lg:w-[50%] w-full  mx-auto md:mx-0  border rounded-lg bg-gray-100 hover:shadow-lg duration-300 h-fit dark:bg-[#181024] dark:border-[#3e1878c2]  dark:hover:border-[#3e1878] dark:hover:shadow-[#3e1878c2] dark:hover:bg-[#200e3be2]">
         <div className="h-48 mx-auto rounded-lg p-2">
           <Image
             src={pimg}
@@ -207,7 +207,7 @@ const ProjectDetails = () => {
           />
         </div>
 
-        <div className="mt-5 space-y-2 px-2">
+        <div className="mt-5 space-y-3 px-2 lg:px-5">
           <div>
             <h2 className="font-bold text-2xl">{pname}</h2>
             <p className="text-gray-700 dark:text-white/80">{pcategory}</p>
@@ -232,13 +232,13 @@ const ProjectDetails = () => {
             </Link>
           </div>
         </div>
-        <div className="flex items-center mt-5 px-2 mb-3">
+        <div className="flex items-center mt-5 px-2 lg:px-5 mb-3">
           {pedate ? (
             <button
-              className="bg-bgColor dark:hover:shadow-bgColor/30 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg hover:shadow-blue-200 font-medium px-4 py-2 rounded-md"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 opacity-50 cursor-not-allowed text-white text-md duration-300 hover:shadow-lg font-medium px-4 py-2 rounded-md"
               disabled
             >
-              End Project
+              Project Ended
             </button>
           ) : (
             <Alert
@@ -292,7 +292,7 @@ const ProjectDetails = () => {
             </div>
 
             {/* project description */}
-            <div className="text-left bg-gray-100 shadow-lg w-full md:w-[80%] rounded-xl md:-mt-32 md:-ml-40 md:z-10 md:p-9 flex flex-col dark:bg-gray-700 dark:hover:shadow-white/20 duration-300 mt-5">
+            <div className="text-left bg-gray-100 shadow-lg w-full md:w-[80%] rounded-xl md:-mt-32 md:-ml-40 md:z-10 md:p-9 flex flex-col border dark:bg-[#181024] dark:border-[#3e1878c2] dark:hover:shadow-[#3e1878c2]  dark:hover:border-[#3e1878] dark:hover:bg-[#200e3b] duration-300 mt-5">
               <h2 className="text-2xl font-bold text-left w-full px-2 lg:px-5">
                 Project Description
               </h2>
@@ -314,7 +314,7 @@ const ProjectDetails = () => {
               <div
                 onClick={() => router.push(`/dashboard/teams/${team._id}`)}
                 key={team._id}
-                className="flex gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20"
+                className="flex gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-[#181024] dark:border-[#3e1878c2]  dark:hover:border-[#3e1878] dark:hover:shadow-[#3e1878c2] dark:hover:bg-[#200e3be2]"
               >
                 <div className="w-10 h-10 rounded-full">
                   <Image
@@ -384,12 +384,10 @@ const ProjectDetails = () => {
           )}
           <div className="grid grid-cols-1 md:grid-cols-2  gap-5 mt-3">
             {projectMembers?.data
-              ?.slice()
-              .reverse()
-              .map((member, idx) => (
+              ?.map((member, idx) => (
                 <div
                   key={idx}
-                  className="flex gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-white/10 dark:border-white/30 dark:hover:shadow-white/20"
+                  className="flex gap-2 p-2 border hover:bg-gray-100 cursor-pointer bg-gray-100 hover:shadow-lg duration-300 rounded-lg dark:bg-[#181024] dark:border-[#3e1878c2]  dark:hover:border-[#3e1878] dark:hover:shadow-[#3e1878c2] dark:hover:bg-[#200e3be2]"
                 >
                   <div className="w-10 h-10 rounded-full">
                     <Image
