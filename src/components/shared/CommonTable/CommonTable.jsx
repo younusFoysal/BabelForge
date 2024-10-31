@@ -146,13 +146,13 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
           <TableRow>
             {theads?.map((thead, index) =>
               thead === "Fav" ? (
-                <TableHead key={index}>
+                <TableHead key={index} className="dark:bg-[#181024]">
                   <FaStar className="text-black text-lg dark:text-white"></FaStar>
                 </TableHead>
               ) : (
                 <TableHead
                   key={index}
-                  className="font-semibold text-black text-center dark:text-white"
+                  className="font-semibold text-black text-center dark:text-white dark:bg-[#181024]"
                 >
                   {thead}
                 </TableHead>
