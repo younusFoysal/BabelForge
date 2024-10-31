@@ -39,10 +39,7 @@ const AdminPackages = ({ priceingsec }) => {
       return;
     }
     if (!userId) {
-      toast({
-        description: "You have to login first",
-        variant: "error",
-      });
+      router.push("/sign-in");
     }
     if (priceingsec && userId) {
       if (link == "Standard") {
