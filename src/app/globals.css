@@ -290,13 +290,11 @@ body {
   background-color: white;
 }
 
-.dark .editor-container .ql-editor{
+.dark .editor-container .ql-editor {
   color: white;
   background-color: #181024;
   border-color: #3e1878c2;
 }
-
-
 
 .editor-container {
   overflow: scroll;
@@ -322,7 +320,7 @@ body {
   margin-right: auto;
 }
 
-.dark .editor-container .ql-toolbar.ql-snow{
+.dark .editor-container .ql-toolbar.ql-snow {
   background-color: #181024;
   color: white;
   border-color: #3e1878c2;
@@ -333,10 +331,10 @@ body {
   fill: white !important;
 }
 
-.dark .editor-container .ql-toolbar.ql-snow .ql-stroke, .dark .ql-fill{
+.dark .editor-container .ql-toolbar.ql-snow .ql-stroke,
+.dark .ql-fill {
   stroke: white !important;
 }
-
 
 @media screen and (max-width: 850px) {
   .editor-container .ql-toolbar.ql-snow,
@@ -558,3 +556,17 @@ body {
 /* #radix-:rn: {
   z-index: 99;
 } */
+
+/* APex chart css */
+
+.dark tspan {
+  fill: #fff !important;
+}
+
+.dark .apexcharts-legend-text {
+  color: #fff !important;
+}
+
+.dark .apexcharts-tooltip-active {
+  color: #000;
+}

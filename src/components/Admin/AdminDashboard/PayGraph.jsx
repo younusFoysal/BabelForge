@@ -166,12 +166,14 @@ const PayGraph = ({ trans, isLoading }) => {
 
   for (let month = 0; month <= 12; month++) {
     trans?.forEach(item => {
-      if (Number(item?.date?.slice(5, 7)) === month) {
+      if (Number(item?.startDate?.slice(5, 7)) === month) {
         // Filter Standard transactions for the current month
-        const tempStandard = trans?.filter(transItem => transItem.pakage === 'Standard' && Number(transItem?.date?.slice(5, 7)) === month);
+        const tempStandard = trans?.filter(
+          transItem => transItem.plan === 'Standard' && Number(transItem?.startDate?.slice(5, 7)) === month
+        );
         revenueChart.series[0].data[month - 1] = tempStandard.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
         // Filter Premium transactions for the current month
-        const tempPremium = trans?.filter(transItem => transItem.pakage === 'Premium' && Number(transItem?.date?.slice(5, 7)) === month);
+        const tempPremium = trans?.filter(transItem => transItem.plan === 'Premium' && Number(transItem?.startDate?.slice(5, 7)) === month);
         revenueChart.series[1].data[month - 1] = tempPremium.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
       }
     });

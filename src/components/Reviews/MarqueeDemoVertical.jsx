@@ -6,7 +6,7 @@ import { FaStar } from 'react-icons/fa';
 import usericon from '@/image/icon/user.png';
 import ImageWithFallback from '../ImageWithFallback';
 
-const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
+export const ReviewCard = ({ image, name, message, companyName, reviewRating }) => {
   return (
     <figure
       className={cn(

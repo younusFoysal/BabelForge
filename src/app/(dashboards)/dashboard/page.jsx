@@ -1,15 +1,12 @@
-"use client";
-import MainPageWrap from "@/components/Dashboards/MainPage/MainPageWrap";
-import AdminDashboard from "@/components/Admin/AdminDashboard/AdminDashboard";
-import CripsHandle from "./CripsHandle";
-import useRole from "@/hooks/useRole";
+import RoleLayout from "@/components/RoleLayout/RoleLayout";
+
 
 const page = () => {
-  const [role] = useRole();
+
 
   return (
     <>
-      <CripsHandle /> {role == "admin" ? <AdminDashboard /> : <MainPageWrap />}
+        <RoleLayout/>
     </>
   );
 };
