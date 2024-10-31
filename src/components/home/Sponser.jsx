@@ -1,3 +1,4 @@
+"use client"
 import Marquee from 'react-fast-marquee';
 import Image from 'next/image';
 import bd from '@/image/Home/sponser/bd.png';

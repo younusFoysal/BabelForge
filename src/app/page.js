@@ -1,3 +1,4 @@
+"use client"
 import AboutStatistics from '@/components/home/AboutStatistics';
 import AwesomeHome from '@/components/home/AwesomeHome';
 import CarouselHome from '@/components/home/CarouselHome';
@@ -5,7 +6,6 @@ import LeaderCTA from '@/components/home/LeaderCTA';
 import Sponser from '@/components/home/Sponser';
 import HomeLoadingSpinner from '@/components/shared/HomeLoadingSpinner/HomeLoadingSpinner';
 import { ClerkLoaded, ClerkLoading } from '@clerk/nextjs';
-import { useEffect, useState } from 'react';
 import GlassDNA from '@/components/home/3d/GlassDNA';
 import { MarqueeDemoVertical, ReviewCard } from '@/components/Reviews/MarqueeDemoVertical';
 import RoadMap from "@/components/home/RoadMap";
