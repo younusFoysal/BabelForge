@@ -142,17 +142,17 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
     <div className="mt-8">
       <Table className="text-center">
         {/* table header */}
-        <TableHeader className="text-black font-bold dark:text-white">
+        <TableHeader className="text-black font-bold dark:text-white dark:bg-[#200e3be2] rounded-xl">
           <TableRow>
             {theads?.map((thead, index) =>
               thead === "Fav" ? (
-                <TableHead key={index} className="dark:bg-[#181024]">
+                <TableHead key={index} >
                   <FaStar className="text-black text-lg dark:text-white"></FaStar>
                 </TableHead>
               ) : (
                 <TableHead
                   key={index}
-                  className="font-semibold text-black text-center dark:text-white dark:bg-[#181024]"
+                  className="font-semibold text-black text-center dark:text-white"
                 >
                   {thead}
                 </TableHead>
@@ -161,7 +161,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
           </TableRow>
         </TableHeader>
 
-        <TableBody className="w-full">
+        <TableBody className="w-full dark:bg-[#181024] rounded-xl">
           {/* table row */}
           {tdata?.map((data, idx) => (
             <TableRow
