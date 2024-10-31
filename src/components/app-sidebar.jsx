@@ -1,28 +1,13 @@
-"use client";
-import {
-  BookOpen,
-  CircleHelp,
-  Bot,
-  Settings2,
-  SquareTerminal,
-  MessageSquareText,
-  BadgeDollarSign,
-  Package,
-} from "lucide-react";
-import { NavMain } from "@/components/nav-main";
-import { NavProjects } from "@/components/nav-projects";
-import { NavUser } from "@/components/nav-user";
-import { TeamSwitcher } from "@/components/team-switcher";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-} from "@/components/ui/sidebar";
-import { useUser } from "@clerk/nextjs";
-import useRole from "@/hooks/useRole";
-import usePlan from "@/hooks/usePlan";
+'use client';
+import { BookOpen, CircleHelp, Bot, Settings2, SquareTerminal, MessageSquareText, BadgeDollarSign, Package } from 'lucide-react';
+import { NavMain } from '@/components/nav-main';
+import { NavProjects } from '@/components/nav-projects';
+import { NavUser } from '@/components/nav-user';
+import { TeamSwitcher } from '@/components/team-switcher';
+import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarRail } from '@/components/ui/sidebar';
+import { useUser } from '@clerk/nextjs';
+import useRole from '@/hooks/useRole';
+import usePlan from '@/hooks/usePlan';
 
 export function AppSidebar({ ...props }) {
   const { user, isLoaded } = useUser();
@@ -58,43 +43,43 @@ export function AppSidebar({ ...props }) {
         ],
       },
       {
-        title: "Tasks",
-        url: "#",
+        title: 'Tasks',
+        url: '#',
         icon: Bot,
         items: [
           {
-            title: "Backlog",
-            url: "/dashboard/Backlog",
+            title: 'Backlog',
+            url: '/dashboard/Backlog',
           },
           {
-            title: "Board",
-            url: "/dashboard/board",
+            title: 'Board',
+            url: '/dashboard/board',
           },
           {
-            title: "Task Calendar",
-            url: "/dashboard/calendar",
+            title: 'Task Calendar',
+            url: '/dashboard/calendar',
           },
         ],
       },
       {
-        title: "Chat",
-        url: "#",
+        title: 'Chat',
+        url: '#',
         icon: BookOpen,
         items: [
           {
-            title: "Group Chat",
-            url: "/dashboard/chat",
+            title: 'Group Chat',
+            url: '/dashboard/chat',
           },
 
           {
-            title: "Meeting",
-            url: "/dashboard/meet",
+            title: 'Meeting',
+            url: '/dashboard/meet',
           },
         ],
       },
       {
-        title: "Tools",
-        url: "#",
+        title: 'Tools',
+        url: '#',
         icon: Settings2,
         items: [
           {
@@ -110,24 +95,24 @@ export function AppSidebar({ ...props }) {
             url: "/dashboard/diagrams",
           },
           {
-            title: "Notes",
-            url: "/dashboard/notes",
+            title: 'Notes',
+            url: '/dashboard/notes',
           },
           {
-            title: "Docs",
-            url: "/dashboard/doc",
+            title: 'Docs',
+            url: '/dashboard/doc',
           },
           {
-            title: "Screen Record",
-            url: "/dashboard/ScreenRecorder",
+            title: 'Screen Record',
+            url: '/dashboard/ScreenRecorder',
           },
         ],
       },
     ],
     projects: [
       {
-        name: "Help",
-        url: "/help",
+        name: 'Help',
+        url: '/help',
         icon: CircleHelp,
       },
     ],
@@ -141,83 +126,83 @@ export function AppSidebar({ ...props }) {
     },
     navMain: [
       {
-        title: "Dashboard",
-        url: "/dashboard",
+        title: 'Dashboard',
+        url: '/dashboard',
         icon: SquareTerminal,
         isActive: true,
         items: [
           {
-            title: "Overview",
-            url: "/dashboard",
+            title: 'Overview',
+            url: '/dashboard',
           },
         ],
       },
       {
-        title: "Transaction",
-        url: "#",
+        title: 'Transaction',
+        url: '#',
         icon: BadgeDollarSign,
         items: [
           {
-            title: "Transactions",
-            url: "/dashboard/admin/transactions",
+            title: 'Transactions',
+            url: '/dashboard/admin/transactions',
           },
         ],
       },
       {
-        title: "Connect",
-        url: "#",
+        title: 'Connect',
+        url: '#',
         icon: MessageSquareText,
         items: [
           {
-            title: "Inbox",
-            url: "/dashboard/admin/inbox",
+            title: 'Inbox',
+            url: '/dashboard/admin/inbox',
           },
 
           {
-            title: "Reviews",
-            url: "/dashboard/admin/reviews",
+            title: 'Reviews',
+            url: '/dashboard/admin/reviews',
           },
         ],
       },
       {
-        title: "Packages",
-        url: "#",
+        title: 'Packages',
+        url: '#',
         icon: Package,
         items: [
           {
-            title: "Packages",
-            url: "/dashboard/admin/packages",
+            title: 'Packages',
+            url: '/dashboard/admin/packages',
           },
         ],
       },
       {
-        title: "Tools",
-        url: "#",
+        title: 'Tools',
+        url: '#',
         icon: Settings2,
         items: [
           {
-            title: "AI Assistant",
-            url: "/dashboard/aiassistant",
+            title: 'AI Assistant',
+            url: '/dashboard/aiassistant',
           },
           {
-            title: "Canvas",
-            url: "/dashboard/canvas",
+            title: 'Canvas',
+            url: '/dashboard/canvas',
           },
           {
-            title: "Notes",
-            url: "/dashboard/notes",
+            title: 'Notes',
+            url: '/dashboard/notes',
           },
           {
-            title: "Diagrams",
-            url: "/dashboard/diagrams",
+            title: 'Diagrams',
+            url: '/dashboard/diagrams',
           },
           {
-            title: "Docs",
-            url: "/dashboard/doc",
+            title: 'Docs',
+            url: '/dashboard/doc',
           },
           {
-            title: "Screen Record",
-            url: "/dashboard/ScreenRecorder",
+            title: 'Screen Record',
+            url: '/dashboard/ScreenRecorder',
           },
         ],
       },
@@ -225,19 +210,17 @@ export function AppSidebar({ ...props }) {
   };
 
   const filteredNavMain = data.navMain
-    .map((item) => {
-      if (item.title === "Chat") {
-        return plan === "Standard" || plan === "Premium" ? item : null;
+    .map(item => {
+      if (item.title === 'Chat') {
+        return plan === 'Standard' || plan === 'Premium' ? item : null;
       }
 
-      if (item.title === "Tools") {
+      if (item.title === 'Tools') {
         const filteredItems = item.items.filter(
-          (tool) =>
-            (tool.title !== "AI Assistant" &&
-              tool.title !== "Canvas" &&
-              tool.title !== "Diagrams") ||
-            plan === "Standard" ||
-            plan === "Premium"
+          tool =>
+            (tool.title !== 'AI Assistant' && tool.title !== 'Canvas' && tool.title !== 'Diagrams') ||
+            plan === 'Standard' ||
+            plan === 'Premium'
         );
 
         return { ...item, items: filteredItems };
@@ -253,11 +236,7 @@ export function AppSidebar({ ...props }) {
         <TeamSwitcher />
       </SidebarHeader>
       <SidebarContent>
-        {role == "admin" ? (
-          <NavMain items={AdminData.navMain} />
-        ) : (
-          <NavMain items={filteredNavMain} />
-        )}
+        {role == 'admin' ? <NavMain items={AdminData.navMain} /> : <NavMain items={filteredNavMain} />}
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>

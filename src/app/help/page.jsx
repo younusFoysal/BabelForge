@@ -1,6 +1,11 @@
 import {FaUserLarge} from "react-icons/fa6";
 import {FaQuestion} from "react-icons/fa";
 
+export const metadata = {
+  title: 'User Manual | BabelForge',
+  description: 'Learn how to use BabelForge with our user manual.',
+}
+
 const UserManual = () => {
   const manual = [
     {

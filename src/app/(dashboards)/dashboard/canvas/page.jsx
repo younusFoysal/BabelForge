@@ -1,8 +1,9 @@
-"use client"
-import React from 'react';
-
 import CanvasComponent from "@/components/Canvas/CanvasComponent";
 
+export const metadata = {
+    title: "Canvas | BabelForge",
+    description: "Canvas for BabelForge",
+}
 const Page = () => {
     return (
         <div>
