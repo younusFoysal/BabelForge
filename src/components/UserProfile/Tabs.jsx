@@ -21,19 +21,19 @@ import UserTransaction from "./UserTransaction"
 export function TabsTransaction({teams, transactions}) {
   return (
     <Tabs defaultValue="teams" className="w-full">
-      <TabsList className="grid w-full grid-cols-2">
+      <TabsList className="grid dark:bg-[#181024] w-full grid-cols-2">
         <TabsTrigger value="teams">Teams</TabsTrigger>
         <TabsTrigger value="transactions">Transaction</TabsTrigger>
       </TabsList>
       <TabsContent value="teams">
-        <Card className="dark:bg-gray-800 border-none">
+        <Card className="dark:bg-[#181024] border dark:hover: dark:border-[#3e1878c2]">
           <CardHeader>
             <CardTitle>Your Teams</CardTitle>
             <CardDescription>
                 You have total {teams?.length} teams
             </CardDescription>
           </CardHeader>
-          <div className="grid grid-cols-2 dark:bg-gray-800">
+          <div className="grid grid-cols-2 dark:bg-[#181024]">
             {
                 teams.map(team=><div key={team} className="flex  items-center gap-4  ">
                     <p className="flex p-5  items-center gap-2 hover:bg-gray-200 w-full rounded-md dark:hover:bg-gray-900">
@@ -53,7 +53,7 @@ export function TabsTransaction({teams, transactions}) {
         </Card>
       </TabsContent>
       <TabsContent value="transactions">
-        <Card className='dark:bg-gray-800'>
+        <Card className='dark:bg-[#181024]'>
           <CardHeader>
             <CardTitle>Recent Transactions</CardTitle>
             <CardDescription>

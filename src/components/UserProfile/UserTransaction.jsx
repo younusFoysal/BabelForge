@@ -7,7 +7,7 @@ const UserTransaction = ({ transactions }) => {
     const sortedTrans = transactions?.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
 
     return (
-        <div className="mt-6 overflow-x-auto rounded-xl bg-white dark:bg-gray-800 px-6 shadow lg:px-4">
+        <div className="mt-6 overflow-x-auto rounded-xl bg-white dark:bg-[#181024] px-6 shadow lg:px-4">
             <table className="min-w-full border-collapse border-spacing-y-2 border-spacing-x-2">
                 <thead className="border-b">
                     <tr>
@@ -29,7 +29,7 @@ const UserTransaction = ({ transactions }) => {
                     </tr>
                 </thead>
 
-                <tbody className="bg-white border-gray-300 divide-y p-5 dark:bg-gray-800 dark:text-white divide-gray-200 sm:divide-none sm:space-y-4">
+                <tbody className="bg-white border-gray-300 divide-y p-5 dark:bg-[#181024] dark:text-white divide-gray-200 sm:divide-none sm:space-y-4">
                     {transactions?.map((item, id) => (
                         <tr key={item._id} className="sm:space-y-2 sm:py-4">
                             <td className="whitespace-no-wrap py-4 text-left text-sm text-gray-600 dark:text-white sm:px-3 sm:py-2">
