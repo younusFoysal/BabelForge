@@ -73,7 +73,7 @@ const ProjectPage = () => {
             <Input
               onKeyDown={handleSearchByEnter}
               id="inputField"
-              className="w-full py-4 border-gray-500 border-[1px]"
+              className="w-full dark:bg-[#26193a] dark:text-white py-4 border-gray-500 border-[1px]"
               placeholder="Project Name"
             />
             <span className="absolute right-2 top-1/2 -translate-y-1/2">

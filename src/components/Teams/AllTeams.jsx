@@ -3,12 +3,13 @@ import UseUsers from '@/hooks/useUsers';
 import Image from 'next/image';
 import React, { useEffect, useMemo, useState } from 'react';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
-import { FaTelegramPlane } from 'react-icons/fa';
 import { Card } from '../ui/card';
 import { useRouter } from 'next/navigation';
 import usericon from '@/image/icon/user.png';
 import noData from '@/image/Team/no-data.svg';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import ImageWithFallback from '../ImageWithFallback';
+import teamPhoto from '@/image/Team/team.jpg';
 
 const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
   const [filteredTeams, setFilteredTeams] = useState(teams);
@@ -89,12 +90,13 @@ const AllTeams = ({ teams, isLoading: loadingTeams, searchQuery }) => {
             key={_id}
             className="border dark:hover:shadow-[#3e1878c2] hover:dark:border-[#3e1878] hover:dark:bg-[#200e3be2] dark:border-[#3e1878c2] dark:bg-[#181024] hover:shadow-lg dark:hover:shadow-2xl cursor-pointer duration-300 rounded-2xl"
           >
-            <Image
+            <ImageWithFallback
               className="w-[95px] mx-auto h-[95px] mt-6 rounded-full object-cover"
               alt={tname}
               width={80}
               height={80}
-              src={tpic ? tpic : usericon}
+              src={tpic}
+              fallbackSrc={teamPhoto}
             />
             <div className="p-5">
               <h3 className="text-center text-[18px] capitalize">{tname}</h3>
