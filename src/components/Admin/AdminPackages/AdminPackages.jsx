@@ -8,9 +8,11 @@ import UpdatePricing from './UpdatePricing/UpdatePricing';
 import useRole from '@/hooks/useRole';
 import { useAuth } from '@clerk/nextjs';
 import { toast } from '@/hooks/use-toast';
+import usePlan from '@/hooks/usePlan';
 
 const AdminPackages = ({ priceingsec }) => {
   const router = useRouter();
+  const [plan, isLoading] = usePlan();
   const pathname = usePathname();
   const [role] = useRole();
   const { userId } = useAuth();
@@ -102,6 +104,7 @@ const AdminPackages = ({ priceingsec }) => {
                         </span>
                       </h4>
                       <p className="text-[14px] opacity-85 font-medium">{pack.description}</p>
+
                       {pack.price !== 'Free' ? (
                         <UpdatePricing pack={pack} title={pack.title} priceingsec={priceingsec} handlePay={handlePay} refetch={refetch} />
                       ) : (

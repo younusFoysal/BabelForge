@@ -4,17 +4,13 @@ import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import DashboardTopRight from '@/components/Dashboards/DashboardTopRight';
 import { usePathname } from 'next/navigation';
-import dynamic from 'next/dynamic';
 
 const DashboardLayout = ({ children }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { user } = useUser();
-  const uemail = user?.primaryEmailAddress?.emailAddress;
-  // foysal@gmail.com
-  const admin = ['babelforgeltd@gmail.com', 'babelforgeltdfgd@gmail.com'];
-  const isAdmin = admin.includes(uemail);
-  const conditionClass = isAdmin ? '' : 'h-screen';
+  if (!user) return
+ 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const pathName = usePathname();
 
