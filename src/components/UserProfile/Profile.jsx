@@ -60,6 +60,7 @@ const Profile = () => {
     },
     enabled: !!email,
   });
+console.log(transactions);
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 

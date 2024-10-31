@@ -18,7 +18,7 @@ import { Toaster } from "../ui/toaster";
 
 export function UpdateProfile({ user, refetch }) {
   const { toast } = useToast();
-  const [open, setOpen] = useState(false); // Modal open state
+  const [open, setOpen] = useState(false); 
 
   const UpdateProfile = useMutation({
     mutationFn: async (updateData) => {
@@ -37,7 +37,7 @@ export function UpdateProfile({ user, refetch }) {
         });
 
         refetch();
-        setOpen(false); // Close modal after successful update
+        setOpen(false); 
       }
     },
     onError: (error) => {
