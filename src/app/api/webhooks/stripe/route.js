@@ -1,7 +1,7 @@
 import { stripe } from "@/lib/stripe";
 import { ObjectId } from "mongodb";
 import connectDb from "@/lib/ConnectDb";
-const WEBHOOK_SECRET = process.env.NEXT_PUBLIC_STRIPE_WEBHOOK_SECRET;
+const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(req) {
   const body = await req.text();
