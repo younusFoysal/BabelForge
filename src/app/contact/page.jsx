@@ -1,6 +1,11 @@
 import ContactForm from '@/components/Contactus/ContactForm';
 import ContactText from '@/components/Contactus/ContactText';
 
+export const metadata = {
+  title: 'Contact Us | BabelForge',
+  description: 'Get in touch with us for any queries or feedback.',
+}
+
 const Contactus = () => {
   return (
     <section className="container mx-auto mt-[130px]">

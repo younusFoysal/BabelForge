@@ -2,7 +2,12 @@ import { FaUserLarge } from "react-icons/fa6";
 import { FaQuestion } from "react-icons/fa";
 import { cookies } from "next/headers";
 
-const UserManual = async () => {
+export const metadata = {
+  title: "User Manual | BabelForge",
+  description: "Learn how to use BabelForge with our user manual.",
+};
+
+const UserManual = () => {
   const manual = [
     {
       question: "How do I create a new project in BabelForge?",

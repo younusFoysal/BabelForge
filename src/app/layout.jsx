@@ -4,8 +4,9 @@ import { ThemeProvider } from "@/components/Theme/ThemeProvider";
 import "./globals.css";
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
-const metadata = {
-  title: "BabelForge",
+
+export const metadata = {
+  title: "BabelForge | A Team Collaboration Tool",
   description:
     "Everything under One Roof.\n" +
     "Build your project with Task Management, and Collaboration for a Successful Project.",

@@ -1,3 +1,4 @@
+'use client';
 import { Eraser, Pencil, Trash2 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { ReactSketchCanvas } from 'react-sketch-canvas';
@@ -48,10 +49,10 @@ const CanvasComponent = () => {
               <input
                 type="color"
                 value={strokeColor}
-                onChange={e => setStrokeColor(e.target.value)}
+                onChange={e => setStrokeColor(e.target.value)} 
                 className="w-10 h-10 cursor-pointer"
                 title="Pick a color"
-                disabled={isEraser} // Disable color picker in eraser mode
+                disabled={isEraser} 
               />
             </div>
 

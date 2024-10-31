@@ -16,34 +16,25 @@ import PricingCards from "@/components/home/PricingCards";
 import RoadMap from "@/components/home/RoadMap";
 import FAQ from "@/components/home/FAQ";
 import PricingHome from "@/components/home/Pricing";
+import { useQuery } from '@tanstack/react-query';
+import useAxiosCommon from '@/lib/axiosCommon';
 
 
-const categories = [
-  {
-    name: 'General',
-    questions: [
-      { question: 'How can I pay for my appointment?', answer: 'Lorem ipsum dolor sit amet...' },
-      { question: 'What documents do I need to bring?', answer: 'Lorem ipsum dolor sit amet...' }
-    ]
-  },
-  {
-    name: 'Trust & Safety',
-    questions: [
-      { question: 'How do you handle sensitive information?', answer: 'Lorem ipsum dolor sit amet...' },
-      { question: 'What safety protocols are in place?', answer: 'Lorem ipsum dolor sit amet...' }
-    ]
-  },
-  {
-    name: 'Services',
-    questions: [
-      { question: 'What are your opening hours?', answer: 'Lorem ipsum dolor sit amet...' },
-      { question: 'Can I book an appointment online?', answer: 'Lorem ipsum dolor sit amet...' }
-    ]
-  }
-];
+
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  const axiosCommon = useAxiosCommon();
+
+  const { data: faqs = [], refetch } = useQuery({
+    queryKey: ["home-faqs"],
+    queryFn: async () => {
+      const res = await axiosCommon.get("/faq/faqs");
+      return res.data;
+    },
+  });
+
+  console.log(faqs);
 
   useEffect(() => {
     setTimeout(() => {
@@ -68,16 +59,16 @@ const Home = () => {
           {/*  <HomeStats/>*/}
 
           <AboutStatistics></AboutStatistics>
-          <RoadMap/>
+          <RoadMap />
           {/*<PricingCards/>*/}
-          <PricingHome/>
+          <PricingHome />
 
 
           <LeaderCTA />
           {/* <AllReviews /> */}
           <MarqueeDemoVertical />
 
-          <FAQ categories={categories}/>
+          <FAQ categories={faqs} />
 
 
           {/*<CallToAction />*/}
