@@ -1,6 +1,18 @@
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const PricingHome = () => {
+
+    const axiosCommon = useAxiosCommon();
+    const { data: packages = [], refetch } = useQuery({
+        queryKey: ["packages"],
+        queryFn: async () => {
+            const res = await axiosCommon.get("/price/pricing");
+            return res.data;
+        },
+    });
+    console.log(packages);
     return (
         <div>
             <div className="pt-5 my-28" id="pricing">
@@ -24,36 +36,36 @@ const PricingHome = () => {
                             <p className="mt-4 text-sm leading-6 text-gray-300">Product details for Product Type 1</p>
                             <p className="mt-6 flex items-baseline gap-x-1">
                                 <span className="text-4xl font-bold tracking-tight text-white">€ 10 / unit</span><span
-                                className="text-sm font-semibold leading-6 text-gray-300"></span>
+                                    className="text-sm font-semibold leading-6 text-gray-300"></span>
                             </p>
                             <a href="/order" aria-describedby="product1"
-                               className="bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
+                                className="bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
                                 Now</a>
                             <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     40 units
                                 </li>
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     1 feature
                                 </li>
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     Fast delivery
                                 </li>
@@ -72,36 +84,36 @@ const PricingHome = () => {
                                 for Product Type 2</p>
                             <p className="mt-6 flex items-baseline gap-x-1">
                                 <span className="text-4xl font-bold tracking-tight text-white">€ 20 / unit</span><span
-                                className="text-sm font-semibold leading-6 text-gray-300"></span>
+                                    className="text-sm font-semibold leading-6 text-gray-300"></span>
                             </p>
                             <a href="/order" aria-describedby="product2"
-                               className="bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
+                                className="bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500 mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
                                 Now</a>
                             <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     120 units
                                 </li>
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     3 different features
                                 </li>
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     Fast delivery
                                 </li>
@@ -117,36 +129,36 @@ const PricingHome = () => {
                             <p className="mt-4 text-sm leading-6 text-gray-300">Product details for Product Type 3</p>
                             <p className="mt-6 flex items-baseline gap-x-1">
                                 <span className="text-4xl font-bold tracking-tight text-white">€ 50 / unit</span><span
-                                className="text-sm font-semibold leading-6 text-gray-300"></span>
+                                    className="text-sm font-semibold leading-6 text-gray-300"></span>
                             </p>
                             <a href="/order" aria-describedby="product3"
-                               className="bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
+                                className="bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Order
                                 Now</a>
                             <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     240 units
                                 </li>
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     6 different features
                                 </li>
                                 <li className="flex gap-x-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                         aria-hidden="true" className="h-6 w-5 flex-none text-white">
+                                        aria-hidden="true" className="h-6 w-5 flex-none text-white">
                                         <path fill-rule="evenodd"
-                                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                                              clip-rule="evenodd"></path>
+                                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     Fast delivery
                                 </li>
