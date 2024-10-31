@@ -136,39 +136,6 @@ const MyCalendar = () => {
                         </div>
                     </div>
                 </Modal>
-
-
-
-
-
-                //testimg
-                // <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50 ">
-                //     <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-1/3 dark:bg-gray-900/90 dark:text-gray-300 dark:border-white/30 dark:hover:shadow-white/20">
-                //         <div className="border-b px-4 py-2 flex justify-between items-center">
-                //             <h3 className="font-semibold text-lg">{selectedEvent?.title}</h3>
-                //             <button
-                //                 className="text-black close focus:outline-none"
-                //                 onClick={handleClose}
-                //             >
-                //                 &times;
-                //             </button>
-                //         </div>
-                //         <div className="p-4">
-                //             <p><strong>Description:</strong> {selectedEvent?.description}</p>
-                //             <p><strong>Assigned At: </strong> {selectedEvent?.start.toLocaleString()}</p>
-                //             <p><strong>Assigned By: </strong> {selectedEvent?.author}</p>
-                //             <p><strong>Status: </strong> <span className='capitalize'>{selectedEvent?.status}</span></p>
-                //         </div>
-                //         <div className="flex justify-end p-4">
-                //             <button
-                //                 className="px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105"
-                //                 onClick={handleClose}
-                //             >
-                //                 Close
-                //             </button>
-                //         </div>
-                //     </div>
-                // </div>
             )}
         </div>
     );
