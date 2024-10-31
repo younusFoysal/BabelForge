@@ -30,7 +30,7 @@ export function UpdateProfile({ user, refetch }) {
       }
     },
     onError: error => {
-      console.log(error);
+      //console.log(error);
     },
   });
 

@@ -20,7 +20,7 @@ const UserDocuments = () => {
     const axiosCommon = useAxiosCommon();
     const router = useRouter();
 
-    console.log();
+    //console.log();
     
 
     const {data: documents, isLoading, isError, refetch} = useQuery({

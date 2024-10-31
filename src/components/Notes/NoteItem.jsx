@@ -27,7 +27,7 @@ const NoteItem = ({ note, refetch }) => {
 
   // Open modal for editing Note
   const handleEdit = () => {
-    console.log("Edit called");
+    //console.log("Edit called");
     setIsModalOpen(false);
     //setFormData(Note); // Pre-fill form data with the selected Note
     setIsEditModalOpen(true);
