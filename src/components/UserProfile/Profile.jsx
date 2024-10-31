@@ -1,20 +1,21 @@
-"use client";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card } from "@/components/ui/card";
-import useAxiosCommon from "@/lib/axiosCommon";
-import { useUser } from "@clerk/nextjs";
-import { useQuery } from "@tanstack/react-query";
-import Link from "next/link";
-import { Toaster } from "react-hot-toast";
-import { FaNetworkWired } from "react-icons/fa";
-import { GoOrganization } from "react-icons/go";
-import { ImBriefcase } from "react-icons/im";
-import { IoLocationSharp } from "react-icons/io5";
-import { MdOutlineEmail } from "react-icons/md";
-import { UpdateProfile } from "../Profile/UpdateProfile";
-import { TabsTransaction } from "./Tabs";
-import userImage from "@/image/icon/user.png"
+'use client';
+import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Card } from '@/components/ui/card';
+import useAxiosCommon from '@/lib/axiosCommon';
+import { useUser } from '@clerk/nextjs';
+import { useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
+import { Toaster } from 'react-hot-toast';
+import { FaNetworkWired } from 'react-icons/fa';
+import { GoOrganization } from 'react-icons/go';
+import { ImBriefcase } from 'react-icons/im';
+import { IoLocationSharp } from 'react-icons/io5';
+import { MdOutlineEmail } from 'react-icons/md';
+import { UpdateProfile } from '../Profile/UpdateProfile';
+import { TabsTransaction } from './Tabs';
+import userImage from '@/image/icon/user.png';
+import UserBadge from '../Profile/UserBadge';
 
 const Profile = () => {
   const axiosCommon = useAxiosCommon();
@@ -22,14 +23,13 @@ const Profile = () => {
   const { user: clerkuser } = useUser();
   const uemail = clerkuser?.primaryEmailAddress?.emailAddress;
   const email = uemail;
-  console.log("email", email);
 
   const {
     data: user = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["user-profile", email],
+    queryKey: ['user-profile', email],
     queryFn: async () => {
       if (!email) return [];
       const { data } = await axiosCommon.get(`/api/user/${email}`);
@@ -38,7 +38,7 @@ const Profile = () => {
   });
 
   const { data: teams = [] } = useQuery({
-    queryKey: ["userteams", email],
+    queryKey: ['userteams', email],
     queryFn: async () => {
       if (!email) return [];
       const { data } = await axiosCommon.get(`/team/teams/my-teams/${email}`);
@@ -52,7 +52,7 @@ const Profile = () => {
     isLoading: isTransactionsLoading,
     refetch: refetchTransactions,
   } = useQuery({
-    queryKey: ["usertransactions", email],
+    queryKey: ['usertransactions', email],
     queryFn: async () => {
       if (!email) return [];
       const { data } = await axiosCommon.get(`/pay/payments/${email}`);
@@ -60,7 +60,6 @@ const Profile = () => {
     },
     enabled: !!email,
   });
-console.log(transactions);
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
@@ -75,14 +74,8 @@ console.log(transactions);
             <p className="flex justify-start items-center gap-2 w-full p-1">
               <span className=" rounded-full p-1">
                 <Avatar className="w-40 h-40">
-                  <AvatarImage
-                    src={
-                      user?.image_url
-                        ? user?.image_url
-                        : userImage
-                    }
-                  />
-                  <AvatarFallback>Bable</AvatarFallback>
+                  <AvatarImage src={user?.image_url ? user?.image_url : userImage} />
+                  <AvatarFallback>Babel</AvatarFallback>
                 </Avatar>
               </span>
             </p>
@@ -90,8 +83,11 @@ console.log(transactions);
           <div className="p-2 mb-2 rounded-md">
             <UpdateProfile user={user} refetch={refetch} />
           </div>
-          <div>
-            <p className="text-2xl my-6">{user?.firstName} {user?.lastName}</p>
+          <div className="flex items-center gap-3">
+            <p className="text-2xl capitalize inline my-6">
+              {user?.firstName} {user?.lastName}
+            </p>
+            <UserBadge />
           </div>
 
           {/* card content */}
@@ -114,9 +110,7 @@ console.log(transactions);
                 <span>
                   <FaNetworkWired className="text-lg"></FaNetworkWired>
                 </span>
-                <p className="hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">
-                  Your Network
-                </p>
+                <p className="hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">Your Network</p>
               </div>
               {/* 3 */}
               <div className="flex  items-center gap-4">
@@ -124,11 +118,7 @@ console.log(transactions);
                   <GoOrganization className="text-lg"></GoOrganization>
                 </span>
                 <p className="hover:bg-gray-200 w-full p-2 rounded-md    dark:hover:bg-gray-900 ">
-                  {user?.organization ? (
-                    user?.organization
-                  ) : (
-                    <p>No Organization</p>
-                  )}
+                  {user?.organization ? user?.organization : <p>No Organization</p>}
                 </p>
               </div>
               {/* 4*/}
@@ -150,15 +140,12 @@ console.log(transactions);
                 <MdOutlineEmail className="text-xl"></MdOutlineEmail>
               </span>
 
-              <p className="hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">
-                {user?.email}
-              </p>
+              <p className="hover:bg-gray-200 w-full p-2 rounded-md dark:hover:bg-gray-900 ">{user?.email}</p>
             </div>
 
             {/* teams */}
 
-            <Link className="mt-12  text-xs hover:underline" href={""}>
-              {" "}
+            <Link className="mt-12  text-xs hover:underline" href="/privacy">
               View privacy policy
             </Link>
           </Card>

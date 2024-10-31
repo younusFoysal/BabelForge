@@ -39,7 +39,7 @@ const Reviews = () => {
     } else {
       data.reviewRating = rating;
     }
-    console.log(data);
+    //console.log(data);
     reset({
       name: userfullNameorEmail || "Your Name",
       message: "",

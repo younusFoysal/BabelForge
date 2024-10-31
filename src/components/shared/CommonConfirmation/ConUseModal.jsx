@@ -14,7 +14,7 @@ const ConUseModal = () => {
 
     const handleConfirmDelete = () => {
         // Logic to delete the item
-        console.log(`Deleted ${itemToDelete}`);
+        //console.log(`Deleted ${itemToDelete}`);
         setIsModalOpen(false);
     };
 

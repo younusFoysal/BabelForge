@@ -8,7 +8,7 @@ const TestModal = () => {
     const [itemToDelete, setItemToDelete] = useState('');
 
     const handeHabijabi = () => {
-        console.log("handeHabijabi Called on Yes");
+        //console.log("handeHabijabi Called on Yes");
         setIsModalOpen(false);
     }
 

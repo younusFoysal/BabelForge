@@ -46,7 +46,7 @@ const MyCalendar = () => {
 
     const handleClose = () => setShowModal(false);
 
-    console.log('event: ', selectedEvent);
+    //console.log('event: ', selectedEvent);
 
     const eventPropGetter = (event) => {
         let backgroundColor = 'lightblue';

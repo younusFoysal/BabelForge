@@ -94,7 +94,7 @@ export async function POST(req) {
         status: 200,
       });
     } catch (error) {
-      console.log("Error deleting user:", error);
+      //console.log("Error deleting user:", error);
       return NextResponse.json("Error occured", {
         status: 400,
       });
