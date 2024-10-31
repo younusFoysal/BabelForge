@@ -1,5 +1,6 @@
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
+import Link from 'next/link';
 import React from 'react';
 
 const PricingHome = () => {
@@ -38,8 +39,8 @@ const PricingHome = () => {
                                         <span className="text-4xl font-bold tracking-tight text-black dark:text-white">$ {pack?.price} / {pack?.priceDetails}</span><span
                                             className="text-sm font-semibold leading-6 text-gray-300"></span>
                                     </p>
-                                    <a href="/order" aria-describedby="product1"
-                                        className="capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white  mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 text-white hover:scale-105 duration-300">View Details</a>
+                                    <Link href="/pricing" aria-describedby="product1"
+                                        className="capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white  mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 text-white hover:scale-105 duration-300">View Details</Link>
                                     <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                                         <li className="flex gap-x-3">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
