@@ -53,7 +53,7 @@ const DocumentPage = ({ params }) => {
                 setDocumentTitle(fetchedDoc?.content?.title);
                 setIsEditable(fetchedDoc?.content?.email === email); 
             } catch (err) {
-                setError('Failed to fetch Document');
+                setError('Failed to Fetch Document');
                 //console.error(err);
             } finally {
                 setLoading(false); 
