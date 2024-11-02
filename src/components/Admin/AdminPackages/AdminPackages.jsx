@@ -317,6 +317,27 @@ const AdminPackages = ({ priceingsec }) => {
                   </p>
                 </td>
               </tr>
+
+              <tr>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="font-medium">Diagrams</p>
+                </td>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="flex justify-center text-center">
+                    {packages[0]?.Diagrams ? trueSVG : falseSVG}
+                  </p>
+                </td>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="flex justify-center text-center">
+                    {packages[1]?.Diagrams ? trueSVG : falseSVG}
+                  </p>
+                </td>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="flex justify-center text-center">
+                    {packages[2]?.Diagrams ? trueSVG : falseSVG}
+                  </p>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
