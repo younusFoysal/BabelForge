@@ -1,22 +1,21 @@
-'use client';
-import React from 'react';
-import AdminStatCards from '@/components/Admin/AdminDashboard/AdminStatCards';
-import PaymentPieChart from '@/components/Admin/AdminDashboard/PaymentPieChart';
-import Transactions from '@/components/Admin/AdminDashboard/Transactions';
-import useTrans from '@/hooks/useTrans';
-import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
-import PayGraph from '@/components/Admin/AdminDashboard/PayGraph';
-import useRole from '@/hooks/useRole';
-import { redirect } from 'next/navigation';
+"use client";
+import React from "react";
+import AdminStatCards from "@/components/Admin/AdminDashboard/AdminStatCards";
+import PaymentPieChart from "@/components/Admin/AdminDashboard/PaymentPieChart";
+import Transactions from "@/components/Admin/AdminDashboard/Transactions";
+import useTrans from "@/hooks/useTrans";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
+import PayGraph from "@/components/Admin/AdminDashboard/PayGraph";
+import useRole from "@/hooks/useRole";
+import { redirect } from "next/navigation";
 
 const AdminDashboard = () => {
   const [trans, isLoading] = useTrans();
-  const [role] = useRole();
+  const [role, roleLoading] = useRole();
 
-  if (role !== 'admin') redirect('/');
-  
+  if (isLoading || roleLoading) return <LoadingSpinner></LoadingSpinner>;
 
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (role !== "admin") redirect("/");
 
   return (
     <div className="px-4 h-full  py-4 rounded-md">

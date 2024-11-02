@@ -16,9 +16,7 @@ const connectDb = async () => {
     });
     db = client.db("babelforgeDB");
     return db;
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 };
 
 export default connectDb;

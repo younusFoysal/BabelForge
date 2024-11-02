@@ -18,9 +18,9 @@ import { ModeToggle } from "../Theme/ModeToggle";
 import logo from "@/image/Home/babellogo.png";
 import AdminCurrentBox from "./AdminCurrentBox";
 import AdminMenubar from "./AdminMenubar";
-import {FaMoneyBillTransfer} from "react-icons/fa6";
-import {IoMailUnreadOutline, IoPricetagOutline} from "react-icons/io5";
-import {GiStarsStack} from "react-icons/gi";
+import { FaMoneyBillTransfer } from "react-icons/fa6";
+import { IoMailUnreadOutline, IoPricetagOutline } from "react-icons/io5";
+import { GiStarsStack } from "react-icons/gi";
 
 export default function SideBar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -34,7 +34,6 @@ export default function SideBar() {
       }
     };
 
-    // Add resize listener
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -44,9 +43,9 @@ export default function SideBar() {
 
   const toggleSidebar = (tab) => {
     if (currentSidebarTab === tab) {
-      setIsSidebarOpen(!isSidebarOpen); // Toggle the sidebar if the same tab is clicked
+      setIsSidebarOpen(!isSidebarOpen);
     } else {
-      setIsSidebarOpen(true); // Open the sidebar if a different tab is clicked
+      setIsSidebarOpen(true);
     }
     setCurrentSidebarTab(tab);
   };
@@ -96,17 +95,17 @@ export default function SideBar() {
       links: "/dashboard/admin/transactions",
     },
     {
-      icon: <IoMailUnreadOutline  />,
+      icon: <IoMailUnreadOutline />,
       label: "Inbox",
       links: "/dashboard/admin/inbox",
     },
     {
-      icon: <GiStarsStack  />,
+      icon: <GiStarsStack />,
       label: "Reviews",
       links: "/dashboard/admin/reviews",
     },
     {
-      icon: <IoPricetagOutline  />,
+      icon: <IoPricetagOutline />,
       label: "packages",
       links: "/dashboard/admin/packages",
     },

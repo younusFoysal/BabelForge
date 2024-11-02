@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Version 7 Pre Build Fixed">
-      <change afterPath="$PROJECT_DIR$/src/image/Home/dark-dash.png" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="Version 7 Deploy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/babellogo.glb" beforeDir="false" afterPath="$PROJECT_DIR$/public/babellogo.glb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/home/FAQ.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/FAQ.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Doc/UserDocuments.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Doc/UserDocuments.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="foysal" />
+        <entry key="$PROJECT_DIR$" value="prepod" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,7 +68,7 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "prepod",
+    "git-widget-placeholder": "master",
     "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -136,22 +131,6 @@
       <workItem from="1729442824871" duration="1439000" />
       <workItem from="1729662069791" duration="5657000" />
       <workItem from="1729684647631" duration="29920000" />
-    </task>
-    <task id="LOCAL-00028" summary="carusel added">
-      <option name="closed" value="true" />
-      <created>1727292804794</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1727292804794</updated>
-    </task>
-    <task id="LOCAL-00029" summary="carusel fix">
-      <option name="closed" value="true" />
-      <created>1727293301761</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1727293301761</updated>
     </task>
     <task id="LOCAL-00030" summary="update">
       <option name="closed" value="true" />
@@ -529,7 +508,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730359671900</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Version 7 Deploy">
+      <option name="closed" value="true" />
+      <created>1730411130067</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1730411130067</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Version 7 Deploy">
+      <option name="closed" value="true" />
+      <created>1730411648141</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1730411648141</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,7 +543,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Admin Dash Added" />
     <MESSAGE value="version" />
     <MESSAGE value="button fix" />
     <MESSAGE value="Awesome Design Implemented" />
@@ -573,6 +567,7 @@
     <MESSAGE value="Version 7 Pre Build" />
     <MESSAGE value="Version 7 Pre Build Fix" />
     <MESSAGE value="Version 7 Pre Build Fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 7 Pre Build Fixed" />
+    <MESSAGE value="Version 7 Deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 7 Deploy" />
   </component>
 </project>

@@ -33,7 +33,7 @@ const TextDoc = () => {
 
     const content = quill.getContents();
     try {
-      console.log(content);
+      //console.log(content);
 
       const data = {
         content,
@@ -43,10 +43,10 @@ const TextDoc = () => {
       // Send email with the content
       const response = await axiosCommon.post('/document/documents', data);
       const docId = response.data.docId;
-      console.log("Document saved with ID:", docId);
+      //console.log("Document saved with ID:", docId);
 
       const shareableLink = `${window.location.origin}/dashboard/doc/${docId}`;
-      console.log("Shareable Link:", shareableLink);
+      //console.log("Shareable Link:", shareableLink);
       alert(`Shareable Link: ${shareableLink}`);
     } catch (error) {
       console.error("Error saving document:", error);

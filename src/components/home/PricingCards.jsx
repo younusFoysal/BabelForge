@@ -7,7 +7,7 @@ const PricingCards = () => {
 
   useEffect(() => {
     const cards = Array.from(document.querySelectorAll(`.${styles.card}`));
-    console.log('card number', cards);
+    //console.log('card number', cards);
     const overlay = overlayRef.current;
     const cardsContainer = cardsContainerRef.current;
 

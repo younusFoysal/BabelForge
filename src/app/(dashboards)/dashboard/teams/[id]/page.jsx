@@ -3,7 +3,7 @@ import Team from '@/components/Teams/Team';
 
 const Page = ({ params }) => {
   const id = params.id;
-  console.log(id);
+  //console.log(id);
 
   return (
     <div>

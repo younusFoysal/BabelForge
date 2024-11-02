@@ -16,12 +16,12 @@ const TeamInfo = ({ stats, isLoading }) => {
       </CardHeader>
       <CardContent className="grid gap-8">
         {stat &&
-          stat.newmamber?.slice(0, 5).map(user => {
+          stat?.newmamber?.slice(0, 5).map(user => {
             return (
               <div key={user} className="flex items-center gap-4">
                 <Avatar className="h-9 w-9 sm:flex">
-                  <Image src={userPhoto} />
-                  {/* <AvatarFallback>OM</AvatarFallback> */}
+                  <Image src={userPhoto} alt="User Photo" />
+                  {/* <AvatarFallback>OMm</AvatarFallback> */}
                 </Avatar>
                 <div className="grid gap-1">
                   {/* <p className="text-sm font-medium leading-none">{user?.name}</p> */}
