@@ -23,8 +23,8 @@ import { usePathname, useRouter } from "next/navigation";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
-import { toast } from '@/hooks/use-toast';
-import Alert from '@/components/shared/Alert';
+import { toast } from "@/hooks/use-toast";
+import Alert from "@/components/shared/Alert";
 import Link from "next/link";
 import usePerson from "@/hooks/usePerson";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
@@ -37,10 +37,9 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
   const router = useRouter();
   const path = usePathname();
   const axiosCommon = useAxiosCommon();
-  const [currentDate, setCurrentDate] = useState('');
+  const [currentDate, setCurrentDate] = useState("");
   const [showManager, setShowManager] = useState(false);
-  const [managerEmail, setManagerEmail] = useState('');
-
+  const [managerEmail, setManagerEmail] = useState("");
 
   const [person] = usePerson(managerEmail);
 
@@ -54,8 +53,8 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
 
     // Format date as YYYY-MM-DD
     const year = gmt6Date.getUTCFullYear();
-    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
+    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, "0");
+    const day = String(gmt6Date.getUTCDate()).padStart(2, "0");
     const formattedDate = `${year}-${month}-${day}`;
 
     // Set the formatted date and time
@@ -71,15 +70,15 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
         if (res.data.modifiedCount) {
           projectRefetch();
 
-          !data.favorite ?
-            toast({
-              description: 'Project Added To Favorite',
-              variant: 'success',
-            }) :
-            toast({
-              description: 'Project Removed From Favorite',
-              variant: 'success',
-            })
+          !data.favorite
+            ? toast({
+                description: "Project Added To Favorite",
+                variant: "success",
+              })
+            : toast({
+                description: "Project Removed From Favorite",
+                variant: "success",
+              });
         }
       });
   };
@@ -94,48 +93,46 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
   };
 
   const handleEndProject = (id) => {
-
     const today = new Date();
-    const formattedDate = today.toISOString().split('T')[0];
+    const formattedDate = today.toISOString().split("T")[0];
     setCurrentDate(formattedDate);
 
-    axiosCommon.patch(`project/projects/update/${id}`, { pedate: currentDate })
-      .then(res => {
+    axiosCommon
+      .patch(`project/projects/update/${id}`, { pedate: currentDate })
+      .then((res) => {
         if (res.data.modifiedCount) {
           projectRefetch();
           toast({
-            description: 'Project Ended',
-            variant: 'success',
+            description: "Project Ended",
+            variant: "success",
           });
         }
-      })
-  }
+      });
+  };
 
   const handleDeleteProject = (id) => {
-    axiosCommon.delete(`project/projects/${id}`)
-      .then(res => {
-        if (res.data.deletedCount) {
-          projectRefetch();
-          toast({
-            description: 'Project Deleted',
-            variant: 'success',
-          });
-        }
-        else {
-          toast({
-            description: 'Something went wrong',
-            variant: 'error',
-          });
-        }
-      })
-  }
+    axiosCommon.delete(`project/projects/${id}`).then((res) => {
+      if (res.data.deletedCount) {
+        projectRefetch();
+        toast({
+          description: "Project Deleted",
+          variant: "success",
+        });
+      } else {
+        toast({
+          description: "Something went wrong",
+          variant: "error",
+        });
+      }
+    });
+  };
   const handleManager = (email) => {
     setShowManager(true);
     setManagerEmail(email);
-  }
+  };
   const handleClose = () => {
     setShowManager(false);
-  }
+  };
   // if (isLoading) return <LoadingSpinner></LoadingSpinner>
   // const { firstName, lastName, email, image_url } = person?.data;
   return (
@@ -146,7 +143,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
           <TableRow>
             {theads?.map((thead, index) =>
               thead === "Fav" ? (
-                <TableHead key={index} >
+                <TableHead key={index}>
                   <FaStar className="text-black text-lg dark:text-white"></FaStar>
                 </TableHead>
               ) : (
@@ -199,8 +196,23 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                     {data.pname}
                   </TableCell>
                   <TableCell>{data.pcategory}</TableCell>
-                  <TableCell className="cursor-pointer hover:text-blue-600" onClick={() => handleManager(data.pmanager)}>{data.pmname}</TableCell>
-                  <TableCell><Link href={data.purl} target="_blank" className="hover:text-blue-600">{data.purl}</Link></TableCell>
+                  <TableCell
+                    className="cursor-pointer hover:text-blue-600"
+                    onClick={() => handleManager(data.pmanager)}
+                  >
+                    {data.pmname}
+                  </TableCell>
+                  <TableCell>
+                    <Link
+                      href={data.purl}
+                      target="_blank"
+                      className="hover:text-blue-600"
+                    >
+                      {data.purl.length > 20
+                        ? `${data.purl.substring(0, 20)}...`
+                        : data.purl}
+                    </Link>
+                  </TableCell>
                   <TableCell>{data.psdate}</TableCell>
                   <TableCell>{data.pedate}</TableCell>
                   <TableCell>
@@ -210,8 +222,8 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                           <Ellipsis></Ellipsis>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
-                          {
-                            !data.pedate && <DropdownMenuItem>
+                          {!data.pedate && (
+                            <DropdownMenuItem>
                               <p
                                 onClick={() =>
                                   router.push(`/dashboard/projects/${data._id}`)
@@ -220,17 +232,19 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                                 Update Project
                               </p>
                             </DropdownMenuItem>
-                          }
-
+                          )}
 
                           <DropdownMenuItem>
                             {/* <p onClick={() => handleEndProject(data._id)} > End Project </p> */}
-                            <Alert title='Are you absolutely sure?'
-                              description='This action cannot be undone  and the project will be deleted!' onContinue={() => handleDeleteProject(data._id)}>
-                              {openDialog => (
+                            <Alert
+                              title="Are you absolutely sure?"
+                              description="This action cannot be undone  and the project will be deleted!"
+                              onContinue={() => handleDeleteProject(data._id)}
+                            >
+                              {(openDialog) => (
                                 <button
                                   className="w-full text-left"
-                                  onClick={e => {
+                                  onClick={(e) => {
                                     e.stopPropagation();
                                     openDialog();
                                   }}
@@ -241,15 +255,18 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                             </Alert>
                           </DropdownMenuItem>
 
-                          {
-                            !data.pedate && <DropdownMenuItem>
+                          {!data.pedate && (
+                            <DropdownMenuItem>
                               {/* <p onClick={() => handleEndProject(data._id)} > End Project </p> */}
-                              <Alert title='Are you absolutely sure?'
-                                description='This action cannot be undone. This will end the project' onContinue={() => handleEndProject(data._id)}>
-                                {openDialog => (
+                              <Alert
+                                title="Are you absolutely sure?"
+                                description="This action cannot be undone. This will end the project"
+                                onContinue={() => handleEndProject(data._id)}
+                              >
+                                {(openDialog) => (
                                   <button
                                     className="w-full text-left"
-                                    onClick={e => {
+                                    onClick={(e) => {
                                       e.stopPropagation();
                                       openDialog();
                                     }}
@@ -259,8 +276,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                                 )}
                               </Alert>
                             </DropdownMenuItem>
-                          }
-
+                          )}
                         </DropdownMenuContent>
                       </DropdownMenu>
                     )}
@@ -323,8 +339,13 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
                 </Avatar>
               </div>
               <div className="text-center">
-                <p><strong>Name: </strong> {person?.data?.firstName + " " + person?.data?.lastName}</p>
-                <p><strong>Email: </strong> {person?.data?.email}</p>
+                <p>
+                  <strong>Name: </strong>{" "}
+                  {person?.data?.firstName + " " + person?.data?.lastName}
+                </p>
+                <p>
+                  <strong>Email: </strong> {person?.data?.email}
+                </p>
               </div>
             </div>
             <div className="flex justify-end p-4">
@@ -338,7 +359,7 @@ const CommonTable = ({ theads, tdata, projectRefetch, inboxRefetch }) => {
           </div>
         </div>
       )}
-    </div >
+    </div>
   );
 };
 

@@ -1,13 +1,19 @@
-import useAxiosCommon from '@/lib/axiosCommon';
-import { Link2 } from 'lucide-react';
-import Link from 'next/link';
-import React from 'react';
+import useAxiosCommon from "@/lib/axiosCommon";
+import { Link2 } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
-import { Button } from '../ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { Button } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-import { MoreHorizontal } from 'lucide-react';
-import { toast } from '@/hooks/use-toast';
+import { MoreHorizontal } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 const LinkBox = ({ id, refetch, link }) => {
   const axiosCommon = useAxiosCommon();
@@ -21,14 +27,17 @@ const LinkBox = ({ id, refetch, link }) => {
     if (data.result.modifiedCount > 0) {
       refetch();
       toast({
-        description: 'Remove link successfully',
-        variant: 'success',
+        description: "Remove link successfully",
+        variant: "success",
       });
     }
   };
 
   // Truncate link if it exceeds 20 characters
-  const truncatedLink = link.length > 20 ? `${link.substring(0, 20)}...` : link;
+  const BigtruncatedLink =
+    link.length > 70 ? `${link.substring(0, 70)}...` : link;
+  const SmtruncatedLink =
+    link.length > 20 ? `${link.substring(0, 20)}...` : link;
 
   return (
     <div className="flex w-full items-start justify-between rounded-md border px-4 py-2 mb-3 dark:bg-[#181024] dark:border-[#3e1878c2]">
@@ -37,7 +46,8 @@ const LinkBox = ({ id, refetch, link }) => {
           <Link2 />
         </span>
         <Link href={link} className="hover:underline" target="_blank">
-          {truncatedLink}
+          <span className="block sm:hidden">{SmtruncatedLink}</span>
+          <span className="hidden sm:block">{BigtruncatedLink}</span>
         </Link>
       </div>
       <DropdownMenu open={open} onOpenChange={setOpen}>
