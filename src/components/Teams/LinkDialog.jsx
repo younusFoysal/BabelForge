@@ -20,7 +20,6 @@ const LinkDialog = ({ id, refetch, index }) => {
   const [links, setlinks] = useState(null);
 
   const handlesubmit = async () => {
-    // Add team member to the project
     if (links === null) {
       toast({
         description: "Invalid link",
