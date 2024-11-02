@@ -69,7 +69,7 @@ const PriceCard = () => {
   } = useQuery({
     queryKey: ["pricing"],
     queryFn: async () => {
-      const data = await axiosCommon.get("/price/pricing ");
+      const data = await axiosCommon.get("/price/pricing");
       return data;
     },
   });

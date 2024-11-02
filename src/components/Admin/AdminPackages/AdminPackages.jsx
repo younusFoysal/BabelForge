@@ -2,18 +2,28 @@
 
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { redirect, usePathname, useRouter } from "next/navigation";
 import React from "react";
 import UpdatePricing from "./UpdatePricing/UpdatePricing";
-import { useUser } from "@clerk/nextjs";
+import useRole from "@/hooks/useRole";
+import { useAuth } from "@clerk/nextjs";
+import { toast } from "@/hooks/use-toast";
+import usePlan from "@/hooks/usePlan";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const AdminPackages = ({ priceingsec }) => {
   const router = useRouter();
-  const axiosCommon = useAxiosCommon();
+  const pathname = usePathname();
+  const [role, roleLoading] = useRole();
+  const { userId } = useAuth();
+  const auth = !!userId;
 
-  const { user } = useUser();
-  const uemail = user?.primaryEmailAddress?.emailAddress;
-  const { data: packages = [], refetch } = useQuery({
+  const axiosCommon = useAxiosCommon();
+  const {
+    data: packages = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ["packages"],
     queryFn: async () => {
       const res = await axiosCommon.get("/price/pricing");
@@ -21,21 +31,33 @@ const AdminPackages = ({ priceingsec }) => {
     },
   });
 
-  // console.log(packages);
-
-  const handlePay = (id) => {
-    if (priceingsec) {
-      router.push(`/checkout/${id}`);
+  const handlePay = (link) => {
+    if (link == "Basic" && userId) {
+      toast({
+        description: "Basic plan is available for free",
+        variant: "",
+      });
+      return;
+    }
+    if (!userId) {
+      router.push("/sign-in");
+    }
+    if (priceingsec && userId) {
+      if (link == "Standard") {
+        router.push(`${process.env.NEXT_PUBLIC_STRIPE_MONTHLY_PLAN_LINK}`);
+      } else if (link == "Premium") {
+        router.push(`${process.env.NEXT_PUBLIC_STRIPE_YEARLY_PLAN_LINK}`);
+      }
     }
   };
 
-  const admin = [
-    "babelforgeltd@gmail.com",
-    "babelforgeltdfgd@gmail.com",
-    "morshidulrahman4167@gmail.com",
-  ];
+  if (roleLoading || isLoading) return <LoadingSpinner />;
 
-  const isAdmin = admin.includes(uemail);
+  if (pathname?.includes("/dashboard/admin/packages")) {
+    if (role !== "admin") {
+      redirect("/dashboard");
+    }
+  }
 
   // SVGs
   const trueSVG = (
@@ -78,9 +100,7 @@ const AdminPackages = ({ priceingsec }) => {
   return (
     <div>
       <div
-        className={`relative z-10 overflow-hidden rounded-sm text-white p-11 shadow-default ${
-          isAdmin ? "bg-bgColor/90" : "bg-transparent"
-        }`}
+        className={`relative z-10 pt-[140px] overflow-hidden rounded-sm text-black dark:text-white p-11 shadow-default bg-white/50 dark:bg-[#181024b5]`}
       >
         <div className="w-full overflow-x-auto">
           <table className="w-full">
@@ -91,29 +111,41 @@ const AdminPackages = ({ priceingsec }) => {
                 {packages.map((pack) => (
                   <th key={pack._id} className="w-1/4 min-w-[200px] px-5">
                     <div className="text-left py-4 h-[250px] flex flex-col justify-between">
-                      <span className="mb-3.5 block text-xl font-bold text-white ">
+                      <span className="mb-3.5 block text-xl font-bold text-black dark:text-white ">
                         {pack.title}
                       </span>
                       <h4 className="mb-2">
-                        <span className="text-[28px] font-bold text-white lg:text-[32px]">
-                          ${pack.price}
+                        <span className="text-[28px] font-bold text-black dark:text-white lg:text-[32px]">
+                          {pack.title == "Basic" ? "Free" : `${pack.price}`}
                         </span>
                         <span className="font-medium my-auto">
                           {" "}
-                          / {pack.priceDetails}
+                          {pack.price === "Free" ? "" : "/"}{" "}
+                          {pack.price === "Free" ? "" : pack.priceDetails}
                         </span>
                       </h4>
-                      <p className="text-base font-medium">
-                        {pack.featuresTitle}
+                      <p className="text-[14px] opacity-85 font-medium">
+                        {pack.description}
                       </p>
 
-                      {/* TODO: UPDATE COMPONENT */}
-                      <UpdatePricing
-                        pack={pack}
-                        priceingsec={priceingsec}
-                        handlePay={handlePay}
-                        refetch={refetch}
-                      />
+                      {pack.price !== "Free" ? (
+                        <UpdatePricing
+                          pack={pack}
+                          title={pack.title}
+                          priceingsec={priceingsec}
+                          handlePay={handlePay}
+                          refetch={refetch}
+                        />
+                      ) : (
+                        <button
+                          onClick={() =>
+                            router.push(`${auth ? "/dashboard" : "/sign-up"}`)
+                          }
+                          className="overflow-hidden mt-auto w-full p-2 h-12  text-white border-none rounded-md text-xl font-bold cursor-pointer  capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white"
+                        >
+                          {auth ? "Dashboard" : "Signup"}
+                        </button>
+                      )}
                     </div>
                   </th>
                 ))}
@@ -124,20 +156,22 @@ const AdminPackages = ({ priceingsec }) => {
               {/* table header */}
               <tr>
                 <td className="px-7 py-5 ">
-                  <h5 className="font-medium text-white">Key Features</h5>
+                  <h5 className="font-medium text-black dark:text-white">
+                    Key Features
+                  </h5>
                 </td>
                 <td className="px-7 py-5 ">
-                  <h5 className="text-center font-medium ttext-white">
+                  <h5 className="text-center font-medium text-black dark:text-white">
                     Features Limits
                   </h5>
                 </td>
                 <td className=" px-7 py-5 ">
-                  <h5 className="text-center font-medium text-white">
+                  <h5 className="text-center font-medium text-black dark:text-white">
                     Features Limits
                   </h5>
                 </td>
                 <td className=" px-7 py-5 d">
-                  <h5 className="text-center font-medium text-white">
+                  <h5 className="text-center font-medium text-black dark:text-white">
                     Features Limits
                   </h5>
                 </td>
@@ -145,20 +179,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* projects limit */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Projects</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[0]?.projects}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[1]?.projects}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">
                     {packages[2]?.projects}
                   </p>
@@ -167,51 +201,51 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* Teams limit */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700  dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Teams</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[0]?.team}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[1]?.team}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[2]?.team}</p>
                 </td>
               </tr>
               {/* tasks limit */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Tasks</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[0]?.task}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[1]?.task}</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="text-center font-medium">{packages[2]?.task}</p>
                 </td>
               </tr>
 
               {/* group chat feature */}
               <tr>
-                <td className="border-t border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Group Chat</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.groupchat ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.groupchat ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.groupchat ? trueSVG : falseSVG}
                   </p>
@@ -220,20 +254,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* canvas feature */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Canvas</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.canvas ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.canvas ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.canvas ? trueSVG : falseSVG}
                   </p>
@@ -242,20 +276,20 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* babel ai feature */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Babel AI</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.BabelAi ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.BabelAi ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.BabelAi ? trueSVG : falseSVG}
                   </p>
@@ -264,22 +298,43 @@ const AdminPackages = ({ priceingsec }) => {
 
               {/* meetings feature */}
               <tr>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="font-medium">Meetings</p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[0]?.meeting ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[1]?.meeting ? trueSVG : falseSVG}
                   </p>
                 </td>
-                <td className="border-t  border-[#ffffff3d] px-7 py-5  ">
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
                   <p className="flex justify-center text-center">
                     {packages[2]?.meeting ? trueSVG : falseSVG}
+                  </p>
+                </td>
+              </tr>
+
+              <tr>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="font-medium">Diagrams</p>
+                </td>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="flex justify-center text-center">
+                    {packages[0]?.Diagrams ? trueSVG : falseSVG}
+                  </p>
+                </td>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="flex justify-center text-center">
+                    {packages[1]?.Diagrams ? trueSVG : falseSVG}
+                  </p>
+                </td>
+                <td className="border-t  border-purple-700 dark:border-[#3e1878c2] px-7 py-5  ">
+                  <p className="flex justify-center text-center">
+                    {packages[2]?.Diagrams ? trueSVG : falseSVG}
                   </p>
                 </td>
               </tr>
@@ -310,8 +365,8 @@ const AdminPackages = ({ priceingsec }) => {
                   y2="188"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#3056D3" stop-opacity="0.15"></stop>
-                  <stop offset="1" stop-color="#C4C4C4" stop-opacity="0"></stop>
+                  <stop stopColor="#3056D3" stopOpacity="0.15"></stop>
+                  <stop offset="1" stopColor="#C4C4C4" stopOpacity="0"></stop>
                 </linearGradient>
               </defs>
             </svg>

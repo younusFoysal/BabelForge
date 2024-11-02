@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
+import ReactStars from "react-rating-stars-component";
 
 const Review = () => {
   const axiosCommon = useAxiosCommon();
@@ -46,14 +47,14 @@ const Review = () => {
   return (
     <section className="px-4 grid items-center grid-cols-1 md:grid-cols-8 gap-5 md:gap-20 container mx-auto pb-[90px]">
       <div className="col-span-5 md:col-span-3 text-center md:text-left">
-        <h2 className="text-[35px] md:text-[45px] mb-4 font-extrabold text-white ">
-          Why customers <br /> love using our dashboards
+        <h2 className="text-[35px] md:text-[45px] mb-4 font-extrabold text-black dark:text-white ">
+          Why customers <br /> love using our Dashboards
         </h2>
-        <p className=" text-[16px] md:text-[20px] font-light text-white">Based on 6000+ reviews on G2</p>
+
       </div>
       <div className="col-span-5">
         <Slider {...settings}>
-          {allReviews.map((review, index) => (
+          {allReviews.slice(0,6).map((review, index) => (
             <div
               key={review._id}
               className="bg-gradient-to-b from-[#6161FF] to-[#6161FF] my-14 md:my-16  py-16 px-12 shadow-[#6161FF] rounded-xl shadow-2xl"
@@ -64,7 +65,15 @@ const Review = () => {
               </p>
               <div className="text-[28px] flex items-center gap-2 text-yellow-500 ">
                 <span className="text-xl font-bold">
-                  <Rating style={{ maxWidth: 180 }} value={review.reviewRating} />
+                  {/* <Rating style={{ maxWidth: 180 }} value={review.reviewRating} /> */}
+                  <ReactStars
+                   count={5}
+                   value={review?.reviewRating}
+                   edit={false}
+                    size={40}
+                    readonly={true}
+                    activeColor="#ffd700"
+                  />
                 </span>
               </div>
             </div>

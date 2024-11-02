@@ -43,21 +43,21 @@ export default function AddTask({ handleAddTask }) {
   const handleSubmit = async () => {
     const newTask = {
       tname: taskName || "Untitled Task",
-      tdes: "This is a description",
-      tcomments: [
-        { user_ID: "comment1", datetime: "10/12/24" },
-        { user_ID: "comment2", datetime: "11/12/24" },
-      ],
-      tassignTo: username,
+      tdes: "Add Description Here",
+      // tcomments: [
+      //   { user_ID: 'comment1', datetime: '10/12/24' },
+      //   { user_ID: 'comment2', datetime: '11/12/24' },
+      // ],
+      tassignTo: [useremail],
       tproces: "todo",
       author: useremail,
-      teamId: "team_ID",
+      teamId: "No Team",
       tdate: currentDate,
       ttime: currentTime,
     };
 
     await handleAddTask(newTask);
-    setTaskName(""); // Clear input after submitting
+    setTaskName("");
   };
 
   return (
@@ -67,11 +67,11 @@ export default function AddTask({ handleAddTask }) {
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
         placeholder="Add new task"
-        className="p-2 border border-gray-300 rounded-lg flex-1 dark:bg-transparent"
+        className="p-2 border border-gray-300 rounded-lg flex-1 dark:bg-transparent dark:border-gray-700"
       />
       <button
         onClick={handleSubmit}
-        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+        className=" px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600  rounded-md transition-all duration-500 text-sm  flex gap-1 items-center group  dark:bg-gray-50 text-white"
       >
         Add Task
       </button>

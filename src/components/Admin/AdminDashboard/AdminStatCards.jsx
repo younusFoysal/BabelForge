@@ -3,7 +3,6 @@ import React from "react";
 import { LuEye } from "react-icons/lu";
 import useAxiosCommon from "@/lib/axiosCommon";
 import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const AdminStatCards = () => {
   const axiosCommon = useAxiosCommon();
@@ -15,8 +14,6 @@ const AdminStatCards = () => {
       return data;
     },
   });
-
-  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
 
   return (
     <div>

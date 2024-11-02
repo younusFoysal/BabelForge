@@ -1,3 +1,4 @@
+"use client"
 import Marquee from 'react-fast-marquee';
 import Image from 'next/image';
 import bd from '@/image/Home/sponser/bd.png';
@@ -12,8 +13,8 @@ import prime from '@/image/Home/sponser/prime.png';
 const Sponser = () => {
   return (
     <div className="py-[60px] px-4 text-center max-w-6xl mx-auto">
-      <p className=" font-normal text-white">Trusted by 225,000+ customers, from startups to enterprises </p>
-      <div className="mt-9 bg-white/5 backdrop-blur-lg p-12 rounded-xl ">
+      <p className=" font-normal text-black dark:text-white">Trusted by 225,000+ customers, from startups to enterprises </p>
+      <div className="mt-9 bg-white/50 dark:bg-white/5 backdrop-blur-lg p-12 rounded-xl ">
         <Marquee pauseOnHover autoFill speed={30}>
           <Image height={200} width={300} className="max-w-[90px] max-h-[50px]  hover:scale-110 mx-4 duration-500" src={bd} alt="Bd logo" />
           <Image

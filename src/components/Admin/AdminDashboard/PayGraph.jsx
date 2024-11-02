@@ -166,20 +166,22 @@ const PayGraph = ({ trans, isLoading }) => {
 
   for (let month = 0; month <= 12; month++) {
     trans?.forEach(item => {
-      if (Number(item?.date?.slice(5, 7)) === month) {
+      if (Number(item?.startDate?.slice(5, 7)) === month) {
         // Filter Standard transactions for the current month
-        const tempStandard = trans?.filter(transItem => transItem.pakage === 'Standard' && Number(transItem?.date?.slice(5, 7)) === month);
+        const tempStandard = trans?.filter(
+          transItem => transItem.plan === 'Standard' && Number(transItem?.startDate?.slice(5, 7)) === month
+        );
         revenueChart.series[0].data[month - 1] = tempStandard.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
         // Filter Premium transactions for the current month
-        const tempPremium = trans?.filter(transItem => transItem.pakage === 'Premium' && Number(transItem?.date?.slice(5, 7)) === month);
+        const tempPremium = trans?.filter(transItem => transItem.plan === 'Premium' && Number(transItem?.startDate?.slice(5, 7)) === month);
         revenueChart.series[1].data[month - 1] = tempPremium.reduce((sum, transItem) => sum + Number(transItem.amount), 0);
       }
     });
   }
 
   return (
-    <div className="md:col-span-5 col-span-1">
-      <Card className="p-6 dark:bg-[#ffffff14] dark:border-[#ffffff34]">
+    <div className="md:col-span-5 col-span-1  ">
+      <Card className="p-6  dark:bg-[#181024] dark:border-[#3e1878c2]">
         <div className="panel h-full xl:col-span-2">
           <div className="mb-5 flex items-center justify-between dark:text-white-light">
             <h5 className="text-lg font-semibold">Revenue</h5>

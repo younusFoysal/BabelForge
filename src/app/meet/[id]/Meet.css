@@ -1,0 +1,66 @@
+.dark .D9WLyEQaARfWqCTyVrpU {
+  background: #111827c4;
+  box-shadow: none !important;
+  color: white !important;
+  border-color: #ffffff6a;
+}
+
+.dark .pOvRwHj19chJGkgemUH3 ._M8cCug8H18ALQ05cNMt,
+.dark .YVsLErvDz5lZnY9Ce4UB,
+.dark ._gK_8I1XIktCDlYp08Lg {
+  color: white !important;
+}
+
+/* Buttons */
+
+.VsTVUAD89KWleD0YRVsD,
+.IughcowXVrJ5wcOf6vH9,
+.TTgLs8cpg66Z6CXgHGVA {
+  /* background: linear-gradient(to right, #2563eb, #9333ea) !important; */
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+  transition: all 0.3s linear;
+}
+
+.VsTVUAD89KWleD0YRVsD::before,
+.TTgLs8cpg66Z6CXgHGVA::before,
+.IughcowXVrJ5wcOf6vH9::before {
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #2563eb, #9333ea) !important;
+  z-index: -1;
+  transition: all 0.3s linear;
+}
+
+.VsTVUAD89KWleD0YRVsD::after,
+.TTgLs8cpg66Z6CXgHGVA::after,
+.IughcowXVrJ5wcOf6vH9::after {
+  width: 100%;
+  height: 100%;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, #9333ea, #2563eb) !important;
+  z-index: -2;
+  transition: all 0.3s linear;
+}
+
+.VsTVUAD89KWleD0YRVsD:hover::before,
+.TTgLs8cpg66Z6CXgHGVA:hover::before,
+.IughcowXVrJ5wcOf6vH9:hover::before {
+  opacity: 0;
+}
+
+/* End Call Promt */
+
+.dark .Yb8CIZ4sfRB7tGNIe5vW {
+  background: #111827 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}

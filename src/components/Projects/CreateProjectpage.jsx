@@ -8,12 +8,11 @@ import { TagsInput } from 'react-tag-input-component';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useForm } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import { toast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useRouter } from 'next/navigation';
 import { useUser } from '@clerk/nextjs';
 import { useTheme } from 'next-themes';
-import './CreateProject.css';
 
 const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
@@ -25,7 +24,12 @@ const CreateProjectpage = () => {
   const [emails, setEmails] = useState([uemail]);
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    setEmails([uemail]);
+  }, [uemail]);
 
   const {
     register,
@@ -53,32 +57,47 @@ const CreateProjectpage = () => {
       return res.data;
     },
     onSuccess: () => {
-      toast.success('Project Created Successfully!');
+      toast({
+        description: 'Project Created Successfully!',
+        variant: 'success',
+      });
       reset();
       setEmails([uemail]); // Reset emails to include the user's email only
       router.push('/dashboard/projects');
     },
     onError: () => {
-      toast.error(`Something went Wrong!`);
+      toast({
+        description: 'Something went wrong',
+        variant: 'error',
+      });
     },
   });
+  const handleCreate = () => {
+    setSubmitted(true); // Set submitted state to true
+    // if (!selectedCategory) return;
+  };
+  const onSubmit = data => {
+    if (!selectedCategory) return;
 
-  const onSubmit = (data) => {
     data.pmanager = uemail;
-    data.pallmembers = emails;
-    data.pedate = "";
+
+    if (!emails.length) {
+      data.pallmembers = [uemail];
+    } else {
+      data.pallmembers = emails;
+    }
+    data.pedate = '';
     data.psdate = currentDate;
-    data.pmname = user?.firstName;
+    data.pmname = user?.fullName;
     data.favorite = false;
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
-  // console.log("selected: ",selectedCategory);
-
+  // if (!uemail) return <LoadingSpinner></LoadingSpinner>
   return (
     <div className="flex justify-between items-center flex-col">
       <h2 className="text-4xl text-[#333] mb-4 dark:text-white">Create projects</h2>
-      <div className="w-[60%]">
+      <div className="md:w-[80%] max-w-[700px] w-full">
         <div className="">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-[12px]">
             <div className="mb-1">
@@ -94,7 +113,7 @@ const CreateProjectpage = () => {
 
             <div className="mb-1">
               <Label htmlFor="purl" className="text-left mb-2 block font-semibold">
-                Project Url <span className="text-red-600">*</span>
+                Project URL <span className="text-red-600">*</span>
               </Label>
               <Input type="text" {...register('purl', { required: true })} placeholder="Please enter your project URL" id="purl" />
               {errors.purl?.type === 'required' && <p className="text-red-600 mt-1">Project URL required</p>}
@@ -102,10 +121,10 @@ const CreateProjectpage = () => {
 
             <div className="mb-1">
               <Label htmlFor="pimg" className="text-left mb-2 block font-semibold">
-                Project Image Url <span className="text-red-600">*</span>
+                Project Image URL <span className="text-red-600">*</span>
               </Label>
               <Input type="text" {...register('pimg', { required: true })} placeholder="Please enter your project image URL" id="pimg" />
-              {errors.pimg?.type === 'required' && <p className="text-red-600 mt-1">Project image URL required</p>}
+              {errors.pimg?.type === 'required' && <p className="text-red-600 mt-1">Project Image URL required</p>}
             </div>
 
             <div className="mb-1">
@@ -126,7 +145,7 @@ const CreateProjectpage = () => {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-              {!selectedCategory && <p className="text-red-600 mt-1">Category required</p>}
+              {submitted && !selectedCategory && <p className="text-red-600 mt-1">Category required</p>}
             </div>
 
             <div className="mb-1">
@@ -145,11 +164,15 @@ const CreateProjectpage = () => {
               <div className={resolvedTheme === 'dark' && 'parent_Tags'}>
                 <TagsInput value={emails} onChange={setEmails} placeHolder="Enter emails" />
               </div>
-              <span>Press enter to add more</span>
+              <span>Press enter to add</span>
             </div>
 
             <div className="flex items-center gap-3 justify-end">
-              <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md" type="submit">
+              <button
+                onClick={handleCreate}
+                className="px-7 py-2 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
+                type="submit"
+              >
                 Create
               </button>
             </div>

@@ -3,62 +3,48 @@
 import React, { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
-import { TagsInput } from 'react-tag-input-component';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useForm } from 'react-hook-form';
 import { useMutation, useQuery } from '@tanstack/react-query';
-import toast from 'react-hot-toast';
+import { toast } from '@/hooks/use-toast';
 import './UpdatePage.css';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 import { useRouter } from 'next/navigation';
 import { useTheme } from 'next-themes';
+import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
 
 const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
 
 const UpdateProjectPage = ({ id }) => {
-  const { resolvedTheme } = useTheme();
-  const [currentDate, setCurrentDate] = useState('');
   const router = useRouter();
-  const [emails, setEmails] = useState([]);
   const axiosCommon = useAxiosCommon();
   const [selectedCategory, setSelectedCategory] = useState(''); // Use state to store selected category
+
+  // useEffect(() => {
+  //   // Trigger the reload when the component is mounted (page is entered)
+  //   window.location.reload();
+  // }, []);
 
   const {
     data: person = [],
     isLoading,
-    isError,
     refetch,
   } = useQuery({
-    queryKey: ['updateproject'],
+    queryKey: ['updateproject', id],
     queryFn: async () => {
       const data = await axiosCommon.get(`/project/projects/single/${id}`);
       return data;
     },
   });
 
+
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
-
-  useEffect(() => {
-    const now = new Date();
-
-    const gmt6Offset = 6 * 60 * 60 * 1000;
-    const gmt6Date = new Date(now.getTime() + gmt6Offset);
-
-    const year = gmt6Date.getUTCFullYear();
-    const month = String(gmt6Date.getUTCMonth() + 1).padStart(2, '0');
-    const day = String(gmt6Date.getUTCDate()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day}`;
-
-    setCurrentDate(formattedDate);
-  }, [person]);
 
   const mutation = useMutation({
     mutationFn: async data => {
@@ -66,30 +52,38 @@ const UpdateProjectPage = ({ id }) => {
       return res.data;
     },
     onSuccess: () => {
-      toast.success('Project update Successfully!');
+      refetch();
+      toast({
+        description: 'Project Updated Successfully!',
+        variant: 'success',
+      });
       router.push('/dashboard/projects');
     },
     onError: () => {
-      toast.error(`Something went wrong`);
+      toast({
+        description: 'Nothing Changed.',
+        variant: 'error',
+      });
     },
   });
 
+  if (isLoading) {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
+
   const onSubmit = data => {
-    data.pallmembers = emails;
     data.pcategory = selectedCategory;
     mutation.mutate(data);
   };
 
-  if (isLoading) {
-    return <h1>Loading...........</h1>;
-  }
+
 
   const { pcategory, pdes, pname, pimg, purl } = person.data;
 
   return (
     <div className="flex justify-between items-center flex-col">
       <h2 className="text-4xl text-[#333] mb-4 dark:text-white">Update projects</h2>
-      <div className="w-[60%]">
+      <div className="w-full md:w-[70%]">
         <div className="">
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-[12px]">
             <div className="mb-1">
@@ -101,6 +95,7 @@ const UpdateProjectPage = ({ id }) => {
                 {...register('pname', { required: true, minLength: 4 })}
                 placeholder="e.g. HR Team, Design Team"
                 id="pname"
+                required
               />
               {errors.pname?.type === 'required' && <p className="text-red-600 mt-1">Project name required</p>}
               {errors.pname?.type === 'minLength' && <p className="text-red-600 mt-1">Name is too short!</p>}
@@ -116,6 +111,7 @@ const UpdateProjectPage = ({ id }) => {
                 {...register('purl', { required: true })}
                 placeholder="Please enter your project URL"
                 id="purl"
+                required
               />
             </div>
 
@@ -129,6 +125,7 @@ const UpdateProjectPage = ({ id }) => {
                 {...register('pimg', { required: true })}
                 placeholder="Please enter your project image URL"
                 id="pimg"
+                required
               />
             </div>
 
@@ -167,19 +164,9 @@ const UpdateProjectPage = ({ id }) => {
               {errors.pdes?.type === 'minLength' && <p className="text-red-600 mt-1">Description too short!</p>}
             </div>
 
-            <div className="mb-1">
-              <Label htmlFor="members" className="text-left mb-2 block font-semibold">
-                Who should be in this project?
-              </Label>
-              <div className={resolvedTheme === 'dark' && 'parent_Tags'}>
-                <TagsInput type="email" id="members" value={emails} onChange={setEmails} placeHolder="Enter emails" />
-              </div>
-              <span>Press enter to add more</span>
-            </div>
-
-            <div className="flex items-center gap-3 justify-end">
+            <div className="flex  items-center gap-3 justify-end">
               <button
-                className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md"
+                className="px-6 py-3 mt-4 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white"
                 type="submit"
               >
                 Update

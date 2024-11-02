@@ -1,71 +1,88 @@
-'use client';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-
-import { IoIosSearch } from 'react-icons/io';
+"use client";
+import { Input } from "@/components/ui/input";
 
 import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination';
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-import useProjects from '@/hooks/useProjects';
+import { IoIosSearch } from "react-icons/io";
 
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+import useProjects from "@/hooks/useProjects";
 
-import CommonTable from '../shared/CommonTable/CommonTable';
-import { useUser } from '@clerk/nextjs';
+import { useState } from "react";
+import Link from "next/link";
+
+import CommonTable from "../shared/CommonTable/CommonTable";
+import { useUser } from "@clerk/nextjs";
+import NoDataFound from "../shared/NoDataFound/NoDataFound";
+import LoadingSpinner from "../shared/LoadingSpinner/LoadingSpinner";
 
 const ProjectPage = () => {
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
 
-  const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
-  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(uemail, search, category);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+  const {
+    data: projects = [],
+    isLoading,
+    refetch: projectRefetch,
+  } = useProjects(uemail, search, category);
 
-  if (!projects?.length && !search?.length && !category?.length) {
-    return (
-      <section className="flex flex-col justify-center items-center gap-5 text-center">
-        <h3 className="text-2xl  font-medium">You have no projects yet. Start by creating your first project!</h3>
-        <div>
-          <Link href="/dashboard/createproject">
-            <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
-              Create Project
-            </button>
-          </Link>
-        </div>
-      </section>
-    );
-  }
+  const projectCategories = [
+    "All",
+    "Software Engineering",
+    "Education",
+    "Non Profit Organization",
+    "Project Management",
+  ];
 
-  const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
+  const theads = [
+    "Fav",
+    "Image",
+    "Name",
+    "Type",
+    "Manager",
+    "Project URL",
+    "Start Date",
+    "End Date",
+    "More Action",
+  ];
 
-  const theads = ['Fav', 'Image', 'Name', 'Type', 'Manager', 'Project URL', 'Start Date', 'End Date', 'More Action'];
-
-  const handleSearchByClick = () => {
-    const inputData = document.getElementById('inputField').value;
+  const handleSearchByClick = (e) => {
+    e.preventDefault();
+    const inputData = document.getElementById("inputField").value;
     setSearch(inputData);
   };
 
-  const handleSearchByEnter = e => {
-    if (e.key === 'Enter') {
-      const inputData = document.getElementById('inputField').value;
+  const handleSearchByEnter = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const inputData = document.getElementById("inputField").value;
       setSearch(inputData);
     }
   };
 
-  const handleFilter = value => {
+  const handleFilter = (value) => {
     setCategory(value);
   };
+
+  if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+
+  if (!projects?.length && !search?.length && !category?.length && !isLoading) {
+    return (
+      <NoDataFound
+        text={"No Project Created Yet."}
+        btnText={"Create Project"}
+        btnLink={"/dashboard/createproject"}
+      ></NoDataFound>
+    );
+  }
 
   return (
     <section>
@@ -74,7 +91,7 @@ const ProjectPage = () => {
         <h3 className="text-2xl  font-medium">Projects</h3>
         <div>
           <Link href="/dashboard/createproject">
-            <button className="bg-bgColor hover:bg-bgHoverColor text-white text-md hover:scale-105 duration-500 hover:shadow-lg hover:shadow-[#0362F3FF] font-medium px-4 py-2 rounded-md">
+            <button className="px-6 py-3 capitalize bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-md transition-all duration-500 text-sm hover:scale-105 flex gap-1 items-center group ${className} dark:bg-gray-50 text-white">
               Create Project
             </button>
           </Link>
@@ -82,18 +99,21 @@ const ProjectPage = () => {
       </div>
 
       {/* Input box content */}
-      <div className="my-8 w-full flex justify-start items-center gap-6">
+      <div className="my-8 w-full flex flex-col md:flex-row justify-start items-center gap-3 md:gap-6">
         {/* search box */}
-        <div className="lg:w-[30%] w-full">
-          <div className="flex justify-center items-center">
+        <div className=" w-full lg:w-[30%]">
+          <div className="flex justify-center items-center relative">
             <Input
               onKeyDown={handleSearchByEnter}
               id="inputField"
-              className="py-4 border-gray-500 border-[1px]"
+              className="w-full dark:bg-[#26193a] dark:text-white py-4 border-gray-500 border-[1px]"
               placeholder="Project Name"
             />
-            <span className="translate-x-[-180%]">
-              <IoIosSearch onClick={handleSearchByClick} className="cursor-pointer"></IoIosSearch>
+            <span className="absolute right-2 top-1/2 -translate-y-1/2">
+              <IoIosSearch
+                onClick={handleSearchByClick}
+                className="cursor-pointer"
+              ></IoIosSearch>
             </span>
           </div>
         </div>
@@ -101,7 +121,7 @@ const ProjectPage = () => {
         {/* dropdown */}
         <div className="w-[100%]">
           <Select
-            onValueChange={value => {
+            onValueChange={(value) => {
               handleFilter(value);
             }}
           >
@@ -121,11 +141,18 @@ const ProjectPage = () => {
         </div>
       </div>
 
-      {/* Table content */}
-      <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>
+      {projects.length ? (
+        <CommonTable
+          theads={theads}
+          tdata={projects}
+          projectRefetch={projectRefetch}
+        ></CommonTable>
+      ) : (
+        <NoDataFound text={"No Data Found"}></NoDataFound>
+      )}
 
-      {/* pagination */}
-      <div className="mt-6">
+      {/*TODO- pagination */}
+      {/* <div className="mt-6">
         <Pagination className="flex justify-start ">
           <PaginationContent>
             <PaginationItem>
@@ -142,7 +169,7 @@ const ProjectPage = () => {
             </PaginationItem>
           </PaginationContent>
         </Pagination>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const UseTeams = email => {
   const axiosCommon = useAxiosCommon();
-  console.log(email);
+  //console.log(email);
   const {
     data: teams = [],
     isLoading,

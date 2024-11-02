@@ -1,13 +1,17 @@
-import React from 'react';
-import Doc from "@/components/Doc/Doc";
+import TextDoc from "@/components/Doc/TextDoc";
+import UserDocuments from "@/components/Doc/UserDocuments";
 
-const Page = () => {
+export const metadata = {
+    title: "Documents | BabelForge",
+    description: "Documents for BabelForge",
+}
+
+const Doc = () => {
     return (
-        <div>
-            <Doc/>
-
+        <div className="mt-20">
+            <UserDocuments />
         </div>
     );
 };
 
-export default Page;
+export default Doc;

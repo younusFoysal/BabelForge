@@ -4,12 +4,280 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="doc page start">
-      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/page.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Doc/Doc.jsx" afterDir="false" />
+    <list default="true" id="6ac81358-eb40-4e54-a916-cc4a38c9d9ee" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/public/Images/createDoc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/doc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/footer-top.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/footer.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Images/nodata.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/404.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/actions/Chataction.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/TaskPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/CripsHandle.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/ScreenRecorder/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/aiassistant/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/calendar/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/code/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/diagrams/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/[id]/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/meet/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/test/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[...not_found]/layout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[...not_found]/not-found.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/[...not_found]/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/api/webhooks/stripe/route.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/meet/[id]/Meet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/meet/[id]/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/privacy/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/terms/page.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Admin/AdminInbox/AdminInbox.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Backlogs/Backlogs.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Calendar/Calendar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Canvas/Diagram.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Code/CodeEditor.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Code/LanguageSelector.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Code/Output.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Code/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Code/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DashboardLayout/DashboardLayout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboards/DashboardTopRight.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Doc/DocumentPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Doc/ShareLink.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Doc/TextDoc.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Doc/UserDocuments.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ImageWithFallback.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Note/Note.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Pricing/MobilePrice.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/UserBadge.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Reviews/MarqueeDemoVertical.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RoleLayout/RoleLayout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ScreenRecorder/ScreenRecorder.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Steam/MeetHero.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Steam/MeetingButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StreamChat/ChatChannel.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StreamChat/GroupChat.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StreamChat/MenuBar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StreamChat/SingleUser.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StreamChat/StreamChats.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StreamChat/StreamSidebar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StreamChat/UsersMenu.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/app-sidebar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/AboutStatistics.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/FAQ.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/Hero/HomeStats.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/Pricing.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/home/RoadMap.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav-main.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav-projects.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav-user.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/Alert.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/CommonConfirmation/ConUseModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/CommonConfirmation/DeleteConfirmationModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/NoDataFound/NoDataFound.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/shared/TestModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/team-switcher.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/alert-dialog.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/badge.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/breadcrumb.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/collapsible.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/marquee.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/separator.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/sheet.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/sidebar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ui/skeleton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/use-mobile.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useCalendarEvents.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/usePlan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useRole.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useWindoSize.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Home/404.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Home/dark-dash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Home/meetbanner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Home/payment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Team/team.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/Team/teamCover.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/inbox/message-inbox.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/image/inbox/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/servewindo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/stripe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/tailwind.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/providers/AuthProvider.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/providers/ScreenRecorderProvider.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/babellogo.glb" beforeDir="false" afterPath="$PROJECT_DIR$/public/babellogo.glb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/BabelAI/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/Backlog/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/inbox/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/inbox/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/packages/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/packages/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/reviews/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/reviews/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/transactions/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/admin/transactions/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/board/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/board/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/canvas/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/canvas/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/chat/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/chat/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/createproject/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/createproject/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/doc/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/inbox/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/inbox/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/notes/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/notes/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/profile/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/[id]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/project/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/projects/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/projects/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/review/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/review/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/[id]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/(dashboards)/dashboard/teams/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(stream)/stream/layout.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(stream)/stream/meeting/[id]/page.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/(stream)/stream/page.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/about-us/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about-us/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/about/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/about/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/create-payment-intent/route.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/webhooks/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/webhooks/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/checkout/[id]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/checkout/[id]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/contact/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/contact/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/features/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/features/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/help/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/help/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/layout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pricing/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pricing/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sign-in/[[...sign-in]]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-in/[[...sign-in]]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/sign-up/[[...sign-up]]/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/sign-up/[[...sign-up]]/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/successPayment/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/successPayment/page.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AIHelper/AIHelper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AIHelper/AIHelper.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutCarousel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutCarousel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutCulture.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutCulture.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutFirstBanner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutFirstBanner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutSecondBanner.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/AboutSecondBanner.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/AboutStatistics.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AboutUs/JoinTeamCTA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AboutUs/JoinTeamCTA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminDashboard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminStatCards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/AdminStatCards.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PayGraph.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PayGraph.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentGraph.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentGraph.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentPieChart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/PaymentPieChart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/RecentMeetings.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/Transactions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminDashboard/Transactions.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminInbox/AdminInbox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminInbox/AdminInbox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/AdminPackages.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/UpdatePricing/UpdatePricing.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPackages/UpdatePricing/UpdatePricing.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPackages/packages.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminReview/Review.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminReview/Review.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Canvas/CanvasComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Canvas/CanvasComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contactus/ContactForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contactus/ContactForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contactus/ContactText.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contactus/ContactText.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/BacklogPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/CardGridView.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/CardGridView.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Backlog/TableView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Backlog/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Backlog/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Board.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Board.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/DetailsCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/DetailsCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/ExportTeamInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/MainPageWrap.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/MainPageWrap.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/PieCharts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/PieCharts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/MainPage/TeamInfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/MainPage/TeamInfo.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/AddTask.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/AddTask.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.7z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/Task.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskBUG.7z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/Task/TaskList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/Task/tasks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/TaskBoard/Board.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/TaskBoard/Board.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboards/TaskBoard/Column.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboards/TaskBoard/Column.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardNavbarBox.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/DashboardsNavbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DashboardsPage/Review.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardsPage/Review.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Notes/NoteItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notes/NoteItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Notes/Notes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notes/Notes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Notes/modal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Notes/modal.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Payments/CheckoutForm.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Payments/Payment.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Payments/PaymentBox.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Pricing/Faq.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pricing/Faq.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Pricing/PriceCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pricing/PriceCard.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/UpdateProfile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/UpdateProfile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects/CreateProject.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/CreateProject.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects/CreateProjectpage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/CreateProjectpage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects/ProjectPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/ProjectPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects/UpdatePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/UpdatePage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Projects/UpdatePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Projects/UpdatePage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/AllReviews.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Reviews/Reviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Reviews/Reviews.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Siderbar/CurrenSidesBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Siderbar/CurrenSidesBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Siderbar/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Siderbar/Sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Steam/EndCallButton.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Steam/MeetingRoom.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Steam/MeetingSetup.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Steam/MeetingTypeList.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Steam/Navbar.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/AllTeams.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/AllTeams.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/LinkBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/LinkBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/LinkDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/LinkDialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/MemberBox.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/MemberBox.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/Team.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/Team.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/TeamDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/TeamDialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/UpdateTeamModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/UpdateTeamModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/UserTeam.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/UserTeam.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Teams/UserTeam.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Teams/UserTeam.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserProfile/Tabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile/Tabs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserProfile/UserTransaction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserProfile/UserTransaction.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/3d/GlassDNA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/AwesomeHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/CarouselHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/GetStart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/GetStart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/HeroNew/HeroLeft.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/HeroNew/HeroLeft.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/LeaderCTA.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/PricingCards.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/PricingCards.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/PricingCards.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/PricingCards.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/Sponser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/Sponser.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Buttons.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Buttons/ButtonSmall.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Buttons/ButtonSmall.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/CommonTable/CommonTable.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/CommonTable/CommonTable.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer/Footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Footer/Footer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/HomeLoadingSpinner/HomeLoadingSpinner.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/HomeLoadingSpinner/HomeLoadingSpinner.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/LoadingSpinner/loadingSpinnerStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/LoadingSpinner/loadingSpinnerStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/shared/Navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/button.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/button.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/card.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/card.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/dialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/dropdown-menu.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/dropdown-menu.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/input.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/input.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/select.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/select.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/table.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/table.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/tabs.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/tabs.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/textarea.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/textarea.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/toast.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/toast.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/toaster.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/toaster.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-toast.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-toast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/usePerson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/usePerson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useTeams.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useTeams.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/babellogo-OLD.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/gartner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/Home/light-dash.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/Home/light-dash.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/icon/user.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/image/icon/user.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/ConnectDb.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/ConnectDb.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/axiosCommon.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/axiosCommon.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middleware.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/ContextProvider.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/providers/StreamProvider.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +339,7 @@
     "Node.js.GetFileStructure.js.executor": "Run",
     "Node.js.getFileStructure.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "foysal",
+    "git-widget-placeholder": "Merging foysal",
     "last_opened_file_path": "D:/WebStrom Projects/Themes/techwind-220(1)/techwind-220/Techwind_v2.2.0/HTML/Landing",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -87,11 +355,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app\(dashboards)\dashboard" />
+      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\home" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminReview" />
       <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin\AdminDashboard" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Admin" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\app" />
-      <recent name="D:\WebStrom Projects\SCIC\EndGame\babelforge\src\components\Dashboards\Task" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -132,182 +400,8 @@
       <workItem from="1728741754275" duration="350000" />
       <workItem from="1728753805344" duration="12695000" />
       <workItem from="1729442824871" duration="1439000" />
-    </task>
-    <task id="LOCAL-00008" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726687341263</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1726687341263</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Image path fix">
-      <option name="closed" value="true" />
-      <created>1726692081480</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692081480</updated>
-    </task>
-    <task id="LOCAL-00010" summary="All ok">
-      <option name="closed" value="true" />
-      <created>1726692751091</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1726692751091</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Link added">
-      <option name="closed" value="true" />
-      <created>1726693884245</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1726693884245</updated>
-    </task>
-    <task id="LOCAL-00012" summary="nav Responsive added">
-      <option name="closed" value="true" />
-      <created>1726695355909</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1726695355909</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Nav Logo Added">
-      <option name="closed" value="true" />
-      <created>1726771880583</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1726771880583</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Title &amp; Fav Icon added">
-      <option name="closed" value="true" />
-      <created>1726776353082</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1726776353082</updated>
-    </task>
-    <task id="LOCAL-00015" summary="AOS Added">
-      <option name="closed" value="true" />
-      <created>1726778071223</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778071223</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Readme added">
-      <option name="closed" value="true" />
-      <created>1726778512654</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778512654</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Fav Icon Added">
-      <option name="closed" value="true" />
-      <created>1726778819179</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1726778819179</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Price card Updated">
-      <option name="closed" value="true" />
-      <created>1726779338267</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1726779338267</updated>
-    </task>
-    <task id="LOCAL-00019" summary="React To NextJS">
-      <option name="closed" value="true" />
-      <created>1727034154322</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1727034154322</updated>
-    </task>
-    <task id="LOCAL-00020" summary="task add function added">
-      <option name="closed" value="true" />
-      <created>1727216567271</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1727216567271</updated>
-    </task>
-    <task id="LOCAL-00021" summary="task update function added">
-      <option name="closed" value="true" />
-      <created>1727218407786</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1727218407786</updated>
-    </task>
-    <task id="LOCAL-00022" summary="packager fix">
-      <option name="closed" value="true" />
-      <created>1727219148389</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1727219148389</updated>
-    </task>
-    <task id="LOCAL-00023" summary="Add task Done">
-      <option name="closed" value="true" />
-      <created>1727224554136</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1727224554136</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Server api link added">
-      <option name="closed" value="true" />
-      <created>1727224812685</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1727224812685</updated>
-    </task>
-    <task id="LOCAL-00025" summary="turbo added">
-      <option name="closed" value="true" />
-      <created>1727288348230</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1727288348230</updated>
-    </task>
-    <task id="LOCAL-00026" summary="turbo added">
-      <option name="closed" value="true" />
-      <created>1727290730066</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1727290730066</updated>
-    </task>
-    <task id="LOCAL-00027" summary="carusel added">
-      <option name="closed" value="true" />
-      <created>1727292340216</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1727292340216</updated>
-    </task>
-    <task id="LOCAL-00028" summary="carusel added">
-      <option name="closed" value="true" />
-      <created>1727292804794</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1727292804794</updated>
-    </task>
-    <task id="LOCAL-00029" summary="carusel fix">
-      <option name="closed" value="true" />
-      <created>1727293301761</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1727293301761</updated>
+      <workItem from="1729662069791" duration="5657000" />
+      <workItem from="1729684647631" duration="29920000" />
     </task>
     <task id="LOCAL-00030" summary="update">
       <option name="closed" value="true" />
@@ -525,7 +619,183 @@
       <option name="project" value="LOCAL" />
       <updated>1729460540264</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Stat Card added">
+      <option name="closed" value="true" />
+      <created>1729612238165</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1729612238165</updated>
+    </task>
+    <task id="LOCAL-00058" summary="common Confirm modal added">
+      <option name="closed" value="true" />
+      <created>1729622689692</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1729622689692</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Help Page Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729666258511</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1729666258511</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Nav Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729668432937</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1729668432937</updated>
+    </task>
+    <task id="LOCAL-00061" summary="Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729692429306</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1729692429307</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729699311982</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1729699311982</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Home Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729705249734</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1729705249734</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Payment Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729716207380</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716207380</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Payment Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729716446269</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1729716446269</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Payment Success Dark Redesign &amp; Responsive done">
+      <option name="closed" value="true" />
+      <created>1729717410019</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1729717410020</updated>
+    </task>
+    <task id="LOCAL-00067" summary="getstart button fix">
+      <option name="closed" value="true" />
+      <created>1729793553893</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1729793553894</updated>
+    </task>
+    <task id="LOCAL-00068" summary="getstart button fix">
+      <option name="closed" value="true" />
+      <created>1729794402935</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1729794402935</updated>
+    </task>
+    <task id="LOCAL-00069" summary="task button fix">
+      <option name="closed" value="true" />
+      <created>1729796098437</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1729796098437</updated>
+    </task>
+    <task id="LOCAL-00070" summary="responsive fix">
+      <option name="closed" value="true" />
+      <created>1729799903081</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1729799903081</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Diagram added">
+      <option name="closed" value="true" />
+      <created>1729814067853</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1729814067853</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Milestone 6">
+      <option name="closed" value="true" />
+      <created>1729814772410</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1729814772410</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Version 7 Pre Build">
+      <option name="closed" value="true" />
+      <created>1730356611189</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1730356611189</updated>
+    </task>
+    <task id="LOCAL-00074" summary="Version 7 Pre Build Fix">
+      <option name="closed" value="true" />
+      <created>1730357075626</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1730357075626</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Version 7 Pre Build Fix">
+      <option name="closed" value="true" />
+      <created>1730359204101</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1730359204101</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Version 7 Pre Build Fixed">
+      <option name="closed" value="true" />
+      <created>1730359671900</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1730359671900</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Version 7 Deploy">
+      <option name="closed" value="true" />
+      <created>1730411130067</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1730411130067</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Version 7 Deploy">
+      <option name="closed" value="true" />
+      <created>1730411648141</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1730411648141</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,23 +814,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="carusel added" />
-    <MESSAGE value="carusel fix" />
-    <MESSAGE value="update" />
-    <MESSAGE value="api link update" />
-    <MESSAGE value="signup fix" />
-    <MESSAGE value="Profile fix" />
-    <MESSAGE value="few fix" />
-    <MESSAGE value="Deploy" />
-    <MESSAGE value="loading added" />
-    <MESSAGE value="canvas added" />
-    <MESSAGE value="chat fix" />
-    <MESSAGE value="admin dashboard page start" />
-    <MESSAGE value="admin dashboard page card" />
-    <MESSAGE value="Admin Transactions page" />
-    <MESSAGE value="Chart fix" />
-    <MESSAGE value="Admin Dash Added" />
-    <MESSAGE value="version" />
     <MESSAGE value="button fix" />
     <MESSAGE value="Awesome Design Implemented" />
     <MESSAGE value="home button added" />
@@ -568,8 +821,25 @@
     <MESSAGE value="new fix" />
     <MESSAGE value="pkg fix" />
     <MESSAGE value="Chat Button fix" />
-    <MESSAGE value="doc page start" />
-    <option name="LAST_COMMIT_MESSAGE" value="doc page start" />
+    <MESSAGE value="Stat Card added" />
+    <MESSAGE value="common Confirm modal added" />
+    <MESSAGE value="Help Page Redesign &amp; Responsive done" />
+    <MESSAGE value="Nav Redesign &amp; Responsive done" />
+    <MESSAGE value="Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Home Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Payment Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="Payment Success Dark Redesign &amp; Responsive done" />
+    <MESSAGE value="getstart button fix" />
+    <MESSAGE value="task button fix" />
+    <MESSAGE value="responsive fix" />
+    <MESSAGE value="Diagram added" />
+    <MESSAGE value="Milestone 6" />
+    <MESSAGE value="Version 7 Pre Build" />
+    <MESSAGE value="Version 7 Pre Build Fix" />
+    <MESSAGE value="Version 7 Pre Build Fixed" />
+    <MESSAGE value="Version 7 Deploy" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
