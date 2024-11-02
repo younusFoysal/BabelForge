@@ -1,39 +1,54 @@
-'use client';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import useAxiosCommon from '@/lib/axiosCommon';
-import { useQuery } from '@tanstack/react-query';
-import Swal from 'sweetalert2';
-import { IoTrashOutline } from 'react-icons/io5';
-import { redirect } from 'next/navigation';
-import useRole from '@/hooks/useRole';
-import Alert from '@/components/shared/Alert';
-import { toast } from '@/hooks/use-toast';
+"use client";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import useAxiosCommon from "@/lib/axiosCommon";
+import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+import { IoTrashOutline } from "react-icons/io5";
+import { redirect } from "next/navigation";
+import useRole from "@/hooks/useRole";
+import Alert from "@/components/shared/Alert";
+import { toast } from "@/hooks/use-toast";
+import LoadingSpinner from "@/components/shared/LoadingSpinner/LoadingSpinner";
 
 const AdminReview = () => {
-  const [role] = useRole();
-  if (role !== 'admin') redirect('/');
+  const [role, roleLoading] = useRole();
 
   const axiosCommon = useAxiosCommon();
   // get All reviews
-  const { data: allReviews, refetch } = useQuery({
-    queryKey: ['reviews'],
+  const {
+    data: allReviews,
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["reviews"],
     queryFn: async () => {
-      const res = await axiosCommon.get('/api/reviews');
+      const res = await axiosCommon.get("/api/reviews");
       return res.data;
     },
     initialData: [],
   });
 
   // delete review
-  const handleDelete = async id => {
+  const handleDelete = async (id) => {
     const res = await axiosCommon.delete(`/api/reviews/${id}`);
     if (res.data.deletedCount > 0) {
       toast({
-        description: 'Review Deleted',
+        description: "Review Deleted",
       });
       refetch();
     }
   };
+
+  if (roleLoading || isLoading) return <LoadingSpinner />;
+
+  if (role !== "admin") redirect("/");
 
   return (
     <section className="container mx-auto">
@@ -42,17 +57,30 @@ const AdminReview = () => {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="font-semibold text-black dark:text-gray-50">No</TableHead>
+              <TableHead className="font-semibold text-black dark:text-gray-50">
+                No
+              </TableHead>
 
-              <TableHead className="font-semibold text-black dark:text-gray-50">Name</TableHead>
+              <TableHead className="font-semibold text-black dark:text-gray-50">
+                Name
+              </TableHead>
 
-              <TableHead className="font-semibold text-black dark:text-gray-50 ">Review Message</TableHead>
+              <TableHead className="font-semibold text-black dark:text-gray-50 ">
+                Review Message
+              </TableHead>
 
-              <TableHead className="font-semibold text-black dark:text-gray-50 ">Review Date</TableHead>
+              <TableHead className="font-semibold text-black dark:text-gray-50 ">
+                Review Date
+              </TableHead>
 
-              <TableHead className="font-semibold text-black dark:text-gray-50">Review Rating</TableHead>
+              <TableHead className="font-semibold text-black dark:text-gray-50">
+                Review Rating
+              </TableHead>
 
-              <TableHead className="font-semibold text-black dark:text-gray-50"> Action </TableHead>
+              <TableHead className="font-semibold text-black dark:text-gray-50">
+                {" "}
+                Action{" "}
+              </TableHead>
             </TableRow>
           </TableHeader>
 
@@ -67,13 +95,13 @@ const AdminReview = () => {
 
                 <TableCell>{review?.reviewDate?.slice(0, 10)}</TableCell>
 
-                <TableCell>{review?.reviewRating || 'not given'}</TableCell>
+                <TableCell>{review?.reviewRating || "not given"}</TableCell>
 
                 <TableCell>
                   <Alert onContinue={() => handleDelete(review._id)}>
-                    {openDialog => (
+                    {(openDialog) => (
                       <button
-                        onClick={e => {
+                        onClick={(e) => {
                           e.stopPropagation();
                           openDialog();
                         }}
