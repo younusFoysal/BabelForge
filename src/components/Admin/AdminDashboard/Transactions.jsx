@@ -11,11 +11,11 @@ import useRole from "@/hooks/useRole";
 const Transactions = ({ transAmout }) => {
   const [trans, isLoading] = useTrans();
   const pathname = usePathname();
-  const [role] = useRole();
+  const [role, roleLoading] = useRole();
 
   const isPath = pathname.includes("/dashboard/admin/transactions");
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading || roleLoading) return <LoadingSpinner />;
 
   if (role !== "admin") redirect("/");
 
