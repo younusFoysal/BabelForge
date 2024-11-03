@@ -3,7 +3,6 @@ import { useState } from 'react';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import { IoTrashOutline } from 'react-icons/io5';
-import Swal from 'sweetalert2';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import { HiMiniClipboardDocumentList } from 'react-icons/hi2';
 import Image from 'next/image';
