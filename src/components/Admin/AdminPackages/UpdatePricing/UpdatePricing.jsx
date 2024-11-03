@@ -14,11 +14,13 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Toaster } from "@/components/ui/toaster"; // Import toast
 import { toast } from "@/hooks/use-toast";
+import usePlan from "@/hooks/usePlan";
 
 import { axiosCommon } from "@/lib/axiosCommon";
 import { useMutation } from "@tanstack/react-query";
 
 const UpdatePricing = ({ pack, refetch, handlePay, priceingsec, title }) => {
+  const [plan] = usePlan();
   const updatePricingCard = useMutation({
     mutationFn: async (updateData) => {
       const data = axiosCommon.patch(

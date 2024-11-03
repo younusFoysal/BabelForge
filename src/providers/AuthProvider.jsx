@@ -9,33 +9,31 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const handleAuthState = async () => {
-      if (user) {
-        const userInfo = { email: user?.primaryEmailAddress?.emailAddress };
-        const { data } = await axios.post(
-          "http://localhost:5000/api/jwttoken",
-          userInfo,
-          {
-            withCredentials: true,
-          }
-        );
-        console.log(data);
+      try {
+        if (isLoaded && user) {
+          const userInfo = { email: user.primaryEmailAddress?.emailAddress };
 
-        if (data.token) {
-          if (!localStorage.getItem("access_token")) {
+          const { data } = await axios.post(
+            "http://localhost:5000/api/jwttoken",
+            userInfo,
+            { withCredentials: true }
+          );
+
+          if (data.token && !localStorage.getItem("access_token")) {
             localStorage.setItem("access_token", data.token);
           }
+        } else {
+          localStorage.removeItem("access_token");
         }
-      }
-      if (!user || !isLoaded) {
-        localStorage.removeItem("access_token");
-        return;
+      } catch (error) {
+        console.error("Error fetching the JWT token:", error);
       }
     };
 
     handleAuthState();
   }, [user, isLoaded]);
 
-  return <div>{children}</div>;
+  return <>{children}</>;
 };
 
 export default AuthProvider;

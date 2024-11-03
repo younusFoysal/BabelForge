@@ -16,6 +16,7 @@ const AdminPackages = ({ priceingsec }) => {
   const pathname = usePathname();
   const [role, roleLoading] = useRole();
   const { userId } = useAuth();
+  const [plan] = usePlan();
   const auth = !!userId;
 
   const axiosCommon = useAxiosCommon();
@@ -108,47 +109,76 @@ const AdminPackages = ({ priceingsec }) => {
             <thead>
               <tr>
                 <th className="w-1/4 min-w-[200px] px-5"></th>
-                {packages.map((pack) => (
-                  <th key={pack._id} className="w-1/4 min-w-[200px] px-5">
-                    <div className="text-left py-4 h-[250px] flex flex-col justify-between">
-                      <span className="mb-3.5 block text-xl font-bold text-black dark:text-white ">
-                        {pack.title}
-                      </span>
-                      <h4 className="mb-2">
-                        <span className="text-[28px] font-bold text-black dark:text-white lg:text-[32px]">
-                          {pack.title == "Basic" ? "Free" : `${pack.price}`}
-                        </span>
-                        <span className="font-medium my-auto">
-                          {" "}
-                          {pack.price === "Free" ? "" : "/"}{" "}
-                          {pack.price === "Free" ? "" : pack.priceDetails}
-                        </span>
-                      </h4>
-                      <p className="text-[14px] opacity-85 font-medium">
-                        {pack.description}
-                      </p>
+                {packages.map((pack) => {
+                  const isBasicPlan = plan === "Basic";
+                  const isStandardPlan = plan === "Standard";
+                  const isPremiumPlan = plan === "Premium";
 
-                      {pack.price !== "Free" ? (
-                        <UpdatePricing
-                          pack={pack}
-                          title={pack.title}
-                          priceingsec={priceingsec}
-                          handlePay={handlePay}
-                          refetch={refetch}
-                        />
-                      ) : (
-                        <button
-                          onClick={() =>
-                            router.push(`${auth ? "/dashboard" : "/sign-up"}`)
-                          }
-                          className="overflow-hidden mt-auto w-full p-2 h-12  text-white border-none rounded-md text-xl font-bold cursor-pointer  capitalize bg-gradient-to-r from-blue-600 to-purple-600  hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white"
-                        >
-                          {auth ? "Dashboard" : "Signup"}
-                        </button>
-                      )}
-                    </div>
-                  </th>
-                ))}
+                  // Determine the button states
+                  const isCurrentPlan = pack.title === plan;
+                  const canUpgradeToStandard =
+                    isBasicPlan && pack.title === "Standard";
+                  const canUpgradeToPremium =
+                    (isBasicPlan || isStandardPlan) && pack.title === "Premium";
+                  const isUpgradeDisabled = isPremiumPlan || isCurrentPlan;
+
+                  return (
+                    <th key={pack._id} className="w-1/4 min-w-[200px] px-5">
+                      <div className="text-left py-4 h-[250px] flex flex-col justify-between">
+                        <span className="mb-3.5 block text-xl font-bold text-black dark:text-white">
+                          {pack.title}
+                        </span>
+                        <h4 className="mb-2">
+                          <span className="text-[28px] font-bold text-black dark:text-white lg:text-[32px]">
+                            {pack.title === "Basic" ? "Free" : `${pack.price}`}
+                          </span>
+                          <span className="font-medium my-auto">
+                            {pack.price === "Free" ? "" : "/"}{" "}
+                            {pack.price === "Free" ? "" : pack.priceDetails}
+                          </span>
+                        </h4>
+                        <p className="text-[14px] opacity-85 font-medium">
+                          {pack.description}
+                        </p>
+
+                        {pack.price !== "Free" ? (
+                          isCurrentPlan ? (
+                            // If the user is on this plan, show "Already purchased" button
+                            <button className="overflow-hidden mt-auto w-full p-2 h-12 text-white border-none rounded-md text-xl font-bold cursor-pointer capitalize bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white">
+                              Already purchased
+                            </button>
+                          ) : canUpgradeToStandard || canUpgradeToPremium ? (
+                            // If the user can upgrade, show the UpdatePricing component
+                            <UpdatePricing
+                              pack={pack}
+                              title={pack.title}
+                              priceingsec={priceingsec}
+                              handlePay={handlePay}
+                              refetch={refetch}
+                            />
+                          ) : (
+                            // Otherwise, show a disabled button
+                            <button
+                              disabled
+                              className="bg-gradient-to-r from-blue-600 to-purple-600 opacity-50 cursor-not-allowed text-white text-xl duration-300 hover:shadow-lg font-medium   p-2 rounded-md h-12"
+                            >
+                              Upgrade not available
+                            </button>
+                          )
+                        ) : (
+                          <button
+                            onClick={() =>
+                              router.push(`${auth ? "/dashboard" : "/sign-up"}`)
+                            }
+                            className="overflow-hidden mt-auto w-full p-2 h-12 text-white border-none rounded-md text-xl font-bold cursor-pointer capitalize bg-gradient-to-r from-blue-600 to-purple-600 hover:shadow-purple-200 dark:hover:shadow-purple-800 dark:text-white"
+                          >
+                            {auth ? "Dashboard" : "Start For Free"}
+                          </button>
+                        )}
+                      </div>
+                    </th>
+                  );
+                })}
               </tr>
             </thead>
 
