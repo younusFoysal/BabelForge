@@ -107,7 +107,9 @@ const Faq = ({ isBG }) => {
         <div className="container px-6 py-12 mx-auto">
           <h1 className="text-2xl font-semibold text-center text-gray-800 lg:text-3xl dark:text-white">Have any Questions?</h1>
           <h2 className="text-lg font-light text-center text-gray-800 lg:text-lg dark:text-gray-300 mt-2">
-            <span className="border-b border-purple-700 mb-2 pb-4 px-16">Let us answer your questions</span>
+            {/* <span className="mb-2 pb-4 px-16 border">Let us answer your questions</span> */}
+            <span className="border-b border-purple-700 pb-3 md:pb-5 px-2 md:px-7">Let us answer your questions</span>
+            {/* <p className='border-b border-purple-700 w-1/2 md:w-1/3 mt-5 mx-auto'></p> */}
           </h2>
 
           <div className="mt-8 xl:mt-16 lg:flex lg:-mx-12">
