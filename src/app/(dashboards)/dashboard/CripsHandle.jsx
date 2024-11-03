@@ -12,7 +12,7 @@ const CripsHandle = () => {
   }, []);
 
   useEffect(() => {
-    // If not on the client or router is null, do nothing
+    // If not on the client or router is null, do Nothing
     if (!isClient || !router || !router.isReady || typeof window === 'undefined' || !window.$crisp) return;
 
     const handleRouteChange = () => {
