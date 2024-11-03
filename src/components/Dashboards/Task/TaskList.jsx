@@ -24,7 +24,11 @@ export default function TaskList() {
   const [activeTask, setActiveTask] = useState(null);
   const axiosCommon = useAxiosCommon();
 
-  const { data: taskdata = [], isLoading, refetch } = useQuery({
+  const {
+    data: taskdata = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ['allTasks', user, isLoaded],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${useremail}`);
@@ -33,32 +37,32 @@ export default function TaskList() {
       // Organize tasks into categories using fetched data
       const organizedTasks = {
         todo: data
-            .filter(task => task.tproces === 'todo')
-            .map(task => ({
-              id: task._id,
-              name: task.tname,
-              process: 'todo',
-              author: task.author,
-              assignTo: task.tassignTo,
-            })),
+          .filter(task => task.tproces === 'todo')
+          .map(task => ({
+            id: task._id,
+            name: task.tname,
+            process: 'todo',
+            author: task.author,
+            assignTo: task?.tassignTo?.length > 1 ? task?.tassignTo[0] + ` & ${task?.tassignTo.length - 1} others` : task?.tassignTo,
+          })),
         inProgress: data
-            .filter(task => task.tproces === 'inProgress')
-            .map(task => ({
-              id: task._id,
-              name: task.tname,
-              process: 'inProgress',
-              author: task.author,
-              assignTo: task.tassignTo,
-            })),
+          .filter(task => task.tproces === 'inProgress')
+          .map(task => ({
+            id: task._id,
+            name: task.tname,
+            process: 'inProgress',
+            author: task.author,
+            assignTo: task?.tassignTo?.length > 1 ? task?.tassignTo[0] + ` & ${task?.tassignTo.length - 1} others` : task?.tassignTo,
+          })),
         done: data
-            .filter(task => task.tproces === 'done')
-            .map(task => ({
-              id: task._id,
-              name: task.tname,
-              process: 'done',
-              author: task.author,
-              assignTo: task.tassignTo,
-            })),
+          .filter(task => task.tproces === 'done')
+          .map(task => ({
+            id: task._id,
+            name: task.tname,
+            process: 'done',
+            author: task.author,
+            assignTo: task?.tassignTo?.length > 1 ? task?.tassignTo[0] + ` & ${task?.tassignTo.length - 1} others` : task?.tassignTo,
+          })),
       };
       //console.log("OrganizedTasks", organizedTasks);
 
@@ -110,7 +114,6 @@ export default function TaskList() {
     }
   };
 
-
   const handleDragStart = event => {
     const { active } = event;
     const activeTask = getActiveTask(active.id);
@@ -144,7 +147,7 @@ export default function TaskList() {
           [activeContainer]: prevTasks[activeContainer].filter(task => task.id !== active.id),
           [overContainer]: [
             ...prevTasks[overContainer],
-            { ...movedTask, process: overContainer },  // Update the task process locally
+            { ...movedTask, process: overContainer }, // Update the task process locally
           ],
         }));
 
@@ -153,7 +156,6 @@ export default function TaskList() {
       }
     }
   };
-
 
   // Function to update task status in the backend
   const updateTaskStatus = async (taskId, newStatus) => {
@@ -187,7 +189,7 @@ export default function TaskList() {
 
   return (
     <div className="p-6">
-      <AddTask handleAddTask={handleAddTask}/>
+      <AddTask handleAddTask={handleAddTask} />
       <DndContext collisionDetection={closestCenter} onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className="flex gap-6 justify-between">
           <DroppableColumn id="todo" tasks={tasks.todo} title="Todo" key={tasks._id} />

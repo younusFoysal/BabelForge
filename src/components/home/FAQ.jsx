@@ -107,7 +107,7 @@ const Faq = ({ isBG }) => {
         <div className="container px-6 py-12 mx-auto">
           <h1 className="text-2xl font-semibold text-center text-gray-800 lg:text-3xl dark:text-white">Have any Questions?</h1>
           <h2 className="text-lg font-light text-center text-gray-800 lg:text-lg dark:text-gray-300 mt-2">
-            <span className="border-b border-purple-700 mb-2 pb-4 px-16">Let us answer your questions</span>
+            <span className="border-b text-sm md:text-base border-purple-700 pb-3 md:pb-5 px-2 md:px-7">Let us answer your questions</span>
           </h2>
 
           <div className="mt-8 xl:mt-16 lg:flex lg:-mx-12">
@@ -122,11 +122,10 @@ const Faq = ({ isBG }) => {
                       setActiveCategory(category.name);
                       setOpenQuestion({ [category.name]: 0 });
                     }}
-                    className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors duration-200 transform ${
-                      activeCategory === category.name
-                        ? 'text-purple-700 dark:text-purple-500 border-l-4 border-purple-700'
-                        : 'text-gray-600 dark:text-gray-400'
-                    }`}
+                    className={`block w-full text-left px-4 py-2 text-sm font-medium transition-colors duration-200 transform ${activeCategory === category.name
+                      ? 'text-purple-700 dark:text-purple-500 border-l-4 border-purple-700'
+                      : 'text-gray-600 dark:text-gray-400'
+                      }`}
                   >
                     {category.name}
                   </button>
@@ -148,9 +147,8 @@ const Faq = ({ isBG }) => {
                         >
                           <div className="flex items-center">
                             <svg
-                              className={`flex-shrink-0 w-6 h-6 ${
-                                openQuestion[category.name] === qIndex ? 'text-purple-700 rotate-90' : 'text-purple-700'
-                              } transition-transform`}
+                              className={`flex-shrink-0 w-6 h-6 ${openQuestion[category.name] === qIndex ? 'text-purple-700 rotate-90' : 'text-purple-700'
+                                } transition-transform`}
                               fill="none"
                               stroke="currentColor"
                               viewBox="0 0 24 24"

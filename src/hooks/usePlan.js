@@ -8,11 +8,12 @@ const usePlan = () => {
   const uemail = user?.primaryEmailAddress?.emailAddress;
   const { data: plan = "", isLoading } = useQuery({
     queryKey: ["plan", user, isLoaded],
-    enabled: !isLoaded || !!user,
+
     queryFn: async () => {
       const { data } = await axiosCommon(`api/user/${uemail}`);
       return data.plan;
     },
+    enabled: isLoaded && !!uemail,
   });
 
   return [plan, isLoading];
