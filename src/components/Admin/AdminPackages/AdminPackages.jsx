@@ -214,7 +214,7 @@ const AdminPackages = ({ priceingsec }) => {
                                 disabled
                                 className="bg-gradient-to-r from-blue-600 to-purple-600 opacity-50 cursor-not-allowed text-white text-md lg:text-xl duration-300 hover:shadow-lg font-medium   p-2 rounded-md h-12"
                               >
-                                not available
+                                Unavailable
                               </button>
                             )
                           ) : (
