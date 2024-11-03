@@ -14,7 +14,7 @@ const AuthProvider = ({ children }) => {
           const userInfo = { email: user.primaryEmailAddress?.emailAddress };
 
           const { data } = await axios.post(
-            "http://localhost:5000/api/jwttoken",
+            `${process.env.NEXT_PUBLIC_API_URL}/api/jwttoken`,
             userInfo,
             { withCredentials: true }
           );
