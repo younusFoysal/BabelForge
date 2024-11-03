@@ -3,6 +3,7 @@ import { useState } from 'react';
 import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import { IoTrashOutline } from 'react-icons/io5';
+import Swal from 'sweetalert2';
 import { HiOutlineOfficeBuilding } from 'react-icons/hi';
 import { HiMiniClipboardDocumentList } from 'react-icons/hi2';
 import Image from 'next/image';
@@ -13,16 +14,20 @@ import useRole from '@/hooks/useRole';
 import { redirect } from 'next/navigation';
 import Alert from '@/components/shared/Alert';
 import { toast } from '@/hooks/use-toast';
+import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 
 const AdminInbox = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);
 
-  const [role] = useRole();
-  if (role !== 'admin') redirect('/');
+  const [role, roleLoading] = useRole();
 
   const axiosCommon = useAxiosCommon();
 
-  const { data: messages = [], refetch } = useQuery({
+  const {
+    data: messages = [],
+    refetch,
+    isLoading,
+  } = useQuery({
     queryKey: ['admin-inbox'],
     queryFn: async () => {
       const res = await axiosCommon.get('/message/messages');
@@ -46,6 +51,10 @@ const AdminInbox = () => {
   const openMail = message => {
     setSelectedMessage(message);
   };
+
+  if (roleLoading || isLoading) return <LoadingSpinner />;
+
+  if (role !== 'admin') redirect('/');
 
   return (
     <div className="h-screen  flex flex-col lg:flex-row rounded-3xl bg-blue-100 dark:bg-[#181024] gray-900">

@@ -39,7 +39,7 @@ const Reviews = () => {
     } else {
       data.reviewRating = rating;
     }
-    console.log(data);
+
     reset({
       name: userfullNameorEmail || "Your Name",
       message: "",
@@ -53,16 +53,14 @@ const Reviews = () => {
   const mutation = useMutation({
     mutationFn: async (data) => {
       const res = await axiosCommon.post("/api/reviews/add", data);
-      // console.log(res.data);
+
       return res.data;
     },
     onSuccess: () => {
-      // console.log('successfully');
       toast.success(" Review Added Successfully!");
       reset();
     },
     onError: (error) => {
-      // console.log(error.message);
       toast.error(error.message);
     },
   });

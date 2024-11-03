@@ -28,7 +28,7 @@ export default function TaskList() {
     queryKey: ['allTasks', user, isLoaded],
     queryFn: async () => {
       const { data } = await axiosCommon.get(`/task/tasks/my-tasks/${useremail}`);
-      console.log("First loaded==", data);
+      //console.log("First loaded==", data);
 
       // Organize tasks into categories using fetched data
       const organizedTasks = {
@@ -60,7 +60,7 @@ export default function TaskList() {
               assignTo: task.tassignTo,
             })),
       };
-      console.log("OrganizedTasks", organizedTasks);
+      //console.log("OrganizedTasks", organizedTasks);
 
       // Update the state with organized tasks
       setTasks(organizedTasks);
@@ -69,7 +69,7 @@ export default function TaskList() {
     enabled: !!useremail && isLoaded,
   });
 
-  console.log(tasks);
+  //console.log(tasks);
   // Post task data
   const { mutateAsync: addTaskMutation } = useMutation({
     mutationFn: async taskData => {
@@ -157,7 +157,7 @@ export default function TaskList() {
 
   // Function to update task status in the backend
   const updateTaskStatus = async (taskId, newStatus) => {
-    console.log("Update", taskId, newStatus);
+    //console.log("Update", taskId, newStatus);
 
     try {
       await axiosCommon.patch(`task/tasks/update/${taskId}`, {

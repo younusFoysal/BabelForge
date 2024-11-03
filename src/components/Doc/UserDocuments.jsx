@@ -20,7 +20,7 @@ const UserDocuments = () => {
     const axiosCommon = useAxiosCommon();
     const router = useRouter();
 
-    console.log();
+    //console.log();
     
 
     const {data: documents, isLoading, isError, refetch} = useQuery({
@@ -90,7 +90,7 @@ const UserDocuments = () => {
            </div>
            <h3 className='mt-8 mb-2'>Your recent work</h3>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-4 lg:gap-8'>
-                {documents.map((doc, idx) => (
+                {documents?.map((doc, idx) => (
                      <Link key={doc._id} href={`/dashboard/doc/${doc?._id}`}>
                     <div onClick={(e) => e.stopPropagation()} className='p-4 h-[300px] bg-gray-200 my-2 rounded-md dark:bg-gray-700/60 hover:cursor-pointer max-w-'>
                        

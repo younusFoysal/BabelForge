@@ -164,7 +164,7 @@ const DocumentPage = ({ params }) => {
     return (
         <div>
             <div className='flex justify-center px-20 md:flex-row flex-col gap-2 my-5'>
-                <input className='font-bold bg-transparent text-2xl' onBlur={saveDocument} onChange={(e)=>{setUpdateTitle(e.target.value), console.log(updateTitle);
+                <input className='font-bold bg-transparent text-2xl' onBlur={saveDocument} onChange={(e)=>{setUpdateTitle(e.target.value);
                 }}  onClick={handleTitleChange} readOnly={!isEditableTitle} type="text" defaultValue={documentTitle ? documentTitle : "Untitled"} />
            
                 <div className="flex gap-5 justify-center md:justify-end">

@@ -1,55 +1,88 @@
-'use client';
-import { Input } from '@/components/ui/input';
+"use client";
+import { Input } from "@/components/ui/input";
 
-import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-import { IoIosSearch } from 'react-icons/io';
+import { IoIosSearch } from "react-icons/io";
 
-import useProjects from '@/hooks/useProjects';
+import useProjects from "@/hooks/useProjects";
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState } from "react";
+import Link from "next/link";
 
-import CommonTable from '../shared/CommonTable/CommonTable';
-import { useUser } from '@clerk/nextjs';
-import NoDataFound from '../shared/NoDataFound/NoDataFound';
-import LoadingSpinner from '../shared/LoadingSpinner/LoadingSpinner';
+import CommonTable from "../shared/CommonTable/CommonTable";
+import { useUser } from "@clerk/nextjs";
+import NoDataFound from "../shared/NoDataFound/NoDataFound";
+import LoadingSpinner from "../shared/LoadingSpinner/LoadingSpinner";
 
 const ProjectPage = () => {
   const { user } = useUser();
   const uemail = user?.primaryEmailAddress?.emailAddress;
 
-  const [search, setSearch] = useState('');
-  const [category, setCategory] = useState('');
-  const { data: projects = [], isLoading, refetch: projectRefetch } = useProjects(uemail, search, category);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("");
+  const {
+    data: projects = [],
+    isLoading,
+    refetch: projectRefetch,
+  } = useProjects(uemail, search, category);
 
-  if (!projects?.length && !search?.length && !category?.length) {
-    return <NoDataFound text={'No Project Created Yet.'} btnText={'Create Project'} btnLink={'/dashboard/createproject'}></NoDataFound>;
-  }
+  const projectCategories = [
+    "All",
+    "Software Engineering",
+    "Education",
+    "Non Profit Organization",
+    "Project Management",
+  ];
 
-  const projectCategories = ['All', 'Software Engineering', 'Education', 'Non Profit Organization', 'Project Management'];
+  const theads = [
+    "Fav",
+    "Image",
+    "Name",
+    "Type",
+    "Manager",
+    "Project URL",
+    "Start Date",
+    "End Date",
+    "More Action",
+  ];
 
-  const theads = ['Fav', 'Image', 'Name', 'Type', 'Manager', 'Project URL', 'Start Date', 'End Date', 'More Action'];
-
-  const handleSearchByClick = e => {
+  const handleSearchByClick = (e) => {
     e.preventDefault();
-    const inputData = document.getElementById('inputField').value;
+    const inputData = document.getElementById("inputField").value;
     setSearch(inputData);
   };
 
-  const handleSearchByEnter = e => {
-    if (e.key === 'Enter') {
+  const handleSearchByEnter = (e) => {
+    if (e.key === "Enter") {
       e.preventDefault();
-      const inputData = document.getElementById('inputField').value;
+      const inputData = document.getElementById("inputField").value;
       setSearch(inputData);
     }
   };
 
-  const handleFilter = value => {
+  const handleFilter = (value) => {
     setCategory(value);
   };
 
   if (isLoading) return <LoadingSpinner></LoadingSpinner>;
+
+  if (!projects?.length && !search?.length && !category?.length && !isLoading) {
+    return (
+      <NoDataFound
+        text={"No Project Created Yet."}
+        btnText={"Create Project"}
+        btnLink={"/dashboard/createproject"}
+      ></NoDataFound>
+    );
+  }
 
   return (
     <section>
@@ -77,7 +110,10 @@ const ProjectPage = () => {
               placeholder="Project Name"
             />
             <span className="absolute right-2 top-1/2 -translate-y-1/2">
-              <IoIosSearch onClick={handleSearchByClick} className="cursor-pointer"></IoIosSearch>
+              <IoIosSearch
+                onClick={handleSearchByClick}
+                className="cursor-pointer"
+              ></IoIosSearch>
             </span>
           </div>
         </div>
@@ -85,7 +121,7 @@ const ProjectPage = () => {
         {/* dropdown */}
         <div className="w-[100%]">
           <Select
-            onValueChange={value => {
+            onValueChange={(value) => {
               handleFilter(value);
             }}
           >
@@ -106,9 +142,13 @@ const ProjectPage = () => {
       </div>
 
       {projects.length ? (
-        <CommonTable theads={theads} tdata={projects} projectRefetch={projectRefetch}></CommonTable>
+        <CommonTable
+          theads={theads}
+          tdata={projects}
+          projectRefetch={projectRefetch}
+        ></CommonTable>
       ) : (
-        <NoDataFound text={'No Data Found'}></NoDataFound>
+        <NoDataFound text={"No Data Found"}></NoDataFound>
       )}
 
       {/*TODO- pagination */}

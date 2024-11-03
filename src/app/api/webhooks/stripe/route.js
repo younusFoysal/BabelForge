@@ -1,10 +1,10 @@
 import { stripe } from "@/lib/stripe";
 import { ObjectId } from "mongodb";
 import connectDb from "@/lib/ConnectDb";
-const WEBHOOK_SECRET = process.env.NEXT_PUBLIC_STRIPE_WEBHOOK_SECRET;
+const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 
 export async function POST(req) {
-  const body = await req.text();
+  const body = await buffer(req);
   const sig = req.headers.get("stripe-signature");
   let event;
 
@@ -25,7 +25,7 @@ export async function POST(req) {
         const session = await stripe.checkout.sessions.retrieve(
           event.data.object.id,
           {
-            expand: ["line_items", "payment_intent"],
+            expand: ["line_items"],
           }
         );
 
@@ -108,7 +108,7 @@ export async function POST(req) {
         }
         break;
       default:
-        console.log(`Unhandled event type ${event.type}`);
+      //console.log(`Unhandled event type ${event.type}`);
     }
   } catch (error) {
     console.error("Error handling event", error);
@@ -117,3 +117,19 @@ export async function POST(req) {
 
   return new Response("Webhook received", { status: 200 });
 }
+
+const buffer = (req) => {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+
+    req.on("data", (chunk) => {
+      chunks.push(chunk);
+    });
+
+    req.on("end", () => {
+      resolve(Buffer.concat(chunks));
+    });
+
+    req.on("error", reject);
+  });
+};

@@ -12,7 +12,7 @@ export const description = 'An interactive piee chart';
 const PaymentPieChart = ({ trans, isLoading }) => {
   const id = 'pie-interactive';
 
-  console.log(trans);
+  //console.log(trans);
 
   // Memoize the initial package array to avoid re-creating it on each render
   const Initalpakage = React.useMemo(() => ['Standard', 'Premium'], []);

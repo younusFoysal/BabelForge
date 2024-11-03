@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const CripsHandle = () => {
   const router = useRouter();
   const [isClient, setIsClient] = useState(false); // Ensure client-side rendering
-  console.log(router);
+  //console.log(router);
   // Ensure the component only runs on the client
   useEffect(() => {
     setIsClient(true);
@@ -16,7 +16,7 @@ const CripsHandle = () => {
     if (!isClient || !router || !router.isReady || typeof window === 'undefined' || !window.$crisp) return;
 
     const handleRouteChange = () => {
-      console.log('Hiding Crisp chat...');
+      //console.log('Hiding Crisp chat...');
       window.$crisp.push(['do', 'chat:hide']);
     };
 
