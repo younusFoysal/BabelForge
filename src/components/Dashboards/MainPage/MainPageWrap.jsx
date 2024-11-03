@@ -7,6 +7,7 @@ import useAxiosCommon from '@/lib/axiosCommon';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { useUser } from '@clerk/nextjs';
+import axios, { Axios } from 'axios';
 
 const MainPageWrap = () => {
   const axiosCommon = useAxiosCommon();

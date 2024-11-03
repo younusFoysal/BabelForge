@@ -4,7 +4,6 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import useAxiosCommon from '@/lib/axiosCommon';
 import AddTask from '@/components/Dashboards/Task/AddTask';
 import TableView from '@/components/Dashboards/Backlog/TableView';
-import Swal from 'sweetalert2';
 import LoadingSpinner from '@/components/shared/LoadingSpinner/LoadingSpinner';
 import { toast } from '@/hooks/use-toast';
 import { useUser } from '@clerk/nextjs';
@@ -13,9 +12,7 @@ const Backlogs = () => {
   const axiosCommon = useAxiosCommon();
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
-  //console.log(user);
   const uemail = user?.primaryEmailAddress?.emailAddress;
-  //console.log(uemail);
 
   // Post task data
   const { mutateAsync: addTaskMutation } = useMutation({
@@ -103,7 +100,7 @@ const Backlogs = () => {
   const { mutateAsync: updateTaskMutation } = useMutation({
     mutationFn: async task => {
       const taskWithoutID = { ...task };
-      delete taskWithoutID._id; // Remove the _id field before patching
+      delete taskWithoutID._id;
       const { data } = await axiosCommon.patch(`/task/tasks/update/${task._id}`, taskWithoutID);
       return data;
     },
@@ -136,7 +133,7 @@ const Backlogs = () => {
   return (
     <div>
       <AddTask handleAddTask={handleAddTask} />
-      <TableView tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
+      <TableView refetch={refetch} tasks={tasks} handleDelete={handleDelete} handleEditTask={handleEditTask} />
     </div>
   );
 };
