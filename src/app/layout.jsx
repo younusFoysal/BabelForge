@@ -45,7 +45,7 @@ export default function RootLayout({ children }) {
               >
                 <Navbar />
                 <Toaster />
-                {children}
+                <AuthProvider>{children}</AuthProvider>
                 <Footer />
               </ThemeProvider>
             </ScreenRecorderProvider>
